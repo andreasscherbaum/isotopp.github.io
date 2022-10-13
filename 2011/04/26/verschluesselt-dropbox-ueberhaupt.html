@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Verschlüsselt Dropbox überhaupt?</title>
+<title>Verschlüsselt Dropbox überhaupt? | Die wunderbare Welt von Isotopp</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.3" />
 <meta property="og:title" content='Verschlüsselt Dropbox überhaupt?' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -55,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.34cf67ab5155251adc1c5fa5c2f37d5a4f8f029f51399eb2556031d6ac918d49.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
 
 
     </head>
@@ -237,14 +237,14 @@ ist, die er behauptet zu haben.</p>
 <p>Nun sollte einmal das Denken einsetzen. Ich erzeuge also eine Datei mit den
 Inhalt &ldquo;Hallo, Welt!&rdquo;.</p>
 <p>Wenn <strong>ich</strong> diese Datei mit meinem Key verschlüssele, dann sieht die Datei so aus:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">KK:~ kris$ openssl enc -e -k g33k -aes-128-cbc -base64 -in /dev/stdin
-</span><span class="go">Hello, World!
-</span><span class="go">U2FsdGVkX19isizbD981L7EOV+1Ou8O4xhBMQqDo3nw=
-</span></code></pre></div><p>Wenn <strong>Du</strong> das machst, dann ist der Inhalt der Datei offensichtlich anders:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">KK:~ kris$ openssl enc -e -k s3cr3t -aes-128-cbc -base64 -in /dev/stdin
-</span><span class="go">Hello, World!
-</span><span class="go">U2FsdGVkX18Fqrwp51fq8Y23MBas01+z4gJBdFs+vWE=
-</span></code></pre></div><p>Beide Dateien haben offensichtlich unterschiedliche Prüfsummen, wenn man
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">KK:~ kris$ openssl enc -e -k g33k -aes-128-cbc -base64 -in /dev/stdin
+</span></span></span><span class="line"><span class="cl"><span class="go">Hello, World!
+</span></span></span><span class="line"><span class="cl"><span class="go">U2FsdGVkX19isizbD981L7EOV+1Ou8O4xhBMQqDo3nw=
+</span></span></span></code></pre></div><p>Wenn <strong>Du</strong> das machst, dann ist der Inhalt der Datei offensichtlich anders:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">KK:~ kris$ openssl enc -e -k s3cr3t -aes-128-cbc -base64 -in /dev/stdin
+</span></span></span><span class="line"><span class="cl"><span class="go">Hello, World!
+</span></span></span><span class="line"><span class="cl"><span class="go">U2FsdGVkX18Fqrwp51fq8Y23MBas01+z4gJBdFs+vWE=
+</span></span></span></code></pre></div><p>Beide Dateien haben offensichtlich unterschiedliche Prüfsummen, wenn man
 verschlüsselten Content betrachtet. Die Prüfsumme muß also über den
 unverschlüsselten Content berechnet werden, damit das vergleichbar wird. Für
 den Client ist das leicht, da die Daten ja auf meiner und Deiner Platte für

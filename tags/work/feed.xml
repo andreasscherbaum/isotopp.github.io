@@ -6,7 +6,474 @@
     <description>Recent content in work on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Jan 2022 23:13:18 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/work/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 01:02:26 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/work/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Groups and Places</title>
+      <link>https://blog.koehntopp.info/2022/10/12/groups-and-places.html</link>
+      <pubDate>Wed, 12 Oct 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/10/12/groups-and-places.html</guid>
+      <description>&lt;p&gt;In a distributed, asynchronous environment, there is a need for distributed, asynchronous interaction.
+This interaction is often written, but &amp;ldquo;writing&amp;rdquo; these days is actually a media-rich process that includes much more than letters.
+It also needs to be able to build some structure, and some gateway to level up to more synchronous and even richer communication.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s have a chat about chats, and what properties they have.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Historically, chat was lines of text, without much structure. Even today, many geeks often propose IRC when chat solutions are being discussed in a corporate context. That is a very myopic way of thinking.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The first chat network I have been using was IRC &amp;ndash; Internet Relay Chat.
+This has been in the late 80ies or early 90ies, so today I have had an interactive online presence on the upside of 25 years or so.&lt;/p&gt;
+&lt;p&gt;Later I got to use IQC, Jabber, Skype, Hangouts, Facebook Messenger, WhatsApp, Slack and RocketChat, among many others.
+I also got exposed to a number of collaborative document processing systems with chatlike properties:
+the now defunct Google Wave (alias Apache Wave, now also mostly defunct), and its heir Google Docs, and a bunch of newer collaborative brainstorming tools from the School of Miro.&lt;/p&gt;
+&lt;p&gt;All these applications and chat systems are different, but they can be evaluated along a number of dimensions to understand chat systems better.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-02.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A screenshot of my chat desktop from 2016. There are many like it, but this is mine.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;location-and-discoverability&#34;&gt;
+    &lt;a href=&#34;#location-and-discoverability&#34;&gt;
+	Location and Discoverability
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;One of the most important functions any chat system has to have is enabling the right people to find each other.
+There are two large classes of chat systems here: One uses groups, and the other uses places.&lt;/p&gt;
+&lt;p&gt;Groups are just that: collections of people that talk to each other.
+You write a message and sent it.
+It is then visible to all members of the group.&lt;/p&gt;
+&lt;p&gt;The problem with groups is that they are almost impossible to find.
+They are invitation only.
+A member of the group must have knowledge of you looking for the group, and then invite you to it.
+In some messengers this will also form a new group, destroying the messaging history of the older group, in order to protect the privacy of the conversation hapenning before the new member joined.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-03.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Discord chat system allows you to form small scale groups with fixed membership, even without having a &amp;ldquo;Discord Server&amp;rdquo;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A better system uses Places (often called Rooms or Channels) instead of Groups.
+A place is discoverable, you can &amp;ldquo;find&amp;rdquo; it, &amp;ldquo;go&amp;rdquo; to it, and &amp;ldquo;join&amp;rdquo; without being explicitly invited (permissioning and moderation systems often exist).&lt;/p&gt;
+&lt;p&gt;Since Places tend to proliferate, mechanism to group, order, tag and search them often exist.
+In Discord, for example, Channels can be grouped into Categories, which are then grouped into &amp;ldquo;Servers&amp;rdquo;, the server having an owner, and often a purpose.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-04.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Discord chat system, showing the &amp;ldquo;heiseonline&amp;rdquo; discord server, with a channel named &lt;code&gt;#tierbilder&lt;/code&gt; (Animal Pictures) selected. Below that, a Category for &lt;code&gt;Sprachkanäle&lt;/code&gt; (Voice Channels) is seen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Having Places instead of Groups is crucial for any communication system.
+It gives you the capability to write instructions that send people somewhere, and enables people to find and go somewhere, gives them agency.&lt;/p&gt;
+&lt;p&gt;Facebooks Messenger and Facebook at Work&amp;rsquo;s greatest flaw is their Messenger, which does not have this feature.
+It relies on Groups, and tries to mitigate that by coupling groups to Facebook &amp;ldquo;Groups&amp;rdquo; (discussion boards), autoinviting people into the Facebook Group associated chat group.
+This combines worst practices of several systems into one.&lt;/p&gt;
+&lt;p&gt;Places can be persistent, they can exist without anyone being in them.
+Places can also have one or multiple owners, which is the root of that Places&amp;rsquo; permissioning system and the source of all moderator power for that Place.&lt;/p&gt;
+&lt;h1 id=&#34;presence&#34;&gt;
+    &lt;a href=&#34;#presence&#34;&gt;
+	Presence
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Working asynchronously means that you will not be present in a chat at all times.&lt;/p&gt;
+&lt;p&gt;This is a feature: It allows you to focus, and think straight, cutting deeply into problems.
+It also allows you to be in another timezone that your communication partners and still contribute meaningfully to a collaborative effort.&lt;/p&gt;
+&lt;p&gt;It poses the problem of your communication partners not knowing your current comms status, and availability.
+If they are blocked, they might need you and it would help them to have some expectation of your response times, availability and context.&lt;/p&gt;
+&lt;p&gt;All modern chat systems have a presence mechanism, a semi-automatic status tagline, and the more thoughtfully engineered ones also know your timezone and show it to your peers.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-05.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The Slack chat system allows users to set a status in the form of an Emoji and a tagline. These are automatically cleared after some preset time, if desired. Slack also understands time zones, and will show you out-of-office times of communication partners, when necessary. Clicking on a user will also reveal their location and local time. On the right hand side, a number of status bubble examples are shown.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Presence management in chat system often goes hand in hand with logging.
+Messages sent to you in your absence are logged, and shown to you on reconnect.&lt;/p&gt;
+&lt;p&gt;This is all a giant step forward from IRC, which did not manage presence well, and also did now allow sending of messages to disconnected users.&lt;/p&gt;
+&lt;p&gt;In IRC, being offline means not being present: people fall off the channel and what is being said with them being not there is lost to them.
+That is of course a nuisance, and so people have been using programs such as screen to run an IRC client even when they have disconnected from their computer.&lt;/p&gt;
+&lt;p&gt;IRC&amp;rsquo;s mechamism for presence (here: attention) is somewhat hidden &amp;ndash; the &lt;code&gt;/away&lt;/code&gt; command.
+But not only is the mechanism hidden (it is another command that needs to be learned and used), but the status is somewhat hidden as well.
+You can&amp;rsquo;t see if somebody is &lt;code&gt;/away&lt;/code&gt; unless you look at them with a &lt;code&gt;/whois&lt;/code&gt;.
+Or you learn about the fact that they are &lt;code&gt;/away&lt;/code&gt; only after the fact, when you say something to them and get an autoresponse with their &lt;code&gt;/away&lt;/code&gt; message.&lt;/p&gt;
+&lt;p&gt;Some people do not like this, and so they use another mechanism and change their nicknames when they are not there &amp;ndash; &amp;ldquo;Isotopp&amp;rdquo; becomes &amp;ldquo;Isotopp|AFK&amp;rdquo; or similar.
+This is less structured than &lt;code&gt;/away&lt;/code&gt;, and so some people suffix their names, some prefix them and others completely change their nicknames - &amp;ldquo;Isotopp&amp;rdquo; becomes &amp;ldquo;Awaytopp&amp;rdquo;.
+The lack of facility, discoverable interface and standardization creates variant practice.&lt;/p&gt;
+&lt;h1 id=&#34;logging-and-multi-device&#34;&gt;
+    &lt;a href=&#34;#logging-and-multi-device&#34;&gt;
+	Logging and Multi-Device
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;All modern chat clients have proper presence, even if not always as rich as in Slack.
+Most also have unified logging.
+That is, even absent users can receive messages and will see them when coming back.&lt;/p&gt;
+&lt;p&gt;Most users in 2022 have multiple devices, and multiple clients.
+Most users want the entire messaging history, in order, and with all backlog, available on all their devices, so that they can switch between devices without losing context.
+This usually includes new devices, to facilitate moving to new laptops or cellphones, without losing history.&lt;/p&gt;
+&lt;p&gt;This often clashes with old standards, badly designed security mechanisms and other implementation details.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-06.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A Google Talk log, with OTR encryption, viewed in a different Jabber client. The history is truncated, and OTR encrypted messages are not available in readable form in this client.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;One extreme point for synchronisation is the Discord chat system, where not only history and messages are kept in sync across all clients, but even preferences are unified:
+Setting the desktop client to dark mode will also set dark mode on the cellphone application, and vice versa.&lt;/p&gt;
+&lt;p&gt;Anther, opposite extreme point is Jabber, which has no common rule for disposition of messages, and by default will send messages only to one client, using either a preference system, the last active client, or &amp;ldquo;all known clients to the server at the point in time the message was sent&amp;rdquo;. A lot depends on server and clients used here, creating an unreliable and hard to control user experience.&lt;/p&gt;
+&lt;h1 id=&#34;deliverables---file-and-image-sharing&#34;&gt;
+    &lt;a href=&#34;#deliverables---file-and-image-sharing&#34;&gt;
+	Deliverables - File and Image Sharing
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In a corporate context, we use the communication mechanism as a vehicle to create and share documents, and have a discusson about the documents we work on collaboratively.
+Mail was doing this in the past, with Quotes and with Attachments, but that is a very cumbersome, lossy and hard to discover mechanism.
+Most companies have moved the collab process off mail, to a large extent, and towards chat and collaborative document systems such as Google Docs.&lt;/p&gt;
+&lt;p&gt;Google had taken this one step further with structured chat.
+The pioneer application for that has been the short lived Google Wave:
+Wave allowed a group of people to create things in a kind of chat bubble, only that this bubble could not just hold a line of text, but also other media including rich documents, images, bots or other things that interfaced with the Wave API.
+Other users could comment on an item in a hierarchic comments-on-comment tree like in a discussion system, or directly edit the original item, incorporating their changes.&lt;/p&gt;
+&lt;p&gt;Changes were recorded and were undoable and replayable.
+This allowed users to view the end result of a wave, or review the process of building that result after the fact.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-07.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Google Wave being used to collaboratively work on a shared document. The Wave contains the final document, but also the process that led to the end result.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In a way, Wave could have been an salvation from the hell of corporate email:
+Waves produce results, documents or agreements.
+They also record the history of how that result had been reached, and they allow people joining the process late to catch up and review what has happened before on their own terms.
+No more full quotes, 13 levels deep, and no more dozens of copies of the same Word file, all slightly different, and with diverging side remarks from people somewhere in the organisation, which never made it back into the main document.&lt;/p&gt;
+&lt;p&gt;Wave failed, though, and for multiple reasons.&lt;/p&gt;
+&lt;p&gt;One of the bigger reasons is that Wave was all mechanism and no purpose &amp;ndash; it could to many things, and offered all of them without stating what Wave itself or the various functions are there for.
+One could use Wave to manage a world building and game session in a role playing game, as well as replace corporate email, or use it as a rather clunky and overengineered word processor.
+So Wave needed explanation and contextualisation - and above all, a purpose, but none was given.
+Wave died, because it confused users.&lt;/p&gt;
+&lt;p&gt;i&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/groups-places-08.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A collaboratively edited document. Multiple watchers are shown as icons at the top of the screen. A chat window is open. Cursors and collaborators edits would be visible simultaneously editing the document in many places while it has been initally created.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wave&amp;rsquo;s legacy lives on, though.
+Much of the functionality of Wave is present in Google Docs, including the side chat, collaborative editing, history recording and replay and many other functions.
+Unlike Wave, Google&amp;rsquo;s shared document editing puts the purpose first, and the collaboration in the background.
+This is matching people&amp;rsquo;s expectations much better, and is less overwhelming.
+It does to have to be taught, or manually given purpose.
+Instead the purpose is built in, and immediately obvious.&lt;/p&gt;
+&lt;p&gt;Modern chat systems are kind of the opposite:
+They put their purpose (communication) first, and the documents ride in the back.
+This happens either through URLs or throup file transfer.&lt;/p&gt;
+&lt;p&gt;All modern chat systems have a working file transfer, which is also aware of media types.
+That means, not only can you drag and drop files into a 1:1 chat or a channel, but also images or animations, as well as audio files.
+They are understood, and shown inline.&lt;/p&gt;
+&lt;p&gt;Together with other mechanisms, such as threads, they enable unique workflows that go way past the unstructured ASCII-limited text of IRC.
+For example, in many workplaces designers use the image capabilities of Slack, together with Slack threads, to share images, mockups and other things and then criticize or approve designs.&lt;/p&gt;
+&lt;p&gt;This is also where not only IRC, but also Jabber falls down.
+Proper file sharing, inline media content and threading are things that may exist somewhere, in some Jabber extension, but are not generally interoperable or enabled without much configuration across a set of clients.
+They might as well not exist.&lt;/p&gt;
+&lt;h1 id=&#34;we-were-lucky&#34;&gt;
+    &lt;a href=&#34;#we-were-lucky&#34;&gt;
+	We were lucky
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;At the place I work at, we were lucky.
+By the time Covid pushed people to work from home, we already had replaced mail almost completely.
+I was down from thousands of mail messages per day on almost one hundred mailing lists to less than a dozen messages, and no mailing lists at all any more.&lt;/p&gt;
+&lt;p&gt;We have moved to &lt;strong&gt;Facebook at Work&lt;/strong&gt; for non-realtime group communication.
+Teams were using their Facebook groups to communicate announcements and progress to other teams, and have discussions with them.&lt;/p&gt;
+&lt;p&gt;Internally and for support we moved to &lt;strong&gt;Slack&lt;/strong&gt;.
+This was pushed with considerable force from below, after corporate initially being very fond of Facebook messager, mostly because it was free and included in Facebook at work.&lt;/p&gt;
+&lt;p&gt;Unfortunately FB messager is utterly broken in many ways, and unsuited for any structured work communication without basically rewriting it from scratch.
+There are many facets to its fractal brokenness:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It has groups, but no places.&lt;/li&gt;
+&lt;li&gt;Groups have limited attendance, and the limit is too small (the old &lt;code&gt;#live&lt;/code&gt; Jabber channel was mandatory for all people pushing deployments, and could not be reproduced in FB Messenger)&lt;/li&gt;
+&lt;li&gt;It ate data. Mentioning a filename &lt;code&gt;main.pl&lt;/code&gt; would inescapably turn this into a polish hostname &lt;a href=&#34;https://main.pl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;main.pl&lt;/a&gt;
+
+. More often than not, Messenger would detect a mailware phising attempt and prevent you from sending the message.&lt;/li&gt;
+&lt;li&gt;It ate data. Mentioning an URL with array parameters (&amp;ldquo;&lt;a href=&#34;https://example.com/bla?a=1%5ea=2%5ea=3%22&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://example.com/bla?a=1^a=2^a=3&#34;&lt;/a&gt;
+
+) would make it parse the URL, representing the keys in a hash, and dropping the repeated keys, breaking the URL.&lt;/li&gt;
+&lt;li&gt;It could not handle files, code formatting and many other things well.&lt;/li&gt;
+&lt;li&gt;It could not do threads, which are a necessity in high volume support channels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the end, corp was forced to also purchase Slack on to of FB at Work, to prevent a more or less open revolt.&lt;/p&gt;
+&lt;p&gt;We had been using &lt;strong&gt;Google Drive and Google Office&lt;/strong&gt;, as well, across the company, and the collaborative features in it were well understood and used.&lt;/p&gt;
+&lt;p&gt;The heterogenity of all of this posed to be not a problem, somewhat surprisingly.
+In fact, in many cases, the mix-and-match approach enabled us to be flexible, and work around many tools limitations, and also to expand and integrate other things easily.
+Other applications (e.g. Miro, but also many others) have since been added for many users, who have other, more specialized needs and requirements.&lt;/p&gt;
+&lt;p&gt;We also used to use BlueJeans, before the pandemic, and mostly from meeting room installations with dedicated hardware.
+During Covid, Zoom became popular, and offered a richer and much better set of clients, especially on mobile devices (Laptops, Tablets, Cellphones), so we switched vendors here.&lt;/p&gt;
+&lt;p&gt;The key learnings are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We already had tooling for Remote First, but had hardly any need to use them properly.&lt;/li&gt;
+&lt;li&gt;We were hardly using Email with all its glorious brokenness any more.&lt;/li&gt;
+&lt;li&gt;By happy accident, the core tools (FB at Work, Slack) had Places, not Groups, as a core metaphor, and people structured their work around these places.&lt;/li&gt;
+&lt;li&gt;Collaborative document editing and a rich, structured chat complement each other well. But since Facebook and Google both are unable to make such a thing, we have yet another vendor integrated. This turned out to be actually an advantage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Our key deficits have not been discussed at length here, but are related:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Office documents have very bad discoverability and Google Office has no places.&lt;/li&gt;
+&lt;li&gt;Corrollary: A process is needed and needs to manually executed to move content from the collaborative phase to the publication phase, elsewhere.
+&lt;ul&gt;
+&lt;li&gt;By public decree in our place this is going to be Confluence, which has problems of its own, and also poses a document conversion problem (from Google to Confluence internal format, keeping structure).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Code Collaboration is not part of other collaboration at all, and lives in a third, and entirely disconnected space.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pan Narrans and Better Meetings</title>
+      <link>https://blog.koehntopp.info/2022/10/10/pan-narrans-and-better-meetings.html</link>
+      <pubDate>Mon, 10 Oct 2022 12:13:14 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/10/10/pan-narrans-and-better-meetings.html</guid>
+      <description>&lt;p&gt;When you are looking for a better &lt;em&gt;Remote First&lt;/em&gt; culture, you are looking for better meetings.
+If you go for better meetings, you will also have fewer of them.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/quotes/362504-the-anthropologists-got-it-wrong-when-they-named-our-species&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/10/pan-narrans-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“The anthropologists got it wrong when they named our species Homo sapiens (&amp;lsquo;wise man&amp;rsquo;). In any case it&amp;rsquo;s an arrogant and bigheaded thing to say, wisdom being one of our least evident features. In reality, we are Pan narrans, the storytelling chimpanzee.”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Going for a written culture helps, going for storytelling will help even more.&lt;/p&gt;
+&lt;h1 id=&#34;storytelling&#34;&gt;
+    &lt;a href=&#34;#storytelling&#34;&gt;
+	Storytelling
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Almost 15 years ago, I wrote about an experience with the roleplaying game &lt;em&gt;Primetime Adventures&lt;/em&gt;.
+If you are reading German, &lt;a href=&#34;https://blog.koehntopp.info/2008/10/05/drsrm-2008-primetime-adventures.html&#34;&gt;check it out&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;One of the things to take away from Primetime Adventures is that &amp;ldquo;on screen&amp;rdquo; nothing happens without reason, all interactions serve the story.
+And the story is always about conflict:
+Anything from misunderstandings to misaligned goals, from disagreement about a mission to disagreement about fundamental values, from friendly competition to outright fighting over starved resources.&lt;/p&gt;
+&lt;p&gt;In the end it does not matter, but screen time is always about the current conflict, because to the Storytelling Chimpanzee this is what it&amp;rsquo;s about.&lt;/p&gt;
+&lt;p&gt;This is, at the core, also true about meetings.
+If they are not about conflict, they are not worth your time.&lt;/p&gt;
+&lt;p&gt;It does not have to be conflict about the people in the meeting.
+The meeting does not have to resolve the conflict (but should progress it somewhow).
+But in every meeting there is some kind of conflict in the background.&lt;/p&gt;
+&lt;p&gt;Remember: Not all conflict is drama, in fact, most is not.&lt;/p&gt;
+&lt;h1 id=&#34;understanding-conflict&#34;&gt;
+    &lt;a href=&#34;#understanding-conflict&#34;&gt;
+	Understanding conflict
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;So when you go for meetings, prepare an Agenda.
+If you are invited to a meeting without an Agenda, decline it.&lt;/p&gt;
+&lt;p&gt;What is a good Agenda?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make an agenda and make it self-contained.&lt;/li&gt;
+&lt;li&gt;It should itemize the things you would like to talk about.
+&lt;ul&gt;
+&lt;li&gt;Each item should have a short summary (&amp;ldquo;What happened so far&amp;rdquo;, &amp;ldquo;Last week on …&amp;rdquo;) or link to one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;You should invite the people you need to talk to about the thing, the stakeholders.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then send the agenda around well in advance, maybe share a link to a shared document.
+Allow people to change, amend, and comment the agenda.
+Force them to interact with the document in some way.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Your goal, ultimately, is to either not have a meeting, because all agree.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Or have a meeting, but only about the things you disagree about.
+Or people have questions about things, which can only be resolved interactively.&lt;/p&gt;
+&lt;p&gt;So invite people to actually comment.
+Invite long form, have them write in the text.
+Sidenotes are horrible to read, and basically are good for &lt;strong&gt;+1&amp;rsquo;s&lt;/strong&gt; only.&lt;/p&gt;
+&lt;p&gt;Invite people to agree with you, in the document, or to specify where the disagreement is exactly.
+Disagreement can take many forms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It can be insecurity (&amp;ldquo;The plan looks good in principle, but I fear that…&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;It can be misalignment (&amp;ldquo;You want to do …, but we actually need … on our side.&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;It can be resource shortage (&amp;ldquo;You want … from us, but that would require us to …, and we can&amp;rsquo;t do that in this Quarter.&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;It can be many other things. It always signals a need to communicate more, about a specific thing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;commenting-on-agendas-kills-meetings&#34;&gt;
+    &lt;a href=&#34;#commenting-on-agendas-kills-meetings&#34;&gt;
+	Commenting on Agendas kills meetings
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Use the Agenda and the Agenda Prep to collect agreement.
+If there is no disagreement, it&amp;rsquo;s fine to not have the meeting, because the reason to have one just vanished.&lt;/p&gt;
+&lt;p&gt;If there is disagreement, you now know where, and how, and what specifically is the perceived or real problem.
+You can spend interactive time exactly on these things, and go over possible reconciliations.&lt;/p&gt;
+&lt;p&gt;Since this is all in a shared document, y&amp;rsquo;all can amend the discussion with additional writing and sidenotes as needed.
+This is automatically also the meeting notes, so make sure they contain whatever the outcomes are y&amp;rsquo;all collectively agreed to.&lt;/p&gt;
+&lt;p&gt;Mark up deliverables, deadlines and people responsible.
+Set a deadline with a followup meeting (which you can then try to kill in advance, too).&lt;/p&gt;
+&lt;h2 id=&#34;kickoffs-cannot-be-killed&#34;&gt;
+    &lt;a href=&#34;#kickoffs-cannot-be-killed&#34;&gt;
+	Kickoffs cannot be killed
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One exception are kickoff meetings.
+They exist to present the project, and project goals, to set the framework and to make sure you are talking to the right people, and &lt;em&gt;all&lt;/em&gt; the right people.&lt;/p&gt;
+&lt;p&gt;They exist also for socializing, specifically to enable people to make the necessary connections.
+You will be working together, you need to know each other.&lt;/p&gt;
+&lt;p&gt;So make it short, to the point, and make sure people can connect with each other directly afterwards, on their own.
+This is important, because kickoffs cannot be killed.&lt;/p&gt;
+&lt;h2 id=&#34;reporting-meetings-can-focus-on-interesting-stuff&#34;&gt;
+    &lt;a href=&#34;#reporting-meetings-can-focus-on-interesting-stuff&#34;&gt;
+	Reporting meetings can focus on interesting stuff
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Finding conflict, isolating interesting topics to talk about, also applies to reporting meetings.&lt;/p&gt;
+&lt;p&gt;Reporting meetings always read a lot of slides with a lot of numbers.
+Everybody zones out.
+&amp;ldquo;Last weeks SLOs for … were met completely, and we improved …&amp;rdquo;
+Nobody is interested, skip that.&lt;/p&gt;
+&lt;p&gt;We all can look at the green in the report in advance.
+Instead use the reporting meeting to speak about interesting things.&lt;/p&gt;
+&lt;p&gt;This can be the &lt;em&gt;story&lt;/em&gt; of an outage, and what we learned.
+It can be about the &lt;em&gt;story&lt;/em&gt; of an improvement, and how it will prevent a certain class of failure.
+Or tell the &lt;em&gt;story&lt;/em&gt; of how you work, how you improve work, or how you work differently than other companies do, if that is useful.&lt;/p&gt;
+&lt;p&gt;Sharing &lt;em&gt;stories&lt;/em&gt; about practice is much more interesting that reading numbers from a slide that is all green anyway.&lt;/p&gt;
+&lt;p&gt;Or skip the meeting.
+If the numbers are all fine and there are no learnings, no interaction is needed.&lt;/p&gt;
+&lt;h1 id=&#34;making-it-interesting-making-it-valuable&#34;&gt;
+    &lt;a href=&#34;#making-it-interesting-making-it-valuable&#34;&gt;
+	Making it interesting, making it valuable
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In general, finding out, in advance, what the meeting should be about, always means finding the conflict, determining its nature, and the stakes.
+Uneven information, misaligned goals, differences about implementation or scope, resource allocation, whatever.
+Knowing this, maybe even preparing alternatives, and then either developing or discovering them interactively, or deciding on them collectively helps.&lt;/p&gt;
+&lt;p&gt;It also automatically prepares the meeting minutes:&lt;/p&gt;
+&lt;p&gt;The Agenda collects agreement, and preparing the meeting from the residual conflict in the Agenda then makes it simple to have minutes.
+We have shared documents in 2022, so there is an easy way to make sure all voices are recorded.&lt;/p&gt;
+&lt;h1 id=&#34;providing-value&#34;&gt;
+    &lt;a href=&#34;#providing-value&#34;&gt;
+	Providing value
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Shared documents are also a burden:
+They are hard to discover, maintain and organize.
+I am increasingly a supporter of the idea that Google Docs should auto-delete after 3 months.&lt;/p&gt;
+&lt;p&gt;If you want deliverables, put them elsewhere, anywhere.
+Heck, even Confluence would be a better location than a Google Drive.
+In any case, you can create a consolidated version of the current state in a proper document, and then collect or link the path that led to it and attach it as documentation.&lt;/p&gt;
+&lt;p&gt;You can&amp;rsquo;t take meeting notes and call them deliverables, though.
+That won&amp;rsquo;t work.
+It never did.&lt;/p&gt;
+&lt;p&gt;So a discussion with interactive and written elements, is also a documentation evolution process, in which we collectively work on a deliverable: the architecture, documentation and implementation of a process.&lt;/p&gt;
+&lt;p&gt;In a proper store, and not in shared documents, much less in volatile spoken discussion without any record or recording.
+We work to distill information, to shape an idea, and to bring it into the world, in a proper deliverable and in code.&lt;/p&gt;
+&lt;p&gt;Because that is what a company is about:
+Making agreements on how we work together on a common thing (and building infrastructure to make this easier).&lt;/p&gt;
+&lt;p&gt;And we have meeting agendas to collect agreement, and to sharpen disagreement, we have interactive meetings to find and ultimately document conflict resolutions, and we then put these back into the deliverable.&lt;/p&gt;
+&lt;p&gt;This is the heart of asynchronous distributed collaboration.&lt;/p&gt;
+&lt;p&gt;So if somebody asks you:
+&amp;ldquo;What did your org learn to do differently in the last 3 years?&amp;rdquo;
+and the answer is unlike the above:&lt;/p&gt;
+&lt;p&gt;What did you do instead? How did your org evolve?&lt;/p&gt;
+&lt;h1 id=&#34;addenda&#34;&gt;
+    &lt;a href=&#34;#addenda&#34;&gt;
+	Addenda
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;This started out as a Twitter thread.
+There have been reactions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Florian Haas pointed to a &lt;a href=&#34;https://xahteiwi.eu/resources/presentations/devopsdays-berlin-2022/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;really good writeup&lt;/a&gt;
+
+ about writing of his.&lt;/li&gt;
+&lt;li&gt;He also mentions: &amp;ldquo;Re project kickoffs, never do them without preparing a 5-paragraph brief. Better still, circulate it ahead of the kickoff.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spaces</title>
+      <link>https://blog.koehntopp.info/2022/02/21/spaces.html</link>
+      <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/02/21/spaces.html</guid>
+      <description>&lt;p&gt;On the morning of Saturday, 22nd February 2020, two years ago, my colleagues and I woke up to the a message from the company that said:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&amp;ldquo;Spaces&amp;rdquo; Closed for Operations 23 Feb - 28 Feb&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;During the morning hours of Saturday, 22 February, a fire occurred on the first floor of the &amp;ldquo;Spaces&amp;rdquo; building.
+The fire was extinguished promptly but due to smoke and residue particles that spread throughout the building, we will not be able to open &amp;ldquo;Spaces&amp;rdquo; for at least one weeks time.
+The closure of the building is required to ensure we fully inspect the building, our equipment, clean the office of all smoke damage and residue and more importantly, ensure we have a safe working environment to return to.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It then took exactly one month instead of one week to fix that, and the planned reopening of the building fell on the exact day of the beginning of the COVID-19 lockdown.
+So it has been today two years ago that I worked in an office the last time.&lt;/p&gt;
+&lt;p&gt;I wrote into a company forum one year ago:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We will be keeping this up until at least October, and I would be surprised if we are not going to be doing this for much longer the way this country handles Covid.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Anyway, this is the cluttered mess of my Desk at home:&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-1.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Home machine, and lab equipment to the left, company Mac on the desk during the daytime, bunch of books left and right. On top, the stick for my Internet Spaceship. Under the desk to the right, the file server and gaming box.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It is very… lived in. I do change things too often for any pretty cabling or other cleanup to hold up.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-2.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;At least it has a decent view. That one hour commute to Spaces did pay off with a much more rural and spacious environment for home.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;But at least the view from my Desk is decent…&lt;/p&gt;
+&lt;p&gt;I am sitting on a Dauphin Shape XXL, a proper office chair instead of some gaming thing, and the desk is an older IKEA standing desk, motorized.
+I have cabled Internet at my desk, Wifi by Unifi in the house, and we have a 500/500 Mbit fiber connection at home, because faster Internet is not available where I live.&lt;/p&gt;
+&lt;p&gt;Life ain’t bad.&lt;/p&gt;
+&lt;p&gt;Never has been, actually.&lt;/p&gt;
+&lt;p&gt;Going back, I always had a desk to work on at home. In Berlin, an entire room (which also had an office desk for my wife).&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-3.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Geek wife doing geek wifey things on her Berlin desk.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In Karlsruhe, my GF and I had work desks in an office room, and actually almost never did use our living room.
+We sat back to back, because that makes it easy to roll over and look at the other screen to check things out and help.&lt;/p&gt;
+&lt;p&gt;In Kiel we had an office/living room double room, but the living room really saw use only on Tuesdays ever other week for the Tuesday meeting, when a bunch of Geeks were coming around for cooking and talks.&lt;/p&gt;
+&lt;p&gt;And even as a student, having a working desk was more important than a proper living room, actually.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-4.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;1996 computer science student desk (see below &amp;ndash; 1)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When I am thinking about it, I believe it’s because of my Dad.
+He had a Ham Radio license, and “his” place in the house always was his shack, with all the electronics, the radios and antenna controls, basically a desk and a workbench next to it.
+You’d find him more often there than anywhere else in the house.&lt;/p&gt;
+&lt;p&gt;Why do we even have living rooms?
+It’s a social convention that is hard to break.
+I know that I would be in for a fight to the blood suggesting that we get rid of ours, but seriously?
+“My” space is that desk/shack shown above, and not the living room.
+It’s the place that I’ll fight for.&lt;/p&gt;
+&lt;p&gt;Discussing this elsewhere, a friend sends me &lt;a href=&#34;https://www.youtube.com/watch?v=CJWOWksT1x4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Space &amp;ndash; A cluttered life: Middle-Class Abundance&lt;/a&gt;
+
+.
+The video discusses space use in American middle class families, who seem to have lives centered around the kitchen/eating space, which makes a lot of sense.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li&gt;That 1996 desk.
+That version of me had a Euro-ISDN semipermanent connection to my provider (128/128 kBit/s) and I also spent 50 Deutschmark for my own /24 provider independent IPv4 range.
+All my machines had public addresses.
+The machine is a Nextstation with 24 MB of memory, and a 25 MHz 68040 CPU, running what later would become MacOS X.
+The white tower next to it has a 1 GB SCSI HDD full height (the two top slots), a 1x SCSI CD-ROM drive (Caddies required) and a SCSI QIC drive for DC 6525 tapes (525 MB/tape).
+My body hides the full height tower case for the Dual-Pentium Linux box, you can only see the beige case of the b/w monitor it has.
+We were using BNC based 10 MBit/s Ethernet at that time.
+This box also has the ISDN card.
+Unfortunately the driver had a memory leak, and we were losing a bit of memory every time the ISDN link goes up or down, because some driver internal data structures are allocated and never deallocated.
+The loss accumulates to around 1 MB per week.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
     <item>
       <title>Die kommende Kündigungswelle</title>
       <link>https://blog.koehntopp.info/2021/11/12/die-kommende-kuendigungswelle.html</link>
@@ -317,6 +784,51 @@ Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;
     </item>
     
     <item>
+      <title>Du weisst nichts von Homeoffice</title>
+      <link>https://blog.koehntopp.info/2019/01/07/du-weisst-nichts-von-homeoffice.html</link>
+      <pubDate>Mon, 07 Jan 2019 09:14:19 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2019/01/07/du-weisst-nichts-von-homeoffice.html</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://www.golem.de/news/spd-arbeitsministerium-will-recht-auf-homeoffice-per-gesetz-1901-138520.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Recht auf Homeoffice&lt;/a&gt;
+
+ schreibt Golem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Das SPD-geführte Bundesarbeitsministerium plant ein gesetzlich verankertes Recht auf Home Office.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Und alle brüllen &amp;ldquo;Jaaaa!&amp;rdquo;.
+Ich glaube, den meisten ist gar nicht klar, auf was sie sich da einlassen und wie sich eine Remote First-Firma anfühlt.
+Wie dem auch sei:
+Die Firma, in der Ihr gerade arbeitet, kann so mit Home Office vermutlich nicht gut funktionieren.&lt;/p&gt;
+&lt;p&gt;Ich habe von 2005 bis 2008 für MySQL AB gearbeitet, und das war eine Firma, die Remote First war.
+Das war eine sehr andere Arbeitsumgebung als die, die ihr in Eurem Job vermutlich habt.
+Wir waren circa 500 Mitarbeiter in drei Dutzend Ländern überall auf der Erde.
+Es gab einen Firmensitz in Kalifornien und einen irgendwo in Skandinavien, aber dort war nie jemand (im Büro in Kalifornien waren ein paar Leute mehr, weil die dort den Börsengang der Firma vorbereitet haben).&lt;/p&gt;
+&lt;p&gt;Als Mitarbeiter hatte man einen gesonderten Raum daheim zu haben, der als Büro dient.
+Die Firma hat einen gewissen Betrag pro Jahr (2500 Euro) bereitgestellt, um diesen Raum auszustatten oder zu verbessern.
+Das schließt Arbeitsmaterial (Laptop) wie Büroausstattung (Stuhl, Tisch, etc pp) mit ein.&lt;/p&gt;
+&lt;p&gt;Weil es faktisch keine Firmenräume gab, gab es auch kein Firmen-VPN, denn das hätte den Zugang erschwert.
+Stattdessen gab es einen Haufen Webdienste, über die die Kommunikation stattfand.
+Diese waren verschlüsselt und mit einem Single Sign On versehen, aber generell von überall zugänglich von wo aus man eine TLS Verbindung bekommen konnte.&lt;/p&gt;
+&lt;p&gt;Alle Diskussionen, internen Abstimmungen, Meetings, und Ergebnisse wurden über diese Webdienste, Skype, IRC und andere Online-Medien getroffen.
+Die Arbeitszeiten waren oft schräg, weil die Firma über alle Zeitzonen der Erde verteilt war.
+Und das heißt, man mußte schon mal um 3 Uhr morgens ran, um ein Meeting mit Leuten in Shanghai, Moskau und in Kalifornien gleichzeitig zu haben &amp;ndash; da gibt es einfach keine gute Zeitzone für alle.&lt;/p&gt;
+&lt;p&gt;Meetings über Videokonferenzen und Chatmedien sind schwierig, und Diskussionen über Mailinglisten sind oft hitzig und schwerfällig zugleich.
+Es war notwendig, bestimmte Formen zu entwickeln und mit Leuten einzuüben.
+Wenn man Leute aus einem Präsenzumfeld in eine Home Office Umgebung wirft, sind sie zunächst orientierungslos, unter Druck und einsam gleichzeitig.
+Sie müssen an die Hand genommen werden, und man muß Ihnen Methoden und Formen aktiv zeigen, die ihnen erlauben, in so einer Umgebung zu funktionieren und sinnvoll zu kommunizieren.&lt;/p&gt;
+&lt;p&gt;Am schwierigsten ist der Umgang mit der Tatsache, daß es keine Serendipität und keine aufwandslose Kommunikation gibt.
+Diese Dinge, die man in Präsenzfirmen &amp;ldquo;nebenbei&amp;rdquo; mitbekommt, seitwärts, top-down und bottom-up, kommen in Home Office First Firmen nicht nebenbei.
+Jeder, Management, Teamleiter, aber auch jeder einzelne Mitarbeiter, müssen lernen, daß jede Kommunikation einen Aufwand und Energie kostet, und man sich das Messaging genau überlegen muß.
+Tut man das nicht, wird Zusammenhalt und gerichtete Aktion einem Firmenverbandes schwierig.&lt;/p&gt;
+&lt;p&gt;Zentral in MySQL waren übrigens die verschiedenen All Hands und Department Meeting Veranstaltungen.
+Zweimal im Jahr hat sich gesamte Firma an einem Ort getroffen (meistens ein Fünf Sterne Hotel in einem gut erreichbaren Land mit entspannter Visa-Situation, in der Nachsaison), und zweimal im Jahr haben sich gesamte Abteilungen getroffen.
+Auf diesen Events (jeweils drei bis fünf Tage) haben wir uns kennengelernt, ein Netzwerk aufgebaut, zusammen Kurzprojekte (&amp;ldquo;Hackathon&amp;rdquo;) durchgezogen und natürlich auch gefeiert.
+Zusammen mit anderen Treffen hatte man so in etwa alle zwei Monate ein Gruppen-, Abteilungs-, oder Firmentreffen.
+Alles in allem nicht wirklich eine Verbesserung der finanziellen und der CO2-Bilanz, aber notwendig um eine funktionierende Gruppe zu schaffen.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Where do you see yourself in five years?</title>
       <link>https://blog.koehntopp.info/2017/09/11/where-do-you-see-yourself-in-five-years.html</link>
       <pubDate>Mon, 11 Sep 2017 19:49:05 +0000</pubDate>
@@ -446,7 +958,7 @@ of the first CPU, that is, English is really bad for programming computers
 or people, and also each person is different.&lt;/p&gt;
 &lt;p&gt;To make matters worse there is no proper debugger, the same broken language
 has to be used to printf-debug the remote (&amp;ldquo;Do you understand what I mean?&amp;rdquo;
-&amp;ldquo;Do you understand why it is important that we do things this way?&amp;quot;) and
+&amp;ldquo;Do you understand why it is important that we do things this way?&amp;rdquo;) and
 there may be other, older code in the remote that interferes with the
 execution of our code. People have history and they have ideas.&lt;/p&gt;
 &lt;p&gt;If you think of a company as a large distributed engine to execute code that
@@ -463,7 +975,7 @@ about what and why, in order to make things happen (&amp;ldquo;You need to creat
 purchase order, which needs to be signed by &lt;em&gt;X&lt;/em&gt; for values over &lt;em&gt;n&lt;/em&gt; EUR in
 order to limit our liability. The signed order is then sent to &lt;em&gt;Z&lt;/em&gt;, who will
 actually spend money to buy stuff. You get stuff, and sign here to document
-that.&amp;quot;)
+that.&amp;rdquo;)
 Writing instructions and process down is important, and a great improvement
 actually, because writing these instructions down forces all involves
 parties (including the founders) to come clear about all the details and the
@@ -705,7 +1217,7 @@ and concepts first and that would interrupt the flow. Sorry about that.&lt;/p&gt
 &lt;/p&gt;
 &lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://twitter.com/iantien/status/861248220428738560/photo/1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Canary Skill Endorsements&lt;/a&gt;
 
-&amp;quot;:
+&amp;rdquo;:
 If you see them being used in a letter sent to you by a recruiter, you go
 all &lt;a href=&#34;http://www.snopes.com/music/artists/vanhalen.asp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Van Halen when they spot a brown M&amp;amp;M&lt;/a&gt;
 
@@ -1439,7 +1951,7 @@ back. Of course, I haven&amp;rsquo;t become that much of an adult because here I
 blogging the details of said encounter.There&amp;rsquo;s no doubt that I barely
 understood what the speaker was talking about. But during the talk, I had
 looked up six different concepts he had introduced (thank you Wikipedia),
-scanned two of the speakers&#39; papers to try to grok what on earth he was
+scanned two of the speakers&amp;rsquo; papers to try to grok what on earth he was
 talking about, and used Babelfish to translate the Italian conversations
 taking place on Twitter and FriendFeed in attempt to understand what was
 being said. Of course, I had also looked up half the people in the room
@@ -1578,19 +2090,19 @@ dauerhaft nie arbeiten wollen.&lt;/p&gt;
 &lt;p&gt;Bei einem COMMIT schreibt InnoDB die geänderte 16K Seite nun nicht sofort zurück in den Tablespace, sondern notiert die Änderung erst einmal im Redo-Log und markiert die InnoDB-Seite als Dirty. Später wird die Dirty Page zur Disk gesendet und der entsprechende Redo-Log Pointer kann vorwärts bewegt werden um den Platz im Redo-Log wieder frei zu geben.&lt;/p&gt;
 &lt;p&gt;Dadurch, daß alle Änderungen so erst einmal im Redo-Log landen, werden Schreibzugriffe, die eigentlich Random-Writes wären vorübergehend erst einmal als Lineare Writes abgehandelt: Wir hatten weiter oben ja schon etabliert, daß lineare Writes schneller sind. Außerdem spekuliert diese Aktion natürlich darauf, daß eine eben veränderte InnoDB Seite wegen Locality gleich noch einmal geändert wird und wir so Random I/O-Schreibzugriffe einsparen können.&lt;/p&gt;
 &lt;p&gt;Wir können Locality abschätzen, indem wir die Größe des Redo-Logs mit der Menge der Pages vergleichen, die dirty sind. In &lt;em&gt;SHOW ENGINE INNODB STATUS\G&lt;/em&gt; finden wir:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;go&#34;&gt;---
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;LOG
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;---
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Log sequence number 0 1994670731
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Log flushed up to   0 1994670268
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Last checkpoint at  0 1993477319
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;----------------------
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;BUFFER POOL AND MEMORY
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;----------------------
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Modified db pages  278
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Unser Redo-Log hat also bisher Null (0) Umdrehungen gemacht, und der Schreibzeiger steht bei Offset 1994670731, während der hintere Lesezeiger bei Offset 1993477319 steht. Es sind also 1994670731-1993477319 = 1193412 (ca. 1.1M) Redo-Log belegt. Dem stehen 278 16K große Seiten (ca. 4.4M) gegenüber, die als Dirty markiert sind. Wenn es uns gelingt, durch Umstrukturierung dieses Verhältnis zu verbessern, also die Anzahl der Seiten, die als Dirty markiert werden zu verkleinern, dann bekommen wir weniger Random-I/O und eine bessere Schreibleistung.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;LOG
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Log sequence number 0 1994670731
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Log flushed up to   0 1994670268
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Last checkpoint at  0 1993477319
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;----------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;BUFFER POOL AND MEMORY
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;----------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Modified db pages  278
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Unser Redo-Log hat also bisher Null (0) Umdrehungen gemacht, und der Schreibzeiger steht bei Offset 1994670731, während der hintere Lesezeiger bei Offset 1993477319 steht. Es sind also 1994670731-1993477319 = 1193412 (ca. 1.1M) Redo-Log belegt. Dem stehen 278 16K große Seiten (ca. 4.4M) gegenüber, die als Dirty markiert sind. Wenn es uns gelingt, durch Umstrukturierung dieses Verhältnis zu verbessern, also die Anzahl der Seiten, die als Dirty markiert werden zu verkleinern, dann bekommen wir weniger Random-I/O und eine bessere Schreibleistung.&lt;/p&gt;
 &lt;p&gt;MySQL wird die &amp;ldquo;modified db pages&amp;rdquo; dann verzögert und im Batch auf die Platte schreiben, wenn&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;das Redo-Log droht, vollzulaufen&lt;/li&gt;
@@ -1693,373 +2205,6 @@ dauerhaft nie arbeiten wollen.&lt;/p&gt;
 &lt;p&gt;Je nach zu erwartendem Grad von Concurrency bauen wir uns ein 2, 4 oder 8-Core-System. Richtig spannend wird die CPU-Nutzung aber aller Voraussicht nur bei speichergesättigten Datenbanken oder in spezialgelagerten Sonderfällen.&lt;/p&gt;
 &lt;p&gt;Weil wir erwarten mehr als 2-4G Speicher zu verwenden, achten wir darauf, daß die CPU, das Betriebssystem und die Datenbank in 64 Bit-Versionen installiert werden.&lt;/p&gt;
 &lt;p&gt;Konfigurationen, die ich beim Kunden gesehen habe waren etwa Dell 1950 mit einem MD1000 oder MD3000 hinten dran, HP DL 385 und DL 585 mit einem oder zwei MSA 30 hinten dran oder ähnliche Kisten von anderen Herstellern. Davor liegende Webserver waren oft Blades, zum Teil ohne Platten, mit 2G RAM und 32 Bit Betriebssystemen - für Webserver ist dies idR ausreichend und hier ist ein breites Array von Servernodes wichtiger als leistungsstarke einzelne Knoten, sobald die Latenz bei der Abarbeitung der Requests niedrig genug ist.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Ein Jahr auf der Straße</title>
-      <link>https://blog.koehntopp.info/2006/10/31/ein-jahr-auf-der-strasse.html</link>
-      <pubDate>Tue, 31 Oct 2006 23:00:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2006/10/31/ein-jahr-auf-der-strasse.html</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/train_delayed.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Jetzt bin ich genau ein Jahr lang für MySQL auf der Straße gewesen.
-Eigentlich begann alles schon ein wenig früher, als ich meinen Resturlaub Anfang September 2005 dazu verwendet habe, am MySQL Consulting Bootcamp 2005 in München teilzunehmen und mich dort auch zertifizieren zu lassen.
-Zwei Monate später, am 1. November, habe ich dann meinen neuen Job angetreten.&lt;/p&gt;
-&lt;p&gt;Die ersten zwei Wochen habe ich Peter Zaitsev beim c&amp;rsquo;t DVD-Shop Benchmark begleitet und dabei eine Menge über MySQL Performance Tuning gelernt.
-Meine erste Reise hat mich nach Stockholm geführt, wo mir Tobias Asplund dann die Grundlagen des Geschäfts gezeigt hat und mein erster Alleinflug ging gleich danach nach
-Trondheim, wo ich nicht nur Replikation bis zum Abwinken habe spielen können, sondern auch gleich noch gelernt habe, daß Migrationen nach 5.0 nicht immer ganz einfach sein müssen.
-Den November habe ich in Amsterdam abgeschlossen, wo ich von Kai mit der &amp;ldquo;Using und Managing MySQL&amp;rdquo;-Class druckbetankt worden bin, und Kai und ich mit Eric vom (damals) JDBC-Connector-Team durch die Kneipen gezogen sind.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/helsinki_hotel.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Im Dezember habe ich nicht nur Helsinki im Dunkeln gesehen, sondern auch gelernt, wie man betrunken über 2000 km nach Hause findet:
-Der 6. Dezember ist in Finnland nämlich Nationalfeiertag und der Kunde und ich waren wahrscheinlich die einzigen Personen in ganz Finnland, die da gearbeitet haben.
-Auf dem Flughafen haben sich unsere Wege dann getrennt: Ich 2000 km nach Süden, der Kunde noch mal nicht ganz so weit nach Norden&amp;hellip;
-Aber nicht, ohne vorher in der Flughafenbar in Helsinki von einem Finnen Salmiakki erklärt zu bekommen.
-Den Rest des Dezembers habe ich in Tübingen, in Dublin und in Lund, Schweden zugebracht.
-Für die ersten zwei Monate keine schlechte Tour.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/rome_sunlight.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Nach zwei Wochen Weihnachtspause habe ich dann das Jahr mit einer 4-Länder-an-einem-Tag-Tour begonnen:
-Treffen mit Kollegen in Zürich, am selben Tag nach Frankreich, um von dort über London nach Dublin zu fliegen.
-Was für eine Übung in Jet-Set!
-Aber alles hatte geklappt und so habe ich dann im Januar meinen ersten Shadow in Dublin delivered, d.h. weitere Kollegen angelernt.
-Im Januar hat auch einer der entschieden cooleren Aufträge angefangen:
-Eine Oracle-Migration bei einem Kunden in Rom.
-So kam es, daß ich an meinem Geburtstag in einem Cafe gegenüber dem Nationalmonument gesessen habe und meinen Espresso geschlürft habe.&lt;/p&gt;
-&lt;p&gt;Um ein Haar wäre es mir in der Woche darauf gelungen, meine Mama unangekündigt an ihrem Geburtstag zu überraschen, denn ich hatte in Hamburg zu tun - zum Glück rief ich dann doch noch an, sonst hätte ich vor einer leeren Hütte gestanden.&lt;/p&gt;
-&lt;p&gt;Der Februar ging sehr schnell vorbei: Rom, Zürich, Rom.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/hilton_sorrento.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Nach einer kurzen Bürowoche dann Anfang März ein Einsatz für Training statt Consulting:
-Kurs halten in Washington, DC - Yay!
-Die Woche drauf war ich in Belgien und habe außerdem noch ein wenig Remote gearbeitet.
-Dann Mitte März die MySQL Developers Conference in Sorrento mit Abschlußausflug nach
-Pompeii.
-Süditalien, wenn es noch nicht so heiß ist - wunderbar!
-Die beiden Wochen danach waren ein wenig ruhiger:
-Ein wenig Remote Work tut nach dieser Reiserei ganz gut.&lt;/p&gt;
-&lt;p&gt;Anfang April war ich dann noch kurz in London auf Canary Wharf, bevor es zwei Wochen in den Urlaub nach Schottland ging, um Destillen, Gärten und Hightech zu bewundern und die Highlands zu erkunden.
-Auf dem Weg haben wir dann auch noch Newcastle und York ein bisschen gesehen.
-Nach dem Urlaub kommt die Arbeit - in meinem Fall die MySQL Users Conference 2006 in
-Santa Clara.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/raygun.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Gut daß ich nach der Rückkehr Anfang Mai relativ ruhig daheim bleiben konnte:
-Jobs in Stuttgart, in Heidelberg und Remote Work für einen Kunden in den USA.
-Eine mehrtägige Schulung über SkypeOut und &lt;code&gt;screen -x&lt;/code&gt; halten.
-Das geht!
-Der Mai war sowieso Monat der Kontraste - wie klingt &amp;ldquo;Olpe, Rahden, Washington DC&amp;rdquo;?
-Washington war jetzt, Ende Mai, übrigens glühend heiß.
-Wieder eine Schulung, was gut ist, weil man sich da die Zeit gut einteilen kann.
-Ich habe sie benutzt, um das Air and Space Museum zu besichtigen.&lt;/p&gt;
-&lt;p&gt;Den Juni habe ich dann in Stuttgart, Dresden, Zürich und Genf zugebracht.
-Dabei habe ich in Genf einen uralten Freund wiederentdeckt:
-Alexander Finger betrieb vor nicht ganz 20 Jahren syd.de, während ich als Teil von toppoint.de dasselbe in Kiel tat.
-Inzwischen hat es ihn nach Genf verschlagen.
-Ende Juni dann der erste Zweitages-Workshop Performancetuning in München und zwischendurch über das Mittsommer-Wochenende noch mal schnell in Skien, hinter Oslo, denn dort war
-PHP Vikinger bei EZ Systems.
-Nach der Rückkehr, quasi aus dem Flieger fallend, dann ein Talk für die Linux Users Group Karlsruhe über Performance Tuning und der Juni ist im Kasten.&lt;/p&gt;
-&lt;p&gt;Eher häuslich geht es im Juli weiter:
-PT in München, PT in Stuttgart und eine 1800 km Autotour: Karlsruhe-Rahden-Dresden-Karlsruhe in einer Woche.
-München, Stuttgart, Olpe.
-Und ich sagte noch: &amp;ldquo;Schickt mich aus Deutschland weg während der WM.&amp;rdquo;
-Stattdessen kriege ich glühend heiße, überfüllte WM-Städte während da Spiele sind&amp;hellip; &lt;em&gt;grummel&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Der August beginnt mit Abkühlung, und mit Amsterdam.
-Ich werde so halb krank, und so kann ich mir die für die 2. Augustwoche geplante Kiel/Dänemark-Tour abschminken.
-Stattdessen bin ich die Woche drauf in
-Oslo, in Bath, und dann mal wieder in Helsinki, um ein wenig von den Clustergöttern zu lernen.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/woking_martian.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Das kann ich dann Anfang September zurückgeben, wo ich stattdessen Shadow für einen Kollegen in Woking mache und dann zwei Tage PT Workshop in Köln gebe.
-In Köln treffe ich auch
-&lt;a href=&#34;http://garv.in/serendipity/archives/976-Koelnisch-Walking-mit-Kris-und-Barbara-Schoeneberger.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Serendipity&amp;rsquo;s Garvin&lt;/a&gt;
-
-.
-Die Office-Woche darauf bringe ich in Kiel zu, um meine Eltern zu besuchen.
-Die Woche darauf bin ich dann prompt richtig antibiotikamäßig krank statt in Amsterdam.
-Danach bin ich Ende September dann aber immerhin so fit, daß ich das Projekt in Rom abschließen kann, und die zwei verbleibenden Tage der Woche nutze, um mit der Katze Rom zu erkunden.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/i_am_sterdam.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Der Oktober ist dann schnell herumgebracht:
-zur Hälfte in Amsterdam, zur anderen Hälfte in Karlsruhe&amp;hellip;
-Und so werde ich dieses Jahr auch beschließen:
-Neben einer Woche in Sheffield, UK steht bis zum Jahresende mehr oder weniger lückenlos Amsterdam auf dem Plan (Und ein Tag Köln!).&lt;/p&gt;
-&lt;p&gt;Gefällt mir der Job?
-Oh, ja.
-Reisen macht mir Spaß und mit den Zielen habe ich Glück gehabt.
-Die Arbeit macht Spaß und bietet jede Menge Dinge, die ich noch nicht kann, aber die ich schaffen kann.
-Auf der Straße und dicht an der Technik scheint mir eher zu liegen als Papierschieberei&amp;hellip;
-Ansonsten ist es das älteste Gewerbe der Welt:
-Geh für Geld zum Kunden und mach&#39; ihn glücklich.&lt;/p&gt;
-&lt;p&gt;Ist der Job anstrengend?
-Oh, ja.
-Es ist der anstrengendste Job, den ich jemals hatte.
-Aber, wenn man einen Rhythmus finden kann, bei dem man in passenden Abständen Home-Office machen kann, ist er durchhaltbar&amp;hellip;&lt;/p&gt;
-&lt;p&gt;Was haben wir als Firma geschafft?
-MySQL ist in diesem Jahr von 5.0.15 nach 5.0.27 gekommen und die 5.0 hat sich dabei langsam aber sicher in eine stabile Plattform verwandelt.
-Meine Kunden haben im Laufe des Jahres die Features von 5.0 entdeckt und so erobert sich MySQL immer mehr Anwendungen, die der Datenbank vorher verschlossen geblieben sind.&lt;/p&gt;
-&lt;p&gt;Meine Hauptthemen im Bereich Operating waren &amp;ldquo;Monitoring&amp;rdquo; und &amp;ldquo;Backup&amp;rdquo;, im Bereich DBA sind &amp;ldquo;Replikation&amp;rdquo; und &amp;ldquo;SQL-Optimierung&amp;rdquo;, im Bereich Entwicklung &amp;ldquo;InnoDB und Transaktionen&amp;rdquo;.
-Seltsamerweise sind Stored Procedures und Trigger ein wichtiger Checkpoint, um ernst genommen zu werden, aber sie werden dann (glücklicherweise!) kaum eingesetzt - denn das Thema im Bereich Architektur war &amp;ldquo;Scale-Out&amp;rdquo; -
-&lt;a href=&#34;https://blog.koehntopp.info/2006/07/30/leben-mit-fehlern-der-schluessel-zum-scaleout.html&#34;&gt;horizontales Wachstum&lt;/a&gt;
-
-.
-Intern war das wichtigste Thema für uns Consultants &amp;ldquo;Wachstum und Integration von neuen Mitarbeitern&amp;rdquo; und ist nun &amp;ldquo;Best Practice Building&amp;rdquo;.
-Langsam, aber sicher ändert sich die Art der Arbeit von Pivot-Consulting to Projekt-Consulting&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Erfahrungen mit Nonoffice</title>
-      <link>https://blog.koehntopp.info/2006/07/05/erfahrungen-mit-nonoffice.html</link>
-      <pubDate>Wed, 05 Jul 2006 14:35:20 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2006/07/05/erfahrungen-mit-nonoffice.html</guid>
-      <description>&lt;p&gt;Seit dem 1. November 2005 arbeite ich für MySQL Deutschland GmbH als Consultant. Damit mit bin ich Teil einer Firma mit 320 Mitarbeitern in 27 Ländern.
-&lt;a href=&#34;http://www.c0t0d0s0.org/archives/1738-Erfahrungen-mit-Homeoffice.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ein Office habe ich noch nie gesehen&lt;/a&gt;
-
-.
-Einige der Kollegen, mit denen ich am engsten zusammenarbeite habe ich auch noch nie gesehen.
-Die anderen sehe ich so alle paar Monate mal.
-Die Zusammenarbeit ist gut und sehr intensiv.&lt;/p&gt;
-&lt;p&gt;Als ich von web.de zu MySQL gewechselt bin, war ich am Anfang sehr skeptisch und habe meine Interviewpartner gefragt, wie das denn wohl so ist, für eine &amp;ldquo;virtuelle&amp;rdquo; Firma zu arbeiten, in der die Kollegen so weit verstreut gesät sind.
-Auch in den Fällen, in denen ich neue Kollegen interviewed habe ist dies die Frage, die mir in der Regel zuerst gestellt wird.&lt;/p&gt;
-&lt;p&gt;Meine Antwort auf diese Frage ist inzwischen &amp;ldquo;Hast Du einmal in irgendeinem Open-Source-Projekt mitgearbeitet und Dich mit den Leuten dort abstimmen müssen?&amp;rdquo;
-Wenn die Antwort &amp;ldquo;ja&amp;rdquo; lautet (und damit man von MySQL interviewed wird, muss sie in der Regel &amp;ldquo;ja&amp;rdquo; lauten), kann ich antworten &amp;ldquo;Es ist genau wie da, nur daß Du Geld dafür bekommst.&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;In der Praxis sieht das so aus, daß MySQL über einen von mehreren Wegen einen Lead hereinbekommt, der vom Sales-Team entweder telefonisch oder vor Ort in einen Auftrag umgewandelt wird.
-Sales geht dabei mit dem Presales-Support und einigen Fragebögen daher und produziert so ein Informationspaket, bei dem die Schedulerin und Consulting meist eine relativ gute Idee haben, was das Projekt ist und welche Fähigkeiten dabei gefordert sind.
-Zusammen finden wir die passenden Personen zur Abwicklung des Projektes und machen mit dem Kunden und dem Consultant einen Terminplan.
-Der Consultant reist dann an, macht sein Ding und reist einen glücklichen Kunden hinterlassend wieder ab.&lt;/p&gt;
-&lt;p&gt;So die Theorie, und im Regelfall auch die Praxis.&lt;/p&gt;
-&lt;p&gt;MySQL als Firma besteht aus einer an mehreren Stellen konzentrierten Infrastruktur, die Sales, Presales, Scheduling, Consulting, Training, aber auch Support, Development, Maintenance und den die betriebswirtschaftlichen Dinge abwickelnden Geschäftsstellen Dienste anbietet.
-Diese Dienste sind, wo immer es geht, web-basierend und so gestaltet, daß sie so Browser-unabhängig sind wie irgend möglich.
-Zu diesen Diensten gehören verschiedene Firmen-Wikis, einige Eventum-Taskmanager-Instanzen, der Teamkalender für Training und Consulting und viele andere Dinge.
-Auch Nicht-Webdienste, etwa Bitkeeper, Continous Build Services, ein Firmen-IRC-Server, Mail- und Newsdienste und eine verteilte Asterisk-Installation gehören dazu.&lt;/p&gt;
-&lt;p&gt;Am Ende ist dies keine Sache, die so verschieden wäre von etwa dem Setup, das KDE intern verwendet, plus die Sales- und BWL-Seite dazu.&lt;/p&gt;
-&lt;p&gt;Für mich als Consultant bedeutet dies, daß ich Zugriff auf meine Kollegen bei Consulting, Training und im Support habe, in dem ich Skype, Mail und IRC verwende.
-Bei einer Firma, die so verteilt ist wie MySQL, ist zu jeder Tages- und Nachtzeit jemand zu sprechen, der mir helfen kann.
-Wir kommunizieren dabei nicht nur dienstlich, sondern ich habe so wie beim normalen ircen auch einige gute Freunde gewonnen, von denen ich einen Teil noch nicht persönlich getroffen habe.
-Die Zusammenarbeit ist noch intensiver beim Support-Team:
-Arbeiten heißt für die ircen, und Tom Basil hat auf seine unvergleichliche Weise aus dem Team eine Art Familie gemacht, sodass &amp;ldquo;seine&amp;rdquo; Supporter (und einige Adoptivkinder aus anderen Abteilungen) quasi im Netz leben.&lt;/p&gt;
-&lt;p&gt;Meine Arbeit organisiere ich weitgehend selbst:
-Ich entscheide, wann ich arbeite, wie ich arbeite und was ich wie priorisiere.
-MySQL folgt sehr strikt einem management-by-objectives Ansatz, sodass es letztendlich vollkommen egal ist, wie ich die Ziele erreiche, die ich mir mit meinem Team gesetzt habe.&lt;/p&gt;
-&lt;p&gt;Wenn ich einen Home-Office-Tag habe, haue ich meistens morgens meine Mail weg.
-Konkret bleibe ich auf dem Stand, was auf den Firmenmailinglisten so passiert, verfolge einige interessante Dinge im Bitkeeper und im Worklog, um bei der Weiterentwicklung des Servercodes auf Stand zu bleiben und beantworte die Mails, die Kunden reingeschickt haben, weil sie noch Fragen haben oder einfach nur so in Kontakt bleiben wollen.&lt;/p&gt;
-&lt;p&gt;Nach dem Mittag ist Papierkram angesagt:
-Expenses, Engagement Summaries, Knowledge Base Entries oder Whitepapers und die dazu notwendigen Experimente, oder den folgenden Einsatz vorbereiten.
-Dazu gehören auch die anstehenden Kundenanrufe, die ich inzwischen routinemäßig alle über SkypeOut abwickle.
-Oder ich nehme mir den Nachmittag frei und erledige die Dinge am Abend, bei denen ich mich nicht mit Kunden synchronisieren muss.&lt;/p&gt;
-&lt;p&gt;Es kann auch sein, dass ich einen Remote Gig habe.
-Dies ist in der Regel ein Einsatz bei einem Kunden in einer anderen Zeitzone, bei dem sich die Anreise wegen der Einsatzdauer nicht lohnt, oder wegen der Dringlichkeit nicht möglich ist.
-In diesem Fall verschiebt sich mein Lebenszyklus ein wenig in Richtung der anderen Zeitzone, was mir natürlich ein wenig Freizeit zu ungewöhnlichen Zeiten beschert.&lt;/p&gt;
-&lt;p&gt;Meistens hat der Kunde einen Sprung-Host in seiner DMZ, auf den ich per &lt;code&gt;ssh&lt;/code&gt; draufklettern kann, und auf dem ich ihn dann bitte einen &lt;code&gt;screen&lt;/code&gt; zu starten.
-Nachdem ich mich mit &lt;code&gt;screen -x&lt;/code&gt; an seine Session angeklemmt habe, bitte ich ihn, mich huckepack mit nach drinnen in sein Netz zu nehmen.
-Über seinen Firmen-IRC-Server, über Skype oder über SkypeOut können wir nun reden, während wir uns eine Shell-Session im &lt;code&gt;screen&lt;/code&gt; teilen und er sehen kann, was ich tippe.
-Dies ist für die Teile der Arbeit, die synchron erledigt werden müssen, in den meisten Fällen genauso effektiv als wäre ich vor Ort.
-Asynchrones Arbeiten geht im Grunde genau so, nur daß ich idR einen &lt;code&gt;ssh&lt;/code&gt;-Login bekomme, mit dem ich zu meinen Zeiten alleine arbeiten kann.&lt;/p&gt;
-&lt;p&gt;Für die Dinge, die ich dabei auf eigenen Systemen ausprobieren muss, damit sie beim Kunden reibungslos klappen kann ich entweder auf meinem Laptop mit vmware Instanzen simulieren oder auf Rechnern in den firmeneigenen Labors in Cupertino oder Uppsala Rechenzeit reservieren.
-Auch auf diese Rechner komme ich problemlos mit &lt;code&gt;ssh&lt;/code&gt; oder &lt;code&gt;rdesktop&lt;/code&gt; über das Firmen-VPN drauf.&lt;/p&gt;
-&lt;p&gt;Bei einem regulären Kundeneinsatz bin ich nicht alleine.
-Ich bin vielleicht der einzige MySQL-Mitarbeiter vor Ort, aber hinter mir steht über GSM, openvpn, https-VPN oder ssh-Tunnel der Zugriff auf Support und meine Kollegen von Training und Consulting, die gerade nicht beim Kunden sind.&lt;/p&gt;
-&lt;p&gt;Auch die Katze arbeitet inzwischen bei MySQL - in ihrem Fall als Entwicklerin.
-Ihre Arbeit ist damit noch näher am KDE-Modell als meine:
-Bitkeeper, UnitTest-Harnesses und Continuos Build-Prozeduren auf einer ganzen Reihe von Plattformen der Buildfarm sind ihre Freunde.
-Scrum im Irc und im Wiki sind ebenso Standard-Prozesse für Entwickler wie der Umgang mit einem Bugtracker.
-Und wie in jedem regulären Irc in anderen Open-Source-Projekten entwickeln sich auch dort Freundschaften und persönliche Kontakte.&lt;/p&gt;
-&lt;p&gt;Entwickler fahren alle mindestens einmal im Jahr zur firmeninternen Developer Conference, die dieses Jahr in Sorrento in Italien stattfand.
-Dort finden sich auch Abgesandte aller anderen Abteilungen, sodass dies eine ausgezeichnete Methode ist, um bisher virtuelle Freundschaften einmal mit Personen und Gesichtern zu verbinden.
-Weitere Gelegenheiten dieser Art sind die US-amerikanische und die europäische User Conference, MySQL Usergroup-Treffen, bei denen man neben Anwendern auch Kollegen aus demselben geografischen Gebiet treffen kann, und natürlich Abteilungsmeetings.
-Wir in Consulting streben drei solcher Treffen im Jahr an, und für die anderen Abteilungen geschieht dies nach Bedarf&amp;hellip;&lt;/p&gt;
-&lt;p&gt;Alles in allem kann ich nach 9 Monaten MySQL sagen, daß dies die fremdartigste Firma ist, in der ich je gearbeitet habe.
-Keine &amp;ldquo;casual communication&amp;rdquo;, keinen Flurfunk zu haben, ist manchmal etwas anstrengend und kostet sicherlich mehr Energie als in einer traditionellen Firma.&lt;/p&gt;
-&lt;p&gt;Andererseits habe ich mich sofort zu Hause gefühlt:
-Während MySQL als Firma fremdartig ist, sind mir die Methoden der Zusammenarbeit vertraut, denn ich habe sie außerhalb der Firma in den Projekten, an denen ich mitgearbeitet habe, jahrelang gelebt.&lt;/p&gt;
-&lt;p&gt;Neu ist im Grunde nur, daß das, was vorher mein Hobby war, jetzt mein Leben ist.
-Ein anstrengendes, spannendes und überaus aufregendes Leben.&lt;/p&gt;
-&lt;p&gt;Also liebe Kollegen, bekannter und unbekannterweise:
-Wie ist es für Euch gewesen, als ihr hier angefangen habt?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>In with the out, old with the new...</title>
-      <link>https://blog.koehntopp.info/2005/10/28/in-with-the-out-old-with-the-new.html</link>
-      <pubDate>Fri, 28 Oct 2005 18:18:47 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2005/10/28/in-with-the-out-old-with-the-new.html</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/webde-sse.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://blog.helaron.de/archives/236-Isotopp-ist-leider-raus....html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Das war&amp;rsquo;s&lt;/a&gt;
-
-.&lt;/p&gt;
-&lt;p&gt;Bis heute - fast zwei Jahre lang - war ich Security-Fuzzi für web.de.
-Das bedeutet: Ich habe Security Policy definiert, Fachabteilungen bei der Umsetzung von Policies beraten und entweder selbst oder von Dritten die Umsetzung von Policies prüfen lassen, und außerdem den Security Incident Management Prozess betrieben.
-In der Praxis bedeutet das, daß ich am härtesten Arbeitstag meines Lebens mit der Hilfe von vielen Kollegen
-&lt;a href=&#34;https://blog.koehntopp.info/2005/05/14/wenn-es-mal-wieder-laenger-dauert.html&#34;&gt;einmal&lt;/a&gt;
-
-
-&lt;a href=&#34;https://blog.koehntopp.info/2005/05/14/danach.html&#34;&gt;das gesamte Rechenzentrum&lt;/a&gt;
-
- von web.de runter- und danach wieder hochgefahren habe, daß ich jede Menge über das BSI Grundschutzhandbuch und die BS 7799/ISO 17799 vs. die Praxis gelernt habe, daß ich jetzt erklären kann, wieso
-&lt;a href=&#34;http://kris.koehntopp.de/artikel/security_management&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Security Management&lt;/a&gt;
-
- bedeutet, daß jeder außer mir in der Firma Security macht, und daß ich
-&lt;a href=&#34;http://www.torsten-sievers.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;geschätzten Kollegen&lt;/a&gt;
-
- erfolgreich vermitteln konnte, daß eine Krise nicht schneller vorbeigeht, wenn man sich mehr aufregt.&lt;/p&gt;
-&lt;p&gt;Es bedeutet auch, daß ich zwei Jahre lang mit
-&lt;a href=&#34;http://blog.helaron.de/uploads/RIMG0163.jpg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Den Besten&lt;/a&gt;
-
- zusammenarbeiten konnte.
-web.de ist eine überlebende Dotcom-Firma.
-Das bedeutet, daß die Personalabteilung von web.de und die IT (
-&lt;a href=&#34;http://felix.pfefferkorn.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;der Unterschied ist kleiner als man denkt&lt;/a&gt;
-
-) zusammen einen
-Einarbeitungs- und Selektionsprozeß erarbeitet haben, der
-effektiv und wirksam ist.&lt;/p&gt;
-&lt;p&gt;Für mich war es erstaunlich zu lernen, wie sehr
-&lt;a href=&#34;http://www.jdstoll.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eine einzelne Persönlichkeit&lt;/a&gt;
-
- einer Abteilung ihren Stempel aufdrücken kann und ein unglaubliches Team zusammenschmieden kann, das auch noch lange über die direkte Anwesenheit dieser Person Bestand haben kann - und dieses Team hat in den vergangenen Jahren Dinge erreicht, die sich keiner vorher zugetraut hätte.
-Ich glaube, das ist das Beste, was man über eine Führungskraft sagen kann.&lt;/p&gt;
-&lt;p&gt;Die vergangenen zwei Jahre waren jedenfalls ein wilder und spannender Ritt.&lt;/p&gt;
-&lt;p&gt;Er ist nun vorbei, der
-&lt;a href=&#34;https://blog.koehntopp.info/2005/07/26/change-request.html&#34;&gt;Change&lt;/a&gt;
-
- ist durchgeführt.&lt;/p&gt;
-&lt;p&gt;web.de ist jetzt United Internet.
-Und Isotopp ist nun kris bei MySQL.
-Meine Berufsbezeichnung ist nun - mal wieder - Senior Consultant.
-Neben meinem Bett liegt ein Stapel Bücher von Joe Celko.
-Und bald schon werde ich wieder beim Kunden sein und ihn für Geld glücklich machen - das älteste Gewerbe der Welt. :-)&lt;/p&gt;
-&lt;p&gt;In gewisser Weise wird es dadurch für mich wieder einfacher.
-Projektmanagement statt Prozessmanagement hat klar definierte Ziele, klar definierte Deadlines, und damit auch klar definierte Erfolgserlebnisse.
-Entweder hat man fertig oder nicht.
-Entweder hat man die Unterschrift vom Kunden auf dem Abnahmezettel oder nicht.&lt;/p&gt;
-&lt;p&gt;Mein neuer Arbeitgeber hat eine Organisation von ca. 250 Leuten in 25 Ländern.
-Obwohl wir so verstreut sind, stehen wir zum Teil enger und schneller miteinander in Kontakt als viele andere Firmen - Irc, Bitkeeper/SVN, Mail, VoIP, Wiki und GSM binden diese Firma auf eine eigenartige Weise enger zusammen als manche physikalisch dichter beieinander organisierte Firma.&lt;/p&gt;
-&lt;p&gt;Mit MySQL 5.0 haben wir ein richtig feines Produkt, mit dem wir MySQL endgültig im Enterprise-Markt etablieren werden.
-Vor uns liegt die Herausforderung, die schlagkräftige &lt;a href=&#34;http://www.mysql.com/consulting/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Professional&lt;/a&gt;
-
-
-&lt;a href=&#34;http://www.mysql.com/training/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Services&lt;/a&gt;
-
- &lt;a href=&#34;http://www.mysql.com/support/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Organisation&lt;/a&gt;
-
- aufzubauen, die dann auch dauerhaft die Dienstleistung bringen kann, die in diesem Bereich gefordert wird.
-Das &lt;a href=&#34;https://blog.koehntopp.info/2005/09/10/mysql-consulting-bootcamp-munich-2005.html&#34;&gt;junge EMEA&lt;/a&gt;
-
--Team ist gerade dabei, seine Sollkonfiguration zu erreichen.&lt;/p&gt;
-&lt;p&gt;Ich freue mich darauf, mit diesen Leuten Dinge zu bewegen und neue Sachen zu lernen, die ich mir vorher nie zugetraut hätte.
-Vor allen Dingen freue ich mich aber darauf, mit einem internationalen Team zusammenzuarbeiten und - wenn ich denn schon wieder Kilometer reißen muss - dies auf einer wirklich großen Landkarte zu tun.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MySQL Consulting Bootcamp Munich 2005</title>
-      <link>https://blog.koehntopp.info/2005/09/10/mysql-consulting-bootcamp-munich-2005.html</link>
-      <pubDate>Sat, 10 Sep 2005 17:46:54 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2005/09/10/mysql-consulting-bootcamp-munich-2005.html</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/bootcamp.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Hinter mir liegt eine Woche MySQL Consulting Bootcamp Munich 2005.
-Für mich eine Woche mit Intensivkursen in MySQL 5, Performanceoptimierung und MySQL Cluster - wir haben das Schlungsprogramm, das sonst mehr als zwei Wochen abgewickelt wird, in 5 Tagen durchgezogen.
-Nebenbei habe ich noch das MySQL 4 Core und Pro Exam abgelegt (Ergebnisse liegen noch nicht vor, aber ich fand die Prüfung ziemlich schwierig), und wir waren an 5 Tagen zirka viermal in verschiedenen Bierhallen, Biergärten oder im Hofbräuhaus.
-MySQL geht echt auf die Kondition: 6 Kilo in 5 Tagen zugenommen&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/emea_team.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Emea Team - Class of 2005.
-In Front: Ivan (Italy, now in England, Sales Team), Bernd (Germany, now in Sweden), Kai (Germany).
-In Back: UlfS (Sweden, now USA, Management), Josh (USA, Consulting USA), PeterS (USA, now Switzerland, EMEA Head), Stephane (France), Johan (Sweden).
-Missing: Jennifer (China, now USA).&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/bernd.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Bernd&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/ivan.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Ivan&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/jennifer.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Jennifer&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/johan.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Johan&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/josh.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Josh&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/kai.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;As everybody can see, Kai is evil.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/peters.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;PeterS&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/stephane.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Stephane&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/mysql_bootcamp/ulfs.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;UlfS&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     

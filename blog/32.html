@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title></title>
+<title>Die wunderbare Welt von Isotopp | Die wunderbare Welt von Isotopp</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.3" />
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -55,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.34cf67ab5155251adc1c5fa5c2f37d5a4f8f029f51399eb2556031d6ac918d49.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
 
 
     </head>
@@ -137,7 +137,7 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html" class='text-decoration-none text-dark'>Gruppenweises TOP N in MySQL: Der Tabellengrößenreport</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2011/02/10/die-kosten-von-ssl.html" class='text-decoration-none text-dark'>Die Kosten von SSL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -145,13 +145,11 @@
             Kristian Köhntopp
           </a>
           -
-          March 9, 2010
+          February 10, 2011
         </div>
 
-        <div class='mt-3'>Jeder Datenbankserver bei uns hat ein Script laufen, daß den Inhalt von information_schema.tables jede Nacht einmal in eine Systemdatenbank in das DBA Schema kopiert. Dort haben wir dba.table_sizes:
-root@sysmdb[dba]&gt;showcreatetabletable_sizes\GTable:table_sizesCreateTable:CREATETABLE`table_sizes`(`hostname`varchar(64)NOTNULL,`datadir`varchar(64)CHARACTERSETlatin1COLLATElatin1_binNOTNULL,`report_date`dateNOTNULL,`table_schema`varchar(64)CHARACTERSETlatin1COLLATElatin1_binNOTNULL,`table_name`varchar(64)CHARACTERSETlatin1COLLATElatin1_binNOTNULL,`engine`varchar(64)NOTNULL,`data_length`bigint(20)NOTNULL,`index_length`bigint(20)NOTNULL,`table_rows`bigint(20)NOTNULL,UNIQUEKEY`hostname`(`hostname`,`datadir`,`report_date`,`table_schema`,`table_name`))ENGINE=InnoDBDEFAULTCHARSET=latin11rowinset(0.00sec)Gesucht war nun eine Query, die für jeden Sonntag eine Liste der 10 größten Tabellen eines bestimmten Servers &lsquo;master&rsquo; für 2010 produziert.
-Die Lösung ist fragil insofern, als daß sie eine undokumentierte Eigenschaft des Servers ausnutzt. Aber sie ist auch schnell.
-set@old:=&#34;&#34;,@count:=0;select\*from(select@count:=if(@old&lt;=&gt;report_date,@count+1,0)asc,@old:=report_dateasreport_date,hostname,table_name,(data_length+index_length)/1024/1024/1024asgbfromtable_sizeswheredate_format(report_date,&#39;%W&#39;)=&#39;Sunday&#39;andreport_date&gt;&#39;2010-01-01&#39;andhostname=&#39;master&#39;anddatadir=&#39;/mysql/bp/data/&#39;andtable_schema=&#39;bp&#39;orderbyreport_date,gbdesc)astwheret.c&lt;10;Wir definieren einen Zustandsspeicher @old, der das report_date der folgenden Zeile speichert und einen Zähler @count.</div>
+        <div class='mt-3'>Bei web.de waren schon 2003 mehr als 80% des Datenverkehrs SSL-verschlüsselt, da dort die Policy herrschte &ldquo;Paßworte werden nur verschlüsselt übertragen&rdquo; und &ldquo;Wenn ein Login stattgefunden hat, findet der Rest der Session bis zum Logout verschlüsselt statt&rdquo;. Ich habe in einem Artikel schon einmal dargelegt, daß das rechenleistungsmäßig keine große Belastung ist - der ganze SSL-Aufwand macht etwa 1/250stel der Gesamtleistung des Systems aus.
+Kosten entstehen bei SSL bei der laufenden (symmetrischen) Verschlüsselung nicht in nenneswerter Höhe, sondern nur bei der Herstellung der Verbindung, wenn asymmetrische Kryptographie verwendet wird.</div>
 
     </div>
   </div>
@@ -162,7 +160,7 @@ set@old:=&#34;&#34;,@count:=0;select\*from(select@count:=if(@old&lt;=&gt;report_
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/09/insert-on-duplicate-key-update.html" class='text-decoration-none text-dark'>INSERT  ON DUPLICATE KEY UPDATE</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2011/02/05/c-is-for-cookie.html" class='text-decoration-none text-dark'>C is for Cookie</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -170,11 +168,12 @@ set@old:=&#34;&#34;,@count:=0;select\*from(select@count:=if(@old&lt;=&gt;report_
             Kristian Köhntopp
           </a>
           -
-          March 9, 2010
+          February 5, 2011
         </div>
 
-        <div class='mt-3'>Auf Yourhelpcenter.de gibt es einen Artikel mit dem irreführenden Titel Update if exists else insert record , der sich mit INSERT ON DUPLICATE KEY UPDATE beschäftigt.
-Dieses Kommando macht genau nicht das, was der Titel des Artikels suggeriert und wünschenswert wäre, sondern er macht genau das, was der SQL-Text des Kommandos sagt und leider nervt. Es wäre schön, wenn der Artikel auf Yourhelpcenter auch auf diese Probleme eingegangen wäre - da er es nicht tut hole ich es hier gerade mal nach.</div>
+        <div class='mt-3'>Krümelmonster: C is for Cookie Auf den vielfachen Wunsch einer einzelnen Dame hier der Erklärbar zum Thema Kekse für die Freunde besagter Dame.
+Eines der Hauptprobleme, das man lösen muß, wenn man Webanwendungen schreibt, ist die Tatsache, daß man im wesentlichen Memento dreht.
+Jedesmal, wenn man im Browser eine Seite aufruft, sieht der Webserver einen Request, bearbeitet diesen und vergißt danach, was er getan hat. Es gibt nichts an einem Request, das man verwenden kann, um den zweiten Requests sicher mit dem ersten Request zu verketten und sich an die Dinge zu erinnern, die man im ersten Request getan hat.</div>
 
     </div>
   </div>
@@ -185,7 +184,7 @@ Dieses Kommando macht genau nicht das, was der Titel des Artikels suggeriert und
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/07/das-gespaltene-piratische-verh-ltnis-zur-identit-t.html" class='text-decoration-none text-dark'>Das gespaltene piratische Verhältnis zur Identität</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2011/01/18/vergeben-vergessen-und-vernichten.html" class='text-decoration-none text-dark'>Vergeben, vergessen und vernichten</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -193,11 +192,13 @@ Dieses Kommando macht genau nicht das, was der Titel des Artikels suggeriert und
             Kristian Köhntopp
           </a>
           -
-          March 7, 2010
+          January 18, 2011
         </div>
 
-        <div class='mt-3'>Die inhaltliche Debatte um Aaron Koenig ist ein wenig abgeklungen, und auch der Berliner Landesparteitag der Piratenpartei ist durch, sodaß ich einmal die Gedanken zu Blog bringen kann, an denen ich im Rahmen der Debatte immer wieder hängen geblieben bin, obwohl sie mit den Inhalten primär nur am Rande zu tun haben.
-Da ist zum Beispiel das seltsame Verhältnis der Piraten zur Identität, speziell zur Wahl und zum Gebrauch von Namen.</div>
+        <div class='mt-3'>Drei unterschiedliche Dinge: Vergeben, vergessen und vernichten. Sie werden gerade vielfach falsch oder fälschlich synonym gebraucht. Das sollte man nicht tun.
+Wir erinnern uns:
+Vergessen habe ich eine Information, die ich mal hatte, und an die ich mich (Reflexiv!) nicht mehr erinnere, oder bei der ich jetzt gerade meine Kopie nicht mehr finde.
+Meistens deswegen, weil ich meine eigenen Caches in der Ablage oder in meinem Hirn als LRU organisiert habe und Daten irgendwann aus dem Cache gelöscht worden sind (oder weggeworfen worden sind), weil sie lange Zeit nicht wichtig für mich waren.</div>
 
     </div>
   </div>
@@ -208,7 +209,7 @@ Da ist zum Beispiel das seltsame Verhältnis der Piraten zur Identität, speziel
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/07/die-leute-sind-nicht-dumm-genug-f-r-drm.html" class='text-decoration-none text-dark'>Die Leute sind nicht dumm genug für DRM...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2011/01/04/der-managementansatz-zum-thema-sicherheit.html" class='text-decoration-none text-dark'>Der Managementansatz zum Thema Sicherheit...</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -216,14 +217,11 @@ Da ist zum Beispiel das seltsame Verhältnis der Piraten zur Identität, speziel
             Kristian Köhntopp
           </a>
           -
-          March 7, 2010
+          January 4, 2011
         </div>
 
-        <div class='mt-3'>Torrent vs. DVD
-Die Grafik da rechts zeigt sehr schön den Unterschied im Medienerlebnis auf, das Torrent-Benutzer gegenüber dem Käufer einer DVD haben. Das haben die meisten Leute auch verstanden. Diejenigen, die es nicht verstanden haben -
- Microsoft  Yahoo!  Fictionwise  Migros  Netflix  Ubisoft   sind nur ein paar Beispiele - gehen nacheinander vom Markt und lehren ihre jeweiligen Kunden.
-Das Resultat?
-Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&rsquo;, sondern wegen DRM:</div>
+        <div class='mt-3'>In der aktuellen KES findet sich der Artikel Epische Macht ( keine stabile URL , da der Archivzugang mit den stabilen URLs paßwortgeschützt und nur für Abonnenten ist).
+Der Artikel konzentriert sich auf die Machtfülle von Systemadministratoren, und prägt das Wort &ldquo;Machtumsetzungsgeschwindigkeit&rdquo; in Bezug auf Systemadministratoren. Damit will der Autor (Stephen Feldke) darauf abheben, daß Root-Arbeiter besonders schnell besonders viel Schaden gemessen in Mio Euro/Minute anrichten können. Der Autor zieht Parallelen zu Prokura- und Budget-Regelungen, bei denen man bei bestimmten Transaktionen absichtlich mehr als eine Unterschrift für eine Entscheidung fordert, um Prozesse künstlich zu verlangsamen und Mehr-Augen-Prinzipien zu erzwingen.</div>
 
     </div>
   </div>
@@ -234,7 +232,7 @@ Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&r
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/28/kulturelles-defizit.html" class='text-decoration-none text-dark'>Kulturelles Defizit</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/12/15/ein-paar-zwischenbemerkungen-bevor-der-tanz-wieder-losgeht.html" class='text-decoration-none text-dark'>Ein paar Zwischenbemerkungen, bevor der Tanz wieder losgeht</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -242,10 +240,10 @@ Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&r
             Kristian Köhntopp
           </a>
           -
-          February 28, 2010
+          December 15, 2010
         </div>
 
-        <div class='mt-3'>Seitdem ich für Geld andere Leute glücklich mache bin ich immer wieder einige Jahre auf der Walz gewesen, und habe mich als Angehöriger des fahrendes Volkes als Projektkraft bei wechselden Auftraggebern verdingt, um danach wieder einige Jahre fest in einem Laden angestellt ein wenig seßhafter zu werden, Kraft zu tanken und das Gelernte zu verarbeiten. Eine der Sachen, die ich mich dabei immer wieder fasziniert haben sind die unterschiedlichen Arbeitsstile der verschiedenen europäischen Kulturen.</div>
+        <div class='mt-3'>Es ist ein Fehler anzunehmen, die CDU hätte in NRW gegen den JMStV gestimmt, weil sie inhaltlich gegen den JMStV gewesen wäre - keine der Parteien irgendwo in Deutschland hat aus inhaltlichen Gründen für oder gegen den JMStV gestimmt, sondern das ganze war eine einzige Macht-Taktiererei - eine Farce . In NRW war es so, daß die minderheitsregierenden Parteien sich mit Enthaltungen aus der Verantwortung stehlen wollten, und die CDU deswegen angekündigt hat, gegen das Ding zu stimmen, weil sie Rotgrün so zwingen konnte, Stellung zu beziehen und so im vorübergehen billig jemanden eins reinwürgen.</div>
 
     </div>
   </div>
@@ -256,7 +254,7 @@ Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&r
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/25/downloading-communism.html" class='text-decoration-none text-dark'>Downloading communism...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/12/15/schnitzeljagd-2010-die-rache-der-cyborgs.html" class='text-decoration-none text-dark'>Schnitzeljagd 2010 - Die Rache der Cyborgs</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -264,12 +262,13 @@ Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&r
             Kristian Köhntopp
           </a>
           -
-          February 25, 2010
+          December 15, 2010
         </div>
 
-        <div class='mt-3'>Eigentlich war es ja als Witz gedacht, aber die Mediendinosaurier nehmen so etwas schon mal ernst.
-Schreibt der Inquirer :
- A MAFIAA CABAL called the International Intellectual Property Alliance, which is an umbrella group for the entertainment cartels such as the MPAA and RIAA, has demanded that Indonesia, Brazil and India should be placed on a special trade watchlist merely because they recommend the use of open source software.</div>
+        <div class='mt-3'>Heute war ich auf einer Schnitzeljagd, als Kennenlernspiel und Teambuilding-Exercise.
+So die Theorie. 2010 läuft so etwas anders.
+Geht zu dem und dem - betriebsbedingt - Hotel. Google Maps an. Ah, dort ist es. Da gehen wir dann hin, walking navigation (experimental). Funktioniert.
+Hier ist Eure nächste Aufgabe. Firmenbedingt Fragen zum Hotelbusiness. Wir sind IT, keine Hotel-Leute. Man kann uns die Antworten zu den Fragen in einem Vortrag erklären, oder wir können &ldquo;raten&rdquo;: 5 Leute in der Gruppe, 5 Smartphones auf dem Tisch.</div>
 
     </div>
   </div>
@@ -280,7 +279,7 @@ Schreibt der Inquirer :
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/23/grundrechtsfusion-und-ein-grundrecht-auf-netzneutralit-t.html" class='text-decoration-none text-dark'>Grundrechtsfusion und ein Grundrecht auf Netzneutralität</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/11/28/nat-ist-kein-sicherheitsfeature.html" class='text-decoration-none text-dark'>NAT ist kein Sicherheitsfeature</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -288,11 +287,11 @@ Schreibt der Inquirer :
             Kristian Köhntopp
           </a>
           -
-          February 23, 2010
+          November 28, 2010
         </div>
 
-        <div class='mt-3'>Es gibt in Deutschland ein Grundrecht, die Meinungsfreiheit . Es ist ein Recht, das einem Menschen etwas erlaubt, nämlich die freie Rede sowie die freie Äußerung und öffentliche Verbreitung einer Meinung in Wort, Schrift und Bild sowie allen weiteren verfügbaren Übertragungsmitteln.
-Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer Schrankenbestimmung, und in der Schrankenbestimmung sind neben anderen Dingen explizit die &ldquo;gesetzlichen Bestimmungen zum Schutze der Jugend&rdquo; genannt.</div>
+        <div class='mt-3'>Neulich hatte ich wieder einmal die Standard-Diskussion mit jemandem, der gegen IPV6 war, weil er dann ja kein NAT mehr habe. Dadurch, so die Argumentation, würde er ja die Sicherheitsfunktionen verlieren - derzeit verhindere sein Türstopper-Plastikrouter halt, daß man seine internen Rechner von außen angreifen könne.
+Diesen Zahn zu ziehen ist oft eine schmerzhafte Operation. Aber schon immer galt: NAT ist kein Sicherheits-Feature. Ganz besonders nicht das NAT, das auf einem Türstopper-Plastikrouter läuft.</div>
 
     </div>
   </div>
@@ -303,7 +302,7 @@ Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer S
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/22/philipp-schindler-ber-alte-m-nner-mit-kugelschreibern.html" class='text-decoration-none text-dark'>Philipp Schindler über alte Männer mit Kugelschreibern</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/11/24/freunde-und-soziale-netzwerke.html" class='text-decoration-none text-dark'>&#34;Freunde&#34; und soziale Netzwerke</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -311,10 +310,10 @@ Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer S
             Kristian Köhntopp
           </a>
           -
-          February 22, 2010
+          November 24, 2010
         </div>
 
-        <div class='mt-3'>Google-Chef im Zeit Online Dialog über Kulturwandel Das ist die netteste Weise jemandem zu sagen, daß er ein Dinosaurier ist und bald aussterben wird, die ich je erlebt habe.</div>
+        <div class='mt-3'>Ich habe ja lange Zeit gehofft, daß die Medien als Gruppe irgendwann einmal die Kurve kriegen und es schaffen, sich vom Begriff des &ldquo;friendens&rdquo; und &ldquo;likens&rdquo; in den diversen sozialen Netzen zu lösen und auf die Funktionalität zu schauen, die sich hinter diesem Begriff versteckt. Aber auch hier scheint es sich um einen Fall zu handeln, bei dem ein alter Begriff in einem neuen Kontext verwendet wird, und bei dem die alten Bedeutungen und Konnotationen so sehr überschatten, daß das Neue keine Chance hat.</div>
 
     </div>
   </div>
@@ -325,7 +324,7 @@ Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer S
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/22/smart-meters-revisited.html" class='text-decoration-none text-dark'>Smart Meters revisited</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/11/18/stuxnet-das-beste-was-uns-allen-passieren-konnte.html" class='text-decoration-none text-dark'>Stuxnet - das Beste, was uns allen passieren konnte</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -333,11 +332,10 @@ Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer S
             Kristian Köhntopp
           </a>
           -
-          February 22, 2010
+          November 18, 2010
         </div>
 
-        <div class='mt-3'>Im Juni letzten Jahres fragte ich &ldquo;Wie viel Strom verbraucht ein Stromzähler? &rdquo;, und dort haben wir auch am Rande Sicherheitsaspekte und Probleme mit solcher Technologie gestreift.
-Andere Leute haben sich in der Zwischenzeit intensiver mit diesen Dingen beschäftigt. Die Ergebnisse sind nicht gut. In Reverse Engineering a Smart Meter baut Nate Lawson mal seinen Stromzähler auseinander: &ldquo;But how vulnerable was I actually?&rdquo;. Das Öffnen des Gehäuses war recht einfach, die vorgefundene Security minimal, und das Lock-Bit auf dem Controller war nicht gesetzt.</div>
+        <div class='mt-3'>Stuxnet ist ein maßgeschneiderter Computervirus, der zwei bislang unbekannte Windows-Sicherheitslücken ausnutzt, um bestimmte Windows-Versionen zu infizieren. Das ist deswegen spannend, weil Windows-Sicherheitslücken dieser Art in letzter Zeit nicht mehr so leicht zu finden sind - sie werden inzwischen gehandelt und ernsthaft für viel Geld verkauft. Jemand hat gleich zwei dieser Lücken verbrannt, um diesem Virus das Eindringen in bestimmte Systeme zu ermöglichen. Jemand hat außerdem zwei taiwanischen Treiberfirmen ihre Zertifikate geklaut, um signierten Gerätetreiber-Code in diese Rechner einschmuggeln zu können, ohne daß dabei die Sicherheitswarnleuchten angehen.</div>
 
     </div>
   </div>
@@ -348,7 +346,7 @@ Andere Leute haben sich in der Zwischenzeit intensiver mit diesen Dingen beschä
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/19/adventures-in-mac-os-x-maintenance.html" class='text-decoration-none text-dark'>Adventures in Mac OS X maintenance</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/11/05/ein-paar-gedanken-zum-thema-nosql.html" class='text-decoration-none text-dark'>Ein paar Gedanken zum Thema NoSQL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -356,11 +354,12 @@ Andere Leute haben sich in der Zwischenzeit intensiver mit diesen Dingen beschä
             Kristian Köhntopp
           </a>
           -
-          February 19, 2010
+          November 5, 2010
         </div>
 
-        <div class='mt-3'>Nachdem ich neulich meinen Mac in den Service geben mußte, ich für die Zeit einen Ersatz-Mac hatte und ich also zwischen beiden Systemen hin- und her installieren mußte, hier die deutsche Übersetzung einer kleinen Zusammenfassung, die ich für die Firma geschrieben habe.
-Offensichtlich ist es sehr praktisch, dem großen Mac-Gott Time Machine eine Platte zu opfern, weil niemand Backup will und Time Machine sehr gut in Restore ist. In meinem Fall verwende ich eine WD Elements 1TB dafür (etwa 85€), andere in der Firma wollen was kleineres und mit USB Power, nehmen also eine WD Passport (500G @ 92€).</div>
+        <div class='mt-3'>Beim Durchstöbern der verschiedenen NoSQL-Datenspeicher stellt sich mir die Frage, wieso man das alles überhaupt will. Genauer: Was genau ist das Problem, das man mit NoSQL lösen möchte?
+Diejenigen Leute, die NoSQL-Lösungen einsetzen, haben in der Regel die Schwierigkeit, daß ihre Datenmenge größer wird, als man auf einer einzelnen Maschine mit der geforderten Servicequalität handhaben kann.
+Im Webbereich sind die Anforderungen für interaktives Browsen oft so, daß man die gewünschten Antwortzeiten nur dann erreichen kann, wenn die dabei verwendeten Datenbanken ihre Daten und Indices zum allergrößten Teil im RAM halten können.</div>
 
     </div>
   </div>
@@ -371,7 +370,7 @@ Offensichtlich ist es sehr praktisch, dem großen Mac-Gott Time Machine eine Pla
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/19/die-netzsperren-schlagen-zur-ck.html" class='text-decoration-none text-dark'>Die Netzsperren schlagen zurück</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/11/04/red-vs-blue-at-oracle-und-ein-paar-gedanken-zu-postgres.html" class='text-decoration-none text-dark'>Red vs Blue at Oracle, und ein paar Gedanken zu Postgres</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -379,12 +378,14 @@ Offensichtlich ist es sehr praktisch, dem großen Mac-Gott Time Machine eine Pla
             Kristian Köhntopp
           </a>
           -
-          February 19, 2010
+          November 4, 2010
         </div>
 
-        <div class='mt-3'>Bundespräsident Horst Köhler hat das Zugangserschwerungsgesetz, vulgo Zensursula-Gesetz, nun doch unterschrieben. Das muß er tun, denn der Bundespräsident hat gemäß Konstruktion unserer Verfassung nicht das Recht eines Vetos gegenüber der Regierung wie das etwa in der Weimarer Republik gewesen wäre.
-Der Spiegel beschreibt das Ergebnis mit dem Absatz
- Bundespräsident Horst Köhler hat an diesem Mittwoch mit einer einzigen Unterschrift nicht nur eine, sondern gleich zwei Bundesregierungen blamiert: Die Große Koalition der vergangenen Legislaturperiode, die das nicht nur umstrittene, sondern handwerklich völlig vermurkste &ldquo;Zugangserschwerungsgesetz&rdquo; gegen Kinderpornografie im Netz gemacht hat.</div>
+        <div class='mt-3'>Ich schrieb :
+heretic666 schrieb am 4. November 2010 12:11
+&hellip;das man nicht auch wahlweise mit PostgreSQL oder MS SQL erschlagen kann?
+Mir fällt da im Moment kein Punkt ein&hellip;
+Postgres ist ein Repräsentant der klassischen Datenbanken und fällt in dieselbe Kategorie wie Oracle, MS SQL oder DB/2. MySQL ist eine Datenbank, die sich in vielen Punkten an den Erfordernissen des Webs orientiert und ganz andere Schwerpunkte als Postgres oder Oracle setzt.</div>
 
     </div>
   </div>
@@ -395,7 +396,7 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/01/26/ab-18.html" class='text-decoration-none text-dark'>Ab 18</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/09/10/a-b-c.html" class='text-decoration-none text-dark'>&#39;a&#39; = &#39;b&#39; = &#39;c&#39;</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -403,10 +404,14 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
             Kristian Köhntopp
           </a>
           -
-          January 26, 2010
+          September 10, 2010
         </div>
 
-        <div class='mt-3'>Vor mehr als 10 Jahren habe ich einmal im Auftrag des BMWI an einer Studie zum Thema Jugendschutz im Internet (PDF) mitgearbeitet. Das war anstrengend, da das Thema Spielball zahlreicher politischer Interessen ist, die sich dort gerne wiederfinden möchten, aber die in der Studie wiedergegebene Ausgangslage ist heute noch unverändert. Ich habe mein persönliches Fazit in kürzerer Form in einem Artikel abgelegt, aber auch dieses Ergebnis ist noch zu lang und zu technisch.</div>
+        <div class='mt-3'>Kurzer SQL WTF von heute:
+mysql&gt; SELECT &#39;a&#39;=&#39;b&#39;; 0 mysql&gt; SELECT &#39;a&#39;=&#39;b&#39;=&#39;c&#39;; 1 Warum ist das so?
+Im MySQL Sourcecode ist in sql/sql_yacc.yy definiert:
+%left EQ EQUAL_SYM GE GT_SYM LE LT NE IS LIKE REGEXP IN_SYM Damit ist der Operator EQ (das Vergleichheitszeichen) als links-assoziativ definiert. Vergleiche von Vergleichen sind also zugelassen,
+1 = 2 = 3 ist also ein zulässiges Konstrukt und es wird als ( 1 = 2 ) = 3 evaluiert.</div>
 
     </div>
   </div>
@@ -417,7 +422,7 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/01/18/google-im-fadenkreuz-der-politik.html" class='text-decoration-none text-dark'>Google im Fadenkreuz der Politik</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/09/09/covering-indexes-und-mvcc.html" class='text-decoration-none text-dark'>Covering indexes und MVCC</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -425,10 +430,11 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
             Kristian Köhntopp
           </a>
           -
-          January 18, 2010
+          September 9, 2010
         </div>
 
-        <div class='mt-3'>Einmal schreibt Susanne Gaschke in der Zeit einen weiteren Hetzartikel gegen Google und wie wir alle in den Händen dieser cthulhuiden Datenkrake landen werden. Unterdessen versteigt man sich beim Spiegel zu Vergleichen von Google mit der Stasi . Das alles konzertiert ein Ausheulen der Verlegervertreter beim Kartellamt , wobei sich die Begründung der Beschwerde recht deutlich wie &lsquo;Wir wollen auch was von dem Geld, sonst müssen wir uns womöglich anpassen&rsquo; liest.</div>
+        <div class='mt-3'>Für viele MySQL-Anwendungen sind Covering Indexes eine wichtige Sache. Domas hat einen Artikel darüber Wie Wikipedia von Covering Indexes profitiert , und auch sonst sind solche Indices für viele MySQLer ein täglicher Bestandteil der Optimierungsarbeit.
+Nun las ich neulich in einem Artikel eine Seitenbemerkung, daß Postgres keine Covering Indices unterstützt und das scheint tatsächlich der Fall zu sein , auch wenn ich in der Doku selber keine Hinweise darauf gefunden habe.</div>
 
     </div>
   </div>
@@ -439,7 +445,7 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/12/15/google-baut-ein-telefon.html" class='text-decoration-none text-dark'>Google baut ein Telefon</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/22/warum-ich-urlaub-brauche.html" class='text-decoration-none text-dark'>Warum ich Urlaub brauche</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -447,11 +453,10 @@ Der Spiegel beschreibt das Ergebnis mit dem Absatz
             Kristian Köhntopp
           </a>
           -
-          December 15, 2009
+          August 22, 2010
         </div>
 
-        <div class='mt-3'>Mobilfunkmarkt jetzt
-Google hat entschieden, daß der Voice-Anteil des Mobilfunkmarktes irgendwie nicht weiter wichtig sein wird in der Zukunft, sondern daß am Ende gewinnt, wer das mobile Internet beherrscht. Auch SMS und andere Dienste werden dabei langfristig von Chatanwendungen und Twitter geplättet werden. Es kommt also mehr darauf an, diese Anwendungen auf einem Mobilfon zu kontrollieren, das always on ist, als alten Mobilfunkmist zu emulieren. Derlei Zeugs braucht man nur noch für legacy, aber eigentlich will man ja ein Google Voice Handset.</div>
+        <div class='mt-3'>Meine Firma verwendet SAP. Zum Glück habe ich damit nicht viel zu tun, außer um meine Beurteilungen abzusegnen und Urlaub zu beantragen. Das heißt, ich verwende SAP maximal 3 mal im Jahr. Bis vor kurzem hatte unser SAP keine LDAP-Anbindung. Ich hatte also ein SAP-Login, das von meinem Firmen-Login verschieden war und auch ein anderes Paßwort hatte. Da ich nur so ca. 3 Mal im Jahr ins SAP muß, ist das Paßwort unweigerlich abgelaufen, wenn ich mich in das SAP einloggen will.</div>
 
     </div>
   </div>
@@ -462,7 +467,7 @@ Google hat entschieden, daß der Voice-Anteil des Mobilfunkmarktes irgendwie nic
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/12/06/ssh-durch-den-gateway-host.html" class='text-decoration-none text-dark'>ssh durch den Gateway Host</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/19/intelligente-stromzaehler.html" class='text-decoration-none text-dark'>&#34;Intelligente&#34; Stromzähler</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -470,11 +475,12 @@ Google hat entschieden, daß der Voice-Anteil des Mobilfunkmarktes irgendwie nic
             Kristian Köhntopp
           </a>
           -
-          December 6, 2009
+          August 19, 2010
         </div>
 
-        <div class='mt-3'>Ich sitze hier daheim beim PHPlätzchenbacken und Kore fragt mich eben: &ldquo;Sage einmal, ich habe daheim so einen Router, der NAT macht und den ich als Sprunghost verwende, und dahinter meinen Desktop-Rechner. Kann ich eigentlich Dateien von daheim von meinem Desktop auf mein Netbook kopieren, ohne daß ich die auf dem Router als Zwischenkopie ablegen muß?&rdquo;
-Es geht sogar besser als das, und dafür braucht man eine $HOME/.ssh/config-Datei auf seinem Netbook und eine Kopie von &lsquo;netcat&rsquo; oder &lsquo;nc&rsquo; auf dem Router.</div>
+        <div class='mt-3'>Ich habe letztes Jahr hier und hier ja schon mal was über &ldquo;intelligente&rdquo; Stromzähler geschrieben, zu deren Einbau wir ja nun alle verpflichtet sind, wenn wir renovieren oder neu bauen.
+Das Thema rollt nun auch langsam in das Licht der Öffentlichkeit, etwa schreibt der Spiegel in Teure Ersparnis :
+Das Sparpotential des intelligenten Stromnetzes werde &ldquo;enorm überschätzt&rdquo;, resümiert Energieberater Klafka. Zuweilen verursache ein intelligenter Zähler sogar erst mal zusätzlichen Stromverbrauch, weil die Tarifdaten rund um die Uhr übertragen werden müssen.</div>
 
     </div>
   </div>
@@ -485,7 +491,7 @@ Es geht sogar besser als das, und dafür braucht man eine $HOME/.ssh/config-Date
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/12/04/google-dns.html" class='text-decoration-none text-dark'>Google DNS</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/19/erst-dienste-wie-street-view-machen-den-ffentlichen-raum-wirklich-ffentlich.html" class='text-decoration-none text-dark'>Erst Dienste wie Street View machen den öffentlichen Raum wirklich öffentlich </a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -493,11 +499,11 @@ Es geht sogar besser als das, und dafür braucht man eine $HOME/.ssh/config-Date
             Kristian Köhntopp
           </a>
           -
-          December 4, 2009
+          August 19, 2010
         </div>
 
-        <div class='mt-3'>Google teilt mit, daß sie nun eigene öffentliche DNS-Server betreiben, und erklärt dabei für Laien, wie man DNS-Server des Providers ausnullt und durch den DNS-Server von Google ersetzt.
-Das ist sicher nur vorübergehend, ich bin sicher, daß die nächsten Versionen von Google Toolbar und Chrome dem Benutzer auch anbieten werden, die Änderung an seiner Stelle zu machen und zu kontrollieren, daß diese Einstellungen so bleiben. Ich bin mir auch sicher, daß Google Wege finden wird, die Kommunikation zwischen dem Rechner des Anwenders und Google so abzusichern, daß es nicht mehr möglich sein wird, DNS-Queries zwischen dem Client Rechner und Google durch einen transparenten DNS-Proxy abzufangen und auf die providereigenen DNS-Server zu fälschen - ich rechne da mit einer stufenweisen Eskalation zwischen lokalen Providern und Google, die am Ende auf einen weiteren Aspekt der Netzneutralitätsdebatte hinausläuft.</div>
+        <div class='mt-3'>In Kennzeichen Digital beim ZDF schreibt Mario Sixtus einen ganz wunderbaren Text über die ganze Google Streetview Hysterie. Kernpunkt:
+Ein interessanter Effekt des Netzes ist es, theoretische Rechte in praktische zu verwandeln. Das allgemeine Grundrecht auf freie Meinungsäußerung machte sich beispielsweise in der Pre-Netz-Ära sehr hübsch im Grundgesetz und in Sonntagsreden. Abgesehen von Flugblättern, Leserbriefen und Stammtischansprachen hatte der gemeine Bürger allerdings kaum eine Möglichkeit, von diesem Recht Gebrauch zu machen.</div>
 
     </div>
   </div>
@@ -508,7 +514,7 @@ Das ist sicher nur vorübergehend, ich bin sicher, daß die nächsten Versionen 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/29/meldung-und-hintergrund.html" class='text-decoration-none text-dark'>Meldung und Hintergrund</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/18/fertig-gelesen-the-dreaming-void.html" class='text-decoration-none text-dark'>Fertig gelesen: The Dreaming Void</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -516,12 +522,12 @@ Das ist sicher nur vorübergehend, ich bin sicher, daß die nächsten Versionen 
             Kristian Köhntopp
           </a>
           -
-          November 29, 2009
+          August 18, 2010
         </div>
 
-        <div class='mt-3'>Medienecho zur Taxi-Studie des ADAC auf Google News.
-Der ADAC hat die deutschen Taxiunternehmen getestet und das Ergebnis war verheerend. Mit der Studie verbindet der ADAC eine Reihe von Forderungen. Die Story ist Ende Oktober durch alle wichtigen Zeitungen gegangen, hier eine Auswahl.
- Handelsblatt - nennt Städtezahl (12) Grundgesamtheit (240 Fahrten), Kriterien, Sieger und Verlierer und typische Probleme. Quelle nicht verlinkt. Autobild - nennt Städtezahl, 20 Fahren pro Stadt, Kriterien, Sieger und Verlierer, hat eine Tabelle.</div>
+        <div class='mt-3'>The Dreaming Void , Peter F. Hamilton, EUR 6.50, 608 Seiten.
+Die ferne Zukunft. Teile der Menschheit leben postphysikalisch als Uploads, andere haben sich mehr oder weniger genetisch aufgerüstet oder ihre Körper mit Nanotechnik angereichert. Sterben muß niemand mehr, und Not leiden oder gar hart arbeiten auch nicht, außer er wählt dies als Lebensstil.
+Im Zentrum der Galaxis liegt ein gigantisches Schwarzes Loch, The Void. Der Astrophysiker Inigo beginnt, Szenen aus dem Leben von Edeard zu träumen, einem Menschen, der offenbar im Mikrouniversum im Inneren der Void lebt - ein bemerkenswertes Universum, denn offenbar kann man dort mit dem Geist Einfluß auf die Materie nehmen.</div>
 
     </div>
   </div>
@@ -532,7 +538,7 @@ Der ADAC hat die deutschen Taxiunternehmen getestet und das Ergebnis war verheer
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/28/wie-man-einen-wikipedia-artikel-liest.html" class='text-decoration-none text-dark'>Wie man einen Wikipedia-Artikel... liest</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/18/verteilte-datenbanken-der-sonderfall-filialsysteme.html" class='text-decoration-none text-dark'>Verteilte Datenbanken: Der Sonderfall Filialsysteme</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -540,12 +546,15 @@ Der ADAC hat die deutschen Taxiunternehmen getestet und das Ergebnis war verheer
             Kristian Köhntopp
           </a>
           -
-          November 28, 2009
+          August 18, 2010
         </div>
 
-        <div class='mt-3'>Der Artikel Batman in der deutschen Wikipedia - unser Arbeitsbeispiel.
-Wikipedia ist eine Online-Enzyklopädie. Die meisten Menschen nutzen Wikipedia zum Nachschlagen, das heißt ihre Nutzung ist lesend und vertikal. Lesend bedeutet, die verändern den Artikel nicht, obwohl Wikipedia das prinzipiell zuließe, und vertikal heißt, daß sie meistens über einen Deep Link direkt bei dem Artikel landen und auch nicht nach anderen verwandten Artikeln schauen.
-Dementsprechend erwarten Benutzer, daß die Informationen in dem Artikel wahr und vollständig sind und möglicherweise sind sie das sogar.</div>
+        <div class='mt-3'>In einem Kommentar zu Master-Master schrieb ich:
+Für den von Dir genannten Sonderfall der Filialsysteme habe ich noch einen deutschen Artikel in der Warteschlange, ich muß nur Zeit finden ihn zu schreiben.
+Normalerweise sieht MySQL Replikation so aus:
+MySQL Replikation - Architekturübersicht
+Master Binlog Auf dem Master ist mit der Konfigurationsanweisung log_bin das Binlog aktiviert.
+Das Binlog loggt bei Statement Based Replication (SBR) alle Anweisungen, die Daten verändern (also quasi alles außer SELECT).</div>
 
     </div>
   </div>
@@ -556,7 +565,7 @@ Dementsprechend erwarten Benutzer, daß die Informationen in dem Artikel wahr un
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/22/das-schweigen-der-lemmata.html" class='text-decoration-none text-dark'>Das Schweigen der Lemmata</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/17/ein-ring-mit-zwei-mysql-servern-und-auto-increment-increment.html" class='text-decoration-none text-dark'>Ein Ring mit zwei MySQL-Servern und auto_increment_increment</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -564,12 +573,15 @@ Dementsprechend erwarten Benutzer, daß die Informationen in dem Artikel wahr un
             Kristian Köhntopp
           </a>
           -
-          November 22, 2009
+          August 17, 2010
         </div>
 
-        <div class='mt-3'>Ich huste mir daheim zwar einen ab, aber es handelt sich nur um die geräuschvollen Nachwirkungen eines gewöhnlichen viralen Infektes, und nicht um irgendein H?N?. Das ist gut.
-Trotz Rotz und Keuch habe ich dem Jochen Reinecke von der Frankfurter Allgemeinen Sonntagszeitung ein paar Fragen betreffend Wikipedia beantwortet, und die sind heute ebenda unter dem schamlos verbalsadistischen Titel &ldquo;Das Schweigen der Lemmata&rdquo; veröffentlicht worden.
-Da ich heute nicht Zug fahre, kenne ich den Inhalt der FAS leider nicht, aber in Absprache mit Herrn Reinecke drücke ich meine Antworten auf seine Fragen auch noch mal hier direkt ins Blog.</div>
+        <div class='mt-3'>Lalufu fragte in den Kommentaren von Master-Master :
+Ich habe eine MM-Replikation mit zwei Servern.
+Beide haben auto_increment_increment=10,
+Server A hat auto_increment_offset=0 und Server B hat auto_increment_offset=1.
+Ich lege mir eine Tabelle mit einem auto_increment-Feld (id) an und mache auf Server A einen INSERT, dann kriegt die row id=0, und wird auf B repliziert, richtig?
+Dann noch einen INSERT auf A, die row kriegt id=10, und wird auf B repliziert.Wenn ich jetzt auf B einen INSERT mache, welchen Wert kriegt das id in der row?</div>
 
     </div>
   </div>
@@ -580,7 +592,7 @@ Da ich heute nicht Zug fahre, kenne ich den Inhalt der FAS leider nicht, aber in
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/18/alte-prospekte.html" class='text-decoration-none text-dark'>Alte Prospekte</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/08/16/fertig-gelesen-the-fuller-memorandum.html" class='text-decoration-none text-dark'>Fertig gelesen: The Fuller Memorandum</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -588,11 +600,12 @@ Da ich heute nicht Zug fahre, kenne ich den Inhalt der FAS leider nicht, aber in
             Kristian Köhntopp
           </a>
           -
-          November 18, 2009
+          August 16, 2010
         </div>
 
-        <div class='mt-3'>Beim Aufräumen habe ich noch ein paar alte Prospekte gefunden und mal eben eingescannt.
-CBM 4001 Series, Stand Januar 1982.   CBM 8001 Series, Stand Januar 1982.   CBM 8050 Diskettenlaufwerk (das Große mit der hohen Kapazität).   Commodore MMF 9000 (Ja, so was gab es mal):   Color Genie:   Sirius 1 (kleiner Katalog):   Sirius 1   großer Katalog, mit dem ganzen Business Chic der 80er - um diese Zeit liefen Dallas und Denver Clan:</div>
+        <div class='mt-3'>The Fuller Memorandum , Charles Stross, EUR 9.90, 384 Seiten
+Der 3. Band mit Geschichten von Bob Howard, IT Specialist und Feldagent der Laundry, jener britischen Behörde, die sich darum kümmert, das niemand aus Versehen Cthulhu beweist.
+Im Laundryverse ist höhere Mathematik mit schwarzer Magie identisch und kann das Gewebe der Realität umdefinieren, und Verschwörungstheorien werden real, wenn nur genug Leute daran glauben. Im Fuller Memorandum muß sich Bob mit seinem merkwürdigen Chef, Angleton, auseinandersetzen.</div>
 
     </div>
   </div>
@@ -626,7 +639,7 @@ CBM 4001 Series, Stand Januar 1982.   CBM 8001 Series, Stand Januar 1982.   CBM 
         <a href="/blog/33.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/46.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/49.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>

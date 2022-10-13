@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Netzmasken über den Augen</title>
+<title>Netzmasken über den Augen | Die wunderbare Welt von Isotopp</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.3" />
 <meta property="og:title" content='Netzmasken über den Augen' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -55,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.34cf67ab5155251adc1c5fa5c2f37d5a4f8f029f51399eb2556031d6ac918d49.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
 
 
     </head>
@@ -152,12 +152,12 @@
 <p>Aber wenn man darüber nachdenkt, ist das im Grunde zwingend: Jemand, der mit Taschenrechnern aufgewachsen ist, ist sicher nicht gelenkig im Kopfrechnen. Und Leute, die im Zeitalter von Java, BitVector und BitSet aufgewachsen sind, machen sich vielleicht im Leben keine Gedanken darüber, wie die Bitmasken aussehen, die sie auf Adressen oder Routen anwenden.</p>
 <p>Wahrscheinlich ist das das Gefühl, das man hat, wenn man alt wird.</p>
 <p>Ich erzählte dies meiner Katze, und sie antwortete mit einem einfachen Paste ins Irc:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#define BITCOUNT(x)     (((BX_(x)+(BX_(x)&gt;&gt;4)) &amp; 0x0F0F0F0F) % 255)
-</span><span class="cp"></span>
-<span class="cp">#define  BX_(x)         ((x) - (((x)&gt;&gt;1)&amp;0x77777777) \
-</span><span class="cp">                             - (((x)&gt;&gt;2)&amp;0x33333333) \
-</span><span class="cp">                             - (((x)&gt;&gt;3)&amp;0x11111111))
-</span></code></pre></div><p>Dafür liebe ich sie.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define BITCOUNT(x)     (((BX_(x)+(BX_(x)&gt;&gt;4)) &amp; 0x0F0F0F0F) % 255)
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define  BX_(x)         ((x) - (((x)&gt;&gt;1)&amp;0x77777777) \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                             - (((x)&gt;&gt;2)&amp;0x33333333) \
+</span></span></span><span class="line"><span class="cl"><span class="cp">                             - (((x)&gt;&gt;3)&amp;0x11111111))
+</span></span></span></code></pre></div><p>Dafür liebe ich sie.</p>
 <p><a href="https://www.funkthat.com/~jmg/jmpc/bitwise.html" target="_blank" rel="noopener">More of this</a>
 
 .</p>

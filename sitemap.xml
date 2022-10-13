@@ -3,22 +3,198 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.koehntopp.info/</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/10/12/groups-and-places.html</loc>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/lang_en.html</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/mysql.html</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/mysqldev.html</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/posts.html</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/remote-first.html</loc>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/</loc>
-    <lastmod>2022-01-10T16:28:00+01:00</lastmod>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/work.html</loc>
+    <lastmod>2022-10-12T06:07:08+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/10/10/pan-narrans-and-better-meetings.html</loc>
+    <lastmod>2022-10-10T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/mysql.html</loc>
+    <lastmod>2022-09-27T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/27/mysql-local-and-distributed-storage.html</loc>
+    <lastmod>2022-09-27T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/26/mysql-data-for-testing.html</loc>
+    <lastmod>2022-09-26T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/mysqldev.html</loc>
+    <lastmod>2022-09-26T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/19/sometimes-it-is-not-the-database.html</loc>
+    <lastmod>2022-09-19T12:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/14/artifactory-conclusion.html</loc>
+    <lastmod>2022-09-14T12:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/08/mysql-straight-lines.html</loc>
+    <lastmod>2022-09-08T12:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/09/02/mysql-yolo-mode.html</loc>
+    <lastmod>2022-09-02T12:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/08/25/mysql-boiling-jfrogs.html</loc>
+    <lastmod>2022-08-25T11:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/08/23/mysql-gipk.html</loc>
+    <lastmod>2022-08-23T08:39:21+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/08/22/mysql-row-literals.html</loc>
+    <lastmod>2022-08-22T08:39:21+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/climate.html</loc>
+    <lastmod>2020-11-01T13:04:46+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/energy.html</loc>
+    <lastmod>2020-11-01T13:04:46+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/08/15/good-energy-news.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/netherlands.html</loc>
+    <lastmod>2020-10-22T17:06:17+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/apple.html</loc>
+    <lastmod>2020-09-02T16:58:53+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/macos.html</loc>
+    <lastmod>2020-09-02T16:58:53+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/07/30/macos-how-to-prevent-screen-blanker.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/python.html</loc>
+    <lastmod>2021-02-28T12:40:33+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/07/03/energieverbrauch-in-deutschland.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/germany.html</loc>
+    <lastmod>2020-03-09T20:49:37+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/lang_de.html</loc>
+    <lastmod>2022-05-16T19:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/database.html</loc>
+    <lastmod>2021-02-25T22:02:20+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/07/01/i-have-met-the-enemy-and-they-are-us.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/28/the-new-energy-bill.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/development.html</loc>
+    <lastmod>2022-06-27T04:48:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/27/jetbrains-remote-development.html</loc>
+    <lastmod>2022-06-27T04:48:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/20/mysql-breaking-replication-with-algorithm-instant.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/bike.html</loc>
+    <lastmod>2022-06-08T04:47:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/08/carver-s.html</loc>
+    <lastmod>2022-06-08T04:17:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/08/how-to-buy-an-ebike.html</loc>
+    <lastmod>2022-06-08T04:47:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/mobility.html</loc>
+    <lastmod>2022-06-08T04:47:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/07/mysql-binlog-compression-and-large-transactions.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/06/03/rolling-back.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/schnuppel.html</loc>
+    <lastmod>2022-05-16T19:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/17/wie-normale-leute-eben.html</loc>
+    <lastmod>2022-05-16T19:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/book.html</loc>
+    <lastmod>2022-05-16T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/16/fertig-gelesen-crafting-interpreters.html</loc>
+    <lastmod>2022-05-16T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/media.html</loc>
+    <lastmod>2022-05-16T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/review.html</loc>
+    <lastmod>2022-05-16T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/07/fertig-gelesen-fietsparkeren-bij-stations.html</loc>
+    <lastmod>2022-05-07T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/06/fertig-gelesen-pale-rider.html</loc>
+    <lastmod>2022-05-06T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/05/fertig-gelesen-the-kaiju-preservation-society.html</loc>
+    <lastmod>2022-05-05T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/04/fertig-gelesen-sid-meier-memoir.html</loc>
+    <lastmod>2022-05-04T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/03/fertig-gelesen-the-pattern-on-the-stone.html</loc>
+    <lastmod>2022-05-03T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/02/a-solar-roof.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/05/02/fertig-gelesen-the-undersea-network.html</loc>
+    <lastmod>2022-05-02T07:47:06+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/04/15/sql-engineering-guidelines.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/04/05/change-data-capture-and-the-binlog.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/04/04/devops-meets-databases.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/03/24/debugging-sql-in-python.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/03/24/truncated-incorrect-double-value.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/02/21/spaces.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/02/16/databases-how-large-is-too-large.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/computer.html</loc>
+    <lastmod>2022-02-06T21:06:03+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/linux.html</loc>
+    <lastmod>2022-02-06T21:06:03+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/02/06/revisiting-the-file-server.html</loc>
+    <lastmod>2022-02-06T21:06:03+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/storage.html</loc>
+    <lastmod>2022-02-06T21:06:03+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/02/01/time-to-grow-the-file-server.html</loc>
+    <lastmod>2022-02-01T21:06:03+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/anderswo.html</loc>
+    <lastmod>2022-01-16T06:28:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2022/01/16/hunga-tonga.html</loc>
+    <lastmod>2022-01-16T06:28:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/iot.html</loc>
+    <lastmod>2022-01-16T06:28:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2022/01/12/utf8mb4.html</loc>
     <lastmod>2022-01-10T16:28:00+01:00</lastmod>
@@ -36,9 +212,6 @@
     <lastmod>2022-01-01T16:28:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/gaming.html</loc>
-    <lastmod>2022-01-01T16:28:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/lang_de.html</loc>
     <lastmod>2022-01-01T16:28:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/microsoft.html</loc>
@@ -65,6 +238,9 @@
     <loc>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</loc>
     <lastmod>2021-11-21T17:29:00+01:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/tags/hack.html</loc>
+    <lastmod>2021-11-21T17:29:00+01:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/tags/networking.html</loc>
     <lastmod>2021-11-21T17:29:00+01:00</lastmod>
   </url><url>
@@ -74,13 +250,7 @@
     <loc>https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control-en.html</loc>
     <lastmod>2021-11-23T23:34:33+01:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/blog.html</loc>
-    <lastmod>2021-11-07T11:28:27+01:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2021/11/12/die-kommende-kuendigungswelle.html</loc>
-    <lastmod>2021-11-07T11:28:27+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/work.html</loc>
     <lastmod>2021-11-07T11:28:27+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2021/11/08/amd-und-128-cores.html</loc>
@@ -89,23 +259,23 @@
     <loc>https://blog.koehntopp.info/tags/cloud.html</loc>
     <lastmod>2021-11-08T13:28:27+01:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/computer.html</loc>
-    <lastmod>2021-11-08T13:28:27+01:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2021/11/08/mysql-parallel-replication.html</loc>
     <lastmod>2021-11-08T13:28:27+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/replication.html</loc>
     <lastmod>2021-11-08T13:28:27+01:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/tags/blog.html</loc>
+    <lastmod>2021-11-07T11:28:27+01:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2021/11/07/this-blog-is-now-hugo-powered.html</loc>
     <lastmod>2021-11-07T11:28:27+01:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/2021/10/29/relational-algebra.html</loc>
+    <lastmod>2021-10-29T14:06:51+00:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2021/10/28/python-where-in.html</loc>
     <lastmod>2021-10-28T14:06:51+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/media.html</loc>
-    <lastmod>2021-10-27T17:10:21+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2021/10/27/metaverse-en.html</loc>
     <lastmod>2021-10-27T17:10:21+00:00</lastmod>
@@ -116,7 +286,7 @@
     <loc>https://blog.koehntopp.info/2021/10/26/metaverse.html</loc>
     <lastmod>2021-10-26T20:55:51+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/development.html</loc>
+    <loc>https://blog.koehntopp.info/tags/git.html</loc>
     <lastmod>2021-10-12T17:50:52+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2021/10/12/understanding-git.html</loc>
@@ -167,9 +337,6 @@
     <loc>https://blog.koehntopp.info/2021/09/07/computer-science.html</loc>
     <lastmod>2021-09-07T18:24:48+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/book.html</loc>
-    <lastmod>2021-09-05T16:19:51+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/tags/c.html</loc>
     <lastmod>2021-09-05T15:47:06+00:00</lastmod>
   </url><url>
@@ -190,9 +357,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2021/09/05/fertig-gelesen-unix-a-history-and-a-memoir.html</loc>
     <lastmod>2021-09-05T15:47:06+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/review.html</loc>
-    <lastmod>2021-09-05T16:19:51+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/scifi.html</loc>
     <lastmod>2021-09-05T16:01:24+00:00</lastmod>
@@ -231,9 +395,6 @@
     <lastmod>2021-05-25T14:41:50+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2021/05/25/nvme-is-not-a-hard-disk.html</loc>
-    <lastmod>2021-05-25T14:41:50+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/storage.html</loc>
     <lastmod>2021-05-25T14:41:50+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/windows.html</loc>
@@ -299,17 +460,11 @@
     <loc>https://blog.koehntopp.info/2021/03/12/memory-saturated-mysql.html</loc>
     <lastmod>2021-03-12T12:40:33+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/python.html</loc>
-    <lastmod>2021-02-28T12:40:33+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2021/02/28/rechenaufgaben-loesen.html</loc>
     <lastmod>2021-02-28T12:40:33+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/schulung.html</loc>
     <lastmod>2021-02-28T12:40:33+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/database.html</loc>
-    <lastmod>2021-02-25T22:02:20+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2021/02/25/mysql-from-below.html</loc>
     <lastmod>2021-02-25T22:02:20+00:00</lastmod>
@@ -347,9 +502,6 @@
     <loc>https://blog.koehntopp.info/2020/12/28/fork-exec-wait-and-exit.html</loc>
     <lastmod>2020-12-28T18:25:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/linux.html</loc>
-    <lastmod>2020-12-28T18:25:00+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2020/12/26/sql-clause-is-coming-to-town.html</loc>
     <lastmod>2020-12-26T16:37:59+00:00</lastmod>
   </url><url>
@@ -368,9 +520,6 @@
     <loc>https://blog.koehntopp.info/tags/docker.html</loc>
     <lastmod>2020-11-22T20:33:10+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/git.html</loc>
-    <lastmod>2020-11-22T20:33:10+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2020/11/22/gitlab-in-docker.html</loc>
     <lastmod>2020-11-22T20:33:10+00:00</lastmod>
   </url><url>
@@ -383,17 +532,8 @@
     <loc>https://blog.koehntopp.info/tags/home-automation.html</loc>
     <lastmod>2020-11-15T14:28:09+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/iot.html</loc>
-    <lastmod>2020-11-15T14:28:09+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2020/11/15/my-home-sensor-network.html</loc>
     <lastmod>2020-11-15T14:28:09+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/climate.html</loc>
-    <lastmod>2020-11-01T13:04:46+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/energy.html</loc>
-    <lastmod>2020-11-01T13:04:46+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2020/11/01/rechenzentren-und-ihren-stromverbrauch-regulieren.html</loc>
     <lastmod>2020-11-01T13:04:46+00:00</lastmod>
@@ -402,12 +542,6 @@
     <lastmod>2020-10-28T15:28:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/cycling.html</loc>
-    <lastmod>2020-10-22T17:06:17+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/mobility.html</loc>
-    <lastmod>2020-10-22T17:06:17+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/netherlands.html</loc>
     <lastmod>2020-10-22T17:06:17+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2020/10/22/safe-biking-its-not-the-right-of-way-thats-wrong.html</loc>
@@ -476,12 +610,6 @@
     <loc>https://blog.koehntopp.info/2020/09/04/mysql-json-data-type.html</loc>
     <lastmod>2020-09-04T22:57:10+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/apple.html</loc>
-    <lastmod>2020-09-02T16:58:53+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/macos.html</loc>
-    <lastmod>2020-09-02T16:58:53+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2020/09/02/macos-relocated-items.html</loc>
     <lastmod>2020-09-02T16:58:53+00:00</lastmod>
   </url><url>
@@ -524,7 +652,7 @@
     <loc>https://blog.koehntopp.info/2020/08/01/mysql-locks-and-deadlocks.html</loc>
     <lastmod>2020-08-01T14:11:37+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/2020/07/30/mysql-transactions-writing-data.html</loc>
+    <loc>https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html</loc>
     <lastmod>2020-07-30T08:37:32+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html</loc>
@@ -544,9 +672,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2020/06/29/how-i-set-up-my-python.html</loc>
     <lastmod>2020-06-29T14:40:13+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/schnuppel.html</loc>
-    <lastmod>2020-06-23T21:32:27+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2020/06/23/schulen-digitalisieren.html</loc>
     <lastmod>2020-06-23T21:32:27+00:00</lastmod>
@@ -637,9 +762,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2020/03/18/the-lack-of-developer-centric-mysql-monitoring.html</loc>
     <lastmod>2020-03-18T11:24:09+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/germany.html</loc>
-    <lastmod>2020-03-09T20:49:37+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2020/03/09/normalitaer.html</loc>
     <lastmod>2020-03-09T20:49:37+00:00</lastmod>
@@ -752,7 +874,7 @@
     <loc>https://blog.koehntopp.info/2019/09/03/konsenssysteme.html</loc>
     <lastmod>2019-09-03T21:31:01+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/2019/07/16/ceph-and-nvme-not-a-good-combination.html</loc>
+    <loc>https://blog.koehntopp.info/2019/07/16/ceph-and-nvme---not-a-good-combination.html</loc>
     <lastmod>2019-07-16T08:21:25+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2019/06/14/not-quite-storage-any-more.html</loc>
@@ -761,11 +883,64 @@
     <loc>https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html</loc>
     <lastmod>2019-06-13T14:37:35+00:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/2019/05/28/kinder-und-visuelle-medien.html</loc>
+    <lastmod>2019-05-28T11:25:12+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/pluspora_import.html</loc>
+    <lastmod>2019-05-28T11:25:12+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/04/29/mozilla-irc.html</loc>
+    <lastmod>2019-04-29T17:41:47+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/04/25/what-has-kubernetes-ever-donefor-us.html</loc>
+    <lastmod>2019-04-25T13:28:48+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/advertising.html</loc>
+    <lastmod>2019-03-25T09:12:34+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/03/25/sell-to-users.html</loc>
+    <lastmod>2019-03-25T09:12:34+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/03/04/bashismen.html</loc>
+    <lastmod>2019-03-04T11:36:29+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/02/21/some-elite-dangerous-braindumping.html</loc>
+    <lastmod>2019-02-21T09:10:15+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/02/08/mehr-passwort-sicherheit.html</loc>
+    <lastmod>2019-02-08T10:14:19+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/02/01/passwort-sicherheit.html</loc>
+    <lastmod>2019-02-01T09:50:52+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/social-networking.html</loc>
+    <lastmod>2019-01-24T14:58:29+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/01/24/social-networks-and-usenet.html</loc>
+    <lastmod>2019-01-24T14:58:29+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2019/01/07/du-weisst-nichts-von-homeoffice.html</loc>
+    <lastmod>2019-01-07T09:14:19+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2018/12/19/whatabotism.html</loc>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2018/12/18/kauth-handlers-in-macos.html</loc>
+    <lastmod>2018-12-18T09:06:19+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2018/12/08/parallelgesellschaft.html</loc>
+    <lastmod>2018-12-08T13:19:18+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2018/12/03/amd-epyc.html</loc>
+    <lastmod>2018-12-03T18:08:51+00:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2018/11/29/but-is-it-atomic.html</loc>
     <lastmod>2018-11-29T15:38:05+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/kernel.html</loc>
     <lastmod>2018-11-29T15:38:05+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2018/11/28/service-mesh.html</loc>
+    <lastmod>2018-11-28T20:57:34+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2018/11/04/fertig-gelesen-streetfight.html</loc>
     <lastmod>2018-11-04T13:41:50+00:00</lastmod>
@@ -815,13 +990,10 @@
     <loc>https://blog.koehntopp.info/2018/07/15/fertig-gelesen-good-taste-isaac-asimov-1976.html</loc>
     <lastmod>2018-07-15T15:56:09+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/hack.html</loc>
-    <lastmod>2018-06-18T20:33:10+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2018/06/18/websense-dlp-gives-instant-root.html</loc>
     <lastmod>2018-06-18T20:33:10+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/2018/04/26/harbebrained-battletech.html</loc>
+    <loc>https://blog.koehntopp.info/2018/04/26/harebrained-battletech.html</loc>
     <lastmod>2018-04-26T14:14:10+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2018/04/06/beep-patch-and-ed.html</loc>
@@ -910,9 +1082,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2017/10/16/fertig-gelesen-aspergers-on-the-job.html</loc>
     <lastmod>2017-10-16T13:08:01+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/advertising.html</loc>
-    <lastmod>2017-10-13T12:36:42+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/copyright.html</loc>
     <lastmod>2017-10-13T12:36:42+00:00</lastmod>
@@ -1808,7 +1977,7 @@
     <loc>https://blog.koehntopp.info/tags/virus.html</loc>
     <lastmod>2012-04-27T21:24:02+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/2012/03/15/grunds-tze-verteilter-datenbanken.html</loc>
+    <loc>https://blog.koehntopp.info/2012/03/15/grundsaetze-verteilter-datenbanken.html</loc>
     <lastmod>2012-03-15T08:59:42+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2012/03/12/wie-man-einen-graph-plottet.html</loc>
@@ -1828,9 +1997,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/tags/jugendschutz.html</loc>
     <lastmod>2012-03-05T19:34:48+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/social-networking.html</loc>
-    <lastmod>2012-03-03T16:05:06+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html</loc>
     <lastmod>2012-03-03T16:05:06+00:00</lastmod>
@@ -2119,9 +2285,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2010/08/19/intelligente-stromzaehler.html</loc>
     <lastmod>2010-08-19T09:27:09+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/anderswo.html</loc>
-    <lastmod>2010-08-19T13:36:19+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2010/08/19/erst-dienste-wie-street-view-machen-den-ffentlichen-raum-wirklich-ffentlich.html</loc>
     <lastmod>2010-08-19T13:36:19+00:00</lastmod>
@@ -2912,6 +3075,9 @@
     <loc>https://blog.koehntopp.info/2005/10/08/dynamisch-geladener-code.html</loc>
     <lastmod>2005-10-08T12:21:27+00:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/2005/09/11/nermalisation.html</loc>
+    <lastmod>2005-09-10T17:46:54+00:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2005/09/10/mysql-consulting-bootcamp-munich-2005.html</loc>
     <lastmod>2005-09-10T17:46:54+00:00</lastmod>
   </url><url>
@@ -3125,11 +3291,29 @@
     <loc>https://blog.koehntopp.info/2002/06/01/enterprise-intranet-integration.html</loc>
     <lastmod>2002-06-01T09:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/2002/02/01/enterprise-mail.html</loc>
+    <lastmod>2002-02-01T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2002/01/31/ldap-vs-sql.html</loc>
+    <lastmod>2002-01-31T09:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2001/05/01/filtersysteme-dongles-und-co.html</loc>
     <lastmod>2001-05-01T09:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.koehntopp.info/2000/11/03/xml-cisco.html</loc>
+    <lastmod>2000-11-03T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2000/11/03/xml-grundlagen.html</loc>
+    <lastmod>2000-11-03T09:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2000/08/21/web-security.html</loc>
+    <lastmod>2000-08-21T09:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.koehntopp.info/2000/05/01/webserver-security.html</loc>
     <lastmod>2000-05-01T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2000/04/14/neu-auf-einem-fremden-system.html</loc>
+    <lastmod>2000-04-14T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2000/04/01/datenspuren-im-internet.html</loc>
     <lastmod>2000-04-01T09:00:00+00:00</lastmod>

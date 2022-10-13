@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Was bringt ext4?</title>
+<title>Was bringt ext4? | Die wunderbare Welt von Isotopp</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.3" />
 <meta property="og:title" content='Was bringt ext4?' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -55,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.34cf67ab5155251adc1c5fa5c2f37d5a4f8f029f51399eb2556031d6ac918d49.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
 
 
     </head>
@@ -202,9 +202,9 @@
     </a>
 </h2>
 <p>ext4 kann ext3-Dateisysteme lesen. Es ist also möglich, ein ext3-Dateisystem als ext4 zu mounten. Die meisten Features, die ein ext4 einem ext3 voraus hat, sind dabei jedoch nicht nutzbar. Auch ein</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">tune2fs -O extents,uninit_bg,dir_index /dev/DEV
-</span><span class="go">fsck -pf /dev/DEV
-</span></code></pre></div><p>schaltet diese Features nur für neue Dateien um, baut aber die vorhandenen Dateien und Verzeichnisse nicht auf das neue Format um. Die volle Effizienzsteigerung erlangt man also nur durch ein Umkopieren der Daten auf ein neue angelegtes, leeres ext4-Dateisystem.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">tune2fs -O extents,uninit_bg,dir_index /dev/DEV
+</span></span></span><span class="line"><span class="cl"><span class="go">fsck -pf /dev/DEV
+</span></span></span></code></pre></div><p>schaltet diese Features nur für neue Dateien um, baut aber die vorhandenen Dateien und Verzeichnisse nicht auf das neue Format um. Die volle Effizienzsteigerung erlangt man also nur durch ein Umkopieren der Daten auf ein neue angelegtes, leeres ext4-Dateisystem.</p>
 <h2 id="was-fehlt-noch">
     <a href="#was-fehlt-noch">
 	Was fehlt noch?

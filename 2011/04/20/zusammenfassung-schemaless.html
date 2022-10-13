@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Zusammenfassung &#39;Schemaless&#39;</title>
+<title>Zusammenfassung &lsquo;Schemaless&rsquo; | Die wunderbare Welt von Isotopp</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0" />
+<meta name="generator" content="Hugo 0.104.3" />
 <meta property="og:title" content='Zusammenfassung &#39;Schemaless&#39;' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -55,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.34cf67ab5155251adc1c5fa5c2f37d5a4f8f029f51399eb2556031d6ac918d49.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
 
 
     </head>
@@ -182,13 +182,13 @@ aktualisiert und die Zeile dann später zurück geschrieben.</p>
 </p>
 <p>Verzögerte Migration einer Tabelle von Schemaversion 1 auf Schemaversion 2.</p>
 <p>Im Beispiel wird das ursprüngliche</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="w"> 
-</span><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"> 
-</span><span class="w">  </span><span class="n">german</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
-</span><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INNODB</span><span class="w">
-</span></code></pre></div><p>um ein späteres</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
-</span></code></pre></div><p>ergänzt.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">german</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INNODB</span><span class="w">
+</span></span></span></code></pre></div><p>um ein späteres</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>ergänzt.</p>
 <p>Die ursprüngliche Tabellendefinition ist Version 1. Das ALTER TABLE, das die
 Spalte <tt>english</tt> zufügt ist Version 2. Das ALTER TABLE selbst macht
 gar nichts, aber man kann erkennen, daß die Zeile mit der ID 2 schon
