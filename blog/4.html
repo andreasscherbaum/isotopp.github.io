@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -137,22 +136,19 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/06/empty-commits-and-other-wrong-tools-for-the-job.html" class='text-decoration-none text-dark'>Empty commits and other wrong tools for the job</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/03/24/debugging-sql-in-python.html" class='text-decoration-none text-dark'>Debugging SQL in Python</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          October 6, 2021
+          March 24, 2022
         </div>
 
-        <div class='mt-3'>This is how you can make an empty commit:
-$ git commit --allow-empty -m &#34;Kick it&#34; This has the disadvantage of also generating a commit message. Another way to achieve this seems to be
-$ git commit --amend --no-edit &amp;&amp; git push -f but that will make people hate you in other ways.
-So lets stop and ask: Why would you want to make an empty commit?
-Most people want this because they attached a server-side action to a commit, a CI/CD activity.</div>
+        <div class='mt-3'>When using MySQL with Python, you may want to use the mysqlclient library, which is what most people do and which will work just fine. Or you are using the official MySQL 8 Connector/Python package, which will behave slightly differently, but maybe supports the unique MySQL 8 feature already that is not in mysqlclient, yet.
+Your SQL may be hand-writtten, or it may be generated using SQL Alchemy, Django or some other package.</div>
 
     </div>
   </div>
@@ -163,20 +159,20 @@ Most people want this because they attached a server-side action to a commit, a 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/02/99-secure.html" class='text-decoration-none text-dark'>99% secure</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/03/24/truncated-incorrect-double-value.html" class='text-decoration-none text-dark'>Truncated incorrect DOUBLE value</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          October 2, 2021
+          March 24, 2022
         </div>
 
-        <div class='mt-3'>Linus Neumann zitiert Prof. Norbert Pohlmann :
-Ich glaube, das ist so. Diese 100%ige Sicherheit wird es nicht geben, und wenn der Chaos Computer Bild was findet, dann findet er das, und dann sagen wir, das ist gut. Und dann überlegen wir uns, wie wir das wieder schließen können und dann ist es wieder besser. Und dann können sie auch weiter suchen.
-Also, ich glaube, wir brauchen auch eine andere Grundhaltung und es geht nicht immer um 100 %, sondern die 99 %, die reichen und wir müssen mit den Restrisiken umgehen.</div>
+        <div class='mt-3'>I record this for posteriority without much comment.
+The error message &ldquo;Truncated incorrect DOUBLE value&rdquo; when issued by MySQL can be a confused parser, and masks unintended barely legal syntax:
+kris@localhost [kris]&gt; select * from testtable; +----+------+ | id | d | +----+------+ | 1 | eins | | 2 | zwei | | 3 | drei | +----+------+ 3 rows in set (0.00 sec) kris@localhost [kris]&gt; update testtable set d=&#34;vier&#34; and id = 4 where id = 3; ERROR 1292 (22007): Truncated incorrect DOUBLE value: &#39;vier&#39; The actual problem here is the incorrect use of and in the set-clause of the update statement when a comma was intended.</div>
 
     </div>
   </div>
@@ -187,21 +183,20 @@ Also, ich glaube, wir brauchen auch eine andere Grundhaltung und es geht nicht i
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/01/projektschmerzen.html" class='text-decoration-none text-dark'>Projektschmerzen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/02/21/spaces.html" class='text-decoration-none text-dark'>Spaces</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          October 1, 2021
+          February 21, 2022
         </div>
 
-        <div class='mt-3'>Es beginnt mit einem Tweet von Manuel Atug :
-&ldquo;Wegen Überlastung der Server: #Notruf-App vorerst nicht mehr in App-Stores&rdquo;
-und der Tweet verlinkte einen (inzwischen nicht mehr existierenden) Artikel beim Deutschlandfunk. Christoph Petrausch erklärt, wie solche Projekte falsch laufen können:
-Sowas erfordert eine Fehlerkultur. Du musst als Organisation in der Lage sein, nach so einem Incident einen Schritt zurückzutreten. Alle Fakten auf den Tisch zu legen und zu fragen: Warum kam es dazu?</div>
+        <div class='mt-3'>On the morning of Saturday, 22nd February 2020, two years ago, my colleagues and I woke up to the a message from the company that said:
+&ldquo;Spaces&rdquo; Closed for Operations 23 Feb - 28 Feb
+During the morning hours of Saturday, 22 February, a fire occurred on the first floor of the &ldquo;Spaces&rdquo; building. The fire was extinguished promptly but due to smoke and residue particles that spread throughout the building, we will not be able to open &ldquo;Spaces&rdquo; for at least one weeks time.</div>
 
     </div>
   </div>
@@ -212,23 +207,19 @@ Sowas erfordert eine Fehlerkultur. Du musst als Organisation in der Lage sein, n
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/30/software-defined-silicon.html" class='text-decoration-none text-dark'>Software Defined Silicon</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/02/16/databases-how-large-is-too-large.html" class='text-decoration-none text-dark'>Databases: How large is too large?</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 30, 2021
+          February 16, 2022
         </div>
 
-        <div class='mt-3'>Golem titelt Intel will Xeon-Funktionen als Lizenz-Update verkaufen :
-Intel will Xeon-Funktionen als Lizenz-Update verkaufen.
-Mit dem Software Defined Silicon will Intel in Xeon-Hardware zunächst abgeschaltete Funktionen künftig als Lizenz-Upgrade bereitstellen.
-Manuel Atug ranted darüber auf Twitter:
-Wenn dir die eigene Hardware nicht mehr gehört&hellip; Intel will Xeon-Funktionen als Lizenz-Update verkaufen &ldquo;Mit dem Software Defined Silicon will Intel in Xeon-Hardware zunächst abgeschaltete Funktionen künftig als Lizenz-Upgrade bereitstellen.&rdquo;
-Ich antwortete :</div>
+        <div class='mt-3'>A database is a special kind of structured, persistent, global variable with concurrent access over the network.
+You write data to a cell of a row of a table in a schema in the server, and it is being kept around for you, with a lifetime longer than the runtime of your program. The database takes care of making sure of ordering access to that data, so there is a clearly defined series of changes to the data – locking, transactions, isolation are things that make databases popular.</div>
 
     </div>
   </div>
@@ -239,20 +230,20 @@ Ich antwortete :</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/27/mysql-booking-2010-a-hiring-interview-question.html" class='text-decoration-none text-dark'>MySQL: Our MySQL in 2010, a hiring interview question</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/02/06/revisiting-the-file-server.html" class='text-decoration-none text-dark'>Revisiting the file server</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 27, 2021
+          February 6, 2022
         </div>
 
-        <div class='mt-3'>I ranted about hiring interviews, and the canned questions that people have to answer. One of the interviews we do is a systems design interview, where we want to see how (senior) people use components and patterns to design a system for reliability and scale-out.
-A sample question (based on a Twitter thread in German):
-It is 2010, and the company has a database structure where a fixed number front end machines form a cell.</div>
+        <div class='mt-3'>The new disks in the file server had synchronized nicely, and that resulted in an interesting graph:
+Sectors on the outer part of a hard disk are transferred faster than inner sectors. You can see how the disk speed halves between the outermost and the innermost part.
+While watching, I decided on a whim that I wanted to convert the entire setup from using Linux mdraid to dmraid, the LVM2 implementation of RAID1.</div>
 
     </div>
   </div>
@@ -263,19 +254,19 @@ It is 2010, and the company has a database structure where a fixed number front 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/17/binding-the-orm.html" class='text-decoration-none text-dark'>MySQL: Binding the ORM</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/02/01/time-to-grow-the-file-server.html" class='text-decoration-none text-dark'>Time to grow the file server</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 17, 2021
+          February 1, 2022
         </div>
 
-        <div class='mt-3'>My task is to collect performance data about a single query, using PERFORMANCE_SCHEMA (P_S for short) in MySQL, to ship it elsewhere for integration with other data.
-In a grander scheme of things, I will need to define what performance data from a query I am actually interested in. I will also need to find a way to attribute the query (as seen on the server) to a point in the codebase of the client, which is not always easy when an ORM or other SQL generator is being used.</div>
+        <div class='mt-3'>The old file server was full, and since the little one got more local storage in his laptop, I also needed more storage for backup to match. I am running a 5x cage using up 3 disk slots in a Midi-Tower. Two slots are filled with Seagate Ironwolf 10 TB disks already, the rest is available.
+A 5x hot swap disk cage using 3 disk slots in a midi tower.</div>
 
     </div>
   </div>
@@ -286,19 +277,20 @@ In a grander scheme of things, I will need to define what performance data from 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/15/mysql-tracing-a-single-query-with-performanceschema.html" class='text-decoration-none text-dark'>MySQL: Tracing a single query with PERFORMANCE_SCHEMA</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/01/16/hunga-tonga.html" class='text-decoration-none text-dark'>Hunga Tonga</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 15, 2021
+          January 16, 2022
         </div>
 
-        <div class='mt-3'>My task is to collect performance data about a single query, using PERFORMANCE_SCHEMA (P_S for short) in MySQL, to ship it elsewhere for integration with other data.
-In a grander scheme of things, I will need to define what performance data from a query I am actually interested in. I will also need to find a way to attribute the query (as seen on the server) to a point in the codebase of the client, which is not always easy when an ORM or other SQL generator is being used.</div>
+        <div class='mt-3'>This is the Hunga Tonga underwater volcano explosion in Pacific Ocean (animated gif, click to start):
+This is data from my sensors , 15h later:
+The second wave took the long way around, and arrived around 2am-4am on the morning of the 16th, but barely registered.</div>
 
     </div>
   </div>
@@ -309,19 +301,22 @@ In a grander scheme of things, I will need to define what performance data from 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/14/mysql-page-compression-revisited.html" class='text-decoration-none text-dark'>MySQL: Page compression revisited</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/01/12/utf8mb4.html" class='text-decoration-none text-dark'>UTF8MB4</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 14, 2021
+          January 12, 2022
         </div>
 
-        <div class='mt-3'>Like I said, I never had much reason to use table compression, and only recently looked into the topic. MySQL Page Compression looks a lot easier at the database end of things, but relies on hole punching support in the file system. Let&rsquo;s have a look at what that means.
-Files, Inodes and Arrays of Blocks The original Unix filesystem saw the disk as a sea of blocks, which were represented in a free map as an array of bits.</div>
+        <div class='mt-3'>On Twitter, Jan Wildeboer linked an article by Adam Hooper on MySQL and the weird utf8mb4 character set.
+The recommendation is correct:
+In MySQL, use utf8mb4 when you mean to work with utf8 in your programming language.
+The background and reasoning for this (and why it is wrong) is way more complicated than outlined by Adam Hooper. So let&rsquo;s walk through this:
+MySQL utf8 means 3-byte Unicode, and access to only the BMP utf8 in MySQL encodes the Unicode BMP .</div>
 
     </div>
   </div>
@@ -332,21 +327,20 @@ Files, Inodes and Arrays of Blocks The original Unix filesystem saw the disk as 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/10/create-if-not-exists.html" class='text-decoration-none text-dark'>MySQL: CREATE IF NOT EXISTS TABLE, but CREATE OR REPLACE VIEW</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/01/10/never-check-for-an-error-condition.html" class='text-decoration-none text-dark'>Never check for an error condition you don&#39;t know how to handle</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 10, 2021
+          January 10, 2022
         </div>
 
-        <div class='mt-3'>For the MySQL Million Challenge, I was going through the server syntax in order to understand what things can be created in the server. And now my OCD triggered. DDL is a mess.
-Creation As a database developer, I want to be able to create server objects using the CREATE thing syntax.
-The server gives you that for the following things:
-DATABASE EVENT FUNCTION (and FUNCTION SONAME) INDEX LOGFILE GROUP (NDB only, not going to look at this) PROCEDURE RESOURCE GROUP ROLE SERVER SPATIAL REFERENCE SYSTEM TABLE TABLESPACE TRIGGER USER VIEW Safe creation As a database developer I want to be able to script things safely, so I need IF NOT EXISTS clauses in my CREATE syntax.</div>
+        <div class='mt-3'>This is the english version of an older text in German Computer scientists are weird. In their science there are a few rules that sound wrong when you hear them first, but make a lot of sense if you think about them. Some of them are making sense even outside of computer science.
+One of those rules is
+Never check for an error condition you don&rsquo;t know how to handle. When you encounter this the first time that sounds very questionable.</div>
 
     </div>
   </div>
@@ -357,18 +351,22 @@ DATABASE EVENT FUNCTION (and FUNCTION SONAME) INDEX LOGFILE GROUP (NDB only, not
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/10/mysql-million-challenge.html" class='text-decoration-none text-dark'>MySQL: The Million Challenge</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2022/01/01/and-a-happy-new-hack.html" class='text-decoration-none text-dark'>... and a happy new hack.</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 10, 2021
+          January 1, 2022
         </div>
 
-        <div class='mt-3'>A long-standing idea that I have is to test the servers limits: How does it fail and break if there are very many of a thing? Previously that was too easy, because many structures were constructed in a way that it was obvious they would not scale. But with MySQL 8 many things were overhauled, so let&rsquo;s see what we can make many of and see how the server fares.</div>
+        <div class='mt-3'>Und das neue Jahr beginnt für uns mit einem Minecraft-Server, auf dem wichtige Personen, die sich nichts haben zuschulden kommen lassen, plötzlich gebannt sind.
+Nach einem Unban an der Console: Der Spawn, der Eintrittspunkt für neue Spieler, ist komplett verwüstet.
+Wir haben tägliche Backups, sodass das schnell behoben ist. Bleibt die Frage, was passiert ist.
+Gehackt Unter den Spielern ist die Frage schnell geklärt: &ldquo;&lt;user&gt; wurde gehackt.&rdquo;
+Es stellt sich raus:</div>
 
     </div>
   </div>
@@ -379,20 +377,20 @@ DATABASE EVENT FUNCTION (and FUNCTION SONAME) INDEX LOGFILE GROUP (NDB only, not
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/09/tmp-file-full.html" class='text-decoration-none text-dark'>MySQL: The table &#39;../tmp/#sql…&#39; is full</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/12/20/dein-kind-will-minecraft-spielen.html" class='text-decoration-none text-dark'>Dein Kind will Minecraft spielen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 9, 2021
+          December 20, 2021
         </div>
 
-        <div class='mt-3'>We observe a large number of messages of the kind
-The table &#39;../tmp/#sql…&#39; is full Before MySQL 8 In older Versions of MySQL, implied temporary tables are being created whenever your EXPLAIN contained the phrase using temporary.
-In this case, MySQL would create an in-memory temporary table to materialize an intermediate query result, and then continue to process the data from there. If that temporary table was larger than some configurable limit, the temporary table would instead be converted to a MyISAM table on disk, streamed out, and then work would continue with this.</div>
+        <div class='mt-3'>Nachdem mich jetzt das dritte Paar computer-affiner Eltern mal gefragt hat, was man denn braucht, sobald der Nachwuchs sich &ldquo;Minecraft&rdquo; wünscht, hier der Aufschrieb zum Thema.
+Minecraft ist ursprünglich von der schwedischen Firma Mojang in Java entwickelt worden. Der Eigner, Markus &ldquo;Notch&rdquo; Persson, hat das Spiel und die Firma Mitte 2014 auf Twitter zum Verkauf angeboten, und Microsoft hat die Firma gekauft.
+Spiel zu verkaufen - Minecraft ist auf Twitter angeboten worden.</div>
 
     </div>
   </div>
@@ -403,19 +401,20 @@ In this case, MySQL would create an in-memory temporary table to materialize an 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/09/mysql-two-kinds-of-compression.html" class='text-decoration-none text-dark'>MySQL: Two kinds of compression</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/12/14/funktioniert-wie-spezifiziert.html" class='text-decoration-none text-dark'>Es funktioniert wie spezifiziert</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 9, 2021
+          December 14, 2021
         </div>
 
-        <div class='mt-3'>I never had much reason to use table compression, so I largely ignored the topic in MySQL. I knew that MySQL had table compression since 5.1, but I also knew the implementation was horribly complicated and double stored all data. There is also page compression, a feature introduced with 5.7, which replaces table compression and works much better.
-Table Compression Table Compression is available in MySQL 5.1 and newer. It is used by setting an InnoDB table up with ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8 or similar, for even smaller key block sizes.</div>
+        <div class='mt-3'>Dieser Artikel basiert auf einem Twitter-Thread und ist in deutscher Sprache als Heise Kommentar erschienen.
+Über den Java-Slogan &ldquo;Write Once, Run Everywhere&rdquo; wurden schon viele Witze gemacht. Den log4j-Exploit behandeln viele nun wie einen Bug – das ist er nicht.
+Eine kritische Lücke in der Java-Bibliothek Log4j beherrscht gerade die Schlagzeilen. Die IT-Welt ruft &ldquo;Warnstufe Rot&rdquo; aus – weil offenbar der log4j-Code JNDI-Variablenexpansion vornehmen kann. Doch was ist JNDI? Jindi al Dap ist der Name eines alten arabischen Philosophen und Mathematik-Pioniers, der für Sun/Oracle gearbeitet hat, um ein System von Directory Lookups in Java zu entwickeln.</div>
 
     </div>
   </div>
@@ -426,23 +425,19 @@ Table Compression Table Compression is available in MySQL 5.1 and newer. It is u
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/07/computer-science.html" class='text-decoration-none text-dark'>Computer science</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/30/discord-nitro-spam-and-2fa.html" class='text-decoration-none text-dark'>Discord Nitro Spam and 2FA</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 7, 2021
+          November 30, 2021
         </div>
 
-        <div class='mt-3'>Lilith Wittmann asked on Twitter:
-Why do we have so much dangerous software in Germany?
-Because we don&rsquo;t have the competency anywhere (administration, enterprise or science) to understand the complexity of software.
-My take was :
-Computer science is easy. It is the science of Zeroes and Ones, and it does not get any more complicated anywhere.
-Computer science piles abstractions on top of each other, though, 30 layers deep and with non-linear interactions.</div>
+        <div class='mt-3'>This morning the Discord account of my son started to send &ldquo;free nitro&rdquo; spam to his friends on the friend list, and to some Discords he was a member of. He had 2FA (Google Authenticator) on the account. That fact alone made this a recoverable failure.
+My son is playing minecraft, has a friend list of around 100 fellow players, and is member of around 40 Discords. He also connected his Discord to Spotify, YouTube and other services, and he authorized around 12 application services, mostly Discord/Minecraft bot services.</div>
 
     </div>
   </div>
@@ -453,19 +448,20 @@ Computer science piles abstractions on top of each other, though, 30 layers deep
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-ai-superpowers.html" class='text-decoration-none text-dark'>Fertig gelesen: AI Superpowers</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/24/mysql-moving-average.html" class='text-decoration-none text-dark'>MySQL: Moving Average</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 24, 2021
         </div>
 
-        <div class='mt-3'>This 2018 book in some aspects is already outdated: Silicon Valley Techbro Kai-Fu Lee describes what AI is and what he thinks it will do to our future, the nature of work and the job market. But since then, the worlds view on what AI can and cannot do, what the problems to solve really are and a lot of other things have changed.
-AI Superpowers:China, Silicon Valley, and the New World Order , Kai-Fu Lee</div>
+        <div class='mt-3'>MySQL window functions can be used to calculate daily averages or moving averages for a 24h time window relatively easily. In an earlier article basic window functions were already discussed. In this article, we want to see how we can get daily buckets and moving averages.
+A sample program is available, as usual, on GitHub .
+Getting sample data We will be working with a data table named data, with three columns: a sensor id, a measurement datetime d and a metric value m that was sampled at that time.</div>
 
     </div>
   </div>
@@ -476,21 +472,21 @@ AI Superpowers:China, Silicon Valley, and the New World Order , Kai-Fu Lee</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-old-mans-war.html" class='text-decoration-none text-dark'>Fertig gelesen: Old Man&#39;s War</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html" class='text-decoration-none text-dark'>Arista Type 7 Passwords</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 22, 2021
         </div>
 
-        <div class='mt-3'>&ldquo;Old Man&rsquo;s War &rdquo; is the first &ldquo;large&rdquo; works by John Scalzi,
-Old Man&rsquo;s War , John Scalzi
-The plot premise is weird, but simple: Humanity has taken to the stars, but with private enterprise. Basically all advanced space technology is controlled by the Colonial Union. Life on earth on the other hand goes on almost as before.
-John Perry enlists to serve in the Colonial Defense Force at the age of 75, to protect humanity, but mostly to have the CU fight the effects of him aging with some unspecified Scifi tech.</div>
+        <div class='mt-3'>A friend of mine wanted to provision BGP passwords for their Arista switch configuration.
+So a config stanza such as
+router bgp 65001 router-id 10.1.1.1 neighbor mydevices peer-group neighbor mydevices password 7 8kjYaye5DsQh0epELyKNe0oZ3E3zp39X requires generation of the Password (actually &ldquo;supersecretpassword&rdquo;) in an encrypted form.
+Arista switches can do this using CLI tools, apparently. They seem to have an onboard Linux, which seems to provide limited tooling, but is good enough to run a 32-bit Python 3.</div>
 
     </div>
   </div>
@@ -501,20 +497,22 @@ John Perry enlists to serve in the Colonial Defense Force at the age of 75, to p
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-these-savage-shores.html" class='text-decoration-none text-dark'>Fertig gelesen: These Savage Shores</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control.html" class='text-decoration-none text-dark'>A01:2021 - Broken Access Control</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 16, 2021
         </div>
 
-        <div class='mt-3'>Ram V is a writer, sometimes for comics. Together with artist Sumit Kumar he wrote a simple story: English Vampires vs. Indian Rakshasa.
-These Savage Shores , Ram V &amp; Sumit Kumar
-The 1760&rsquo;ies. An english vampire puts his peers at risk by not having his desires under control, and is exiled to Calicut, India. He soon finds out that even older and fiercer beings rule the night: Rakshasa, the Vampire equivalent of Indian Myth.</div>
+        <div class='mt-3'>Dieser Artikel wurde von Lenz Grimmer auch ins Englische übersetzt.
+In einem Twitter-Thread von Christian Basl ging es um die von zerforschte App &ldquo;Learnu&rdquo; . Basl schreibt:
+Die Betreiber von Learnu sagen, sie hätten keine Fachkenntnisse in IT-Sicherheit und hätten sich auf externe Berater verlassen. So kam Learnu unbekannterweise unsicher auf den Markt.
+In der sich entwickelnden Diskussion vertrat Andreas Dewes den Standpunkt
+Die meisten Start-ups die ich kenne gehen durch eine Phase, in der IT-Sicherheit und Compliance eher im Hintergrund stehen.</div>
 
     </div>
   </div>
@@ -525,20 +523,22 @@ The 1760&rsquo;ies. An english vampire puts his peers at risk by not having his 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-this-is-how-you-lose-the-time-war.html" class='text-decoration-none text-dark'>Fertig gelesen: This Is How You Lose The Time War</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control-en.html" class='text-decoration-none text-dark'>A01:2021 - Broken Access Control (en)</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 16, 2021
         </div>
 
-        <div class='mt-3'>Max Gladstone and Amal El-Mohtar co-authored This Is How You Lose The Time-War , not exactly a Science Fiction novel.
-This Is How You Lose The Time War , Amal El-Mohtar and Max Gladstone
-Red and Blue are representatives, spies and saboteurs of two nearly all-powerful, warring factions. They travel through time to manipulate events at critical points in history in favor of their respective factions. They are leaving each other messages, they taunt each other, and gradually earn mutual respect.</div>
+        <div class='mt-3'>Translation by Lenz Grimmer, German version here .
+A twitter thread by Christian Basl discussed the dissection of the &ldquo;Learnu&rdquo; app . Basl wrote:
+Learnu operators say they have no expertise in IT security and have relied on outside consultants. As a result, Learnu came to market insecurely, unbeknownst to them.
+In the discussion that developed, Andreas Dewes took the view that
+Most startups I know go through a phase where IT security and compliance tend to take a back seat.</div>
 
     </div>
   </div>
@@ -549,20 +549,20 @@ Red and Blue are representatives, spies and saboteurs of two nearly all-powerful
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-typeset-in-the-future.html" class='text-decoration-none text-dark'>Fertig gelesen: Typeset in the Future</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/12/die-kommende-kuendigungswelle.html" class='text-decoration-none text-dark'>Die kommende Kündigungswelle</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 12, 2021
         </div>
 
-        <div class='mt-3'>Dave Addey ran a Tumblr once, titled &ldquo;Typeset in the Future&rdquo;, in which he dissected the typography of Science Fiction films. This has been turned into the eponymous book.
-Typeset in the Future , Dave Addey
-In 2013, Addey nerded out over the fonts in a Science Fiction movie and discovered it was an Eurostile variant (&ldquo;Eurostile Extended Bold&rdquo;). He started a Tumblr about this, and in great detail went through a number of movies, and about every sign, letter and font used in there.</div>
+        <div class='mt-3'>Ein guter Freund sinnierte gestern mit anderen Freunden von mir über die Situation auf der Arbeit und schrieb mir heute:
+Wie man es auch dreht und wendet: Corona ist auch ein Lackmustest für Unternehmen in ihrer Rolle als Arbeitgeber. Anhand der vierten Welle lässt sich das hervorragend nachvollziehen.
+Denn Unternehmen und Organisationen, denen am Wohl ihrer Mitarbeiter/-innen etwas liegt, haben schon vor Wochen überall dort, wo es möglich ist, ihre Leute kategorisch wieder ins Homeoffice geschickt und Präsenzveranstaltungen untersagt.</div>
 
     </div>
   </div>
@@ -573,20 +573,20 @@ In 2013, Addey nerded out over the fonts in a Science Fiction movie and discover
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/05/fertig-gelesen-unix-a-history-and-a-memoir.html" class='text-decoration-none text-dark'>Fertig gelesen: UNIX: A History and a Memoir</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/08/amd-und-128-cores.html" class='text-decoration-none text-dark'>AMD und 128 cores</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          September 5, 2021
+          November 8, 2021
         </div>
 
-        <div class='mt-3'>The memoir of Brian Kernighan, and the story of how UNIX came to be and what working at Bell Labs was like at that time: UNIX: A History and a Memoir is required reading for anyone who wants to know where Unix concepts came from and what ideas were behind its inception.
-&quot;UNIX: A History and a Memoir &quot;, Brian Kernighan
-Kernighan takes us through the history and the setting of Bell Labs, why it existed and what it did.</div>
+        <div class='mt-3'>Wir sprachen in Software Defined Silicon darüber, wie die CPU-Bedürfnisse von Hyperscalern und normalen Kunden divergieren.
+Hyperscaler haben Interesse an immer größeren CPUs mit immer mehr Kernen, und immer höherer Dichte in ihren Rechenzentren. [&hellip;]
+Normale Kunden sehen das nicht so: man kann in einer 64C/128T-Core-Single-Socket-Konfiguration mit 2-4 TB RAM unter Umständen den gesamten Serverbedarf einer kleineren Firma in einer einzelnen physikalischen Maschine in VMs unterbringen. Das Problem dabei: Explosionsradius, wenn mal etwas ausfällt.</div>
 
     </div>
   </div>
@@ -597,19 +597,20 @@ Kernighan takes us through the history and the setting of Bell Labs, why it exis
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/08/18/epochalypse.html" class='text-decoration-none text-dark'>Epochalypse</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/11/08/mysql-parallel-replication.html" class='text-decoration-none text-dark'>MySQL: Parallel Replication</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 18, 2021
+          November 8, 2021
         </div>
 
-        <div class='mt-3'>I had reason to look into the UNIX Eschaton, the time when the signed 32 bit counter of seconds since Midnight, 1970-01-01 UTC overflows. Going to Wikipedia , I learned we will die two years earlier, because in 2036-02-07, 06:28:16 UTC NTP will kill us all:
-At 06:28:16 UTC on Thursday, 7 February 2036, Network Time Protocol will loop over to the next epoch, as the 32-bit time stamp value used in NTP (unsigned, but based on 1 January 1900) will overflow.</div>
+        <div class='mt-3'>At work, replication is a central feature in our MySQL Standard Architecture.
+But until MySQL 5.6, replication was strictly sequential: Even if transactions happened in parallel on a primary, they would be downloaded to the replica by the IO_THREAD into the relay log. From there, a single SQL_THREAD would apply them, one after the other in strict binlog order. That can lead to Replication Delay.
+We had a monitor for that, courtesy of Dennis Kaarsemaker .</div>
 
     </div>
   </div>
@@ -643,7 +644,7 @@ At 06:28:16 UTC on Thursday, 7 February 2036, Network Time Protocol will loop ov
         <a href="/blog/5.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/49.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -675,6 +676,10 @@ At 06:28:16 UTC on Thursday, 7 February 2036, Network Time Protocol will loop ov
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -683,9 +688,7 @@ At 06:28:16 UTC on Thursday, 7 February 2036, Network Time Protocol will loop ov
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

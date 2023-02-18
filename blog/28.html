@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -137,19 +136,22 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/20/mysql-testcases.html" class='text-decoration-none text-dark'>MySQL Testcases</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/25/house-und-heisenberg-revisited.html" class='text-decoration-none text-dark'>House und Heisenberg revisited</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 20, 2012
+          September 25, 2012
         </div>
 
-        <div class='mt-3'>In Entwickler kritisieren Oracles Umgang mit MySQL berichtet Heise über die Entdeckung von Sergei, daß Oracle zu einigen Bugs keine Tests mehr ins Open Source Repository von MySQL stellt.
-Damit man die Vorgänge ein bischen besser versteht, muß man den Hintergrund ein wenig erläutern: Die meiste Open Source Software, die Datenbanken benutzt, verwendet MySQL als primäre Datenbanken. Der Support für Varianten von MySQL, PostgreSQL oder gar kommerzielle Datenbanken ist in der Regel schlecht bis nicht vorhanden.</div>
+        <div class='mt-3'>Ich habe heute an dem Problem weiter geforscht und wir haben etabliert, dass die Ursache nicht der Quelltext des betreffenden Diamond-Collectors sein kann.
+Auf allen betroffenen Kisten habe ich dann gesehen, daß die entsprechenden Queries gegen Performance-Schema ein
+mysql&gt; select \* from performance_schema.threads; Empty set (0.01 sec) zurück liefern.
+Weitere Untersuchung stellt heraus: P_S ist aber an. Jedoch:
+mysql&gt; select \* from performance_schema.setup_instruments; Empty set (0.03 sec) mysql&gt; select \* from performance_schema.</div>
 
     </div>
   </div>
@@ -160,19 +162,20 @@ Damit man die Vorgänge ein bischen besser versteht, muß man den Hintergrund ei
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/19/fertig-gelesen-the-frozen-sky.html" class='text-decoration-none text-dark'>Fertig gelesen: The Frozen Sky</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/24/der-herr-house-und-der-herr-heisenberg-haben-replication-delay.html" class='text-decoration-none text-dark'>Der Herr House und der Herr Heisenberg haben Replication Delay</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 19, 2012
+          September 24, 2012
         </div>
 
-        <div class='mt-3'>The Frozen Sky , Jeff Carlson, USD 0.99
-Die Menschen sind zum Jupiter gekommen, weil er eine reichhaltige und billige Quelle für Treibstoff im Heimatsystem war. Europa&rsquo;s äquatoriale Eisebenen sind eine gute Heimatbasis für die Menschen und ihre fusionsgetriebenen Mechas und Maschinen. Aber es sollte 18 Jahre dauern, bis die Menschen sich weiter auf Europa vorwagen und die Tiefen von Europas Schächten, Spalten, Kellern, Schmelzflüssen und Querverbindungen abseits der Ladezonen zu erforschen beginnen.</div>
+        <div class='mt-3'>Heute erreicht mich eine Mail, in der ein DBA sich über steigende Replication Delay in einer bestimmten Replikationshierarchie beschwert.
+Das ist schlecht, denn die betreffende Hierarchie ist wichtig. Also die &lsquo;Wenn die nicht geht schlafen Leute unter Brücken&rsquo;-Art von wichtig.
+Die Theorie war, daß die Änderungsrate in dieser Hierarchie so hoch ist, daß die Schreiblast von MySQL Replikation, die ja Single Threaded ist, nicht mehr bewältigt werden kann. Für diese Theorie sprach nach dem ersten Augenschein, daß alle betroffenen Kisten keine lokalen Platten hatten, sondern auf einem Filer lagen, und Filer sterben wegen der hohen Kommunikationslatenz im SAN bei uns in der Regel weit vor lokalen Platten, wenn es um Replikation geht: Filer sind mehr so beim parallelen Schreiben mit mehreren Threads gut.</div>
 
     </div>
   </div>
@@ -183,20 +186,20 @@ Die Menschen sind zum Jupiter gekommen, weil er eine reichhaltige und billige Qu
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/18/fertig-gelesen-containment.html" class='text-decoration-none text-dark'>Fertig gelesen: Containment</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html" class='text-decoration-none text-dark'>Zu Besuch bei Redis</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 18, 2012
+          September 23, 2012
         </div>
 
-        <div class='mt-3'>Containment , Christian Cantrell, USD 2.99
-Arik ist ein Angehöriger der ersten Generation der in der Venus-Kolonie geborenen Kinder, und ein Wunderkind - seine Aufgabe ist, an der Entwicklung der künstlichen Photosynthese zu forschen, auch um die Lebenfähigkeit der Kolonie bei wachsender Bevölkerung sicherzustellen. Doch nach einem Unfall beginnt seine Welt auseinander zu fallen und Inkonsistent zu werden.
-Eine kurze und unkomplizierte Geschichte in der Art Total Recall meets M. Night Shyamalan, und auch wenn man als erfahrener Scifi-Leser die Pointe meilenweit kommen sieht, bleibt das Buch spannend.</div>
+        <div class='mt-3'>Hier ist eine wichtige Zahl: Ein Coredump von einem MySQL auf einer Maschine mit knapp unter 200 GB Speicher dauert 15 Minuten. Auf SSD. Auf eine Festplatte dauert der gleiche Coredump dann knapp über 30 Minuten.
+Warum ist das eine wichtige Zahl?
+SSD sind schnell. Linear schreiben sie mehr als 200 MB pro Sekunde weg - ein ziemlich beeindruckendes Tempo, und noch dazu in einer Disziplin, wo sie nicht einmal optimal nutzbar sind.</div>
 
     </div>
   </div>
@@ -207,19 +210,19 @@ Eine kurze und unkomplizierte Geschichte in der Art Total Recall meets M. Night 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/17/die-erzwingung-der-privatsphaere.html" class='text-decoration-none text-dark'>Die Erzwingung der Privatsphäre</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/04/fertig-gelesen-alex-benedict.html" class='text-decoration-none text-dark'>Fertig gelesen: Alex Benedict</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 17, 2012
+          September 4, 2012
         </div>
 
-        <div class='mt-3'>In habe ich erklärt, wo die persönlichen Vorteile der Offenlegung von Informationen über eigene Interessen oder Eigenschaften liegen können, und es in den Kommentaren auch mit einigen ganz konkreten, selbst erfahrenen Beispielen belegt: Gezielte Veröffentlichung von Interessen ermöglicht uns, einander zu finden und uns horizontal, unter Gleichen, zu organisieren.
-Sehr viel drastischer schlägt Charles Stross in The Internet is for porn in dieselbe Kerbe. Bei ihm geht es um sexuelle Vorlieben und wie diese durch das Internet gemainstreamed werden:</div>
+        <div class='mt-3'>A Talent for War , Jack McDevitt, USD 7.99 (Audiobook von Audible verfügbar)
+Jack McDevitt&rsquo;s Alex Benedict lebt von uns aus gesehen etwa 10.000 Jahre in der Zukunft, auf irgendeiner Welt, die von den Menschen besiedelt worden ist. Aber da sich die Zivilisation in McDevitts Universum in Kreisen bewegt, sind seine Denkweisen und seine Profession uns wesentlich näher: Er handelt mit Antiquitäten, Artefakten aus Kriegen, die Menschen irgendwann einmal zwischen den Sternen geführt haben, Plaketten und Bordbücher bekannter Entdeckerschiffe und andere Dinge, die durch Mut, Neugier oder Entdeckergeist und die mit ihnen verknüpften Geschichten zu Symbolen mit Bedeutung für andere geworden sind.</div>
 
     </div>
   </div>
@@ -230,19 +233,19 @@ Sehr viel drastischer schlägt Charles Stross in The Internet is for porn in die
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/17/fertig-gelesen-the-religion-virus.html" class='text-decoration-none text-dark'>Fertig gelesen: The Religion Virus</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/03/fertig-gelesen-ancient-shores.html" class='text-decoration-none text-dark'>Fertig gelesen: Ancient Shores</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 17, 2012
+          September 3, 2012
         </div>
 
-        <div class='mt-3'>The Religion Virus , Craig A. James, USD 4.75
-Das Buch behandelt Religion, und insbesondere das Christentum als Mem-Komplex, also als ein ideologisches Gen, daß auf unserem Bewußtsein und in unserer Kultur mitreitet. Der Mem-Komplex entwickelt sich dabei nach evolutionären Regeln weiter, indem er mit anderen, verwandten Memen konkurriert, und generell mit allen Ideen um Aufmerksamkeit wettstreitet. Untersucht werden die grundsätzlichen Teil-Meme, die das Judentum und später das Christentum geprägt haben, und dabei an Bibelstellen und der aufgezeichneten objektiven Geschichte des Christentums nachgewiesen, wann und wo diese Meme entstanden sind und wie sie dabei halfen, den Memplex &ldquo;Christentum&rdquo; erfolgreicher und gegen andere Religionen und Ideen durchsetzungsstärker zu machen.</div>
+        <div class='mt-3'>Ancient Shores , Jack McDevitt, USD 7.99
+Irgendwo in North Dakota, mitten in der Prärie, gräbt ein Farmer ein Schiff aus, das aus einem Material ist, das unmöglich auf der Erde hergestellt worden sein kann. Es stellt sich heraus, daß vor 10.000 Jahren, kurz nach der Eiszeit, die Prärie der Boden eines großen Süßwasser-Sees war, und bei der Suche nach einem logischen Hafen findet man ein Roundhouse mit einem Stargate - auf altem Indianerland.</div>
 
     </div>
   </div>
@@ -253,19 +256,20 @@ Das Buch behandelt Religion, und insbesondere das Christentum als Mem-Komplex, a
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/15/materialized-view.html" class='text-decoration-none text-dark'>Materialized View</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/02/fertig-gelesen-kill-decision.html" class='text-decoration-none text-dark'>Fertig gelesen: Kill Decision</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          August 15, 2012
+          September 2, 2012
         </div>
 
-        <div class='mt-3'>Daten in einer SQL-Datenbank werden in einer Tabelle abgelegt, also einer Struktur mit Spalten, die Namen und in vielen Fällen auch einen Datentyp haben. Eine Tabelle besteht dann aus 0 oder mehr Zeilen, die in dieses Spaltenschema passen.
-Für das Schreiben von Daten möchte man diese dann Normalform bringen, um Anomalien bei Änderungen von Daten zu verhindern und um die Datenmenge kompakt zu halten. Kompakte Daten haben den Vorteil, daß sie von der Datenbank ganz oder in wesentlichen Teilen im Speicher gehalten werden können, sodaß lediglich tatsächliche Schreibzugriffe irgendwann die Platte treffen.</div>
+        <div class='mt-3'>Kill Decision , Daniel Suarez, USD 12.99
+Nach Daemon und Freedom™ und waren die Hoffnungen hoch, daß das neue Buch von Daniel Suarez den Standard halten kann, den er mit seinen ersten beiden Büchern gesetzt hat. TL;DR: Das hat funktioniert.
+Die Geschichte: Linda, eine Ameisenforscherin lernt, daß ihr Ameisen-Schwarm-Modell ganz ausgezeichnet funktioniert, um das Schwarmverhalten autonomer (nicht ferngesteuerter) Drohnen zu kontrollieren. Es wird gestohlen, militarisiert und man ist hinter ihr her - mit eben diesen Drohnen.</div>
 
     </div>
   </div>
@@ -276,18 +280,19 @@ Für das Schreiben von Daten möchte man diese dann Normalform bringen, um Anoma
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/07/22/mit-dem-schnuppel-im-tierpark.html" class='text-decoration-none text-dark'>Mit dem Schnuppel im Tierpark</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/01/fertig-gelesen-existence.html" class='text-decoration-none text-dark'>Fertig gelesen: Existence</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          July 22, 2012
+          September 1, 2012
         </div>
 
-        <div class='mt-3'> </div>
+        <div class='mt-3'>Existence , David Brin, USD 14.99
+Existence ist eine Geschichte über viele Dinge: In einer Welt nach der Klimakatastrophe, in einer Welt der ubiquitären Kommunikation und permanenten Netzwerkzuganges über augmented reality devices a la Google Glasses, in einer Welt nach dem großen Crash des Kapitalismus und einer nicht näher spezifizierten Terrorkatastrophe, in dieser Welt geht es den Menschen eigentlich recht gut. Sie haben sich angepaßt, neue Wege des Zusammenleben gefunden und wieder so etwas wie Stabilität gefunden.</div>
 
     </div>
   </div>
@@ -298,23 +303,21 @@ Für das Schreiben von Daten möchte man diese dann Normalform bringen, um Anoma
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/06/25/wieso-wir-gegen-das-leistungsschutzrecht-sind.html" class='text-decoration-none text-dark'>Wieso wir gegen das Leistungsschutzrecht sind</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/31/fertig-gelesen-vs-spoiler.html" class='text-decoration-none text-dark'>Fertig gelesen vs. Spoiler.</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          June 25, 2012
+          August 31, 2012
         </div>
 
-        <div class='mt-3'>Auf Google Plus schreibt Christoph Kappes:
-&ldquo;Haben alle verstanden, dass Rivva tot ist, wenn das #LSR kommt? Redet keiner drüber, hm.&rdquo; Drüben bei Twitter. Hier kann diskutiert werden.
-Das greift viel zu kurz.
-Ich schrieb:
-Christoph, ich glaube, Deine Denkweise setzt zu spät an.
-Dem Gedanken des LSR zufolge gibt es Content, der dem LSR unterliegt und es gibt Content, der dem LSR nicht unterliegt, weil er nicht von einem Presseverlag im Sinne des LSR generiert wird und daher durch das LSR nicht geschützt wird.</div>
+        <div class='mt-3'>Aus den Kommentaren in meinem Stream herausgezogen und noch einmal, ein einziges Mal, prominent hier herein gestellt.
+Ich halte es mit dem Baedeker Reiseführer, wie im &ldquo;Zimmer mit Aussicht&rdquo; zitiert: Man sieht nur, was man schon kennt.
+Spoiler sind mir egal. Vollkommen egal. Ich werde sie weder absichtlich hier einstellen, noch irgendetwas tun, um sie zu vermeiden, markieren oder sonst wie zu identifizieren.
+Wem das nicht paßt, der sollte mir nicht folgen.</div>
 
     </div>
   </div>
@@ -325,19 +328,20 @@ Dem Gedanken des LSR zufolge gibt es Content, der dem LSR unterliegt und es gibt
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/06/11/hdfs-billig-im-cluster-speichern.html" class='text-decoration-none text-dark'>HDFS - billig im Cluster speichern</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/31/fertig-gelesen-the-apocalypse-codex.html" class='text-decoration-none text-dark'>Fertig gelesen: The Apocalypse Codex</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          June 11, 2012
+          August 31, 2012
         </div>
 
-        <div class='mt-3'>Wer Clustern will, der muß erst mal einen solchen haben. Also, einen Cluster von möglichst vielen Rechnern. Die Anforderungen sind dabei klar: Man möchte Hardware haben, die möglichst billig ist - für Serverplatten, Speicher mit Fehlerkorrektur (ECC), und dergleichen Luxus ist kein Geld da, denn man möchte das gesparte Geld lieber in mehr Rechner stecken.
-Also Billighardware kaufen? Nein! Denn auch die laufenden Kosten möchte man niedrig halten - der Rechner sollte also klein sein, und möglichst geringe laufende Kosten haben, also möglichst wenig Strom aufnehmen und bei möglichst hohen Zuluft-Temperaturen noch funktionieren.</div>
+        <div class='mt-3'>The Apocalypse Codex , Charles Stross, USD 12.99
+Zu Charles Stross &ldquo;Laundry&rdquo; Universum habe ich in Fertig gelesen: The Fuller Memorandum ja schon etwas gesagt (siehe auch Fertig gelesen: Atrocity Archives , Laundry Roleplaying .
+Im Laundryverse ist höhere Mathematik mit schwarzer Magie identisch und kann das Gewebe der Realität umdefinieren, und Verschwörungstheorien werden real, wenn nur genug Leute daran glauben. In The Apocalypse Codex zieht Stross nun die Daumenschrauben an und wir kommen CASE NIGHTMARE GREEN ein wenig sehr viel näher: Kultisten nutzen Sekten und Televangelists, um Jünger zu rekrutieren, tricksen die Nazgûl aus und versuchen, den Sleeper zu wecken.</div>
 
     </div>
   </div>
@@ -348,20 +352,19 @@ Also Billighardware kaufen? Nein! Denn auch die laufenden Kosten möchte man nie
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/05/28/backdoor.html" class='text-decoration-none text-dark'>Backdoor</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/30/fertig-gelesen-redshirts.html" class='text-decoration-none text-dark'>Fertig gelesen: Redshirts</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          May 28, 2012
+          August 30, 2012
         </div>
 
-        <div class='mt-3'>Sergei Skorobogatov von der Uni Cambridge kündigt sein neues Paper an, das jedoch erst im September veröffentlicht werden wird (PDF ):
-&ldquo;Breakthrough silicon scanning discovers backdoor in military chip&rdquo; will appear at CHES2012 in September. It will expose some serious security issues in the devices which are supposed to be unbreakable.
-Es geht um Krypto, die in Hardware implementiert ist, und man hat Chips untersucht, die in aktueller militärischer Hardware eingesetzt werden, indem man Reverse Engineering-Techniken auf diese Hardware angewendet hat und das so gewonnenene Design gegen die Spezifikation verglichen hat.</div>
+        <div class='mt-3'>Redshirts , John Scalzi, USD 11.99
+&ldquo;Redshirts&rdquo; ist eine fiese Satire auf die Versammlung von Plotholes, die Star Trek so aufzuweisen hat. Was passiert, wenn die rothemdigen Extras der Serie jene hoch intelligente und gut ausgebildete Elite und die Teamarbeiter wären, die der Handlung nach von der Star Fleet Academy angeblich produziert würden? Richtig, sie würden binnen allerkürzester Zeit herausfinden, daß sie die Extras in einer billigen Fernsehserie wären, und würden die Plotdevices ihres Schiffes so riggen, daß sie im Swingby um eine Sonne in die reale Realität katapultiert würden.</div>
 
     </div>
   </div>
@@ -372,19 +375,19 @@ Es geht um Krypto, die in Hardware implementiert ist, und man hat Chips untersuc
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/05/28/logging.html" class='text-decoration-none text-dark'>Logging</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/29/fertig-gelesen-der-autor-als-agentur-der-moderne.html" class='text-decoration-none text-dark'>Fertig gelesen: Der Autor als Agentur der Moderne</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          May 28, 2012
+          August 29, 2012
         </div>
 
-        <div class='mt-3'>&ldquo;Kris&rdquo;, fragt man mich, &ldquo;Kris, gibt es außer &lsquo;Volltextsuche&rsquo; noch andere Gründe, für neue Anwendungen noch MyISAM zu verwenden? Im konkreten Fall geht es um eine verhältnismäßig einfache Datenstruktur, in die nur streng sequenziell geschrieben wird, nie gelöscht wird und viel und kreativ gelesen wird.&rdquo; Na, das ist doch mal ein weites Feld.
-Teile davon habe ich in Ein paar Gedanken zu Zeitreihendaten und Wie man einen Graph plottet ja schon beackert.</div>
+        <div class='mt-3'>Der Autor als Agentur der Moderne , Frank O. Hrachowy, EUR 49.90
+Im Wohnzimmer meines Vaters stand an einem Ende eine große Bücherwand in 80er-Jahre-Braun und Beige. Scheinwerfer strahlten eine große Hundertwasser-Kopie über der Stereoanlage an, ansonsten war das Ding voll von Büchern über alles Mögliche. Oben in der Ecke standen ein paar Jugendbücher, darunter auch eine Menge Hans Dominik, insbesondere die Eggerth-Trilogie, Wettflug der Nationen , Ein Stern fiel vom Himmel und Land aus Feuer und Wasser .</div>
 
     </div>
   </div>
@@ -395,20 +398,18 @@ Teile davon habe ich in Ein paar Gedanken zu Zeitreihendaten und Wie man einen G
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/04/27/alle-vier-stunden-zum-nutzen-von-antivirus-und-zum-nutzen-von-testverfahren.html" class='text-decoration-none text-dark'>Alle vier Stunden - zum Nutzen von Antivirus und zum Nutzen von Testverfahren</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/29/fertig-gelesen-whatever-happened-to-the-world-of-tomorrow.html" class='text-decoration-none text-dark'>Fertig gelesen: Whatever happened to the world of tomorrow?</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          April 27, 2012
+          August 29, 2012
         </div>
 
-        <div class='mt-3'>In Nur bedingt abwehrbereit schreibt Peter Welchering über die Wirksamkeit oder Unwirksamkeit von Antivirenprogrammen. Dabei geht es auch um den &ldquo;Schutzlevel&rdquo; von Antivirenprogrammen, wie immer der genau definiert ist. Ich lese unter Schmerzen:
-Einen 99-prozentigen Schutz verspricht Marco Preuß vom Antivirenhersteller Kaspersky. Auf 35 bis 96 Prozent taxieren die Softwaretester der „Stiftung Warentest“ das Schutzniveau von Antivirenprogrammen.
-In einem früheren Leben vor vielen Jahren war ich einmal Securityfuzzi in einem größeren Internetladen, und hatte in dieser Eigenschaft gelegentlich mit Viren und ihrer Verbreitung zu tun, etwa die SOBIG -Welle und einige andere, vergleichbare Teile.</div>
+        <div class='mt-3'>&ldquo;Whatever happened to the World of Tomorrow?&rdquo; erklärt, wieso das Versprechen an unsere Eltern - Jetpacks und fliegende Autos - nicht eingelöst wurde, und wieso wir dennoch heute in der Zukunft leben. Es verweist gleichzeitig auf unsere Zukunft, eine Zukunft, die nicht zu den Erwartungen und dem Wissen der vorangegangenen Generationen passen wird. Unsere Welt von Morgen wird nach wieder anderen Regeln funktionieren, und wir werden wieder andere Probleme lösen müssen&hellip;</div>
 
     </div>
   </div>
@@ -419,21 +420,19 @@ In einem früheren Leben vor vielen Jahren war ich einmal Securityfuzzi in einem
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/15/grundsaetze-verteilter-datenbanken.html" class='text-decoration-none text-dark'>Grundsätze verteilter Datenbanken</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/28/fertig-gelesen-children-of-the-sky.html" class='text-decoration-none text-dark'>Fertig gelesen: Children of the Sky</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 15, 2012
+          August 28, 2012
         </div>
 
-        <div class='mt-3'>Wonka&gt; Die Toppoint z.B. wird vermutlich nie was haben, was in nennenswerte Last-Regionen kommt, aber ich will - akademisches Interesse und so - schon wissen, wie man das da am besten täte. Was mich auch für die Toppoint interessiert: irgendeine Sorte Redundant Array of Inexpensive Databases :)
-Lalufu&gt; MySQL mit Replication? Alternativ mit DRBD?
-Isotopp&gt; Mit DRBD. Nicht mit Replikation.
-Wonka&gt; Lalufu: Hm, Master-Master-Replication geht ja nur mit Zweien. Wenn man nun mehr als das haben will, kann man zwar Ringe bauen, aber nur einfach verkettete.</div>
+        <div class='mt-3'>The Children of the Sky , Vernor Vinge, USD 7.99
+&ldquo;Children of the Sky&rdquo; ist der 3. Band der Zones of Thought Serie von Vernor Vinge. Die beiden ersten Teile, A Fire Upon the Deep (1992) und A Deepness in the Sky (1999) sind ja nun schon 20 und 12 Jahre alt, und so beschäftigt sich ein guter Teil der Handlung damit, die Handlung aus A Fire Upon The Deep wieder aufzunehmen, bekannte Charactere neu einzuführen und vor allen Dingen eine neue Situation aufzubauen, nachdem der erste Teil die Handlung bis auf ein einziges loses Ende sehr gut abgeschlossen hatte.</div>
 
     </div>
   </div>
@@ -444,20 +443,22 @@ Wonka&gt; Lalufu: Hm, Master-Master-Replication geht ja nur mit Zweien. Wenn man
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/12/wie-man-einen-graph-plottet.html" class='text-decoration-none text-dark'>Wie man einen Graph plottet</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/28/load-load-testing-und-benchmarks.html" class='text-decoration-none text-dark'>Load, Load Testing und Benchmarks</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 12, 2012
+          August 28, 2012
         </div>
 
-        <div class='mt-3'>Ein total kaputtes Stück Graph.
-Das da ist das, was ich bekomme, wenn ich mir eine Woche Daten in dem Datenbank-Monitoringprodukt meiner Wahl anschaue. Aber das spielt keine Rolle. Ich kann mir so ziemlich jeden Zeitreihengraphen anschauen, aus so ungefähr jedem Stück Software, das mir zur Installation zur Verfügung steht, und falls es nicht rrdtools ist, ist es genau so kaputt.
-Das ist bemerkenswert, weil der Plot wahrscheinlich von einem Rudel Diplom- oder Master-Abgänger gebaut worden ist.</div>
+        <div class='mt-3'>(Diesen Artikel gibt es auch in englischer Sprache .)
+So. Du willst also wissen, was genau die Leistungsgrenzen Deines Systems sind. Und dazu möchtest Du einen Lasttest fahren, um Ergebnisse zu ermitteln.
+Die Grundidee Deines Plans sieht so aus:
+Du nimmt Deine Kiste und findest eine Methode, um Last zu generieren. Dann wirst Du schon merken, wie weit das geht und wann die Kiste ausgelastet ist.
+Der erste Fehler: Den Lastgenerator auf der zu testenden Kiste laufen lassen.</div>
 
     </div>
   </div>
@@ -468,19 +469,20 @@ Das ist bemerkenswert, weil der Plot wahrscheinlich von einem Rudel Diplom- oder
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/09/sam-spielt-es-noch-einmal-das-lied-vom-urheberrecht.html" class='text-decoration-none text-dark'>Sam spielt es noch einmal: Das Lied vom Urheberrecht</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/27/fertig-gelesen-der-bierzauberer.html" class='text-decoration-none text-dark'>Fertig gelesen: Der Bierzauberer</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 9, 2012
+          August 27, 2012
         </div>
 
-        <div class='mt-3'>Wolfgang Michal schreibt auf carta.info: Kleine Anfrage an die Kritiker des geistigen Eigentums das übliche Zeugs. Das heißt, er zieht sich an dem Begriff &ldquo;Geistiges Eigentum&rdquo; hoch und schlägt vor, daß die Gegner des Kampfbegriffes &ldquo;Geistiges Eigentum&rdquo; auch das dingliche Eigentum gleich mit abschaffen, wegen weil.
-Die Diskussion und die Argumente sind nicht neu, wir finden sie auch im hinteren Teil der Diskussion mit Lena Falkenhagen im November , die ich seinerzeit in Nicht das Urheberrecht ist das Kernthema zusammengefaßt habe.</div>
+        <div class='mt-3'>Der Bierzauberer , Günther Thömmes, EUR 9.99
+&ldquo;Der Bierzauberer&rdquo; kam bei einem Bücher-Adventskalender im deutschen Kindle Post als Kostenlos-Buch vorbei, also habe ich es mir erklickt und gelesen. Es ist ein historischer Roman über Niklas von Hahnfurt, einen Bierbrauer im 13. Jahrhundert und es erzählt die Geschichte und den Stand der Bierbrauerei in Deutschland, vor dem Reinheitsgebot und zum Teil vor dem Hopfen.
+Niklas kommt aus dem fränkischen, und gelangt über das Kloster Weihenstephan und das Kloster St.</div>
 
     </div>
   </div>
@@ -491,20 +493,20 @@ Die Diskussion und die Argumente sind nicht neu, wir finden sie auch im hinteren
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/06/architektur-hei-t-umbauen.html" class='text-decoration-none text-dark'>Architektur heißt umbauen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/26/fertig-gelesen-blackout.html" class='text-decoration-none text-dark'>Fertig gelesen: Blackout</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 6, 2012
+          August 26, 2012
         </div>
 
-        <div class='mt-3'>Teatro di Marcello , Rom
-Das auf dem Bild da ist das Theater des Marcellus, in Rom. Das Foto habe ich Anfang 2006 aufgenommen, als ich dienstlich bei einem Kunden ganz in der Nähe war.
-Das Marcellustheater ist nach Marcus Marcellus benannt, einem Neffen von Kaiser Augustus, und wurde so um 13 vor Christus fertig gestellt. Es ist später verfallen, dann im Mittelalter als Festung genutzt worden, im 16. Jahrhundert dann in eine Palastresidenz umgewandelt worden.</div>
+        <div class='mt-3'>Blackout , Marc Elsberg, EUR 15.99
+Und weil wir gestern gerade &ldquo;Eine Billion Dollar&rdquo; von Andreas Eschbach hatten: Ebendieser hat auf Google plus &ldquo;Blackout&rdquo; empfohlen, also habe ich mir das einmal angesehen.
+Der Hintergrund ist systematisch dem Vorgehen von Eschbach bei &ldquo;Eine Billion Dollar&rdquo; ähnlich, nur daß es diesmal um Strom, Stromnetzwerke und Smartmeter geht: In Europa kommt es nach dem Ausfall in Teilen des Kontinents zu einer Kettenreaktion und einem kontinentalen Blackout.</div>
 
     </div>
   </div>
@@ -515,19 +517,19 @@ Das Marcellustheater ist nach Marcus Marcellus benannt, einem Neffen von Kaiser 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/05/b-wie-verzweiflung.html" class='text-decoration-none text-dark'>/b/ wie &#34;Verzweiflung&#34;</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/25/fertig-gelesen-exponentialdrift-eine-billion-dollar.html" class='text-decoration-none text-dark'>Fertig gelesen: Exponentialdrift, Eine Billion Dollar</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 5, 2012
+          August 25, 2012
         </div>
 
-        <div class='mt-3'>Netzpolitik.org weist auf das Positionspapier &ldquo;Eckpunkte für eine Novelle des Jugendmedienstaatsvertrags &rdquo; (PDF) der CDU hin. Dort findet man die Idee, neben den bekannten Kennzeichnungen der Altersstufen &ldquo;6&rdquo;, &ldquo;12&rdquo;, &ldquo;16&rdquo; und &ldquo;18&rdquo; eine weitere aufzunehmen: &ldquo;B&rdquo; für Blogs.
-Bei netzpolitik.org findet man das lustig, aber der Hintergrund ist ernst. Zum besseren Verständnis hier noch einmal der Verweis auf Unerwünschte Freiheiten von Holger Bleich bei der c&rsquo;t, um die Interessenlage der Player in Erinnerung zu rufen.</div>
+        <div class='mt-3'>Exponentialdrift , Andreas Eschbach, EUR 3.99
+&ldquo;Exponentialdrift&rdquo; ist ein literarisches Experiment: Die Geschichte ist ursprünglich als Fortsetzungsroman in wöchentlichen Episoden in der FAZ erschienen und lief dort in etwa ein Jahr lang. Der Erzählstil ist von den extremen Platzbeschränkungen der Zeitung und von den Verflechtungen der Geschichte mit tagesaktuellen zeitgenössischen Ereignissen geprägt. Als Buch ist die Geschichte aus ihrem Entstehungskontext gerissen und wirkt sehr viel anders als im Original, nehme ich an.</div>
 
     </div>
   </div>
@@ -538,18 +540,20 @@ Bei netzpolitik.org findet man das lustig, aber der Hintergrund ist ernst. Zum b
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html" class='text-decoration-none text-dark'>Wieso wir uns veröffentlichen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/24/fertig-gelesen-anomaly.html" class='text-decoration-none text-dark'>Fertig gelesen: Anomaly</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 3, 2012
+          August 24, 2012
         </div>
 
-        <div class='mt-3'>Der folgende Text entstand aus einigen Zeilen, die ich zwischen Tür und Angel in #spackeria abgeworfen habe, und die von Jürgen Geuter und Sven Türpe aufgearbeitet worden sind. Er ist noch nicht ganz fertig, und an einigen Stellen sind Brüche drin, aber nachdem wir da in den letzten paar Tagen nicht haben weiter arbeiten können, hau ich den aktuellen Stand mit allen seinen Schwächen einfach mal hier ins Blog bevor uns der Text weg gammelt.</div>
+        <div class='mt-3'>Anomaly , Peter Cawdron, USD 2.99
+New York, Mittags, an einem heißen Sommertag, in der Nähe des UN Gebäudes: Die Welt gerät aus den Fugen - wörtlich. Eine Kugelsektion von ca. 130 Metern Durchmesser, Bürgersteig , Fahnenmasten, Luft und alles andere, wird quasi aus der Erde herausgeschnitten und macht die Erddrehung nicht mehr mit.
+Außerirdisches Leben ist auf der Erde gelandet und ist so fremdartig und der Menschheit so weit voraus, daß die Menschen die Kontaktaufnahme beinahe nicht als Kommunikationsversuch erkennen.</div>
 
     </div>
   </div>
@@ -560,20 +564,19 @@ Bei netzpolitik.org findet man das lustig, aber der Hintergrund ist ernst. Zum b
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/03/01/recht-auf-vergeben.html" class='text-decoration-none text-dark'>Recht auf Vergeben</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/23/discoverable-culture-das-buch-als-konversationsst-ck.html" class='text-decoration-none text-dark'>Discoverable culture: Das Buch als Konversationsstück</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          March 1, 2012
+          August 23, 2012
         </div>
 
-        <div class='mt-3'>Unser Innenminister diskutiert das &ldquo;Recht auf Vergessen &rdquo; im Spiegel Online und benutzt dort wieder Worte komisch. Ich habe das in Vergeben, vergessen und vernichten schon mal angesprochen.
-Die entsprechenden Diskussion auf Google Plus war interessant, denn der Text erschien einem Teilnehmer dort als &rsquo;erstaunlich reflektierter Text'.
-Ich teile diese Ansicht und zugleich auch nicht, denn es ist der Sprachgebrauch von &ldquo;Vergessen&rdquo;, der hier die Sicht auf die Dinge verstellt.</div>
+        <div class='mt-3'>In The problem with eBooks schreibt Diego Elio Pettenò über einen Aufenthalt in Los Angeles:
+I wouldn’t mind meeting people around here, and with people I don’t necessarily mean girls, to be clear. I would just prefer not to feel so … isolated in the crowd as I feel now. I guess being a geek in the surfer’s paradise is not that great a situation. But what has this to do with eBooks?</div>
 
     </div>
   </div>
@@ -584,20 +587,20 @@ Ich teile diese Ansicht und zugleich auch nicht, denn es ist der Sprachgebrauch 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/02/28/fertig-gelesen-metagame.html" class='text-decoration-none text-dark'>Fertig gelesen: Metagame</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/23/fertig-gelesen-a-confusion-of-princes.html" class='text-decoration-none text-dark'>Fertig gelesen: A confusion of princes</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://twitter.com/isotopp" class='text-secondary text-decoration-none'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
             Kristian Köhntopp
           </a>
           -
-          February 28, 2012
+          August 23, 2012
         </div>
 
-        <div class='mt-3'>Metagame , 5.49 EUR, 422 Seiten in der gedruckten Fassung.
-Letzten Monat gab es den Kindle-Deal des Tages für Metagame von Sam Landstrom.
-Eine SciFi-Geschichte in einem nachhaltigen Universum voller Bioengineering. Die Menschheit auf die harte Weise gelernt, daß sie nicht weiter wachsen und nach belieben Energie verbrauchen kann: Nach einigen biologischen Katastrophen hat die Restbevölkerung eine Gesellschaft erschaffen, die nach den Regeln &ldquo;Des Spiels&rdquo; lebt. Jede Tätigkeit im Leben ist Teil Des Spiels, entweder ein Grinder Game, also als Spiel verpackte Arbeit, oder ein Spank Game, also ein Zeitvertreib, der Menschen davon abhält, aus Langeweile Unheil anzurichten (Die Geschichte enthält einige Backreferenzen auf einen 17-jährigen Jungen, der aus Langeweile mit einem Bioengineering Kit einen Virus erschaffen hat, der dann mal grad 1/4 der Weltbevölkerung ausgelöscht hat).</div>
+        <div class='mt-3'>A Confusion of Princes , Garth Nix, USD 9.99
+Khemri ist ein Prinz eines intergalaktischen Imperiums, eine Ansammlung von Welten, die durch Technologie, Biotech und Psionik zusammengehalten und von einem Geist in der Maschine, dem Imperator, regiert wird. Khemri wird nun bald volljährig und weiß auf Grund seiner Ausbildung, daß er bald romantische und heroische Abenteuer erleben wird, bevor er die Welt rettet und selber Imperator wird.
+Es stellt sich raus, daß die Realität komplizierter ist.</div>
 
     </div>
   </div>
@@ -631,7 +634,7 @@ Eine SciFi-Geschichte in einem nachhaltigen Universum voller Bioengineering. Die
         <a href="/blog/29.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/49.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -663,6 +666,10 @@ Eine SciFi-Geschichte in einem nachhaltigen Universum voller Bioengineering. Die
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -671,9 +678,7 @@ Eine SciFi-Geschichte in einem nachhaltigen Universum voller Bioengineering. Die
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

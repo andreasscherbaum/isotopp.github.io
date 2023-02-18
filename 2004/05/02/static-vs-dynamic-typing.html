@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/2004/05/02/static-vs-dynamic-typing.html">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='Static vs. dynamic typing' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -127,8 +126,8 @@
             Static vs. dynamic typing
           </h1>
           <div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-            <img alt='isotopp image' src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-            <a href="https://twitter.com/isotopp" class='text-light text-decoration-none'>
+            <img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+            <a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
                 Kristian Köhntopp
             </a>
 
@@ -193,11 +192,11 @@ Bei <a href="http://www.procata.com/blog/archives/2004/04/26/classpath-considere
 -Methode für dieses int.</p>
 <p>Oder, schöner noch: Wie schreibt ein Java-Programmierer &ldquo;Tu eine Zahl in Array und hol sie wieder raus?&rdquo;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">Vector</span> <span class="n">aList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">aNumber</span> <span class="o">=</span> <span class="n">5</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">aNumber</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">anotherNumber</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">aList</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="n">aNumber</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl"><span class="n">anotherNumber</span> <span class="o">=</span> <span class="o">((</span><span class="n">Integer</span><span class="o">)</span><span class="n">aList</span><span class="o">.</span><span class="na">getElement</span><span class="o">(</span><span class="n">0</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">anotherNumber</span> <span class="o">=</span> <span class="o">((</span><span class="n">Integer</span><span class="o">)</span><span class="n">aList</span><span class="o">.</span><span class="na">getElement</span><span class="o">(</span><span class="mi">0</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
 </span></span></code></pre></div><p>Wir bauen uns also ein int-Skalar aNumber, und eine Liste aList. Da in die Liste nur Objekte rein können, machen wir aus dem int-Skalar ein int-Objekt und tun das in die Liste. Da Java
 <a href="http://www.ferg.org/projects/python_java_side-by-side.html#typing" target="_blank" rel="noopener">statisch typt</a>
 
@@ -249,9 +248,7 @@ Nur dann dürfen wir das int-Skalar aus dem Integer-Objekt wieder herausholen.</
         <a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2004%2f05%2f02%2fstatic-vs-dynamic-typing.html' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#facebook'/></svg>
         </a>
-        <a href='https://twitter.com/intent/tweet?source=https%3a%2f%2fblog.koehntopp.info%2f2004%2f05%2f02%2fstatic-vs-dynamic-typing.html&text=Static%20vs.%20dynamic%20typing%20%7C%20Die+wunderbare+Welt+von+Isotopp:%20https%3a%2f%2fblog.koehntopp.info%2f2004%2f05%2f02%2fstatic-vs-dynamic-typing.html' target='_blank' class='text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
         <a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2004%2f05%2f02%2fstatic-vs-dynamic-typing.html&title=Static%20vs.%20dynamic%20typing' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -279,6 +276,19 @@ Nur dann dürfen wir das int-Skalar aus dem Integer-Objekt wieder herausholen.</
         
       </div>
     </div>
+
+    
+    
+    
+    
+    <div class='row justify-content-center py-3 mb-3 mx-0'>
+      <div class='col-lg-8 text-center'>
+        <a href="https://github.com/isotopp/isotopp.github.io/edit/main/content/posts/2004-05-02-static-vs-dynamic-typing.md" rel="noopener noreferrer" target="_blank">
+            <span class='letter-spacing-01 text-uppercase text-secondary me-2'>Suggest Changes</span>
+        </a>
+      </div>
+    </div>
+    
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
@@ -330,6 +340,10 @@ Nur dann dürfen wir das int-Skalar aus dem Integer-Objekt wieder herausholen.</
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -338,9 +352,7 @@ Nur dann dürfen wir das int-Skalar aus dem Integer-Objekt wieder herausholen.</
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

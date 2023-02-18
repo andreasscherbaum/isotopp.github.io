@@ -6,7 +6,1106 @@
     <description>Recent content in devops on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Oct 2022 09:16:01 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/devops/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 17:52:47 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/devops/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This is not a Drill, this is just Tuesday</title>
+      <link>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</link>
+      <pubDate>Sat, 18 Feb 2023 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</guid>
+      <description>&lt;h1 id=&#34;master-of-disaster&#34;&gt;
+    &lt;a href=&#34;#master-of-disaster&#34;&gt;
+	Master of Disaster
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;With a previous employer there was the requirement to implement business continuity management and patch management.
+Specifically, there was a requirement to be able to lose a region completely without loss of business.
+The other requirement was to be able to have all systems CVE-free within 30 days (in emergencies: 3 days), and to be able to blackstart them.&lt;/p&gt;
+&lt;p&gt;That was of course impossible to implement.&lt;/p&gt;
+&lt;p&gt;Managements reaction was to create the position of the &amp;ldquo;Master of Disaster&amp;rdquo; (MoD).
+The MoD and their apprentice (&amp;ldquo;always two there are&amp;rdquo;) have then planned, for many months, a fail-over between two Regions.
+But they did not achieve much, and they never could, because in the end Management Buy-In was missing.
+In the end, Management wanted to know (needed to know!), before the test, that it would work.
+That of course invalidated this approach completely.&lt;/p&gt;
+&lt;h1 id=&#34;security-is-a-process-what-does-that-even-mean&#34;&gt;
+    &lt;a href=&#34;#security-is-a-process-what-does-that-even-mean&#34;&gt;
+	&amp;ldquo;Security is a process&amp;rdquo;, what does that even mean?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The MoD then changed their way of working completely.
+They sat down with the teams, and with each they made a catalog of failure modes.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;What happens when a web server node fails?&amp;rdquo;
+&amp;ldquo;What happens when ten web server nodes fail?&amp;rdquo;
+&amp;ldquo;What happens when a load balancer dies?&amp;rdquo;
+&amp;ldquo;What when a rollout rolls out broken code, and we need to roll back?&amp;rdquo;
+&amp;ldquo;What when storage fails?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;And the MoD sat down and worked their way through protocols of outages past.
+They cataloged the outages and mapped then to the scenarios created above, and if they found missing cases the catalog was extended, together with the team.&lt;/p&gt;
+&lt;h1 id=&#34;it-is-only-science-if-you-write-it-down&#34;&gt;
+    &lt;a href=&#34;#it-is-only-science-if-you-write-it-down&#34;&gt;
+	It is only science if you write it down
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Then the team was asked to predict what would happen, how they would notice and how to fix.
+The MoD made them write these things down, into Opdocs.
+The Opdocs got Identifiers.
+All scenarios had to have named alarms checking for the scenario, and each alarm message had to include the Opdoc ID.&lt;/p&gt;
+&lt;p&gt;Then the team created a test scenario for each of these outages, bundled them together into a test session (&amp;ldquo;a drill&amp;rdquo;).
+And together with the Master of Disaster, their apprentice and a scribe went through them one by one, writing down what happened.
+Afterwards, all sat down, and compared notes with the predictions, and made a set of tasks to update the Alarms, the Opdocs or the Procedures themselves.
+Then they scheduled a followup session.
+In the end they arrived at a rhythm of a Drill every two or three sprints, until the team and the MoD were satisfied with the outcome.&lt;/p&gt;
+&lt;h1 id=&#34;rinse-repeat&#34;&gt;
+    &lt;a href=&#34;#rinse-repeat&#34;&gt;
+	Rinse, Repeat
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The MoD did that with all the teams, and magically after a year or so, things were no longer painful, but became a way of operating.
+The observed failure modes of the systems changed, because Drill findings made their way into development.
+The way of working and the way of thinking changed, in all the teams, fundamentally, even.
+Alerts became cleaned up, and with the need to attach Opdocs, Alerts became actionable, because that is what is in an Opdoc:
+Packaged actions a relatively unskilled Operator can execute.
+Tooling improved, to automate previously manual outage procedures.
+Automation grew.
+Reliability and reproducibility improved.
+Metrics got better.&lt;/p&gt;
+&lt;h1 id=&#34;large-scale-outages&#34;&gt;
+    &lt;a href=&#34;#large-scale-outages&#34;&gt;
+	Large scale outages
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Now the MoD moved on from team-level subsystem failures to larger scenarios that simulated loss of Racks or other larger units, or loss of Network connectivity (intermittently or for longer time).
+Also, they added drill scenarios with a loss of storage, that is outages where teams did not get back the machine that was simulated to fail after the Drill.
+Instead, they had to create replacements, first individually, then had to black-start entire regions.&lt;/p&gt;
+&lt;p&gt;These Drills highlighted automation defects:
+Manual and often undocumented work went into creating new systems, so that the automation was not resilient against large scale loss.&lt;/p&gt;
+&lt;p&gt;Also, a lot of problems related to loss or unavailability of the automation control plane were highlighted:&lt;/p&gt;
+&lt;p&gt;Systems might be able to lose their automation controllers.
+This is a &amp;ldquo;loss of control&amp;rdquo; scenario, not &amp;ldquo;loss of availability&amp;rdquo;.
+You do not lose web servers, but you lose the ability to make new ones or to decommission old ones or change the config of the existing ones.
+Systems usually can continue to run without their automation controller for a few hours, provided the operational circumstances are somewhat stable.&lt;/p&gt;
+&lt;p&gt;In some cases, loss of state in the control plane highlighted that the control plan could not rediscover its clients out their and scan them for state.
+Instead, it was assumed that the entire region was to be recreated from scratch, when it was in fact there, and perfectly functional, just unknown to the controller.&lt;/p&gt;
+&lt;p&gt;In some cases the automation assumed that new systems were to be recreated from scratch by cloning over data from remote regions.
+But if all teams are doing that at the same time, the line capacity is insufficient.
+It is necessary to do something more sophisticated and use local state (cloned over once) to implement a local fan-out.&lt;/p&gt;
+&lt;p&gt;Again, a year or two went past, with limited scope but larger drills.&lt;/p&gt;
+&lt;p&gt;Teams picked up the new requirements, development learned a thing or two, and by simply repeating until good the message arrived and improvements got implemented.
+We have now reached a state where automation is only considered &amp;ldquo;done done&amp;rdquo; when it survives one of the regularly simulated outages,
+and when the state of the Opdocs is good enough for members of adjacent teams (instead of the native team) to manage the outage.&lt;/p&gt;
+&lt;p&gt;Also, we have reached a sophistication of automation that allows us to drop each and ever instance and each and every image after 90 days,
+because replacements are redeployed automatically, and state is cloned over.&lt;/p&gt;
+&lt;h1 id=&#34;burning-it-all-down&#34;&gt;
+    &lt;a href=&#34;#burning-it-all-down&#34;&gt;
+	Burning it all down
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;This, after only three to four years, is where our organisation has reached a state where teams and management can go with confidence into a scenario where access to one Region is lost, in a controlled way and with pre-announcement.
+Management can believe that the entire thing is understood well enough that this Drill will not lead of a major loss of income.&lt;/p&gt;
+&lt;p&gt;Unannounced random failure of a Region, or total recovery from backup after a ransomware attack are still open issues, but they have become realistic targets.
+Each would amount to rebuilding a Region, automatically, from nothing, without loss of operations or income.&lt;/p&gt;
+&lt;h1 id=&#34;this-is-not-a-sprint&#34;&gt;
+    &lt;a href=&#34;#this-is-not-a-sprint&#34;&gt;
+	This is not a Sprint
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/02/not-a-drill.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;The key to success for the MoD was the change from Project to Process.
+Do small things with individual teams, first with cooperative teams, then reaching out and making the process mandatory for all teams.&lt;/p&gt;
+&lt;p&gt;This was not a single giant monster project, but small steps over many years, with a change in the MoD position and with a redefinition of the title and scope of the position along the way.
+It also was a fundamental change in the way how operations are done, and what is acceptable.
+It improved not only the business continuity stance, but also improved security overall, and made many audits and certifications easier.
+It also delivered the necessary metadata (machine inventory, mapping of services to instances, mapping of dependencies, implementation of controls) to management to make a large set of certifications and audits just a formality.&lt;/p&gt;
+&lt;p&gt;When people say &amp;ldquo;Security is a process&amp;rdquo;, this is what they mean.
+Small, doable exercises that become part of everyday operations.
+Then incremental widening of scope and increase of difficulty.&lt;/p&gt;
+&lt;p&gt;And the work is not done by the MoD, buy by the teams &amp;ndash; all teams.
+The MoD only steers the process, and guides the teams through it.&lt;/p&gt;
+&lt;p&gt;Because this is not a Drill.
+This is just Tuesday.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Service Directories, and what they are good for</title>
+      <link>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</link>
+      <pubDate>Mon, 06 Feb 2023 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</guid>
+      <description>&lt;p&gt;At a previous job we had a home-grown application &amp;ldquo;Service Directory&amp;rdquo;, which allowed a team to declare a service or deployed application.
+The record for a service not only declared the application with pointers to the source code repository, artifacts and documentation.&lt;/p&gt;
+&lt;p&gt;It also pointed to the operational facts, such as criticality, the owning teams, the SLO, the alerts, and the collected stats and dashboards.
+And, most importantly, you had to declare dependencies &amp;ndash; which other services you depend on.&lt;/p&gt;
+&lt;h1 id=&#34;using-dependencies-for-firewalls-and-passwords&#34;&gt;
+    &lt;a href=&#34;#using-dependencies-for-firewalls-and-passwords&#34;&gt;
+	Using Dependencies for Firewalls and Passwords
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;From data in service directory firewall rules were being generated, automatically.
+That meant that with a non-existent or incomplete SD declaration you could talk to nothing and nobody.&lt;/p&gt;
+&lt;p&gt;Also, all machine accounts (non-personal accounts, NPAs) were provisioned with Hashicorp Vault, controlled by SD.
+The data in vault was autogenerated, based on – you guessed it – data from the service directory.
+And it was rotated.&lt;/p&gt;
+&lt;p&gt;That is, every week or so new accounts with new passwords were being added to Vault, picked up by the services, and then also picked up by the clients – order matters a lot here.&lt;/p&gt;
+&lt;p&gt;Having individualized machine accounts per application helps a lot to identify service (or database) abuse.
+It also allows for individualized rate limits or other controls, and of course minimal permissioning of applications.&lt;/p&gt;
+&lt;p&gt;Monitoring would see if old accounts from last week were still being used.
+If so, somebody would need to talk to the team owning the service using these accounts, because obviously something was caching credentials somehow, when it should not.
+If old accounts are quiet and stay so for some time, the old accounts can be decommissioned and deleted.&lt;/p&gt;
+&lt;p&gt;This also makes some nice graphs showing the speed of account (and password) rotation across the enterprise, and these things come handy in audits.
+It allows you to prove that passwords are fresh, and that old NPA secret in the hands of leavers cannot be leveraged to gain access to production.&lt;/p&gt;
+&lt;h1 id=&#34;using-dependencies-for-capacity-and-business-continuity-planning&#34;&gt;
+    &lt;a href=&#34;#using-dependencies-for-capacity-and-business-continuity-planning&#34;&gt;
+	Using Dependencies for Capacity and Business Continuity planning
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Having dependency data also comes in handy in many other tasks, such as (with additional data) planning capacity.
+While SD data does not directly contain the volumes needed to plan, dependencies show who can generate demand on a service, and from that it is clear what to measure and where to pick up additional information, such as current fleet size, plans for the coming season and so on.&lt;/p&gt;
+&lt;p&gt;The dependency web can also be mapped on locations and structural failure boundaries from the underlying physical machinery, and thus it becomes possible to calculate failure scenarios, and using actual placement data, detect co-failure scenarios or write scheduler plugins to avoid them.
+Also, mapping dependencies into a graph allows for a functioning black start plan.
+It would still require testing, but at least the data for such a thing is there.&lt;/p&gt;
+&lt;h1 id=&#34;dependency-inflation&#34;&gt;
+    &lt;a href=&#34;#dependency-inflation&#34;&gt;
+	Dependency Inflation
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In such a setup, having not enough dependencies will make an application not work.
+Thus, SD data can be relied on to be at least as large as the minimum dependencies, or larger.&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;or larger&amp;rdquo; part is undesirable, but hard to  limit.
+The only workable way I have seen requires annoying recurring audits, or equally nagging regular re-requests for all resources.&lt;/p&gt;
+&lt;p&gt;Experimentally, requested resources and observed resource usage in production can be mapped on each other, and unused resources can be detected.
+They cannot be automatically cancelled, because they still may be necessary, if only in rare situations.
+But this would at least bring the nag-level down to manageable sizes.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>I don&#39;t hate Let&#39;s Encrypt anymore</title>
+      <link>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</link>
+      <pubDate>Wed, 04 Jan 2023 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</guid>
+      <description>&lt;p&gt;So, Rachel is in a bad mood:
+&lt;a href=&#34;https://rachelbythebay.com/w/2023/01/03/ssl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why I still have an old-school cert on my https site&lt;/a&gt;
+
+
+and I feel her.
+Like her, for my own sites I have always been running Apache.
+There was never much need to upgrade, the software was available, stable, and fast enough.&lt;/p&gt;
+&lt;p&gt;At some point in time, I needed TLS and started to use &lt;a href=&#34;https://letsencrypt.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;That was messy: Running
+&lt;a href=&#34;https://github.com/dehydrated-io/dehydrated&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dehydrated&lt;/a&gt;
+
+,
+a bunch of haphazard shell scripts trying to get certificates authenticated and installed, through a wild chain of callbacks and sourced scripts all over the system,
+driven by Cron, and with bad alerting.&lt;/p&gt;
+&lt;p&gt;None of that was necessary.&lt;/p&gt;
+&lt;p&gt;Turns out, starting with Apache 2.4.30 (19-Feb-2018), Apache supports
+&lt;a href=&#34;https://httpd.apache.org/docs/trunk/mod/mod_md.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mod_md&lt;/a&gt;
+
+,
+and that supports Let&amp;rsquo;s Encrypt out of the box.
+For good measure, I also enabled &lt;a href=&#34;https://httpd.apache.org/docs/current/mod/mod_macro.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mod_macro&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;This being an Ubuntu, I put this into my &lt;code&gt;/etc/apache2/sites-available/000-default.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-apacheconf&#34; data-lang=&#34;apacheconf&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;ServerName&lt;/span&gt; mybasedomain.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDomain&lt;/span&gt; mybasedomain.koehntopp.de contentdomain.koehntopp.de proxydomain.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDContactEmail&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDCerticateAgreement&lt;/span&gt; accepted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDPrivateKeys&lt;/span&gt; RSA &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There is no additional &amp;ldquo;SSLEngine&amp;rdquo; needed, except &lt;code&gt;SSLEngine on&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I also add two macros that I use a lot to create virtual hosts to the same file.
+One is for straight-up content domains:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-apacheconf&#34; data-lang=&#34;apacheconf&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Macro&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;VHost $host&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;*:80&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerName&lt;/span&gt; $host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerAdmin&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;DocumentRoot&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;/var/www/&lt;/span&gt;$host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/$host&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Options&lt;/span&gt; Indexes FollowSymLinks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;AllowOverride&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Require&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;all&lt;/span&gt; granted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error-$host.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access-$host.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RewriteEngine&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;On&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;*:443&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerName&lt;/span&gt; $host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerAdmin&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error-$host.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access-$host.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;DocumentRoot&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;/var/www/&lt;/span&gt;$host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/$host&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Options&lt;/span&gt; Indexes FollowSymLinks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;AllowOverride&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Require&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;all&lt;/span&gt; granted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;SSLEngine&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Macro&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The other is for Proxy Domains to dockerized stuff:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-apacheconf&#34; data-lang=&#34;apacheconf&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Macro&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;ProxyVHost $host $toport&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;*:80&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerName&lt;/span&gt; $host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerAdmin&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;DocumentRoot&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;/var/www/&lt;/span&gt;$host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/$host&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Options&lt;/span&gt; Indexes FollowSymLinks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;AllowOverride&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Require&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;all&lt;/span&gt; granted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error-$host.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access-$host.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RewriteEngine&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;On&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RewriteRule&lt;/span&gt; ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;*:443&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerName&lt;/span&gt; $host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ServerAdmin&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ErrorLog&lt;/span&gt; ${APACHE_LOG_DIR}/error-$host.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;CustomLog&lt;/span&gt; ${APACHE_LOG_DIR}/access-$host.log combined
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;DocumentRoot&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;/var/www/&lt;/span&gt;$host
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/$host&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Options&lt;/span&gt; Indexes FollowSymLinks
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;AllowOverride&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nb&#34;&gt;Require&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;all&lt;/span&gt; granted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;SSLEngine&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ProxyPreserveHost&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;On&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ProxyPass&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:$toport/&amp;#34;&lt;/span&gt; nocanon
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;ProxyPassReverse&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:$toport/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RequestHeader&lt;/span&gt; set X-Forwarded-Proto %{REQUEST_SCHEME}s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RequestHeader&lt;/span&gt; set X-Forwarded-For %{REMOTE_ADDR}s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;RequestHeader&lt;/span&gt; set X-Real-IP %{REMOTE_ADDR}s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;AllowEncodedSlashes&lt;/span&gt; NoDecode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Macro&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The actual host definition can then be rather short.
+A content domain is simply&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Use Vhost contentdomain.koehntopp.de&amp;#34;&lt;/span&gt; &amp;gt; /etc/apache2/sites-available/contentdomain.koehntopp.de.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; a2ensite contentdomain.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and I am done. Similarly, a proxy to some internal service:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Use ProxyVHost proxydomain.koehntopp.de 3000&amp;#34;&lt;/span&gt; &amp;gt; /etc/apache2/sites-available/proxydomain.koehntopp.de.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; a2ensite proxydomain.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;where &lt;code&gt;3000&lt;/code&gt; is the exposed port from docker. An &lt;code&gt;apachectl configtest&lt;/code&gt; and an &lt;code&gt;apachectl graceful&lt;/code&gt; later things are rolling.
+A look at &lt;code&gt;/server-status&lt;/code&gt; will tell you if things worked, and what the state of the &lt;code&gt;mod_md&lt;/code&gt; deployment is.&lt;/p&gt;
+&lt;p&gt;If you added a new domain, that certificate will be available, but not yet loaded, so a second reload is necessary for deployment.&lt;/p&gt;
+&lt;p&gt;Find the actual cert files in &lt;code&gt;/etc/apache2/md/domains/mybasedomain.koehntopp.de&lt;/code&gt;, as &lt;code&gt;pubcert.pem&lt;/code&gt; and &lt;code&gt;privkey.pem&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Additional Note:&lt;/strong&gt;
+You can use &lt;code&gt;mod_md&lt;/code&gt; to get certificates for your Tailscale domains (Domains in the &lt;code&gt;*.ts.net&lt;/code&gt; namespace).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ansible: List Cross-Join</title>
+      <link>https://blog.koehntopp.info/2022/12/12/ansible-list-crossproduct.html</link>
+      <pubDate>Mon, 12 Dec 2022 21:22:23 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/12/ansible-list-crossproduct.html</guid>
+      <description>&lt;p&gt;A friend asked in Discord:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I need a pointer to a solution in Jinja.&lt;/p&gt;
+&lt;p&gt;Given two lists, &lt;code&gt;x: [a,b,c]&lt;/code&gt; and &lt;code&gt;y: [d,e,f]&lt;/code&gt;, I need the cross-join &lt;code&gt;[&amp;quot;a.d&amp;quot;,&amp;quot;a.e&amp;quot;,&amp;quot;a.f&amp;quot;,&amp;quot;b.d&amp;quot;,…,&amp;quot;c.e&amp;quot;,&amp;quot;c.f&amp;quot;]&lt;/code&gt;.
+I know how to cross-join, but that then is a list of lists, and I want join the inner lists.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After some experimentation the result was a set of nasty templating loops.
+There has to be a better way.&lt;/p&gt;
+&lt;p&gt;There are two:&lt;/p&gt;
+&lt;h1 id=&#34;ansible-custom-filters-in-python&#34;&gt;
+    &lt;a href=&#34;#ansible-custom-filters-in-python&#34;&gt;
+	Ansible Custom Filters in Python
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;playbook&#34;&gt;
+    &lt;a href=&#34;#playbook&#34;&gt;
+	Playbook
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;We want a custom filter &lt;code&gt;cross&lt;/code&gt;, which produces the desired result.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# $ cat testing/myfilter.yml&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Keks&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hosts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;localhost&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gather_facts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;vars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;c&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;e&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;f&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tasks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Keks&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ x| cross(y) }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;desired-output&#34;&gt;
+    &lt;a href=&#34;#desired-output&#34;&gt;
+	Desired Output
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The playbook shall produce this output&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PLAY [Keks] ********************************************************************
+
+TASK [Keks] ********************************************************************
+ok: [localhost] =&amp;gt; {
+    &amp;#34;msg&amp;#34;: [
+        &amp;#34;a.d&amp;#34;,
+        &amp;#34;a.e&amp;#34;,
+        &amp;#34;a.f&amp;#34;,
+        &amp;#34;b.d&amp;#34;,
+        &amp;#34;b.e&amp;#34;,
+        &amp;#34;b.f&amp;#34;,
+        &amp;#34;c.d&amp;#34;,
+        &amp;#34;c.e&amp;#34;,
+        &amp;#34;c.f&amp;#34;
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;creating-a-custom-filter&#34;&gt;
+    &lt;a href=&#34;#creating-a-custom-filter&#34;&gt;
+	Creating a custom filter
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;For that, we need a directory &lt;code&gt;filter_plugins&lt;/code&gt; next to the playbook (or in the role directory next to the &lt;code&gt;tasks&lt;/code&gt; directory).
+Inside that directory, we place a Python file &lt;code&gt;cross.py&lt;/code&gt;, which will contain our custom filter code.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tree testing/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;testing/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── filter_plugins
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── cross.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── myfilter.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; directory, &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; files
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The file &lt;code&gt;cross.py&lt;/code&gt; looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#! /usr/bin/env python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;collections.abc&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Iterable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FilterModule&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;filters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;s1&#34;&gt;&amp;#39;cross&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cross&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cross&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sepchar&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;isinstance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Iterable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;isinstance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;raise&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;TypeError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;parameter1 is not an Iterable&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;isinstance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Iterable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;isinstance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;raise&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;TypeError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;parameter2 is not an Iterable&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;isinstance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sepchar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;raise&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;TypeError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;parameter3  is not a string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sepchar&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This defines a class &lt;code&gt;FilterModule&lt;/code&gt; with a method &lt;code&gt;filters()&lt;/code&gt;.
+The names are prescribed, and cannot be changed.&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;filters()&lt;/code&gt; method we are to return a dictionary with pairs of Jinja2 templating filter name (we want &lt;code&gt;cross&lt;/code&gt;) and matching Python function or method reference (that is, the name a callable without parameter parentheses attached).
+In our example, we map the Jinja2 filter &lt;code&gt;cross&lt;/code&gt; to the method &lt;code&gt;self.cross()&lt;/code&gt; in our Python class (Line 8).&lt;/p&gt;
+&lt;p&gt;The actual &lt;code&gt;cross()&lt;/code&gt; method is in Line 11. It takes 2 mandatory parameters, &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; and an optional parameter &lt;code&gt;sepchar&lt;/code&gt;.
+The first two parameters &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; are supposed to be Lists or other Iterables that are to be cross-joined.
+We expressly prohibit strings, because they are iterable by character, but that is likely not what we want.&lt;/p&gt;
+&lt;p&gt;The third parameter &lt;code&gt;sepchar&lt;/code&gt; is the separator character we are putting between these joined pairs.
+It defaults to &lt;code&gt;.&lt;/code&gt; (dot) and can be left out.&lt;/p&gt;
+&lt;p&gt;The actual work is done in Line 21 after the error checks.
+We produce a list, which we return.&lt;/p&gt;
+&lt;p&gt;We can test with&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ansible-playbook testing/myfilter.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which indeed produces the desired output.&lt;/p&gt;
+&lt;h1 id=&#34;ansible-solution-with-native-filters&#34;&gt;
+    &lt;a href=&#34;#ansible-solution-with-native-filters&#34;&gt;
+	Ansible solution with native filters
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;My friend had objections to shipping custom filters with a role.
+So here is a solution that uses no loops and only native filters.&lt;/p&gt;
+&lt;p&gt;We can use the Jinja2 default filter &lt;code&gt;product&lt;/code&gt; to create a cross product:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Keks&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hosts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;localhost&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gather_facts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;vars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;c&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;e&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;f&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tasks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;keks&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;set_fact&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ x|product(y) }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Keks&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ z }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But this produces the list of lists mentioned in the beginning.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PLAY [Keks] ********************************************************************
+
+TASK [keks] ********************************************************************
+ok: [localhost]
+
+TASK [Keks] ********************************************************************
+ok: [localhost] =&amp;gt; {
+    &amp;#34;msg&amp;#34;: [
+        [
+            &amp;#34;a&amp;#34;,
+            &amp;#34;d&amp;#34;
+        ],
+        [
+            &amp;#34;a&amp;#34;,
+            &amp;#34;e&amp;#34;
+        ],
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can use &lt;code&gt;z: &amp;quot;{{ x|product(y)|map(&#39;join&#39;) }}&amp;quot;&lt;/code&gt; to produce the pairs we want:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TASK [Keks] ********************************************************************
+ok: [localhost] =&amp;gt; {
+    &amp;#34;msg&amp;#34;: [
+        &amp;#34;ad&amp;#34;,
+        &amp;#34;ae&amp;#34;,
+        &amp;#34;af&amp;#34;,
+        &amp;#34;bd&amp;#34;,
+        &amp;#34;be&amp;#34;,
+        &amp;#34;bf&amp;#34;,
+        &amp;#34;cd&amp;#34;,
+        &amp;#34;ce&amp;#34;,
+        &amp;#34;cf&amp;#34;
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;But we need to pass a parameter to &lt;code&gt;join()&lt;/code&gt;, because we want a &lt;code&gt;.&lt;/code&gt; separator character.
+This is done by adding this parameter after the function to be mapped.
+So we need &lt;code&gt;z: &amp;quot;{{ x|product(y)|map(&#39;join&#39;,&#39;.&#39;) }}&amp;quot;&lt;/code&gt; for our solution.&lt;/p&gt;
+&lt;p&gt;The run results in&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TASK [Keks] ********************************************************************
+ok: [localhost] =&amp;gt; {
+    &amp;#34;msg&amp;#34;: [
+        &amp;#34;a.d&amp;#34;,
+        &amp;#34;a.e&amp;#34;,
+        &amp;#34;a.f&amp;#34;,
+        &amp;#34;b.d&amp;#34;,
+        &amp;#34;b.e&amp;#34;,
+        &amp;#34;b.f&amp;#34;,
+        &amp;#34;c.d&amp;#34;,
+        &amp;#34;c.e&amp;#34;,
+        &amp;#34;c.f&amp;#34;
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;which is what we wanted.&lt;/p&gt;
+&lt;h1 id=&#34;the-actual-problem&#34;&gt;
+    &lt;a href=&#34;#the-actual-problem&#34;&gt;
+	The actual problem
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The actual problem looks like this, but in a single line:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{%- for host in hosts -%}
+  {%- for domain in domains -%}
+    {{proto}}://{{ host }}.{{ domain }}:{{port}}{{ &amp;#34;, &amp;#34; if not loop.last }}
+  {%- endfor -%}
+  {{ &amp;#34;, &amp;#34; if not loop.last }}
+{%- endfor -%} 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The replacement with native functions looks like this, again in a single line:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{ [proto] | 
+    product(hosts |
+        product(domains) |
+        map(&amp;#39;join&amp;#39;,&amp;#39;.&amp;#39;)
+    ) | map(&amp;#39;join&amp;#39;,&amp;#39;://&amp;#39;) |
+    product([port])|
+   map(&amp;#39;join&amp;#39;,&amp;#39;:&amp;#39;)|
+   join(&amp;#34;, &amp;#34;) 
+}}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Using &lt;code&gt;cross()&lt;/code&gt; it is a lot less ugly:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;proto | cross(hosts,&amp;#39;://&amp;#39;) | cross(domains) | cross(port,&amp;#39;:&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If &lt;code&gt;proto&lt;/code&gt; or &lt;code&gt;port&lt;/code&gt; are scalar, write them as &lt;code&gt;[proto]&lt;/code&gt; and &lt;code&gt;[port]&lt;/code&gt; to keep the syntax.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;- name: Keks
+  hosts: localhost
+  gather_facts: false
+  vars:
+    hosts: [ &amp;#34;hosta&amp;#34;, &amp;#34;hostb&amp;#34;, &amp;#34;hostc&amp;#34; ]
+    domains: [ &amp;#34;domaina.net&amp;#34;, &amp;#34;domainb.com&amp;#34;, &amp;#34;domainc.org&amp;#34; ]
+    proto: &amp;#34;https&amp;#34;
+    port: &amp;#34;8443&amp;#34;
+
+  tasks:
+    - name: Keks
+      debug:
+        msg: &amp;#34;{{ [proto]|cross(hosts,&amp;#39;://&amp;#39;)|cross(domains)|cross([port],&amp;#39;:&amp;#39;) }}&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;yields&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TASK [Keks] ********************************************************************
+ok: [localhost] =&amp;gt; {
+    &amp;#34;msg&amp;#34;: [
+        &amp;#34;https://hosta.domaina.net:8443&amp;#34;,
+        &amp;#34;https://hosta.domainb.com:8443&amp;#34;,
+        &amp;#34;https://hosta.domainc.org:8443&amp;#34;,
+        &amp;#34;https://hostb.domaina.net:8443&amp;#34;,
+        &amp;#34;https://hostb.domainb.com:8443&amp;#34;,
+        &amp;#34;https://hostb.domainc.org:8443&amp;#34;,
+        &amp;#34;https://hostc.domaina.net:8443&amp;#34;,
+        &amp;#34;https://hostc.domainb.com:8443&amp;#34;,
+        &amp;#34;https://hostc.domainc.org:8443&amp;#34;
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34;&gt;
+	Summary
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;With a short, concise and type-safe Python function that can be shipped as part of the role, we solved the original problem.
+We can produce the solution in a single, rather readable line instead of deeply nesting function calls, or worse,
+a bunch of templating loops.&lt;/p&gt;
+&lt;p&gt;Debugging and testing of the Python function can be done with the full power of our Python tooling,
+instead of messing with an un-debuggable and untestable DSL.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Systemd and docker -H fd://</title>
+      <link>https://blog.koehntopp.info/2022/11/28/systemd-and-docker-fd.html</link>
+      <pubDate>Mon, 28 Nov 2022 09:10:11 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/11/28/systemd-and-docker-fd.html</guid>
+      <description>&lt;p&gt;Based on what I learned in
+&lt;a href=&#34;https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html&#34;&gt;Systemd Service and Socket Activation&lt;/a&gt;
+
+
+and
+&lt;a href=&#34;https://blog.koehntopp.info/2022/11/28/systemd-service-and-stdio.html&#34;&gt;Systemd Service and stdio&lt;/a&gt;
+
+,
+we can now have a look at Docker.&lt;/p&gt;
+&lt;p&gt;The code for &lt;code&gt;-H fd://&lt;/code&gt;-Handling is &lt;a href=&#34;https://github.com/moby/moby/blob/41be7293f54f15dc04f024bf2b0f09e1a697208b/daemon/listeners/listeners_linux.go#L63-L107&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+The file descriptors are coming from &lt;code&gt;activation.Listeners()&lt;/code&gt;, and are in the &lt;code&gt;listeners&lt;/code&gt; slice.
+In our case, the part after the &lt;code&gt;fd://&lt;/code&gt; is empty, so lines 83-85 are activated, and the incoming fd&amp;rsquo;s are passed to the Docker proper.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;hl&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;listenFD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tls&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;([]&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Listener&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;       &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Listener&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// socket activation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;TLSListeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no sockets found via socket activation: make sure the service was started by systemd&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// default to all fds just like unix:// and tcp://
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;fdNum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;strconv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Atoi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Errorf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;failed to parse systemd fd address: should be a number: %v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fdNum&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;too few socket activated files passed in by systemd&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Errorf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;failed to listen on systemd activated file: fd %d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ls&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ls&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ls&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Wrapf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;failed to close systemd activated file: fd %d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Listener&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fdOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]},&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34;&gt;
+	Summary
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The question that started this Yak shaving session was: &amp;ldquo;How to expose the docker socket of a remote machine over the network?&amp;rdquo;
+And this appears that the answer to this question is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;take the original &lt;code&gt;docker.socket&lt;/code&gt; configuration&lt;/li&gt;
+&lt;li&gt;create an override and add a secondary listener socket for tcp://0.0.0.0:2375&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; systemctl edit docker.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; systemctl cat docker.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /lib/systemd/system/docker.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=Docker Socket for the API
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=/var/run/docker.sock
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;SocketMode=0660
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;SocketUser=root
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;SocketGroup=docker
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=sockets.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /etc/systemd/system/docker.socket.d/override.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=/run/docker.sock
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=2375
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This clears the original &lt;code&gt;ListenStream&lt;/code&gt; list, and then adds two entries back.&lt;/p&gt;
+&lt;p&gt;The first change addresses the error message&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream= references a path below legacy directory /var/run/,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;updating /var/run/docker.sock tcp://0.0.0.0:2375 → /run/docker.sock tcp://0.0.0.0:2375;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;please update the unit file accordingly.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The second one adds a listener to port &lt;code&gt;[::1]:2375&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And that will allow me to talk to the Docker server on my development host over the network.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Systemd Service and stdio</title>
+      <link>https://blog.koehntopp.info/2022/11/28/systemd-service-and-stdio.html</link>
+      <pubDate>Mon, 28 Nov 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/11/28/systemd-service-and-stdio.html</guid>
+      <description>&lt;p&gt;After yesterday&amp;rsquo;s article, Arne Blankerts pointed me at
+&lt;a href=&#34;https://edit.thephp.cc/s/3MqWPLAJW#&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;a note&lt;/a&gt;
+
+
+showing how to install a program using stdio with systemd.&lt;/p&gt;
+&lt;h1 id=&#34;code-and-unit-files&#34;&gt;
+    &lt;a href=&#34;#code-and-unit-files&#34;&gt;
+	Code and Unit files
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#! /usr/bin/env python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;line&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;strip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ECHO: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;line&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;line&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;QUIT&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The Socket Unit:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user cat kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=My second service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;PartOf=kris2.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:12346
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Accept=Yes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=sockets.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the Service Unit, which has to be a template:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user cat kris2@.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris2@.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=My second Service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;After=network.target kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Requires=kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Type=simple
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=/usr/bin/python3 %h/Python/systemd-socketserver/echoserver.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;TimeoutStopSec=5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;StandardInput=socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;StandardOutput=socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;StandardError=journal
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=default.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;a-template-unit&#34;&gt;
+    &lt;a href=&#34;#a-template-unit&#34;&gt;
+	A template Unit
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;A systemd template starts a new instance of the service for each incoming connection, because nothing in the code of the service is aware of being a network service.
+Instead &lt;code&gt;stdin&lt;/code&gt; and &lt;code&gt;stdout&lt;/code&gt; are connected to the network by systemd, and &lt;code&gt;stderr&lt;/code&gt; is being directed to &lt;code&gt;journald&lt;/code&gt;.
+The actual service just performs normal stdio.&lt;/p&gt;
+&lt;p&gt;Since connections are being accepted by systemd, and then fed into the service using normal stdio, a new instance of the service has to be started for each connection.
+This is done with a service template, &amp;ldquo;&lt;code&gt;kris2.@service&lt;/code&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;h1 id=&#34;running-stuff&#34;&gt;
+    &lt;a href=&#34;#running-stuff&#34;&gt;
+	Running stuff
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We can enable and start the socket:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Created symlink /home/kris/.config/systemd/user/sockets.target.wants/kris2.socket → /home/kris/.config/systemd/user/kris2.socket.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user start kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; lsof -i -n -P
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;COMMAND    PID USER   FD   TYPE     DEVICE SIZE/OFF NODE NAME
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;systemd 327983 kris   28u  IPv4 2520788109      0t0  TCP 127.0.0.1:12346 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Since the service is a template, it cannot be started.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; kris2@.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Failed to enable unit: File default.target: Identifier removed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That is also not necessary, because systemd will do that for us on connect:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; telnet localhost &lt;span class=&#34;m&#34;&gt;12346&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Trying 127.0.0.1...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Connected to localhost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Escape character is &amp;#39;^]&amp;#39;.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;I am a test.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ECHO: I am a test.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;QUIT
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ECHO: QUIT
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Connection closed by foreign host.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;While connected, we can see the user systemd instance hanging off the PID 1 systemd, and the family of user-services hanging off the user systemd instance.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;systemd(1)─┬─ModemManager(2480)─┬─{ModemManager}(2565)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           …
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           ├─systemd(327983)─┬─(sd-pam)(327984)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           │                 ├─pipewire(327990)───{pipewire}(328047)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           │                 ├─pipewire-media-(327991)───{pipewire-media-}(3280+
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           │                 └─python3(3315905)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;           …
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;multiple-ports&#34;&gt;
+    &lt;a href=&#34;#multiple-ports&#34;&gt;
+	Multiple ports
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We can now modify the socket Unit to provide more than one port.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user cat kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris2.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=My second service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;PartOf=kris2.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:12346
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:12347
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Accept=Yes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=sockets.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And after this, the service will be available on both ports.
+Since the service&amp;rsquo;s code does not know anything about networking at all, it won&amp;rsquo;t even notice.&lt;/p&gt;
+&lt;h1 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34;&gt;
+	Summary
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Using template systemd services, and redirecting &lt;code&gt;stdin&lt;/code&gt; and &lt;code&gt;stdout&lt;/code&gt;, we can create systemd Units that work with programs that are not aware of the fact that they are running connected to the network.
+This simplifies the code for a service considerably, and also makes it much easier to test the service.&lt;/p&gt;
+&lt;p&gt;Template Units themselves cannot be enabled or started, which is initially unexpected, but makes a lot of sense once you start to think about it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Systemd Service and Socket Activation</title>
+      <link>https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html</link>
+      <pubDate>Sun, 27 Nov 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html</guid>
+      <description>&lt;p&gt;In today&amp;rsquo;s Yak Shaving session I needed to understand how to expose the docker socket of a remote machine over the network.
+You should not do that, it is totally insecure, but I needed to do that to test something.&lt;/p&gt;
+&lt;h1 id=&#34;socket-activation&#34;&gt;
+    &lt;a href=&#34;#socket-activation&#34;&gt;
+	Socket Activation
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I discovered that &lt;code&gt;dockerd&lt;/code&gt; is running with &lt;code&gt;-H fd://&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; ps axuwww &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep docker&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;d&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;root     1616732  0.5  0.1 2930892 52168 ?       Ssl  15:32   2:25 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That is happening in the &lt;code&gt;docker.service&lt;/code&gt; definition for Docker:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; systemctl cat docker.service &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; egrep &lt;span class=&#34;s1&#34;&gt;&amp;#39;(service$|ExecStart)&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /lib/systemd/system/docker.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;After=network-online.target firewalld.service containerd.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Wants=containerd.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That is, &lt;code&gt;/lib/systemd/system/docker.service&lt;/code&gt; defines activation through the &lt;code&gt;fd://&lt;/code&gt; file descriptor.
+That descriptor is in turn provided by the &lt;code&gt;docker.socket&lt;/code&gt; unit, which looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# systemctl cat docker.socket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# /lib/systemd/system/docker.socket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Unit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Description&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Docker&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Socket&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;API&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Socket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ListenStream&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;var&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;docker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sock&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SocketMode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0660&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SocketUser&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SocketGroup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;docker&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Install&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;WantedBy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sockets&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Both units are in &lt;code&gt;/lib/systemd/system&lt;/code&gt;, which means they are OS-provided and should not be directly edited.&lt;/p&gt;
+&lt;h1 id=&#34;overriding&#34;&gt;
+    &lt;a href=&#34;#overriding&#34;&gt;
+	Overriding
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I could override the service with &lt;code&gt;systemctl edit docker.service&lt;/code&gt;, and provide a different &lt;code&gt;ExecStart&lt;/code&gt;.
+Since that is a list, I need to empty it first, and then put a new definition in.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=/usr/bin/dockerd
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This starts docker without options, and I could define one or more sockets in &lt;code&gt;/etc/docker/daemon.json&lt;/code&gt;.
+It would also drop systemd socket activation, though.&lt;/p&gt;
+&lt;p&gt;That led me to the question &amp;ldquo;How does one actually write a daemon that cooperates with systemctl socket activation?&amp;rdquo;
+and also to the question &amp;ldquo;Can I have socket activation listen to more than one port, for example a Unix Domain Socket and a TCP-Socket?&amp;rdquo;&lt;/p&gt;
+&lt;h1 id=&#34;writing-a-python-daemon-with-socket-activation&#34;&gt;
+    &lt;a href=&#34;#writing-a-python-daemon-with-socket-activation&#34;&gt;
+	Writing a Python daemon with socket activation
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Let&amp;rsquo;s write a simple daemon:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#! /usr/bin/env python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;socketserver&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TCPServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StreamRequestHandler&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;socket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;logging&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MyDaemon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StreamRequestHandler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;handle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logging&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Connection from &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client_address&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;readline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;strip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;response&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[::&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logging&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Data: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; Response: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;response&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wfile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;response&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TCPServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hnd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# call superclass, but bind_and_activate is done by systemd.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# If we set that to True, it could run as a standalone program.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;TCPServer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;server_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hnd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bind_and_activate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# take socket passed on from systemd (3, first after stdin, stdout, stderr)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;socket&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fromfd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;address_family&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;socket_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;logging&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;basicConfig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;level&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;logging&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INFO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;HOST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;127.0.0.1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;HOST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PORT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serve_forever&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we set &lt;code&gt;bind_and_activate=&lt;/code&gt; to &lt;code&gt;True&lt;/code&gt;, that thing would run from the command line as a standalone server.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ./demoserver.py   &lt;span class=&#34;c1&#34;&gt;# now telnet 127.0.0.1 12345 to test&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Instead, we need to set this up with systemd.&lt;/p&gt;
+&lt;h1 id=&#34;a-service-and-a-socket-unit&#34;&gt;
+    &lt;a href=&#34;#a-service-and-a-socket-unit&#34;&gt;
+	A service and a socket unit
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We need to set up a service definition unit.
+Since we chose a high port number (&amp;gt;1024), we can run it as a user without privileges.&lt;/p&gt;
+&lt;p&gt;Systemd is actually running a copy of itself for each logged-in user:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ps axuwww &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep system&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;d&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep user
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;kris      327983  0.1  0.0  20144 11948 ?        Ss   Nov06  31:11 /lib/systemd/systemd --user
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;gdm      2419957  0.1  0.0  18768 10884 ?        Ss   Nov21  13:03 /lib/systemd/systemd --user
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So we define a &lt;code&gt;service&lt;/code&gt; unit using &lt;code&gt;systemctl --user --full --force kris.service&lt;/code&gt; and then do the same for a &lt;code&gt;socket&lt;/code&gt; unit:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user cat kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=Kris Service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;After=network.target kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Requires=kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Service]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Type=simple
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=/usr/bin/python3 %h/Python/systemd-socketserver/demoserver.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;TimeoutStopSec=5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=default.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Our service is declared as having a &lt;code&gt;Requires=&lt;/code&gt; relationship to its socket.
+And because relationships do not define ordering, we also put the sockets into the &lt;code&gt;After=&lt;/code&gt; relationship.&lt;/p&gt;
+&lt;p&gt;The service is a simple service, so systemd will simply fork off the defined binary.
+Ths service definition uses &lt;code&gt;%h&lt;/code&gt;, which is replaced by the users home directory.
+We also define a timeout.&lt;/p&gt;
+&lt;p&gt;Now the socket, on which we depend:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user cat kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=Kris Socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;PartOf=kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:12345
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=default.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;PartOf=&lt;/code&gt; makes sure the socket is started and stopped together with the server.
+The &lt;code&gt;ListenStream=&lt;/code&gt; is the port systemd will open, bind to and listen on.
+The socket produced by systemd will them be handed off to us on FD 3.&lt;/p&gt;
+&lt;h1 id=&#34;starting-the-service&#34;&gt;
+    &lt;a href=&#34;#starting-the-service&#34;&gt;
+	Starting the service
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;It is sufficient to work on &lt;code&gt;kris.service&lt;/code&gt; to start and stop things, because of the relationships we defined between socket and service.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user show kris.service&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep kris
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStart=...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ExecStartEx=...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WorkingDirectory=!/home/kris
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Id=kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Names=kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Requires=kris.socket basic.target app.slice
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ConsistsOf=kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;After=kris.socket basic.target network.target app.slice
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;TriggeredBy=kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;FragmentPath=/home/kris/.config/systemd/user/kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;ConsistsOf=&lt;/code&gt; here comes from the &lt;code&gt;PartOf=&lt;/code&gt; defined in the socket.
+After running &lt;code&gt;systemctl --user start kris.service&lt;/code&gt; we will see the service running using &lt;code&gt;lsof&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; lsof -i -n -P
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;COMMAND     PID USER   FD   TYPE     DEVICE SIZE/OFF NODE NAME
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;systemd  327983 kris   36u  IPv4 2390840115      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;python3 1957657 kris    3u  IPv4 2390840115      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;python3 1957657 kris    5u  IPv4 2390840115      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;testing-the-service&#34;&gt;
+    &lt;a href=&#34;#testing-the-service&#34;&gt;
+	Testing the service
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We can now test:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;I am a test&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; netcat 127.0.0.1 12345&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;tset a ma I
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the log shows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; journalctl --user-unit kris.service&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tail -5
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nov 27 23:58:48 server systemd[327983]: Started Kris Service.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nov 27 23:59:59 server python3[1957657]: INFO:root:Connection from (&amp;#39;127.0.0.1&amp;#39;, 57512).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nov 27 23:59:59 server python3[1957657]: INFO:root:Data: I am a test Response: tset a ma I
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nov 28 00:00:05 server python3[1957657]: INFO:root:Connection from (&amp;#39;127.0.0.1&amp;#39;, 57528).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nov 28 00:00:05 server python3[1957657]: INFO:root:Data: I am a test Response: tset a ma I
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;listening-on-two-ports&#34;&gt;
+    &lt;a href=&#34;#listening-on-two-ports&#34;&gt;
+	Listening on two ports
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We can now change the socket unit:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;(systemd-socketserver) kris@server:~$ systemctl --user cat kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; /home/kris/.config/systemd/user/kris.socket
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[Unit]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Description=Kris Socket
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;PartOf=kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Socket]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:12345
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ListenStream=127.0.0.1:23456
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;[Install]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;WantedBy=default.target
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When we restart the service, this is being reflected in the systemd running, but only partially in the service running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user stop kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; systemctl --user start kris.service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; lsof -i -n -P
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;COMMAND     PID USER   FD   TYPE     DEVICE SIZE/OFF NODE NAME
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;systemd  327983 kris   35u  IPv4 2391279244      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;systemd  327983 kris   37u  IPv4 2391279245      0t0  TCP 127.0.0.1:23456 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;python3 1961235 kris    3u  IPv4 2391279244      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;python3 1961235 kris    4u  IPv4 2391279245      0t0  TCP 127.0.0.1:23456 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;python3 1961235 kris    6u  IPv4 2391279244      0t0  TCP 127.0.0.1:12345 (LISTEN)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So we also need to adjust our binds (or, in the case of docker, the &lt;code&gt;daemon.json&lt;/code&gt;).&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Empty commits and other wrong tools for the job</title>
       <link>https://blog.koehntopp.info/2021/10/06/empty-commits-and-other-wrong-tools-for-the-job.html</link>
@@ -310,8 +1409,8 @@ Shoddy engineering begets pager calls, outages and suffering.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;click&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;option&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;--size&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;required&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;help&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file size&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click.command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click.option&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;--size&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;required&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;help&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;file size&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -2248,825 +3347,6 @@ Mitarbeiter mit der passenden Ausbildung und der passenden Visibility sind
 dazu in der Lage, das zu regeln, wenn man sie entsprechend ermächtigt.&lt;/p&gt;
 &lt;p&gt;Die natürliche Risikoanpassung wird dann dazu führen, daß sie selbst die für
 den Betrieb notwendigen Regeln und Absprachen ad-hoc treffen.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>DENIC erklärt sich</title>
-      <link>https://blog.koehntopp.info/2010/05/14/denic-erkl-rt-sich.html</link>
-      <pubDate>Fri, 14 May 2010 15:14:05 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2010/05/14/denic-erkl-rt-sich.html</guid>
-      <description>&lt;p&gt;Gestern ab halb zwei ging es los: Immer mehr DE-Domains waren nicht mehr
-erreichbar. Schlimmer noch, anstatt keine Antwort zu liefern lieferten die
-Nameserver für die Domain &amp;ldquo;de&amp;rdquo; die Antwort &amp;lsquo;Diese Domain gibt es nicht!&amp;rsquo;.
-Das bedeutete eine ganze Reihe von Problemen - zum Beispiel ging Mail an
-diese Domains mit &amp;lsquo;Unzustellbar wegen unbekannter Domain&amp;rsquo; an den Absender
-zurück, anstatt bis zum Ende der Störung liegen zu bleiben.&lt;/p&gt;
-&lt;p&gt;Was ging schief? In einer Mail auf
-&lt;a href=&#34;http://www.denic.de/denic-im-dialog/mailinglisten/public-l.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;public-l&lt;/a&gt;
-
- hat die DENIC-Pressestelle
-&lt;a href=&#34;http://www.denic.de/denic-im-dialog/mailinglisten/public-l.html?url=msg04454.xml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eine Erklärung veröffentlicht&lt;/a&gt;
-
-:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Hintergrund dafür war, dass im Rahmen der regelmäßigen 2-stündigen
-Aktualisierung der Nameservicedaten auf 12 der 16 Servicestandorte durch
-einen unterbrochenen Kopiervorgang die Verteilung einer nicht
-vollständigen Aktualisierung (sog. Zonendatei) angestoßen wurde&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;Zwar sollte auch dieser Vorgang abgesichert sein, der
-Sicherungsmechanismus hat den Fehler allerdings nicht korrekt ausgewertet,
-so dass im Effekt der Kopierfehler nicht entdeckt und der
-Weiterverarbeitungsprozess nicht angehalten wurde.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Eine Zone ist DNS-Speak für eine Konfigurationsdatei für einen DNS-Server
-und enthält in der Regel die Daten einer Domain. Die Zonendatei für DE ist
-nun wie man sich leicht vorstellen kann besonders groß, da sie die
-Konfigurations- und Delegationsdaten für alle DE-Domains enthält. Sie wird
-aus einer Datenbank neu generiert und dann an die Nameserver verteilt, die
-die DE-Domain betreiben. Dieser Verteilvorgang wurde nach Übertragung von
-ca. einem Drittel der Daten unterbrochen und das Checkscript hat auf den
-Fehler nicht korrekt reagiert und die Verarbeitung der Datei nicht
-abgebrochen.&lt;/p&gt;
-&lt;p&gt;In einem früheren Leben habe ich bei einem Kieler Provider gearbeitet und
-auch dort hatten wir eine Reihe von Scripten, die Konfigurationsdateien aus
-Datenbanken generiert haben. Neben anderen Integritätstests hatte wir in
-diesen Scripten in der Regel auch eine Prüfung drin, die festgestellt hat,
-wie sehr sich die Anzahl der Datensätze im Vergleich zum vorhergehenden Run
-geändert hatte. Wenn die Fluktuation bei mehr als 10% lag, hat das Script
-die Datei &lt;strong&gt;neben&lt;/strong&gt; der alten Datei installiert, aber nicht live geschaltet,
-sondern eine Mail an die Admins geschickt, damit die sich das Ding mal
-ansehen und es manuell live nehmen. Das hat uns mehr als einmal den Hintern
-gerettet.&lt;/p&gt;
-&lt;p&gt;Solche Sicherungen kann ich jedem Scripter von Admin-Diensten nur empfehlen!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Clue Bat</title>
-      <link>https://blog.koehntopp.info/2008/09/18/the-clue-bat.html</link>
-      <pubDate>Thu, 18 Sep 2008 10:10:55 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2008/09/18/the-clue-bat.html</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/helpdesk_duty.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Scenes from the Amsterdam Office: Dennis, the maintainer of the local
-&lt;a href=&#34;https://en.wikipedia.org/wiki/BOFH&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BOFH&lt;/a&gt;
-
-
-mailing list, performing helpdesk duty.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/support_tool.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Support Tool&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Wieviel Load darf es denn sein?</title>
-      <link>https://blog.koehntopp.info/2005/06/24/wieviel-load-darf-es-denn-sein.html</link>
-      <pubDate>Fri, 24 Jun 2005 08:47:16 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2005/06/24/wieviel-load-darf-es-denn-sein.html</guid>
-      <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/load-beispiel.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;In
-&lt;a href=&#34;http://webhostingtech.de/2106/677.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wann ist die Serverload zu hoch?&lt;/a&gt;
-
-
-fragt Reimer:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Die Frage, ob ein Serverload von n zu hoch sei, höre ich häufig.
-Die Antworten sind jedoch ebenso unterschiedlich.
-So wird häufig die Zahl 1,00 als normaler Wert gehandelt, aber genau so fallen Zahlen wie 5,00 und 8,00 etc.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In Linux und Unix gibt es einige Zahlen, mit denen man die CPU-Auslastung des Systems ausdrücken kann.
-Da ist erst einmal die momentane CPU-Auslastung in Prozent, wie sie von &lt;code&gt;top&lt;/code&gt; und anderen Tools angezeigt wird:&lt;/p&gt;
-&lt;p&gt;Diese Zahl gibt detailliert Auskunft darüber, wie die CPU &lt;em&gt;in diesem Moment&lt;/em&gt; ihre Zeit verbringt:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;top - 10:49:36 up 11:53,  4 users,  load average: 2.71, 2.33, 2.20
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Tasks: 109 total,   3 running, 106 sleeping,   0 stopped,   0 zombie
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Cpu(s): 31.4% us,  8.9% sy,  0.0% ni, 47.5% id,  0.0% wa, 10.2% hi,  2.0% si
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Die Zahl &lt;code&gt;id&lt;/code&gt; ist die Idle-Zeit, die ungenutzte Zeit der CPU.
-Die anderen Zahlen sagen detailliert, wie die CPU ihre Zeit verbringt: &lt;code&gt;us&lt;/code&gt; (User-Time) ist Zeit, die im Programm verbracht wird, und &lt;code&gt;sy&lt;/code&gt; (System-Time) die Zeit, die vom Kernel im Auftrag dieses Programmes verbraucht wird.
-&lt;code&gt;ni&lt;/code&gt; (Nice-Time) ist Zeit, die von herunter priorisierten Prozessen sinnvoll verbraucht wird.
-Alle drei Zeiten zusammen sind sinnvoll genutzte Arbeitszeit.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;wa&lt;/code&gt; (Wait-Time) ist I/O-Wait, also Zeit, die der Rechner auf das Eintreffen von Daten von der Platte oder dem Netzwerk wartet.
-&lt;code&gt;hi&lt;/code&gt; und &lt;code&gt;si&lt;/code&gt; (Hard- und Soft Interrupt) sind Zeiten, die das System mit der Bearbeitung von Interrupts zubringt, also in Gerätetreibern und Timer-Routinen.&lt;/p&gt;
-&lt;p&gt;Die Loadzahlen geben die mittlere Länge der Run-Queue über eine Minute (erste Zahl), fünf Minuten (zweite Zahl) und 15 Minuten (dritte Zahl) an.
-Die Zahl sagt, wie viele Prozessoren das System im Schnitt auslasten könnte.
-Wenn also die Load 1 ist, ist ein Einprozessorsystem so in etwa ausgelastet, eine Enterprise 10000 mit 64 CPUs in einer Domain ist bei einer Load von 64 gut ausgelastet.&lt;/p&gt;
-&lt;p&gt;Die Load auf meinem System ist derzeit so:&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/load-beispiel.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Für Auslastungsabschätzungen ist die blaue Fläche aussagekräftig, denn sie stellt die 15 Minuten-Load dar.
-Diese Zahl ist relativ unempfindlich gegen lokale Lastspitzen und daher ein besseres Maß für die Auslastung (im Gegensatz zur Elastizität) des Systems.
-Meine Maschine läuft derzeit tagsüber mit einer Load von ca. 0.8, ist also mit einem Prozessor zu etwa 80 % voll.
-Zu einzelnen Zeitpunkten (nachts um 4:15 Uhr, wenn das News-Expire läuft), wird die Ideal-Last von 1 deutlich überschritten.
-Das ist zu diesem Zeitpunkt aber nicht schlimm.&lt;/p&gt;
-&lt;p&gt;Die Spitzenlasten (rote Kurve: 1 Minuten-Load, und davon das Maximum) halten sich außer um 4:15 Uhr im Rahmen, die Maschine kommt nicht nennenswert über Load 2 hinaus.
-Die Kiste hat also nicht mehr allzu viel Reserven, ist aber auch noch nicht überlastet.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Neu auf einem fremden System</title>
-      <link>https://blog.koehntopp.info/2000/04/14/neu-auf-einem-fremden-system.html</link>
-      <pubDate>Fri, 14 Apr 2000 09:00:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2000/04/14/neu-auf-einem-fremden-system.html</guid>
-      <description>&lt;p&gt;Dies ist eine aktualisierte Version der Schulung „Unix Systemsicherheit“, die ich vor einiger Zeit schon einmal gehalten habe.
-Der Schwerpunkt dieser Schulung hat sich etwas zu den Grundlagen hin verschoben:
-Es geht diesmal weniger um Unix Systemsicherheit als um die typische Situation der Consultants und Bereitschaften:&lt;/p&gt;
-&lt;p&gt;Man kommt an eine neue Maschine und muss sich erst einmal zurechtfinden.&lt;/p&gt;
-&lt;h1 id=&#34;neu-auf-einem-fremden-system&#34;&gt;
-    &lt;a href=&#34;#neu-auf-einem-fremden-system&#34;&gt;
-	Neu auf einem fremden System
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-001.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Orientierung:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Typ und Ausstattung der Maschine
-&lt;ul&gt;
-&lt;li&gt;Prozessor, Festplatten, andere Hardware&lt;/li&gt;
-&lt;li&gt;Speichersituation, historische und aktuelle Lastdaten&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Netzwerk und Netzwerkumfeld der Maschine&lt;/li&gt;
-&lt;li&gt;IP-Adressen, Routing
-&lt;ul&gt;
-&lt;li&gt;Welche Name-Services in welcher Reihenfolge, welche Server werden verwendet?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Was läuft, was soll laufen?
-&lt;ul&gt;
-&lt;li&gt;Was ist installiert?&lt;/li&gt;
-&lt;li&gt;tatsächlich laufende Subsysteme vs. konfigurierte Subsysteme&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Wir sind neu auf einem fremden System und loggen uns zum ersten Mal ein.
-Wie können wir uns zurechtfinden? Was wollen wir überhaupt wissen?&lt;/p&gt;
-&lt;p&gt;Die Maschine selbst ist nach Hardware, Speicher, Platten und Netzwerk zu beurteilen.
-Die Netzwerkumgebung der Maschine ist einzuschätzen.
-Die auf der Maschine installierten Systemdienste sind einzuschätzen und zu beurteilen.
-Es muss ein Soll/Ist-Abgleich stattfinden.&lt;/p&gt;
-&lt;p&gt;Ausgehend von diesen Daten kann die Arbeit auf der Maschine beginnen:&lt;/p&gt;
-&lt;p&gt;Die Maschine kann für ihre Aufgabe angepasst werden (Hardware- oder Softwareinstallation durch Consulting), bzw. die Fehlersuche kann beginnen (Alarmruf für die Bereitschaft).&lt;/p&gt;
-&lt;h1 id=&#34;typ-und-ausstattung-der-maschine&#34;&gt;
-    &lt;a href=&#34;#typ-und-ausstattung-der-maschine&#34;&gt;
-	Typ und Ausstattung der Maschine
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-002.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Was für Hardware ist das hier?&lt;/li&gt;
-&lt;li&gt;Was ist in der Maschine eingebaut?&lt;/li&gt;
-&lt;li&gt;Wie lange ist die Hardware schon &amp;ldquo;up&amp;rdquo;?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Erster Handgriff: &lt;code&gt;uname -a&lt;/code&gt;.
-Weitere Aktionen systemspezfisch.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux: &lt;code&gt;lscpu&lt;/code&gt;, &lt;code&gt;free&lt;/code&gt;, &lt;code&gt;df -Th&lt;/code&gt;, &lt;code&gt;lspci&lt;/code&gt;, &lt;code&gt;lsusb&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Solaris: &lt;code&gt;prtconf -v&lt;/code&gt;, &lt;code&gt;psrinfo -v&lt;/code&gt;, &lt;code&gt;/usr/platform/$(uname -m)/sbin/prtdiag&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Uptime und Load: &lt;code&gt;w&lt;/code&gt;, &lt;code&gt;uptime -w&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Für uns meist: Sparc/Solaris oder Intel/Linux.
-Bei einigen Kunden auch PPC/AIX oder Intel/SCO.
-Äußerst wenige Kunden mit HP oder Digital Hardware.&lt;/p&gt;
-&lt;p&gt;Peilung des Maschinentyps (mit &lt;code&gt;uname -a&lt;/code&gt;) und der eingebauten Hardware.
-In Solaris mit den drei Kommandos &lt;code&gt;prtconf&lt;/code&gt;, &lt;code&gt;psrinfo&lt;/code&gt; und &lt;code&gt;prtdiag&lt;/code&gt;.
-In Linux mit &lt;code&gt;lscpu&lt;/code&gt;, &lt;code&gt;lspci&lt;/code&gt; oder indem man manuell durch &lt;code&gt;/proc&lt;/code&gt; turnt.&lt;/p&gt;
-&lt;p&gt;Peilung der Systemauslastung und der anwesenden Benutzer:
-Neben &lt;code&gt;w&lt;/code&gt; und &lt;code&gt;uptime&lt;/code&gt; einmal die Prozeßliste ansehen (&lt;code&gt;ps -ef&lt;/code&gt;, &lt;code&gt;ps axuwww&lt;/code&gt;) und die Systemlast checken (&lt;code&gt;iostat&lt;/code&gt;, &lt;code&gt;vmstat&lt;/code&gt;).&lt;/p&gt;
-&lt;h1 id=&#34;speicher-und-last&#34;&gt;
-    &lt;a href=&#34;#speicher-und-last&#34;&gt;
-	Speicher und Last
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-003.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Virtueller Speicher und seine Auslastung:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux: &lt;code&gt;free&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Solaris: &lt;code&gt;swap -l&lt;/code&gt;, &lt;code&gt;swap -s&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Wenn Accounting &amp;ldquo;up&amp;rdquo; ist (Solaris): &lt;code&gt;sar&lt;/code&gt;, &lt;code&gt;sar -r&lt;/code&gt; (freeswap), &lt;code&gt;sar -w&lt;/code&gt; (paging).&lt;/li&gt;
-&lt;li&gt;In Linux (Suse 6.4): &lt;code&gt;sa&lt;/code&gt; aus dem Paket &lt;code&gt;ap1/acct.rpm&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Der weitaus größte Teil aller Lastprobleme sind Speicherprobleme (zuwenig RAM, zu kleiner Swap).
-Zweithäufigstes Problem ist fehlende I/O-Kapazität.
-Fehlende CPU-Kapazität ist fast niemals das Problem.&lt;/p&gt;
-&lt;p&gt;Erst messen, dann nachdenken, dann handeln (OODA loop &amp;ndash; Observe, Orient, Decide, Act).
-Optimierungen ohne genaue Messungen und Kenntnis des tatsächlichen Problems sind Verschwendung der durch den Kunden bezahlten Arbeitszeit.
-Punktmessungen können hilfreich sein, aber ein Wochenlastprofil ist sehr viel wertvoller (hier &lt;code&gt;sar&lt;/code&gt;-Beispiele von &lt;code&gt;boss&lt;/code&gt; und &lt;code&gt;prime&lt;/code&gt; bringen).&lt;/p&gt;
-&lt;h1 id=&#34;platten&#34;&gt;
-    &lt;a href=&#34;#platten&#34;&gt;
-	Platten
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-004.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Logical Volume Management?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Welches System?&lt;/li&gt;
-&lt;li&gt;Welche Zuordnung?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Quota?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;/etc/vfstab&lt;/code&gt;, &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Solaris (SDS):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Gerätenamen&lt;/li&gt;
-&lt;li&gt;metastat&lt;/li&gt;
-&lt;li&gt;format&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Linux:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Gerätenamen&lt;/li&gt;
-&lt;li&gt;fdisk&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;raidtool.rpm&lt;/code&gt; als Nachfolger von &lt;code&gt;md-tools&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/etc/raidtab&lt;/code&gt;, &lt;code&gt;raid.conf&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;df&lt;/code&gt;, &lt;code&gt;du&lt;/code&gt;, &lt;code&gt;mount&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Quota-Tools&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Vergleiche die sichtbaren Partitionen mit der durch das Hardware-Inventory angezeigten vorhandenen Hardware.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Sind alle Platten partitioniert und eingebunden?&lt;/li&gt;
-&lt;li&gt;Ist die gezeigte Aufteilung sinnvoll gewählt für die Aufgabe der Maschine?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Prüfe auch:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Verteilung der Partitionen nach Auslastung auf Spindeln&lt;/li&gt;
-&lt;li&gt;Verteilung der Partitionen über Platten und Controller nach Ausfallgesichtspunkten?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Welche RAID-Level für welche Aufgabe&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Wir verwenden fast überall RAID 0+1 (Solaris SDS).&lt;/li&gt;
-&lt;li&gt;Linux-RAID (a la Suse) derzeit nur eingeschränkt nützlich.
-&lt;ul&gt;
-&lt;li&gt;Lange Startzeit.&lt;/li&gt;
-&lt;li&gt;Rootplatte, Swap-Partition.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Prüfe auch:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Platzproblem oder Quota-Problem?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;netzwerk-und-netzwerknachbarschaft&#34;&gt;
-    &lt;a href=&#34;#netzwerk-und-netzwerknachbarschaft&#34;&gt;
-	Netzwerk und Netzwerknachbarschaft
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-005.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Übersicht über Interfaces und Routen&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; Option verwenden&lt;/li&gt;
-&lt;li&gt;Woher kommen die Routen?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Weitere Analysetools:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ping&lt;/li&gt;
-&lt;li&gt;tcpdump&lt;/li&gt;
-&lt;li&gt;snoop&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Netzwerkinterfaces: &lt;code&gt;ifconfig -a&lt;/code&gt;, &lt;code&gt;netstat -i&lt;/code&gt;, &lt;code&gt;netstat -s&lt;/code&gt;, &lt;code&gt;netstat -m&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Routen: &lt;code&gt;netstat -rn&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Schicht 2-3 Bindungen: &lt;code&gt;arp -a&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Welche Interfaces und welche Routen werden tatsächlich wie oft verwendet?
-Woher kommen die Routen?&lt;/p&gt;
-&lt;p&gt;Viele Kunden haben ein kaputtes Netzwerkonzept (d.h. keines) und setzen Routen eventuell manuell. Probleme sind vorprogrammiert.&lt;/p&gt;
-&lt;p&gt;Andere Kunden haben nur Default-Routen und bekommen differenzierte Routen nur über ICMP Redirect. Ebenfalls problematisch (Effizenz, Security).&lt;/p&gt;
-&lt;h1 id=&#34;name-resolution&#34;&gt;
-    &lt;a href=&#34;#name-resolution&#34;&gt;
-	Name Resolution
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-006.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Namensdienste werden verwendet?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Server werden verwendet?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wie ist das Verhalten im Fehlerfall?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Ausfall&lt;/li&gt;
-&lt;li&gt;Angriff&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;/etc/nsswitch.conf&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Files, DNS/Bind, NIS/NIS+, LDAP, Exoten&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Falls DNS: &lt;code&gt;/etc/resolv.conf&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Falls NIS: &lt;code&gt;ypwhich&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Woher kommen die Namen, welcher Dienst wird verwendet?&lt;/p&gt;
-&lt;p&gt;Oft lokale Hostdateien -&amp;gt; Probleme! Im besten Fall DNS. Dann dort die Zone ansehen und Netzstruktur und Zonengröße abschätzen.&lt;/p&gt;
-&lt;p&gt;Welche Abhängigkeiten existieren zwischen den Servern?&lt;/p&gt;
-&lt;p&gt;Ausfall- und Bootszenarien: Was ist, wenn der DNS-, der Time- oder der NIS-Server nicht da sind? Gibt es NFS-Platten, auf die die lokale Maschine angewiesen ist?&lt;/p&gt;
-&lt;p&gt;Security: Wer macht was in wessen Auftrag? Wer kontrolliert? Wird die Konfiguration manuell gepflegt oder existieren Frontends? Welche Dokumentationsprozeduren existieren?&lt;/p&gt;
-&lt;h1 id=&#34;netzwerkdienste&#34;&gt;
-    &lt;a href=&#34;#netzwerkdienste&#34;&gt;
-	Netzwerkdienste
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-007.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Netzwerkdienste werden erbracht?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Prüfe neben &lt;code&gt;inetd&lt;/code&gt; auch persistenten Server.&lt;/li&gt;
-&lt;li&gt;Prüfe auf Vorhandensein von Sicherheitsmechanismen&lt;/li&gt;
-&lt;li&gt;Prüfe Verhalten im Falle von Ausfällen, etwa Firewall-Versagen&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wie begründen sich diese Dienste?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Sicherheit bieten diese Dienste?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;/etc/inetd.conf&lt;/code&gt;, &lt;code&gt;/etc/hosts.allow&lt;/code&gt;, &lt;code&gt;/etc/hosts.deny&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Sonderfälle für das jeweilige System&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Todesfallen bei AIX: Import/Exporttools für &lt;code&gt;inetd.conf&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Todesfallen bei HP/UX: &lt;code&gt;/etc/inetd.sec&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;rpcinfo -p&lt;/code&gt;, &lt;code&gt;showmount -e&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;!&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Vergleiche &lt;code&gt;inetd.conf&lt;/code&gt; und Startscripte mit &lt;code&gt;netstat -an&lt;/code&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Consulting: Viele verstorbene Pflegefälle wegen manuell gestarteter Dienste, die in keiner Konfigurationsdatei auftauchen.&lt;/li&gt;
-&lt;li&gt;Bereitschaft: Umgekehrtes Szenario. Alarm wurde wegen verschwundenem Server ausgelöst.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Sicherheitsanalyse wieder:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Wieder technische und organisatorische Prozesse synchronisieren und abgleichen:
-&lt;ul&gt;
-&lt;li&gt;Was tun die Maschinen?&lt;/li&gt;
-&lt;li&gt;Wer entscheidet das? Wie begründen sich die Dienste?&lt;/li&gt;
-&lt;li&gt;Wer dokumentiert und prüft das?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Vergleiche Prozeduren bei uns im Haus:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ISP-Betrieb plant und deployed.&lt;/li&gt;
-&lt;li&gt;Operating betreibt nach Doku vom ISP-Betrieb, Operating überwacht und alarmiert die Bereitschaft. Auch diese operiert mit dieser Doku.&lt;/li&gt;
-&lt;li&gt;Konfigurationsgenerierung meist automatisch durch die Backends der KundenDB -&amp;gt; automatische Dokumentation und Abrechnung.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;welche-verzeichnisse-werden-exportiert&#34;&gt;
-    &lt;a href=&#34;#welche-verzeichnisse-werden-exportiert&#34;&gt;
-	Welche Verzeichnisse werden exportiert?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-008.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Häufige Panne:
-&lt;ul&gt;
-&lt;li&gt;Verzeichnisse werden ungewollt exportiert&lt;/li&gt;
-&lt;li&gt;Rechner importiert Verzeichnisse und hängt wegen Abhängigkeit vom Server&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Automounter?
-&lt;ul&gt;
-&lt;li&gt;Mit NIS/NIS+?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Samba?
-&lt;ul&gt;
-&lt;li&gt;Klartextpaßworte?&lt;/li&gt;
-&lt;li&gt;Public Shares?&lt;/li&gt;
-&lt;li&gt;Logfiles?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; showmount -e
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; kshowmount -e
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; share
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; vi /etc/exports&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; vi  /etc/dfs/dfstab
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; vi /etc/auto.master&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; vi /etc/auto.homel vi /etc/auto.misc
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; vi smb.conf&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; smbclient
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Einschlägige Beispielserver draußen zeigen.&lt;/p&gt;
-&lt;p&gt;Wir wollen nicht so enden wie die! Mehrfach gestaffelte Sicherheit durch&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;automatisch generierte Konfigurationen mit Sicherheitssperren&lt;/li&gt;
-&lt;li&gt;Dienstsperrungen für Außen durch &lt;code&gt;tcpwrapper&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Portsperrung und Alamierung über die Firewall und das Operating&lt;/li&gt;
-&lt;li&gt;Logauswertung (Usagelog, Wrapper-Protokoll, Firewall-Protokoll) durch
-&lt;ul&gt;
-&lt;li&gt;Abrechnung (KundenDB), Alarm bei Diensten mit fehlendem technischem Objekt in der KundenDB&lt;/li&gt;
-&lt;li&gt;Operating (Wrapper, Firewall), Alarm bei Attack Patterns&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Einschlägige Selbstmordkonfigurationen zeigen.&lt;/p&gt;
-&lt;h1 id=&#34;was-ist-installiert&#34;&gt;
-    &lt;a href=&#34;#was-ist-installiert&#34;&gt;
-	Was ist installiert?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-009.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Pakete und Programme sind installiert?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;In welcher Version?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Installation validieren?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&amp;ldquo;set permissions&amp;rdquo; und &amp;ldquo;check optionen&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;tripwire?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Solaris: &lt;code&gt;pkginfo&lt;/code&gt;, &lt;code&gt;/var/sadm/install/contents&lt;/code&gt; (Reihenfolge!)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Linux: &lt;code&gt;rpm -qa&lt;/code&gt;, &lt;code&gt;rpm -qi &amp;lt;paket&amp;gt;&lt;/code&gt;, &lt;code&gt;rpm -ql &amp;lt;paket&amp;gt;&lt;/code&gt;, &lt;code&gt;rpm -qlc &amp;lt;paket&amp;gt;&lt;/code&gt;, &lt;code&gt;rpm -qld &amp;lt;paket&amp;gt;&lt;/code&gt;, &lt;code&gt;rpm -qf &amp;lt;datei&amp;gt;&lt;/code&gt;, &lt;code&gt;rpm -qp &amp;lt;datei.rpm&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Solaris Paketarchiv („NetUSE Distribution“) zeigen&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Consulting-CDROM, wird auch an Kunden verkauft&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Keine Installation ohne Paket&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Verweis auf Paketschulung&lt;/li&gt;
-&lt;li&gt;Kein Paket -&amp;gt; automatische Konfigurationsgenerierung aus Installserver oder KundenDB macht die Verzeichnisse möglicherweise platt.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Kommandoäquivalenzen Linux/Solaris&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Verweis auf Rootkits&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Rootkits ersetzen wichtige Systemprogramme,&lt;/li&gt;
-&lt;li&gt;in Folge belügt die Maschine den Operator&lt;/li&gt;
-&lt;li&gt;tripwire-Check nach sauberem Reboot zeigen&lt;/li&gt;
-&lt;li&gt;lrk3 demonstrieren (ohne sauberen Reboot bekommt man keine verlässlichen Informationen mehr und kompromittiert sein Netz nur noch weiter)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;was-soll-laufen&#34;&gt;
-    &lt;a href=&#34;#was-soll-laufen&#34;&gt;
-	Was soll laufen?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-010.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Dienste sollen von der Maschine erbracht werden?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Konfiguration beim Systemstart für persistente Server&lt;/li&gt;
-&lt;li&gt;Konfiguration von transienten Servern&lt;/li&gt;
-&lt;li&gt;Konfiguration von zeitgesteuerten Services
-&lt;ul&gt;
-&lt;li&gt;Suche nach Zeitbomben?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Wenn es hängt?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Start/Stopscripte&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux: &lt;code&gt;/sbin/init.d/...&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Solaris: &lt;code&gt;/etc/init.d/...&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Crondateien: &lt;code&gt;/var/spool/cron/crontabs&lt;/code&gt;, &lt;code&gt;/var/cron/tabs&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;strace&lt;/code&gt;, &lt;code&gt;truss&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ltrace&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Bootsequenz durchgehen, Single User Mode, Wie bekomme ich meine Platten wieder?, Wie überlebe ich ohne Editor und Terminalemulation?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Defekte Programme tracen: &lt;code&gt;ldd&lt;/code&gt;, Solaris &lt;code&gt;proctools&lt;/code&gt;, Linux: &lt;code&gt;/proc/&amp;lt;nummer&amp;gt;/...&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;strace&lt;/code&gt;/&lt;code&gt;truss&lt;/code&gt; Output lesen, &lt;code&gt;ltrace&lt;/code&gt;/&lt;code&gt;sotruss&lt;/code&gt; Output lesen&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;was-läuft&#34;&gt;
-    &lt;a href=&#34;#was-l%c3%a4uft&#34;&gt;
-	Was Läuft?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-011.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Dienste sind auf der Maschine aktiv?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Welche waren aktiv?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Ressourcen belegen diese Dienste?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;ps -ef&lt;/code&gt;, &lt;code&gt;ps auxwww&lt;/code&gt;, &lt;code&gt;top&lt;/code&gt;, &lt;code&gt;lsof&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux: &lt;code&gt;ptree&lt;/code&gt;, &lt;code&gt;sa&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Solaris: &lt;code&gt;/usr/proc/bin/*&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Beispiele mit den Proctools&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Speicherverbrauch abschätzen für Server&lt;/li&gt;
-&lt;li&gt;Programmaktivität laufender Prozesse feststellen&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;welche-user-können-rein&#34;&gt;
-    &lt;a href=&#34;#welche-user-k%c3%b6nnen-rein&#34;&gt;
-	Welche User können rein?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-012.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Quellen von Userlisten&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;lokal, aus dem Netz&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Erlaubte und nicht erlaubte Shells&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Gehackte Authentisierung&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Modifizierte wu-ftpd, imapd&lt;/li&gt;
-&lt;li&gt;LDAP-Module&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;/etc/nsswitch.conf&lt;/code&gt;, &lt;code&gt;/etc/shells&lt;/code&gt;, &lt;code&gt;/etc/ftpusers&lt;/code&gt;, &lt;code&gt;/etc/ftpaccess&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Zugangsmechanismen&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Regeln für den Zugang, etwa über PAM: &lt;code&gt;/etc/pam.d&lt;/code&gt;, &lt;code&gt;/etc/pam.conf&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Verweis auf Folgeschulungen:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;NSS/PAM/GSS nutzen.&lt;/li&gt;
-&lt;li&gt;NSS/PAM/GSS-Module erstellen.&lt;/li&gt;
-&lt;li&gt;Überblick über die von NetUSE für den ISP-Betrieb modifizierte Software.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;welche-user-waren-drin&#34;&gt;
-    &lt;a href=&#34;#welche-user-waren-drin&#34;&gt;
-	Welche User waren drin?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-013.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Auswertung des Logbuches&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Querabgleiche mit anderen Logs&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Auditing-Subsysteme&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;/etc/utmp&lt;/code&gt;, &lt;code&gt;/etc/wtmp&lt;/code&gt;, syslog, Auth-Events, Radius-Logs und andere&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Exoten:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Logbücher der Sysadmin-Tools (AIX)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Auditing-Subsysteme&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Linux: fehlendes Auditing, bescheidenes Accounting (falls installiert).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Solaris: Demo des Auditing&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Beide: Welche Logs liegen wo und wie finde ich die gewünschte Info?&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;zugriffsrechte-und-privilegien-in-unix&#34;&gt;
-    &lt;a href=&#34;#zugriffsrechte-und-privilegien-in-unix&#34;&gt;
-	Zugriffsrechte und Privilegien in UNIX
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Bonusfolien aus der alten Schulung&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-014.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Erkläre, wer unter welchen Bedingungen in UNIX auf eine Datei zugreifen darf!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;rwx? sst?&lt;/li&gt;
-&lt;li&gt;Verzeichnisrechte vs. Dateirechte&lt;/li&gt;
-&lt;li&gt;Dateiattribute? Dateisystemattribute?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Spuren hinterläßt so ein Zugriff?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/1996/03/01/rwx-sonst-nix.html&#34;&gt;RWX - sonst nix?&lt;/a&gt;
-
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wer bin ich?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Zu welchen Gruppen gehöre ich?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wie kann ich meine Identität ändern?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Welche Rechte (alle!) brauche ich, um auf eine Datei zuzugreifen? Sind es immer dieselben?&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;kurzer-sicherheitscheck-für-zwischendurch&#34;&gt;
-    &lt;a href=&#34;#kurzer-sicherheitscheck-f%c3%bcr-zwischendurch&#34;&gt;
-	Kurzer Sicherheitscheck für Zwischendurch
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Bonusfolien aus der alten Schulung&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-015.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Die meisten Fehler entstehen nicht durch falsche Software, sondern dumme User.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;find / -fstype ... ! -type l -perm ... -ls&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;-perm -2 (find world writeable files)&lt;/li&gt;
-&lt;li&gt;-perm -4000 (find SUID)&lt;/li&gt;
-&lt;li&gt;-perm -2000 (find SGID)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Finde Dateien, die world writeable, suid oder sgid sind.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/tmp&lt;/code&gt;, &lt;code&gt;/var/tmp&lt;/code&gt; (1777 ?)&lt;/li&gt;
-&lt;li&gt;Verzeichnisse im Pfad, Binaries, Konfigurationsdateien?&lt;/li&gt;
-&lt;li&gt;Dateien mit vorhersagbaren Dateinamen?&lt;/li&gt;
-&lt;li&gt;Geräte? Backup?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;rechte-an-geräten&#34;&gt;
-    &lt;a href=&#34;#rechte-an-ger%c3%a4ten&#34;&gt;
-	Rechte an Geräten
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Bonusfolien aus der alten Schulung&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2000/04/neu-system-016.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Auf vielen älteren kommerziellen Unices sind Gerätedateien unzureichend geschützt.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Beschreibbare Plattendevices, Banddevices&lt;/li&gt;
-&lt;li&gt;777-Verzeichnisse &lt;code&gt;/dev/md/*&lt;/code&gt;, Löschen von LVM-Pseudogerätedateien&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ioctl()&lt;/code&gt;-Aufrufe nicht ausreichend privilegiert.&lt;/li&gt;
-&lt;li&gt;Medien mit sensitivem Inhalt in lesbaren Geräten.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Beispiele:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ioctl()-Aufrufe in AIX teilweise nicht dokumentiert und nicht privilegiert.&lt;/li&gt;
-&lt;li&gt;/dev-Unterverzeichnisse 777 in HP/UX.&lt;/li&gt;
-&lt;li&gt;/bin-Verzeichnisse 777 in HP/UX und AIX nach Installation von Software.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

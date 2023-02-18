@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/2007/01/20/ein-nagios-plugin-fuer-mysql.html">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='Ein Nagios-Plugin für MySQL' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -127,8 +126,8 @@
             Ein Nagios-Plugin für MySQL
           </h1>
           <div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-            <img alt='isotopp image' src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-            <a href="https://twitter.com/isotopp" class='text-light text-decoration-none'>
+            <img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+            <a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
                 Kristian Köhntopp
             </a>
 
@@ -195,13 +194,13 @@ Die Funktion braucht eine Optionsliste in einem struct options Array, in dem wir
 </span></span><span class="line"><span class="cl">  <span class="n">slave_io_running</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="n">slave_sql_running</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="n">connections</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">mode_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="kt">mode_t</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">host</span>     <span class="o">=</span> <span class="s">&#34;127.0.0.1&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">user</span>     <span class="o">=</span> <span class="s">&#34;root&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">password</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span>   <span class="n">port</span>     <span class="o">=</span> <span class="mi">3306</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">mode_t</span> <span class="n">mode</span>    <span class="o">=</span> <span class="n">unspecified</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">mode_t</span> <span class="n">mode</span>    <span class="o">=</span> <span class="n">unspecified</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span>   <span class="n">threshold_warn</span><span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span>   <span class="n">threshold_err</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span>   <span class="n">debug</span>    <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -212,21 +211,21 @@ Die Funktion braucht eine Optionsliste in einem struct options Array, in dem wir
 </span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">myarg</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">getopt_long</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&#34;h:u:p:P:m:t:T:d?&#34;</span><span class="p">,</span> <span class="n">long_options</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">optind</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="nf">getopt_long</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&#34;h:u:p:P:m:t:T:d?&#34;</span><span class="p">,</span> <span class="n">long_options</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">optind</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">optarg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">myarg</span> <span class="o">=</span> <span class="n">strdup</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">myarg</span> <span class="o">=</span> <span class="nf">strdup</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">myarg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Out of memory in strdup!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Out of memory in strdup!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">switch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;?&#39;</span><span class="o">:</span> <span class="c1">// Hilfstext
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;h&#39;</span><span class="o">:</span>
@@ -242,44 +241,44 @@ Die Funktion braucht eine Optionsliste in einem struct options Array, in dem wir
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;P&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">port</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">port</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;m&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-lag&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-lag&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="n">mode</span> <span class="o">=</span> <span class="n">slave_lag</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-io-running&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-io-running&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="n">mode</span> <span class="o">=</span> <span class="n">slave_io_running</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-sql-running&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;slave-sql-running&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="n">mode</span> <span class="o">=</span> <span class="n">slave_sql_running</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;connections&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span><span class="n">myarg</span><span class="p">,</span> <span class="s">&#34;connections&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="n">mode</span> <span class="o">=</span> <span class="n">connections</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="n">mode</span> <span class="o">=</span> <span class="n">unspecified</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;t&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">threshold_warn</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">threshold_warn</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;T&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">threshold_err</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">threshold_err</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="sc">&#39;d&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">debug</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">debug</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">free</span><span class="p">(</span><span class="n">myarg</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Unknown option: %c</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Unknown option: %c</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
@@ -295,44 +294,44 @@ Wir haben ein Programm, das die gewünschten Kommandozeilenoptionen einlesen kan
 </span></span><span class="line"><span class="cl">  <span class="n">MYSQL_RES</span> <span class="o">*</span><span class="n">res</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Field %d of query %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">cmd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Field %d of query %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">cmd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mysql_real_query</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query %s failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nf">mysql_real_query</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query %s failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">cmd</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">mysql_error</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">mysql_error</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="n">mysql_store_result</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">=</span> <span class="nf">mysql_store_result</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query %s failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query %s failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">cmd</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">mysql_error</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">mysql_error</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">mysql_fetch_row</span><span class="p">(</span><span class="n">res</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span>   <span class="n">num_fields</span> <span class="o">=</span> <span class="n">mysql_num_fields</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span><span class="n">len</span>        <span class="o">=</span> <span class="n">mysql_fetch_lengths</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="nf">mysql_fetch_row</span><span class="p">(</span><span class="n">res</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span>   <span class="n">num_fields</span> <span class="o">=</span> <span class="nf">mysql_num_fields</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span><span class="n">len</span>        <span class="o">=</span> <span class="nf">mysql_fetch_lengths</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">col</span> <span class="o">&lt;</span> <span class="n">num_fields</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Result column %d returns value </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s"> (length %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">?</span><span class="n">strndup</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">])</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Result column %d returns value </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s"> (length %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">?</span><span class="nf">strndup</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">len</span><span class="p">[</span><span class="n">col</span><span class="p">])</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query cmd does not return %d fields (it returns %d fields).</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Query cmd does not return %d fields (it returns %d fields).</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">cmd</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">col</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">num_fields</span>
 </span></span><span class="line"><span class="cl">      <span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">mysql_free_result</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mysql_free_result</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -350,14 +349,14 @@ Wenn unser gewünschtes Zielfeld im Datensatz enthalten ist (<code>col &lt; num_
 Erstmal eine Connection bauen.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">parse_args</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">parse_args</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">unspecified</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: No or wrong mode specified. Specify --mode={slave-lag,slave-io-running,slave-sql-running,connections}</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: No or wrong mode specified. Specify --mode={slave-lag,slave-io-running,slave-sql-running,connections}</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Connect to %s:%d with %s:%s for test %d with threshold_warn %d and threshold_err %d.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Connect to %s:%d with %s:%s for test %d with threshold_warn %d and threshold_err %d.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">host</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">port</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">user</span><span class="p">,</span>
@@ -367,75 +366,75 @@ Erstmal eine Connection bauen.</p>
 </span></span><span class="line"><span class="cl">      <span class="n">threshold_err</span>
 </span></span><span class="line"><span class="cl">    <span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">mysql_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mysql_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">mysql_real_connect</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Cannot connect to database: Error: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">mysql_error</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">mysql_real_connect</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Cannot connect to database: Error: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">mysql_error</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">debug</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Connected...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Connected...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span></code></pre></div><p>Jetzt können wir je nach mode unterschiedliche Dinge tun. Zum Beispiel den Slave Lag checken:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">slave_lag</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span>   <span class="n">lag</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave lag NULL</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave lag NULL</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">lag</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lag</span> <span class="o">=</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">lag</span> <span class="o">&gt;</span> <span class="n">threshold_err</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave lag %d sec exceeds threshold_err %d sec</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span> <span class="n">threshold_err</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave lag %d sec exceeds threshold_err %d sec</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span> <span class="n">threshold_err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">lag</span> <span class="o">&gt;</span> <span class="n">threshold_warn</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;WARN: Slave lag %d sec exceeds threshold_warn %d sec</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span> <span class="n">threshold_warn</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;WARN: Slave lag %d sec exceeds threshold_warn %d sec</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span> <span class="n">threshold_warn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave lag %d is inside tolerance.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave lag %d is inside tolerance.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">lag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>Oder Slave-IO und Slave-SQL testen:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">slave_io_running</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave io not running</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave io not running</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#34;Yes&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave io not running: result is %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#34;Yes&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave io not running: result is %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave io is running.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave io is running.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">slave_sql_running</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">run_query</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mysql</span><span class="p">,</span> <span class="s">&#34;show slave status&#34;</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave sql not running</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave sql not running</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#34;Yes&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave sql not running: result is %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s">&#34;Yes&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;CRIT: Slave sql not running: result is %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave sql is running.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;OK: Slave sql is running.</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>Oder eben die Anzahl der Threads_connected prüfen und ggf. anmeckern:</p>
 <pre tabindex="0"><code>  if (mode == connections) {
@@ -496,9 +495,7 @@ Erstmal eine Connection bauen.</p>
         <a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2007%2f01%2f20%2fein-nagios-plugin-fuer-mysql.html' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#facebook'/></svg>
         </a>
-        <a href='https://twitter.com/intent/tweet?source=https%3a%2f%2fblog.koehntopp.info%2f2007%2f01%2f20%2fein-nagios-plugin-fuer-mysql.html&text=Ein%20Nagios-Plugin%20f%c3%bcr%20MySQL%20%7C%20Die+wunderbare+Welt+von+Isotopp:%20https%3a%2f%2fblog.koehntopp.info%2f2007%2f01%2f20%2fein-nagios-plugin-fuer-mysql.html' target='_blank' class='text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
         <a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2007%2f01%2f20%2fein-nagios-plugin-fuer-mysql.html&title=Ein%20Nagios-Plugin%20f%c3%bcr%20MySQL' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -531,6 +528,19 @@ Erstmal eine Connection bauen.</p>
         
       </div>
     </div>
+
+    
+    
+    
+    
+    <div class='row justify-content-center py-3 mb-3 mx-0'>
+      <div class='col-lg-8 text-center'>
+        <a href="https://github.com/isotopp/isotopp.github.io/edit/main/content/posts/2007-01-20-ein-nagios-plugin-fuer-mysql.md" rel="noopener noreferrer" target="_blank">
+            <span class='letter-spacing-01 text-uppercase text-secondary me-2'>Suggest Changes</span>
+        </a>
+      </div>
+    </div>
+    
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
@@ -582,6 +592,10 @@ Erstmal eine Connection bauen.</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -590,9 +604,7 @@ Erstmal eine Connection bauen.</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

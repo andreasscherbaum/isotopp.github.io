@@ -6,7 +6,679 @@
     <description>Recent content in lang_de on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Oct 2022 09:16:01 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/lang_de/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 17:52:47 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/lang_de/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Was mein Kind in der Schule so macht</title>
+      <link>https://blog.koehntopp.info/2022/12/30/was-mein-kind-in-der-schule-so-macht.html</link>
+      <pubDate>Fri, 30 Dec 2022 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/30/was-mein-kind-in-der-schule-so-macht.html</guid>
+      <description>&lt;p&gt;Die Niederlande sind ja ein Land, das mit WhatsApp funktioniert.
+&amp;ldquo;Ik stuur je snel een appie&amp;rdquo; und wenn WhatsApp mal down ist, wird das Land vorübergehend geschlossen.&lt;/p&gt;
+&lt;p&gt;Damit kann man einverstanden sein oder nicht, aber Metcalfe&amp;rsquo;s Law ist mächtig und wenn man das Land nicht in Hard Mode spielen will, dann legt man sich besser ein WhatsApp zu.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/whatsapp-01.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;An ungefähr jedem zweiten Wohngebiet findet man ein solches Schild an der Einfahrtstraße.
+Es gehört zu &lt;a href=&#34;https://www.wabp.nl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WBAP&lt;/a&gt;
+
+ (WhatsApp BuurtPreventie), einem System von mehr als 10.000 Nachbarschafts-Chatgruppen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Auch die Schulen haben viele Jahre lang mit den Eltern pro Klasse eine WhatsApp-Gruppe gefahren.
+Das ist dann vor vier oder fünf Jahren plötzlich aus Datenschutzgründen untersagt worden.
+Dabei ist &amp;ndash; datenschutztypisch &amp;ndash; keine Alternative genannt worden.&lt;/p&gt;
+&lt;p&gt;Man hat also hastig eine Chatfunktion in die Schul-App integriert, also in unserem Fall für die Grundschule in &lt;a href=&#34;https://www.parnassys.nl/oplossingen/modules/parro&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parro&lt;/a&gt;
+
+.
+Da hatte man dann eine 50:50 Chance, daß die betreffende Lehrkraft das auch benutzt und in Time gesehen hat.&lt;/p&gt;
+&lt;p&gt;Die Schüler hatten alle kein Problem.
+Die hatten alle, sobald sie schreiben konnten, ein eigenes Handy.
+Entweder ohne SIM oder mit einer Prepaid-Karte drin.
+Und natürlich haben sie sich selbst pro Klasse WhatsApp-Gruppen gebaut.&lt;/p&gt;
+&lt;p&gt;Wenn man also zuverlässig kommunizieren wollte, dann mußte man über die WhatsApp-Gruppe der Kinder herausfinden, welche WhatsApp-Gruppe die Eltern der Klasse organisiert hatten, und dann ging es weiter.
+Nur halt ohne Lehrer.&lt;/p&gt;
+&lt;p&gt;Das ist hoffentlich für niemanden überraschend:
+Wenn jemand etwas aus welchem Grund auch immer verbietet, dann geht der Bedarf ja nicht weg, der zum Betrieb der originalen Lösung geführt hat.
+Wenn man also den Datenschutz, Security oder sonst irgendwelche Interessen vertritt und dabei nicht konstruktiv arbeitet, also rechtskonforme, aber vor allen Dingen funktionierende und bedarfsgerechte Lösungen als Ersatz anbietet, dann passiert… genau gar nix.&lt;/p&gt;
+&lt;p&gt;Außer einem weiteren gloriosen Sieg für den Datenschutz, mit dem wir Europäer den bösen amerikanischen Datenkraken-Megakonzernen mal so richtig gezeigt habe, was eine Harke ist.
+Feuerwerk!&lt;/p&gt;
+&lt;h1 id=&#34;schul-app&#34;&gt;
+    &lt;a href=&#34;#schul-app&#34;&gt;
+	Schul-App
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ein wenig Hintergrund:
+&lt;a href=&#34;https://nl.wikipedia.org/wiki/Verzuiling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Verzuiling&lt;/a&gt;
+
+ (&amp;ldquo;Versäulung&amp;rdquo;) ist eine spezifische Entwicklung von innerstaatlichen Parallelgesellschaften, die typisch für die niederländische Gesellschaft war.
+So gab es im Schulbereich katholische, protestantische und nicht-konfessionelle Schulen und in einigen Bereichen auch gewerkschaftlich geprägte Schulzüge.&lt;/p&gt;
+&lt;p&gt;Selbst hier in unserem 5000-Leute-Dorf gab es bis vor 4 Jahren noch eine konfessionelle und eine nicht-konfessionelle Grundschule, die dann erst aus finanziellen Gründen und wegen der sinkenden Schülerzahlen zusammen gegangen sind.
+Das war weitgehend problemlos, da auch an der (größeren) konfessionellen Schule außer dem Religionsunterricht und gelegentlichen Kirchenbesuchen am Reformationstag kaum etwas von der konfessionellen Ausrichtung zu spüren war.&lt;/p&gt;
+&lt;p&gt;Aber die Schulen, mit denen ich Erfahrung habe, sind meistens Mitglied in einer Gruppe, die eine gemeinsame Schul- und Technikorganisation haben.
+Für unsere Grundschule war das zum Beispiel
+&lt;a href=&#34;https://jl.nu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stichting Jong Leren&lt;/a&gt;
+
+,
+und die jl-Schulen verwenden alle
+&lt;a href=&#34;https://www.parnassys.nl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Parnassys&lt;/a&gt;
+
+
+als Schul-Anwendung und Parro als Schulapp.&lt;/p&gt;
+&lt;p&gt;Bei den VWO, die ich im Detail angesehen habe, war das dann alles auf der Basis von
+&lt;a href=&#34;https://www.magister.nl/voor-iedereen/leerlingen-en-ouders/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Magister&lt;/a&gt;
+
+.
+Alle Schulen, mit denen ich zu tun hatte, nahmen dann hinten dran im Betrieb Google Edu und weitere hinten dran gestrickte Anwendungen von Schulbuch- und Contentverlagen.&lt;/p&gt;
+&lt;p&gt;Die sind dann jeweils von der Trägerorganisation in Zusammenarbeit mit den Verlagen entwickelt worden, und passen zu den Lehrbüchern und Übungen.&lt;/p&gt;
+&lt;p&gt;In der Regel arbeiten die verschiedenen Träger zusammen, und so gibt es da nicht sonderlich tiefgreifende Unterschiede zwischen den Trägern.
+Das will man schon aus Kostengründen nicht erzwingen, wozu auch?&lt;/p&gt;
+&lt;p&gt;Wenn man als Schule Arbeit vom Hals haben will, dann sucht man sich also eine zur eigenen Säule und zur eigenen Ideologie passende Träger-Organisation aus und tritt da ein, damit man Zugriff auf diese Ressourcen hat.
+Am Ende landet man dann bei Magister und Google Edu, weil das irgendwie alle machen und das auch total sinnvoll ist.&lt;/p&gt;
+&lt;h1 id=&#34;magister&#34;&gt;
+    &lt;a href=&#34;#magister&#34;&gt;
+	Magister
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Um einmal einen Eindruck zu vermitteln, wie so etwas aussehen kann:
+Magister bietet in der Elternansicht eine Reihe von nützlichen Funktionen an, die im Grunde ein &amp;ldquo;Klassenbuch&amp;rdquo; komplett ersetzen.&lt;/p&gt;
+&lt;p&gt;Die Anwendung kann mehrere Kinder verwalten.&lt;/p&gt;
+&lt;p&gt;Ich sehe den Stundenplan, Hausaufgabe, Fehlzeiten, Noten und diverse Mails und Mitteilungen der Schulleitung, sowie To-do-Listen und zusätzliche Studienangebote der Schule.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/magister-01.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Screenshot des Hauptmenüs von Magister mit den Punkten Stundenplan, Hausaufgaben, Abwesenheit, Noten, Mail, Mitteilungen, Studienwegweiser, Todo und Stammdatenverwaltung.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Ich kann im Stundenplan sehen, ob Hausaufgaben aufgegeben sind.
+Ich kann auch erkennen, ob das Kind sie abgehakt hat (dann wäre der Böppel grün).&lt;/p&gt;
+&lt;p&gt;In der Hausaufgabenansicht bekomme ich das kompakter, als Liste.&lt;/p&gt;
+&lt;p&gt;Fehlzeiten, entschuldigt und unentschuldigt, bekomme ich auch mit.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/magister-02.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Stundenplan für den 12. Januar 2023, mit Unterrichtsbeginn um 9:35. Es ist eine Doppelstunde Geschichte, dann Kunst, dann zwei Doppelstunden O&amp;amp;O. Zu Geschichte ist eine Hausaufgabe vorhanden, die noch nicht abgehakt ist.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In der Notenansicht sind die letzten Ergebnisse, das Datum des neusten Ergebnisses und die Note selbst (hier zensiert) jeweils sichtbar.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/magister-03.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Die Notenansicht. Sie zeigt jeweils das Datum des letzten Ergebnisses und (hier zensiert) das letzte Ergebnis, sowie die Anzahl der vorliegenden Ergebnisse. Man kann dann auf die einzelnen Leistungsnachweise zurückblättern.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Auf diese Weise ist zwischen allen Beteiligten jeweils die Faktenlage aktuell und transparent dokumentiert und es geht nichts verloren.
+Alles in allem ist das recht effektiv.&lt;/p&gt;
+&lt;p&gt;Wir hatten vor den Weihnachtsferien das erste Elterngespräch auf der neuen Schule.
+Da von den Sachfragen her alles klar war, haben wir mit dem Kind und zwei Lehrkräften zusammen gesessen und dann mal darüber geredet, wie das so ist mit Niederländisch als Zweitsprache an der VWO, und wo noch was zu machen ist.&lt;/p&gt;
+&lt;p&gt;Mit einem deutschen Elternabend komplett nicht vergleichbar.&lt;/p&gt;
+&lt;p&gt;Das ist bemerkenswert, weil die Lehrerausbildung in Deutschland sehr viel besser ist.
+Hierzulande ist Lehrer ein Ausbildungsberuf, und je nach Hintergrund haben die betreffenden Personen zwischen sechs Monaten und drei Jahren Ausbildung erhalten.
+Der Rest muss per Weiterbildung und durch Assimilation &amp;ldquo;on the Job&amp;rdquo; passieren.
+Man kann am Alter der Lehrkraft schon grob abschätzen, wie umfassend ihr Repertoire an Methodik, Konfliktlösung und Kommunikationstraining ist.
+Und wie bei Handwerkern auch ist das Spektrum an Leistungsunterschieden sehr viel breiter, als man das von Deutschland gewohnt ist, weil die Ausbildung selbst sehr viel individueller und variabler ist.&lt;/p&gt;
+&lt;h1 id=&#34;schwächen-aber-nicht-bei-der-technik&#34;&gt;
+    &lt;a href=&#34;#schw%c3%a4chen-aber-nicht-bei-der-technik&#34;&gt;
+	Schwächen, aber nicht bei der Technik
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Alles in allem kann man sowohl für die Grundschule als auch die VWO sagen, daß die Technik funktioniert.&lt;/p&gt;
+&lt;p&gt;Die Schulgebäude sind modern, sauber und gut renoviert.
+Die Ausstattung mit der Technik ist natürlicht nicht optimal, aber weitgehend adäquat, und die Räume sind von der Ausstattung her in der Lage, die Technik zu tragen.
+Das gilt insbesondere auch für Netz in die Schule (Glasfaser) und Wifi (aktiv gemanaged und auf die Anzahl der Clients abgestimmt, mit einer Abdeckungs- und Lastanalyse).&lt;/p&gt;
+&lt;p&gt;Verwaltung und Betrieb sind an ICT-Firmen ausgelagert, die mit den Verwaltungsanwendungen und Google Edu umzugehen wissen.
+Erwartungsgemäß kommt es dabei zu Beginn des Schuljahres zu einzelnen Rucklern und Rechteschwankungen, die jedoch teilweise erstaunlich lange in der Bearbeitung brauchen.
+Am Ende hat es 14 Tage gedauert, bis alle Schüler in ihren Klassenverbänden mit den korrekten Stammdaten und Rechten registriert waren.&lt;/p&gt;
+&lt;h2 id=&#34;mithalten-ist-arbeit&#34;&gt;
+    &lt;a href=&#34;#mithalten-ist-arbeit&#34;&gt;
+	Mithalten ist Arbeit
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Die Schule selbst steht zum Teil vor großen pädagogischen Problemen, weil die Leistungsstände der Kinder beim Umgang mit Rechnern und mit der speziellen Umgebung extrem unterschiedlich sind.
+Sie darf nichts voraussetzen, aber die meisten Kinder kennen sich mit der Technik gut genug aus, um sofort loszuarbeiten und einzelne Kinder haben einen Leistungsstand, der dem der Lehrkräfte vergleichbar ist.
+Dies zu vereinheitlichen und dabei weder oben noch unten Leute zu verlieren ist nahezu unmöglich, und auch nicht gut gelöst.&lt;/p&gt;
+&lt;p&gt;Die oft gehörten Bedenken &amp;ldquo;große Konzerne drängen auf den Bildungsmarkt, und versuchen Abhängigkeiten zu erzeugen, Curricula zu pushen und Kunden für die Zukunft zu binden oder Daten zu monetarisieren&amp;rdquo; lassen sich durch Beobachtung von meiner Seite nicht bestätigen.&lt;/p&gt;
+&lt;p&gt;Es bestehen Probleme, aber die sind anderer Art.
+In &amp;ldquo;ICT Basisvaardigheden&amp;rdquo; wird teilweise Unterrichtsmaterial verwendet, das Spezifika von Windows-Programmen voraussetzt und abfragt.
+Aber die Schule setzt Chromebooks ein und wir haben Apple daheim.
+Das Kind &amp;ndash; im Grunde sehr sicher im Umgang mit Rechnern &amp;ndash; kommt aufgelöst angerannt und fragt sich, wie es die Aufgabe lösen soll.
+&amp;ldquo;Ja&amp;rdquo;, sagt die Schule, &amp;ldquo;wir können das Unterrichtsmaterial nicht schnell genug anpassen.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;arbeiten-in-lokalen-und-verteilten-gruppen&#34;&gt;
+    &lt;a href=&#34;#arbeiten-in-lokalen-und-verteilten-gruppen&#34;&gt;
+	Arbeiten in lokalen und verteilten Gruppen
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Auch in der Gestaltung des Unterrichts stößt die Schule teilweise an ihre Grenzen, hier dann aber wegen Ausbildungs- und Umsetzungsschwächen.
+Diese spezielle Schule ist sehr stolz auf das Fach O&amp;amp;O (&amp;ldquo;Onderzoek &amp;amp; Ontwerpen&amp;rdquo;, &amp;ldquo;Untersuchen und Entwerfen&amp;rdquo;).
+Die Grundidee ist fantastisch, weil das eine schulbegleitende, fächerübergreifende Ingenieursanwendung ist:
+Die Kinder sollen in Kleingruppen, gemeinsam, ein konkretes real-weltliches Problem lösen, also zum Beispiel ein Löwengehege im Artis-Zoo von Amsterdam entwerfen oder eine Upcycling-Lösung für ein Produkt einer Firma entwerfen.&lt;/p&gt;
+&lt;p&gt;Die Umsetzung scheitert auf mehr als einer Ebene, und das müßte sie im Grunde nicht.
+Wir reden hier nach deutscher Skala von Kindern 7. Klasse Gymnasium, die in einem neu zusammengewürfelten Klassenverband die neue Schule beginnen.
+Sie werden zufällig und für jedes Projekt neu in zufällige, nicht selbstbestimmte 4er-Gruppen geworfen, und natürlich geht das Team danach immer wieder neu durch die Forming, Storming, Norming and Performing-Phasen.
+Das wäre leicht vermeidbar, wenn man dies verstünde, die Teams stabil ließe und dabei dann behutsam Ausgleichs-Umbesetzungen vornähme, wo das notwendig ist.&lt;/p&gt;
+&lt;p&gt;Die einzelnen Aufgaben werden teilweise mit recht wenig Begleitung und gewiss ohne Meta-Ziele in die Teams geworfen.
+Es wäre total sinnvoll, die erste Aufgabe als Wegwerf-Projekt zu inszenieren und dabei nicht nur den Gebrauch der Google-Office-Werkzeuge zu lehren, sondern auch kollaboratives Arbeiten, Strukturierung der Arbeitsumgebung, und dabei den Teams Zeit und Raum zu geben, gemeinsame Normen und Methoden zu finden.
+Auch diese Chance wurde vergeben.&lt;/p&gt;
+&lt;p&gt;Ebenso hätte man bei verschiedenen dieser Projekte die Konzepte von Stakeholdern, multilateralen Zielen, Design Constraints und andere Dinge einführen können.
+Artis ist zum Beispiel ein Zoo, der auf enorm kleinem Raum auskommen muß, weil er mitten in einer dicht gepackten Innenstadt liegt.
+Die Bedürfnisse von Tieren, Besuchern, Wärtern und die finanziellen Constraints der Betreiber unter einen Hut zu bekommen ist so gut wie unmöglich, aber selbst mit einer vereinfachten Aufgabenstellung hätte man zumindest diese Blickwinkel, harte und weiche Einschränkungen und dergleichen mehr ansprechen können und das Projekt so pädagogisch sehr viel wertvoller machen können.&lt;/p&gt;
+&lt;p&gt;Ich bin nicht nahe genug dran, um beurteilen zu können, warum das so ist, aber ich habe den laienhaften Eindruck, daß es da an strukturierter Aufbereitung der Ziele und der pädagogischen Umsetzung mangelt.
+Dort wären viele &amp;ldquo;leichte&amp;rdquo; Gewinne und einfache Verbesserungen möglich.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Chromebooks in der Schule</title>
+      <link>https://blog.koehntopp.info/2022/12/29/chromebooks-in-der-schule.html</link>
+      <pubDate>Thu, 29 Dec 2022 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/29/chromebooks-in-der-schule.html</guid>
+      <description>&lt;p&gt;In
+&lt;a href=&#34;https://blog.koehntopp.info/2020/01/28/mein-sohn-sitzt-vor-dem-computer.html&#34;&gt;Mein Sohn sitzt vor dem Computer&lt;/a&gt;
+
+
+und in
+&lt;a href=&#34;https://blog.koehntopp.info/2020/06/23/schulen-digitalisieren.html&#34;&gt;Schulen digitalisieren&lt;/a&gt;
+
+
+ging es schon einmal um den Einsatz von Computern in der Schule, in Deutschland und in den Niederlanden.&lt;/p&gt;
+&lt;h1 id=&#34;vwo&#34;&gt;
+    &lt;a href=&#34;#vwo&#34;&gt;
+	VWO
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Jetzt stand bei uns letzten Sommer nach dem Ende der 8. Grundschulklasse (der deutschen 6. Grundschulklasse) der Schulwechsel auf die &lt;a href=&#34;https://nl.wikipedia.org/wiki/Voorbereidend_wetenschappelijk_onderwijs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VWO&lt;/a&gt;
+
+ an.
+VWO steht für &amp;ldquo;Voorbereidend wetenschappelijk onderwijs&amp;rdquo;, studienvorbereitender Unterricht, und entspricht noch am ehesten einem deutschen Gymnasium.
+So wie es in Deutschland Gymnasien mit unterschiedlicher Ausrichtung gibt, gibt es das auch in den Niederlanden und der Name &amp;ldquo;Gymnasium&amp;rdquo; steht für eine VWO mit altsprachlicher Ausrichtung, der Name &amp;ldquo;Atheneum&amp;rdquo; für VWO mit einer technisch-naturwissenschaftlichen Ausrichtung, und es gibt noch ein paar weitere Geschmacksrichtungen.
+Die Schulart ist VWO.&lt;/p&gt;
+&lt;p&gt;Wie auch schon in der Grundschule werden im Unterricht unter anderem Chromebooks benutzt und der Online-Teil des Unterrichts um
+&lt;a href=&#34;https://edu.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Edu&lt;/a&gt;
+
+
+herum strukturiert.
+In einer Diskussion mit Deutschen gab es dabei einen Haufen komische Vorstellungen, was das ist, wieso das nützlich ist und natürlich einen Haufen Befürchtungen, ob das nicht gefährlich ist.&lt;/p&gt;
+&lt;h1 id=&#34;chromebook&#34;&gt;
+    &lt;a href=&#34;#chromebook&#34;&gt;
+	Chromebook
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ein Chromebook ist ein normaler Laptop mit Linux, der direkt in einen Chrome Browser bootet.
+Auf dem Gerät werden keine Daten gespeichert, alle Daten werden in den Diensten hinterlegt, die man mit dem Gerät nutzt.&lt;/p&gt;
+&lt;p&gt;Chromebooks gibt es in sehr unterschiedlichen Leistungsklassen und Preislagen.
+Von 200 Euro Wegwerf-Geräten bis zu 2k Euro mit Touchscreen und dicken CPUs ist alles vorhanden, auch wenn der Schwerpunkt eindeutig auf kostengünstigen Geräten mit niedrigem Energieverbrauch und langer Akkulaufzeit liegt.&lt;/p&gt;
+&lt;p&gt;Wir haben gar keines gekauft, sondern ein Angebot eines
+&lt;a href=&#34;https://rentcompany.nl/easy4u-abonnement/ouders-van-vo-scholieren&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;von der Schule empfohlenen Dienstleisters&lt;/a&gt;
+
+
+wahrgenommen, und mieten für 13.70 Euro im Monat.
+Dadurch haben wir immer ein aktuelles und funktionsfähiges Gerät (und Daten können prinzipbedingt sowieso nicht verloren gehen), und brauchen uns keine Sorgen zu machen.&lt;/p&gt;
+&lt;p&gt;Technisch ist das so, daß das Kind ein von der Schule bereitgestelltes Google Edu Login bekommt.
+Mit dem Login kann er sich auf dem Gerät oder auf seinem Rechner daheim anmelden.
+Danach kann er dann die von der Schule bereitgestellten Dienste und Daten nutzen.
+Dabei spielt es keine Rolle wo er ist, und ob er das Chromebook oder seinen privaten Rechner benutzt, solange er im Browser mit der Schul-Identität unterwegs ist.&lt;/p&gt;
+&lt;p&gt;Angenehm ist, daß&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;das Gerät im Grunde keine Rolle spielt, sondern nur das Login wichtig ist&lt;/li&gt;
+&lt;li&gt;keine Daten auf dem Gerät sind, sodaß nichts verloren gehen kann und nahtlos zwischen daheim und der Schule gewechselt werden kann&lt;/li&gt;
+&lt;li&gt;der Chrome-Browser mehrere Identitäten verwalten kann, sodaß das Kind sowohl auf dem Chromebook als auch auf dem privaten Rechner in unterschiedlichen Fenstern unterschiedliche Identitäten haben kann&lt;/li&gt;
+&lt;li&gt;Zugriffsregeln und Rechte vom Login abhängen und nicht vom Gerät&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nützlich ist auch, daß das Gerät eine Tastatur und Maus hat.
+Dadurch kann man auf dem Gerät sinnvoll schreiben und Inhalte erzeugen.
+Es gibt Geräte mit Touchscreen und Tablet-Betrieb, wenn man das &lt;em&gt;auch&lt;/em&gt; braucht,
+aber generell sind dies &amp;ldquo;richtige Laptops&amp;rdquo; und keine Tablet-Geräte, die auf Konsum von Inhalten optimiert sind.&lt;/p&gt;
+&lt;h2 id=&#34;keine-viren&#34;&gt;
+    &lt;a href=&#34;#keine-viren&#34;&gt;
+	Keine Viren
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Chromebooks unterscheiden sich von normalen Computern dadurch, daß sie in der normalen Betriebsart einen &amp;ldquo;trusted boot&amp;rdquo; durchführen.
+Das System ist dann vom Systemstart an validiert und durch Prüfsummen abgesichert &amp;ndash; weder das System noch der Browser können durch Viren, unangemeldete Systemerweiterungen oder Browser-Plugins &amp;ldquo;verunreinigt&amp;rdquo; werden.
+Wenn der Zustand des Rechners einmal fragwürdig sein sollte, drückt Ctrl-Alt-Shift-R und wählt Restart -&amp;gt; Powerwash.
+Das System führt dann einen &amp;ldquo;&lt;a href=&#34;https://support.google.com/chromebook/answer/183084&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Powerwash&lt;/a&gt;
+
+&amp;rdquo; durch, und ist danach wieder auf den abgesicherten Fabrikzustand zurückgesetzt.
+Nach einem neuen Login hat man dann ein sauber aufgesetztes System und seine Daten.&lt;/p&gt;
+&lt;p&gt;Das ist für die Schule angenehm, denn dies ist in der Tat die gesamte Gerätewartung, die vor Ort notwendig ist.
+Installation, Konfiguration und Wartung vor Ort entfallen komplett.&lt;/p&gt;
+&lt;h1 id=&#34;google-edu&#34;&gt;
+    &lt;a href=&#34;#google-edu&#34;&gt;
+	Google Edu
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Für die Schule ist das Wegfallen der Gerätewartung und Installation angenehm, aber nur das User-Ende der Schul-Verwaltung.
+Der eigentliche Clou ist Google Edu, also &amp;ldquo;&lt;a href=&#34;https://workspace.google.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Workspace&lt;/a&gt;
+
+ für Schulen&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Google Workspace&amp;rdquo; ist für den Endbenutzer sichtbar die Sammlung von Werkzeugen, die früher unter dem Namen &amp;ldquo;Google Office&amp;rdquo; bekannt war.
+Also Gmail, Calendar, Drive, Docs/Sheets/Slides/Forms, und das Meet Konferenzsystem/Chat.&lt;/p&gt;
+&lt;h2 id=&#34;iam&#34;&gt;
+    &lt;a href=&#34;#iam&#34;&gt;
+	IAM
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Wichtiger für die Schule selbst und für den Endbenutzer eher unsichtbar ist das IAM-Backend.
+IAM steht dabei für &amp;ldquo;Identitäts- und Access-Management&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Das ist die Struktur, die der Schule &amp;ldquo;Logindienste&amp;rdquo; und &amp;ldquo;Rechteverwaltung&amp;rdquo; bereitstellt.
+In
+&lt;a href=&#34;https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control.html&#34;&gt;Identität, Authentisierung, Autorisierung, Auditing und Accounting&lt;/a&gt;
+
+
+definiere ich eben diese Begriffe.
+Die Kurzform:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Identität ist der Login-Name, der mich im Kontext meiner Organisation repräsentiert.
+Also so etwas wie &amp;ldquo;&lt;a href=&#34;mailto:kristian.koehntopp@schulname.nl&#34;&gt;kristian.koehntopp@schulname.nl&lt;/a&gt;
+
+&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Authentisierung ist der Mechanismus, oder die Kombination von Mechanismen, mit der ich gegenüber dem System beweise, daß ich wirklich &amp;ldquo;&lt;a href=&#34;mailto:kristian.koehntopp@schulname.nl&#34;&gt;kristian.koehntopp@schulname.nl&lt;/a&gt;
+
+&amp;rdquo; bin.
+Also so was wie mein Paßwort und der Knopfdruck auf meinem Yubikey.&lt;/li&gt;
+&lt;li&gt;Anker ist die Bestätigung der Organisation, daß ich wirklich zur Organisation gehöre und welche Rolle ich dort habe.
+Das ist vor allen Dingen bei Self-Signup wichtig, also wenn man Login nicht durch die Schule generiert worden wäre, sondern ich mich selbst anmelde.
+Mit der Verankerung verhindert die Organisation, daß jemand  sich anmeldet und sich selbst dann Attribute wie &amp;ldquo;gehört der Schule an&amp;rdquo;, &amp;ldquo;ist Mitglied des Lehrkörpers&amp;rdquo; und so weiter zuweist.&lt;/li&gt;
+&lt;li&gt;Autorisierung ist der Satz an Rechten, den ich auf Grund meiner bewiesenen Identität habe.
+&lt;ul&gt;
+&lt;li&gt;Der Rechtesatz ist in der Regel identisch mit dem vieler anderer Nutzer, die die gleiche Rolle wie ich haben (&amp;ldquo;Schüler&amp;rdquo;, &amp;ldquo;Lehrer&amp;rdquo;, &amp;ldquo;Administrator&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;Der Rechtesatz kann automatisch generiert werden, wenn verifizierte Attribute bereitstehen (&amp;ldquo;Lehrer&amp;rdquo;-Rolleninhaber können nur die Daten &amp;ldquo;ihrer Klasse&amp;rdquo; sehen).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Auditing ist ein nicht abschaltbares, nicht veränderbares Logbuch von systemrelevanten Aktivitäten im System, bei dem das Verändern von Systemobjekten durch Benutzer mitgeloggt wird.
+&lt;ul&gt;
+&lt;li&gt;Ein Audit-Event ist dann so etwas wie &amp;ldquo;Der Lehrer Lempel hat die Mathematik-Note von Kristian Köhntopp am &amp;hellip; um &amp;hellip; unter Benutzung der IP &amp;hellip; auf 3 gesetzt.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Accounting ist ein spezielles Auditing, das die Grundlage der Rechnungslegung ist.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Der eigentliche Clou, für die Schule und ihre Administration, ist dabei das IAM, also die Tatsache, daß der Schule und ihren Partnern ein konfigurierbares, offenes IAM bereitgestellt wird.
+Partner kann dabei auch ein IT-Partner sein, also eine Firma oder Behörde, die für die Schule die Konfiguration und den Betrieb von Google Edu übernimmt.
+Dabei ist das System selbstverständlich so gestaltet, daß ein solcher Partner zwar die Rechte der Benutzer konfigurieren kann, aber natürlich nicht ihre Daten sehen oder verändern.&lt;/p&gt;
+&lt;h2 id=&#34;oauth2&#34;&gt;
+    &lt;a href=&#34;#oauth2&#34;&gt;
+	OAuth2
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Google Edu stellt dabei wie viele andere Systeme auch &amp;ldquo;&lt;a href=&#34;https://de.wikipedia.org/wiki/OAuth&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OAuth&lt;/a&gt;
+
+&amp;rdquo; als Login-Mechanismus bereit.
+OAuth ist ein Verfahren, mit dem ein IAM-Dienstleister (also etwa Google Edu) externen Diensten Identitäten beglaubigen und bereitstellen kann.
+Dabei kann für jeden Dienst einzeln und unterscheidbar Zugriff gewährt werden, der Zugriff an Rechte und Rollen gebunden werden, und für den Benutzer sichtbar gemacht werden, welche Dienste wann warum worauf zugegriffen haben.&lt;/p&gt;
+&lt;p&gt;Wenn die Schule also etwa mit Schulbuchverlagen und den Anbietern von Schulsoftware zusammenarbeitet, dann kann die Schule Anwendungen von solchen Anbietern einzelnen Schülern oder Klassen zuweisen.
+Die Schule kann dabei auch festlegen, welche Daten vom Schüler (&amp;ldquo;keine, nur ein anonymes Identifikationstoken&amp;rdquo;, &amp;ldquo;die Loginkennung&amp;rdquo;, &amp;ldquo;der volle Name des Schülers&amp;rdquo;, &amp;ldquo;die Daten des Schülers in anderen Diensten&amp;rdquo;) mit dem Softwareanbieter geteilt werden.
+Schüler können die ihnen zugewiesenen Anwendungen sehen, und auch welche Daten und Rechte damit verbunden sind.
+Anbieter von Anwendungen können sich sicher sein, daß die Identitäten der Nutzer authentisch sind.&lt;/p&gt;
+&lt;p&gt;Alle können im Falle einer Sicherheitsschwankung die Auswirkungen begrenzen:
+Sollte es zu Einbrüchen bei externen Anbietern kommen, können Zugriffs-Tokens zurückgerufen werden und die Account-Sicherheit so vergleichsweise einfach wieder hergestellt werden.
+Zugleich ist durch die Datenverwaltung von IAM und OAuth klar, welche Daten im Zugriff waren und welches Ausmaß der Schaden hat.&lt;/p&gt;
+&lt;h1 id=&#34;plattform&#34;&gt;
+    &lt;a href=&#34;#plattform&#34;&gt;
+	Plattform
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Selbst ohne die Google-eigenen Anwendungen ist das Zusammenspiel von IAM, OAuth und Chromebook schon sehr viel wert.
+Für die Schule und die Anbieter von Inhalten entsteht so eine offene Plattform, gegen die entwickelt werden kann:
+Anbieter können sich auf der Basis von offenen Standards (HTML, CSS, Javascript, dokumentierte Browser-APIs) und verifizierten Identitäten mit einem Rechtesystem in einem Ökosystem gruppieren, in dem sich Dienste anbieten, regeln und abrechnen lassen.&lt;/p&gt;
+&lt;p&gt;Die Plattform selbst besteht dabei aus gut verstandenen Komponenten: Linux, Chrome, offenen Standards und Schnittstellen und einem vielfach verifizierten und zertifizierten Dienstanbieter mit einem ausgezeichneten Sicherheitsbewußtsein.&lt;/p&gt;
+&lt;p&gt;Dazu kommen optional noch die Werkzeuge aus dem Google-Werkzeugkasten selbst.
+Aber dies sind auch nur Anwendungen, die wie externe Anwendungen dazu geschaltet werden können.&lt;/p&gt;
+&lt;p&gt;Anders als andere Plattformen (&amp;ldquo;iPads&amp;rdquo;) oder selbst gekochte Lösungen (&amp;ldquo;Moodle und Jitsi plus einige Extras&amp;rdquo;) gibt es ein verifiziertes und zertifiziertes Betriebs- und Rechtekonzept, das auch von externen Dienstleistern gut verstanden und unterstützt wird.&lt;/p&gt;
+&lt;p&gt;Das ist bemerkenswert, weil dies bisher nicht nur bei deutschen Schulen, sondern auch bei fast allen europäischen Cloud-Anbietern ein blinder Fleck ist:
+Während es viele europäische Dienste gibt, die (meist auf der Basis von Openstack) virtuelle Maschinen oder Dienste anbieten, gibt es kaum einen europäischen Cloud- oder Schulanbieter, der IAM/OAuth und ein Verwaltungs-Framework darum herum anbietet.
+Ganz zu schweigen von &amp;ldquo;Null Aufwand&amp;rdquo;-Clients, die eine über viele Jahre stabile und weiterentwickelte Hardware in Schülerhand darstellen, und bei der sich die Verwaltungsarbeit zentral gesteuert und kryptografisch abgesichert bis in den Client hinein erstreckt.&lt;/p&gt;
+&lt;p&gt;Tatsächlich ist es so, daß die Diskussion in Deutschland sich meist in abstrakten Datenschutzbeschwörungen (&amp;ldquo;Google böse&amp;rdquo;) und Hardware-Streitereien (&amp;ldquo;iPads oder Windows-Laptop&amp;rdquo;) Gerede erschöpft.
+Es wäre sinnvoller, stattdessen einmal Ende-zu-Ende Betriebskonzepte zu besprechen und bewerten.
+Und dabei die Erkenntnisse und Entwicklungen der letzten zehn Jahre auf dem Gebiet der Auftragsdatenverarbeitung (&amp;ldquo;Cloud&amp;rdquo;) und des Rechnerbetriebs zu berücksichtigen.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2FA für Mastodon</title>
+      <link>https://blog.koehntopp.info/2022/12/10/2fa-fuer-mastodon.html</link>
+      <pubDate>Sat, 10 Dec 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/10/2fa-fuer-mastodon.html</guid>
+      <description>&lt;p&gt;Multi-Factor Authentication (Identifikation mit mehreren Faktoren) oder 2FA (Two-Factor-Authentication) sind ein Weg, einen Account vor der Übernahme durch Dritte zu schützen.&lt;/p&gt;
+&lt;p&gt;Statt sich mit Usernamen und Passwort anzumelden ist zusätzlich noch eine wechselnde Pseudozufallszahl notwendig.
+Diese wird von einem Seed-Wert generiert, der durch eine Buchstabenfolge oder einen QR-Code repräsentiert wird.&lt;/p&gt;
+&lt;h1 id=&#34;authenticator-anwendung-installieren&#34;&gt;
+    &lt;a href=&#34;#authenticator-anwendung-installieren&#34;&gt;
+	Authenticator Anwendung installieren
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Das Verfahren ist &lt;a href=&#34;https://www.rfc-editor.org/rfc/rfc6238&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;standardisiert&lt;/a&gt;
+
+ und wird von vielen Tools unterstützt.
+Dazu gehören Google Authenticator, Bitwarden und viele andere Passwortmanager.&lt;/p&gt;
+&lt;p&gt;Um mit MFA zu arbeiten, sollte man entweder einen Passwortmanager installiert haben, der auch MFA verwalten kann, oder sich eine 2FA Anwendung installieren.
+Populäre Passwortmanager sind etwa Bitwarden, 1Password oder LastPass.
+Populäre 2FA-Anwendungen sind Google Authenticator, der Authenticator von Microsoft, Twilio Authy oder Aegis.&lt;/p&gt;
+&lt;p&gt;Auch auf der Kommandozeile kann man 2FA Codes generieren, aber das ist eher für
+&lt;a href=&#34;https://blog.koehntopp.info/2017/07/27/zero-factor-authentication.html&#34;&gt;komische Spielereien&lt;/a&gt;
+
+
+wichtig.
+Auf jeden Fall implementiert auch &lt;code&gt;oath-toolkit&lt;/code&gt; die üblichen Verfahren zur Generierung dieser Codes.&lt;/p&gt;
+&lt;h1 id=&#34;2fa-aktivieren-in-mastodon&#34;&gt;
+    &lt;a href=&#34;#2fa-aktivieren-in-mastodon&#34;&gt;
+	2FA aktivieren in Mastodon
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Um MFA zu aktivieren, klicke auf &amp;ldquo;Edit Profile&amp;rdquo; im Mastodon Webinterface, und wähle Account Settings -&amp;gt; Two Factor Auth.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Auf Edit Profile klicken, um in die Benutzerkonfiguration zu kommen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-02.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Im Menü in der Seitenleiste erst auf &amp;ldquo;Account Settings&amp;rdquo;, und dann auf &amp;ldquo;Two-factor Auth&amp;rdquo; klicken.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-03.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Es erscheint das 2FA Setup. Man kann gefahrlos durch den ganzen Prozess laufen, ohne die Konfiguration zu verändern.
+Erst, wenn man den ersten Sechs-Zahlen-Code erfolgreich eingegeben hat, wird 2FA für dieses Login aktiviert.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Es kommt dieser Screen, eventuell nach nochmaliger Aufforderung, das Passwort einzugeben.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-04.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Der gezeigte QR-Code kann mit einer Authenticator-Anwendung gescannt werden.
+Er enthält nichts anderes als die daneben angezeigte Seed-Folge.
+Diese wiederum kann man auch direkt in Anwendungen wie Bitwarden kopieren.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Klickt man auf Set Up, bekommt man einen QR-Code zum Scannen in der Google Authenticator App, oder den Seed-String als Text (etwa für Bitwarden).&lt;/p&gt;
+&lt;p&gt;Man sollte auf jeden Fall einen Screenshot vom QR-Code oder eine Kopie des Seed machen, und diese an einem sicheren Ort archivieren.
+Ich habe einen USB-Stick für solche Dinge.
+Damit kann man bei Verlust von Telefon oder Rechner dennoch an seine Accounts kommen, denn man kann den QR-Code so oft scannen wie man will, und auf so vielen Geräten scannen wie man will.&lt;/p&gt;
+&lt;p&gt;In der Regel ist es bei Problemen einfacher, die archivierten QR-Codes neu zu scannen, als durch den Account Recovery Workflow eines mit 2FA geschützten Accounts zu laufen.
+Das ist dann auch einheitlich, Account Recovery ist je nach Anbieter unterschiedlich.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-05.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Der Seed-Code wird in diesem Beispiel in Bitwarden eingetragen.
+Bitwarden wird mit dem Code und der aktuellen Zeit in die Lage versetzt, den jeweils geltenden Code zu erzeugen und anzuzeigen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Verwendet man eine Authenticator-App (oder hat einfach ein aktuelles iPhone), kann man auch einfach den QR-Code mit der App (oder der normalen iPhone Scanfunktion) scannen und ein Eintrag wird erzeugt.
+Entweder in der Authenticator-App, wenn man diese verwendet, oder im Passwortspeicher des iPhone, wenn man direkt mit dem Telefon scannt.&lt;/p&gt;
+&lt;h1 id=&#34;den-generierten-code-ausprobieren&#34;&gt;
+    &lt;a href=&#34;#den-generierten-code-ausprobieren&#34;&gt;
+	Den generierten Code ausprobieren
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Nachdem man den QR-Code mit einem Authenticator gescannt hat, oder man den Seed-String in den Passwortmanager kopiert hat, wird einem dort eine Zahl angezeigt.
+Sie hat 6 Stellen und wechselt alle 30 Sekunden.
+Sie ist aber oft ein wenig länger gültig: Viele Implementierungen nehmen die vorhergehende und die nachfolgende Zahl auch noch an.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-06.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Nach dem Abspeichern des Seeds in Bitwarden wird eine laufend wechselnde Zahl angezeigt.
+Diese kann man in das Testfeld &amp;ldquo;Two-factor code&amp;rdquo; übertragen und beweist so, daß das Setup korrekt ist.
+Erst nach dem Klicken auf den großen &amp;ldquo;Enable&amp;rdquo;-Knopf wird 2FA aktiviert. Hier kann man also noch abbrechen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Die Zahl basiert auf einem Pseudo-Zufallszahlengenerator:
+Basierend auf dem Startwert (dem Seed-Wert von da oben) und der aktuellen Zeit wird ein Code generiert.
+Der Code ist immer derselbe, vorausgesetzt man kennt den Seed und hat eine genau gehende Uhr.
+Sowohl der Mastodon-Server als auch die Authenticator-Anwendung kennen diese Daten und generieren den Code, und zwar bei übereinstimmenden Werten denselben Code.&lt;/p&gt;
+&lt;p&gt;Zur Aktivierung muss man den aktuellen Zahlencode in das Feld unter dem QR-Code eintragen.
+Dies beweist, daß man eine Authenticator-App hat und sie korrekt konfiguriert ist.
+Erst dann wird 2FA wirklich aktiviert.&lt;/p&gt;
+&lt;p&gt;Dies ist der &amp;ldquo;Point of no Return&amp;rdquo; (stimmt nicht: Man kann 2FA auch wieder deaktivieren).&lt;/p&gt;
+&lt;h1 id=&#34;account-recovery-codes&#34;&gt;
+    &lt;a href=&#34;#account-recovery-codes&#34;&gt;
+	Account Recovery Codes
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Mastdon generiert dann noch einen Satz Account Recovery Codes.
+Wenn man den QR-Code archiviert hat, braucht man die nie.
+Stattdessen wäre es viel einfacher, den archivierten QR-Code neu einzuscannen.&lt;/p&gt;
+&lt;p&gt;Es kann aber nicht schaden, diese zu kopieren und auch zu archivieren.
+Etwa in Bitwarden und auf dem o.a. USB-Stick mit dem QR-Code.
+Oder auf einem Papierfetzen, den man unter die Schreibtisch-Schublade klebt.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-07.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Diese Recovery-Codes werden niemals gebraucht, wenn man stattdessen den Seed-Text oder den QR-Code archiviert.
+Mit dem kann man sich jederzeit ein neues Authenticator-Gerät aufsetzen, indem man den Code neu scannt.
+Dennoch kann es nützlich sein, auch die Recovery-Codes zu archivieren.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wieso-2fa-wenn-ich-doch-einzigartige-passworte-verwende&#34;&gt;
+    &lt;a href=&#34;#wieso-2fa-wenn-ich-doch-einzigartige-passworte-verwende&#34;&gt;
+	Wieso 2FA, wenn ich doch einzigartige Passworte verwende?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&amp;ldquo;Aber Kris, ich verwende doch sowieso auf jedem Account einzigartige Passworte.
+Warum sollte ich mich mit 2FA rumnerven?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Hier eine Geschichte aus dem echten Leben:
+&lt;a href=&#34;https://blog.koehntopp.info/2021/11/30/discord-nitro-spam-and-2fa.html&#34;&gt;Discord Nitro Spam and 2FA&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;2FA erlaubt es in vielen Fällen, einen Account zu retten, auch wenn er ganz oder in Teilen durch einen Unfall übernommen wird.
+2FA, OAuth2 und &amp;ldquo;scoped Tokens&amp;rdquo; retten Euren Arsch auch dann, wenn ihr schon gehackt oder gecybert worden seid.
+Sie machen solche Unfälle oft reversibel.&lt;/p&gt;
+&lt;h1 id=&#34;cloud-oder-nicht-cloud&#34;&gt;
+    &lt;a href=&#34;#cloud-oder-nicht-cloud&#34;&gt;
+	Cloud oder nicht cloud?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Es gibt 2FA Speicher, die 2FA Codes in der Cloud sichern und an die eigene Telefonnummer binden.&lt;/p&gt;
+&lt;p&gt;Google Authenticator und Aegis gehören nicht dazu, die Daten werden ausdrücklich lokal gespeichert und die Anwendung beansprucht keine Rechte, und funktioniert offline.
+Code-Transfer erfolgt mit QR-Codes.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-08.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Twilio Authy fragt bei der Einrichtung nach einer Telefonnummer, sendet dieser dann eine Kennung zu und verbindet den Passwortspeicher mit der Telefonnummer.
+Auch bei Wechsel zwischen Android und iPhone (oder hier MacOS) bleiben die 2FA Secrets erhalten.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Twilio Authenticator und Microsoft Authenticator sichern Codes in der Cloud.&lt;/p&gt;
+&lt;p&gt;Bei Apples Systemspeicher für Passworte hängt es davon ab, ob man Passworte in der iCloud synchronisiert oder nicht.&lt;/p&gt;
+&lt;h1 id=&#34;2fa-nicht-nur-für-mastodon&#34;&gt;
+    &lt;a href=&#34;#2fa-nicht-nur-f%c3%bcr-mastodon&#34;&gt;
+	2FA nicht nur für Mastodon
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Viele Passwortmanager haben die Option, Reports und Account-Audits zu generieren.
+Oft wird eine Funktion angeboten, die alle möglichen, aber nicht genutzten 2FA-Möglichkeiten listet.
+Diese Liste kann man durchgehen und systematisch für alle Accounts 2FA aktivieren.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/2fa-09.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Vaultwarden Webanwendung, Passwort-Reports.
+Hier kann man auf &amp;ldquo;Inactive Two-step Login&amp;rdquo; klicken und eine Liste von Logins bekommen, die man hat und die 2FA haben könnten, aber bei denen in Vaultwarden kein 2FA hinterlegt ist.
+Die meisten Passwortmanager haben inzwischen solche Reports.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;zusammenfassung&#34;&gt;
+    &lt;a href=&#34;#zusammenfassung&#34;&gt;
+	Zusammenfassung
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Mit Zwei-Faktor-Authentisierung kann man ein Login zusätzlich absichern.
+Dazu wird beim Login neben dem Passwort auch noch ein wechselnder Code abgefragt, der entweder von einer Authenticator Anwendung oder einem Passwortmanager generiert wird.&lt;/p&gt;
+&lt;p&gt;Das ist nützlich, weil so ein verloren gegangenes oder abgefischtes Passwort kein Weltuntergang mehr sind.
+Im verlinkten Beispielartikel ist so etwa ein kompromittierter Discord-Account wieder gerettet worden.&lt;/p&gt;
+&lt;p&gt;Es ist gute Praxis, 2FA auf allen Logins zu aktivieren, bei denen dies angeboten wird.
+Dies sichert das Login zusätzlich ab, und verhindert Weltuntergang bei Passwortlecks und Phishing.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>USENET und Tiernetze</title>
+      <link>https://blog.koehntopp.info/2022/12/02/usenet-und-tiernetze.html</link>
+      <pubDate>Mon, 28 Nov 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/02/usenet-und-tiernetze.html</guid>
+      <description>&lt;p&gt;Vor ziemlich genau 30 Jahren gab es in Deutschland die
+&lt;a href=&#34;https://blog.koehntopp.info/2012/02/23/opa-erz-hlt-vom-krieg.html&#34;&gt;Anfangsgründe des Internet&lt;/a&gt;
+
+,
+aber es gab auch Netze, die auf anderer, viel älterer Technologie betrieben wurden &amp;ndash; die Mailboxnetze.
+Das sind dezentrale Netze, bei denen denen lokale Rechner mit Modems ausgestattet wurden, bei denen man anrufen und dann Nachrichten a la Mastodon online lesen konnte.
+Oder man hatte Software daheim, die bei der Mailbox anrief, die Nachrichten heruntergeladen hat.
+Dann konnte man offline lesen, Antworten schreiben und ein zweites Mal anrufen.
+Die Antworten wurden dann gesammelt eingeworfen, und zugestellt.&lt;/p&gt;
+&lt;h1 id=&#34;warum-tiernetz&#34;&gt;
+    &lt;a href=&#34;#warum-tiernetz&#34;&gt;
+	Warum Tiernetz?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Die Softwarepakete, die das erlaubt haben, hießen in Deutschland&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fidonetz (nach einem Hund),&lt;/li&gt;
+&lt;li&gt;Mausnetz und&lt;/li&gt;
+&lt;li&gt;Zerberus (noch ein Hund)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Daher wurden diese Netze gesammelt als &amp;ldquo;Tiernetze&amp;rdquo; bezeichnet.
+Außerdem gab es noch das auf Unix basierende UUCP mit USENET (Linux war um diese Zeit herum gerade erst geboren).&lt;/p&gt;
+&lt;p&gt;Die Mailbox-Software der Tiernetze basierte meistens auf MS-DOS und war nicht mehrbenutzerfähig.
+Die Netze hatten außerdem oft starke Größenbeschränkungen für Nachrichten.
+Dagegen konnte USENET im Prinzip Nachrichten ohne Größenhindernisse auf Mehrbenutzersystemen im Hintergrund befördern.&lt;/p&gt;
+&lt;p&gt;Die Tiernetze hatten oft auch eine interne Struktur, die es notwendig machte, die dezentralen Systeme zentral in der Vernetzung zu steuern.
+Das war nötig, um doppelt zugestellte Nachrichten und Kreisroutings zu vermeiden.
+Maus und Fido waren auf eine starke Netzwerkkoordination angewiesen, USENET nicht.
+Und bei Zerberus habe ich damals so lange auf //padeluun und seine Entwickler eingeschlagen, bis sie das Licht gesehen haben und elementare Fehler anderer Tiernetze vermieden haben, sodaß die Software wesentlich robuster war.&lt;/p&gt;
+&lt;h1 id=&#34;föderationsdramen-vor-30-jahren&#34;&gt;
+    &lt;a href=&#34;#f%c3%b6derationsdramen-vor-30-jahren&#34;&gt;
+	Föderationsdramen vor 30 Jahren
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Föderation war schon damals ein Problem.
+Im Sommer 1993 zum Beispiel gab es den Versuch einer Machtübernahme in der Fido-Koordination, von der Michael Keukert (Mausnetz)
+&lt;a href=&#34;https://groups.google.com/g/de.comm.gateways/c/pl9RdufmS8U/m/qH8A0Del2joJ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hier&lt;/a&gt;
+
+
+berichtet.
+Frank Simon hat damals ein paar
+&lt;a href=&#34;https://groups.google.com/g/de.comm.gateways/c/pl9RdufmS8U/m/7mq4Q0Te25YJ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interessante Worte&lt;/a&gt;
+
+
+dazu gesagt.
+Und hier die von Frank Simon publizierte
+&lt;a href=&#34;https://groups.google.com/g/de.comm.gateways/c/pl9RdufmS8U/m/7mq4Q0Te25YJ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stellungnahme der Gegenseite&lt;/a&gt;
+
+.
+Es tut unglaublich gut, diese Texte (ohne 500 Zeichen Beschränkung!) aus heutiger Sicht noch einmal zu lesen, und so viele Dinge wiederzufinden.&lt;/p&gt;
+&lt;p&gt;Was wir hier sehen, ist Fedidrama, 30 Jahre in der Vergangenheit &amp;ndash;
+es gibt Machtgerangel zwischen Instanzen, die autonom betrieben werden und bei denen die Betreiber unterschiedliche Vorstellungen haben, wie die Dinge zu organisieren sind.
+Die Diskussion geht nur oberflächlich um andere Dinge als zum Beispiel gerade zwischen octodon.social und social.tchncs.de&lt;/p&gt;
+&lt;h1 id=&#34;store-and-forward-im-cl&#34;&gt;
+    &lt;a href=&#34;#store-and-forward-im-cl&#34;&gt;
+	Store and Forward im /CL
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ein auf Zerberus basierendes abgetrenntes Netz, &amp;ldquo;Comlink&amp;rdquo; oder &amp;ldquo;/CL&amp;rdquo;, wollte zum Beispiel die Ausbreitung der Nachrichten seiner Benutzer kontrollieren.
+Es gab also Mailboxen, die neben anderen Zerberus-Gruppen auch die /CL-Gruppen aufliegen hatten und die diese /CL-Inhalte ihrer User untereinander über ein separates Overlay ausgetauscht haben.
+Das heißt, sie haben sich für die /CL-Inhalte also gegenseitig angerufen.
+Und es gab eine /CL-Netzkoordination, die meinte, sie könnte die Ausbreitung der Inhalte der Schreiber in /CL kontrollieren.&lt;/p&gt;
+&lt;p&gt;Rechtlich war das nicht geregelt &amp;ndash; es gab möglicherweise Verträge zwischen dem /CL-Träger und einzelnen Systembetreibern,
+aber sicher keine Verträge zwischen den Autoren der Artikel und dem /CL-Träger.
+Und jeder Benutzer hat halt mit seinem Client die Beiträge aus dem /CL zum Lesen runter gesaugt.
+So auch ich damals, und gleich ein paar Mal von verschiedenen Quellen.&lt;/p&gt;
+&lt;p&gt;Ich hatte jedoch keine /CL- oder Zerberus-Software am Laufen, sondern ein Gateway nach UUCP/USENET.
+Weil ich die Daten mehrfach runter gesaugt und den Ursprung anonymisiert hatte,
+und weil ich sehr oft pro Tag angerufen habe,
+hatte ich meist den schnellsten und den komplettesten Feed von Artikeln für /CL.
+Den ich bereitwillig weiter gegeben habe.&lt;/p&gt;
+&lt;p&gt;Die /CL-Netzkoordination hatte mir damals gedroht, mich zu deföderieren,
+aber sie kannte ja meine Quelle nicht.
+Und die war hoch redundant.
+Außerdem hatte ich die entsprechenden Herkunftsdaten aus den Artikeln gelöscht, sodaß sie nicht an meinen Upstream herankamen.
+Ich hatte die betreffenden Personen aufgefordert, mich zu verklagen.
+Das ist aber nie passiert.&lt;/p&gt;
+&lt;p&gt;Was passiert ist:
+Einige /CL-Systeme haben sich meinen Feed geholt, weil er schnell und komplett war.
+Am Ende meines Studiums habe ich damals den ganzen Gateway- und Mailboxbetrieb aus Gründen recht schnell einstellen müssen.
+Der Dienst ist dann leider recht plötzlich und unangekündigt weggefallen.&lt;/p&gt;
+&lt;p&gt;Erstaunlicherweise ist das /CL dann für ein paar Tage ungeplant in einige Teilnetze zerfallen.
+Offenbar war ich mit meinem Hobbygateway zum zentralen Punkt einer weitgehend undokumentierten Hub- und Spoke Struktur geworden,
+die Teilnetzblasen ohne sekundäre Verbindung zusammengehalten hat.&lt;/p&gt;
+&lt;h1 id=&#34;kiel-und-die-koordinationssimulation&#34;&gt;
+    &lt;a href=&#34;#kiel-und-die-koordinationssimulation&#34;&gt;
+	kiel.* und die Koordinationssimulation
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ich hatte die Gateway-Sammlung auf meinem lokalen Unix eigentlich gar nicht betrieben, um /CL zu machen.
+Ich war damals in einem Kieler Internet- und Mailbox-Verein tätig, den es noch heute gibt:
+toppoint.de &amp;ndash; inzwischen mehr ein Makerspace.&lt;/p&gt;
+&lt;p&gt;Und nachdem das tpki-System aus meiner Wohnung in die Eichhofstraße ausgezogen war, habe ich mit meinen Systemen andere Dinge gemacht.
+Eine dieser Sachen war die Entwicklung und der Betrieb von Gateway-Software in Mausnetz, Fidonetz und Zerberus.
+Wir hatten damals auf USENET-Seite eine Reihe von Diskussionsgruppen (heute würde man Hashtags sagen) eingerichtet,
+die kiel.* als Präfix hatten, und die bereits zwischen zwei rivalisierenden USENET-Organisationen in Kiel ausgetauscht.&lt;/p&gt;
+&lt;p&gt;Mit den Gateways konnte ich auch mit der KI-Maus, und mit der lokalen Fidonode reden, und auch mit der KBBS von Holger Petersen.
+Auf diese Weise hatten wir gemeinsame Kieler Diskussionsforen auf allen relevanten Technologien dieser Zeit.
+In einigen dieser Netze war ich ein &amp;ldquo;Point&amp;rdquo; (eine Micronode mit nur einem User), in anderen eine volle Node mit einem eigenen Nodenamen und vollen Routing.&lt;/p&gt;
+&lt;p&gt;In jedem Fall hat meine Modem-Hardware (später ISDN) einige Dutzend Anrufe pro Tag gemacht, um diese Systeme zu vernetzen.
+kiel.* war eine komplett anarchische Struktur:
+Wer eine neue Diskussionsgruppe (einen neuen Hashtag) haben wollte, der hat den einfach eingerichtet.
+Die meisten Leute haben das nicht getan, sondern erst mal rückgefragt, was die anderen so denken, und erst dann gemacht.
+Das hat auf der Größe recht gut skaliert.&lt;/p&gt;
+&lt;p&gt;Die Tiernetze hat das vor einige mentale Probleme gestellt, denn in Fido und Maus ist so etwas ohne Koordinator undenkbar gewesen.
+Das war in der Diskussion recht schwierig, weil die nicht gefragt haben, was ist und wie man das lösen könne,
+sondern gefragt haben, wer denn für kiel.* der Koordinator sei.&lt;/p&gt;
+&lt;p&gt;Und das dann erst einmal zu erklären war zu schwierig.
+Also hat, wer immer die Frage gesehen hat, behauptet der kiel.* Koordinator zu sein, dann die Frage bekommen und die dann beantwortet.&lt;/p&gt;
+&lt;p&gt;Das hat über 15 Jahre oder mehr gut funktioniert.
+Also für kiel.*.
+Aber auch für die Tiernetz-Admins, die auf diese Weise die vertrauten Strukturen vorgefunden haben,
+und mit ihnen arbeiten konnten, ohne daß ihr Weltbild infrage gestellt wurde.&lt;/p&gt;
+&lt;h1 id=&#34;usenet-ist-vergangenheit&#34;&gt;
+    &lt;a href=&#34;#usenet-ist-vergangenheit&#34;&gt;
+	USENET ist Vergangenheit
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ein Problem bei der Föderation von USENET trat dann später in den deutschsprachigen Gruppen de.* zutage,
+und am Ende ist USENET dann daran zugrunde gegangen:&lt;/p&gt;
+&lt;p&gt;Das Einrichten neuer Gruppen war aus nicht nachvollziehbaren Gründen im USENET ein Riesen-Aufriß mit Diskussion,
+formalen RfV (Request for Vote), in dem um einen Proposal gerungen wurde und dann einem Voting-Prozeß mit Quorum und Mehrheiten.
+Also, das Einrichten einer Gruppe hat nichts gekostet:
+Ein Verzeichnis anlegen und gut ist.&lt;/p&gt;
+&lt;p&gt;Aber eine Gruppe von Admins vom Kaliber &amp;ldquo;deutscher Wikipedia-Pedant&amp;rdquo; davon zu überzeugen, daß die Gruppe notwendig ist, das war teuer.
+Die meisten Leute haben dann lieber einen Server von Hetzner geholt und ein Web-Board installiert und am Ende waren die Wikipedia-Typen alleine in ihrem Netz.
+Heute gibt es USENET nicht mehr. Es ist tot, abgeritten zu den Ahnen.&lt;/p&gt;
+&lt;p&gt;Das andere Problem, das sich bei USENET gezeigt hat, ist die Tatsache, daß es als föderiertes Netz keine Client-Software gab,
+die neue, inkompatible Features entwickeln konnte.&lt;/p&gt;
+&lt;p&gt;Schon die Benutzung von Umlaufen in Headerzeilen und im Text war Drama.
+Mein Nick, isotopp, kommt aus dieser Zeit, denn der Umlaut mußte als&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;=?iso-8859-1?q?K=F6hntopp?=
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;codiert werden und wessen Client das nicht decodierte, der hat halt &lt;code&gt;Iso-unleserlich-topp&lt;/code&gt; gesehen.
+Ich hatte damals sogar noch ein Türschild, das mir jemand (Lutz Donnerhacke?) anläßlich eines Besuches geschenkt hatte.&lt;/p&gt;
+&lt;p&gt;Darauf stand&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Kristian K=F6hntopp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Noch schlimmer waren multimediale Inhalte in Nachrichten.
+Dafür mußte der Newsreader-Client halt Mime verstehen und decodieren können und das konnten viele nicht.
+Also gab es wieder Fedidrama, um die Benutzung von solchen Dingen.
+Oder halt Webboards.
+Das ist im Prinzip genau wie mit den XMPP-Clients.&lt;/p&gt;
+&lt;p&gt;Die nimmt heute auch keiner mehr, weil es keine zwei Clients bzw auch keine Server und Clients verschiedener Hersteller gibt,
+die dieselben XEP implementieren (XEP sind XMPP Protokollerweiterungen).
+Also machen wir jetzt alle Discord und auf der Arbeit Discord für Arme, also Slack.
+Plus das Spamproblem: Google Jabber (&amp;ldquo;Google Talk&amp;rdquo;) hatte anfangs mit anderen XMPP-Servern föderiert.&lt;/p&gt;
+&lt;p&gt;Aber dann stellte sich schnell heraus, daß viele dieser XMPP-Server weder echte XMPP-Server waren,
+noch echte User hatten, sondern nur als Spam-Injektor-Instanzen in Google Talk dienten, um Google User zu phishen.&lt;/p&gt;
+&lt;p&gt;Also hat Google erst Gruppenchats deföderiert um seine User zu schützen und am Ende auch 1:1 Chats abgeschaltet.
+Und XMPP macht halt keiner mehr. Tot.&lt;/p&gt;
+&lt;p&gt;Auslöser dieses Historien-Threads war übrigens das Drama von dem Reply-Guy
+&lt;a href=&#34;https://social.tchncs.de/@escamoteur/109324468871252592&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hier&lt;/a&gt;
+
+
+und die Totaleskalation danach, die dazu geführt hat, daß octodon.social social.tchncs.de deförderiert hat.&lt;/p&gt;
+&lt;p&gt;Ich habe Freunde auf beiden Servern, die jetzt nicht mehr miteinander reden können und die allesamt nach anderen Instanzen suchen.&lt;/p&gt;
+&lt;p&gt;Insofern alles wie damals.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Energieverbrauch in Deutschland</title>
       <link>https://blog.koehntopp.info/2022/07/03/energieverbrauch-in-deutschland.html</link>
@@ -25,7 +697,7 @@
 &lt;p&gt;&lt;em&gt;Primärenergieverbrauch Deutschland 1990 bis jetzt&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Wie man sieht, ist der Primärenergieverbrauch von Deutschland seit 1990 fast konstant geblieben.
 Wikipedia schreibt im Detail: &amp;ldquo;Zwischen 1990 und 2011 nahm das reale Bruttoinlandprodukt um 34 % zu, der Energieverbrauch nahm jedoch um 9 % ab.&amp;rdquo;
-Rechnet man um, sind es bummelt 14000 Petajoule, was circa 4000 TWh entspricht.&lt;/p&gt;
+Rechnet man um, sind es bummelig 14000 Petajoule, was circa 4000 TWh entspricht.&lt;/p&gt;
 &lt;p&gt;Private Haushalte nutzen &lt;a href=&#34;https://www.umweltbundesamt.de/daten/private-haushalte-konsum/wohnen/energieverbrauch-privater-haushalte#hochster-anteil-am-energieverbrauch-zum-heizen&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;laut Umweltbundesamt&lt;/a&gt;
 
  circa 650 TWh, und davon sind etwa 450 TWh Heizenergie.&lt;/p&gt;
@@ -2012,9 +2684,11 @@ Nicht nur für Jugendliche eine wunderbare Erzählung.&lt;/p&gt;
       <pubDate>Sat, 05 Jun 2021 20:54:40 +0000</pubDate>
       
       <guid>https://blog.koehntopp.info/2021/06/05/fertig-gelesen-montecrypto.html</guid>
-      <description>&lt;p&gt;Wir hatten hier in &lt;a href=&#34;https://blog.koehntopp.info/tags/#review&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;den Reviews&lt;/a&gt;
+      <description>&lt;p&gt;Wir hatten hier in
+&lt;a href=&#34;https://blog.koehntopp.info/tags/#review&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;den Reviews&lt;/a&gt;
 
- schon eine ganze Menge Tom Hillenbrand: &lt;a href=&#34;https://blog.koehntopp.info/2014/08/11/fertig-gelesen-drachenvater.html&#34;&gt;Drachenväter&lt;/a&gt;
+
+schon eine ganze Menge Tom Hillenbrand: &lt;a href=&#34;https://blog.koehntopp.info/2014/08/11/fertig-gelesen-drachenvater.html&#34;&gt;Drachenväter&lt;/a&gt;
 
 , &lt;a href=&#34;https://blog.koehntopp.info/2014/08/17/fertig-gelesen-drohnenland.html&#34;&gt;Drohnenland&lt;/a&gt;
 
@@ -2635,485 +3309,6 @@ Die Spitzenlast um 8 Uhr konnte so am Dienstag gut abgefangen werden.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;demo2.bigbluebutton.org ist ein Testserver vom BBB Projekt, der in Kanada steht und als Demo-Objekt betrieben wird. Er ist nicht für den Produktiveinsatz gedacht, nicht von GDPR-Richtlinien abgedeckt und selbst wenn er funktionierte wäre er für eine angenehme Videokonferenz zu weit weg.&lt;/p&gt;
 &lt;p&gt;Moodle und Big Blue Button sind Softwarepakete, die sich Organisationen wie die Schulorganisation eines Landes selbst installieren können. Als Lehrerin oder Lehrer ist man gut damit beraten auch die korrekte URL zum Verbinden zu nehmen, statt sich im Internet irgendeine Instanz zu suchen.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Der Testing-in-Production-Blues</title>
-      <link>https://blog.koehntopp.info/2020/12/17/der-testing-in-production-blues.html</link>
-      <pubDate>Thu, 17 Dec 2020 21:45:51 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2020/12/17/der-testing-in-production-blues.html</guid>
-      <description>&lt;p&gt;Kalenderwoche 51/2020: Lockdown mit Schulschließungen. Nachdem es im März schon einmal Schulschließungen wegen Corona gab, und dort die Defizite technischer und organisatorischer Natur offenbar wurden, hat man in Deutschland die Zeit genutzt und sich auf die vorhergesagte 2. Welle vorbereitet, die jetzt genau eingetroffen ist. Deutschland ist schließlich nicht nur das Land der Dichter und Denker, sondern auch ein Land der Ingenieure und Tüftler, und bekannt für seine funktionierende und effiziente Bürokratie.&lt;/p&gt;
-&lt;p&gt;Oder?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/Preiselbauer/status/1239522055315435527&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Die bayrische Plattform mebis bricht unter dem Ansturm zusammen&lt;/a&gt;
-
-. Angeblich ist es DDoS, wahrscheinlicher sind es einfach User.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/Bildung_Sachsen/status/1338416073155153921&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Auch LernSax in Sachsen leidet unter bösen Hackern&lt;/a&gt;
-
-. Vermutlich sind es auch hier User.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/Nordkurier/status/1339218679498747905&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unterdessen bricht auch in MVP die itslearning-Instanz zusammen&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/chgeuer/status/1338774727805050882&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;In NRW hat man ebenfalls Probleme und begrenzt die Teilnehmerzahl auf 80 pro Schule&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;(zusammengetragen von &lt;a href=&#34;https://twitter.com/watch_union/status/1239522932797444096&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@union_watch&lt;/a&gt;
-
-)&lt;/p&gt;
-&lt;p&gt;Dazu ein paar Anmerkungen:&lt;/p&gt;
-&lt;h2 id=&#34;zwei-ip-adressen-beliebig-viele-server&#34;&gt;
-    &lt;a href=&#34;#zwei-ip-adressen-beliebig-viele-server&#34;&gt;
-	Zwei IP-Adressen, beliebig viele Server
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Es ist mehr als &lt;a href=&#34;https://twitter.com/watch_union/status/1339231931578322962&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ein Paar Frontend-Server&lt;/a&gt;
-
-. Die angegebenen IPv4-Adressen 104.16.101.21 und 104.16.102.21 gehören zu Cloudflare:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; whois 104.16.101.21
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;NetRange:       104.16.0.0 - 104.31.255.255
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;CIDR:           104.16.0.0/12
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;NetName:        CLOUDFLARENET
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;NetHandle:      NET-104-16-0-0-1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Parent:         NET104 (NET-104-0-0-0-0)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;NetType:        Direct Assignment
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;OriginAS:       AS13335
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Organization:   Cloudflare, Inc. (CLOUD14)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;RegDate:        2014-03-28
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Updated:        2017-02-17
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Comment:        All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Ref:            https://rdap.arin.net/registry/ip/104.16.0.0
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cloudflare ist ein Betreiber eines CDN (Content Delivery Networks), das Frontend-Dienste mit DDoS-Schutz für alles und jeden anbietet. Cloudflare arbeitet mit &lt;a href=&#34;https://www.cloudflare.com/de-de/learning/cdn/glossary/global-server-load-balancing-gslb/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DNS basierendem Global Loadbalancing&lt;/a&gt;
-
- oder mit &lt;a href=&#34;https://www.cloudflare.com/de-de/learning/cdn/glossary/anycast-network/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TCP Anycast&lt;/a&gt;
-
-. Auf diese Weise kann entweder derselbe DNS-Name oder gar dieselbe IPv4-Adresse zu dem Server aufgelöst werden, der dem Verbindung Suchenden am nächsten liegt. Das Maß &amp;ldquo;am Nächsten&amp;rdquo; ist dabei meist auf der Netzwerk-Topologie definiert, also &amp;ldquo;mit den wenigsten Hops&amp;rdquo; oder &amp;ldquo;mit der geringsten Zugriffsverzögerung (Latenz)&amp;rdquo;, und das muß nicht unbedingt der geographisch am nächsten liegende Server sein.&lt;/p&gt;
-&lt;p&gt;Hinter dem Loadbalancer liegen also nicht nur mehr als zwei Server, sondern möglicherweise sogar mehr als ein Standort. Es ist die Dienstleistung und das Geschäft von Cloudflare, schlechte (DDoS) von guten Verbindungen zu trennen, und für die guten Verbindungen den netztopologisch am günstigsten gelegenen Server zu verbinden.&lt;/p&gt;
-&lt;p&gt;Die Nutzung von Cloudflare macht natürlich auch die Erklärung &amp;ldquo;es ist ein DDoS&amp;rdquo; oder &amp;ldquo;es sind Hacker&amp;rdquo; weniger glaubwürdig. Cloudflares Geschäft ist es, so etwas auszusortieren. Ein paar Schüler, die keinen Bock auf Fernunterricht haben und die deswegen rum kaspern holen Cloudflare im Mittel eher nicht runter.&lt;/p&gt;
-&lt;h2 id=&#34;serverzahlen-und-größen&#34;&gt;
-    &lt;a href=&#34;#serverzahlen-und-gr%c3%b6%c3%9fen&#34;&gt;
-	Serverzahlen und Größen
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/watch_union/status/1339320827381239808&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mebis hatte mal ganze sechs, mittlerweile 28 Server, um 1.7 Millionen Schüler:innen multimediale Lerninhalte zu übermitteln&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Das muß nichts schlimmes heißen. Insbesondere dann nicht, wenn man ein CDN wie Cloudflare davor schaltet.&lt;/p&gt;
-&lt;p&gt;Disclaimer: Ich kenne das Design von mebis nicht. Ich kenne aber Anwendungen von Cloudflare in anderen Kontexten.&lt;/p&gt;
-&lt;p&gt;Die Server selbst führen die Anwendung aus. Die Anwendung generiert in der Regel das HTML der Basisseite, und dort drin sind dann die Seiten-Elemente enthalten - also Grafiken, Filme, Zeichensätze, CSS und was sonst noch so von einer Webseite nachgeladen wird, damit sie bunt ist. Dieses HTML ist oft nicht statisch, sondern wird dynamisch unterschiedlich für jeden User generiert.&lt;/p&gt;
-&lt;p&gt;Ein CDN wie Cloudflare cached in der Regel die statischen Seitenelemente, und verbreitet sie aktiv im Content Delivery Network zu den Edges. Also zu den Servern, die möglichst dicht am User stehen und die dann zum Enduser ausliefern. Medieninhalte wie Filme, Bilder und andere große statische Dinge sind also idealerweise gar nicht auf den Servern von Mebis enthalten, oder werden jedenfalls nicht von Mebis direkt an den Enduser ausgeliefert, sondern werden vom CDN abgefangen und dort abgehandelt - darum will man so etwas ja genau haben.&lt;/p&gt;
-&lt;p&gt;Die eigenen Server generieren dann nur das dynamische HTML, benutzerspezifisch, das dann die ganzen großen, statischen Elemente referenziert, die von Cloudflare geliefert werden. Auf diese Weise braucht man am eigenen Server sehr viel weniger Bandbreite und Leistung.&lt;/p&gt;
-&lt;h3 id=&#34;sind-28-server-viel-oder-wenig&#34;&gt;
-    &lt;a href=&#34;#sind-28-server-viel-oder-wenig&#34;&gt;
-	Sind 28 Server viel oder wenig?
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;1.7 Millionen Schüler auf 28 Servern sind etwa 60k User pro Server. Ich kenne den Footprint von Mebis oder itslearning nicht, aber das ist für eine moderne Maschine möglicherweise nicht zu viel. Ein moderner Server kann alles von einer 3000-Euro-Blade mit zwei &lt;a href=&#34;https://ark.intel.com/content/www/us/en/ark/products/123547/intel-xeon-silver-4110-processor-11m-cache-2-10-ghz.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Xeon 4110&lt;/a&gt;
-
-, 128 GB RAM und einem 10 GBit/s Netzwerkinterface sein, bis hin zu einer &lt;a href=&#34;https://en.wikichip.org/wiki/amd/epyc/7502&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dual EPYC 7502&lt;/a&gt;
-
- mit 4TB RAM und mehreren 100 GBit/s Netzwerkkarten.&lt;/p&gt;
-&lt;p&gt;Zum Vergleich: Eine Freemail-Datenbank von web.de im Jahre 2004 (eine HP DL380 G3 oder vergleichbar, mit zwei &lt;a href=&#34;https://ark.intel.com/content/www/us/en/ark/products/28016/64-bit-intel-xeon-processor-3-20-ghz-1m-cache-800-mhz-fsb.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;frühen Xeon CPUs&lt;/a&gt;
-
-) hat die Daten von circa einer Million Freemail-Kunden erfolgreich verwaltet. Jede von denen wurde mit einer Hand voll Frontend-Servern zusammen zu einem Cluster verpaart und hat dann fröhlich eine Million User verarbeitet (bei 25m Usern insgesamt und 8-9m unique Logins am Tag, damals). Nun ist Webmail unter Umständen eine kleinere Hausnummer als ein multimediales Lernsystem, aber wir haben seit 2004 auch ein paar Fortschritte bei der Systemleistung gemacht, wie oben dargestellt.&lt;/p&gt;
-&lt;p&gt;28 Server ist also nicht vollkommen unrealistisch, je nachdem was die Anforderungen sind und was genau man dahinter stellt.&lt;/p&gt;
-&lt;p&gt;Es erscheint wenig, wenn man auf AWS VM-Serverhäppchen groß geworden ist und nie einen richten Baremetal-Server ganz für sich allein gehabt hat. Aber man sollte dabei auch bedenken, daß wir den ganzen Quatsch mit Virtualisierung oder Kubernetes ja genau deswegen machen, weil die meisten Anwendungen nicht in der Lage sind, selbst eine kleine Maschine wie die o.a. 3000-Euro-Blade voll zu machen.&lt;/p&gt;
-&lt;p&gt;Und selbst wenn, wollte man das eventuell nicht, sondern die Anwendung stattdessen in drei oder mehr Instanzen aufteilen, die auf drei bis fünf Drittelservern laufen, der Ausfallsicherheit wegen.&lt;/p&gt;
-&lt;h3 id=&#34;ist-das-alles-teuer&#34;&gt;
-    &lt;a href=&#34;#ist-das-alles-teuer&#34;&gt;
-	Ist das alles teuer?
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Hardware ist übrigens unglaublich billig. Eine 3000 Euro-Blade braucht im Laufe ihres fünfjährigen Serverlebens (bei drei Jahren Abschreibungszeitraum) Strom, Klima und Rechenzentrumskosten für noch einmal ca. 3000 Euro, und ein wenig Kosten für Netz. Man landet bei 60 Monaten bei Serverkosten von bummelig 120-150 Euro pro Monat.&lt;/p&gt;
-&lt;p&gt;Zum Vergleich: Die o.a. Blade ist in etwa eine AWS EC2 m5.5xlarge, wenn es sie gäbe. Eine m5.4xlarge entspricht etwa einer halben solchen Blade und die kostet in Frankfurt on-demand ohne Rabatte (30 x 24 x 0.92 USD) = 662.40 USD ohne weitere Nebenkosten (Netz, EBS oder was man sonst noch braucht), also 1324.80 USD like-for-like.&lt;/p&gt;
-&lt;p&gt;Niemand macht Cloud weil es billiger ist, im Gegenteil - man kann mit Mehrkosten von ca. 10x unrabattiert gegenüber einem effizient organisierten eigenen Rechenzentrum rechnen - falls man die Leute hat, und falls man die notwendige Größe hat, um sich so etwas leisten zu wollen. Unter 10k Servern (ca. 2+ Megawatt Stromverbrauch) würde ich aber eventuell gar nicht mal darüber nachdenken wollen.&lt;/p&gt;
-&lt;h2 id=&#34;wieso-fallen-die-plattformen-dann-alle-um&#34;&gt;
-    &lt;a href=&#34;#wieso-fallen-die-plattformen-dann-alle-um&#34;&gt;
-	Wieso fallen die Plattformen dann alle um?
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Das Bundesland Berlin hat &lt;a href=&#34;https://www.statistik-berlin-brandenburg.de/BasisZeitreiheGrafik/Bas-Schulen.asp?Ptyp=300&amp;amp;Sageb=21001&amp;amp;creg=BBB&amp;amp;anzwer=5&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;nach dem Statistikserver des Landes&lt;/a&gt;
-
- circa 365k Schüler und noch einmal 87k Berufsschüler.&lt;/p&gt;
-&lt;p&gt;Das braucht nicht nur eine gewisse Menge an Bandbreite, Speicher und Datenbank, um so viele Kunden abzufackeln, sondern auch ein getestetes und eingespieltes Systemdesign, das auf die Größe zugeschnitten sein muß.&lt;/p&gt;
-&lt;p&gt;Dazu machen es sich Schulen notlos schwer, falls sie weiter Frontalunterricht im Internet simulieren und insbesondere Unterrichtsbeginn und Login landesweit minutengenau synchronisieren. Das wäre, wenn man es so machte, ein selbst organisierter und durch ein Ministerium verordneter Eigen-DDoS. Mit dem Gong drücken alle Return und die Server fallen um.&lt;/p&gt;
-&lt;h3 id=&#34;wie-sich-webde-mal-selbst-mit-userlogins-ge-dos-t-hat&#34;&gt;
-    &lt;a href=&#34;#wie-sich-webde-mal-selbst-mit-userlogins-ge-dos-t-hat&#34;&gt;
-	Wie sich web.de mal selbst mit Userlogins ge-DoS-t hat
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Auch hier wieder eine 15 Jahre alte Geschichte von web.de:&lt;/p&gt;
-&lt;p&gt;Die oben erwähnten Freemail-Datenbanken (25 davon in 25 Clustern) haben ein zentrales Gegenstück, die User-Datenbank. Dort sind alle 25 Millionen Freemail-User (und die zahlenden web.de Club User) verzeichnet. Der Stammdatensatz ist bummelig 1 KB groß und enthielt einen Haufen Felder, die sich nur sehr selten ändern.&lt;/p&gt;
-&lt;p&gt;Und er enthielt auch drei Lastlogin-Daten (web, IMAP und POP). Jedes dieser Felder ist ca. 4 Byte lang und sie stehen also an derselben Stelle in jedem User-Record, also etwa 1 KB weit auseinander. Die Datenbank hat Seiten von 8 KB Größe (es war damals ein rotes Oracle), es stehen also 6-8 User-Records in einer Datenbank-Seite.&lt;/p&gt;
-&lt;p&gt;Wenn sich jetzt also ein User anmeldet, dann wird dessen Record aktualisiert und eine Datenbankseite in der Datenbank ist &amp;ldquo;dirty&amp;rdquo; und muß irgendwann einmal zurück geschrieben werden. Falls sich in der Zeit bis zum Zurückschreiben noch ein User anmeldet, dann ist das gut, weil wir so zwei Updates zum Preis eines Writes bekommen.&lt;/p&gt;
-&lt;p&gt;Bei 8-9m Unique Logins pro Tag und einer Gleichverteilung der aktiven User über die Records kann man aber annehmen, daß alle Pages der Userdatenbank mindestens einmal am Tag zurück geschrieben werden müssen. Das war anstrengend für die Userdatenbank, hat aber unter normaler Last einigermaßen okay funktioniert.&lt;/p&gt;
-&lt;p&gt;Wenn es nun bei web.de zu irgendeiner Störung kam, dann kommt es dabei meist auch zu einem Verlust der Session-Caches mit den Login-Tokens und die User werden alle ausgeloggt.&lt;/p&gt;
-&lt;p&gt;Was machen ausgeloggte User? Sie melden sich neu an.&lt;/p&gt;
-&lt;p&gt;Dabei werden die Lastlogind-Daten aller derzeit aktiven User aktualisiert und wir haben einige Millionen Logins in wenigen Minuten - und die User Datenbank macht dicke Backen und fällt um, weil sie es nicht schafft, so viele dirty pages in so kurzer Zeit zurück zu schreiben.&lt;/p&gt;
-&lt;p&gt;Jede beliebige Störung hatte also einen Ausfall der User Datenbank als Folgestörung, zwangsläufig.&lt;/p&gt;
-&lt;p&gt;Das klingt so erzählt unmittelbar einleuchtend und ist auch leicht zu beheben, wenn man die Ursache identifiziert hat. Aber damals waren es mehrere Teams und einige Monate Arbeit, überhaupt zu verstehen, daß es sich um zwei Störungen handelt (die ursächliche Störung und den Folgefehler &amp;ldquo;UserDB überlastet&amp;rdquo;), und daß die 2. Störung immer dieselbe ist, egal was die ursächliche Störung war.&lt;/p&gt;
-&lt;p&gt;Die Lösung ist übrigens recht einfach:&lt;/p&gt;
-&lt;p&gt;Man zieht die volatilen Felder (die drei Lastlogin-Daten) aus den statischen Stammdaten raus und tut sie in eine einzelne Tabelle, die nur die User-ID und die drei Zeitstempel enthält. Das sind dann 25 Millionen Records von 16 Bytes plus Overhead, also eine Tabelle von 400-800 MB Größe statt vorher 25 Millionen Kilobyte, also 25 GB.&lt;/p&gt;
-&lt;p&gt;Man hat also die Schreiblast für die Updates von 1024 Byte auf 16-32 Byte verkleinert, also um den Faktor 32-64 gesenkt. Das konnte die UserDB leicht abhandeln und das Problem trat nie wieder auf.&lt;/p&gt;
-&lt;p&gt;Was hat das mit mebis und itslearning zu tun? Direkt nichts, aber es zeigt, daß die Skalierung von Anwendungen in der Regel nicht einfach mit &amp;ldquo;mehr Server&amp;rdquo; zu machen ist.&lt;/p&gt;
-&lt;h3 id=&#34;skalierung-geht-nicht-allein-am-reißbrett&#34;&gt;
-    &lt;a href=&#34;#skalierung-geht-nicht-allein-am-rei%c3%9fbrett&#34;&gt;
-	Skalierung geht nicht allein am Reißbrett
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Eine Anwendung um den Faktor 10 zu skalieren heißt in der Regel, dieselben Deliverables mit einer komplett neu gemachten Architektur zu generieren. Ich habe in meinem Leben zwischen 1990 und 2005 viel Mail gemacht, für mich und meine Freundin (2), für einen kleinen Verein (20), für toppoint.de (200), für eine kleine Firma (2k), für Mobilcom.de (20k), ein Design für eine Ausschreibung bei hamburg.de (2m) und einige Jahre web.de (20m).&lt;/p&gt;
-&lt;p&gt;Die Deliverables sind immer dieselben: SMTP, Antispam, Antivirus, Mailstore, IMAP, POP, Web, SMTP Auth+Submit. Die Architekturen und die Orgstrukturen unterscheiden sich in jeder dieser Ausbaustufen grundlegend, und das jeweils größere System wäre für den kleineren Fall heillos überdesigned, und das kleinere Design würde unter der Last des nächstgrößeren Anwendungsfalls zusammenbrechen oder zumindest sehr bedenklich knirschen und wackeln.&lt;/p&gt;
-&lt;p&gt;Was genau die Knackpunkte sein werden sieht man aber vorher in der Regel nicht, sondern man muß es unter Last testen.&lt;/p&gt;
-&lt;p&gt;Schlaue Leute gehen also nicht von Woche 50 mit 0 Usern auf Woche 51 mit 350k Usern. Das wird nirgendwo bei niemandem so reibungslos funktionieren.&lt;/p&gt;
-&lt;p&gt;Schlaue Leute onboarden erst mal eine Gruppe freundliche Testkunden, bügeln die schlimmsten Probleme mit denen aus, dann ein mehrfaches dieser Gruppe in einem nächsten Schritt und so weiter. Dabei mit immer größeren Schritten und - wichtig - mit der Option innezuhalten und Dinge zu ändern, sobald sich Probleme und Engpässe manifestieren.&lt;/p&gt;
-&lt;p&gt;Das geht natürlich nicht in einem Umfeld, das politisch Präsenzunterricht favorisiert und bei dem man die Technik nicht dauerhaft als lebenden Bestandteil in den normalen Unterricht integriert.&lt;/p&gt;
-&lt;h3 id=&#34;sobald-die-technik-funktioniert-beginnt-die-eigentliche-arbeit&#34;&gt;
-    &lt;a href=&#34;#sobald-die-technik-funktioniert-beginnt-die-eigentliche-arbeit&#34;&gt;
-	Sobald die Technik funktioniert beginnt die eigentliche Arbeit
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Zum Vergleich: Wo ich wohne ist die Schule meines Kindes (10) Bestandteil des Netzwerkes &lt;a href=&#34;https://jl.nu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jong Leren&lt;/a&gt;
-
-. Man verwendet Chromebooks mit Google Edu, und dazu kommen eine Reihe von externen Anwendungen, die sich gegen Edu authentisieren, aber unabhängig realisiert werden. &lt;a href=&#34;https://www.gynzykids.com/#/nl-nl/leerling/index/oefenen/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gynzy&lt;/a&gt;
-
- wird zum Beispiel verwendet, um Drillaufgaben zu automatisieren, also Rechnen, Kopfrechnen, Rechtschreibung und andere Dinge einzuüben, die auf Wiederholung basieren.&lt;/p&gt;
-&lt;p&gt;Im März und auch jetzt wieder gab es deswegen keine großen Technikprobleme, sondern &amp;ldquo;nur&amp;rdquo; einen Haufen organisatorische Arbeit. Wir haben Glasfaser daheim (500 Mbit/500 MBit, feste IP, 63 Euro/mo) und die Schule hat natürlich auch eine angemessene Anbindung und managed Wi-Fi, damit die Chromebooks und elektronischen Wandtafeln stabil funktionieren.&lt;/p&gt;
-&lt;p&gt;Die Server stehen natürlich nicht in der Schule, wo sie kaum stabil zu betreiben wären, sondern in einer Reihe von Clouds (Google und wo immer Gynzi und die anderen Anwendungen gehostet werden).&lt;/p&gt;
-&lt;p&gt;Entsprechend beschränkte sich der technische Teil der Umstellung darauf, daß die Schule fragt, welche Schüler daheim keine angemessene Ausstattung haben und ob sie eventuell ein Chromebook nach Daheim mitnehmen müssen - wir nicht, das Kind hat sich auf seinem Notebook in Chrome vor langer Zeit schon eine Schul-Persona gemacht und wechselt zwischen seinen privaten Google-Accounts und seinem gemanagten Schulaccount frei hin und her.&lt;/p&gt;
-&lt;p&gt;Organisatorisch gab es eine Menge zu regeln und das war schwer genug - und Fernunterricht ist deutlich anders als Präsenzunterricht. In dieser 2. Runde haben sich die Jufen und Meester jetzt andere Dinge überlegt und es wird Arbeitsaufgaben zum Selbstabholen im Drive geben, zwei feste Walk-in Videosprechstunden für die Kinder und wahrscheinlich dann Termine nach Vereinbarung bei Fragen.&lt;/p&gt;
-&lt;p&gt;Wie neuer Stoff präsentiert werden wird weiß ich noch nicht, aber ich hoffe, daß man sich da an den einschlägigen Youtubern (&lt;a href=&#34;https://www.youtube.com/channel/UCy0FxMgGUlRnkxCoNZUNRQQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lehrer Schmidt&lt;/a&gt;
-
-, &lt;a href=&#34;https://www.youtube.com/channel/UCEmOTjOuZU_RkDJfRdn8y1A&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Max macht Musik&lt;/a&gt;
-
- und ähnliche) orientieren wird. Die Kinder werden also sehr viel freier und selbstständiger Stoff erarbeiten müssen, und bekommen dann hoffentlich gezielt und eher einzeln genau die Hilfe, die sie brauchen um weiter zu kommen. Es wird sich zeigen, wie sich das entwickelt und wie man von dort weiter iterieren wird.&lt;/p&gt;
-&lt;p&gt;Wie gesagt, die Umstellung bei uns ist kein technisches Problem, weil man die Technik sowieso schon seit Jahren jeden Tag verwendet. Das Problem ist eines einer komplett anderen Organisation und Unterrichtsmethodik (die sich bei jüngeren Kindern eventuell auch so nicht anwenden lässt), und die muß gefunden werden. Das ist auch ohne Technikprobleme nicht einfach.&lt;/p&gt;
-&lt;h2 id=&#34;hätte-man-das-nicht-alles-vermeiden-können&#34;&gt;
-    &lt;a href=&#34;#h%c3%a4tte-man-das-nicht-alles-vermeiden-k%c3%b6nnen&#34;&gt;
-	Hätte man das nicht alles vermeiden können?
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Ja. Nein. Nein, eigentlich nicht.&lt;/p&gt;
-&lt;p&gt;Ja, klar, das ist alles nicht neu und nicht unerwartet. Andere Leute hatten diese Probleme schon und haben darüber geschrieben, viel und oft und mit hohem Detailgrad.&lt;/p&gt;
-&lt;p&gt;Nein, denn das sagt nichts, weil es nichts bedeutet. Ich habe &lt;a href=&#34;https://blog.koehntopp.info/2020/08/31/on-touching-candles.html&#34;&gt;anderswo&lt;/a&gt;
-
- einmal aufgeschrieben, wie mein Sohn das Wort &amp;ldquo;heiß&amp;rdquo; gelernt hat. Es war vor sieben Jahren, um die Weihnachtszeit, und sein drittes Wort. Er hat es gehört und nachgesprochen, aber es hat für ihn nichts bedeutet. Bis er in eine Kerze gefasst hat.&lt;/p&gt;
-&lt;p&gt;Im &lt;a href=&#34;https://sre.google/sre-book/table-of-contents/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google SRE Buch&lt;/a&gt;
-
- ist ausführlich in mehr als einem Kapitel beschrieben, wie man Cubby/Zookeeper aufsetzt und nicht aufsetzt und warum man keinen globalen, firmenweiten Zookeeper haben kann oder will.&lt;/p&gt;
-&lt;p&gt;Wo ich arbeite haben wir gemeinsam und jeder für sich dieses Buch gelesen und verstanden (&lt;em&gt;berührt die Stirn&lt;/em&gt;) und sind dann aus $GRÜNDEN trotzdem in so eine Situation geraten, mit den vorhersagbaren Resultaten. Wir wissen jetzt aus persönlicher Erfahrung (&lt;em&gt;berührt Herz&lt;/em&gt;) wieso das keine Gute Idee war und warum man es anders haben will, und wir haben das verinnerlicht und machen das in Zukunft instinktiv (&lt;em&gt;berührt Bauch&lt;/em&gt;) richtig.&lt;/p&gt;
-&lt;p&gt;Nein, eigentlich ließ sich das nicht vermeiden, denn Organisationen lernen so. Solche Fehlschläge sind auch wichtig, weil man jetzt gemeinsam geteilte Erfahrungen hat und auch aus der Krise weiß, welche Kollegen wie reagieren oder welche Kollegen schon vorher Ratschläge hatten, auf die man hätte hören sollen. Organisationen springen nicht, sie bewegen sich immer linear vorwärts, und das Beste was man erreichen kann ist ihr Gleiten umzulenken oder zu beschleunigen. &amp;ldquo;Sprunginnovationen&amp;rdquo; sind nie das Werk von größeren strukturierten Gruppen und Verwaltungen.&lt;/p&gt;
-&lt;p&gt;Jedenfalls glaube ich, daß jetzt in diversen Bundesländern auch Leute mit einem nassen Lappen neben anderen Leuten sitzen, die brennende Server haben löschen müssen. &amp;ldquo;Heiß!&amp;rdquo; sagen sie und deuten auf den Server. &amp;ldquo;Heiß!&amp;rdquo; sagen die Admins mit den verbrannten Fingern und nicken wissend.&lt;/p&gt;
-&lt;p&gt;Oder, wie Terry Pratchett sagt &amp;ldquo;Pan Narrans&amp;rdquo;, the story telling ape, instead of &amp;ldquo;Homo sapiens&amp;rdquo;, thinking man.&lt;/p&gt;
-&lt;h2 id=&#34;testing-in-production&#34;&gt;
-    &lt;a href=&#34;#testing-in-production&#34;&gt;
-	Testing in Production
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Die beste Simulation von Schülerhordern auf einem Medienserver sind&amp;hellip; Schülerhorden auf einem Medienserver.&lt;/p&gt;
-&lt;p&gt;Daher sollte man nicht nur graduell onboarden, sondern auch die Schülerhorden dann jeden Tag auf dem Server haben, und nicht nur wenn gerade Pandemie ist. Nur so kann man jeden Tag und nach jedem Upgrade und jedem Change wissen, daß man ein System hat, das funktioniert. Nur so kann man realistisch Kapazität messen. Und nur so kann man ein Team von Admins haben, das mit kleinen Störungen jeden Tag Erfahrungen gesammelt hat, daß große Störungen keine unerwartete Herausforderung mehr sind.&lt;/p&gt;
-&lt;p&gt;Testing in Production und Testing with Production sorgt dafür, daß man Methoden und Architekturen entwickelt, die &lt;em&gt;Survivability&lt;/em&gt; eingebaut haben, bei denen also die Struktur des Systems dafür sorgt, daß Fehler und Mißgeschicke sich auf eine Weise manifestieren, von der man sich erholen kann.&lt;/p&gt;
-&lt;p&gt;Ich bin nur froh, daß ich nicht die Person bin, die einer Öffentlichen Verwaltung beibringen muß so zu arbeiten, auch wenn ich glaube, daß es die einzige Arbeitsweise ist, die für so eine Problemstellung Erfolg haben kann&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Rechenzentren und ihren Stromverbrauch regulieren</title>
-      <link>https://blog.koehntopp.info/2020/11/01/rechenzentren-und-ihren-stromverbrauch-regulieren.html</link>
-      <pubDate>Sun, 01 Nov 2020 13:04:46 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2020/11/01/rechenzentren-und-ihren-stromverbrauch-regulieren.html</guid>
-      <description>&lt;p&gt;Es gibt ein Interview mit Stefan Ramesohl vom Umweltministerium (des Bundes) in Netzpolitik.org: &amp;ldquo;&lt;a href=&#34;https://netzpolitik.org/2020/interview-zur-umweltpolitischen-digitalagenda-warum-niemand-weiss-wie-viele-rechenzentren-es-in-europa-gibt/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warum niemand weiß, wie viele Rechenzentren es in Europa gibt&lt;/a&gt;
-
-&amp;rdquo;. Im Wesentlichen hat das Umweltministerium angesagt, daß es auf europäischer Ebene Rechenzentren erfassen und katalogisieren will, um in einem zweiten Schritt den Energieverbrauch von Rechenzentren zu regulieren.&lt;/p&gt;
-&lt;p&gt;Das ist sehr spannend, denn derzeit gibt es keine Übersicht über Rechenzentren in Europa, und tatsächlich sind einige Rechenzentrumsbetreiber sehr paranoid, was den genauen Standort ihrer Hardware angeht und wieviel und welche Hardware darin ist oder was diese tut. Das ist zwar lächerlich - es ist sehr schwierig eine Energiesenke wie ein Rechenzentrum und ihre Abwärme zu verstecken - aber auch ein sehr sensitives Thema.&lt;/p&gt;
-&lt;h2 id=&#34;eine-leseliste&#34;&gt;
-    &lt;a href=&#34;#eine-leseliste&#34;&gt;
-	Eine Leseliste
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;In dem Interview gibt es ein paar Dinge, die Anmerkungen verdienen, aber bevor es los geht noch die anderen Artikel in diesem Blog als Links:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2017/07/19/threads-vs-watts.html&#34;&gt;Threads vs. Watts&lt;/a&gt;
-
-: Ich habe einen Dell R630 mit zwei Xeon 6132 CPUs getestet, und deren Energieverbrauch unter Last gemessen. Die Resultate sind repräsentativ für die ganze Klasse von Rechnern, die eine Art Arbeitspferd im modernen Rechenzentrum sind. Der Hauptpunkt: 50% der maximalen Energieaufnahme werden bereits bei 20% Auslastung aufgenommen.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2018/02/21/a-journey-to-open-compute.html&#34;&gt;A Journey to Open Compute&lt;/a&gt;
-
-: Mit Open Compute hat Facebook die Energieaufnahme eines Rechners in Idle auf 50% eines herkömmlichen Rechners senken können, und unter Volllast auf 80%. Das wird ermöglicht, indem man Rechner, Rack und Raum nach einer gemeinsamen Spezifikation baut und optimiert. Der Open Compute Standard ist jetzt eine offene Spezifikation, aber wegen der Abhängigkeiten zwischen Raum, Rack und Rechner lohnt sich das alles nur, wenn man ein &lt;a href=&#34;https://en.wikipedia.org/wiki/Big_Tech#GAFAM_or_FAAMG&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GAFAM&lt;/a&gt;
-
--type Hyperscaler ist.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2017/11/07/power-budgets-for-computing-resources-portable-and-stationary.html&#34;&gt;Power budgets for computing resources - portable and stationary&lt;/a&gt;
-
- listet generell die Zusammenhänge zwischen Rechnen, Batterieverbrauch und Abwärme auf.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2019/10/05/data-centers-and-energy.html&#34;&gt;Data Centers and Energy&lt;/a&gt;
-
-: Wenn man Netflix schaut, wird Energie verbraucht. Wo und wieviel? Wir reden über Endgeräte (die nur wenige Watt brauchen), über Open Compute in Rechenzentren und über Energieverbrauch im Netzwerk, speziell auf der letzten Meile. Letzterer variiert enorm: 5G braucht sehr viel Energie, (V)DSL ist ebenfalls sehr aufwendig, und Glasfaser nicht - sie ist leicht eine Zehnerpotenz günstiger.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2019/12/28/streaming-and-energy.html&#34;&gt;Streaming and Energy&lt;/a&gt;
-
- und &lt;a href=&#34;https://blog.koehntopp.info/2020/03/19/netflix-does-not-bring-down-the-internet.html&#34;&gt;Netflix does not bring down the Internet&lt;/a&gt;
-
-: Speziell Videostreaming funktioniert schon sehr optimiert: Videos werden in Edge Data Centers gespeichert und nicht neu codiert, sie werden in der niedrigsten sinnvollen Auflösung geliefert und die Decodierung erfolgt mit spezieller Hardware, damit die Batterie im Endgerät länger hält. All das braucht weniger Energie als angenommen.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2020/06/08/cloud-and-energy.html&#34;&gt;Cloud and Energy&lt;/a&gt;
-
-: Das Uptime Institut sagt: &amp;ldquo;Data center energy efficiency gains have flattened out&amp;rdquo; (und sieht einen durchschnittlichen PUE von 1.58). Uptime sagt im selben Text aber auch, daß neuere und größere Facilities mit Open Compute &lt;em&gt;signifikant&lt;/em&gt; bessere PUE haben. Der einfachste Weg zur Verbesserung von PUE für die meisten Firmen ist, ihre Workloads in die Cloud zu verlagern (und dynamisch zu skalieren). Das hat bei korrekter Durchführung neben Energieffizienz auch noch jede Menge andere Vorteile, die sich aus einem gelungenen Outsourcing ergeben.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;hyperscaler-rechenzentren-sind-viel-energieeffizienter&#34;&gt;
-    &lt;a href=&#34;#hyperscaler-rechenzentren-sind-viel-energieeffizienter&#34;&gt;
-	Hyperscaler-Rechenzentren sind viel energieeffizienter
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Auf Twitter ging ich auf &lt;a href=&#34;https://twitter.com/isotopp/status/1322857383929012224&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;das Interview ein&lt;/a&gt;
-
-:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Netzpolitik.org:&lt;/em&gt; Diese großen Player können ja kein Interesse an staatlicher Regulierung haben, sondern werden versuchen, eine branchenweite Selbstverpflichtung herbeizuführen.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Eher nicht. Als &lt;a href=&#34;https://en.wikipedia.org/wiki/Big_Tech#GAFAM_or_FAAMG&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GAFAM&lt;/a&gt;
-
- wäre man sinnvollerweise für mehr Regulierung, denn das käme effektiv einem Cloud-Zwang gleich.&lt;/p&gt;
-&lt;p&gt;Wie oben bereits dargestellt, hat GAFAM bereits Rechenzentren, die sehr viel effizienter mit der Energie umgehen als normale Rechenzentren es tun. Das ist so, weil diese Rechenzentren Raum, Rack und Rechner als ein System designed haben und weil die Betreiber als Hyperscaler es sich leisten können, solche Rechenzentren nach Maß zu designen, bauen zu lassen und zu optimieren.&lt;/p&gt;
-&lt;p&gt;Während also ein traditionelles Rechenzentrum Rechner für eine Million Watt betreibt und dafür um die 600.000W an Kühlung und anderer Sekundärenergie aufbringen muß (Power Utilization Efficiency, PUE 1.6), können die am Besten optimierten Google-Rechenzentren eine Million Watt an Rechnern mit 60.000W Sekundärenergie betreiben (PUE 1.06).&lt;/p&gt;
-&lt;p&gt;Ein effektiver PUE von &amp;lt;1.2 ist par für die Hyperscaler-Cloud.&lt;/p&gt;
-&lt;p&gt;Ein kleinerer Rechenzentrums-Nutzer füllt nicht ein ganzes RZ mit Rechnern, läßt also nicht nach Maß bauen, sondern mietet existierenden RZ-Space, der prinzipbedingt nicht gut geeignet ist für Open Compute (OCP). Existierende RZ-Space ist generisch, er muß jede Art von IT-Equiment aufnehmen können und ist daher oft Überkühlt, der Airflow ist nicht optimiert und hat auf diese Weise mindestens dreimal mehr Overhead als RZ-Space, den Hyperscaler nach Maß bauen (PUE &amp;lt;1.2 vs. PUE ~ 1.6). Noch kleinere Benutzer füllen nur einzelne Räume oder haben Raumabschnitte (&amp;ldquo;Cages&amp;rdquo;), teilen also die Kühlung mit anderen Nutzern.&lt;/p&gt;
-&lt;p&gt;Hyperscaler bauen nicht nur ein RZ, sondern tun das in Serie, und iterieren dabei das Design. Sie lassen auch Rechner und Rechnerkonzepte wie OCP entwickeln, und stimmen dabei das Design des RZ auf das Design von Rack und Rechner ab - daher kommt die energetische Überlegenheit von OCP.&lt;/p&gt;
-&lt;p&gt;Dazu kommt, wie oben auch dargestellt, daß ein ausgelasteter Rechner energieeffizienter ist als einer, der teilweise vor sich hin idled. Ein Dell R630 verbraucht bereits 50% seiner maximalen Energie bei 20% Auslastung.&lt;/p&gt;
-&lt;p&gt;Maschinen auszulasten und Workloads dynamisch zu skalieren ist etwas, für das &amp;ldquo;die Cloud&amp;rdquo;, also die API-gesteuerten Rechenzentren der Hyperscaler, gebaut worden sind. Hyperscale Clouds haben &amp;ldquo;sellable cores per provisioned cores&amp;rdquo; als eine zentrale Optimierungsmetrik, sie wollen ausgelastete Rechner, weil das die Einnahmen definiert.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/07/watt-thread.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Watts per Thread (Dell R630, Dual Xeon 6132)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Wie dem auch sei: Aus energetischer Sicht ist Auslastung wichtig, weil die Watts zur Aktivierung des n-ten Rechenkerns asymptotisch günstiger sind. Das ist so, weil die Idle-Energieaufnahme der Maschine und des ganzen Rechenzentrums drumherum sich so amortisiert.&lt;/p&gt;
-&lt;p&gt;Außerdem: Wenn man es sich leisten kann, Hyperthreading zu aktivieren (Wegen der diversen Intel-Caching-Bugs der letzten Jahre ist das oft ein Sicherheitsrisiko), dann sind die Hyperthreads energetisch betrachtet nahezu kostenfrei. Integer- und Stringprocessing-Workloads können Hypterthreads als nahezu vollwertige zweite CPU betrachten, Fließkomma-intensive Workloads nicht.&lt;/p&gt;
-&lt;p&gt;Webshops sind, wenn sie richtig gebaut worden sind, String- und Integer-Anwendungen und sehr wenig Fließkomma-intensiv, könnten also von Hyperthreading voll profitieren. Die Anzahl der nutzbaren Cores verdoppelt sich rechnerisch und ist bei Webshop fast vollständig realisierbar - ein Webshop mit einer fast reinen Integer/String Workload kann von den 56 rechnerischen Kernen einer Dual-6132 eine Load von deutlich über 40 stabil verarbeiten.&lt;/p&gt;
-&lt;h2 id=&#34;kosten-und-energie&#34;&gt;
-    &lt;a href=&#34;#kosten-und-energie&#34;&gt;
-	Kosten und Energie
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Über eine Nutzungsdauer von fünf Jahren gerechnet machen Energiekosten in etwa die Hälfte der Gesamtkosten eines Rechners aus - für einen Hyperscaler ist das ein so intensiver Kostenfaktor, daß sie aus wirtschaftlichen Gründen seit mehr als 15 Jahren intensiv die Energieaufnahme ihrer Rechenzentren in allen Punkten optimieren.&lt;/p&gt;
-&lt;p&gt;Das ist der primäre Grund für das Open Compute Projekt (OCP) und die Bauweise der Hyperscaler-Rechenzentren. Für Hyperscaler lohnt dies, weil das der Kernbereich ihres wirtschaftlichen Handelns ist.&lt;/p&gt;
-&lt;p&gt;Dazu kommt, wie in der Leseliste dargestellt, daß alle Hyperscaler (bis auf Amazon) bereits 100% graugrün sind, also zu großen Teilen bereits auf tatsächlich regenerativer Energie laufen und den Rest mit Zertifikaten kompensieren, und obendrein sehr nah in der Zukunft liegende Ziele haben, was komplett grünen Betrieb &lt;em&gt;und&lt;/em&gt; Überkompensation angeht. Speziell Google ist ein sehr großer Investor in Wind- und Solarkraftanlagen, Netflix überkompensiert bereits jetzt, ist also Carbon-Negative.&lt;/p&gt;
-&lt;p&gt;Für ein Firma, für die der Betrieb und die Skalierung von Rechenzentren und ihrer Hardware nicht der Kern ihres wirtschaftlichen Handelns ist, ist es ausgeschlossen hier mitzuhalten.&lt;/p&gt;
-&lt;p&gt;Oder wie Ramesohl es formuliert:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Es ist einfach so, dass eine gewisse Skalierung zu großen Vorteilen führt, die dann wiederum über eine Wettbewerbsfähigkeit im Markt die Marktposition stärkt und damit den Marktanteil erhöht. Das ist ein selbstverstärkender Effekt. Hinzu kommt, dass diese Akteure in der Lage waren, zu investieren und sich damit ein technologisches Know-how aufzubauen, was wiederum im Umkehrschluss ihre Marktposition stärkt.&lt;/p&gt;
-&lt;p&gt;Das ist richtig, dass gerade bei den großen Playern entsprechende selbstdefinierte Nachhaltigkeitsziele vorliegen. Das sind teilweise sehr ambitionierte Pläne, die versuchen, die Emissionen, die im Laufe der Unternehmensgeschichte bisher aufgelaufen sind, rückwirkend zu kompensieren.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;bandbreite-und-energie&#34;&gt;
-    &lt;a href=&#34;#bandbreite-und-energie&#34;&gt;
-	Bandbreite und Energie
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Ramesohl sagt auch:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Da geht es um die Frage, ob jede Internetwerbung eine Autoplay-Funktion braucht, also abspielt, wenn ich nur über die Seite scrolle. Das erzeugt nämlich ein enormes Datenvolumen. Oder die Frage, ob alles standardmäßig in höchster Auflösung gestreamt werden muss, wenn es auf einem kleinen Bildschirm angeschaut wird.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Dahinter steht die Fehlmeinung, daß eine Netzwerkinfrastruktur mehr Energie benötigt, wenn Daten übertragen werden. Das ist nicht der Fall.&lt;/p&gt;
-&lt;p&gt;So wie eine Festplatte oder RAM nicht schwerer werden oder mehr Energie verbrauchen, wenn Daten darin gespeichert werden, so braucht ein kabelgebundenener Netzwerklink nicht (wesentlich) mehr Energie, wenn Daten übertragen werden.&lt;/p&gt;
-&lt;p&gt;RAM und Festplatten brauchen (mehr) Energie, wenn Daten &lt;em&gt;geändert&lt;/em&gt; werden, also Bits gekippt werden.&lt;/p&gt;
-&lt;p&gt;Und kabelgebundenene Netzwerkinfrastruktur überträgt immer Daten (Trägersignale), auf die die Nutzlast dann aufmoduliert wird. Das wiederum braucht im Vergleich zur Grundlast des Netzes (das Senden des Trägers) kaum Energie. Anders sieht es bei Funkverbindungen, also Datenübertragung via Mobilfunknetz aus, dort wird der Sender komplett abgeschaltet, wenn er nicht gebraucht wird, um das Spektrum frei zu halten.&lt;/p&gt;
-&lt;p&gt;Speziell bei Glasfaser ist es so, daß man die Bandbreite zudem mit nur wenig mehr Energieaufwand um Größenordnungen hochdrehen kann, wenn man will - durch den Austausch der Laser kann dasselbe Medium in der Kapazität verzehnfacht oder verhundertfacht werden ohne signifikat mehr Energie zu verbrauchen.&lt;/p&gt;
-&lt;h2 id=&#34;was-tun-wir-mit-all-dem-compute&#34;&gt;
-    &lt;a href=&#34;#was-tun-wir-mit-all-dem-compute&#34;&gt;
-	Was tun wir mit all dem Compute
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Am Ende ist es eventuell eine gute Idee, nicht nur genauer hin zu schauen, wo Rechenzentren stehen und wie sie designed sind, sondern was mit den Megawatts gemacht wird, die dort verwendet werden. Auf diese Weise bekommen wir eventuell Bitcoin weg gebombt. Das wäre schon einmal sehr wichtig, denn hier wird Energie in der Größenordnung ganzer Staaten in sinnlosen Berechnungen (&amp;ldquo;Proof of Work&amp;rdquo;) verheizt. Und nein, das kann man nicht ändern, PoW kann nicht sinnvolles berechnen.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>IT modernisieren und konsolidieren</title>
-      <link>https://blog.koehntopp.info/2020/10/05/it-modernisieren-und-konsolidieren.html</link>
-      <pubDate>Mon, 05 Oct 2020 21:52:04 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2020/10/05/it-modernisieren-und-konsolidieren.html</guid>
-      <description>&lt;p&gt;Ich schrieb in einem &lt;a href=&#34;https://twitter.com/isotopp/status/1313084134168944640&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twitter Thread&lt;/a&gt;
-
- über &lt;a href=&#34;https://blog.koehntopp.info/2020/10/05/what-are-the-problems-with-posix.html&#34;&gt;Posix Dateisysteme vs. Object Stores&lt;/a&gt;
-
-:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;UNIX FS ist 1974.
-BSD FFS ist 1984.
-XFS ist 1994.
-ZFS (und Btrfs und Wafl) sind LFS, also 2004.
-Object Storages, LSM, &amp;ldquo;RocksDB&amp;rdquo; ist ca. 2014, um den Takt zu halten.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;und wurde gefragt: &amp;ldquo;Was kommt 2024&amp;rdquo;. Meine halb spöttische, halb ernst gemeinte Antwort war:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Irrelevant.&lt;/p&gt;
-&lt;p&gt;2024 läuft Dein Code serverless bei einem professionellen Betreiber und vom lokalen System und dem lokalen Dateisystem kriegst Du nix mehr zu sehen außer einer monatlichen Rechnung.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;rein-in-die-cloud&#34;&gt;
-    &lt;a href=&#34;#rein-in-die-cloud&#34;&gt;
-	Rein in die Cloud
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Selbst wenn es kein &amp;ldquo;serverless&amp;rdquo; ist, sondern eine VM oder ein Container: Wir haben dazu gelernt, und sind besser geworden. Deswegen sind aber auch unsere Standards und Anforderungen gestiegen und wir brauchen bessere Umgebungen.&lt;/p&gt;
-&lt;p&gt;Die Prozesse und die Technik lokal so aufzusetzen, daß man weiterhin compliant bleibt mit SOX, PCI und PII ist eine ganze Menge Arbeit, die nicht zur Kern-Mission der meisten Unternehmen gehört. Es ist auch ein Investment, das besser in geschäftsrelevante Bereiche ginge. Techniken und Infrastruktur bereit zu stellen, die in einem Amazon-like Environment &amp;ldquo;so da&amp;rdquo; ist wird immer schwieriger und teurer werden.&lt;/p&gt;
-&lt;h3 id=&#34;ein-paar-selbstverständlichkeiten&#34;&gt;
-    &lt;a href=&#34;#ein-paar-selbstverst%c3%a4ndlichkeiten&#34;&gt;
-	Ein paar Selbstverständlichkeiten
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Auf der Minimum-Liste für alle stehen inzwischen Dinge wie&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Single Sign On und Identity Management (SSO und IAM)&lt;/li&gt;
-&lt;li&gt;Rollenbasierte Access Controls (RBAC)&lt;/li&gt;
-&lt;li&gt;eine PKI&lt;/li&gt;
-&lt;li&gt;Encryption at Rest und Encryption in Flight&lt;/li&gt;
-&lt;li&gt;Administrator Roles mit Segregation of Duties&lt;/li&gt;
-&lt;li&gt;Mandatory Access Controls and Privilege Limits&lt;/li&gt;
-&lt;li&gt;Audit Trails&lt;/li&gt;
-&lt;li&gt;Complance und Audit von all dem&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Und das ist schon mehr Arbeit als man als Firma mit einem eigenen RZ-Betrieb selbst leisten und erfinden kann. Es ist auch etwas, das so nicht fertig kaufbar und als Produkt installierbar ist, weil es eben nicht nur Technik ist, sondern auch Prozeß und Kultur.&lt;/p&gt;
-&lt;p&gt;Es sind aber alles Dinge, die man als Technik in einem AWS Environment oder einer anderen großen Cloud per Default bekommt und zu der es dann auch Unterweisungen gibt, die einem Best Practices und funktionierende Prozesse nahe bringen.&lt;/p&gt;
-&lt;p&gt;Dazu kommen dann Dienste, die in einem eigenen Rechenzentrum mühevoll oder teuer zu schaffen sind, die man aber in einer großen Cloud testweise oder produktiv dazu nehmen kann, ohne eigenen Aufwand zu treiben.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Geocoder&lt;/li&gt;
-&lt;li&gt;Spracherkennung&lt;/li&gt;
-&lt;li&gt;Bilderkennung&lt;/li&gt;
-&lt;li&gt;Integration in eine skalierbare Big Data Umgebung&lt;/li&gt;
-&lt;li&gt;Integration von Eventprozessoren&lt;/li&gt;
-&lt;li&gt;Event Driven Execution (&amp;ldquo;Step Functions&amp;rdquo;), die es auch Nicht-Codern erlauben, Anwendungen durch Zusammenklebeben von -aaS Diensten zu schaffen.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Aber das sind nur Beispiele aus hunderten von Diensten&amp;hellip;&lt;/p&gt;
-&lt;h3 id=&#34;nicht-die-mission-der-meisten-betriebe&#34;&gt;
-    &lt;a href=&#34;#nicht-die-mission-der-meisten-betriebe&#34;&gt;
-	Nicht die Mission der meisten Betriebe
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Das ist etwas, das einer traditionellen RZ-IT nicht zugänglich ist, und das auch unverhältnismäßig viel Kapital, Investment und Personal binden würde, würde man es selbst lokal entwickeln. Schon so etwas simples wie RDS funktioniert besser und automatischer als alle selbstgestrickten DevOps Managementscripte für Datenbanken, die man selbst haben kann.&lt;/p&gt;
-&lt;p&gt;Druck kommt nicht nur aus dem Management und aus der Compliance, sondern auch von unten: Die aktuelle Generation von Entwicklern hat nie mit einem lokalen RZ gearbeitet, sondern ist in AWS groß geworden. Sie setzt die Qualität der Implementierung und die Prozesse von Amazon als gegeben und als Maßstab voraus. Sie setzt die Leichtigkeit von Operations und Observability voraus, die für eine Cloud-Umgebung typisch sind.&lt;/p&gt;
-&lt;p&gt;Deswegen ist die Zukunft von 2024 mindestens hybrid. Aber effektiv wird kein Betrieb mit einem lokalen Rechenzentrum und reinen IaaS-Angeboten noch groß Stiche holen.&lt;/p&gt;
-&lt;p&gt;Das ist einer der Gründe, warum Europa als Technologieraum zunehmend abgehängt ist. Nicht nur viele Politiker und Entscheider verstehen nicht mehr, was in den letzten 10 Jahren passiert ist, sondern auch viele Sysadmins &amp;ldquo;on the ground&amp;rdquo; haben die Veränderung des Entwicklerbetriebes in den letzten 10 Jahren grundlegend verpaßt und können nicht erkennen, welche Gestaltungsdrücke gerade auf ihrer Umgebung lasten.&lt;/p&gt;
-&lt;p&gt;Das sehen wir nicht nur in der &amp;ldquo;deutsche Schulen in COVID&amp;rdquo; Videokonferenzdiskussion, sondern auch in der ganzen Klasse von BOFH-Bemerkungen, die aus dem Sysadmin Lager oft kommt. Ich habe dazu vor über fünf Jahren schon einmal was gemacht: &lt;a href=&#34;https://www.slideshare.net/isotopp/go-away-or-i-will-replace-you-with-a-little-shell-script#2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides: Go away or I will replace you with a very small Shell script - ein paar Gedanken zum Thema Devops&lt;/a&gt;
-
- (&lt;a href=&#34;https://media.ccc.de/v/froscon2015-1500-go_away_or_i_will_replace_you_with_a_very_little_shell_script&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video von der Froscon Version&lt;/a&gt;
-
-).&lt;/p&gt;
-&lt;p&gt;Die Frage ist nicht, wie ein lokales Rechenzentrum Rechner betreibt und bereitstellt - das ist ein gelöstes Problem. Sondern welche Dienste sie darauf fertig im Angebot haben, ob diese Dienste mit aktuellen Standard und Anforderungen in Compliance sind, ob sie eine API haben, und sie mit lokalem Tooling integrierbar sind.&lt;/p&gt;
-&lt;h3 id=&#34;integration-und-bildung-von-untereinander-abhängigen-systemen&#34;&gt;
-    &lt;a href=&#34;#integration-und-bildung-von-untereinander-abh%c3%a4ngigen-systemen&#34;&gt;
-	Integration und Bildung von untereinander abhängigen Systemen
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Wir sind dabei, von individuellen, frei stehenden und trennbaren Teilen zu integrierten Systemen zu gehen. Das hat Vorteile, weil so Prozesse entstehen und eingeübt werden, die meßbar Qualität verbessern und - wichtiger noch - automatisieren.&lt;/p&gt;
-&lt;p&gt;Das ist nicht nur im Bereich Betrieb mit der Cloud so, sondern ist ein größerer Trend, der auch in der Software-Entwicklung sichtbar wird: Entwickler arbeiten nicht mehr mit vi im leeren Editor, sondern haben in der Regel Sprachen mit umfangreichen Bibliotheken und Integrationen im Betrieb. Das hat Folgen.&lt;/p&gt;
-&lt;p&gt;In der Entwicklung: Wenn es keinen JetBrains-Editor für die Sprache gibt, wenn sie von gitlab und github nicht erkannt und ausgewertet wird, wenn sie keinen Dependency-Manager und keine CI/CD Integration hat, dann ist eine moderne Programmiersprache - Entschuldigung - Plattform - Entschuldigung - Ökosystem nicht vollständig und nicht mehr konkurrenzfähig.&lt;/p&gt;
-&lt;p&gt;Wenn eine Sprache nicht von einschlägigen Security- und Audit-Werkzeugen unterstützt wird, wenn sie nicht &lt;a href=&#34;https://www.sonarqube.org/features/multi-languages/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bei SonarQube&lt;/a&gt;
-
- oder ähnlichen auf der Liste steht, wenn sie nicht von Valgrind, Fuzzern und anderen Werkzeugen unterstützt wird, dann hat eine moderne Programmierumgebung in einem Enterprise-Umfeld zunehmend Schwierigkeiten, die steigenden Compliance-Anforderungen im Bereich Software-Entwicklung und Qualitätssicherung zu erfüllen.&lt;/p&gt;
-&lt;p&gt;Im Betrieb: Ohne Identity, PKI, SSO, RBAC, Segregation of Duties, Encryption überall, Auditing und enforceable maximum permissions hast Du Compliance Probleme oder wirst sie bald haben. Und ohne eine API für alles, Tooling für diese API, Infrastructure als Code, Codified Practices wie CI/CD hast Du keine attraktive und effektive Entwicklungsumgebung für Deine eigenen Leute.&lt;/p&gt;
-&lt;p&gt;Das sind aber Gedanken und Entwicklungen, die in Deutschland an Politik und an Teilen der &amp;ldquo;Informatikschaffenden&amp;rdquo; vorbei gegangen sind, oder belächelt worden sind.&lt;/p&gt;
-&lt;h2 id=&#34;raus-aus-der-cloud&#34;&gt;
-    &lt;a href=&#34;#raus-aus-der-cloud&#34;&gt;
-	Raus aus der Cloud
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Offensichtlich sind Server Wurst. Die Frage ist mehr, was da drauf läuft, welche Dienste und Integrationen bestehen. Das ist mit einem IT-Team von 4-5 Leuten vor Ort nicht sinnvoll zu schaffen, sondern im günstigsten Fall ein blankes IaaS, nicht unbedingt von der guten und vertrauenswürdigen Sorte.&lt;/p&gt;
-&lt;p&gt;Schau Dir an, was zum Beispiel Scaleway oder OVH macht, oder 1und1 in Deutschland. Das sind fitte Teams, die eine Menge weg schaffen. Aber deren Clouds sind relativ dienstfreie IaaS-Clouds mit ein wenig Object Storage, und alle größeren Dinge mußt Du Dir selbst auf deren IaaS ansibilisieren.&lt;/p&gt;
-&lt;p&gt;Das ist aber der Stand von 2010, nicht 2020. In 2020 ist ein Cloudkunde hinter Diensten her, damit er die nicht selbst betreiben muß.&lt;/p&gt;
-&lt;p&gt;Es ist ja nicht nur unwürdig, HPE deren defekte iLOs und kaputte Festplatten-Firmware zu debuggen, sondern man will sich auch einfach ein MySQL oder Postgres klicken können. Oder gar einfach &amp;ldquo;einen KV Storage benutzen&amp;rdquo; und Dein Zeugs in ein Dynamo kippen und Dich gar nicht mehr um Instanzgrößen kümmern müssen, sondern nur noch für Storage und Zugriff nach Verbrauch bezahlen.&lt;/p&gt;
-&lt;p&gt;Und an dieser Stelle kommt wieder die Politik durch.&lt;/p&gt;
-&lt;h3 id=&#34;arbeitsteilung-beruht-auf-vertrauen-vertrauen-kommt-aus-transparenz-und-verläßlichkeit&#34;&gt;
-    &lt;a href=&#34;#arbeitsteilung-beruht-auf-vertrauen-vertrauen-kommt-aus-transparenz-und-verl%c3%a4%c3%9flichkeit&#34;&gt;
-	Arbeitsteilung beruht auf Vertrauen. Vertrauen kommt aus Transparenz und Verläßlichkeit
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Das funktioniert mit den Diensten nämlich ganz wunderbar in der &amp;ldquo;Arbeitsteiligen Gesellschaft™&amp;rdquo; - wir nennen so etwas Zivilisation. Nur, wenn wir zivilisiert, verantwortungsvoll und vertrauensvoll miteinander umgehen, dann kann man sich selbst die Arbeit mit den ganzen Diensten schenken und jemand anders beauftragen.&lt;/p&gt;
-&lt;p&gt;Dazu sind bestimmte gesellschaftlichen Bedingungen notwendig, die zu schaffen sind. Wir brauchen ein System von Checks und Balances, internationalen Verträgen und Business Practices, und dann ein System von Kontrollen und &lt;em&gt;Vertrauen in die Wirksamkeit dieser Kontrollen&lt;/em&gt;, damit wir zivilisiert cloudcomputen können.&lt;/p&gt;
-&lt;p&gt;Wenn Du aber einzelne Nation States hast, die technisch gesehen als Attacker da stehen (&amp;ldquo;Nation State Attacker&amp;rdquo;, &amp;ldquo;NSA&amp;rdquo;) und sich das auch so vorbehalten, dann ruiniert das die Geschäftsgrundlage für die arbeitsteilige Gesellschaft, mithin die Zivilisation selbst.&lt;/p&gt;
-&lt;p&gt;Wenn Du einzelne Anbieter hast, die über die Verarbeitung und Nutzung der Daten nicht transparent sind, oder man den von ihnen vorgezeigten Audits kein Vertrauen schenken kann, dann &amp;hellip; genau dasselbe.&lt;/p&gt;
-&lt;p&gt;Und wenn Du eine Politik hast, die ein Klima schafft, in der das Verständnis dieser Tatsachen geleugnet oder ignoriert wird, dann ruiniert das dieses Konzept schon.&lt;/p&gt;
-&lt;p&gt;Das ist genau das, was Gestalten wie Trump, BoJo aber auch von Storch zerstören, wenn sie Isolationismus, Staatswilkür und Ignoranz gegenüber internationaler Ordnung demonstrieren. Das ist aber auch das, was Gestalten wie Audi Scheuer und sein Meister, Imperator Seehofer vernichten, denn solche vorgelebte Unfähigkeit und Korruption saugen der Zivilisation das Rückenmark aus. Das ist dann das, was zu Dingen wie Wirecard führt, zum Dieselskandal und zu Situationen, bei denen ein Volkswagen-Compliancemanager bei der Dokumentation illegaler Geschäftspraktiken auf eine Weise zu Tode kommt, die in jede Netflix-Mafiaserie gepaßt hätte.&lt;/p&gt;
-&lt;p&gt;In so einem Umfeld ist eine Auslagerung der IT an Dritte für Unternehmen ein bedenkenswertes Risiko statt eine Erleichterung.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mein selbstfahrendes Auto hat Kameras, oh nein!</title>
-      <link>https://blog.koehntopp.info/2020/09/17/mein-selbstfahrendes-auto-hat-kameras-oh-nein.html</link>
-      <pubDate>Thu, 17 Sep 2020 19:10:36 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2020/09/17/mein-selbstfahrendes-auto-hat-kameras-oh-nein.html</guid>
-      <description>&lt;p&gt;Bei der ARD ist man empört! &lt;a href=&#34;https://www.heise.de/news/Teslas-Kameras-ARD-rueckt-Datenschutzbedenken-ins-Licht-4904167.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Teslas Kameras: ARD rückt Datenschutzbedenken ins Licht&lt;/a&gt;
-
-. Will sagen, jemand hat älteren Personen gesteckt, daß ein selbstfahrendes Auto wenig überraschend Kameras braucht, um bei seiner bestimmungsgemäße Verwendung weniger ältere Personen überzumöllern.&lt;/p&gt;
-&lt;p&gt;So weit so wenig überraschend.&lt;/p&gt;
-&lt;p&gt;Bei einem Tesla sind es 9, bei anderen Automobilen anderer Hersteller noch mehr, und Radar, und Lidar und weitere Sensorsysteme. Problematisch sind nur Kameras, weil Menschen als visuelle Wesen zum Bild eine emotional andere Beziehung haben als zu anderen Daten, die objektiv nicht weniger kritisch sind. Aber Bilder, das ist Hexenwerk, das die Seele stiehlt, das muß man dringend streng kontrollieren.&lt;/p&gt;
-&lt;p&gt;Okay, auch nicht überraschend.&lt;/p&gt;
-&lt;p&gt;Die Bilder, die dabei anfallen, wertet das Vision System des Tesla live aus, und schmeißt den Großteil davon so schnell als möglich weg. Dazu braucht man Tesla nicht fragen, das kann man sich leicht überlegen.&lt;/p&gt;
-&lt;p&gt;Oder man spickt, was &lt;a href=&#34;https://cambuy.de/magazin/speicherverbrauch-ueberwachungskamera/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;andere sich überlegt haben&lt;/a&gt;
-
- - hier geht es um Überwachungskameras, nicht um &lt;a href=&#34;https://help.netflix.com/de/node/306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netflix&lt;/a&gt;
-
- und so ist die Qualität nicht dieselbe. Aber darum geht es auch nicht primär. In der Beispielrechnung kommt man mit 2 MBit/s, 8 Stunden und 7 Tage Vorhaltezeit auf 50 GB pro Woche.&lt;/p&gt;
-&lt;p&gt;Netflix HD braucht 5 MBit/s, und das sind 17 GB in 8 Stunden, 51 GB rund um die Uhr und 120 GB bzw 360 GB in der Woche bei 8 oder 24h am Tag.&lt;/p&gt;
-&lt;p&gt;Pro Kamera.&lt;/p&gt;
-&lt;p&gt;Von denen wir 9 Stück im Auto haben.&lt;/p&gt;
-&lt;p&gt;Okay, das Auto speichert also bestimmte ausgewählte Sequenzen, und manche Autos laden dann kleine Teile davon hoch, wenn es dazu aufgefordert wird.&lt;/p&gt;
-&lt;p&gt;Gewiss wird es nicht (2 MBit/s * 9 Kameras / 8 Bit/Byte) = 2.25 MB/s, also 8 GB pro Stunde, 64 GB pro Tag mitspeichern und lange vorhalten und noch viel weniger wird es versuchen, diesen Kram in einem deutschen Mobilfunknetz irgendwohin automatisch hochzuladen. Schon gar nicht flottenweit.&lt;/p&gt;
-&lt;p&gt;Nun gut.&lt;/p&gt;
-&lt;p&gt;Überraschend ist dabei die kurze Denkreichweite. Erstens geht es nicht um Tesla, und nicht einmal um Autos, sondern um jedes einzelbe autonome System mit Sensorik, das wir bauen oder bauen werden.&lt;/p&gt;
-&lt;p&gt;Und es geht auch nicht primär darum, ob die Daten gespeichert oder hochgeladen werden, sondern was das autonome System lokal entscheidet. Aber schauen wir mal in den Artikel:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Tesla will Telematik- und Videodaten zur Verbesserung seiner autonomen Fahrsysteme erfassen, aber mit den Daten auch Marketing betreiben.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Tesla wird insbesondere auch für die Funktion seiner Steuerungsalgorithmen zur Rechenschaft gezogen und muß dann in der Lage sein, einem Kläger, diversen Versicherungen, der Zulassungsstelle und seinen eigenen Ingenieuren darzulegen, was objektiv passiert ist. Also, was die Sensorik des Fahrzeugs aufgezeichnet hat, welche Entscheidungen der Fahrzeugführer und das Bordsystem getroffen hat und wie die Dinge dann abgelaufen sind.&lt;/p&gt;
-&lt;p&gt;Um so mehr, wenn wir autonome Systeme haben, die rechtlich der Fahrzeugführer sind und bei denen der Hersteller des Steuerungssystems dann haftend ist statt des Menschen an Bord, der dann nur noch Passagier ist.&lt;/p&gt;
-&lt;p&gt;Auch okay und langweilig. Das Ding wird nicht nur Augen brauchen, um zu sehen, sondern auch eine Art Gedächnis, um sich revisionsfest für sich und seinen Hersteller daran zu erinnern, was es gesehen hat und welche Entscheidungen es getroffen hat, denn das Gerät und sein Hersteller werden für diese Dinge zur Rechenschaft gezogen werden.&lt;/p&gt;
-&lt;p&gt;Kommen wir nun zu den interessanten Fragen:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Das permanente anlasslose Aufzeichnen verstößt grundsätzlich in Deutschland gegen den Datenschutz.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das Auto verarbeitet die Daten, die es mit seinen Sensoren wahrnimmt, laufend, so wie ein Mensch der wach ist und die Augen offen hat. Das soll es und das muß es. Wenn es fährt, aber auch, wenn es geparkt ist und im &amp;ldquo;Sentinel-Mode&amp;rdquo; sich selbst und das Eigentum seines Besitzers überwacht und beschützt.&lt;/p&gt;
-&lt;p&gt;Dabei kann das Fahrzeug andere Objekte und Personen im ruhenden und bewegten Verkehr identifizieren und klassifizieren, bestimmt ihre relative Position und Geschwindigkeit, wertet ihr Verhalten aus und plant dann seine eigenen Aktionen in Verbindung mit den Zielvorgaben, die es erhalten hat.&lt;/p&gt;
-&lt;p&gt;Nehmen wir an, das Gerät nimmt dabei einen Verkehrsverstoß in seiner Umwelt wahr.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Zum Beispiel ist es in einer 30 km/h Zone geparkt und jemand brettert dort mit einem Fahrzeug mit 120 km/h durch. Die Kameras hat Beweismaterial, das Kennzeichen sowie die Gechwindigkeit und der Vektor dieses Fahrzeuges ist erfaßt. Soll das Auto die Szene hochladen und automatisch eine Anzeige erstatten? Hättest Du das getan, &lt;a href=&#34;https://www.youtube.com/watch?v=6a1I63FpzpA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wenn Du ein photographisches Gedächnis hättest und Abzüge davon machen könntest&lt;/a&gt;
-
-?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dieselbe Szene wie vorher, aber das Fahrzeug fährt nur 42 km/h statt 120 km/h. Wenn das Urteil hier anders ausfällt, als im ersten Fall, warum? Und ab welcher Geschwindigkeit soll die automatische Anzeige ausgelöst werden?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Das Auto wird manuell gesteuert und regelwidrig in einer 30 km/h Zone auf 120 km/h beschleunigt. Was soll das Auto tun? Ab welcher Geschwindigkeit?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Jetzt fahren wir autonom, und vor uns kommt es zu einem Unfall auf einer Kreuzung. Die Sensoren des Fahrzeugen haben das Geschehen mit Kameras, Lidar und Radar genauestens erfaßt und vermessen und können den Unfallhergang genau rekonstruieren. Was ist mit den Daten des autonomen Fahrzeuges zu tun?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Der Fahrer des Fahrzeuges parkt sein Fahrzeug manuell regelwidrig in einem absoluten Halteverbot. Das Fahrzeug erkennt dies, und warnt den Fahrer. Der Fahrer ignoriert die Meldung und steigt aus. Was soll das Fahrzeug tun?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Der Fahrer des Fahrzeuges parkt sein Fahrzeug manuell regelwidrig in einem absoluten Halteverbot. Das Fahrzeug erkennt dies, und warnt den Fahrer. Der Fahrer &lt;em&gt;drückt die Meldung bewußt weg&lt;/em&gt; und steigt aus. Was soll das Fahrzeug tun?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Das Auto wird regelkonform geparkt und stellt zwei Fahrzeuge vor sich ein menschlich gesteuertes Fahrzeug fest, das regelwidrig geparkt und verlassen wird.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Man beachte, daß bei allen diesen Vorfällen die Daten live erfaßt werden und im Auto zunächst nicht dauerhaft gespeichert werden müssen, sondern nur gepuffert. Das Auto kann entscheiden, die Daten permanent zu speichern, den Vorfall zu melden oder Daten und Meldung zusammen hochzuladen.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Allerdings entschied der Bundesgerichtshof im Mai 2018 in einem Revisionsverfahren, dass solche Aufnahmen bei Unfall-Prozessen als Beweismittel genutzt werden dürfen.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das autonome Fahrzeug hat die Sensoren, um das Geschehen um sich zu erfassen. Es hat die Logik und Regeln, um Regelverstöße von anderen autonomen und menschlich gesteuerten Fahrzeugen zu erfassen, die Fahrzeuge an ihren Kennzeichen zu identifizieren. Es kann entscheiden, die erfaßten Sensordaten bei Regelübertretungen &lt;em&gt;anlaßbezogen&lt;/em&gt; zu speichern und zu melden. Die Beweise können dann entnommen oder hochgeladen werden.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Über die Verwertbarkeit auch von unzulässig oder rechtswidrig erhobenen Beweisen müsse durch eine Interessen- und Güterabwägung aufgrund der Umstände des Einzelfalles entschieden werden, urteilte der BGH damals.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Die Daten sind jedenfalls da. Die Einzelfallentscheidungen können dann getroffen werden. Wie sollen die Regeln zur Speicherung und zur Meldung ausfallen? Welche Verstöße und Situationen soll das autonome Gerät zum Anlaß nehmen, die erfaßten Daten anlaßbezogen zu speichern und was soll es wem wann melden?&lt;/p&gt;
-&lt;p&gt;Ich frage das auch als Radfahrer, der in Deutschland gerne mal mit deutlich weniger als 1.5 Meter Abstand überholt worden ist, und gegenüber dem menschliche Autofahrer ihr Fahrzeug auch mehr als einmal als Waffe verwendet haben, um mich zu nötigen und zu gefährden.&lt;/p&gt;
 </description>
     </item>
     

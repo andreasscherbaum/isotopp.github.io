@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/2018/11/29/but-is-it-atomic.html">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='But is it atomic?' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -127,8 +126,8 @@
             But is it atomic?
           </h1>
           <div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-            <img alt='isotopp image' src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-            <a href="https://twitter.com/isotopp" class='text-light text-decoration-none'>
+            <img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+            <a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
                 Kristian Köhntopp
             </a>
 
@@ -210,32 +209,32 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * write system call 
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">write</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">rdwr</span><span class="p">(</span><span class="n">FWRITE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">rdwr</span><span class="p">(</span><span class="n">FWRITE</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>You are looking very old K&amp;R style C code here, which predates even ANSI-C and function prototypes, by the way.</p>
 <p>So <code>rdwr()</code> a few lines down the function calls <code>plock()</code>, for as long as we are not dealing with a device special file (Here is where the Ingres “use raw devices” idea comes into play), then does the I/O and finally calls prele().</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">		<span class="k">if</span><span class="p">((</span><span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_mode</span><span class="o">&amp;</span><span class="p">(</span><span class="n">IFCHR</span><span class="o">&amp;</span><span class="n">IFBLK</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">			<span class="n">plock</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">plock</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">FREAD</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">			<span class="n">readi</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">readi</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">else</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">writei</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">((</span><span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_mode</span><span class="o">&amp;</span><span class="p">(</span><span class="n">IFCHR</span><span class="o">&amp;</span><span class="n">IFBLK</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">			<span class="n">prele</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">prele</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
 </span></span></code></pre></div><p><code>plock()</code> is what locks the actual inode and the origin of the observed behavior. It is is a misnomer, it’s not a pipe lock, it’s an inode lock.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * Lock a pipe.
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * If its already locked,
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * set the WANT bit and sleep.
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">plock</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plock</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">register</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="n">ip</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_flag</span><span class="o">&amp;</span><span class="n">ILOCK</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_flag</span> <span class="o">|=</span> <span class="n">IWANT</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">		<span class="n">sleep</span><span class="p">((</span><span class="n">caddr_t</span><span class="p">)</span><span class="n">ip</span><span class="p">,</span> <span class="n">PINOD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">sleep</span><span class="p">((</span><span class="kt">caddr_t</span><span class="p">)</span><span class="n">ip</span><span class="p">,</span> <span class="n">PINOD</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_flag</span> <span class="o">|=</span> <span class="n">ILOCK</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -245,20 +244,20 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">	<span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="n">bn</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">u_offset</span> <span class="o">&gt;&gt;</span> <span class="n">BSHIFT</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="n">on</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">u_offset</span> <span class="o">&amp;</span> <span class="n">BMASK</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">		<span class="n">n</span> <span class="o">=</span> <span class="n">min</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)(</span><span class="n">BSIZE</span><span class="o">-</span><span class="n">on</span><span class="p">),</span> <span class="n">u</span><span class="p">.</span><span class="n">u_count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">n</span> <span class="o">=</span> <span class="nf">min</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)(</span><span class="n">BSIZE</span><span class="o">-</span><span class="n">on</span><span class="p">),</span> <span class="n">u</span><span class="p">.</span><span class="n">u_count</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">type</span><span class="o">!=</span><span class="n">IFBLK</span> <span class="o">&amp;&amp;</span> <span class="n">type</span><span class="o">!=</span><span class="n">IFMPB</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">bn</span> <span class="o">=</span> <span class="n">bmap</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">bn</span><span class="p">,</span> <span class="n">B_WRITE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="n">bn</span> <span class="o">=</span> <span class="nf">bmap</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">bn</span><span class="p">,</span> <span class="n">B_WRITE</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">			<span class="k">if</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">bn</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">				<span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">			<span class="n">dev</span> <span class="o">=</span> <span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_dev</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">BSIZE</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl">			<span class="n">bp</span> <span class="o">=</span> <span class="n">getblk</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">bn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="n">bp</span> <span class="o">=</span> <span class="nf">getblk</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">bn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">else</span>
-</span></span><span class="line"><span class="cl">			<span class="n">bp</span> <span class="o">=</span> <span class="n">bread</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">bn</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">iomove</span><span class="p">(</span><span class="n">bp</span><span class="o">-&gt;</span><span class="n">b_un</span><span class="p">.</span><span class="n">b_addr</span><span class="o">+</span><span class="n">on</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">B_WRITE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="n">bp</span> <span class="o">=</span> <span class="nf">bread</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">bn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">iomove</span><span class="p">(</span><span class="n">bp</span><span class="o">-&gt;</span><span class="n">b_un</span><span class="p">.</span><span class="n">b_addr</span><span class="o">+</span><span class="n">on</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">B_WRITE</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="n">u_error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">			<span class="n">brelse</span><span class="p">(</span><span class="n">bp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">brelse</span><span class="p">(</span><span class="n">bp</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">else</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">bdwrite</span><span class="p">(</span><span class="n">bp</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="n">u_offset</span> <span class="o">&gt;</span> <span class="n">ip</span><span class="o">-&gt;</span><span class="n">i_size</span> <span class="o">&amp;&amp;</span>
@@ -336,9 +335,7 @@
         <a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2018%2f11%2f29%2fbut-is-it-atomic.html' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#facebook'/></svg>
         </a>
-        <a href='https://twitter.com/intent/tweet?source=https%3a%2f%2fblog.koehntopp.info%2f2018%2f11%2f29%2fbut-is-it-atomic.html&text=But%20is%20it%20atomic%3f%20%7C%20Die+wunderbare+Welt+von+Isotopp:%20https%3a%2f%2fblog.koehntopp.info%2f2018%2f11%2f29%2fbut-is-it-atomic.html' target='_blank' class='text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
         <a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2018%2f11%2f29%2fbut-is-it-atomic.html&title=But%20is%20it%20atomic%3f' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -381,6 +378,19 @@
         
       </div>
     </div>
+
+    
+    
+    
+    
+    <div class='row justify-content-center py-3 mb-3 mx-0'>
+      <div class='col-lg-8 text-center'>
+        <a href="https://github.com/isotopp/isotopp.github.io/edit/main/content/posts/2018-11-29-but-is-it-atomic.md" rel="noopener noreferrer" target="_blank">
+            <span class='letter-spacing-01 text-uppercase text-secondary me-2'>Suggest Changes</span>
+        </a>
+      </div>
+    </div>
+    
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
@@ -432,6 +442,10 @@
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -440,9 +454,7 @@
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

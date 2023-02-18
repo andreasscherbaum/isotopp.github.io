@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/2005/10/08/dynamisch-geladener-code.html">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='Dynamisch geladener Code' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -127,8 +126,8 @@
             Dynamisch geladener Code
           </h1>
           <div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-            <img alt='isotopp image' src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-            <a href="https://twitter.com/isotopp" class='text-light text-decoration-none'>
+            <img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+            <a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
                 Kristian Köhntopp
             </a>
 
@@ -186,11 +185,11 @@ die Folgende bereit.</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">PARSETREE_T</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">EXEC_T</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">compile</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">PARSETREE_T</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="nf">parse</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">EXEC_T</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="nf">compile</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">find_symbol</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s">&#34;function&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="n">f</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="nf">find_symbol</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s">&#34;function&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="nf">f</span><span class="p">();</span>
 </span></span></code></pre></div><p>Oder bin ich der einzige, der so etwas cool finden würde?</p>
 <p>Aber auch ohne die Rekursion der Bibliothekserzeugung durch Bibliotheken
 kann man nützliche Dinge tun. Und das geht so&hellip;</p>
@@ -203,20 +202,20 @@ kann man nützliche Dinge tun. Und das geht so&hellip;</p>
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">para</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Entering func(%d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Entering func(%d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">para</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Leaving func(%d) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Leaving func(%d) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">func</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Das ist ein mächtig aufregendes Programm: Es hat eine Funktion
@@ -243,11 +242,11 @@ Teilprogramme. Das erste, <code>func.c</code>, enthält unsere Rechenfunktion:</
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">para</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Entering func(%d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Entering func(%d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">para</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Leaving func(%d) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Leaving func(%d) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">para</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Der zweite Teil, <code>prog.c</code>, ruft diese Funktion nun auf:</p>
@@ -255,11 +254,11 @@ Teilprogramme. Das erste, <code>func.c</code>, enthält unsere Rechenfunktion:</
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;func.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">func</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Der dritte Teil, <code>func.h</code>, ist winzig klein:</p>
@@ -551,45 +550,45 @@ mit <code>-ldl</code> die libdl eingebunden, die uns die Funktionen
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define LIBNAME &#34;./libfunc.so&#34;
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">func_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">func_t</span> <span class="n">f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">func_t</span> <span class="n">f</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">error_msg</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="n">libhandle</span>   <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main start</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* .so oeffnen */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">libhandle</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="n">LIBNAME</span><span class="p">,</span> <span class="n">RTLD_LAZY</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">libhandle</span> <span class="o">=</span> <span class="nf">dlopen</span><span class="p">(</span><span class="n">LIBNAME</span><span class="p">,</span> <span class="n">RTLD_LAZY</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">libhandle</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;dlopen(%s, RTLD_LAZY failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;dlopen(%s, RTLD_LAZY failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> 
 </span></span><span class="line"><span class="cl">                <span class="n">LIBNAME</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">                <span class="n">dlerror</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">dlerror</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;dlopen() = %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">libhandle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;dlopen() = %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">libhandle</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* func() finden */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error_msg</span> <span class="o">=</span> <span class="n">dlerror</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">libhandle</span><span class="p">,</span> <span class="s">&#34;func&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error_msg</span> <span class="o">=</span> <span class="n">dlerror</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">error_msg</span> <span class="o">=</span> <span class="nf">dlerror</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="nf">dlsym</span><span class="p">(</span><span class="n">libhandle</span><span class="p">,</span> <span class="s">&#34;func&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">error_msg</span> <span class="o">=</span> <span class="nf">dlerror</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">error_msg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;dlsym(%p, </span><span class="se">\&#34;</span><span class="s">func</span><span class="se">\&#34;</span><span class="s">) failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;dlsym(%p, </span><span class="se">\&#34;</span><span class="s">func</span><span class="se">\&#34;</span><span class="s">) failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> 
 </span></span><span class="line"><span class="cl">                <span class="n">libhandle</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                <span class="n">error_msg</span>
 </span></span><span class="line"><span class="cl">        <span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* func() aufrufen */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Calling func(4) = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">f</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* .so droppen */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">dlclose</span><span class="p">(</span><span class="n">libhandle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">dlclose</span><span class="p">(</span><span class="n">libhandle</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;main end</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Dieser Code definiert eine Variable <code>f</code> vom Typ &ldquo;Zeiger auf eine
@@ -648,9 +647,7 @@ Include-Dateien ordentlich zu erstellen.</p>
         <a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2005%2f10%2f08%2fdynamisch-geladener-code.html' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#facebook'/></svg>
         </a>
-        <a href='https://twitter.com/intent/tweet?source=https%3a%2f%2fblog.koehntopp.info%2f2005%2f10%2f08%2fdynamisch-geladener-code.html&text=Dynamisch%20geladener%20Code%20%7C%20Die+wunderbare+Welt+von+Isotopp:%20https%3a%2f%2fblog.koehntopp.info%2f2005%2f10%2f08%2fdynamisch-geladener-code.html' target='_blank' class='text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
         <a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2005%2f10%2f08%2fdynamisch-geladener-code.html&title=Dynamisch%20geladener%20Code' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -688,6 +685,19 @@ Include-Dateien ordentlich zu erstellen.</p>
         
       </div>
     </div>
+
+    
+    
+    
+    
+    <div class='row justify-content-center py-3 mb-3 mx-0'>
+      <div class='col-lg-8 text-center'>
+        <a href="https://github.com/isotopp/isotopp.github.io/edit/main/content/posts/2005-10-08-dynamisch-geladener-code.md" rel="noopener noreferrer" target="_blank">
+            <span class='letter-spacing-01 text-uppercase text-secondary me-2'>Suggest Changes</span>
+        </a>
+      </div>
+    </div>
+    
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
@@ -739,6 +749,10 @@ Include-Dateien ordentlich zu erstellen.</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -747,9 +761,7 @@ Include-Dateien ordentlich zu erstellen.</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>

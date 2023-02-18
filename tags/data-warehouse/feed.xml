@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data warehouse on Die wunderbare Welt von Isotopp</title>
+    <link>https://blog.koehntopp.info/tags/data-warehouse.html</link>
+    <description>Recent content in data warehouse on Die wunderbare Welt von Isotopp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Feb 2023 17:52:47 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/data-warehouse/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Hadoop to HTAP?</title>
+      <link>https://blog.koehntopp.info/2022/12/23/from-hadoop-to-htap.html</link>
+      <pubDate>Fri, 23 Dec 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/23/from-hadoop-to-htap.html</guid>
+      <description>&lt;p&gt;For the last 15 years, one popular way to persist large amounts of data has been Hadoop, if you needed them persisted in such a way that you can still process them.&lt;/p&gt;
+&lt;p&gt;Of course, from a database point of view, brute forcing a result by scanning compressed CSV files in parallel, and then building giant distributed Hash Joins is not very elegant.
+But two facts were true in 2006 influenced Hadoop&amp;rsquo;s design, and which allowed it to process data at all at a scale where all other things failed:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Disk Seeks are expensive, so we cannot have indexes.&lt;/li&gt;
+&lt;li&gt;Network capacity is limited, so we cannot move the data to the code.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using these two basic assumptions, Hadoop&amp;rsquo;s core inventions were pioneered by Google, and then reproduced as Open Source by Yahoo!&lt;/p&gt;
+&lt;p&gt;Google published the &lt;a href=&#34;https://research.google/pubs/pub51/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GFS Paper&lt;/a&gt;
+
+ and the &lt;a href=&#34;https://research.google/pubs/pub62/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Map Reduce Paper&lt;/a&gt;
+
+ pretty much 20 years ago.&lt;/p&gt;
+&lt;p&gt;Doug Cutting started building the initial version of Hadoop in 2006, and it is basically like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Store data in optionally compressed CSV files in 128 MB strips on a bunch of JBOD disks, replicating all data 3 times.
+Then download small Java classes to the data store instead of moving the data to the processing nodes,
+and run the Map-Reduce Algorithm on these file fragments, merge sorting the result into an aggregate during the reduce phase.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This was slow:
+Even a simple rowcount-Query would have at least a minute or two runtime, because of the setup times inherent to this solution.
+Hadoop needed to distribute a jar with Java Classes, fire of a JVM on the datanodes, warm up the JVM for the JIT to get up to speed,
+and then push the parts of the data present on the local node through this.
+Eventually, the completed result set needed to be sorted, and then shipped over the network to the reducers,
+which would then merge-aggregate the data into a partitioned result set.&lt;/p&gt;
+&lt;p&gt;It was also hard to maintain and upgrade, because you had one large shared cluster with many stakeholders being dependent on it running and behaving in a certain way.&lt;/p&gt;
+&lt;p&gt;A lot of gradual improvements happened over the last 15 years, so today&amp;rsquo;s Hadoop stores data in a more efficient way, has lower setup times, and can be managed better.
+It still is a rather primitive brute-force processing system, and ripe for disruption.&lt;/p&gt;
+&lt;p&gt;And that is happening right now.&lt;/p&gt;
+&lt;h1 id=&#34;technology-improved-challenging-hadoops-base-assumptions&#34;&gt;
+    &lt;a href=&#34;#technology-improved-challenging-hadoops-base-assumptions&#34;&gt;
+	Technology improved, challenging Hadoop&amp;rsquo;s base assumptions
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;That is, basically, because the initial assumptions on which it was built are no longer true.&lt;/p&gt;
+&lt;h2 id=&#34;network-capacity-is-not-the-bottleneck&#34;&gt;
+    &lt;a href=&#34;#network-capacity-is-not-the-bottleneck&#34;&gt;
+	Network Capacity is not the bottleneck
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Assumption 2, Network Capacity is limited, has not been true for at least 10 years.&lt;/p&gt;
+&lt;p&gt;Google had been playing with CLOS network architectures for a long time, and in &lt;a href=&#34;https://research.google/pubs/pub43837/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jupiter Rising&lt;/a&gt;
+
+ described their bespoke switch architecture that allowed them to build data centers where the network by construction is never the bottleneck.&lt;/p&gt;
+&lt;p&gt;Specifically in the Hadoop world that is not exactly news:
+Tail-drops from network congestion during the Shuffle-Phase between Hadoop&amp;rsquo;s Map and Reduce were a common problem.&lt;/p&gt;
+&lt;p&gt;Terasort, a benchmark that sorts one Terabyte of generated data, was a popular way to test the network component of a Hadoop deployment:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;During the Map-phase all workers would sort their data, and because it was randomly generated, finish at approximately the same time.&lt;/li&gt;
+&lt;li&gt;Because sorting does not aggregate data, the data blocks would then all lift off, at their full size, and transfer over the network to the Reducer nodes.&lt;/li&gt;
+&lt;li&gt;If the network was oversubscribed or badly built, this would overwhelm the switches, exhaust buffers,
+engage &lt;a href=&#34;https://en.wikipedia.org/wiki/Random_early_detection&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RED&lt;/a&gt;
+
+ and lead to packet loss.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/hadoop-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Profiling the network performance of data transfers in Hadoop Jobs&amp;rdquo;, &lt;a href=&#34;https://www.slideshare.net/pramodbiligiri/shuffle-phase-as-the-bottleneck-in-hadoop-terasort&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Biligiri, Ali (2014)&lt;/a&gt;
+
+, Network transfer rates over the lifetime of a terasort job.
+The Shuffle phase reaches 700 MBit/s, which was the peak transfer rate measured during testing.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWS, which did not yet have Leaf-and-Spine in 2014, and which provisioned 1 GBit/s links between nodes at that time,
+showed behavior as depicted above, when hosting a test cluster running Terasort.&lt;/p&gt;
+&lt;p&gt;Of course, CLOS-networks, specifically Leaf-and-Spine architectures, do not require bespoke custom hardware as Google deployed.
+Brad Hedlund, then working for Dell,
+&lt;a href=&#34;https://bradhedlund.com/2012/01/25/construct-a-leaf-spine-design-with-40g-or-10g-an-observation-in-scaling-the-fabric/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;described Leaf-and-Spine architectures&lt;/a&gt;
+
+
+built from Off-the-shelf Hardware for Hadoop already in 2012, and described that in a series of articles.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/hadoop-02.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Construct a Leaf Spine design with 40G or 10G? An observation in scaling the fabric&amp;rdquo;, &lt;a href=&#34;https://bradhedlund.com/2012/01/25/construct-a-leaf-spine-design-with-40g-or-10g-an-observation-in-scaling-the-fabric/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brad Hedlund (2012)&lt;/a&gt;
+
+.
+On today&amp;rsquo;s hardware this is of course done with different hardware and at higher speeds, for example some Juniper EX-hardware with 25G downlinks and 100G uplinks,
+or even with 100/400 if needed (most people don&amp;rsquo;t have that need).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Network structures like this are oversubscription-free, when built properly.
+They are useful out of Hadoop contexts as well.
+For example, when running a private cloud with distributed storage, every disk access is potentially a network read or write,
+and again a structure where any CPU in any machine can talk to any disk in any other machine without network congestion is useful.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/hadoop-03.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.slideshare.net/isotopp/warum-eigentlich-cloud&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warum eigentlich Cloud (2015, german language, 5. Open Source Workshop of German Rail, Frankfurt)&lt;/a&gt;
+
+, Kristian Köhntopp.
+The slide shows traffic inside an Openstack cluster with distributed storage.
+East-West-Traffic between racks dominates, and the aggregated upstream bandwidth from the computes to the Top-of-Rack
+switches must be matched by adequate spine network bandwidth.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;In Summary:&lt;/strong&gt;
+People who needed the network to never be the bottleneck could have built networks that delivered this for the last 10 years.
+And most did, even using off-the-shelf parts.
+It is possible, and even economical, to build a network where any CPU in any machine can talk to any disk in any other machine within the same data center.&lt;/p&gt;
+&lt;p&gt;Google themselves basically demonstrated this when starting around 2014 or so they offered virtualized, flexible Hadoop as a service.
+While that was a welcome simplification, nobody stopped and asked how they were doing this:
+Supposedly the network is the bottleneck, so the virtual machine would be subject to hard placement constraints, because it needed to be created wherever the data is.
+For a service that would be a harsh constraint, affecting service quality, yet the service ran just fine.&lt;/p&gt;
+&lt;p&gt;So how were they pulling it off?
+CLOS networking, of course, as documented in the whitepapers they published, but that meant that one of the two Hadoop/Map-Reduce funding assumptions was no longer valid.&lt;/p&gt;
+&lt;h2 id=&#34;seeks-are-not-the-bottleneck&#34;&gt;
+    &lt;a href=&#34;#seeks-are-not-the-bottleneck&#34;&gt;
+	Seeks are not the bottleneck
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Another thing that started to change around 2012 was the rise of flash storage in computers.
+Initially, these things were small, so we would see them in write-heavy database servers first:
+These machines already were expensive, and at the core of the data center, so cost was less of an issue.&lt;/p&gt;
+&lt;p&gt;Over time, flash prices dropped, and drives became larger.&lt;/p&gt;
+&lt;p&gt;Also, SATA interface were becoming a bottleneck.
+They were replaced by a system that put flash directly on the PCIe bus of the machine.
+This interface, called &lt;a href=&#34;https://en.wikipedia.org/wiki/NVMe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NVME&lt;/a&gt;
+
+ became popular and available in standard data center machines around 5 years ago, in 2017.&lt;/p&gt;
+&lt;p&gt;And since 2020 we have NVME over Fabric using TCP as part of the default Linux kernel, so remotely attached NVME (with and without RDMA) is a thing and useful.
+Check out &lt;a href=&#34;https://www.lightbitslabs.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;lightbits&lt;/a&gt;
+
+, they have awesome products when it comes to low-latency remote storage.&lt;/p&gt;
+&lt;p&gt;Because it no longer forces serialization of requests, but basically allows parallel access to all the flash chips of the drive, it allows to build systems with massively parallel access.
+A single access still has a latency of around 1/20,000s, but a typical single drive is capable of delivering 800k to 1M IO operations per second,
+if the application(s) can manage to talk to the drive 50-way parallel at all times.
+And why stop at one drive, when you can have over a dozen per machine, if you have the PCI bandwidth for that?&lt;/p&gt;
+&lt;p&gt;In practice that means that seeks are now basically free, and data access structures and file-systems that allow massively parallel access have a huge advantage.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/12/hadoop-04.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;quot;&lt;a href=&#34;https://www.slideshare.net/Storage-Forum/operation-unthinkable-software-defined-storage-bookingcom-peter-buschman&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Operation Unthinkable - Software Defined Storage @ Booking.com&lt;/a&gt;
+
+&amp;quot;, Peter Buschman (2019). An AMD EPYC based single-socket machine with plenty of RAM and NVMRAM, 100 GBit/s NIC and up to 24 U.2 NVME drives from different, independently sourced vendors, using less than 500W, in 2U, running one out of 10 different storage server products optimized and certified for this platform. &amp;ldquo;There is one in every other rack!&amp;rdquo; &amp;ndash; Peter Buschman revolutionized storage at Booking.com with this design.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;now-what&#34;&gt;
+    &lt;a href=&#34;#now-what&#34;&gt;
+	Now what?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Since the base assumptions that made Hadoop successful are now invalid, and have been for the last 5 years, we should see Hadoop being replaced.&lt;/p&gt;
+&lt;p&gt;And we do:
+Hadoop is no longer a thing for investors, and companies offering Hadoop are either merging or going down.&lt;/p&gt;
+&lt;h2 id=&#34;htap-rises&#34;&gt;
+    &lt;a href=&#34;#htap-rises&#34;&gt;
+	HTAP rises
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Other offers are on the rise, under the collective label of &lt;a href=&#34;https://en.wikipedia.org/wiki/Hybrid_transactional/analytical_processing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTAP&lt;/a&gt;
+
+,
+Hybrid transactional/analytical processing.
+The promise is to have one single distributed database system not unlike &lt;a href=&#34;https://en.wikipedia.org/wiki/Spanner_%28database%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Spanner&lt;/a&gt;
+
+
+that is capable of utilizing the capacity of many systems in one single database/schema for OLTP,
+and that is also capable of running analytical/BI queries in the same system (or even using the same tables).&lt;/p&gt;
+&lt;p&gt;Promising representatives of HTAP databases are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.vldb.org/pvldb/vol13/p3072-huang.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TiDB from Pingcap&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.infoq.com/news/2014/08/CockroachDB/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CockroachDB&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;and &amp;ndash; with limitations - &lt;a href=&#34;https://www.oracle.com/mysql/heatwave/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heatwave&lt;/a&gt;
+
+.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Unlike TiDB and CockroachDB, Heatwave is not a true distributed database, but a distributed in-memory accelerator to a single-node MySQL OLTP frontend machine that transparently offloads analytics queries)&lt;/p&gt;
+&lt;h2 id=&#34;no-coolaid-for-me&#34;&gt;
+    &lt;a href=&#34;#no-coolaid-for-me&#34;&gt;
+	No coolaid for me?
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In general, these systems are welcome, useful and innovative, because they allow database schemas to grow and spread to a cluster of machines, even for OLTP queries.
+Personally, I remain sceptical with regards to the integrated, copy-less processing of analytics queries.&lt;/p&gt;
+&lt;p&gt;In our DWH/BI-Series in this blog (and especially in
+&lt;a href=&#34;https://blog.koehntopp.info/2022/12/22/tying-the-bi-pipeline-together.html&#34;&gt;Tying the BI pipeline together&lt;/a&gt;
+
+)
+I have tried to explain why I believe the &lt;em&gt;Transformation&lt;/em&gt; in ETL is a fundamental step that transforms from OLTP &amp;ldquo;normal form&amp;rdquo; (mostly 3NF) to BI &amp;ldquo;normal form&amp;rdquo; (the star and snowflake forms).&lt;/p&gt;
+&lt;p&gt;Nobody likes 3NF &amp;ndash; it complicates many things that should be simple, but we must use it in OLTP because data is being modified by transactions.
+Without it, we suffer from all kinds of anomalies, and &lt;a href=&#34;https://blog.koehntopp.info/2005/09/11/nermalisation.html&#34;&gt;normalizaton&lt;/a&gt;
+
+ prevents these.&lt;/p&gt;
+&lt;p&gt;DWH tables are different, because they are records of the past:
+They do not change (after all stragglers have been loaded), and because they are immutable, they cannot have anomalies.
+On the other hand, we want multiple copies of the same fact at different dates (maybe compressed with lookup tables or other compression methods), so that we can follow the changes of attribute values over time easily.&lt;/p&gt;
+&lt;p&gt;Running OLTP-like joins over 3NF data with history is a nuisance.
+It is not only painfully complicated to write, but also hard to optimize.
+But if the data is immutable anyway, we can bring it into a form optimized for the kind of temporal reporting query we want to run on it, and not care about anomalies.&lt;/p&gt;
+&lt;h2 id=&#34;size-and-conways-law&#34;&gt;
+    &lt;a href=&#34;#size-and-conways-law&#34;&gt;
+	Size and Conway&amp;rsquo;s Law
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Also, keeping OLTP systems as small as possible has a lot of value in its own:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can make casual changes to a 200 GB sized database.&lt;/li&gt;
+&lt;li&gt;A data size of 2 TB has hours of change/setup time.&lt;/li&gt;
+&lt;li&gt;A data size of 20 TB has one attempt in a workday.&lt;/li&gt;
+&lt;li&gt;And a system with 120 TB of data is &amp;ldquo;one attempt per week&amp;rdquo; in terms of change.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is not entirely true for distributed systems, where parallel access can speed things up, but generally smaller and less complex systems are also easier and faster to operate.&lt;/p&gt;
+&lt;p&gt;We do know that a CDC-pipeline or applications set up to generate business level events can provide BI-pipelines at a near-live speed,
+with less than 15s processing time end-to-end.
+This is close enough to &amp;ldquo;live&amp;rdquo;, which is the promise of HTAP.&lt;/p&gt;
+&lt;p&gt;Building systems around such pipelines segregates OLTP from BI, physically and putting them into different administrative domains, yet they still can provide near-live updates.
+While it may look more complex at first, it may map a lot better onto the realities of Conway&amp;rsquo;s Law, and yield smaller, more flexible, and less tightly coupled components.&lt;/p&gt;
+&lt;p&gt;On the other hand, I do like the technology in TiDB and CockroachDB, but that is mostly because the environment I work in suffers from transactional systems and schemas that happen to be larger than a single machine.&lt;/p&gt;
+&lt;p&gt;I fully expect these systems to still have need to the 3NF-to-Snowflake transformation that is a characteristic of ETL, and I am not yet ready to buy into the Gartner HTAP hype,
+unless somebody can show me how this is better handled inside Cockroach or TiDB.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tying the BI pipeline together</title>
+      <link>https://blog.koehntopp.info/2022/12/22/tying-the-bi-pipeline-together.html</link>
+      <pubDate>Thu, 22 Dec 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/22/tying-the-bi-pipeline-together.html</guid>
+      <description>&lt;p&gt;In
+&lt;a href=&#34;https://blog.koehntopp.info/2022/11/16/of-stars-and-snowflakes.html&#34;&gt;Of Stars and Snowflakes&lt;/a&gt;
+
+
+we have been looking at the &amp;ldquo;normal Form&amp;rdquo; for Data Warehouses/BI structures, and how it differs from normal forms used in transactional systems.
+In
+&lt;a href=&#34;https://blog.koehntopp.info/2022/11/20/etl-from-a-django-model.html&#34;&gt;ETL from a Django Model&lt;/a&gt;
+
+
+we looked at one implementation of a classical offline DWH with a daily load.&lt;/p&gt;
+&lt;p&gt;The normal BI structure is a fact table, in which an object identifier (the one we collect facts about) is paired with a point in time to report facts about the object at a certain point in time.
+That is, we have a table with a compound primary key, in which a component (usually the latter) has a time dimension.
+Fact tables are also often very wide, since we collect any number of facts about the object we report on for each point in time.&lt;/p&gt;
+&lt;p&gt;For certain types of data, it is useful to compress the data using lookup tables.
+That is, instead of reporting a certain value over and over again (&amp;ldquo;Intel Silver 4110&amp;rdquo; each time we report on a certain machine), we replace the string with an integer of appropriate size and resolve that with a lookup table on the side.&lt;/p&gt;
+&lt;p&gt;This can happen with one central string replacement table (&lt;code&gt;lookup_strings&lt;/code&gt;), or structured per type (&lt;code&gt;cpu_types&lt;/code&gt;, &lt;code&gt;vendors&lt;/code&gt;, &lt;code&gt;model_names&lt;/code&gt;).
+Both approaches have certain advantages and disadvantages, and sometimes you find both in the same system.&lt;/p&gt;
+&lt;h1 id=&#34;why-and-how&#34;&gt;
+    &lt;a href=&#34;#why-and-how&#34;&gt;
+	Why and how?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In the transactional system, our objective is to complete the data lifecycle.
+That is, basically, we want to be able to delete data in order to get rid of finished transactions and their data at some point in time in order to keep the size of the OLTP system small, nice and stable.
+Other parts of the business still need the history record, and they need it &lt;em&gt;as a history record&lt;/em&gt;.
+That is, they are not interested into the current data (&amp;ldquo;Where does the customer live now?&amp;rdquo;, &amp;ldquo;What does the article cost now?&amp;rdquo;), but into the values that were valid when the transaction happened (&amp;ldquo;Where did we deliver to?&amp;rdquo;, &amp;ldquo;How much did we bill?&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Extraction&lt;/strong&gt; pulls data out of the realm of the OLTP system.
+And after it is extracted it can be deleted from the OLTP system, freeing space and keeping the size stable.&lt;/p&gt;
+&lt;p&gt;With the Extraction, we also have the &lt;strong&gt;Transformation&lt;/strong&gt; in which the OLTP references to other normalized tables are resolved into literal attribute values which are the things we want to preserve at the value they had back then.
+The Transformation transitions the data from the OLTP classical database normal form into the form needed for a fact table, the data warehouse normal form.&lt;/p&gt;
+&lt;p&gt;In the &lt;strong&gt;Load&lt;/strong&gt; phase, the data is loaded into the DWH/BI systems fact table.
+This is not just a data ingestion, but often also a validation and cleanup phase.
+And if the data is recompressed by replacing literal values with an integer ID into a lookup table, this usually also happens during load.&lt;/p&gt;
+&lt;p&gt;The fact that IDs in the DWH bear no relationship to IDs in the OLTP system is important and good:
+We are transferring data across an administrative boundary, from one system to another, and having a naming dependency across such a boundary is usually a recipe for desaster.&lt;/p&gt;
+&lt;h2 id=&#34;extraction&#34;&gt;
+    &lt;a href=&#34;#extraction&#34;&gt;
+	Extraction
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Extraction can happen in nightly runs, by making a snapshot of the state of the OLTP system.
+This is what happens every night in
+&lt;a href=&#34;https://blog.koehntopp.info/2022/11/20/etl-from-a-django-model.html&#34;&gt;ETL from a Django Model&lt;/a&gt;
+
+,
+and also in
+&lt;a href=&#34;https://blog.koehntopp.info/2020/09/26/my-private-data-warehouse.html&#34;&gt;My private data warehouse&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Extraction can also happen when writing transactions to a log table, often called &lt;code&gt;sale&lt;/code&gt;, &lt;code&gt;booking&lt;/code&gt;, &lt;code&gt;reservation&lt;/code&gt; or similar.
+When the transaction is logged in a normalized way, it looks like the &lt;code&gt;reservation&lt;/code&gt; table in the example in
+&lt;a href=&#34;https://blog.koehntopp.info/2022/12/05/change-data-capture.html&#34;&gt;Change Data Capture&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Some systems already copy the data over into such a &lt;code&gt;reservation&lt;/code&gt; table literally, especially when it comes to delivery and billing addresses and prices.
+That is necessary, even from the point of view of the transactional system, because we must record the actual price and delivery address at the point in time when the sale happened.
+Later changes should not affect transactions that are in the middle of fulfillment.&lt;/p&gt;
+&lt;p&gt;For the purpose of the DWH system, this simplifies extraction and transformation, because the &lt;code&gt;reservation&lt;/code&gt; table then already is more of less literally the data we want.
+We just need to grab it and preserve it.&lt;/p&gt;
+&lt;p&gt;When the DWH wants &amp;rsquo;live&amp;rsquo; updates, this can happen by tailing the database log as a replication client, collecting the information of interest, converting it into target format and pushing it elsewhere.
+These days, most often that ends up being a JSON or Avro message on a Kafka Event bus, or similar, in a defined, versioned and documented format that is ideally independent of changes to the source OLTP systems structure.&lt;/p&gt;
+&lt;h2 id=&#34;transformation&#34;&gt;
+    &lt;a href=&#34;#transformation&#34;&gt;
+	Transformation
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;But getting from normalized 3NF OLTP format into resolved DWH literal value attributes is not always for free.&lt;/p&gt;
+&lt;p&gt;The nicest way of getting there is to have the source system prepare its private, internal transaction, and also prepare a transformed record in DWH form.
+Both are committed together in the same transaction, to the internal tables of the OLTP system, and an Outbox.
+The Outbox is under a contract between the producing OLTP and the consuming BI systems, and will not change unannounced.&lt;/p&gt;
+&lt;p&gt;In this case, the BI process can simply tail the binlog, grab only row change events on the Outbox tables, and process and export these.
+Internal table changes will also end up in the binlog, but the CDC extractor ignores these.&lt;/p&gt;
+&lt;p&gt;If that is not possible, we get random normalized change events from the OLTP systems internal tables.
+This is bad, because it is very hard to get a contract and a promise of announced change for them, and because here the data is not in BI form.
+So we get a bunch of 3NF &amp;ldquo;id&amp;rdquo; values and need to run queries backwards into the OLTP system to resolve them into literal values to perform the transformation.
+This is annoying, adds query load and also have the potential to grab &amp;ldquo;invalid&amp;rdquo; data, because there is a race condition and the referenced data may have changed between the commit of the record we caught, and the time we resolve the ID values.&lt;/p&gt;
+&lt;h2 id=&#34;load&#34;&gt;
+    &lt;a href=&#34;#load&#34;&gt;
+	Load
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Pushing CDC data &amp;ldquo;live&amp;rdquo; to a message bus is simple, and allows us to have multiple consumers for this.
+One standard consumer would simply take the event messages and persist them into tables in a really large analytics store such as Hadoop, Snowflake or similar.
+Other standard consumers in the environment I work in are aggregators that take events and aggregate them into time buckets.
+That is, values from events are counted (&amp;ldquo;This error occurred &lt;code&gt;n&lt;/code&gt; times in the last minute&amp;rdquo;), summed up or otherwise classified, and the results are then forwarded as metrics into a time series store.
+Alerts can be generated from thresholds of metrics, or from presence of certain events in the stream.&lt;/p&gt;
+&lt;p&gt;The data load into the persistent store would also update default aggregations as you would expect from the star or snowflake around a fact table.
+Such aggregations would be &amp;ldquo;sales per region per day&amp;rdquo;, or &amp;ldquo;bookings per region per category per day&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Specifically the aggregations to the metrics store are time critical, as they may be tied to alerts.
+We generally aim for a freshness (processing time for the entire pipeline) of less than 15s.
+Freshness itself is also a quality metric for the pipeline itself.&lt;/p&gt;
+&lt;h1 id=&#34;mapping-fowler-to-database-terms&#34;&gt;
+    &lt;a href=&#34;#mapping-fowler-to-database-terms&#34;&gt;
+	Mapping Fowler to Database terms
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The &lt;a href=&#34;https://martinfowler.com/bliki/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fowler Wiki&lt;/a&gt;
+
+ is now in many pages older than 10 years.
+Large parts of it are still hard to read if you are coming from a database background instead of application developer background.
+That is in part, because Fowler reinvents concepts and terms from a developer perspective that already exist in the database world, under different names.&lt;/p&gt;
+&lt;p&gt;The first time I hit that was when reading up on the cryptically named &lt;a href=&#34;https://martinfowler.com/bliki/CQRS.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CQRS&lt;/a&gt;
+
+,
+which is just the concept the various ways of getting Materialized Views by another name.&lt;/p&gt;
+&lt;p&gt;We find this again with the concept of &lt;a href=&#34;https://martinfowler.com/eaaDev/EventSourcing.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Event Sourcing&lt;/a&gt;
+
+,
+which for low quality low level events matches directly on CDC and Binlog capture.
+In order to provide better value, you would have to perform the T of ETL on the events, preferably as early as possible in the pipeline,
+that is, transform from 3NF to BI form either using the Outbox pattern or by instrumenting the application itself.&lt;/p&gt;
+&lt;p&gt;Fowler is never discussing checkpointing, an essential concept necessary to prevent unbounded startup times and unbounded event storage sizes from occurring.&lt;/p&gt;
+&lt;p&gt;Checkpointing and cleanup exist in the database world the concepts of &amp;ldquo;Full Backups&amp;rdquo; associated with Log Positions,
+and then Logs starting from the checkpoint for a Point in Time Recovery.&lt;/p&gt;
+&lt;p&gt;Checkpointing and Log compression also exist in the database world in the tiered log compactions we find in LSMs such as RocksDB:
+The database is writing an endless stream of idempotent row change events, and a compaction process reads the logs in the background,
+providing only still valid and recent row versions, and physically arranging the records in an advantageous way.&lt;/p&gt;
+&lt;p&gt;Events work reasonably well when you look vertically at a single transaction:
+The event propagates through your system of services, kicking off followup events that contain the original data and additional information accrued at this processing stage.
+They also work reasonably well for aggregations in time-bounded buckets or otherwise constrained contexts.&lt;/p&gt;
+&lt;p&gt;They work less well when the application has to implement choices, i.e. when you need to select one user account out of the storage of all users in the system,
+or when you need to allow a user to search the storage of all articles on offer and then allow them select one to buy.
+Here, traditional full materialization is necessary, and global state is manipulated.&lt;/p&gt;
+&lt;p&gt;In the end, looking at the table rows as the materialization and at the log as the stream of idempotent changes to the materialization over time it is clear to the database person that both things are the same.
+Looking at the various ways of implementing database systems, you will even find one posing as the other as needed, depending on the database product you look at (i.e. the LSM is a log, posing as a table, and other systems use tables to store logs).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Change Data Capture</title>
+      <link>https://blog.koehntopp.info/2022/12/05/change-data-capture.html</link>
+      <pubDate>Mon, 05 Dec 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/12/05/change-data-capture.html</guid>
+      <description>&lt;p&gt;Change Data Capture is a way to capture, well, events from a system that describe how the data in the system changed.
+For a system that does business transactions that may be at the lowest level Create, Update, or Delete of entities or relationships.
+Systems that emit this kind of events are called Entity Services and are kind of the lowest level of events that you can have in such a system.&lt;/p&gt;
+&lt;p&gt;In our sample reservation system from earlier in this blog, we get this schema:&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/11/snowflake-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In an OLTP database, a reservation is a &lt;code&gt;(resid, userid, thingid, date)&lt;/code&gt;. It references the &lt;code&gt;user&lt;/code&gt; data by &lt;code&gt;userid&lt;/code&gt;, and the &lt;code&gt;thing&lt;/code&gt; data by &lt;code&gt;thingid&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;and therefore the events are&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;CreateUserEvent(user)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;UpdateUserEvent(user)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;DeletUserEvents(user)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;CreateThingEvent(thing)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;UpdateThingEvent(thing)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;DeleteThingEvent(thing)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;CreateReservationEvent(user, thing, date)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;UpdateReservationEvent(user, thing, date)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;DeleteReservationEvent(user, thing, date)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or maybe a slightly more refined version of that, in which you create actual Getters and Setters for the properties of the entities modified.&lt;/p&gt;
+&lt;p&gt;But in an actual Event Sourcing system, you would write down and name the individual business transactions, and describe their behaviors.&lt;/p&gt;
+&lt;p&gt;In our reservation system, we have users that subscribe or unsubscribe to our reservation service, or update their data.
+This should be reflected in the names of the methods.
+We also have operations by users on things, such as a &lt;code&gt;Reservation()&lt;/code&gt;, &lt;code&gt;Cancellation()&lt;/code&gt;, a &lt;code&gt;Takeout()&lt;/code&gt; or a &lt;code&gt;Return()&lt;/code&gt; with the appropriate parameters.
+These events are behavioral, and the behaviors are the business transactions which describe what the business does.&lt;/p&gt;
+&lt;p&gt;But when we are retrofitting CDC onto an existing system, getting behavioral events is often a major refactoring or re-architecting task.
+So for this article, let&amp;rsquo;s focus on grabbing Entity Events.
+And because this is the third in a series of articles on data warehouses, on flattening, that is, replacement of identifiers by the values we want exported.&lt;/p&gt;
+&lt;h1 id=&#34;how-to-get-events&#34;&gt;
+    &lt;a href=&#34;#how-to-get-events&#34;&gt;
+	How to get Events?
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In a system designed to generate behavioral business events from the start, you would emit these events directly from the application, and would add the business event identifier also to the transactions in your OLTP system.
+This way you can make sure each record in the database has a matching business event and vice versa, enabling you to audit the database and the event stream for consistency.&lt;/p&gt;
+&lt;p&gt;In our retrofitted system, this is not possible, because we have neither behavioral business events nor identifiers for these.
+We still want data, but we grab it from the database.&lt;/p&gt;
+&lt;p&gt;In MySQL, we get row level change data from the Binlog in a moderately well documented and stable format.
+Binlog is what powers MySQL replication.
+It is guaranteed to have an upgrade path, but it is not necessarily stable.
+So if the binlog format changes, and you have critical applications consuming the binlog that are not MySQL replicas, you need to be prepared to make changes to the binlog processors, quickly, in order to be able to upgrade MySQL.
+This is not a hypothetical scenario: When MySQL introduced Global Transaction IDs and later Binlog compression, a lot of third party binlog consumers broke.&lt;/p&gt;
+&lt;p&gt;Packages that consume binlog are for example
+&lt;a href=&#34;https://github.com/julien-duponchelle/python-mysql-replication&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python-mysql-replication&lt;/a&gt;
+
+
+, or
+&lt;a href=&#34;https://github.com/debezium/debezium&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Debezium&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Using python-mysql-replication, and creating tables for our simple reservation system above, we can run the &lt;code&gt;examples/dump_events.py&lt;/code&gt; to see what goes on:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;(venv) $ python examples/dump_events.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;=== QueryEvent ===
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Date: 2022-12-05T16:14:16
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Log position: 3282
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Event size: 181
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Read bytes: 181
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Schema: b&amp;#39;kris&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Execution time: 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Query: create table thing (thingid integer not null primary key, name varchar(80), color varchar(20), weight decimal(12,4))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;=== QueryEvent ===
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Date: 2022-12-05T16:14:32
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Log position: 3751
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Event size: 161
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Read bytes: 161
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Schema: b&amp;#39;kris&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Execution time: 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Query: create table user ( userid integer primary key not null, name varchar(80), address varchar(200))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;=== QueryEvent ===
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Date: 2022-12-05T16:15:15
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Log position: 4052
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Event size: 199
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Read bytes: 199
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Schema: b&amp;#39;kris&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Execution time: 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Query: create table reservation(resid integer not null primary key, userid integer not null, thingid integer not null, resdate date not null)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For each DDL statement, we get a &lt;code&gt;QueryEvent&lt;/code&gt; with some identifiers, the schema name, and the actual Query statement.
+The Query statement is not normalized, so if we wanted to do more with it than simply passing it on, we would also need a MySQL SQL syntax parser.&lt;/p&gt;
+&lt;p&gt;Later on, when loading data, we get &lt;code&gt;RowsEvent&lt;/code&gt; instances, and need to modify the script a bit to see the actual row changes.
+We send SQL:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Kris&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;At home&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;thing&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;A Fish&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Colorful&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reservation&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And we get Row Change Events. They might look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;action&amp;#39;: &amp;#39;insert&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;address&amp;#39;: &amp;#39;At Home&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;name&amp;#39;: &amp;#39;Kris&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;schema&amp;#39;: &amp;#39;kris&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;table&amp;#39;: &amp;#39;user&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;userid&amp;#39;: 1}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;action&amp;#39;: &amp;#39;insert&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;color&amp;#39;: &amp;#39;Colorful&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;name&amp;#39;: &amp;#39;A Fish&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;schema&amp;#39;: &amp;#39;kris&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;table&amp;#39;: &amp;#39;thing&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;thingid&amp;#39;: 1,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;weight&amp;#39;: Decimal(&amp;#39;10.0000&amp;#39;)}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;action&amp;#39;: &amp;#39;insert&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;resdate&amp;#39;: datetime.date(2022, 12, 5),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;resid&amp;#39;: 1,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;schema&amp;#39;: &amp;#39;kris&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;table&amp;#39;: &amp;#39;reservation&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;thingid&amp;#39;: 1,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; &amp;#39;userid&amp;#39;: 1}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We also would get additional events, but we ignored them &amp;ndash; they would contain the transaction ID, table maps and so on.&lt;/p&gt;
+&lt;p&gt;The problem with this kind of data is obvious:
+We know that for a proper ETL process we need the attribute values of the things referenced, not the ids pointing to the attributes.&lt;/p&gt;
+&lt;p&gt;So when we receive a row change event on the &lt;code&gt;reservation&lt;/code&gt; table,
+we only have the option of running a back-query to the database to resolve the ids for data.
+That is, for the &lt;code&gt;userid: 1&lt;/code&gt; from the &lt;code&gt;reservation&lt;/code&gt; row change we would have to &lt;code&gt;select * from user where userid = 1&lt;/code&gt; to resolve the user name and address.&lt;/p&gt;
+&lt;p&gt;But even that has the potential for a race condition, if a table changes faster than we can back-query.
+Worse, it also makes your extraction process very fragile, because the moment we change the &lt;code&gt;reservation&lt;/code&gt; table in an incompatible way our back-queries would break.&lt;/p&gt;
+&lt;h1 id=&#34;the-outbox&#34;&gt;
+    &lt;a href=&#34;#the-outbox&#34;&gt;
+	The Outbox
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;If we want to decouple this, we need to have the CDC process ignore all the OLTP tables.
+That is, changes to &lt;code&gt;user&lt;/code&gt;, &lt;code&gt;thing&lt;/code&gt; and &lt;code&gt;reservation&lt;/code&gt; must be ignored.&lt;/p&gt;
+&lt;p&gt;Instead, we need to create a table &lt;code&gt;cdc_outbox&lt;/code&gt;.
+We would then modify the application to make changes to the OLTP tables and a flattened, DWH-like write to &lt;code&gt;cdc_outbox&lt;/code&gt; in a single transaction.
+So instead of&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;we would get&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;transaction&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(...);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;into&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cdc_outbox&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Doing this inside a single transaction guarantees that we only see outbox writes when there is also a CDC change.
+The data in the &lt;code&gt;cdc_outbox&lt;/code&gt; would already be flattened, and maybe already in some kind of type-agnostic, easily parseable format like JSON.&lt;/p&gt;
+&lt;p&gt;We can then pick up these changes, and only the changes to &lt;code&gt;cdc_outbox&lt;/code&gt; and process these.
+The transactional team can go and make changes to their transactional tables without talking to the analytics team, as long as they make sure to generate correct change records.
+And we get rid of the back-queries and the potential breakage and race conditions they bring.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ETL from a Django Model</title>
+      <link>https://blog.koehntopp.info/2022/11/20/etl-from-a-django-model.html</link>
+      <pubDate>Sun, 20 Nov 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/11/20/etl-from-a-django-model.html</guid>
+      <description>&lt;p&gt;Continued from &lt;a href=&#34;https://blog.koehntopp.info/2022/11/16/of-stars-and-snowflakes.html&#34;&gt;last weeks article&lt;/a&gt;
+
+ on data warehouses.&lt;/p&gt;
+&lt;p&gt;At work, I was tasked with building a capacity model for data center growth.
+The basic assumption of these things is often that the future behaves similarly to the past, so the future predicted capacity model is somehow an extension of past growth.
+I needed old server usage data, and was indeed able to find that in one of our systems, called ServerDB.&lt;/p&gt;
+&lt;p&gt;ServerDB is an in-house Django application that models server ownership, equipment, rack positions, and usage.
+It drives provisioning of machines, exposing a REST API, and driving an automated installation process, based on requests, availability, redundancy concerns and other factors.
+It also manages tickets for Data Center Operations Engineers, and interfaces with a number of other, similar systems.&lt;/p&gt;
+&lt;p&gt;I did find that ServerDB was keeping a log of all changes to the core &lt;code&gt;server_servers&lt;/code&gt; table by the means of a Django save handler, and that it had accumulated six years worth of data.
+It was in fact the largest table in the system, larger than all other tables together.
+While that was not the data I needed it was the data I had, and I could make it work.&lt;/p&gt;
+&lt;p&gt;For the future I wanted something more, so I wrote an ETL process that each night would export the entire server fleet, denormalizing the data, and pushing the attributes I wanted to record into a second database, &lt;code&gt;serverdb_dw&lt;/code&gt;.
+I would keep three months worth of daily exports, and expire all weekdays but Mondays after that.
+This would be leaving me with weekly data for an indefinite timespan.&lt;/p&gt;
+&lt;h1 id=&#34;an-etl-driver&#34;&gt;
+    &lt;a href=&#34;#an-etl-driver&#34;&gt;
+	An ETL driver
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The ETL script is written in Python, and uses Click to handle command line options.&lt;/p&gt;
+&lt;p&gt;We make ourselves a CLI to add commands to:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click.group&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chain&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@click.option&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;--verbose&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;-v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;WARNING&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;click&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Choice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;DEBUG&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;INFO&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;WARNING&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ERROR&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;CRITICAL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;help&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Set the debug level.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cli&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;verbose&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;WARNING&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;Extract data from serverdb2, denormalize it and load it into serverdb_dw, run aggregations.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    This command runs regularly, extracting a number of attributes about
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    servers from serverdb2, denormalizes the data and loads it into a single
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    table &amp;#39;server_facts&amp;#39; into serverdb_dw. It will then run a number of
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    aggregations on the serverdb_dw table, creating a bunch of tables in
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    serverdb_dw starting with the prefix &amp;#39;server_by_...&amp;#39;.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    By default, the aggregations are run only on the data from today. Options
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    can be used to process larger chunks of data or all data. This will then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    take a lot of time. Options can also be used to process only individual
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    aggregations.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    A regular full run looks like this: ./serverdb_etl.py etl aggregate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    cube_aggregate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    To re-aggregate all dimensions: ./serverdb_etl.py aggregate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    cube_aggregate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setLevel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;verbose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;making-a-fact-table&#34;&gt;
+    &lt;a href=&#34;#making-a-fact-table&#34;&gt;
+	Making a fact table
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;We can then hook up subcommands to our CLI.&lt;/p&gt;
+&lt;p&gt;We will need a fact table to write data to, so the first subcommand will be &amp;ldquo;etl_init&amp;rdquo;, which will run a &lt;code&gt;CREATE TABLE&lt;/code&gt; for us.
+We collect all our methods in an &lt;code&gt;Etl&lt;/code&gt; class, and call our &lt;code&gt;create_table()&lt;/code&gt; method:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@cli.command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;etl_init&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;etl_init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Create the server_facts table if it does not exist. Safe to use.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        The will run a CREATE TABLE IF NOT EXISTS statement to create a
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        server_facts table. If a server_facts table exists, a new table will
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        NOT be created, and no data will be lost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        If the definition of the server_facts table does not match our table,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        it will not be changed or repaired. You need to write a manual
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        migration to fix this.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Etl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And that is basically parametrizing a large &lt;code&gt;CREATE TABLE&lt;/code&gt; statement with some config values, and then running it on the target database.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;create_table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Create the server_facts table, if it does not exist, yet.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            This method is safe to use: The table will not be created
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            if it already exists. No data is lost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start create_table&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_create_table&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_param&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Create Query = &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_serverdb_dw_connection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;end create_table&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The actual statement is also stored in that &lt;code&gt;Etl&lt;/code&gt; class.
+I have shortened the statement considerably &amp;ndash; we are collecting many items more than listed here.
+Fact tables are often very wide.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;fact_create_table&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;CREATE TABLE IF NOT EXISTS &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(target_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(target_table)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `id` int(10) unsigned NOT NULL DEFAULT &amp;#39;0&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `report_date` date NOT NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `name` varchar(128) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `asset_type` varchar(32) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `serialnumber` varchar(64) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `delivery_date` date NOT NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `ip_address` varchar(16) NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `mac_address` varchar(17) NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `status` varchar(16) NOT NULL DEFAULT &amp;#39;&amp;lt;unknown&amp;gt;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `site` varchar(4) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `region` varchar(25) NOT NULL DEFAULT &amp;#39;&amp;lt;unknown&amp;gt;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `role_ids` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39;, --
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `puppet_services` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `role_names` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `rack` varchar(128) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `cpu_count` int(10) NOT NULL DEFAULT -1, --
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `memory` decimal(8,3) NOT NULL DEFAULT &amp;#39;0.000&amp;#39;, --
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `network_speed` int(11) NOT NULL DEFAULT -1,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `manufacturer` varchar(32) NOT NULL DEFAULT &amp;#39;&amp;lt;unknown&amp;gt;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `model` varchar(32) NOT NULL DEFAULT &amp;#39;&amp;lt;unknown&amp;gt;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `owner` varchar(20) NOT NULL  DEFAULT &amp;#39;&amp;lt;unknown&amp;gt;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `wou_id` int(10) NOT NULL DEFAULT 0,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `wou_name` varchar(80) NOT NULL DEFAULT &amp;#39;&amp;#39;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `created_at` datetime NOT NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        `last_edit` datetime NOT NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        PRIMARY KEY (`id`,`report_date`),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        KEY `name` (`name`),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        KEY `status` (`status`),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        KEY `site` (`site`),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;running-the-etl&#34;&gt;
+    &lt;a href=&#34;#running-the-etl&#34;&gt;
+	Running the ETL
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that we have a table, we can load data into it.
+For that, we will be going through the classical three phases: Extract, Transform and Load.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@cli.command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;etl&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;etl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;Extract data from serverdb2, denormalize and load.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       This subcommand will run a large join on serverdb2, using the
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       serverdb connection, and will then insert the data into the
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       serverdb_dw.server_facts table.  The data is materialized and kept in
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       RAM between extract and load phases.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Etl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_extract&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_transform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;the-extract-phase&#34;&gt;
+    &lt;a href=&#34;#the-extract-phase&#34;&gt;
+	The Extract Phase
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The fact extraction is basically one single select that joins against all the tables we need in order to get the data we want.
+We are fetching the result into a giant list of rows, which we keep in our &lt;code&gt;Etl&lt;/code&gt; object in the &lt;code&gt;data&lt;/code&gt; slot.
+Each row is a &lt;code&gt;dict&lt;/code&gt; of field names and values.
+This is going to be using a lot of memory, but we will make do.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fact_extract&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Run the fact_select query on serverdb2, loading the data
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            into memory. The fact_query is being parametrized from
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            self.fact_param.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            Set logging to debug to see queries. Set logging to info
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            to see execution.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start fact_extract&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;read&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_serverdb2_connection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rcursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MySQLdb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DictCursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# fetch default values from the class object&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_param&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_select&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Query = &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;end fact_extract&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fetchall&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Again, we pick up the default SQL from our &lt;code&gt;Etl&lt;/code&gt; class, parametrize it and run it.
+We simply suck all the data into memory and keep it.&lt;/p&gt;
+&lt;p&gt;The query is… ugly, and very long.
+Again, I shorten it in order to save some space.
+It gets repetitive anyway.&lt;/p&gt;
+&lt;p&gt;ServerDB is storing facts about Servers.
+As a Django Application, it uses Django models, and the database mode is autogenerated from that.
+The Django Application name is &lt;code&gt;servers&lt;/code&gt;, so all tables are prefixed with that.&lt;/p&gt;
+&lt;p&gt;Server class objects are stored in the &lt;code&gt;servers_server&lt;/code&gt; table, &lt;code&gt;servers&lt;/code&gt; is the application prefix, and &lt;code&gt;server&lt;/code&gt; the table matching the Django object.&lt;/p&gt;
+&lt;p&gt;But since the &lt;code&gt;Server&lt;/code&gt; class is a subclass of &lt;code&gt;RackedAsset&lt;/code&gt;, and that in turn is a subclass of &lt;code&gt;Asset&lt;/code&gt;,
+we are getting three tables &lt;code&gt;servers_server&lt;/code&gt;, &lt;code&gt;servers_rackedasset&lt;/code&gt; and &lt;code&gt;servers_asset&lt;/code&gt;, which share a common &lt;code&gt;id&lt;/code&gt;.
+They are being joined together with an inner join, because we are only interested in servers and not in any other assets (such as Switches or Filers).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;id&lt;/code&gt; of an Asset, a RackedAsset and a Server are the same, since each is a specialization of the previous one:
+Assets are things we have.
+RackedAssets also have a position in the data center (and a site).
+And servers have all the properties associated with a machine, such as a CPU type, memory, and disk space.&lt;/p&gt;
+&lt;p&gt;All rows are uniquely identified by an &lt;code&gt;id&lt;/code&gt;, but since later in the data warehouse we will be tracking an &lt;code&gt;id&lt;/code&gt; over time, we also need to record the &lt;code&gt;report_date&lt;/code&gt; on which we collected the data.&lt;/p&gt;
+&lt;p&gt;Some values may be &lt;code&gt;NULL&lt;/code&gt;, which will be inconvenient for us.
+So we will be protecting us with use of &lt;code&gt;COALESCE()&lt;/code&gt; a lot: This function goes through its parameters left to right and returns the first Non-NULL value it finds.
+This allows us to provide a default value for NULLs.&lt;/p&gt;
+&lt;p&gt;We are working with &lt;code&gt;dict&lt;/code&gt; cursors across our code, so the columns returned here and the columns we will be using to store data do not need to line up positionally,
+as long as we provide proper names.&lt;/p&gt;
+&lt;p&gt;Finally, this is a monster join.
+Joining more than ten tables in MySQL will blow up the optimizer, because the number of possible join permutations grows too large.
+We are getting away with joining far more tables than that in our example, because all of our joins are &lt;code&gt;LEFT JOIN&lt;/code&gt;, which are not commutative.
+That means, the optimizer cannot do anything anyway: The asset/rackedasset/server triple is the driving table, and all other tables are just adjunct to that.&lt;/p&gt;
+&lt;p&gt;In any case, the query gets us the data we want &amp;ndash; all values, no IDs, completely denormalized.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;fact_select&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;select a.id
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , date_format(now(), &amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Y-&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;m-&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;d&amp;#34;)    as report_date
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , a.name                               as name
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(da.asset_type, &amp;#34;&amp;lt;unknown&amp;gt;&amp;#34;) as asset_type
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(a.status, &amp;#34;&amp;lt;unknown&amp;gt;&amp;#34;)      as status
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , sn.shortname                         as site
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(concat(sar.shortname, &amp;#34;-&amp;#34;, saz.shortname), &amp;#34;&amp;lt;unknown&amp;gt;&amp;#34;) as region
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(group_concat(distinct r1.id order by r1.id), -1)                          as role_ids
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(group_concat(distinct r1.puppet_service order by r1.puppet_service), &amp;#34;&amp;#34;)  as puppet_services
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(group_concat(distinct r1.name order by r1.name), &amp;#34;&amp;#34;)                      as role_names
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(t.org_unit_id, -1)          as wou_id
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        , coalesce(t.name, &amp;#34;&amp;lt;unknown&amp;gt;&amp;#34;)        as wou_name
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    ... a few hundred lines deleted ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- a server is an asset, rackedasset and server
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- and that is why we do JOIN instead of LEFT JOIN here
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    FROM &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_asset AS a
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_rackedasset AS ra
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          ON (ra.asset_ptr_id = a.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_server AS s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          ON (s.rackedasset_ptr_id = a.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- unfold asset_type
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_deliveryasset as da
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        ON (da.asset_id = a.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- unfold the site_id, region and az data
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_site AS sn
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        ON (sn.id = a.site_id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_availabilityzone as saz
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        ON (sn.availability_zone_id = saz.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_region as sar
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        ON (saz.region_id = sar.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- unfold the serverrole_id (many-to-many, hence the group by in the end)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_server_role AS sr
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          ON (sr.server_id = a.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_serverrole AS r1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          ON (sr.serverrole_id = r1.id)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    -- unfold team ownership information 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    LEFT JOIN &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(source_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.servers_team as t
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          ON (t.id = r1.managed_by)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    ... about a dozen tables deleted ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(where_condition)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    group by a.id
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;the-transform-phase&#34;&gt;
+    &lt;a href=&#34;#the-transform-phase&#34;&gt;
+	The Transform Phase
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The data we get from our Extract is not suitable for us without a few corrections and fixes.&lt;/p&gt;
+&lt;p&gt;We do have all the data in memory now, in &lt;code&gt;Etl.data&lt;/code&gt;, so we can fix up things by running over that and applying a few filters.
+Again, this is boring and repetitive cleanup work, so I have simplified things and show just one exemplary phase.&lt;/p&gt;
+&lt;p&gt;The CPU data in our data source is not the way we want it.
+We apply a cleanup filter, &lt;code&gt;fact_transform_cpu()&lt;/code&gt; to it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fact_transform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Transform and amend the loaded data from serverdb.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            - Fix CPU descriptions.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            - Extract CPU die counts and thread counts from description.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start fact_transform&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Clean up the CPU data in self.data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_transform_cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;end fact_transform&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The filter looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fact_transform_cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Clean up the broken data from the servers_cpu table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            manually until serverdb2 fixes it at the source.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start fact_transform_cpu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;cpu_version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu_cleanup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;cpu_version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;end fact_transform_cpu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It iterates over the &lt;code&gt;data&lt;/code&gt; list and calls a cleanup function for the field &lt;code&gt;cpu_version&lt;/code&gt;.
+We basically drop certain words (we only want types, no marketing names), we drop multiple spaces, and we drop MHz numbers after an &amp;ldquo;@&amp;quot;-sign.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cpu_cleanup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;dropwords&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;intel(r)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;xeon(r)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;amd&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dual-core&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;virtual&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;cpu&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Nothing to see here: move on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;unknown&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Not Specified&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# uniform case, remove extra spaces, speed info&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; +&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; *@ *[0-9.]+.*&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# drop items we do not care about&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu_fields&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu_fields&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dropwords&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# make sure we don&amp;#39;t have strange spacing in the version name&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# we previously had that&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;re&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;- +&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Other filters exist for other fields, where we have similar anomalies and annoyances.&lt;/p&gt;
+&lt;p&gt;We might also call out to other data source or databases, and add data from them to our in-memory dataset.
+For example, we could call out to Puppet, to collect Puppet Facts collected from &amp;ldquo;inside&amp;rdquo; the running machine.
+Or we could call to our Network Equipment Management System, Nemo, to collect data about machines from a Switch PoV.&lt;/p&gt;
+&lt;h3 id=&#34;the-load-phase&#34;&gt;
+    &lt;a href=&#34;#the-load-phase&#34;&gt;
+	The Load Phase
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now that we have a clean dataset in memory we can write it out into our &lt;code&gt;server_facts&lt;/code&gt; table in the data warehouse.
+We do that using &lt;code&gt;REPLACE&lt;/code&gt; statements, which will allow us to run the ETL process multiple times per day.
+Newer runs will simply overwrite older runs, by primary key (&lt;code&gt;(id, report_date)&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Originally, we wrote out the data in a single connection, but that created many problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The large write created replication delay.&lt;/li&gt;
+&lt;li&gt;The large write exceeded the maximum transaction size for compressed binlog (1 GB).&lt;/li&gt;
+&lt;li&gt;The large write exceeded the maximum transaction size for group replication primaries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So we now run our write query with an &lt;code&gt;executemany_in_batched()&lt;/code&gt;, which makes multiple smaller writes.
+It also checks replication, and waits with the execution of the next transaction until the previous one has finished replicating.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fact_load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34; Take the data and load it into the target table in the target database,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            using replace-statements. The use of replace-statements makes the data
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            load idempotent on a single day.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;            The query is being parametrized using self.fact_param.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;start fact_load &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; rows.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_serverdb_dw_connection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;replica&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_serverdb_dw_replica_connection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# get one load-balanced random replica of many &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# getting some default parameters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fact_param&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# we are only interested into the keys here, for query building&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;firstrow&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# replace into serverdb_dw.server_facts set col1 = %(col1)s, ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;replace into &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(target_db)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%(target_table)s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; set &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;param&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;, &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; = %(&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;)s&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;firstrow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Query = &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;executemany_in_batches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;replica&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;end fact_load&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;executemany_in_batches()&lt;/code&gt; looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;executemany_in_batches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;replica&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch_size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;wcursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MySQLdb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DictCursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;rcursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;replica&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MySQLdb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cursors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DictCursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# It&amp;#39;s nonfatal for the SET SESSION command to fail&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# It means there were multiple batches executed within the same&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# script invocation and a previous one still has an ongoing transaction&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;contextlib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;suppress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MySQLdb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_exceptions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OperationalError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;wcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SET SESSION session_track_gtids=OWN_GTID&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;wcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;executemany&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;wcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SELECT @@GLOBAL.GTID_EXECUTED as gtid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;gtid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fetchone&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;gtid&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rcursor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SELECT WAIT_FOR_EXECUTED_GTID_SET(&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;, 10)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gtid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will push &lt;code&gt;batch_size&lt;/code&gt; many rows at once into the database, commit, and wait for the replication to acknowledge the arrival in the replica.&lt;/p&gt;
+&lt;h2 id=&#34;running-aggregations&#34;&gt;
+    &lt;a href=&#34;#running-aggregations&#34;&gt;
+	Running Aggregations
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After loading the data into the database, we update a bunch of aggregations.
+We count machines per Puppet class, per Data Center, and per Vendor and Type.
+We do keep these counts per &lt;code&gt;report_date&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;That also means we can add to existing aggregations and need to run sums only for the current day.
+This is much faster than regenerating data for the entire collection every day, and past numbers also do not change.&lt;/p&gt;
+&lt;h1 id=&#34;data-size&#34;&gt;
+    &lt;a href=&#34;#data-size&#34;&gt;
+	Data size
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Our &lt;code&gt;server_facts&lt;/code&gt; table is very wide, the values shown here are simplified and the table shortened.
+We do not yet compress strings with lookup tables, so each server name is repeated for each day over the lifetime of the server.
+A CPU or Vendor name is also repeated, and much more often.&lt;/p&gt;
+&lt;p&gt;Assuming 100.000 machines and one KB of data per machine, we end up with 100 MB of data per day retained.
+90 days are kept at full resolution, for 9 GB of data.
+Additionally, another 100 MB per week is retained, for 5.2 GB of data per year, or an additional 26 GB in five years.&lt;/p&gt;
+&lt;p&gt;A 35 GB database is not large, and can be kept in memory easily on most database server machines.
+So we do not actually have a &amp;ldquo;big data&amp;rdquo; problem here, but we do have a valuable collection of server data that enables us to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document server use by team,&lt;/li&gt;
+&lt;li&gt;model refresh projects by predicting server retirement dates,&lt;/li&gt;
+&lt;li&gt;analyze per team/use-case fleet growth over time,&lt;/li&gt;
+&lt;li&gt;make predictions and model fleet growth for the coming year, planning procurement and capex,&lt;/li&gt;
+&lt;li&gt;and collect aggregate power consumption and compare it to metered and predicted power consumption at the rack, row and room level.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This enables a number of planning use-cases and gives visibility for the data center team.&lt;/p&gt;
+&lt;p&gt;It also makes a nice model use-case to explain data warehouses and how to transform transactional data into business intelligence data.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Of Stars and Snowflakes</title>
+      <link>https://blog.koehntopp.info/2022/11/16/of-stars-and-snowflakes.html</link>
+      <pubDate>Wed, 16 Nov 2022 06:07:08 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2022/11/16/of-stars-and-snowflakes.html</guid>
+      <description>&lt;h1 id=&#34;a-sample-system&#34;&gt;
+    &lt;a href=&#34;#a-sample-system&#34;&gt;
+	A sample system
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;When you have an Online Transactional Database, you have to record transactions at some point in time.
+That means you get a table with time dimension in your OLTP system.
+Consider for example a system that records Reservations.
+Users exist and can reserve Things to use, for a day.&lt;/p&gt;
+&lt;p&gt;You probably get a structure such as this:&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/11/snowflake-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In an OLTP database, a reservation is a &lt;code&gt;(resid, userid, thingid, date)&lt;/code&gt;. It references the &lt;code&gt;user&lt;/code&gt; data by &lt;code&gt;userid&lt;/code&gt;, and the &lt;code&gt;thing&lt;/code&gt; data by &lt;code&gt;thingid&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This assumes we have unique complete representations of a &lt;code&gt;user&lt;/code&gt; and a &lt;code&gt;thing&lt;/code&gt;, and we always want to reference the most current version of each of them.
+It also assumes that the &lt;code&gt;reservation&lt;/code&gt; is transient. Maybe we add additional fields, or pointers to other tables to track state changes:
+A user can show up and get their thing, then work with it.
+When they give it back, we record the fact, and make sure the thing is checked to be okay after use.&lt;/p&gt;
+&lt;h2 id=&#34;fixed-sized-oltp-systems&#34;&gt;
+    &lt;a href=&#34;#fixed-sized-oltp-systems&#34;&gt;
+	Fixed sized OLTP systems
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Finally, the transaction is closed, and in an OLTP system we are then well advised to forget about it.
+To model that, we should add for example a state field that tracks this, and maybe fields to link to complaints or damages, if applicable.&lt;/p&gt;
+&lt;p&gt;That is, we want the OLTP system to be largely fixed in size, given unchanging outside parameters.
+Or in other words, for the same number of things and users, we want the size of the OLTP system to be largely constant over time.&lt;/p&gt;
+&lt;p&gt;If we did not forget about Reservations after their completion, we would have a table with a time dimension, but with an incomplete data lifecycle management.
+The &lt;code&gt;reservation&lt;/code&gt; table would grow over time, without an upper bound, eventually becoming the largest object in our system.
+Most of the transactions recorded would be in the past, done and dead.&lt;/p&gt;
+&lt;p&gt;This will make our customer facing system large, slow, hard to back up and hard to change.
+Most people do not want that, but they also want records of transactions past.
+So instead of deleting old &lt;code&gt;reservation&lt;/code&gt; entries, they &lt;strong&gt;Extract&lt;/strong&gt; them, and push them elsewhere.&lt;/p&gt;
+&lt;p&gt;This keeps the customer facing system nice and clean, and pushes data to another system, with different performance and availability requirements, and different data structures.&lt;/p&gt;
+&lt;h2 id=&#34;changing-values&#34;&gt;
+    &lt;a href=&#34;#changing-values&#34;&gt;
+	Changing values
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Most OLTP systems that make sales are well advised to keep current values of the data, if at all possible.
+It is cheap and easy to ask for the price of a product in a table with exactly one entry per product, the current price:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- CREATE TABLE product (
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   product_id SERIAL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   name VARCHAR(255),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   price DECIMAL(12,4)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- )
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;price&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;product&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;product_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we recorded the price of a product together with a validity interval instead, then all queries become complicated to write,
+and expensive to execute:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- CREATE TABLE product (
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   product_id SERIAL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   name VARCHAR(255),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   price DECIMAL(12,4),
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   valid_from DATE NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   valid_until DATE NULL,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;--   INDEX (product_id, valid_until)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;price&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;product&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;product_id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;valid_until&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So if that kind of design can be avoided for the business transactional part of the system, we should not model it.&lt;/p&gt;
+&lt;p&gt;That kind of query is almost always needed for the backend, analytical part of the system, but that is another place, and it should not part of the OLTP system.&lt;/p&gt;
+&lt;h2 id=&#34;separate-systems&#34;&gt;
+    &lt;a href=&#34;#separate-systems&#34;&gt;
+	Separate systems
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In an OLTP system, we have data in 3NF or something close to it.
+We have a large number of queries, short running transactions and a lot of data changes.
+We have a large number of concurrent users, making these changes.
+We want to design the system so that the working set of it fits into memory
+If we manage to do that, we do see almost no disk reads, and the number of disk reads is independent of the number of users, or the load of the systems.
+We cannot avoid the writes, because that&amp;rsquo;s what transactions are.&lt;/p&gt;
+&lt;p&gt;We design the system so that it contains only current data.
+The size of the system is stable over time.
+There are no tables that grow over time, without an upper bound.
+Instead, the system size is a function of the number of entities modelled in each of its entity-representation tables, and by the number of in-flight business transactions.&lt;/p&gt;
+&lt;p&gt;In an analytics systems, we have data in &amp;ldquo;fact&amp;rdquo; tables.
+These are tables that have &amp;ldquo;time&amp;rdquo; as a component of the primary key, or are even partitioned by time.&lt;/p&gt;
+&lt;p&gt;We have few, long-running queries, that are often scans.
+They aggregate over a fact table or parts of it.
+We do not have many data changes.
+The data changes we see are often imports, which append data to the fact tables.&lt;/p&gt;
+&lt;h1 id=&#34;etl---extract-transform-load&#34;&gt;
+    &lt;a href=&#34;#etl---extract-transform-load&#34;&gt;
+	ETL - Extract, Transform, Load
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Sometimes data imports are multistage, because the imported data is not in its final form and needs to be cleaned up.&lt;/p&gt;
+&lt;p&gt;Data gets from the OLTP system to the analytics system, undergoing a distinct three phased process.
+The process is named after the phased, &amp;ldquo;ETL&amp;rdquo; &amp;ndash; extract, transform, load:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The data is extracted from the OLTP system. It is in 3NF, and contains many id&amp;rsquo;s representing functionally dependent values in their respective tables.&lt;/li&gt;
+&lt;li&gt;The data is transformed, resolving the IDs into the functionally dependent value literals.&lt;/li&gt;
+&lt;li&gt;The data is loaded into the analytics system.
+Often this involves cleanup steps, bringing the data into the form it needs be for the analytics system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;an-etl-example&#34;&gt;
+    &lt;a href=&#34;#an-etl-example&#34;&gt;
+	An ETL example
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In &lt;a href=&#34;https://blog.koehntopp.info/2020/09/26/my-private-data-warehouse.html&#34;&gt;My Private Data Warehouse&lt;/a&gt;
+
+ we have an example of such a process, using my bank account statements from a German Sparkasse.&lt;/p&gt;
+&lt;p&gt;Data arrives from a Sparkasse system in CSV format.
+In a first step we load the data into a loader table, &lt;code&gt;transactions&lt;/code&gt; table.
+Data is then copied from the loader table into a cleanup table, &lt;code&gt;b&lt;/code&gt;, and undergoes a number of changes as part of the cleanup process.
+Afterwards it could be copied over into a fact table, extending an existing, ever-growing collection of account transactions.&lt;/p&gt;
+&lt;p&gt;This example is also showing data crossing administrative domain boundaries:
+The Sparkasse is running my account, and it does so in whatever form they want or need.
+They export data in a documented format, our software contract, but it is not the format I need.&lt;/p&gt;
+&lt;p&gt;The Extract process is downloading that data from the Sparkasse and shipping it to my system.&lt;/p&gt;
+&lt;p&gt;The Transform process has, in part already happened &amp;ndash; there are no IDs for me to resolve.&lt;/p&gt;
+&lt;p&gt;The Load is multistage, I load the data basically as text, and then apply a number of cleanup transformations to it.&lt;/p&gt;
+&lt;h2 id=&#34;the-star-and-the-snowflake&#34;&gt;
+    &lt;a href=&#34;#the-star-and-the-snowflake&#34;&gt;
+	The Star and the Snowflake
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In order to do actual analytics with it, I need to turn this into collectible, aggregate-able dimensions.
+That is, I define categories such as &lt;code&gt;moneysinks&lt;/code&gt; and map each remote account name to a category &amp;ndash; basically bins for the aggregation.
+I am assigning each transaction to such a category, and then aggregate daily, weekly or monthly spend per category &amp;ndash; this is a report.&lt;/p&gt;
+&lt;p&gt;While the normal form of an OLTP database is the 3NF or something close to it, analytics databases are made up from fact tables.
+Facts have a date as part of the primary key or are even partitioned by date.
+For each &lt;code&gt;(id, date)&lt;/code&gt; pair we record certain attribute values, and store them literally and denormalized.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Around&amp;rdquo; each fact table we often have stored, pre-aggregated values, for example &amp;ldquo;daily spend by category&amp;rdquo;, &amp;ldquo;daily spend by spender&amp;rdquo; and so on.
+Each of these aggregations is called a dimension, and because they group themselves around the fact of which they are aggregates, we call this a Star.&lt;/p&gt;
+&lt;p&gt;The Star Schema is the simple normal form for analytics databases.
+They are not in 3NF, because 3NF stores the &lt;em&gt;current&lt;/em&gt; value of an attribute of an entity, and we reference the only copy of that by id.
+Instead, we store the literal value of an attribute for a given date as a fact about the thing we are recording, so that we can observe how that value changes over time.&lt;/p&gt;
+&lt;p&gt;Sometimes, the literal values are rather long strings, and they are repeating quite often.
+We then, as part of the data load, also perform a string compression with a lookup table.
+In &lt;a href=&#34;https://blog.koehntopp.info/2020/09/18/mysql-encoding-fields-for-great-profit.html&#34;&gt;Encoding fields for great profit&lt;/a&gt;
+
+ I am giving an example of how that works.&lt;/p&gt;
+&lt;p&gt;Sometimes we aggregate along more than one dimension.
+If, for example, in our reservations fact table we would record the country of origin for each user, and the color of each thing, we could aggregate &amp;ldquo;daily reservations per country and color&amp;rdquo; to identify conceivable national color preferences.
+Two-dimensional aggregates can be thought of as specializations of single dimensions, and the resulting pattern looks like a Snowflake, the other, slightly more complicated normal form for analytics databases.&lt;/p&gt;
+&lt;h1 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34;&gt;
+	Summary
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We try to keep our OLTP systems in 3NF.
+We also try to keep only current data in them, and we expire business transactions that are no longer active from them.
+This keeps them small and fast, allowing us to run from memory.&lt;/p&gt;
+&lt;p&gt;If we want to record a transactional history, we do that elsewhere, in an analytics system.
+Data in analytics system is collected in tables with a time dimension in the primary key, the fact tables, and groups of aggregates around them, forming a Star or Snowflake.&lt;/p&gt;
+&lt;p&gt;Data flows from the OLTP system to the Analytics system in an ETL workflow.
+This workflow collects data from the OLTP system (extract), resolves the IDs into the functionally dependent values, and retains the literal values of interest (transform).
+That data is then loaded into the analytics system, cleaned up, categorized and pre-aggregated (load).
+Old, retired transactions can then be removed from the OLTP system, keeping it lean and mean.&lt;/p&gt;
+&lt;p&gt;ETL processes can be batched, once per day, hour or even minute.
+This is classic offline analytics with data warehouses.&lt;/p&gt;
+&lt;p&gt;Or they can be realtime, where a reader tails the log of the database and puts the data onto an event bus such as Kafka or SNS.
+On the consuming side the data is still being processed, either classically, or with realtime aggregator that executes sliding window queries.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
+

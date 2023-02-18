@@ -6,7 +6,7 @@
     <description>Recent content in blog on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Oct 2022 09:16:01 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 17:52:47 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/blog/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>This Blog is now Hugo powered</title>
       <link>https://blog.koehntopp.info/2021/11/07/this-blog-is-now-hugo-powered.html</link>
@@ -770,9 +770,10 @@ mitgearbeitet. Das war anstrengend, da das Thema Spielball zahlreicher
 politischer Interessen ist, die sich dort gerne wiederfinden möchten, aber
 die in der Studie wiedergegebene Ausgangslage ist heute noch unverändert.
 Ich habe mein persönliches Fazit in kürzerer Form in einem
-&lt;a href=&#34;http://kris.koehntopp.de/artikel/rating_does_not_work/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artikel&lt;/a&gt;
+&lt;a href=&#34;https://blog.koehntopp.info/1999/05/01/rating-does-not-work.html&#34;&gt;Artikel&lt;/a&gt;
 
- abgelegt,
+
+abgelegt,
 aber auch dieses Ergebnis ist noch zu lang und zu technisch. Im Grunde kann
 man die aktelle Situation wie in
 &lt;a href=&#34;https://blog.koehntopp.info/2009/08/06/jugendschutzfilter-saugen-und-daf-r-gibt-es-einen-grund.html&#34;&gt;Jugendschutzfilter saugen und dafür gibt es einen
@@ -1354,8 +1355,8 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
       <pubDate>Wed, 18 Feb 2004 20:45:55 +0000</pubDate>
       
       <guid>https://blog.koehntopp.info/2004/02/18/urls-sind-keine-ids.html</guid>
-      <description>&lt;p&gt;Ich habe mich
-an &lt;a href=&#34;http://blog.koehntopp.de/archives/167_Wir_sind_so_geil_.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;anderer Stelle&lt;/a&gt;
+      <description>&lt;p&gt;Ich habe mich an
+&lt;a href=&#34;https://blog.koehntopp.info/2004/02/12/wir-sind-so-geil.html&#34;&gt;anderer Stelle&lt;/a&gt;
 
 
 bereits über Blogs und ihre Technik aufgeregt. Hier eine etwas
@@ -1559,7 +1560,7 @@ Beiträge können auch Artikel oder Kommentare auf anderen Sites
 sein.&lt;/p&gt;
 &lt;p&gt;Haarspalterei? Nein.&lt;/p&gt;
 &lt;p&gt;Blogs bezeichnen derzeit Artikel mit URLs. Aber eine URL wie
-&lt;a href=&#34;http://blog.koehntopp.de/archives/167_Wir_sind_so_geil_.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://blog.koehntopp.de/archives/167_Wir_sind_so_geil_.html&lt;/a&gt;
+&lt;a href=&#34;https://blog.koehntopp.info/2004/02/18/urls-sind-keine-ids.html&#34;&gt;die von diesem Artikel&lt;/a&gt;
 
 
 bezeichnet genau &lt;em&gt;nicht&lt;/em&gt; meinen Artikel &amp;ldquo;Wir sind so geil, wir

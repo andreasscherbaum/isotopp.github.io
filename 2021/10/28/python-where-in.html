@@ -9,7 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
-<link rel="canonical" href="https://blog.koehntopp.info">
+<link rel="canonical" href="https://blog.koehntopp.info/2021/10/28/python-where-in.html">
 
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.104.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta property="og:title" content='MySQL: Python and WHERE ... IN ()' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -30,7 +30,6 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<link rel="canonical" href="https://blog.koehntopp.info" />
 <meta property="og:url" content="https://blog.koehntopp.info" />
 
 
@@ -55,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.731532d47a51fed497cc74301e50720b3c56d09404efc36b4fa1a4117a6aa10e.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
 
 
     </head>
@@ -65,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
         <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
-            <img alt="Kris" height='48' width='48' src='/assets/img/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
+            <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
 
@@ -127,8 +126,8 @@
             MySQL: Python and WHERE &hellip; IN ()
           </h1>
           <div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-            <img alt='isotopp image' src='/assets/img/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-            <a href="https://twitter.com/isotopp" class='text-light text-decoration-none'>
+            <img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+            <a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
                 Kristian Köhntopp
             </a>
 
@@ -186,11 +185,11 @@ And we touched on several other interesting things on our way.</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">db_config</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;Making WHERE IN great again.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@click.group</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;Making WHERE IN great again.&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sql</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="k">pass</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@sql</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@sql.command</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_table</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sql1</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;drop table if exists insert_test&#34;&#34;&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sql2</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;create table insert_test ( id serial, d varchar(200) )&#34;&#34;&#34;</span>
@@ -203,7 +202,7 @@ And we touched on several other interesting things on our way.</p>
 </span></span><span class="line"><span class="cl">        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql3</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="n">i</span><span class="p">})</span>
 </span></span><span class="line"><span class="cl">    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@sql</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@sql.command</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">query</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ary</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;eins&#39;</span><span class="p">,</span> <span class="s1">&#39;zwei&#39;</span><span class="p">,</span> <span class="s1">&#39;drei&#39;</span><span class="p">,</span> <span class="s1">&#39;zw&#34;ei&#39;</span><span class="p">,</span> <span class="s1">&#39;dr\ei&#39;</span> <span class="p">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">ary</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -346,9 +345,7 @@ So I can actually see that</p>
         <a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2021%2f10%2f28%2fpython-where-in.html' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#facebook'/></svg>
         </a>
-        <a href='https://twitter.com/intent/tweet?source=https%3a%2f%2fblog.koehntopp.info%2f2021%2f10%2f28%2fpython-where-in.html&text=MySQL%3a%20Python%20and%20WHERE%20...%20IN%20%28%29%20%7C%20Die+wunderbare+Welt+von+Isotopp:%20https%3a%2f%2fblog.koehntopp.info%2f2021%2f10%2f28%2fpython-where-in.html' target='_blank' class='text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
         <a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2021%2f10%2f28%2fpython-where-in.html&title=MySQL%3a%20Python%20and%20WHERE%20...%20IN%20%28%29' target='_blank' class='text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -381,6 +378,19 @@ So I can actually see that</p>
         
       </div>
     </div>
+
+    
+    
+    
+    
+    <div class='row justify-content-center py-3 mb-3 mx-0'>
+      <div class='col-lg-8 text-center'>
+        <a href="https://github.com/isotopp/isotopp.github.io/edit/main/content/posts/2021-10-28-python-where-in.md" rel="noopener noreferrer" target="_blank">
+            <span class='letter-spacing-01 text-uppercase text-secondary me-2'>Suggest Changes</span>
+        </a>
+      </div>
+    </div>
+    
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
@@ -432,6 +442,10 @@ So I can actually see that</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
         </a>
 
+	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
+	</a>
+
         <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
         </a>
@@ -440,9 +454,7 @@ So I can actually see that</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
         </a>
 
-        <a href='https://twitter.com/isotopp' title='Follow on Twitter' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#twitter'/></svg>
-        </a>
+
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
