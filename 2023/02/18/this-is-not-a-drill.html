@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.111.3">
 <meta property="og:title" content='This is not a Drill, this is just Tuesday' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -172,7 +172,7 @@ They sat down with the teams, and with each they made a catalog of failure modes
 &ldquo;What happens when a load balancer dies?&rdquo;
 &ldquo;What when a rollout rolls out broken code, and we need to roll back?&rdquo;
 &ldquo;What when storage fails?&rdquo;</p>
-<p>And the MoD sat down and worked their way through protocols of outages past.
+<p>And the MoD sat down and worked their way through protocols of past outages.
 They cataloged the outages and mapped then to the scenarios created above, and if they found missing cases the catalog was extended, together with the team.</p>
 <h1 id="it-is-only-science-if-you-write-it-down">
     <a href="#it-is-only-science-if-you-write-it-down">
@@ -217,7 +217,7 @@ Manual and often undocumented work went into creating new systems, so that the a
 This is a &ldquo;loss of control&rdquo; scenario, not &ldquo;loss of availability&rdquo;.
 You do not lose web servers, but you lose the ability to make new ones or to decommission old ones or change the config of the existing ones.
 Systems usually can continue to run without their automation controller for a few hours, provided the operational circumstances are somewhat stable.</p>
-<p>In some cases, loss of state in the control plane highlighted that the control plan could not rediscover its clients out their and scan them for state.
+<p>In some cases, loss of state in the control plane highlighted that the control plan could not rediscover its clients out there and scan them for state.
 Instead, it was assumed that the entire region was to be recreated from scratch, when it was in fact there, and perfectly functional, just unknown to the controller.</p>
 <p>In some cases the automation assumed that new systems were to be recreated from scratch by cloning over data from remote regions.
 But if all teams are doing that at the same time, the line capacity is insufficient.
@@ -256,7 +256,7 @@ It also delivered the necessary metadata (machine inventory, mapping of services
 <p>When people say &ldquo;Security is a process&rdquo;, this is what they mean.
 Small, doable exercises that become part of everyday operations.
 Then incremental widening of scope and increase of difficulty.</p>
-<p>And the work is not done by the MoD, buy by the teams &ndash; all teams.
+<p>And the work is not done by the MoD, but by the teams &ndash; all teams.
 The MoD only steers the process, and guides the teams through it.</p>
 <p>Because this is not a Drill.
 This is just Tuesday.</p>
@@ -321,6 +321,13 @@ This is just Tuesday.</p>
 
     <div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
       <div class='col-lg-4 text-center text-lg-start'>
+        
+          <div>
+            <div class='letter-spacing-01 text-uppercase text-secondary'>
+              Next Post
+            </div>
+            <a class='text-decoration-none' href="https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html">Rotating Accounts or Passwords?</a>
+          </div>
         
       </div>
 

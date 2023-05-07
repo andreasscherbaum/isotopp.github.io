@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.111.3">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -129,6 +129,152 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2013/08/22/fertig-gelesen-a-quiet-revolution.html" class='text-decoration-none text-dark'>Fertig gelesen: A Quiet Revolution: The Veil&#39;s Resurgence</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          August 22, 2013
+        </div>
+
+        <div class='mt-3'>Fertig gelesen: &ldquo;Leila Ahmed - A Quiet Revolution: The Veil&rsquo;s Resurgence, from the Middle East to America&rdquo;
+A Quiet Revolution: The Veil&rsquo;s Resurgence Vor dem Hintergrund der aktuellen Situation in Ägypten aktueller denn je: Trotz des Titels ist dieses Buch nicht wirklich ein Buch über die Verschleierung, sondern ein Buch über die Geschichte der Entwicklung der politischen Ideologie, die wir unter dem Namen &ldquo;Islamismus&rdquo; kennen und die Rolle der Frau darin.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/11/12/dude-where-is-my-memory.html" class='text-decoration-none text-dark'>Dude, where is my memory?</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 12, 2012
+        </div>
+
+        <div class='mt-3'>&ldquo;Kris, bitte schau Dir mal unsere Datenbank an. Wir haben hier einen Generator für unsere Materialized Views, und auf einer Datenbank von 6 GB Größe werden 40 GB Speicher gefüllt und wir kommen sogar ins Swappen.&rdquo;
+Na, das ist mal interessant. The fragliche Kiste hat 48 GB RAM, und in der Tat kaum 6 GB Daten.
+mysql&gt; select -&gt; sum(data_length+index_length)/1024/1024/1024 as gb -&gt; from tables -&gt; where table_schema not in (&#39;information_schema&#39;, &#39;performance_schema&#39;, &#39;mysql&#39;); +----------------+ | gb | +----------------+ | 5.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/10/31/enemy-action.html" class='text-decoration-none text-dark'>Enemy Action</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 31, 2012
+        </div>
+
+        <div class='mt-3'>&ldquo;Kris, guck mal, connection surge auf $WICHTIGER_MASTER, davor kurzer Activity drop. Alle anderen Graphen sehen normal aus.&rdquo;
+![Graph: Connection Surge]({{ site.baseurl }}/uploads/screenshot-kris-20121031-1.png)
+und
+![Graph: QPS Drop]({{ site.baseurl }}/uploads/screenshot-kris-20121031-2.png)
+Ich gucke.
+Alle anderen Graphen sehen in der Tat normal aus. Aber um 13:20 kommt für kurze Zeit alles Processing zum Stillstand.
+Wir haben ja log_processlist.pl. Falls es sich also um irgendein wildgewordenes Lock handeln sollte, würde ich das also in den 13_20 und 13_21 Dateien sehen.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/10/03/mylogin-cnf-passworte-wiederherstellen.html" class='text-decoration-none text-dark'>.mylogin.cnf Passworte wiederherstellen</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 3, 2012
+        </div>
+
+        <div class='mt-3'>Wie Todd Farmer in Understanding mysql_config_editor’s security aspects richtig beobachtet, speichert die neue .mylogin.cnf, die von mysql_config_editor erzeugt wird, Paßworte nicht sicher ab. Sie verschleiert sie nur.
+Das Format der Datei ist wie folgt (am Beispiel von MySQL 5.6.7-RC):
+4 Bytes Zero (Version Information) 20 Bytes Key Generation Matter Wiederholend: 4 Bytes Länge Länge Bytes Ciphertext. Die Verschlüsselung erfolgt mit AES Encrypt , und diese Funktion ist selbst auch nicht sicher: Es handelt sich um einen aes-128-ecb mit einem NULL IV.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/10/02/mysql-5-6-7-rc-gtid-vs-myisam.html" class='text-decoration-none text-dark'>MySQL 5.6.7-RC: GTID vs. MyISAM</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 2, 2012
+        </div>
+
+        <div class='mt-3'>So we tested the 5.6.7-RC. And ran into a strange problem:
+Because of a test, a preexisting configuration with GTID enabled existed, and suddenly we did not have properly initialized grants in mysql.* created for a new installation. Turns out: GTID and non-transactional tables are no friends, and that is even documented .
+When using GTIDs, updates to tables using nontransactional storage engines such as MyISAM are not supported. This is because updates to such tables mixed with updates to tables that use a transactional storage engine such as InnoDB can result in multiple GTIDs being assigned to the same transaction.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/09/28/mysql-replication-load-monitor.html" class='text-decoration-none text-dark'>MySQL Replication Load Monitor</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 28, 2012
+        </div>
+
+        <div class='mt-3'>Mein Kollege Dennis Kaarsemaker hat jetzt einen Artikel zu dem Replication Load Monitor von Booking.com gebloggt. Der Monitor basiert auf Arbeiten von Mark Leith .
+Möge er Euch allen nützen.</div>
+
+    </div>
+  </div>
   
   
   
@@ -459,148 +605,6 @@ So. Du willst also wissen, was genau die Leistungsgrenzen Deines Systems sind. U
 Die Grundidee Deines Plans sieht so aus:
 Du nimmt Deine Kiste und findest eine Methode, um Last zu generieren. Dann wirst Du schon merken, wie weit das geht und wann die Kiste ausgelastet ist.
 Der erste Fehler: Den Lastgenerator auf der zu testenden Kiste laufen lassen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/27/fertig-gelesen-der-bierzauberer.html" class='text-decoration-none text-dark'>Fertig gelesen: Der Bierzauberer</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 27, 2012
-        </div>
-
-        <div class='mt-3'>Der Bierzauberer , Günther Thömmes, EUR 9.99
-&ldquo;Der Bierzauberer&rdquo; kam bei einem Bücher-Adventskalender im deutschen Kindle Post als Kostenlos-Buch vorbei, also habe ich es mir erklickt und gelesen. Es ist ein historischer Roman über Niklas von Hahnfurt, einen Bierbrauer im 13. Jahrhundert und es erzählt die Geschichte und den Stand der Bierbrauerei in Deutschland, vor dem Reinheitsgebot und zum Teil vor dem Hopfen.
-Niklas kommt aus dem fränkischen, und gelangt über das Kloster Weihenstephan und das Kloster St.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/26/fertig-gelesen-blackout.html" class='text-decoration-none text-dark'>Fertig gelesen: Blackout</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 26, 2012
-        </div>
-
-        <div class='mt-3'>Blackout , Marc Elsberg, EUR 15.99
-Und weil wir gestern gerade &ldquo;Eine Billion Dollar&rdquo; von Andreas Eschbach hatten: Ebendieser hat auf Google plus &ldquo;Blackout&rdquo; empfohlen, also habe ich mir das einmal angesehen.
-Der Hintergrund ist systematisch dem Vorgehen von Eschbach bei &ldquo;Eine Billion Dollar&rdquo; ähnlich, nur daß es diesmal um Strom, Stromnetzwerke und Smartmeter geht: In Europa kommt es nach dem Ausfall in Teilen des Kontinents zu einer Kettenreaktion und einem kontinentalen Blackout.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/25/fertig-gelesen-exponentialdrift-eine-billion-dollar.html" class='text-decoration-none text-dark'>Fertig gelesen: Exponentialdrift, Eine Billion Dollar</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 25, 2012
-        </div>
-
-        <div class='mt-3'>Exponentialdrift , Andreas Eschbach, EUR 3.99
-&ldquo;Exponentialdrift&rdquo; ist ein literarisches Experiment: Die Geschichte ist ursprünglich als Fortsetzungsroman in wöchentlichen Episoden in der FAZ erschienen und lief dort in etwa ein Jahr lang. Der Erzählstil ist von den extremen Platzbeschränkungen der Zeitung und von den Verflechtungen der Geschichte mit tagesaktuellen zeitgenössischen Ereignissen geprägt. Als Buch ist die Geschichte aus ihrem Entstehungskontext gerissen und wirkt sehr viel anders als im Original, nehme ich an.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/24/fertig-gelesen-anomaly.html" class='text-decoration-none text-dark'>Fertig gelesen: Anomaly</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 24, 2012
-        </div>
-
-        <div class='mt-3'>Anomaly , Peter Cawdron, USD 2.99
-New York, Mittags, an einem heißen Sommertag, in der Nähe des UN Gebäudes: Die Welt gerät aus den Fugen - wörtlich. Eine Kugelsektion von ca. 130 Metern Durchmesser, Bürgersteig , Fahnenmasten, Luft und alles andere, wird quasi aus der Erde herausgeschnitten und macht die Erddrehung nicht mehr mit.
-Außerirdisches Leben ist auf der Erde gelandet und ist so fremdartig und der Menschheit so weit voraus, daß die Menschen die Kontaktaufnahme beinahe nicht als Kommunikationsversuch erkennen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/23/discoverable-culture-das-buch-als-konversationsst-ck.html" class='text-decoration-none text-dark'>Discoverable culture: Das Buch als Konversationsstück</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 23, 2012
-        </div>
-
-        <div class='mt-3'>In The problem with eBooks schreibt Diego Elio Pettenò über einen Aufenthalt in Los Angeles:
-I wouldn’t mind meeting people around here, and with people I don’t necessarily mean girls, to be clear. I would just prefer not to feel so … isolated in the crowd as I feel now. I guess being a geek in the surfer’s paradise is not that great a situation. But what has this to do with eBooks?</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2012/08/23/fertig-gelesen-a-confusion-of-princes.html" class='text-decoration-none text-dark'>Fertig gelesen: A confusion of princes</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 23, 2012
-        </div>
-
-        <div class='mt-3'>A Confusion of Princes , Garth Nix, USD 9.99
-Khemri ist ein Prinz eines intergalaktischen Imperiums, eine Ansammlung von Welten, die durch Technologie, Biotech und Psionik zusammengehalten und von einem Geist in der Maschine, dem Imperator, regiert wird. Khemri wird nun bald volljährig und weiß auf Grund seiner Ausbildung, daß er bald romantische und heroische Abenteuer erleben wird, bevor er die Welt rettet und selber Imperator wird.
-Es stellt sich raus, daß die Realität komplizierter ist.</div>
 
     </div>
   </div>
