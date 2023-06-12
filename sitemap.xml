@@ -2,25 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
+    <loc>https://blog.koehntopp.info/tags/bike.html</loc>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/filesystems.html</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/lang_en.html</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/posts.html</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/</loc>
-    <lastmod>2023-05-06T12:13:14+00:00</lastmod>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/%C3%BCberwachung.html</loc>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/06/12/what-to-do-with-self-driving-car-data.html</loc>
+    <lastmod>2023-06-12T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</loc>
+    <lastmod>2023-05-23T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/security.html</loc>
+    <lastmod>2023-05-23T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/spam.html</loc>
+    <lastmod>2023-05-23T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/17/50-years-in-filesystems-towards-2004-lfs.html</loc>
+    <lastmod>2023-05-17T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/filesystems.html</loc>
+    <lastmod>2023-05-17T01:02:03+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/unix.html</loc>
+    <lastmod>2023-05-17T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html</loc>
+    <lastmod>2023-05-15T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html</loc>
+    <lastmod>2023-05-12T12:13:14+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/11/city-of-amsterdam-and-combustion-engines.html</loc>
+    <lastmod>2023-05-11T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/mobility.html</loc>
+    <lastmod>2023-05-11T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/netherlands.html</loc>
+    <lastmod>2023-05-11T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/architektur.html</loc>
+    <lastmod>2023-05-10T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/computer.html</loc>
+    <lastmod>2023-05-10T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</loc>
+    <lastmod>2023-05-10T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/tags/software.html</loc>
+    <lastmod>2023-05-10T01:02:03+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html</loc>
     <lastmod>2023-05-06T12:13:14+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2023/05/05/50-years-in-filesystems-1974.html</loc>
@@ -54,9 +102,6 @@
     <lastmod>2023-02-20T12:13:14+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html</loc>
-    <lastmod>2023-02-20T12:13:14+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/security.html</loc>
     <lastmod>2023-02-20T12:13:14+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</loc>
@@ -173,9 +218,6 @@
     <loc>https://blog.koehntopp.info/2022/10/25/proper-o11y-for-mysql.html</loc>
     <lastmod>2022-10-18T06:07:08+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/software.html</loc>
-    <lastmod>2022-10-18T06:07:08+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2022/10/18/software-supply-chain-issues.html</loc>
     <lastmod>2022-10-18T06:07:08+00:00</lastmod>
   </url><url>
@@ -226,9 +268,6 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2022/08/15/good-energy-news.html</loc>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/netherlands.html</loc>
-    <lastmod>2020-10-22T17:06:17+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/tags/apple.html</loc>
     <lastmod>2020-09-02T16:58:53+00:00</lastmod>
   </url><url>
@@ -254,16 +293,10 @@
   </url><url>
     <loc>https://blog.koehntopp.info/2022/06/20/mysql-breaking-replication-with-algorithm-instant.html</loc>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/bike.html</loc>
-    <lastmod>2022-06-08T04:47:00+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2022/06/08/carver-s.html</loc>
     <lastmod>2022-06-08T04:17:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2022/06/08/how-to-buy-an-ebike.html</loc>
-    <lastmod>2022-06-08T04:47:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/mobility.html</loc>
     <lastmod>2022-06-08T04:47:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2022/06/07/mysql-binlog-compression-and-large-transactions.html</loc>
@@ -318,9 +351,6 @@
     <loc>https://blog.koehntopp.info/2022/02/21/spaces.html</loc>
   </url><url>
     <loc>https://blog.koehntopp.info/2022/02/16/databases-how-large-is-too-large.html</loc>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/computer.html</loc>
-    <lastmod>2022-02-06T21:06:03+01:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/linux.html</loc>
     <lastmod>2022-02-06T21:06:03+01:00</lastmod>
@@ -2049,9 +2079,6 @@
     <loc>https://blog.koehntopp.info/tags/spackeria.html</loc>
     <lastmod>2012-08-17T07:26:55+00:00</lastmod>
   </url><url>
-    <loc>https://blog.koehntopp.info/tags/architektur.html</loc>
-    <lastmod>2012-08-15T03:45:04+00:00</lastmod>
-  </url><url>
     <loc>https://blog.koehntopp.info/2012/08/15/materialized-view.html</loc>
     <lastmod>2012-08-15T03:45:04+00:00</lastmod>
   </url><url>
@@ -2083,9 +2110,6 @@
     <lastmod>2012-05-28T11:12:25+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2012/04/27/alle-vier-stunden-zum-nutzen-von-antivirus-und-zum-nutzen-von-testverfahren.html</loc>
-    <lastmod>2012-04-27T21:24:02+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/spam.html</loc>
     <lastmod>2012-04-27T21:24:02+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/tags/virus.html</loc>
@@ -2719,9 +2743,6 @@
     <lastmod>2009-06-22T11:22:36+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2009/06/19/es-ist-noch-lange-nicht-vorbei.html</loc>
-    <lastmod>2009-06-19T14:46:41+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.koehntopp.info/tags/%C3%BCberwachung.html</loc>
     <lastmod>2009-06-19T14:46:41+00:00</lastmod>
   </url><url>
     <loc>https://blog.koehntopp.info/2009/06/17/wie-kaputt-ist-das-internet.html</loc>

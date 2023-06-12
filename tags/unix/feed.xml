@@ -6,7 +6,742 @@
     <description>Recent content in unix on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 May 2023 10:16:06 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/unix/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Jun 2023 13:28:45 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/unix/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>50 years in filesystems: towards 2004 – LFS</title>
+      <link>https://blog.koehntopp.info/2023/05/17/50-years-in-filesystems-towards-2004-lfs.html</link>
+      <pubDate>Wed, 17 May 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/05/17/50-years-in-filesystems-towards-2004-lfs.html</guid>
+      <description>&lt;p&gt;This is part 5 of a series.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/05/50-years-in-filesystems-1974.html&#34;&gt;1974&lt;/a&gt;
+
+&amp;rdquo; on the traditional Unix Filesystem.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html&#34;&gt;1984&lt;/a&gt;
+
+&amp;rdquo; on the BSD Fast File System.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html&#34;&gt;1994&lt;/a&gt;
+
+&amp;rdquo; on SGI XFS.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html&#34;&gt;Vnodes&lt;/a&gt;
+
+&amp;rdquo; on how to have multiple filesystems in Unix.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Progress is sometimes hard to see, especially when you have been part of it or otherwise lived through it.
+Often, it is easier to see by comparing modern educational material and the problems discussed with older material.
+Or look for the research papers and sources that fueled the change. So this is what we do.&lt;/p&gt;
+&lt;h1 id=&#34;frontiers-in-the-nineties&#34;&gt;
+    &lt;a href=&#34;#frontiers-in-the-nineties&#34;&gt;
+	Frontiers in the Nineties
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;SGI&amp;rsquo;s XFS is pretty much the culmination point in filesystem technology for anything that does in-place updates.
+Extents, generous usage of B+-trees and lock splitting across allocation groups make it a great filesystem that is fast and scales well.
+The introduction of a metadata log allows it to recover quickly.&lt;/p&gt;
+&lt;p&gt;The Nineties were also busy with operating systems research.
+Specifically, cluster operating systems were very much en vogue:
+Tanenbaum was in Amsterdam, busy with &lt;a href=&#34;https://en.wikipedia.org/wiki/Amoeba_%28operating_system%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Amoeba&lt;/a&gt;
+
+.
+Bell Labs was busy with &lt;a href=&#34;https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Plan 9&lt;/a&gt;
+
+.
+And at the UCB, Ousterhout was working on &lt;a href=&#34;https://en.wikipedia.org/wiki/Sprite_%28operating_system%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sprite&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;All were experimenting with cluster-unified filesystems, distributed processing, workload migration,
+and generally trying to build what 20 years later would become the &lt;a href=&#34;https://www.amazon.com/Datacenter-Computer-Introduction-Warehouse-Scale-Architecture/dp/159829556X&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warehouse-Scale Computer&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Part of the Sprite development at UCB, specifically, was the Log-Structured File System (LFS), and
+Mendel Rosenblum and John K. Ousterhout present it in &lt;a href=&#34;https://www.usenix.org/legacy/publications/library/proceedings/sd93/seltzer.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this paper&lt;/a&gt;
+
+ from 1992.
+This is a long paper, 27 pages, but if you read it with hindsight, you can really appreciate how enlightened it was.&lt;/p&gt;
+&lt;h1 id=&#34;lfs&#34;&gt;
+    &lt;a href=&#34;#lfs&#34;&gt;
+	LFS
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Filesystems with in-place updates are in part already using logs for faster recovery in 1992.
+The paper poses the question &amp;ldquo;What if we had a filesystem that only had a log, and never did in-place updates?&amp;rdquo;,
+calling it a log-structured file system.
+It then proceeds to present an implementation and benchmarks for such a thing.&lt;/p&gt;
+&lt;h2 id=&#34;reads-are-cached-only-writes-matter&#34;&gt;
+    &lt;a href=&#34;#reads-are-cached-only-writes-matter&#34;&gt;
+	&amp;ldquo;Reads are cached, only writes matter&amp;rdquo;
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In working with distributed operating systems, the Sprite team noticed that they have a lot of memory available.
+They found with increasing memory sizes, the probability of a file being served by the buffer cache instead of reading it from disk increased by a lot,
+and eventually almost all disk reads are being served from memory.&lt;/p&gt;
+&lt;p&gt;Writes cannot be cached very well, and eventually they need to hit persistent storage,
+but with the reads being cached it would be worthwhile and possible to construct a filesystem optimized for writes.&lt;/p&gt;
+&lt;p&gt;The team also observes that CPU speeds grow exponentially, following Moore&amp;rsquo;s law.
+The same seems to be true for memory sizes, which being on-chip silicon structures also obey this law.
+But disks do not work that way.
+While their capacity grows, their transfer speed and seek time does not improve much, because mechanical parts do not obey Moore&amp;rsquo;s law.
+Disks are a problem: While linear writes perform well, seeks are slow and are not getting faster much.&lt;/p&gt;
+&lt;p&gt;So they propose never overwriting any data, but always appending changed blocks to the end of a log.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/log-adoption.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;“Ah you think the log is your ally? You merely adopted the log. I was born with it, designed for it.”&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;garbage-collection&#34;&gt;
+    &lt;a href=&#34;#garbage-collection&#34;&gt;
+	Garbage collection
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Of course, disks in the Nineties were finite, as they are now.
+So there has to be a &lt;em&gt;cleaner&lt;/em&gt; process that identifies, frees and compacts space that is no longer needed by any current view of the filesystem.&lt;/p&gt;
+&lt;p&gt;This is much like the Garbage Collection in Java Virtual Machines, which were invented around the same time.
+And much like the GC in JVMs, it would turn out to be the weak spot of the system.&lt;/p&gt;
+&lt;p&gt;A lot of the paper busies itself with simulating workloads on the filesystem with different cleaner policies,
+and the team then lands on a system that very much evolves in the same way Java GC evolved,
+with a multi-tier compaction process that mirrors the &amp;ldquo;Young&amp;rdquo;, &amp;ldquo;Old&amp;rdquo;, and &amp;ldquo;Permanent&amp;rdquo; generations of Java objects.
+This is not entirely surprising from hindsight:
+Other, newer systems such as Cassandra, Zookeeper and other storages that use LSM Trees are using a very similar strategy with good success.&lt;/p&gt;
+&lt;p&gt;Specifically, LFS partitions the storage into contiguous segments, and cleans storage segment by segment:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We used a simulator to explore different cleaning policies and discovered a simple but effective algorithm based on cost and benefit:
+it segregates older, slowly changing data from younger rapidly changing data and treats them differently during cleaning.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Other code takes multiple nearly empty segments of the same age and copies them together into a single segment, freeing up the others.&lt;/p&gt;
+&lt;p&gt;This creates a certain amount of background copy activity from the cleaner process.
+It also creates a race between the writers to the system using up free space,
+and the cleaner process trying to provide sufficient free space.
+If the system writes data heavily and free space goes down, the cleaner may need to be prioritized higher,
+consuming more I/O, in order to make sufficient progress in providing clean segments to write to.
+This will also slow down the writers.&lt;/p&gt;
+&lt;p&gt;Benchmarks executed as part of the research show that the system can indeed write to disk at up to 70% of the theoretically available maximum bandwidth.
+But this is true only under ideal conditions.
+Also, the data is not stored in read-order at all, so read performance is only good if data is actually cached.&lt;/p&gt;
+&lt;p&gt;Segments are sufficiently large to amortize the cost of seeking to them.
+In the Mid-Nineties, that meant a size of around 0.5 to 1 MB.&lt;/p&gt;
+&lt;p&gt;Cleaning is then a three-step process:
+After suitable segments have been identified from metadata,
+the cleaner reads multiple segments into memory, compacts them into a smaller number of segments,
+and writes them out to disk in a single large I/O operation.
+The old segments can now be marked as clean, and be returned to the free segment pool.&lt;/p&gt;
+&lt;h2 id=&#34;using-ffs-data-structures&#34;&gt;
+    &lt;a href=&#34;#using-ffs-data-structures&#34;&gt;
+	Using FFS data structures
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;LFS uses data structures from FFS almost unchanged:
+The filesystem has superblocks, inodes, direct and indirect blocks, and uses the same structures for directories, too.
+All information changed is buffered and then written out sequentially in a single disk write that appends atomically and asynchronously to the log.&lt;/p&gt;
+&lt;p&gt;Not overwriting things means duplicating things, so when a file grows by appending a block, the file&amp;rsquo;s inode changes.
+This means the block containing the changed inode needs to be written out again, together with block added to the file.
+LFS needs to keep track of inodes in an &lt;em&gt;inode map&lt;/em&gt;, and this now also needs to be updated and written out:
+even if it is small enough to be cached in memory, it needs to be persisted.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/lfs-structures.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;LFS does indeed to limited in-place updates: The superblock and checkpoint region are written in fixed locations.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;LFS stops short of also appending new copies of the inode map and ultimately the superblock for each disk write,
+and puts these things into fixed locations.
+So we do have in-place updates for certain limited metadata structures.
+This is unfortunate, as we will see when we are looking at LFS&amp;rsquo; legacy.&lt;/p&gt;
+&lt;h2 id=&#34;soft-updates&#34;&gt;
+    &lt;a href=&#34;#soft-updates&#34;&gt;
+	Soft Updates
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In order for LFS to write out changes to data and metadata such as indirect blocks, direct blocks, inodes and directories,
+updates had to be written in the proper order, even if the entire write happened in a single big I/O operation.
+Writing out data &amp;ldquo;from the leaves of the filesystem tree to the top&amp;rdquo; sorts the updates in a way that made recovery easier,
+because each data structure that had pointers to dependent blocks would be written out only after these blocks had already been persisted.&lt;/p&gt;
+&lt;p&gt;It turns out that this logic also has merit for traditional filesystems that do in-place updates.
+It allows &lt;a href=&#34;https://www.usenix.org/legacy/publications/library/proceedings/bsdcon02/mckusick.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;file system checking to go on in the background&lt;/a&gt;
+
+ while the filesystem is already being made available,
+and it can &lt;a href=&#34;https://www.usenix.org/legacy/publications/library/proceedings/usenix99/mckusick.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eliminate almost all synchronous metadata updates&lt;/a&gt;
+
+ in the filesystem.&lt;/p&gt;
+&lt;h1 id=&#34;lfs-in-bsd&#34;&gt;
+    &lt;a href=&#34;#lfs-in-bsd&#34;&gt;
+	LFS in BSD
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The BSD FFS crew, also at UCB, was very aware of Ousterhout&amp;rsquo;s work, and picks it up the year after he publishes.
+They port the filesystem to BSD and &lt;a href=&#34;https://www.usenix.org/legacy/publications/library/proceedings/sd93/seltzer.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;write a 1993 paper about it&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/lfs-ffs-feature-comparison.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Features and subsystems of BSD FFS are matched with the equivalent structures and concepts on the BSD LFS side.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;They note a few shortcomings, and present improvements:
+The cleaner was single-threaded. No matter how many LFS filesystems were mounted, there was only a single cleaner process.
+Now there is one per mounted filesystem.
+They also provide a structural verifier for the filesystem, something similar to a &lt;code&gt;fsck&lt;/code&gt;, but a thing that can run in the background,
+while the filesystem is mounted.&lt;/p&gt;
+&lt;p&gt;Also, the original LFS code was using more memory than necessary, and BSD LFS was made a lot more memory efficient.&lt;/p&gt;
+&lt;p&gt;A lot of the paper is then a validation that their implementation is indeed a faithful port, and an improvement over original LFS,
+and benchmarking.&lt;/p&gt;
+&lt;p&gt;The benchmarks confirm improved write performance, but also show weakness concerning read workloads.
+This is for two reasons: data is possibly fragmented,
+and the file system buffer cache in their machines is often too small to soak up the disk reads.
+And secondly, when the cleaner process is running, it interacts badly with both the disk reads and writes via disk seeks,
+and that costs more performance than anticipated.
+This is in particular true for a database-like (TPC-B) benchmark load,
+which performs badly and requires extensive tuning.&lt;/p&gt;
+&lt;p&gt;Notably, the paper already hints at several improvements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;There are two places where in-place updates still happen.
+By removing them, the filesystem would automatically become transactional and gain snapshot functionality.
+In fact, each disk write would eventually create a snapshot, and actually &amp;ldquo;snapshotting&amp;rdquo; the filesystem would simply mean
+to prevent the cleaner from collecting certain snapshots.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adding checksums to disk blocks already has happened in a few places.
+Turning this into a Merkle tree would be a trivial extension, and make validating the complete integrity not only of the
+structure, but also of the file data a lot easier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The paper already notes that ordering writes in the log in a certain way makes background validation easier:
+If blocks being pointed to are written before blocks that point to them, referential integrity of the filesystem is being kept at all times.
+It is just that a transaction may be incomplete, but because it&amp;rsquo;s not referenced anywhere that is not a problem,
+and the disk blocks will be eventually collected and freed by the cleaner.&lt;/p&gt;
+&lt;p&gt;Nothing in this idea is actually dependent on the filesystem being LFS.
+In fact, it can and was successfully applied to BSD FFS, too, under the name of
+&lt;a href=&#34;https://www.usenix.org/legacy/publications/library/proceedings/usenix99/mckusick.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;soft updates&lt;/em&gt;&lt;/a&gt;
+
+,
+allowing to mount unchecked filesystems and then running a check in the background.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;performance-war&#34;&gt;
+    &lt;a href=&#34;#performance-war&#34;&gt;
+	Performance War
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;While Seltzer, Bostic, McKusick et al., the original authors of the BSD FFS, were busy porting Sprite LFS to BSD,
+and tuning it,
+Larry McVoy and S.R. Kleiman pick up the BSD FFS sources at Sun and add support for extents to it.
+The resulting patch is tiny, and the work is being documented in
+&lt;a href=&#34;https://people.freebsd.org/~pfg/docs/fs/ExtentlikePerformanceforUFS.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Extent-like Performance from a UNIX File System&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;To Seltzers chagrin, EFS often and consistently outperforms LFS, requires little to no tuning.
+In &lt;a href=&#34;https://people.freebsd.org/~pfg/docs/fs/ExtentlikePerformanceforUFS.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;File System Logging Versus Clustering: A Performance Comparison&lt;/a&gt;
+
+
+this is confirmed, even if it takes a long paper with many benchmarks to arrive at this finding.
+The problem is mostly with the disk seeks induced from running the cleaner.&lt;/p&gt;
+&lt;p&gt;If only something could be done about this&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Something could be done, but it would happen at Sun and NetApp, and not in BSD: We&amp;rsquo;re getting ZFS and WAFL.&lt;/p&gt;
+&lt;p&gt;Also, we&amp;rsquo;re getting things that can seek a lot faster than disks: Flash Storage.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>50 years in filesystems: A detour on vnodes</title>
+      <link>https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html</link>
+      <pubDate>Mon, 15 May 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html</guid>
+      <description>&lt;p&gt;This is part 4 of a series.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/05/50-years-in-filesystems-1974.html&#34;&gt;1974&lt;/a&gt;
+
+&amp;rdquo; on the traditional Unix Filesystem.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html&#34;&gt;1984&lt;/a&gt;
+
+&amp;rdquo; on the BSD Fast File System.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html&#34;&gt;1994&lt;/a&gt;
+
+&amp;rdquo; on SGI XFS.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Progress is sometimes hard to see, especially when you have been part of it or otherwise lived through it.
+Often, it is easier to see by comparing modern educational material and the problems discussed with older material.
+Or look for the research papers and sources that fueled the change. So this is what we do.&lt;/p&gt;
+&lt;h1 id=&#34;how-to-have-multiple-filesystems&#34;&gt;
+    &lt;a href=&#34;#how-to-have-multiple-filesystems&#34;&gt;
+	How to have multiple filesystems
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Steve Kleiman wrote
+&amp;ldquo;&lt;a href=&#34;https://www.semanticscholar.org/paper/Vnodes%3A-An-Architecture-for-Multiple-File-System-in-Kleiman/e0d14c74f23ef9b21c2fc37b5197fbfe348a7fcf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vnodes: An Architecture for Multiple File System Types in Sun UNIX&lt;/a&gt;
+
+&amp;rdquo;
+in 1986.&lt;/p&gt;
+&lt;p&gt;This is a short paper, with little text, because most of it is listing of data structures and diagrams of C language &lt;code&gt;struct&lt;/code&gt;&amp;rsquo;s pointing at each other.
+Kleiman wanted to have multiple file systems in Unix, but wanted the file systems to be able to share interfaces and internal memory, if at all possible.
+Specifically, he wanted a design that provided&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;one common interface with multiple implementations,&lt;/li&gt;
+&lt;li&gt;supporting BSD FFS, but also NFS and RFS, two remote filesystems, and Non-Unix filesystems, specifically MS-DOS,&lt;/li&gt;
+&lt;li&gt;with the operations being defined by the interface being atomic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And the implementations should be able to handle memory and structures dynamically, without performance impact,
+reentrant and multicore capable, and somewhat object-oriented.&lt;/p&gt;
+&lt;h1 id=&#34;two-abstractions&#34;&gt;
+    &lt;a href=&#34;#two-abstractions&#34;&gt;
+	Two abstractions
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;He looked at the various operations, and decided to provide two major abstractions:
+The filesystem (&lt;code&gt;vfs&lt;/code&gt;, virtual filesystem) and the inode (&lt;code&gt;vnode&lt;/code&gt;, virtual inode), representing a filesystem and a file.&lt;/p&gt;
+&lt;p&gt;In true C++ style (but expressed in C), we get a virtual function table for each type, representing the class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For the &lt;code&gt;vfs&lt;/code&gt; type, this is a &lt;code&gt;struct vfsops&lt;/code&gt;,
+a collection of function pointers with operations such as &lt;code&gt;mount&lt;/code&gt;, &lt;code&gt;unmount&lt;/code&gt;, &lt;code&gt;sync&lt;/code&gt; and &lt;code&gt;vget&lt;/code&gt;.
+Later in the paper, prototypes and functionality of these functions are explained.&lt;/li&gt;
+&lt;li&gt;For the &lt;code&gt;vnode&lt;/code&gt; type, likewise, we get &lt;code&gt;struct vnodeops&lt;/code&gt;.
+The functions here are &lt;code&gt;open&lt;/code&gt;, &lt;code&gt;rdwr&lt;/code&gt; and &lt;code&gt;close&lt;/code&gt;, of course, but also &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;unlink&lt;/code&gt;, and &lt;code&gt;rename&lt;/code&gt;.
+Some functions are specific to a filetype such as &lt;code&gt;readlink&lt;/code&gt;, &lt;code&gt;mkdir&lt;/code&gt;, &lt;code&gt;readdir&lt;/code&gt; and &lt;code&gt;rmdir&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Actual mounts are being tracked in &lt;code&gt;vfs&lt;/code&gt; objects, which point to the operations applicable to this particular subtree with their &lt;code&gt;struct vfsops *&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Similarly, open files are being tracked in &lt;code&gt;vnode&lt;/code&gt; instances, which again, among other things, have a &lt;code&gt;struct *vnodeops&lt;/code&gt; pointer.
+&lt;code&gt;vnodes&lt;/code&gt; are part of their &lt;code&gt;vfs&lt;/code&gt;, so they also have &lt;code&gt;struct *vfs&lt;/code&gt; to their filesystem instance.&lt;/p&gt;
+&lt;p&gt;Both, the &lt;code&gt;vfs&lt;/code&gt; and the &lt;code&gt;vnode&lt;/code&gt; need to provide a way for the implementation to store implementation specific data (&amp;ldquo;subclass private fields&amp;rdquo;).
+So both structures end with &lt;code&gt;caddr_t ...data&lt;/code&gt; pointers.
+That is, the private data is not part of the virtual structure, but located elsewhere and pointed to.&lt;/p&gt;
+&lt;h2 id=&#34;vnodes-in-action&#34;&gt;
+    &lt;a href=&#34;#vnodes-in-action&#34;&gt;
+	Vnodes in action
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/vfs-vnode-structures.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;One full page in the paper is dedicated to showing the various structures pointing at each other.
+What looks confusing at first glance is actually pretty straightforward and elegant, once you trace it out.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kleiman sets out to explain how things work using the &lt;code&gt;lookuppn()&lt;/code&gt; function, which replaces the older &lt;code&gt;namei()&lt;/code&gt; function from traditional Unix.
+Analogous to &lt;code&gt;namei()&lt;/code&gt;, the function consumes a path name, and returns a &lt;code&gt;struct vnode *&lt;/code&gt; to the vnode represented by that pathname.&lt;/p&gt;
+&lt;p&gt;Pathname traversal starts at the root vnode or the current directory vnode for the current process,
+depending on the first character of a pathname being &lt;code&gt;/&lt;/code&gt; or not.&lt;/p&gt;
+&lt;p&gt;The function then takes the next pathname component, iteratively, and calls the &lt;code&gt;lookup&lt;/code&gt; function for the current vnode.
+This function takes a pathname component, and a current &lt;code&gt;vnode&lt;/code&gt; assuming it is a directory.
+It then returns the &lt;code&gt;vnode&lt;/code&gt; representing that component.&lt;/p&gt;
+&lt;p&gt;If a directory is a mountpoint, it has &lt;code&gt;vfsmountedhere&lt;/code&gt; set.
+This is a &lt;code&gt;struct vfs *&lt;/code&gt;. &lt;code&gt;lookuppn&lt;/code&gt; follows the pointer,
+and can call the &lt;code&gt;root&lt;/code&gt; function for that &lt;code&gt;vfs&lt;/code&gt; to get the root &lt;code&gt;vnode&lt;/code&gt; for that filesystem, replacing the current &lt;code&gt;vnode&lt;/code&gt; being worked on.&lt;/p&gt;
+&lt;p&gt;The inverse must also be possible:
+When resolving a &amp;ldquo;&lt;code&gt;..&lt;/code&gt;&amp;rdquo; component and the current &lt;code&gt;vnode&lt;/code&gt; has a root flag set in its &amp;ldquo;flags&amp;rdquo; field,
+we go from the current &lt;code&gt;vnode&lt;/code&gt; to the &lt;code&gt;vfs&lt;/code&gt; following the &lt;code&gt;vfsmountedhere&lt;/code&gt; pointer.
+Then we can use the &lt;code&gt;vnodecovered&lt;/code&gt; field in that &lt;code&gt;vfs&lt;/code&gt; to get the &lt;code&gt;vnode&lt;/code&gt; of the superior filesystem.&lt;/p&gt;
+&lt;p&gt;In any case, upon successful completion, a &lt;code&gt;struct vnode*&lt;/code&gt; representing the consumed pathname is returned.&lt;/p&gt;
+&lt;h2 id=&#34;new-system-calls&#34;&gt;
+    &lt;a href=&#34;#new-system-calls&#34;&gt;
+	New system calls
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In order to make things work,
+and to make things work efficiently, a few new system calls had to be added to round out the interfaces.&lt;/p&gt;
+&lt;p&gt;It is here in Unix history that we get &lt;code&gt;statfs&lt;/code&gt; and &lt;code&gt;fstatfs&lt;/code&gt;, to get an interface to filesystems in userland.
+We also gain &lt;code&gt;getdirentries&lt;/code&gt; (plural) to get multiple directory entries at once (depending on the size of the buffer provided),
+which makes directory reading faster a lot for remote filesystems.&lt;/p&gt;
+&lt;h1 id=&#34;in-linux&#34;&gt;
+    &lt;a href=&#34;#in-linux&#34;&gt;
+	In Linux
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Looking at the Linux kernel source, we can find the general structure of Kleiman&amp;rsquo;s design,
+even if the complexity and richness of the Linux kernel obscure most of it.
+The Linux kernel has a wealth of file system types, and added also a lot of functionality that wasn&amp;rsquo;t present in BSD 40 years ago.
+So we find a lot more structures and system calls,
+implementing namespaces, quotas, attributes, read-only modes, directory name caches, and other things.&lt;/p&gt;
+&lt;h2 id=&#34;the-file&#34;&gt;
+    &lt;a href=&#34;#the-file&#34;&gt;
+	The file
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Still, if you squint, the original structure can still be found:
+Linux splits the in-memory structures around files in two, the opened &lt;code&gt;file&lt;/code&gt;, which is an inode with a current position associated,
+and the &lt;code&gt;inode&lt;/code&gt;, which is the whole file.&lt;/p&gt;
+&lt;p&gt;We find instances of file objects, &lt;code&gt;struct file&lt;/code&gt;, defined
+&lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L942C3-L981&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+Among all the other things a file has, it has most notably a field &lt;code&gt;loff_t f_pos&lt;/code&gt;,
+an offset (in bytes) from the start of the file,
+the current position.&lt;/p&gt;
+&lt;p&gt;The file&amp;rsquo;s class is defined via a virtual function table.
+We find the pointer as &lt;code&gt;struct file_operations *f_op&lt;/code&gt;,
+and the definition &lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L1754-L1798&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+It shows all the things a file can do, most notable, &lt;code&gt;open&lt;/code&gt;, &lt;code&gt;close&lt;/code&gt;, &lt;code&gt;lseek&lt;/code&gt; and then &lt;code&gt;read&lt;/code&gt; and &lt;code&gt;write&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The file also contains pointers to the inode, &lt;code&gt;struct inode *f_inode&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;the-inode&#34;&gt;
+    &lt;a href=&#34;#the-inode&#34;&gt;
+	The inode
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Operations on files without the need of an offset work on the file as a whole,
+defined as &lt;code&gt;struct inode *&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Check the definition &lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L595-L705&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+We see other definitions in here that have no equivalent in BSD from 40 years ago, such as ACLs and attributes.&lt;/p&gt;
+&lt;p&gt;We find the inode&amp;rsquo;s class is defined via a virtual function table,
+&lt;code&gt;struct inode_operations *i_op&lt;/code&gt;,
+and the definition &lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L1800-L1840&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+Again, a lot of them deal with new features such as ACLs and extended attributes,
+but we also find those we expect such as &lt;code&gt;link&lt;/code&gt;, &lt;code&gt;unlink&lt;/code&gt;, &lt;code&gt;rename&lt;/code&gt; and so on.&lt;/p&gt;
+&lt;p&gt;The inode also contains a pointer to a filesystem, the &lt;code&gt;struct super_block *i_sb&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;the-superblock&#34;&gt;
+    &lt;a href=&#34;#the-superblock&#34;&gt;
+	The superblock
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A mountpoint is represented as an instance of &lt;code&gt;struct super_block&lt;/code&gt;,
+defined &lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L1136-L1268&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+Again, the class is a &lt;code&gt;struct super_operations *s_op&lt;/code&gt;, defined
+&lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L1886-L1918&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;As an added complexity, there is no finite list of filesystems.
+It is instead extensible through loadable modules, so we also have a &lt;code&gt;struct file_system_type&lt;/code&gt;,
+&lt;a href=&#34;https://github.com/torvalds/linux/blob/v6.3/include/linux/fs.h#L1886-L1918&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;
+
+.
+This is basically a class with only one class method as a factory for superblocks, &lt;code&gt;mount&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34;&gt;
+	Summary
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Unix changed.
+It became a lot more runtime extensive, added a lot of new functionality and gained system calls.
+Things became more structured.&lt;/p&gt;
+&lt;p&gt;But the original design and data structures conceived by Kleiman and Joy held up, and can still be found in current Linux, 40 years later.
+We can point to concrete Linux code, which while looking completely different, is structurally mirroring the original design ideas.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>50 years in filesystems: 1994</title>
+      <link>https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html</link>
+      <pubDate>Fri, 12 May 2023 12:13:14 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html</guid>
+      <description>&lt;p&gt;This is part 3 of a series.
+The first part is &amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/05/50-years-in-filesystems-1974.html&#34;&gt;1974&lt;/a&gt;
+
+&amp;rdquo;.
+The second part is &amp;ldquo;&lt;a href=&#34;https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html&#34;&gt;1984&lt;/a&gt;
+
+&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Progress is sometimes hard to see, especially when you have been part of it or otherwise lived through it.
+Often, it is easier to see if you compare modern educational material, and the problems discussed with older material.
+And then look for the research papers and sources that fueled the change.&lt;/p&gt;
+&lt;p&gt;In Linux (and Unix in general), this is easy.&lt;/p&gt;
+&lt;h1 id=&#34;1994--the-sgi-xfs-filesystem&#34;&gt;
+    &lt;a href=&#34;#1994--the-sgi-xfs-filesystem&#34;&gt;
+	1994 — The SGI XFS Filesystem
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In 1994, the paper &lt;a href=&#34;http://www.scs.stanford.edu/nyu/02fa/sched/xfs.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scalability in the XFS File System&lt;/a&gt;
+
+ saw publication.
+Computers got faster since 1984, and so did storage.
+Notably, we are now seeing boxes with multiple CPUs, and with storage reaching into the Terabytes.
+The improvements to the 4.3BSD fast filing system (or the modified version in SGI IRIX called EFS) were no longer sufficient.&lt;/p&gt;
+&lt;p&gt;SGIs benchmarks cite machines that had large backplanes with many controllers (one benchmark cites a box with 20 SCSI controllers),
+many disks (three-digit-numbers of hard drives),
+and many CPUs (the benchmarks quote 12 socket machines) with a lot of memory (up to one gigabyte quoted in the benchmarks).&lt;/p&gt;
+&lt;p&gt;Filesystems became larger than FFS could handle,
+files became larger than FFS could handle,
+the number of files per directory led to large lookup times,
+central data structures such as allocation bitmaps did no longer scale,
+and global locks made concurrent access to the file system with many CPUs inefficient.
+SGI set out to design a fundamentally different filesystem.&lt;/p&gt;
+&lt;p&gt;Also, the Unix community as a whole was challenged by Cutler and Custer,
+who showed with NTFS for Windows NT 4.0 what was possible if you redesign from scratch.&lt;/p&gt;
+&lt;h1 id=&#34;requirements&#34;&gt;
+    &lt;a href=&#34;#requirements&#34;&gt;
+	Requirements
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The XFS filesystem was a firework of new ideas, and a large deviation from traditional Unix filesystem design.
+The list of new things is long:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Facilitate concurrency with
+&lt;ul&gt;
+&lt;li&gt;allocation zones&lt;/li&gt;
+&lt;li&gt;inode lock splitting&lt;/li&gt;
+&lt;li&gt;facilities for large, parallel I/O requests, DMA and Zero-Copy I/O&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Scalability of access by building the filesystem around the concepts of
+&lt;ul&gt;
+&lt;li&gt;B+-Trees&lt;/li&gt;
+&lt;li&gt;Extents: pairs of (start, length) descriptors&lt;/li&gt;
+&lt;li&gt;decoupling &amp;ldquo;file write&amp;rdquo; and &amp;ldquo;file layout&amp;rdquo; on disk to allow for contiguous files by using delayed allocation and preallocation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Introduce a write-ahead log to journal metadata changes
+&lt;ul&gt;
+&lt;li&gt;log asynchronously to allow for write coalescence&lt;/li&gt;
+&lt;li&gt;leveraging the log for recovery, so that recovery time is proportional to the amount of data in flight, not the size of the filesystem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XFS was written with these requirements,
+and primarily in order to provide a filesystem that could leverage all the performance of large SGI boxes for video editing, video serving and scientific computing.&lt;/p&gt;
+&lt;h2 id=&#34;a-logging-filesystem-but-not-a-log-structured-filesystem&#34;&gt;
+    &lt;a href=&#34;#a-logging-filesystem-but-not-a-log-structured-filesystem&#34;&gt;
+	A logging filesystem, but not a log structured filesystem
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is also happening at about the same time as John K. Ousterhout asking
+&amp;ldquo;&lt;a href=&#34;https://web.stanford.edu/~ouster/cgi-bin/papers/osfaster.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why Aren’t Operating Systems Getting Faster As Fast as Hardware?&lt;/a&gt;
+
+&amp;rdquo;.
+Ousterhout started to explore the ideas of a log-based filesystem with the experimental Sprite operating system.&lt;/p&gt;
+&lt;p&gt;Log-based filesystems are an extremely radical idea that we need to discuss later, even if they originally predate XFS by a bit.
+But they weren&amp;rsquo;t very usable originally, because they need different hardware which can offer a lot more disk seeks.
+Log structured file system ideas had to become a lot more refined to actually have an impact,
+so we are going to discuss them later in the series.&lt;/p&gt;
+&lt;h2 id=&#34;what-irix-had-before&#34;&gt;
+    &lt;a href=&#34;#what-irix-had-before&#34;&gt;
+	What IRIX had before
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;IRIX as coming already with EFS, the specially sauced-up version of BSD FFS that used extents.
+It suffered from an 8 GB filesystem size limit, a 2 GB filesize limit, and it could not utilize the full hardware I/O bandwidth,
+which made many customers of these fantastically expensive machines somewhat sad.&lt;/p&gt;
+&lt;p&gt;Demands for video playback and from the database community led to requirements
+that stated the new filesystem needed to support hundreds of TB of disk space,
+hundreds of MB/s of I/O bandwidth and many parallel I/O requests in order to be able to saturate the hardware provided,
+and all this without running out of CPU.&lt;/p&gt;
+&lt;p&gt;The title of the paper is &amp;ldquo;Scalability in the XFS File System&amp;rdquo; and not &amp;ldquo;Implementation of …&amp;rdquo;,
+so it is more a show of the features provided and a superficial discussion of the implementation and the design decisions around it.
+It is not an in-depth discussion of the implementation,
+nor are extensive benchmarks provided.&lt;/p&gt;
+&lt;h1 id=&#34;features&#34;&gt;
+    &lt;a href=&#34;#features&#34;&gt;
+	Features
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;large-filesystems&#34;&gt;
+    &lt;a href=&#34;#large-filesystems&#34;&gt;
+	Large filesystems
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;XFS supports large filesystems.
+Previous filesystems use 32-bit pointers to blocks.
+At 8 KB block size, with 32-bit block pointers, the limit is 32 TB.&lt;/p&gt;
+&lt;p&gt;Moving to 64-bit block pointers would make many data structures multiple of 8 bytes in size, which seemed like a waste.&lt;/p&gt;
+&lt;p&gt;For concurrency (see below), XFS introduces the concept of &lt;strong&gt;allocation groups&lt;/strong&gt; (AGs), which are always smaller than 4 GB.
+Allocation groups have local instances of the filesystem data structures, for example, inode maps or free block tracking.
+These are independently locked and so allow for concurrent operations in different allocation groups.&lt;/p&gt;
+&lt;p&gt;Allocation groups also help to save on pointer sizes:
+Where possible, AG-relative block numbers are being used, and these always fit into 32-bit pointers.
+In fact, a 4G allocation group can have only 1M blocks or fewer blocks (at 4K minimum blocksize),
+so a single maximum sized extent within a single AG can be packed into 40 bits (5 bytes).&lt;/p&gt;
+&lt;p&gt;The maximum file size and filesystem size is 8 EB (2^63-1).&lt;/p&gt;
+&lt;h2 id=&#34;bandwidth-and-concurrency&#34;&gt;
+    &lt;a href=&#34;#bandwidth-and-concurrency&#34;&gt;
+	Bandwidth and Concurrency
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Concurrent operations are a design goal for XFS.
+1994 is the age of 20 MB/s SCSI controllers, but SGI built machines with large chassis that could house many controllers and many drives.
+Benchmarks quote machines with an aggregate bandwidth of 480 MB/s delivering file I/O performance of over 370 MB/s with no tuning, including all overheads.
+This is quite an impressive result for everyday usage in 1994.&lt;/p&gt;
+&lt;p&gt;XFS achieves this using large blocks (4 KB or 8 KB block size), and the concept of extents.&lt;/p&gt;
+&lt;h3 id=&#34;extents-and-b-trees&#34;&gt;
+    &lt;a href=&#34;#extents-and-b-trees&#34;&gt;
+	Extents and B-Trees.
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Extents&lt;/strong&gt; are a core concept in XFS.
+They are tuples, most of the time pairs of &lt;code&gt;(startblock, length)&lt;/code&gt;.
+For mapping file blocks to disk blocks (&amp;ldquo;bmap&amp;rdquo;), they are triples &lt;code&gt;(offset, length, startblock)&lt;/code&gt;.
+Using truncated values, because of the size limits imposed by the maximum AG size,
+they can describe a contiguous sequence of blocks up to 2M blocks in size in 4 bytes,
+which is a lot more efficient than what BSD FFS did before.&lt;/p&gt;
+&lt;p&gt;Extents also allow XFS to do large I/O requests because they describe sections of contiguous blocks,
+making it easy to create read or write requests for several blocks apiece.
+It does I/O by default with 64 KB memory buffers, unless special provisions are being made to make them even larger.&lt;/p&gt;
+&lt;p&gt;The filesystem assumes an underlying disk structure with striping, and provides a number of 2 or 3 outstanding I/O requests to allow for concurrent I/O.
+It checks for backpressure, that is, it checks that the application is actually reading data.
+If it does, it issues additional read requests to keep the number of requests in flight at 3 by default,
+good for 192 KB in flight at once.&lt;/p&gt;
+&lt;p&gt;Groups of Extents can be collected in linear lists, but that will lead to scaling problems.
+So XFS uses &lt;strong&gt;B+-Trees&lt;/strong&gt;, which degrade to linear lists if there is only one single index block.&lt;/p&gt;
+&lt;p&gt;Usually tuples are indexed on their first value, but for some structures such as free lists, multiple indexes are kept:
+It is useful to index free space by &lt;code&gt;startblock&lt;/code&gt; for closeness, but also by &lt;code&gt;length&lt;/code&gt; to fit free spaces in the right size.&lt;/p&gt;
+&lt;h3 id=&#34;breaking-the-single-writer-inode-lock&#34;&gt;
+    &lt;a href=&#34;#breaking-the-single-writer-inode-lock&#34;&gt;
+	Breaking the single-writer inode lock
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/overlapping-write.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;Posix locks the in-memory inode to guarantee &lt;a href=&#34;https://blog.koehntopp.info/2018/11/29/but-is-it-atomic.html&#34;&gt;atomic writes&lt;/a&gt;
+
+.
+This makes sure any two large multiple-block writes always happen one-before-the-other.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;XFS also breaks the in-memory inode locks:
+Posix demands that large, overlapping, multiple block writes are totally ordered.
+When they overlap, it must not happen that there is a block soup of alternating blocks from write A and write B.&lt;/p&gt;
+&lt;p&gt;The default implementation in most kernels is simply a file-global lock placed at the in-memory inode, making sure there can be only one writer per inode.
+Implementers of databases hate that because it limits the write concurrency on any single file to One.
+This is, for example, why Oracle recommends that you make tablespaces from multiple files, each no larger than one GB.&lt;/p&gt;
+&lt;p&gt;XFS, in &lt;code&gt;O_DIRECT&lt;/code&gt; mode, removes this lock and allows atomic, concurrent writes, making database people very happy.&lt;/p&gt;
+&lt;h2 id=&#34;dynamic-inodes-and-improved-free-space-tracking&#34;&gt;
+    &lt;a href=&#34;#dynamic-inodes-and-improved-free-space-tracking&#34;&gt;
+	Dynamic Inodes and improved Free Space Tracking
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;With large filesystems, you can never know:
+The applications may need a large number of inodes for many small files, or a small number of large files.
+Also, what is a good distance between the inode and the data blocks that belong to the file?&lt;/p&gt;
+&lt;p&gt;There is no good answer to the first question, and &amp;ldquo;as close as possible&amp;rdquo; is the answer to the second question.
+So XFS creates Inodes dynamically, as needed, in chunks of 64 inodes.&lt;/p&gt;
+&lt;p&gt;The relatively large inode size of 256 bytes (compared to 128 in BSD FFS and 64 in traditional Unix)
+is being compensated by the fact that XFS creates Inodes only as needed, and places them relatively closely to the file start.
+This frees up a substantial amount of disk space –
+in Unix filesystems with fixed inode counts as much as 3-4% of the disk space can be locked up in pre-allocated inodes.
+And even with cylinder groups, there will be considerable distance between an inode and the first data block.&lt;/p&gt;
+&lt;p&gt;Because inodes can reside anywhere on the disk and not just behind the superblock, they need to be tracked.
+XFS does with one B+-tree per allocation group.
+The tree is indexed by the start block, and records for each inode in the chunk if it is available or in-use.
+The inodes themselves are not kept in the tree, but in the actual chunks which are close to the file data.&lt;/p&gt;
+&lt;p&gt;Similarly, free space is tracked in chunks, and kept in per-AG trees, indexed twice: by start block and by length.&lt;/p&gt;
+&lt;h2 id=&#34;write-ahead-log&#34;&gt;
+    &lt;a href=&#34;#write-ahead-log&#34;&gt;
+	Write-Ahead Log
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Recovering a large filesystem after a crash can be slow.
+The recovery time is proportional to the size of the filesystem, and the number of files in it,
+because the system basically has to scan the entire filesystem and rebuild the directory tree in order to sure things are consistent.
+With XFS, the filesystem also is a lot more fragile, as it provides a variable number of inodes, spread out non-contiguously over the disk.
+Recovering them would be extra expensive.&lt;/p&gt;
+&lt;p&gt;Using write-ahead logging for metadata, this can be avoided most of the time.
+Recovery time is proportional to the size of the log, that is, the amount of data in flight at the time of the crash.&lt;/p&gt;
+&lt;p&gt;The log contains log entries containing a descriptor header and a full image of all changed metadata structures:
+inodes, directory blocks, free extent tree blocks, inode allocation tree blocks, allocation group blocks, and the superblock.
+Because full images are stored in the block, recovery is simple: the recovery process simply copies these new, changes images into the place where they are supposed to be, without needing to understand what kind of structure it changes.&lt;/p&gt;
+&lt;p&gt;The trust of the authors into the log was huge:
+Initially XFS had no &lt;code&gt;fsck&lt;/code&gt; program.
+This turned out to be overly optimistic, and so now &lt;code&gt;xfs_repair&lt;/code&gt; exists.&lt;/p&gt;
+&lt;h3 id=&#34;metadata-update-performance&#34;&gt;
+    &lt;a href=&#34;#metadata-update-performance&#34;&gt;
+	Metadata update performance
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;XFS is logging metadata updates, which means they need to be written to the filesystem log.
+By default, this log is placed inline, in the filesystem.
+But it is also possible to take it out, and put onto other media, for example, flash storage or battery-backed memory.&lt;/p&gt;
+&lt;p&gt;Writes to the log are asynchronous, if possible, but with partitions serving NFS they cannot be.
+Asynchronous writes allow for write batching, with speeds things up.
+But NFS servers profit a lot from accelerated log storage.&lt;/p&gt;
+&lt;p&gt;Because all metadata updates need to be logged, it can happen that intense metadata operations flood the log.
+A &lt;code&gt;rm -rf /usr/src/linux&lt;/code&gt; for example is not an operation where XFS is particularly fast, because the metadata update stream will eventually overflow the log.
+And because everything else in XFS is parallel by AG, the log is usually the only source of contention.&lt;/p&gt;
+&lt;h2 id=&#34;large-files-and-sparse-files&#34;&gt;
+    &lt;a href=&#34;#large-files-and-sparse-files&#34;&gt;
+	Large files and sparse files
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In FFS, files are mapped by the classical dynamic array, with direct blocks and up to three levels of indirect blocks.
+With 64-bit filesize, this becomes unwieldy: there will be more than three levels of indirect blocks required,
+and a substantial number of blocks would be required what essentially becomes a list of incrementing numbers.
+FFS (and EFS) are also forced to layout blocks the moment each block is allocated in the filesystem buffer pool.
+So effectively, no attempt to contiguously layout files on disk is being made.
+Instead, blocks are placed individually.&lt;/p&gt;
+&lt;p&gt;XFS replaces this dynamic array with extents.&lt;/p&gt;
+&lt;p&gt;In file placement maps, these mapping extents are triples &lt;code&gt;(blockoffset, length, disk block)&lt;/code&gt;.
+These extents are stored in the inode itself until this overflows.
+Then XFS starts to root a B+-tree of the mapping extents in the inode, indexed by logical block number for fast seeks.&lt;/p&gt;
+&lt;p&gt;This data structure allows compressing a substantial number of blocks (up to 2M blocks) in a single descriptor,
+assuming contiguous allocation is possible.
+So even large files could be stored in very few extents, in the optimal case one extent per AG.&lt;/p&gt;
+&lt;h3 id=&#34;delayed-allocation-and-preallocation-for-contiguous-layout&#34;&gt;
+    &lt;a href=&#34;#delayed-allocation-and-preallocation-for-contiguous-layout&#34;&gt;
+	Delayed allocation and Preallocation for contiguous layout
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;XFS also provides a new concept, delayed allocation, in which virtual extents can be allocated in the file system buffer pool.
+These are blocks full of yet unwritten data that have not been layouted, and hence lack a physical position.
+Only on flush these blocks are layouted, contiguously, and then written out linearly in large writes, to speed things up.&lt;/p&gt;
+&lt;p&gt;This is a fundamental change to how the filesystem buffer cache works –
+previously it was possible to use &lt;code&gt;(device, physical block number)&lt;/code&gt; to identify buffer cache blocks and prevent duplicate buffer allocation.
+When porting XFS to Linux, the Linux kernel initially could not accommodate strategies that do not use such identification in the normal buffer cache, so at first XFS required a separate buffer cache.
+This got fixed later, as the porting progressed.&lt;/p&gt;
+&lt;p&gt;To ensure that files can be layouted without fragmentation, in a single extent, XFS aggressively preallocates storage for open files.
+The default amount of disk space preallocated is dependent on the amount of free space in the filesystem, and can be substantial.&lt;/p&gt;
+&lt;p&gt;The internet is littered with questions by XFS users asking where their disk space is, and the answer is always &amp;ldquo;in the open file handles of &lt;code&gt;/var/log&lt;/code&gt;. Also, check the &lt;a href=&#34;https://man7.org/linux/man-pages/man5/xfs.5.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;manpage&lt;/a&gt;
+
+ for &lt;code&gt;allocsize=&lt;/code&gt; and also check &lt;a href=&#34;https://linux-xfs.oss.sgi.narkive.com/jjjfnyI1/faq-xfs-speculative-preallocation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;/proc/sys/fs/xfs/speculative_prealloc_lifetime&lt;/code&gt;&lt;/a&gt;
+
+.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;locality&#34;&gt;
+    &lt;a href=&#34;#locality&#34;&gt;
+	Locality
+    &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;XFS does not use allocation groups for locality much.
+They exist mostly for concurrency.
+Instead, file placement is mostly around directories and existing blocks of the current file.
+The only exception is &amp;ldquo;new directories&amp;rdquo;, which are placed &amp;ldquo;away&amp;rdquo; from their parent directory by putting them into a different AG.&lt;/p&gt;
+&lt;p&gt;In large files, if new extents need to be placed, they go &amp;ldquo;initially near the inode, then near the existing block in the file which is closest to the offset in the file for which we are allocating space&amp;rdquo;, as the paper specifies.
+This places the inode close to the start of the file, and blocks added later to whatever is already present.&lt;/p&gt;
+&lt;h2 id=&#34;large-directories&#34;&gt;
+    &lt;a href=&#34;#large-directories&#34;&gt;
+	Large directories
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In the traditional Unix filesystem and in BSD FFS, directory name lookups are linear operations.
+Large directories slow this down a lot, for any kind of pathname to inode translation.&lt;/p&gt;
+&lt;p&gt;XFS chose the ubiquitous B+-Tree as a structure for directories, too, but with a quirk:
+Since the keys are supposed to be filenames, a variable length structure, they would be completely different from all the other tree implementations in the filesystem.
+The XFS authors did not like this idea, so they are hashing the filename into a fixed 4-byte name hash, and then store one or more directory entries as &lt;code&gt;(name, inode)&lt;/code&gt; pairs in the value.&lt;/p&gt;
+&lt;p&gt;There was some tradeoff discussion involved in this, but the authors found that short keys allow storing many entries per block,
+leading to wide trees, and thus faster lookups.
+They boast &amp;ldquo;We can have directories with millions of entries&amp;rdquo;, something that was previously unthinkable in Unix filesystems.&lt;/p&gt;
+&lt;h1 id=&#34;a-lot-of-code&#34;&gt;
+    &lt;a href=&#34;#a-lot-of-code&#34;&gt;
+	A lot of code
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/xfs-scaling.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+
+&lt;em&gt;XFS Benchmarks in 1994 show nice and welcome linear scaling behavior that utilizes the hardware offered well.
+It handles well on large boxes with (for 1994) high core-counts.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;XFS is a large filesystem.
+Linux ext2 is only 5000 lines of kernel code (and about 10x this in user-land).
+XFS is 50.000 lines of kernel code, and that is without the IRIX volume manager XLV (in Linux, the XFS port uses LVM2 instead).&lt;/p&gt;
+&lt;p&gt;XFS was released under the GNU GPL in May 1999, and was ported into the Linux kernel starting in 2001.
+As of 2014, it was supported in most Linux distributions and RHEL used it as the default filesystem.
+And even in 2024 it is still holding up reasonably well, on HDD and on flash.&lt;/p&gt;
+&lt;p&gt;It still is the filesystem with the best scaling behavior, the best concurrency behavior, and the most consistent commit times,
+which makes it the preferred filesystem for any kind of database usage.
+This is due to the elimination of several global locks that impair concurrent usage and performance in large filesystems,
+and due to the consistent use of B+-Tree structures with &lt;code&gt;O(log(n))&lt;/code&gt; scaling behavior where before algorithms with worse scaling behavior have been used.
+The use of extents also allows dynamically growing I/O sizes, benefiting throughput,
+and together with the novel idea of delayed allocation encourage contiguous file placement.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>50 years in filesystems: 1984</title>
       <link>https://blog.koehntopp.info/2023/05/06/50-years-in-filesystems-1984.html</link>
@@ -104,7 +839,7 @@ This causes small disk seeks, and slow I/O.&lt;/em&gt;&lt;/p&gt;
 Larger disk blocks benefit throughput in two ways:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Larger disk blocks provide larger units of I/O, so more data is transferred in a single I/O operation.&lt;/li&gt;
-&lt;li&gt;Larger disk blocks also allow the filesystem to store more file pointers in an indirect block, greatly reducing the number of indirect blick accesses.
+&lt;li&gt;Larger disk blocks also allow the filesystem to store more file pointers in an indirect block, greatly reducing the number of indirect block accesses.
 This is primarily a problem if indirect blocks are not cached in a file system buffer cache.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The paper quotes the throughput of an already marginally optimized, traditional Unix filesystem at around 4% of the theoretical maximum,
@@ -122,7 +857,9 @@ The authors instead aim for a solution that places files sensibly in the first p
 	Cylinder Groups and understanding CHS
     &lt;/a&gt;
 &lt;/h3&gt;
-&lt;p&gt;The BSD FFS understands the physical layout of a harddisk, with cylinders, heads and sectors (CHS).
+&lt;p&gt;The BSD FFS understands the physical layout of a harddisk, with &lt;a href=&#34;https://en.wikipedia.org/wiki/Cylinder-head-sector&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cylinders, heads and sectors&lt;/a&gt;
+
+ (CHS).
 It divides the disk into cylinder groups, adjacent tracks of all disk heads.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/05/cylinder-groups.png&#34; alt=&#34;&#34;  /&gt;
@@ -2864,1073 +3601,6 @@ Woher kommen die Routen?&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>rwx - sonst nix?</title>
-      <link>https://blog.koehntopp.info/1996/03/01/rwx-sonst-nix.html</link>
-      <pubDate>Fri, 01 Mar 1996 09:00:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/1996/03/01/rwx-sonst-nix.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;aus &amp;ldquo;Linux Magazin&amp;rdquo;, Ausgabe 3/96.&lt;/strong&gt;&lt;/p&gt;
-&lt;h1 id=&#34;rwx---sonst-nix&#34;&gt;
-    &lt;a href=&#34;#rwx---sonst-nix&#34;&gt;
-	rwx - sonst nix?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;In jedem Buch über UNIX wird das UNIX-Rechtesystem ungefähr in Kapitel 2 vollständig erläutert und es bleiben keine Frage mehr offen.
-Wieso also ein Artikel über Zugriffsrechte?
-Nun, dieser Artikel erklärt Zugriffsrechte für Leute, die es ganz genau wissen wollen:
-Welche Rechte werden für den Zugriff auf eine Datei benötigt?
-Wer prüft die Rechte und wie passiert das?&lt;/p&gt;
-&lt;p&gt;Wie oft hört man Redewendungen wie &amp;ldquo;Ich öffne jetzt einmal diese Datei&amp;hellip;&amp;rdquo; oder &amp;ldquo;Ich habe keine Zugriffsrechte, um auf dieses Verzeichnis zuzugreifen.&amp;rdquo;
-Solche Formulierungen sind zwar üblich und auch jedermann verständlich, weil sie so schön bildhaft sind.
-Aber wenn man über Zugriffsrechte reden möchte, sind sie eher schädlich als hilfreich.&lt;/p&gt;
-&lt;p&gt;Natürlich öffnet ein User niemals eine Datei oder greift auf ein Verzeichnis zu.
-Prozesse tätigen Systemaufrufe und der Kernel öffnet Dateien oder liest Verzeichnisse im Auftrag und mit den Rechten dieses Prozesses.
-Solche Unterscheidungen sind auf den ersten Blick Haarspaltereien.
-Aber wenn man sich den Spaß macht und die Sache einmal zu Ende verfolgt, wird man feststellen, daß sich auf diese Weise einige Dinge besser verstehen und leichter erklären lassen.
-Der Autor will sich also in  diesem Artikel einer besonders genauen Sprache befleißigen.&lt;/p&gt;
-&lt;h2 id=&#34;woher-kommen-zugriffsrechte&#34;&gt;
-    &lt;a href=&#34;#woher-kommen-zugriffsrechte&#34;&gt;
-	Woher kommen Zugriffsrechte?
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Zugriffsrechte und Eigentümer sind etwas, das einem zunächst an Dateien ins Auge fällt.
-Eine Datei besteht in Linux aus einem Haufen Blöcken auf der Festplatte und einer Verwaltungsstruktur, der I-Node.
-Während die Blöcke die eigentliche Information in der Datei speichern, findet man in der I-Node fast alle Information &lt;em&gt;über&lt;/em&gt; die Datei - also Metainformation.
-Was die Rechte betrifft, findet man in der I-Node eine User-ID (UID), eine Group-ID (GID) und zwölf Rechtebits:
-Drei Bits mit den Bezeichnungen &lt;code&gt;sst&lt;/code&gt; und dann jeweils drei Dreiergruppen &lt;code&gt;rwx&lt;/code&gt;.
-&lt;code&gt;sst&lt;/code&gt; sind gewissermaßen Allzweckbits, die je nach Typ der Datei und Systemaufruf unterschiedliche Bedeutung haben können.
-Die Auswertung der übrigen neun Bits erfolgt dagegen relativ zentral in einer Funktion &lt;code&gt;permission()&lt;/code&gt;, auf die wir weiter unten eingehen werden.&lt;/p&gt;
-&lt;p&gt;Was dem UNIX-Neuling noch auffallen wird, ist die Tatsache, daß sich in der I-Node der Datei nicht der Username und der Gruppenname findet, sondern nur jeweils eine ID.
-Diese ID-Nummern werden vom ls-Kommando in Namen umgewandelt, falls man es ihm nicht verbietet.
-Man kann das ls-Kommando zwingen, die Angaben numerisch zu machen, indem man die Option &lt;code&gt;-n&lt;/code&gt; verwendet oder indem man dem Benutzer, der ls aufruft, den Lesezugriff auf /etc/passwd und /etc/group verweigert (&lt;a href=&#34;#experiment-1&#34;&gt;Experiment 1&lt;/a&gt;
-
-).&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;experiment-1&#34;&gt;
-    &lt;a href=&#34;#experiment-1&#34;&gt;
-	Experiment 1
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;root@white:~# ls -l /etc/passwd /etc/group
--rw-r--r--   1 root     root          281 Jul 15 14:39 /etc/group
--rw-r--r--   1 root     root         1163 Nov 28 15:30 /etc/passwd
-root@white:~# chmod 000 /etc/passwd /etc/group
-root@white:~# su - kris
-kris@white:~$ ls -l /tmp
--rw-r--r--   1 0        0               5 Nov 23 13:36 lall
--rw-rw-rw-   1 60000    20             11 Nov 28 21:32 lpq.00002b98
-drwxr-xr-x   2 0        0            1024 Nov 17 07:31 root
-kris@white:~$ exit
-root@white:~# chmod 644 /etc/passwd /etc/group
-root@white:~# ls -l /tmp
--rw-r--r--   1 root     root            5 Nov 23 13:36 lall
--rw-rw-rw-   1 smbguest users          11 Nov 28 21:32 lpq.00002b98
-drwxr-xr-x   2 root     root         1024 Nov 17 07:31 root
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Indem man kris die Leserechte auf die Dateien &lt;code&gt;/etc/passwd&lt;/code&gt; und &lt;code&gt;/etc/group&lt;/code&gt; entzieht, kann man demonstrieren, daß in einer I-Node nur numerische Information über Eigentümer und Gruppe einer Datei gespeichert wird.
-ls kann diese Zahlen durch Zugriff auf die Paßwortdatenbank in Namen übersetzen.
-Dazu existiert eine Familie von Bibliotheksfunktionen, die in &lt;code&gt;getpwent(3)&lt;/code&gt;, &lt;code&gt;getpwuid(3)&lt;/code&gt;, &lt;code&gt;getgrent(3)&lt;/code&gt; und &lt;code&gt;getgrgid(3)&lt;/code&gt; dokumentiert ist.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Zugriffe auf Dateien erfolgen durch den Kernel im Auftrag eines Prozesses.
-Der Kernel entscheidet anhand der Rechtebits in der Inode der Datei einer Datei, ob er den Zugriff auf die Datei ausführen wird oder nicht.
-Entscheidend für die Interpretation dieser Rechtebits ist noch, mit welcher UID und GID der Prozeß abläuft, der auf die Datei zugreifen möchte.
-Wie man in &lt;code&gt;/usr/include/linux/sched.h&lt;/code&gt; nachlesen kann, hat ein &lt;code&gt;struct task_struct&lt;/code&gt; in Linux die Felder&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	#define NGROUPS 32
-
-	unsigned short uid,euid,suid,fsuid;
-	unsigned short gid,egid,sgid,fsgid;
-	int     groups[NGROUPS];
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Linux unterscheidet sich hier von einem normalen UNIX:
-Für Zugriffe auf Dateien sind die Felder &lt;code&gt;fsuid&lt;/code&gt;, &lt;code&gt;fsgid&lt;/code&gt; und &lt;code&gt;groups[]&lt;/code&gt; relevant, während ein normales UNIX &lt;code&gt;euid&lt;/code&gt; und &lt;code&gt;egid&lt;/code&gt; verwendet.
-Natürlich unterscheidet sich Linux nicht so sehr von einem normalen UNIX, daß es inkompatibel wäre:
-Normalerweise ist die &lt;code&gt;fsuid/fsgid&lt;/code&gt; mit der &lt;code&gt;euid/egid&lt;/code&gt; des Prozesses identisch.
-Die Zugriffe auf Dateien erfolgen also mit der sogenannten effektiven User-ID und Group-ID eines Prozesses.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;#experiment-2&#34;&gt;Kasten 2&lt;/a&gt;
-
- zeigt, wie man feststellen kann, unter welchen IDs Zugriffe erfolgen.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;experiment-2&#34;&gt;
-    &lt;a href=&#34;#experiment-2&#34;&gt;
-	Experiment 2
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kris@white:~$ id
-uid=100(kris) gid=20(users) groups=20(users),11(floppy)
-kris@white:~$ su -
-Password:
-root@white:~# id
-uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy)
-root@white:~# exit
-kris@white:~$ id marit
-uid=101(marit) gid=20(users) groups=11(floppy)
-kris@white:~$ ls -l /tmp/bash
--rwsr-xr-x   1 root     root       295940 Nov 29 12:07 /tmp/bash
-kris@white:~$ /tmp/bash
-kris@white:~# id
-uid=100(kris) gid=20(users) euid=0(root) groups=20(users),11(floppy)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Jemand, der als &lt;code&gt;kris&lt;/code&gt; eingeloggt ist, greift normalerweise mit der UID 100, der GID 20 und den Einträgen 20 und 11 im Feld &lt;code&gt;groups[]&lt;/code&gt; auf Dateien zu.
-Ein Systemverwalter dagegen hat die UID und die GID 0 und noch weitere Einträge im Feld &lt;code&gt;groups[]&lt;/code&gt;.
-Mit einem Usernamen als Parameter kann man auch die IDs anderer Benutzer abfragen.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Effektive&lt;/em&gt; und &lt;em&gt;reale&lt;/em&gt; UID und GID müssen nicht immer übereinstimmen:
-Werden Programme mit gesetztem &lt;em&gt;Set User ID&lt;/em&gt;-Bit ausgeführt, kann sich die effektive UID eines Prozesses ändern - was &lt;em&gt;set user id&lt;/em&gt; genau ist und was das Bit bewirkt, werden wir später noch klären.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Wir halten fest:
-Dateien haben genau einen Eigentümer und gehören zu genau einer Gruppe, während ein Prozeß einen Eigentümer hat, aber zu bis zu 32 Gruppen gehören kann.
-Zugriffsrechte werden an Dateien in 12 Bit vermerkt.
-Die Interpretation dieser 12 Bit hängt ab vom Typ der Datei und von der Identität des zugreifenden Prozesses.&lt;/p&gt;
-&lt;h2 id=&#34;wo-werden-die-rechte-geprüft&#34;&gt;
-    &lt;a href=&#34;#wo-werden-die-rechte-gepr%c3%bcft&#34;&gt;
-	Wo werden die Rechte geprüft?
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Linux prüft Zugriffsrechte mit Hilfe der Funktion &lt;code&gt;permission()&lt;/code&gt;.
-Sie ist in &lt;code&gt;/usr/src/linux/fs/namei.c&lt;/code&gt; in den Zeilen 91 bis 114 definiert.
-Ein Parameter von &lt;code&gt;permission()&lt;/code&gt; ist ein Zeiger auf die I-Node der Datei, auf die zugegriffen wird.
-Außerdem muß der Funktion noch gesagt werden, welche Art von Zugriff auf die Datei gewünscht wird.
-&lt;code&gt;/usr/include/linux/fs.h&lt;/code&gt; definiert dazu in den Zeilen 35 bis 37 die Werte MAY_EXEC, MAY_WRITE und MAY_READ, die zu einer mask zusammengebaut werden können.
-Der &lt;a href=&#34;#experiment-3&#34;&gt;Kasten&lt;/a&gt;
-
- zeigt den Quelltext von &lt;code&gt;permission()&lt;/code&gt; und die Definitionen aus &lt;code&gt;fs.h&lt;/code&gt;.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;experiment-3&#34;&gt;
-    &lt;a href=&#34;#experiment-3&#34;&gt;
-	Experiment 3
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/src/linux/fs/namei.c:
-    91  /*
-    92   *      permission()
-    93   *
-    94   * is used to check for read/write/execute permissions on a file.
-    95   * We use &amp;#34;fsuid&amp;#34; for this, letting us set arbitrary permissions
-    96   * for filesystem access without changing the &amp;#34;normal&amp;#34; uids which
-    97   * are used for other things..
-    98   */
-    99  int permission(struct inode * inode,int mask)
-   100  {
-   101          int mode = inode-&amp;gt;i_mode;
-   102  
-   103          if (inode-&amp;gt;i_op &amp;amp;&amp;amp; inode-&amp;gt;i_op-&amp;gt;permission)
-   104                  return inode-&amp;gt;i_op-&amp;gt;permission(inode, mask);
-   105          else if ((mask &amp;amp; S_IWOTH) &amp;amp;&amp;amp; IS_IMMUTABLE(inode))
-   106                  return -EACCES; /* Nobody gets write access
-                        to an immutable file */
-   107          else if (current-&amp;gt;fsuid == inode-&amp;gt;i_uid)
-   108                  mode &amp;gt;&amp;gt;= 6;
-   109          else if (in_group_p(inode-&amp;gt;i_gid))
-   110                  mode &amp;gt;&amp;gt;= 3;
-   111          if (((mode &amp;amp; mask &amp;amp; 0007) == mask) || fsuser())
-   112                  return 0;
-   113          return -EACCES;
-   114  }
-
-/usr/include/linux/kernel.h:
-    68  #define fsuser() (current-&amp;gt;fsuid == 0)
-
-/usr/include/linux/fs.h:
-    35  #define MAY_EXEC 1
-    36  #define MAY_WRITE 2
-    37  #define MAY_READ 4
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Die Funktion &lt;code&gt;permission()&lt;/code&gt; ist der zentrale Kontrollpunkt für Zugriffsrechte.
-An ihr kann man sehen, nach welchem Verfahren Linux die Zugriffsrechte prüft.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Der Algorithmus, nach dem &lt;code&gt;permission()&lt;/code&gt; die Zugriffsrechte prüft, ist sehr einfach:
-Zunächst einmal (Zeile 103-104) wird festgestellt, ob für die zu prüfende I-Node im Feld &lt;code&gt;i_op-&amp;gt;permission()&lt;/code&gt; der I-Node Struktur eine dateisystemspezifische &lt;code&gt;permission()&lt;/code&gt;-Routine definiert ist.
-Auf diese Weise können Dateisysteme, die erweiterte oder von UNIX verschiedene Zugriffsrechte implementieren, ihre eigene Routine zum Testen des Zugriffs bereitstellen.
-Derzeit (Kernel 1.2.13) tut dies nur das ext2-Dateisystem mit der Funktion &lt;code&gt;ext2_permission()&lt;/code&gt;, die in &lt;code&gt;/usr/src/linux/fs/ext2/acl.c&lt;/code&gt; definiert ist (und die in Kernel 1.2.13 nichts anderes tut als Zeilen 107-113 der normalen &lt;code&gt;permission()&lt;/code&gt;-Funktion, also noch vollkommen sinnlos ist).&lt;/p&gt;
-&lt;p&gt;Die Zeilen 105-106 prüfen dann, ob die Datei als immutable file (unveränderliche Datei) gekennzeichnet ist.
-Wenn dies der Fall ist und in mask MAY_WRITE gesetzt ist, wird der Zugriff auf die Datei verweigert und der Fehler permission denied (EACCES) zurückgegeben.
-Der Code verwendet in Zeile 105 seltsamerweise die Definition S_IWOTH (das Schreibrecht für other aus der Includedatei &lt;code&gt;linux/stat.h&lt;/code&gt;) anstatt korrekterweise die Definition MAY_WRITE zu verwenden.
-Da aber beide Definitionen den Wert 2 haben, kommt es nicht zu einem Fehler.
-Da das ext2-Dateisystem eine eigene &lt;code&gt;permission()&lt;/code&gt;-Routine bereitstellt, die den Test auf immutable files nicht enthält, kann man dort unveränderliche Dateien beschreiben.
-Das ist ein Fehler, denn an anderen Stellen kennt das ext2-Dateisystemen &lt;code&gt;IS_IMMUTABLE()&lt;/code&gt; und nimmt Rücksicht darauf.&lt;/p&gt;
-&lt;p&gt;Der entscheidende Code befindet sich dann in den Zeilen 107-113:
-&lt;code&gt;current&lt;/code&gt; bezeichnet den &lt;code&gt;struct task&lt;/code&gt; des aktuellen Prozesses, also desjenigen Prozesses, der soeben versucht hat, auf eine Datei zuzugreifen und dessen Zugriffsrechte jetzt geprüft werden müssen.
-Falls die &lt;code&gt;fsuid&lt;/code&gt; dieses Prozesses mit der &lt;code&gt;i_uid&lt;/code&gt; der Datei übereinstimmen, werden die Zugriffsrechte des linken &lt;code&gt;rwx&lt;/code&gt;-Tripels der Datei für die Rechteprüfung verwendet (Zeilen 107 und 108).
-Andernfalls prüft Linux mit der Funktion &lt;code&gt;in_group_p()&lt;/code&gt;, ob irgendeine GID des aktuellen Prozesses mit der &lt;code&gt;i_gid&lt;/code&gt; der Datei übereinstimmt.
-Ist dies der Fall, werden die Zugriffsrechte des mittleren &lt;code&gt;rwx&lt;/code&gt;-Tripels verwendet (Zeilen 109-110).
-Ist weder eine Übereinstimmung der User- noch der Group-IDs zu finden, werden die Defaultzugriffsrechte aus dem rechten Tripel verwendet.&lt;/p&gt;
-&lt;p&gt;Die Funktion &lt;code&gt;in_group_p()&lt;/code&gt; ist in &lt;code&gt;/usr/src/linux/kernel/sys.c&lt;/code&gt; in den Zeilen 585-599 definiert.
-Sie testet, ob ihr Argument gleich der &lt;code&gt;fsgid&lt;/code&gt; des aktuellen Prozesses ist oder ob das Argument gleich einer der Gruppen aus dem &lt;code&gt;groups[]&lt;/code&gt;-Array des Prozesses ist.
-Der Name der Funktion erklärt sich aus der &amp;ldquo;p-convention&amp;rdquo; (siehe Jargon-File, ursprünglich eine Sitte aus dem Bereich der LISP-Programmierung):
-Es handelt sich um ein Prädikat, also eine Funktion, die entweder &lt;code&gt;true&lt;/code&gt; oder &lt;code&gt;false&lt;/code&gt; liefert, je nachdem ob die zu prüfende Aussage wahr oder falsch ist.&lt;/p&gt;
-&lt;p&gt;Die Bedingung in Zeile 111 entscheidet jetzt, ob der Zugriff auf eine I-Node gewährt wird oder nicht.
-Wenn mindestens die in &lt;code&gt;mask&lt;/code&gt; gewünschten Rechtebits in den durch &lt;code&gt;mode&lt;/code&gt; schon in Zeile 101 vorab ermittelten Rechten enthalten sind oder der Zugriff mit Superuser-Privilegien erfolgt (&lt;code&gt;fsuser()&lt;/code&gt; ist wahr), wird der Zugriff auf die Datei gewährt.
-In allen anderen Fällen wird ein Fehler permission denied (EACCES) geliefert.&lt;/p&gt;
-&lt;p&gt;Wir halten fest:
-Einzelne Dateisysteme können besondere Rechteroutinen haben.
-Im Normalfall gelten aber die Userrechte für den Eigentümer einer Datei, die Gruppenrechte für jeden, der Mitglied in der Gruppe der Datei ist und die Other-Rechte für alle anderen.
-Die Prüfung dieser Rechte erledigt Linux an einer zentralen, leicht wartbaren Stelle im System.&lt;/p&gt;
-&lt;h2 id=&#34;pfade-und-rechte-entlang-des-pfades&#34;&gt;
-    &lt;a href=&#34;#pfade-und-rechte-entlang-des-pfades&#34;&gt;
-	Pfade, und Rechte entlang des Pfades
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Alle UNIX-Kernelfunktionen, die mit Dateien hantieren, nehmen Pfadnamen als Parameter an.
-Intern verwendet Linux jedoch wie alle Unices ausschließlich I-Nodes, um mit Dateien zu arbeiten.
-Die Umwandlung eines Pfadnamens in eine I-Node übernimmt in Linux eine von mehreren leicht unterschiedlichen &lt;code&gt;namei()&lt;/code&gt;-Funktionen, die in &lt;code&gt;/usr/src/linux/fs/namei.c&lt;/code&gt; definiert sind.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;namei()&lt;/code&gt; bekommt, vereinfacht dargestellt, einen Pfadnamen und die I-Node eines Verzeichnisses als Startpunkt übergeben.
-In diesem Verzeichnis wird mittels der Funktion &lt;code&gt;lookup()&lt;/code&gt; die I-Node der ersten Komponente des Pfadnamens gesucht.
-Diese I-Node wird jetzt als Startpunkt genommen, um die nächste Komponente des Pfadnames durch &lt;code&gt;lookup()&lt;/code&gt; suchen zu lassen und so weiter bis zum Ende des Pfades.
-Am Ende des Pfades ist das Ergebnis dieser Operation genau die I-Node des Verzeichnisses, das durch den Pfadnamen bezeichnet wird.&lt;/p&gt;
-&lt;p&gt;Der Code von &lt;code&gt;lookup()&lt;/code&gt; ist nicht ganz so einfach wie diese Erklärung, weil er so unschöne Dinge wie Mountpoints, &amp;ldquo;..&amp;quot;-Komponenten im Pfadnamen und ungültige Pfadnamen berücksichtigen muß, aber er ist auch nicht sonderlich kompliziert.
-Für unsere Zwecke sind jedoch nur wenige Zeilen von &lt;code&gt;lookup()&lt;/code&gt; wesentlich:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/src/linux/fs/namei.c:
-   163          perm = permission(dir,MAY_EXEC);
-
-   181          if (perm != 0) {
-   182                  iput(dir);
-   183                  return perm;
-   184          }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Um in einem Verzeichnis einen Namen nachschlagen zu können, muß der aufrufende Prozeß das &lt;code&gt;x&lt;/code&gt;-Recht an diesem Verzeichnis haben.
-Hat er dieses &lt;code&gt;x&lt;/code&gt;-Recht nicht, schlägt der Aufruf fehl - ganz gleich, welche Kernelfunktion aufgerufen wurde.
-Die Folgen können ziemlich fatal sein, wie &lt;a href=&#34;#experiment-4&#34;&gt;Experiment 4&lt;/a&gt;
-
- demonstriert.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;experiment-4&#34;&gt;
-    &lt;a href=&#34;#experiment-4&#34;&gt;
-	Experiment 4
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Warnung:&lt;/strong&gt;
-Dieses Experiment darf nur durchgeführt werden, wenn in einem zweiten Fenster noch eine weitere Rootshell aktiv ist.
-Andernfalls kann man sich so die Systeminstallation ruinieren.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kris@white:~$ ls -ld /
-drwxr-xr-x  20 root     root         1024 Nov 29 22:29 /
-kris@white:~$ su - 
-root@white:~# chmod go-x /
-root@white:~# ls -ld /
-drwxr--r--  20 root     root         1024 Nov 29 22:29 /
-root@white:~# exit
-kris@white:~$ ls 
-csh: /bin/ls: Permission denied
-kris@white:~$ su
-csh: /bin/su: Permission denied
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In einem anderen Fenster mit einer aktiven Rootshell:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;root@white:~# chmod 755 / 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Das Hauptverzeichnis &lt;code&gt;/&lt;/code&gt; hat normalerweise die Rechte 755.
-Jeder Benutzer hat also &lt;code&gt;x&lt;/code&gt;-Recht am Verzeichnis &lt;code&gt;/&lt;/code&gt; und kann damit absolute Pfadnamen auflösen.
-Nimmt man dem Root-Verzeichnis die &lt;code&gt;x&lt;/code&gt;-Rechte, kann kein normaler Benutzer mehr absolute Pfadnamen auflösen und jeder Aufruf eines Systemkommandos schlägt fehl.
-Insbesondere ist auch kein &lt;code&gt;su&lt;/code&gt; mehr möglich, um die Operation rückgängig zu machen.
-Daher muß schon vor dem Beginn des Experimentes eine zweite, aktive Rootshell bereitstehen, um die Zugriffsrechte wieder zu reparieren.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Wir halten fest:
-Jede richtige Antwort auf die Frage &amp;ldquo;Welche Rechte braucht man, um mit einer Datei  eine bestimmte Operation (Öffnen, Löschen, Umbenennen und so weiter) durchführen zu können?&amp;rdquo; muß mit den Worten &amp;ldquo;Man braucht die &lt;code&gt;x&lt;/code&gt;-Rechte an den Verzeichnissen entlang des Pfades und &amp;hellip;&amp;rdquo; beginnen.
-Ohne diese &lt;code&gt;x&lt;/code&gt;-Rechte kann der Pfadname von Linux nicht aufgelöst werden und was immer sich an seinem Ende befindet, ist nicht zugreifbar.
-Weil wirklich jede Antwort mit diesem Halbsatz beginnen muß, wird er oft weggelassen - vergessen darf man ihn trotzdem nicht!
-Die einzelne Operation (&lt;code&gt;open(2)&lt;/code&gt;, &lt;code&gt;unlink(2)&lt;/code&gt;, &lt;code&gt;rename(2)&lt;/code&gt; und so weiter) kann dann noch zusätzlich weitere Zugriffsrechte verlangen.&lt;/p&gt;
-&lt;h2 id=&#34;lese--und-schreibrechte-an-dateien&#34;&gt;
-    &lt;a href=&#34;#lese--und-schreibrechte-an-dateien&#34;&gt;
-	Lese- und Schreibrechte an Dateien
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Welche Zugriffsrechte werden nun wirklich benötigt, um eine Datei zu öffnen?
-Auch dies können wir im Linux-Kernel nachlesen:
-In &lt;code&gt;/usr/src/linux/fs/open.c&lt;/code&gt; befindet sich der Code des Systemaufrufes &lt;code&gt;open(2)&lt;/code&gt;.
-Die Funktion &lt;code&gt;sys_open()&lt;/code&gt;, die diese Kernelfunktion realisiert, ist nur sehr kurz.
-Sie tut kaum mehr, als &lt;code&gt;do_open()&lt;/code&gt; in derselben Datei mit den richtigen Parametern aufzurufen.
-Der Code von &lt;code&gt;do_open()&lt;/code&gt; beschäftigt sich hauptsächlich mit der Verwaltung der Dateitabelle des Kernels und ist für die Klärung unserer Frage nicht interessant.&lt;/p&gt;
-&lt;p&gt;Die eigentliche Arbeit des Öffnens der Datei überläßt er der Funktion &lt;code&gt;open_namei()&lt;/code&gt;, die wie bereits erklärt, den filename in eine I-Node umwandelt.
-Der Aufruf findet sich in Zeile 442 in &lt;code&gt;open.c&lt;/code&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   442          error = open_namei(filename,flag,mode,&amp;amp;inode,NULL);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dabei ist &lt;code&gt;filename&lt;/code&gt; der Name der zu öffnenden Datei, &lt;code&gt;flag&lt;/code&gt; der Modus, in dem die Datei geöffnet werden soll (O_RDONLY, O_CREAT und so weiter) und &lt;code&gt;mode&lt;/code&gt; ist nur interessant, wenn die Datei angelegt werden soll:
-Dann soll sie mit den in &lt;code&gt;mode&lt;/code&gt; angegebenen Wunschrechten angelegt werden.
-In &lt;code&gt;inode&lt;/code&gt; liefert die Funktion die I-Node der geöffneten Datei  zurück.&lt;/p&gt;
-&lt;p&gt;Der Code von &lt;code&gt;open_namei()&lt;/code&gt; steht dann in &lt;code&gt;/usr/src/linux/fs/namei.c&lt;/code&gt;, von dem wir uns ja weiter oben schon Teile angesehen haben.
-&lt;code&gt;open_namei()&lt;/code&gt; ist eine lange Funktion, sie erstreckt sich von Zeile 333 bis Zeile 439.
-Die Umwandlung des &lt;code&gt;filename&lt;/code&gt;-Parameters in die &lt;code&gt;inode&lt;/code&gt; erfolgt in zwei Schritten.
-In einem ersten Schritt wird mithilfe von &lt;code&gt;dir_namei()&lt;/code&gt; erst einmal die I-Node des Verzeichnisses lokalisiert, in dem sich die zu öffnende Datei befindet.
-Der zweite Schritt ist dann leicht unterschiedlich, je nachdem, ob die die öffnende Datei bereits existiert oder ob sie wegen eines gesetzten O_CREAT erst noch erzeugt werden muß.&lt;/p&gt;
-&lt;p&gt;In Zeile 342 von &lt;code&gt;namei.c&lt;/code&gt; wird zunächst die I-Node des Verzeichnisses lokalisiert, in dem eine Datei geöffnet werden soll. Das ist der erste Schritt zum Öffnen der Datei.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   342          error = dir_namei(pathname,&amp;amp;namelen,&amp;amp;basename,base,&amp;amp;dir);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dabei wird von &lt;code&gt;dir_namei()&lt;/code&gt; die Variable &lt;code&gt;basename&lt;/code&gt; mit dem Namen der Datei im Verzeichnis belegt, &lt;code&gt;namelen&lt;/code&gt; mit der Länge dieses Namens. &lt;code&gt;dir&lt;/code&gt; ist ein Zeiger auf die I-Node des Verzeichnisses, indem die Datei geöffnet werden soll, das eigentliche Ergebnis dieses Aufrufes (und wird in Zeile 361 weiterverwendet).
-Wenige Zeilen später wird fallweise unterschieden, ob eine Datei angelegt werden soll oder nicht (Zeile 359).&lt;/p&gt;
-&lt;p&gt;Soll eine Datei angelegt werden, muß überprüft werden, ob eine Datei dieses Namens schon existiert (Zeile 361).
-Wenn dies der Fall ist und außerdem O_EXCL als Parameter beim &lt;code&gt;open()&lt;/code&gt; angegeben war, muß das &lt;code&gt;open()&lt;/code&gt; fehlschlagen (Zeile 362-366).&lt;/p&gt;
-&lt;p&gt;Existiert die Datei im Verzeichnis noch nicht, kann versucht werden, sie zu erzeugen.
-Dazu müssen w- und x-Recht am Verzeichnis vorhanden sein, daß die Datei einmal enthalten soll (Zeile 367).
-Außerdem muß eine &lt;code&gt;create&lt;/code&gt;-Funktion in den I-Node-Operations für das Verzeichnis definiert sein (Zeile 369-370).
-Ist dies nicht der Fall, wird ebenfalls  &lt;code&gt;permission denied&lt;/code&gt; gemeldet.&lt;/p&gt;
-&lt;p&gt;Auf Dateisystemen, die read-only angemeldet sind, dürfen selbstverständlich ebenfalls keine Dateien angelegt werden (Zeile 371-372).
-Erst wenn alle diese Vorbedingungen erfüllt sind, darf die Datei wirklich angelegt werden und ist damit geöffnet.&lt;/p&gt;
-&lt;p&gt;Wir halten fest: Um eine Datei in einem Verzeichnis neu anlegen zu können, wird also das x-Recht an allen Verzeichnissen entlang des Pfades dieser Datei benötigt und das w- und das x-Recht an dem Verzeichnis, in dem die Datei neu anzulegen ist.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   359          if (flag &amp;amp; O_CREAT) {
-   361                  error = lookup(dir,basename,namelen,&amp;amp;inode);
-   362                  if (!error) {
-   363                          if (flag &amp;amp; O_EXCL) {
-   364                                  iput(inode);
-   365                                  error = -EEXIST;
-   366                          }
-   367                  } else if ((error = permission(dir,
-                                              MAY_WRITE | MAY_EXEC)
-   368                          ;       /* error is already set! */
-   369                  else if (!dir-&amp;gt;i_op || !dir-&amp;gt;i_op-&amp;gt;create)
-   370                          error = -EACCES;
-   371                  else if (IS_RDONLY(dir))
-   372                          error = -EROFS;
-   373                  else {
-   
-   375                          error = 
-                     dir-&amp;gt;i_op-&amp;gt;create(dir,basename,namelen,mode,res_inode);
-   
-   379                  }
-   381          } else
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Soll dagegen eine bereits existierende Datei geöffnet werden, muß zunächst ihr Name im Verzeichnis gesucht werden, um eine I-Node für diese Datei zu bekommen (Zeile 382).&lt;/p&gt;
-&lt;p&gt;Es kann sein, daß die so gefundene I-Node nicht die I-Node der wirklich zu öffnenden Datei ist, sondern daß es sich um ein Symlink handelt.
-Ein Aufruf von &lt;code&gt;follow_link()&lt;/code&gt; regelt dies (Zeile  387).&lt;/p&gt;
-&lt;p&gt;Der folgende Code stellt dann sicher, daß ein Verzeichnis niemals zum Schreiben geöffnet werden darf (Zeile 390-393).
-Wäre dies nicht so, könnte man in Verzeichnissen beliebige I-Node-Nummern eintragen und so die Zugriffsrechte entlang des Pfades unterlaufen.&lt;/p&gt;
-&lt;p&gt;Der eigentliche Rechtetest erfolgt dann in den Zeilen 394-397, in denen die gewünschten Zugriffsrechte in &lt;code&gt;flag&lt;/code&gt; mit den vorhandenen Rechten in der inode verglichen werden.
-Nach diesen Zeilen folgt weiterer Code, der Gerätedateien in mit &lt;code&gt;nodev&lt;/code&gt; gemounteten Dateisystemen, read-only Dateisysteme, append-only Files und die Option O_TRUNC beim Öffnen behandelt, uns hier aber bei unserer Frage nichts neues bringt.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   382                  error = lookup(dir,basename,namelen,&amp;amp;inode);
-
-   387          error = follow_link(dir,inode,flag,mode,&amp;amp;inode);
-
-   390          if (S_ISDIR(inode-&amp;gt;i_mode) &amp;amp;&amp;amp; (flag &amp;amp; 2)) {
-   391                  iput(inode);
-   392                  return -EISDIR;
-   393          }
-   394          if ((error = permission(inode,ACC_MODE(flag))) != 0) {
-   395                  iput(inode);
-   396                  return error;
-   397          }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Wir halten fest: Beim Öffnen einer vorhandenen Datei wird das x-Recht an allen Verzeichnisses entlang des Pfade dieser Datei benötigt und das passende r- und/oder w-Recht an der Datei selbst.&lt;/p&gt;
-&lt;p&gt;Offenbar ist das Öffnen einer Datei und die Kontrolle der Zugriffsrechte für ein Betriebssystem eine recht anstrengende und langsame Angelegenheit.
-Neben der zeitraubenden Umwandlung von Pfadnamen in I-Nodes müssen auch noch zahlreiche Rechteflags an allen Verzeichnissen und an der Datei selbst kontrolliert werden und zahlreiche Sonderfälle berücksichtigt werden.&lt;/p&gt;
-&lt;p&gt;Zum Glück ist dieser ganze Aufwand auf das Öffnen einer Datei beschränkt.
-Ist die Datei erst einmal geöffnet, findet keine weitere Rechtekontrolle mehr statt. &lt;code&gt;read()&lt;/code&gt; und &lt;code&gt;write()&lt;/code&gt; können sich also auf ihre eigentliche Aufgabe, das Datenschaufeln, konzentrieren und müssen sich nicht mit der Kontrolle von Zugriffsrechten herumschlagen.&lt;/p&gt;
-&lt;h2 id=&#34;ausführungsrechte-an-dateien&#34;&gt;
-    &lt;a href=&#34;#ausf%c3%bchrungsrechte-an-dateien&#34;&gt;
-	Ausführungsrechte an Dateien
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Um das x-Recht an Dateien zu verstehen, müssen wir uns den Systemaufruf &lt;code&gt;execve(2)&lt;/code&gt; ansehen.
-Dieser Systemaufruf ist die einzige Methode, um in UNIX ein neues Programm zu laden.
-In Linux, das auf mehr als einer Prozessorplattform ablaufen kann, ist ein Teil des Aufrufes systemspezifisch.
-Für Intel-Prozessoren befindet sich in &lt;code&gt;/usr/src/linux/arch/i386/kernel/process.c&lt;/code&gt; der Code von &lt;code&gt;sys_execve()&lt;/code&gt;, der die Parameter des Systemaufrufes beschafft und dann den plattformunabhängigen Code in &lt;code&gt;/usr/src/linux/fs/exec.c&lt;/code&gt; aufruft.
-Der Funktion &lt;code&gt;do_execve()&lt;/code&gt; werden außer dem Namen der zu startenden Binärdatei auch noch ein Feld von Parameterstrings und ein Feld von Environmentvariablen sowie ein Satz initiale Prozessorregister mitgegeben.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;do_execve()&lt;/code&gt; beschafft sich durch einen Aufruf von &lt;code&gt;open_namei()&lt;/code&gt; zunächst einmal die I-Node der auszuführenden Datei.
-Weiter oben ist schon gezeigt worden, daß dies nur gelingen kann, wenn auf allen Verzeichnissen entlang des Pfades zu dieser Datei x-Rechte vorhanden sind.&lt;/p&gt;
-&lt;p&gt;Der folgende Code stellt sicher, daß die ausführbare Datei ein &lt;code&gt;regular file&lt;/code&gt; ist.
-Wenn das Dateisystem mit der Option &lt;code&gt;noexec&lt;/code&gt; gemountet ist, schlägt der Aufruf von &lt;code&gt;execve()&lt;/code&gt; in jedem Fall fehl, ebenso wenn der Superblock zugehörigen Dateisystems nicht erreichbar ist.&lt;/p&gt;
-&lt;p&gt;Nach diesen elementaren Überprüfungen folgt der Code, der &lt;em&gt;set user id/set group id&lt;/em&gt; handhabt und das x-Recht testet.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;ausführungsrecht-und-suidsgid-beim-execve-systemaufrufh3&#34;&gt;
-    &lt;a href=&#34;#ausf%c3%bchrungsrecht-und-suidsgid-beim-execve-systemaufrufh3&#34;&gt;
-	Ausführungsrecht und SUID/SGID beim execve() Systemaufruf&lt;/h3&gt;
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/src/linux/fs/exec.c:
-   586          i = bprm.inode-&amp;gt;i_mode;
-   587          if (IS_NOSUID(bprm.inode) &amp;amp;&amp;amp; (((i &amp;amp; S_ISUID)
-                &amp;amp;&amp;amp; bprm.inode-&amp;gt;i_uid != current-&amp;gt;
-   588              euid) || ((i &amp;amp; S_ISGID) 
-                &amp;amp;&amp;amp; 	!in_group_p(bprm.inode-&amp;gt;i_gid))) &amp;amp;&amp;amp; !suser()) {
-   589                  retval = -EPERM;
-   590                  goto exec_error2;
-   591          }
-   592          /* make sure we don&amp;#39;t let suid, sgid files be ptraced. */
-   593          if (current-&amp;gt;flags &amp;amp; PF_PTRACED) {
-   594                  bprm.e_uid = current-&amp;gt;euid;
-   595                  bprm.e_gid = current-&amp;gt;egid;
-   596          } else {
-   597                  bprm.e_uid = 
-                        (i &amp;amp; S_ISUID) ? bprm.inode-&amp;gt;i_uid : current-&amp;gt;euid;
-   598                  bprm.e_gid = 
-                        (i &amp;amp; S_ISGID) ? bprm.inode-&amp;gt;i_gid : current-&amp;gt;egid;
-   599          }
-   600          if ((retval = permission(bprm.inode, MAY_EXEC)) != 0)
-   601                  goto exec_error2;
-   602          if (!(bprm.inode-&amp;gt;i_mode &amp;amp; 0111) &amp;amp;&amp;amp; fsuser()) {
-   603                  retval = -EACCES;
-   604                  goto exec_error2;
-   605          }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Im Rahmen der Funktion &lt;code&gt;do_execve()&lt;/code&gt; werden das SUID- und SGID-Bit der auszuführenden Datei geprüft und Linux bestimmt, unter welcher euid und egid das Programm zur Ausführung kommt.
-Danach wird getestet, ob ausreichende Rechte vorhanden sind, um das Programm starten zu dürfen.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Zunächst bestimmt der Kernel die Rechtebits der auszuführenden Datei (Zeile 586).
-Falls das Dateisystem, auf dem sich diese Datei befindet, mit der Option &lt;code&gt;nosuid&lt;/code&gt; angemeldet ist und die Ausführung der Datei einen Wechsel der effektiven User-ID oder Group-ID bewirken würde, darf nur der Superuser die Datei ausführen (Zeilen 587-591).
-Danach wird bestimmt, unter welcher UID und GID das neue Programm zur Ausführung kommen wird.&lt;/p&gt;
-&lt;p&gt;Falls das Programm zur Zeit mittels &lt;code&gt;ptrace()&lt;/code&gt; in einem Debugger bearbeitet wird, werden sich seine Rechte nicht ändern (Zeilen 592-595).
-Auf diese Weise wird verhindert, daß man durch tracen eines SUID-Programmes und nachträgliches Verändern seines Codes zusätzliche Rechte gewinnen könnte.&lt;/p&gt;
-&lt;p&gt;Bei normalen Programmen (Zeilen 596-599) wird die effektive UID aus der I-Node der auszuführenden Datei übernommen, wenn das SUID-Bit an der Datei gesetzt ist, andernfalls wird die UID des Vorläufers ererbt.
-Analog wird mit der GID verfahren.&lt;/p&gt;
-&lt;p&gt;Der Kernel wird das Programm jedoch nur ausführen, wenn die &lt;code&gt;permission()&lt;/code&gt;-Funktion feststellt, das MAY_EXEC-Recht vorhanden ist (Zeilen 600-601).
-Auch ein Superuser kann eine Datei nicht als Programm starten, wenn nicht wenigstens irgendein x-Recht an der Datei vorhanden ist (Zeilen 602-603).&lt;/p&gt;
-&lt;p&gt;Der folgende, sehr umfangreiche Code beschäftigt sich dann mit dem Handling von Shellscripten, die durch einen #!-Kommentar eingeleitet werden.
-Erst ab Zeile 701 kann der Kernel versuchen, tatsächlich ein Programm mit den gegebenen Eigenschaften auszuführen.&lt;/p&gt;
-&lt;p&gt;Wir halten fest:
-Um ein Programm starten zu dürfen, muß außer den x-Rechten an den Verzeichnissen entlang des Pfades auch das x-Recht an der Datei vorhanden sein.
-Ein Superuser kann eine Datei immerhin dann als Programm starten, wenn wenigsten irgendein x-Recht an der Datei vorhanden ist.
-Wenn das SUID-Bit an der zu startenden Datei gesetzt ist, wird die Datei unter der &lt;code&gt;euid&lt;/code&gt; des Dateieigentümers ausgeführt, sonst unter der &lt;code&gt;euid&lt;/code&gt; des aufrufenden Prozesses - Prozesse mit einer bestehenden Verbindung zu einem Debugger werden jedoch aus Sicherheitsgründen immer nur unter der &lt;code&gt;euid&lt;/code&gt; des aufrufenden Prozesses ausgeführt.
-Analog wird auch mit dem SGID-Bit verfahren.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;experiment-5&#34;&gt;
-    &lt;a href=&#34;#experiment-5&#34;&gt;
-	Experiment 5
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;root@white:/tmp# cat &amp;gt;&amp;gt; x
-#! /bin/sh --
-
-id
-root@white:/tmp# chmod 6555 x
-root@white:/tmp# ls -l x
--r-sr-sr-x   1 root     root           18 Dec 10 21:14 x
-root@white:/tmp# exit
-kris@white:~$ /tmp/x
-uid=100(kris) gid=20(users) groups=20(users),11(floppy)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Shellscripte mit gesetztem SUID- und SGID-Bit werden trotzdem mit normalen euid- und egid-Werten aufgerufen.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;a href=&#34;#experiment-5&#34;&gt;Experiment 5&lt;/a&gt;
-
- zeigt, wie der Kernel mit Shellscripten umgeht, die mit SUID- oder SGID-Rechten versehen sind.
-Das liegt daran, daß bei der Interpretation von #!-Zeichen der Name des auszuführenden Programmes verändert wird und danach der &lt;code&gt;execve()&lt;/code&gt;-Aufruf komplett neu gestartet wird.
-Aus dem Aufruf von &lt;code&gt;/tmp/x&lt;/code&gt; wird so durch die Interpretation der #!-Zeile der Aufruf &lt;code&gt;/bin/sh -- /tmp/x&lt;/code&gt;, der vom Kernel komplett neu bewertet wird.&lt;/p&gt;
-&lt;p&gt;An &lt;code&gt;/bin/sh&lt;/code&gt; ist aber weder das SUID- noch das SGID-Bit gesetzt, also wird die Shell mit normalen Rechten gestartet.
-Daß es sich bei einem Parameter des Aufrufes um den Namen einer Datei handelt, an der SUID und SGID gesetzt sind, darf den Kernel nicht interessieren und die Shell wertet es nicht aus - sie könnte es auch nicht, wenn sie wollte.
-Dieser Effekt ist durchaus beabsichtigt: Ein nichttriviales Shellscript zu schreiben, daß sicher und ohne Lücken für eventuelle Hacker unter einer fremden User-ID laufen kann, ist so gut wie unmöglich.&lt;/p&gt;
-&lt;h2 id=&#34;rückblick&#34;&gt;
-    &lt;a href=&#34;#r%c3%bcckblick&#34;&gt;
-	Rückblick
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Wie wir gesehen haben, findet die Kontrolle der Zugriffsrechte an Dateien in Linux so gut es geht zentral statt.
-Wenige Funkionen wie &lt;code&gt;permission()&lt;/code&gt; und die Funktionen der &lt;code&gt;namei()&lt;/code&gt;-Familie spielen dabei eine sehr wichtige Rolle.
-Trotzdem muß jeder Systemaufruf noch für sich selbst die Rechte des aufrufenden Prozesses an der Datei testen, die durch den Systemaufruf manipuliert werden soll.
-Dabei müssen viele Sonderfälle wie &lt;em&gt;immutable files&lt;/em&gt;, &lt;em&gt;append only directories&lt;/em&gt; und andere exotische Dinge beachtet werden.
-Wollte man eine vollständige und genaue Aufstellung von Zugriffsrechten in Linux machen, müßte man eine Liste von Systemaufrufen machen und für jeden Systemaufruf eine vollständige Liste von Vorbedingungen aufschreiben.
-Ein Eintrag würde sich dann in etwa so lesen:&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;unlink:&lt;/dt&gt;
-&lt;dd&gt;&lt;code&gt;unlink()&lt;/code&gt; löscht eine Datei mit einem gegebenen Pfadnamen, wenn alle Verzeichnisse entlang des Pfades x-Recht haben, der Name der Datei im letzten Verzeichnis nicht leer (&amp;rdquo;&amp;quot;) ist, das Dateisystem nicht read only ist, am enthaltenden Verzeichnis w- und x-Recht bestehen, das enthaltende Verzeichnis nicht append only ist und für die I-Node der Datei eine unlink()-Operation definiert ist. Diese unlink()-Operation kann jedoch noch weitere Bedingungen an die Entfernung einer Datei stellen (das ext2-Dateisystem macht dies zum Beispiel, wenn das t-Bit am enthaltenden Verzeichnis gesetzt ist).&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;Letztendlich wird eine solche Tabelle jedoch sehr unübersichtlich und lang.
-Man sieht, daß Zugriffsrechte in UNIX im allgemeinen und Linux im besonderen nur auf den ersten Blick einfach und harmlos aussehen.
-Wenn man über das einfache &lt;code&gt;rwx&lt;/code&gt; hinausgeht, wird die ganze Angelegenheit ziemlich kompliziert und unübersichtlich, da viele Sonderfälle betrachtet werden müssen.
-Zum Glück kommen solche Sonderfälle in einer normalen Installation nur sehr selten vor, denn sonst würde das eingangs erwähnte Kapitel 2 eines UNIX-Handbuches sehr lang werden &amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Samba</title>
-      <link>https://blog.koehntopp.info/1996/01/11/samba.html</link>
-      <pubDate>Thu, 11 Jan 1996 09:00:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/1996/01/11/samba.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;erschienen in der iX 1/96&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#samba-19&#34;&gt;Text des Artikels&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#samba-im-internet&#34;&gt;Samba im Internet&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#eine-standardkonfiguration&#34;&gt;Eine Standardkonfiguration&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;samba-19&#34;&gt;
-    &lt;a href=&#34;#samba-19&#34;&gt;
-	Samba 1.9
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;h4 id=&#34;samba-ist-ein-softwarepaket-für-unix-das-microsoft-lan-manager-server-funktionen-erbringt-ursprünglich-von-andrew-tridgell-einem-studenten-an-der-australian-national-university-canberra-erstellt-ist-es-inzwischen-unter-der-gnu-general-public-license-verfügbar&#34;&gt;
-    &lt;a href=&#34;#samba-ist-ein-softwarepaket-f%c3%bcr-unix-das-microsoft-lan-manager-server-funktionen-erbringt-urspr%c3%bcnglich-von-andrew-tridgell-einem-studenten-an-der-australian-national-university-canberra-erstellt-ist-es-inzwischen-unter-der-gnu-general-public-license-verf%c3%bcgbar&#34;&gt;
-	Samba ist ein Softwarepaket für Unix, das Microsoft Lan Manager Server-Funktionen erbringt. Ursprünglich von Andrew Tridgell, einem Studenten an der Australian National University, Canberra erstellt, ist es inzwischen unter der GNU General Public License verfügbar.
-    &lt;/a&gt;
-&lt;/h4&gt;
-&lt;p&gt;Andrew Tridgell, ein Student an der Australian National University Canberra, stand Ende 1991 vor dem Problem, einen Fileserver für SUN Workstations haben zu müssen, der zu DEC Pathworks für kompatibel ist.
-Ohne Informationen über die Art des verwendeten Protokolls zu haben, gelang es ihm schon nach wenigen Tagen, das verwendete Protokoll in Teilen zu reverse engineeren.
-Erst nachdem eine allererste Version seines Servers schon fertiggestellt war, wies man ihn auf das in RFC 1001 und 1002 definierte &amp;ldquo;NetBIOS on a TCP/UDP transport&amp;rdquo; Protokoll hin.
-Im Januar wurde die erste Version seines &amp;ldquo;Server 0.1&amp;rdquo; Paketes auf dem Netz veröffentlicht.
-Es sollte jedoch noch bis Ende 1993 dauern, bis Tridgell durch den Einsatz von Linux und die Notwendigkeit, mit PCs unter DOS, Windows und OS/2 zu kommunizieren, die Weiterentwicklung von Samba wieder aufnahm.&lt;/p&gt;
-&lt;p&gt;Heute ist Samba ein relativ ausgereiftes, standardkonformes und vor allen Dingen hochportables Softwarepaket, das auf den meisten UNIX-Versionen problemlos installierbar ist und die Möglichkeit bietet, Verzeichnisse und Drucker an PC-Betriebssysteme zu exportieren.
-Samba konkurriert hier mit dem von SUN definierten Network File System (NFS).&lt;/p&gt;
-&lt;p&gt;Für den Systemadministrator in einem heterogenen Netzwerk von UNIX-Servern und Client-PCs ist Samba dabei wahrscheinlich attraktiver als NFS, denn in den meisten Fällen stehen wenigen UNIX-Servern viele Client-PCs gegenüber.
-Beim Einsatz von NFS könnte zwar das mit den meisten UNIX-Versionen mitgelieferte Serverpaket verwendet werden, aber für die Clients müßten nicht nur viele Client-Lizenzen von PC-NFS oder etwas vergleichbarem angeschafft werden, sondern diese Software müßte auch netzwerkweit installiert und gewartet werden.
-Windows für Workgroups, Windows 95, Windows NT und OS/2 sprechen aber schon von Haus aus das Lan Manager Protokoll und so ist es effizienter, den wenigen Servern dieses Protokoll beizubringen und auf den Clients mitgelieferte Software zu verwenden.
-Diesen Weg geht Samba.&lt;/p&gt;
-&lt;p&gt;Da der Samba-Server ein reiner Usermode-Server ist, also ein ganz normales Anwendungsprogramm, ist es möglich, auch Verzeichnisse per Samba zu reexportieren, die der Server per NFS gemountet hat.
-Auf diese Weise entsteht eine Protokollbrücke von NFS nach SMB.
-Dabei ist natürlich der Performanceverlust durch doppelten Netzzugriff in Kauf zu nehmen.
-Auf der anderen Seite ist Samba unter der GNU GPL frei zur Verfügung stehende Software und so steht der Installation des Samba-Servers auf allen Servermaschinen nichts im Weg.&lt;/p&gt;
-&lt;p&gt;Es soll jedoch nicht verschwiegen werden, daß Samba aus der Sicht eines UNIX-Systemverwalters schwerwiegende Nachteile hat.
-Als Protokoll, das in der PC-Welt entstanden ist, kennt Samba kein Konzept eines Dateieigentümers.
-Die Zugriffe auf Ressourcen erfolgen oft mit unklaren Userrechten oder scheinbar willkürlich gewählten Paßworten.
-Betriebssysteme wie Windows für Workgroups und Windows&#39;95, die dem Benutzer zwar einen Namen geben, dann aber Netzwerkzugriffe ohne oder unter anderen Namen erzeugen, machen die Sache nicht leichter.
-Dazu kommt, daß die Familie der Windows-Betriebssysteme die Groß-/Kleinschreibung von Paßworten in einigen Kombinationen von Betriebssystem/Paßwort verändern.
-Samba hat eine ganze Reihe Mechanismen, um diesem Problem abzuhelfen, aber der Verwaltungsaufwand ist anfangs trotzdem höher als bei einer typischen NFS-Installation.&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/1996/01/SuperNOS.gif&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Novell hat versucht, das Super Network Operating System durch Verschmelzung der zugekauften UNIX-Quellen mit ihrem eigenen Serverbetriebssystem zu bauen und ist gescheitert. Klammheimlich hat das frei verfügbare Linux gelernt, die meisten Netzwerkprotokolle zu sprechen und ist auf dem besten Wege, eben dieses SuperNOS zu werden.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;installation&#34;&gt;
-    &lt;a href=&#34;#installation&#34;&gt;
-	Installation
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Die Installation gestaltet sich relativ einfach.
-Nach dem Auspacken ist das Makefile im &lt;code&gt;source/&lt;/code&gt;-Verzeichnis nach den eigenen Wünschen anzupassen.
-Dabei ist es hilfreich, nicht nur die gewünschten Pfadnamen einzutragen, sondern auch schon den Namen der gewünschten Arbeitsgruppe in der Variablen &lt;code&gt;WORKGROUP&lt;/code&gt; einzutragen und einen speziellen  Gastaccount, der nur für SMB genutzt wird, in &lt;code&gt;GUESTACCOUNT&lt;/code&gt; einzucompilieren.
-Diese Defaults sind zwar auch zur Laufzeit änderbar, aber anpassen im Quelltext erspart das Schreiben von Konfigurationsdateien.
-Weiterhin sind noch die gewünschten &lt;code&gt;make&lt;/code&gt;-Optionen für den verwendeten Betriebssystemtyp zu aktivieren.
-Danach steht einem &lt;code&gt;make&lt;/code&gt; nichts mehr im Wege.&lt;/p&gt;
-&lt;p&gt;Erzeugt werden die Programme&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;nmbd:&lt;/dt&gt;
-&lt;dd&gt;NetBios Name Server. Der Name Server ist in der Lage, Hostnamen auf IP-Nummern abzubilden. Gleichzeitig steuert das Programm aber auch das Browsing, d.h. die Anzeige von exportierten Diensten und übernimmt damit Aufgaben, die bei NFS der &lt;code&gt;mountd&lt;/code&gt; wahrnehmen würde.&lt;/dd&gt;
-&lt;dt&gt;nmblookup:&lt;/dt&gt;
-&lt;dd&gt;NetBios Name Lookup. Das Programm nimmt in etwa dieselbe Funktion wahr wie &lt;code&gt;nslookup&lt;/code&gt; für das DNS, fragt jedoch einen &lt;code&gt;nmbd&lt;/code&gt; ab.&lt;/dd&gt;
-&lt;dt&gt;smbclient:&lt;/dt&gt;
-&lt;dd&gt;Samba Client. Dient dazu, auf Linux-Seite einen SMB Server zu connecten und Dateien zu übertragen. Die Steuerung erfolgt ähnlich wie bei FTP. Linux bietet auch ein echtes, kernelbasiertes &lt;code&gt;smbfs&lt;/code&gt; an, mit dem man einen Server richtig mounten kann. Andere Betriebssysteme sind auf den &lt;code&gt;smbclient&lt;/code&gt; angewiesen.&lt;/dd&gt;
-&lt;dt&gt;smbd:&lt;/dt&gt;
-&lt;dd&gt;Der eigentliche Fileserver.&lt;/dd&gt;
-&lt;dt&gt;smbpasswd:&lt;/dt&gt;
-&lt;dd&gt;Ein Hilfsprogramm des &lt;code&gt;smbd&lt;/code&gt;, mit dem Benutzer vom Client aus ihr Paßwort ändern können sollen. Es hat nur dann Funktion, wenn Samba mit der &lt;code&gt;libdes&lt;/code&gt; und verschlüsselten Paßworten (siehe &lt;strong&gt;Samba im Internet&lt;/strong&gt;) übersetzt wurde.&lt;/dd&gt;
-&lt;dt&gt;smbrun:&lt;/dt&gt;
-&lt;dd&gt;Ein Hilfsprogramm des &lt;code&gt;smbd&lt;/code&gt;, mit dem Samba zu Beginn und Ende einer Serverconnection Logbucheinträge erzeugt.&lt;/dd&gt;
-&lt;dt&gt;smbstatus:&lt;/dt&gt;
-&lt;dd&gt;Ein sehr einfaches Programm zur Anzeige des Status aller zum Server bestehenden Verbindungen.&lt;/dd&gt;
-&lt;dt&gt;smbtar:&lt;/dt&gt;
-&lt;dd&gt;Ein Shellscript, das &lt;code&gt;smbclient&lt;/code&gt; verwendet und das ein von einem PC exportiertes Verzeichnis mit &lt;code&gt;tar&lt;/code&gt; auf dem Bandlaufwerk des UNIX-Servers sichert.&lt;/dd&gt;
-&lt;dt&gt;testparm:&lt;/dt&gt;
-&lt;dd&gt;Syntaxchecker für die Konfigurationsdatei.&lt;/dd&gt;
-&lt;dt&gt;testprns:&lt;/dt&gt;
-&lt;dd&gt;Syntaxchecker für die Druckerkonfiguration.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/1996/01/programme.gif&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Samba besteht aus einer Reihe von Programmen, die zum Betrieb des Servers (Server-Tools) oder zu seinem Test (Client-Tools) dienen.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Ein &lt;code&gt;make install&lt;/code&gt; installiert diese Programme und die Manualpages dann im gewünschten Verzeichnis.
-Damit der Server in Betrieb genommen werden kann, müssen &lt;code&gt;nmbd&lt;/code&gt; und &lt;code&gt;smbd&lt;/code&gt; entweder als permanent laufende Dämonen gestartet werden oder über passende Einträge in der &lt;code&gt;/etc/inetd.conf&lt;/code&gt; bei Bedarf hochgezogen werden.&lt;/p&gt;
-&lt;p&gt;Für letzteres sind die Einträge&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;netbios-ns      137/tcp                         # NETBIOS Name Service
-netbios-ns      137/udp
-netbios-dgm     138/tcp                         # NETBIOS Datagram Service
-netbios-dgm     138/udp
-netbios-ssn     139/tcp                         # NETBIOS session service
-netbios-ssn     139/udp
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;in der Datei &lt;code&gt;/etc/services&lt;/code&gt; notwendig. Dazu passen dann die Zeilen&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#
-# SMB Samba File Server
-#
-netbios-ssn stream tcp  nowait  root    /usr/local/samba/bin/smbd smbd 
-netbios-ns  dgram  udp  wait    root    /usr/local/samba/bin/nmbd nmbd -H /usr/local/samba/lib/lmhosts
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;in der &lt;code&gt;/etc/inetd.conf&lt;/code&gt;.
-Der &lt;code&gt;inetd&lt;/code&gt; muß nach einer Änderung in seiner Konfigurationsdatei durch ein &lt;code&gt;SIGHUP&lt;/code&gt; geweckt werden, damit er die Datei neu einliest.&lt;/p&gt;
-&lt;h2 id=&#34;tests-mit-einer-einfachen-konfiguration&#34;&gt;
-    &lt;a href=&#34;#tests-mit-einer-einfachen-konfiguration&#34;&gt;
-	Tests mit einer einfachen Konfiguration
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Durch die Verwendung einer &lt;code&gt;lmhosts&lt;/code&gt;-Datei kann der Samba-Server als Nameserver für ein Lan Manager Netzwerk dienen.
-Die &lt;code&gt;lmhosts&lt;/code&gt;-Datei entspricht dabei in ihren ersten beiden Spalten einer normalen Hosts-Datei:
-In der ersten Spalte wird eine IP-Nummer genannt, der in der zweiten Spalte ein Name zugeordnet wird.
-Mit einer optionalen, dritten Spalte können für einzelne Namen bestimmte Flags gesetzt werden:
-Der Buchstabe &lt;code&gt;G&lt;/code&gt; kennzeichnet einen Namen als den Namen der eigenen Arbeitsgruppe.
-Die zugehörige Adresse ist die Broadcast-Adresse der betreffenden Arbeitsgruppe.
-Das Flag &lt;code&gt;S&lt;/code&gt; kennzeichnet die Namen und Broadcastadressen weiterer Arbeitsgruppen, in denen die Dienste unseres Servers ebenfalls angepriesen (registriert) werden sollen.
-Und das Flag &lt;code&gt;M&lt;/code&gt; schließlich kennzeichnet diesen Eintrag als den defaultmäßigen Netbios-Namen dieser Maschine.&lt;/p&gt;
-&lt;p&gt;Der nächste Schritt ist die Erzeugung der zentralen Konfigurationsdatei.
-Wenn Samba im Defaultverzeichnis &lt;code&gt;/usr/local/samba&lt;/code&gt; installiert worden ist, muß diese Datei in &lt;code&gt;/usr/local/samba/lib/smb.conf&lt;/code&gt; angelegt werden.
-Ihr Aufbau gleicht syntaktisch dem einer WIN.INI-Datei von MS-Windows:
-Sie besteht aus Abschnitten, die jeweils durch einen Namen in eckigen Klammern eingeleitet wird.
-Jeder Abschnitt enthält dann eine Reihe von Zuweisungen der Form &lt;code&gt;Parameter = Wert&lt;/code&gt;.
-Parameter dürfen genau wie Abschnittnamen Leerzeichen enthalten, die Samba ignoriert.
-Ebenso spielt Gross- und Kleinschreibung keine Rolle.&lt;/p&gt;
-&lt;p&gt;Jeder Abschnitt der &lt;code&gt;smb.conf&lt;/code&gt; definiert einen Service, der von Samba exportiert wird.
-Ein Service kann dabei ein Drucker oder - häufiger - ein Verzeichnis sein.
-Samba kennt drei Abschnitte, die besondere Bedeutung haben:&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;[global]:&lt;/dt&gt;
-&lt;dd&gt;In diesem Abschnitt werden besondere, globale Einstellungen für den Server getroffen.&lt;/dd&gt;
-&lt;dt&gt;[printers]:&lt;/dt&gt;
-&lt;dd&gt;In diesem Abschnitt kann man alle Drucker der &lt;code&gt;/etc/printcap&lt;/code&gt; exportieren.&lt;/dd&gt;
-&lt;dt&gt;[homes]:&lt;/dt&gt;
-&lt;dd&gt;In diesem Abschnitt kann man alle Homeverzeichnisse des Servers exportieren.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;Samba bietet nun buchstäblich Dutzende von Parametern, mit denen man den Server seinen Bedürfnissen anpassen kann.
-Zum Glück sind die Defaults jedoch so eingestellt, daß man nur wenige dieser Parameter wirklich anpassen muß.&lt;/p&gt;
-&lt;p&gt;Zum Testen sollte man eine minimale &lt;code&gt;smb.conf anlegen.&lt;/code&gt;Sie könnte zum Beispiel so aussehen:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[global]
-        guest account = smbguest
-
-[tmp]
-        comment = temporary files 
-        path = /tmp
-        read only = yes
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Der Account &lt;code&gt;smbguest&lt;/code&gt; ist dabei ein User mit minimalen Rechten.
-Der Abschnitt &lt;code&gt;[tmp]&lt;/code&gt; exportiert das lokale &lt;code&gt;/tmp&lt;/code&gt;-Verzeichnis read-only an die Welt.&lt;/p&gt;
-&lt;p&gt;Die Korrektheit dieser Konfigurationsdatei kann mit dem Kommando&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ SAM=/usr/local/samba
-$ $SAM/bin/testparm $SAM/lib/smb.conf | more
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;schnell überprüft werden.
-&lt;code&gt;testparm&lt;/code&gt; liest die Datei ein und zeigt an, ob die Datei syntaktisch korrekt ist.
-Danach werden die Werte aller internen Konfigurationsvariablen ausgegeben.
-Auf diese Weise kann man schnell sehen, mit welchen internen Parameterwerten Samba wirklich operiert.&lt;/p&gt;
-&lt;p&gt;Mit dem &lt;code&gt;smbclient&lt;/code&gt; kann man nun ausprobieren, ob das gewünschte Verzeichnis wirklich exportiert wird:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$SAM/bin/smbclient -L localhost -U%
-Server time is Thu Nov 23 11:17:01 1995
-Timezone is UTC+1.0
-Domain=[DAHEIM] OS=[Unix] Server=[Samba 1.9.15p3]
-
-Server=[localhost] User=[smbguest] Workgroup=[DAHEIM] Domain=[DAHEIM]
-
-        Sharename      Type      Comment
-        ---------      ----      -------
-        tmp            Disk      temporary files
-        IPC$           IPC       IPC Service (Samba 1.9.15p3)
-
-
-This machine has a browse list:
-
-        Server               Comment
-        ---------            -------
-        WHITE                Samba 1.9.15p3
-        MAHAKI               
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Die Meldung &amp;ldquo;bad password&amp;rdquo; an dieser Stelle würde anzeigen, daß der Gastaccount von Samba nicht richtig gesetzt ist oder nicht verwendet werden kann.
-Auch &amp;ldquo;hosts allow&amp;rdquo; und &amp;ldquo;hosts deny&amp;rdquo;-Einträge, die unseren eigenen Rechner ausschließen, oder &amp;ldquo;valid users&amp;rdquo; und &amp;ldquo;invalid users&amp;rdquo;, die zu strikt gesetzt sind, können zu der Fehlermeldung führen.&lt;/p&gt;
-&lt;p&gt;Die Meldung &amp;ldquo;connection refused&amp;rdquo; deutet dagegen darauf hin, daß auf den Samba-Sockets kein Dämon zuhört.
-Ein häufiger Fehler ist es, den inetd nach Änderungen an der Konfigurationsdatei nicht mit &lt;code&gt;SIGHUP&lt;/code&gt; zu wecken.
-&lt;code&gt;netstat -a&lt;/code&gt; zeigt an, ob jemand auf dem Port &lt;code&gt;netbios-ssn&lt;/code&gt; zuhört.&lt;/p&gt;
-&lt;p&gt;Ähnlich kann man die Funktionsfähigkeit des &lt;code&gt;nmbd&lt;/code&gt; überprüfen:
-Das Kommando&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ $SAM/bin/nmblookup -B localhost __SAMBA__
-Sending queries to 127.0.0.1
-193.102.57.4 __SAMBA__
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;sollte die IP-Adresse des eigenen Servers zurückliefern. Ebenso sollte ein&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ $SAM/bin/nmblookup -B mahaki &amp;#39;*&amp;#39;
-Sending queries to 193.102.57.2
-193.102.57.2 *
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;die Adresse des Clients zurückliefern.
-Und schließlich sollten sich bei einem&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ $SAM/bin/nmblookup -d 2 &amp;#39;*&amp;#39;
-Netmask for eth0 = 255.255.255.0
-Derived broadcast address 193.102.57.255
-Using broadcast 193.102.57.255
-Sending queries to 193.102.57.255
-Got a positive name query response from 193.102.57.2 (193.102.57.2)
-Got a positive name query response from 193.102.57.4 (193.102.57.4)
-193.102.57.4 *
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;alle Teilnehmer des lokalen Netzes melden, falls sie schnell genug sind.
-Falls Server und Client nicht auf demselben Subnetz sind, ist es notwendig, die korrekte Broadcast-Adresse des entfernten Subnetzes mit der Option -B anzugeben.&lt;/p&gt;
-&lt;p&gt;Wenn man so sichergestellt hat, daß sich alle Rechner untereinander kennen und einander erreichen können, kann man versuchen, erst einmal lokal auf die exportierten Ressourcen
-zuzugreifen:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ $SAM/bin/smbclient &amp;#34;\\\\localhost\\tmp&amp;#34;
-Server time is Thu Nov 23 11:28:06 1995
-Timezone is UTC+1.0
-Password: 
-Domain=[DAHEIM] OS=[Unix] Server=[Samba 1.9.15p3]
-smb: \&amp;gt; dir
-  isdnctrl0                                226942  Thu Nov 23 10:14:14 1995
-  crond_running                                 0  Thu Nov 23 11:28:01 1995
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Der Name der verwendeten Ressource wird DOS-Konform mit &lt;code&gt;\\rechner\ressource&lt;/code&gt; bezeichnet.
-Die verwendete Shell macht es jedoch notwendig, Backslashes als &lt;code&gt;\\&lt;/code&gt; zu escapen.
-Die Schreibweise des Kommandos erscheint so etwas merkwürdig.
-Samba versucht sich unter dem normalen Usernamen anzumelden.
-Das verlangte Paßwort ist also das normale Paßwort des Accounts.
-Möchte man unter einem anderen Benutzernamen testen, ist die Option &lt;code&gt;-U username&lt;/code&gt; hinter dem Namen der Ressource anzugeben.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;smbclient&lt;/code&gt; arbeitet ähnlich wie &lt;code&gt;ftp&lt;/code&gt; und versteht Kommandos wie &amp;ldquo;help&amp;rdquo;, &amp;ldquo;get&amp;rdquo;, &amp;ldquo;put&amp;rdquo; und &amp;ldquo;quit&amp;rdquo;.
-Wegen der Option &lt;code&gt;read only = yes&lt;/code&gt; in der &lt;code&gt;smb.conf&lt;/code&gt; schlägt ein &amp;ldquo;put&amp;rdquo; wie erwartet fehl:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;smb: \&amp;gt; put username.map
-ERRDOS - ERRnoaccess (Access denied.) opening remote file \username.map
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Wenn dies alles funktioniert, kann man versuchen, vom PC aus auf das Verzeichnis zuzugreifen.
-Aus einem DOS-Fenster sollte man die exportierten Ressourcen mit&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;E:\users\default&amp;gt;net view &amp;#34;\\white&amp;#34;
-Freigegebene Ressourcen auf \\white
-
-Samba 1.9.15p3
-
-Name         Typ          Lokal    Beschreibung
-
--------------------------------------------------------------------------------
-tmp          Platte                temporary files
-Der Befehl wurde erfolgreich ausgeführt.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ansehen. Mit&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;E:\users\default&amp;gt;net use &amp;#34;\\white\tmp&amp;#34; /user:kris
-Das Kennwort für \\white\tmp ist ungültig.
-
-Geben Sie das Kennwort für \\white\tmp ein:
-Der Befehl wurde erfolgreich ausgeführt.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;kann man sich dann beim Server anmelden.
-Programme, die erweiterte Pfadnamen mit &lt;code&gt;\\rechnername&lt;/code&gt; verstehen, können jetzt schon auf das Laufwerk zugreifen.
-Der Samba-Server sollte nun auch im Dateimanager unter &amp;ldquo;Datenträger&amp;rdquo;, &amp;ldquo;Netzwerklaufwerk verbinden&amp;rdquo; sichtbar sein.&lt;/p&gt;
-&lt;p&gt;Die Bemerkung &amp;ldquo;Das Kennwort für &amp;hellip; ist ungültig&amp;rdquo; des Windows NT-Servers aus dem Beispiel tritt übrigens auf, weil der Samba Server ohne verschlüsselte Paßworte  übersetzt wurde.
-Wir der Server mit der &lt;code&gt;libdes&lt;/code&gt; und der Option &lt;code&gt;encrypted passswords = yes&lt;/code&gt; in der &lt;code&gt;smb.conf&lt;/code&gt; installiert, erfolgt das Login ohne Rückfrage.&lt;/p&gt;
-&lt;h2 id=&#34;geschwindigkeit&#34;&gt;
-    &lt;a href=&#34;#geschwindigkeit&#34;&gt;
-	Geschwindigkeit
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Samba verwendet ein verbindungsorientiertes und asynchrones Protokoll und unterliegt so nicht den Einschränkungen, die die Geschwindigkeit von NFS begrenzen.
-Auf der anderen Seite ist der Samba-Server so natürlich nicht so datensicher wie ein NFS-Server.
-In der Praxis sollte das wenig ausmachen, da die Clients PCs sind und so vermutlich häufiger abstürzen&amp;hellip;&lt;/p&gt;
-&lt;p&gt;Geschwindigkeitsprobleme kann es beim Einloggen geben, wenn der Client ein Windows für Workgroups ist und Samba das Loginpaßwort raten muß (siehe Kasten &amp;ldquo;Eine Standardkonfiguration&amp;rdquo;).
-Falls das richtige Paßwort mehrere Großbuchstaben enthält und die &lt;code&gt;crypt()&lt;/code&gt;-Routine des Servers hinreichend langsam ist, können so einige Sekunden vergehen.&lt;/p&gt;
-&lt;p&gt;Der Text &lt;code&gt;SPEED.txt&lt;/code&gt; aus der Samba-Dokumentation enthält außerdem einige weitere Tips, mit der man die Geschwindigkeit des Servers unter Umständen weiter verbessern kann:
-Niedrige Debug-Level, große Puffer und überlappende Zugriffe auf Platte und Netzwerk können die Serverperformance weiter steigern.&lt;/p&gt;
-&lt;p&gt;Alles in allem erreicht Samba so eine Performance, die einem Windows NT Server oder einem Pathworks Server vergleichbar ist.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;samba-im-internet&#34;&gt;
-    &lt;a href=&#34;#samba-im-internet&#34;&gt;
-	Samba im Internet
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Die zur Zeit der Entstehung dieses Artikels aktuelle Version von
-Samba ist 1.9.15, Patch 3.&lt;/p&gt;
-&lt;p&gt;Das Homeverzeichnis von Samba ist &lt;a href=&#34;ftp://nimbus.anu.edu.au/pub/tridge/samba&#34;&gt;ftp://nimbus.anu.edu.au/pub/tridge/samba&lt;/a&gt;
-
-.
-Da jedoch die Internet-Anbindung von Australien aus der Sicht von Deutschland nicht überragend ist, ist es vorteilhaft, sich Samba von einem der offiziellen Mirrors zu kopieren.
-Die Dokumentation nennt dazu unter anderem
-&lt;a href=&#34;ftp://sunsite.unc.edu/pub/Linux/system/Network/Samba&#34;&gt;ftp://sunsite.unc.edu/pub/Linux/system/Network/Samba&lt;/a&gt;
-
-
-und
-&lt;a href=&#34;ftp://ftp.uni-trier.de/pub/unix/network/samba&#34;&gt;ftp://ftp.uni-trier.de/pub/unix/network/samba&lt;/a&gt;
-
-.&lt;/p&gt;
-&lt;p&gt;Das Paket liegt außerdem auf vielen deutschen Sunsite-Mirrors und ist praktisch auf jeder besseren Linux CD-ROM auch im Quelltext archviert.
-Diese Versionen hinken jedoch, wie üblich, um einige Minor-Releases hinterher.&lt;/p&gt;
-&lt;p&gt;Nicht alle Mirrors archivieren
-&lt;a href=&#34;ftp://nimbus.anu.edu.au/pub/tridge/libdes/libdes.tar.92-10-13.gz&#34;&gt;ftp://nimbus.anu.edu.au/pub/tridge/libdes/libdes.tar.92-10-13.gz&lt;/a&gt;
-
-,
-weil dies administrative Probleme beim FTP-Verkehr von und nach USA machen würde.
-Diese Bibliothek ist notwendig, wenn man mit verschlüsselten Paßworten auf dem Netz arbeiten möchte.
-Clients und Server unter Windows NT verhalten sich ohne verschlüsselte Paßworte jedoch eigenartig.&lt;/p&gt;
-&lt;p&gt;Samba hat eine eigene Newsgroup im USENET, &lt;code&gt;comp.protocols.smb&lt;/code&gt;,
-die glücklicherweise nicht sehr überlaufen ist.
-Außerdem findet man in den einschlägigen Linux-Newsgroups ebenfalls massenweise Fragen und Antworten rund um Samba.&lt;/p&gt;
-&lt;p&gt;Wer an aktuellen Informationen über Samba interessiert ist, kann sich auf der Mailingliste &lt;code&gt;samba-announce&lt;/code&gt; eintragen lassen.
-Dazu ist es notwendig, eine Mail an &lt;code&gt;listproc@listproc.anu.edu.au&lt;/code&gt; zu senden, die im Text (nicht im Subject!) das Kommando &lt;code&gt;subscribe samba-announce Vorname Nachname&lt;/code&gt; enthält.&lt;/p&gt;
-&lt;p&gt;Es existiert eine weitere Mailingliste, &lt;code&gt;samba&lt;/code&gt;, die der Weiterentwicklung von Samba dient.
-Um sich dort einzuschreiben, ist &lt;code&gt;subscribe samba Vorname Nachname&lt;/code&gt; an die oben angegebene Adresse zu senden.&lt;/p&gt;
-&lt;p&gt;Die Samba Home-Page ist &lt;a href=&#34;http://lake.canberra.edu.au/pub/samba/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://lake.canberra.edu.au/pub/samba/&lt;/a&gt;
-
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;eine-standardkonfiguration&#34;&gt;
-    &lt;a href=&#34;#eine-standardkonfiguration&#34;&gt;
-	Eine Standardkonfiguration
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Die folgende Konfigurationsdatei dürfte die meisten
-einfachen Anwendungsfälle abdecken:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[global]
-  ; Gastaccount zuweisen
-  guest account = smbguest
-  ; Nicht alle User auf dem UNIX-Rechner heißen auf dem Windows NT gleich
-  ; Format:
-  ; unixuser = dosalias dosalias2 dosalias3...
-  ; root = administrator admin
-  username map = /usr/local/samba/lib/username.map
-  ; Windows NT erfordert libdes und encrypted passwords, siehe Dokumentation
-  encrypt passwords = yes
-  ; Samba soll Domain Master und Browse Master sein.
-   os level = 33
-   domain master = yes
-  ; nur Verbindungen von vertrauenswürdigen Hosts zulassen
-  allow hosts = black, white, mahaki
-  ; DOS &amp;#34;share&amp;#34; locking simulieren
-  locking = yes
-  share modes = yes
-  ; Windows NT Protokoll verwenden
-  ; Optionen sind CORE, COREPLUS, LANMAN1, LANMAN2 und NT1
-  protocol = NT1
-  
-  ; Dies ist die Workgroup, der wir angehören
-  workgroup = DAHEIM
-  
-[tmp]
-  comment = Zwischenablage
-  path = /tmp
-  read only = no
-
-[faq]
-  comment = Haeufig gestellte Fragen (aus USENET)
-  path = /scratch/faq
-  read only = yes
-
-[homes]
-  comment = Homeverzeichnisse
-  browseable = no
-  read only = no
-  create mode = 0750
-
-[printers]
-  comment = Alle Drucker aus /etc/printcap
-  printing = bsd
-  browseable = no
-  load printers = yes
-  read only = yes
-  printable = yes
-  path = /tmp
-  public = yes
-  create mode = 0700
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Diese &lt;code&gt;smb.conf``  versucht einen minimalen Sicherheitslevel herzustellen, indem nur Verbindungen von Hosts von vertrauenswürdigen zugelassen werden. Sie exportiert zwei gewöhnliche Verzeichnisse: &lt;/code&gt;/tmp&lt;code&gt;read-write und&lt;/code&gt;/scratch/faq` read-only.&lt;/p&gt;
-&lt;p&gt;Außerdem werden die Drucker der &lt;code&gt;/etc/printcap&lt;/code&gt; durch den besonderen Abschnitt &lt;code&gt;[printers]&lt;/code&gt; und die Home-Verzeichnisse aller Benutzer durch &lt;code&gt;[homes]&lt;/code&gt; exportiert.
-Beide Abschnitte sind nicht als Browseable gekennzeichnet.
-Dadurch erscheint nur das Home-Verzeichnis des auf dem Windows-Rechner angemeldeten Benutzers in der Browse-List des Dateimanagers.
-Ebenso wird nicht &lt;code&gt;[printers]&lt;/code&gt; selbst im Druckmanager angezeigt, sondern die Drucker der &lt;code&gt;/etc/printcap&lt;/code&gt; werden durch das &lt;code&gt;load printers&lt;/code&gt; einzeln angezeigt.&lt;/p&gt;
-&lt;p&gt;Dadurch, daß das NT1-Protkoll verwendet wird, ist es möglich, auch lange Dateinamen mit Groß-/Kleinschreibung zu verwenden.
-Auch das LANMAN2-Protokoll kann dies.
-Windows für Workgroups wandelt alle Paßworte in reine Großschrift um, wenn ein höheres Protokoll als COREPLUS verwendet wird.
-In diesem Fall versucht Samba, das Paßwort zu raten, indem das übermittelte Paßwort in Groß- und Kleinschrift ausprobiert wird.
-Mit der Option &lt;code&gt;password level = zahl&lt;/code&gt; kann man Samba dazu bewegen, auch Kombinationen von Groß- und Kleinbuchstaben zu testen.
-Die Zahl bestimmt dabei die maximale Anzahl von Großbuchstaben im Paßwort.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>init - Starten und Beenden von Linux</title>
-      <link>https://blog.koehntopp.info/1995/12/01/init-starten-und-beenden-von-linux.html</link>
-      <pubDate>Fri, 01 Dec 1995 09:00:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/1995/12/01/init-starten-und-beenden-von-linux.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Linux Magazin, Heft 12/1995&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;init---starten-und-beenden-von-linux&#34;&gt;
-    &lt;a href=&#34;#init---starten-und-beenden-von-linux&#34;&gt;
-	init - Starten und Beenden von Linux
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Der Prozeß mit der Prozeßnummer 1 ist init. init wird beim Starten des Systems geladen und läuft bis zum Abschalten durch. Er ist der direkte oder indirekte Urahn aller anderen Prozesse eines Linux-Systems. Ein genaues Verständnis der Vorgänge vom Starten von init bis zum Erscheinen des ersten Shellprompts nach dem Login ist notwendig, um fehlerhaft konfigurierte Linuxsysteme wiederzubeleben, ohne neu installieren zu müssen.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Die meisten Linux-Distributionen haben heutzutage den sysvinit 2.4 von Miquel van Smoorenburg (Miquel van Smoorenburg) installiert. Diese init-Version entspricht im Großen und Ganzen den von regulären System V Systemen bekannten inits, ist aber auf PC-Verhältnisse besonders angepaßt. sysvinit kennt zum Beispiel spezielle Optionen betreffend das Verhalten bei einem Stromausfall mit einer USV und weiß mit einem Control-Alt-Delete umzugehen. Mit Smoorenburgs init-Paket kommen außer init auch noch die Programme &lt;code&gt;halt&lt;/code&gt;, &lt;code&gt;last&lt;/code&gt;, &lt;code&gt;mesg&lt;/code&gt;, &lt;code&gt;shutdown&lt;/code&gt; und &lt;code&gt;wall&lt;/code&gt; sowie der Quelltext für den &lt;code&gt;powerd&lt;/code&gt;, ein Auswertedämon für die Statusleitungen von USVs. Eine Version von &lt;code&gt;who&lt;/code&gt;, die auf den init abgestimmt wäre, fehlt.&lt;/p&gt;
-&lt;p&gt;Zu dem Zeitpunkt, zu dem init gestartet wird, ist das System soeben gebootet worden. Außer dem Root-Dateisystem, das wahrscheinlich nur read-only gemountet ist und möglicherweise beschädigt ist und der Systemkonsole &lt;code&gt;/dev/console&lt;/code&gt; existieren keine weiteren Ressourcen. Außer init laufen keine anderen Prozesse. Swapspace ist noch nicht angemeldet, was zur Folge hat, daß auf Systemen mit nur 4 MB RAM der Speicher schnell knapp werden könnte. Die Aufgabe von init beim Systemstart ist zunächst einmal, die Dateisysteme zu prüfen, gegebenenfalls zu reparieren und sie sowie eventuell vorhandenen Swapspace anzumelden. Durch die zusätzlichen Dateisysteme und den zusätzlichen Speicher versetzt sich das System in die Lage, die zahlreichen Hintergrundprozesse zu starten, die ein vollständig betriebsbereites Linux auszeichnen. Welche Dämonen gestartet sind, wird durch die Konfigurationsdatei von init, die &lt;code&gt;/etc/inittab&lt;/code&gt; festgelegt. Je nach Run-Level des Systems können dies unterschiedliche Prozesse sein.&lt;/p&gt;
-&lt;h2 id=&#34;run-levels&#34;&gt;
-    &lt;a href=&#34;#run-levels&#34;&gt;
-	Run-Levels
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Ein Run-Level ist dabei einfach nur die numerische Bezeichnung (Okay, es gibt auch noch einen Run-Level S) für eine bestimmte Systemkonfiguration. Abhängig vom aktuellen Run-Level werden bestimmte Zeilen der &lt;code&gt;/etc/inittab&lt;/code&gt; gültig oder ungültig und init stoppt oder startet dementsprechend die zugehörigen Prozesse. Die &lt;code&gt;/etc/inittab&lt;/code&gt; definiert gewissermaßen den Soll-Zustand des Systems in einem bestimmten Run-Level: Fehlende Dämon-Prozesse werden von init nachgestartet, überzählige Dämon-Prozesse werden von init gestoppt.&lt;/p&gt;
-&lt;p&gt;Über den Ist-Zustand des Systems führt init parallel dazu in der utmp-Datei Buch. Für jede Zeile der &lt;code&gt;/etc/inittab&lt;/code&gt; steht in der utmp-Datei ein &lt;code&gt;struct utmp&lt;/code&gt;-Eintrag, der über den Verbleib des zugehörigen Prozesses Aufschluß gibt. Außerdem führt init über seine Aktionen noch in der wtmp-Datei ein Logbuch. Auch diese Datei besteht aus &lt;code&gt;struct utmp&lt;/code&gt;-Einträgen, aber im Gegensatz zu utmp, die eine feste Länge hat, wird wtmp als Logbuch fortgeschrieben (und muß regelmäßig gekürzt werden). Programme wie &lt;code&gt;who&lt;/code&gt;, &lt;code&gt;w&lt;/code&gt;, &lt;code&gt;finger&lt;/code&gt; oder der &lt;code&gt;rwhod&lt;/code&gt; können die utmp-Datei auswerten und anzeigen, welche Benutzer gerade im System eingeloggt sind oder welche Schnittstellen gerade unbelegt sind. Programme wie &lt;code&gt;last&lt;/code&gt; oder Accountingtools werten dagegen die wtmp-Datei aus und können so ein Logbuch über die vergangenen Logins erzeugen.&lt;/p&gt;
-&lt;p&gt;Auf einem richtigen System V kann who nicht nur eine Liste der eingeloggten Benutzer erzeugen, sondern die komplette utmp-Datei analysieren und auch mit der Option -r den aktuellen Run-Level des Systems anzeigen. Im Umfeld der Slackware-Distributionen paßt der &lt;code&gt;who&lt;/code&gt;-Befehl nicht zum init und ihm fehlen diese Optionen, sodaß man auf selbstgeschriebene Programme angewiesen ist.&lt;/p&gt;
-&lt;p&gt;init erzwingt nicht, daß bestimmte Run-Level (ausgenommen S) bestimmte Bedeutungen haben. Das Verhalten des Systems richtet sich ausschließlich nach der Konfiguration in der &lt;code&gt;/etc/inittab&lt;/code&gt;. Per Konvention hat diese auf den meisten Distributionen, die von Slackware abstammen, ein bestimmtes Aussehen. &amp;ldquo;Slackware inittab&amp;rdquo; weiter unten zeigt die &lt;code&gt;/etc/inittab&lt;/code&gt; einer Slackware-Installation.&lt;/p&gt;
-&lt;p&gt;Eine Zeile der &lt;code&gt;inittab&lt;/code&gt; hat dabei das folgende Format:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	id:runlevels:action:process
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Die &lt;strong&gt;id&lt;/strong&gt; stellt dabei einen eindeutigen Identifikator für die Zeile der inittab dar. Er muß genau zwei Buchstaben lang sein und taucht später als &lt;code&gt;ut_id&lt;/code&gt;-Feld in demjenigen Eintrag in der utmp-Datei auf, der zu dieser Zeile der inittab gehört. Das, was &lt;code&gt;finger&lt;/code&gt; in der Spalte Tty ausdruckt, ist der Inhalt dieses &lt;code&gt;ut_id&lt;/code&gt;-Feldes aus der utmp-Datei.&lt;/p&gt;
-&lt;p&gt;Das Feld &lt;strong&gt;runlevels&lt;/strong&gt; definiert einen oder mehrere Run-Levels, in denen diese Zeile aktiviert sein soll.Wenn der aktuelle Run-Level des Systems hier nicht aufgeführt ist, ist diese Zeile unwirksam: Ein Eintrag im Feld runlevels mit den Ziffern 123 wäre nur in den Run-Levels 1, 2 und 3 gültig.&lt;/p&gt;
-&lt;p&gt;Das Feld &lt;strong&gt;process&lt;/strong&gt; definiert dann den Aufruf eines Prozesses mit allen Parametern, wie er von init gestartet werden soll, wenn das System sich in einem der in runlevels genannten Run-Level befindet. Diese Prozesse sind entweder Dämon-Prozesse wie &lt;code&gt;xdm&lt;/code&gt; oder &lt;code&gt;nnmaster&lt;/code&gt;, Login-Prompts wie &lt;code&gt;getty&lt;/code&gt; oder Scripte und Anweisungen, die beim Wechsel des Run-Levels aktiv werden. init überwacht diese Prozesse. Wenn sich einer von ihnen beendet, bemerkt init dies und entscheidet anhand der &lt;strong&gt;action&lt;/strong&gt; darüber, ob der Dämon neu gestartet werden soll oder was sonst zu tun ist.&lt;/p&gt;
-&lt;p&gt;Der Abschnitt &amp;ldquo;Das action Feld in der inittab&amp;rdquo; erklärt die Bedeutung der verschiedenen Schlüsselworte.&lt;/p&gt;
-&lt;h2 id=&#34;die-rc-scripte&#34;&gt;
-    &lt;a href=&#34;#die-rc-scripte&#34;&gt;
-	Die rc-Scripte
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Bei der Slackware startet die inittab einige rc-Scripte, genau wie bei den meisten anderen Unices auch. Die Bezeichnung &lt;code&gt;rc&lt;/code&gt; steht dabei für &amp;ldquo;run command&amp;rdquo;. Sie stammt noch aus der Urzeit der Computerentwicklung und wurde von einem der vergessenen Vorläufer von UNIX übernommen. Heute würde man wohl stattdessen das Kürzel &amp;ldquo;BAT&amp;rdquo; verwenden.&lt;/p&gt;
-&lt;p&gt;Die Struktur dieser Scripte orientiert sich bei Linux mehr an der wesentlich primitiveren Konfiguration eines BSD-Systems als an einem normalen System V. Mit unserem Wissen über init können wir inzwischen erkennen, daß Linux nach dem Booten wegen des &lt;code&gt;initdefault&lt;/code&gt;-Schlüsselwortes in der inittab den Run-Level 5 ansteuert. Der &lt;code&gt;sysinit&lt;/code&gt;-Eintrag sorgt dann für die Abarbeitung von &lt;code&gt;/etc/rc.d/rc.S&lt;/code&gt;, gefolgt von &lt;code&gt;/etc/rc.d/rc.M&lt;/code&gt;, da der &lt;code&gt;wait&lt;/code&gt;-Eintrag &amp;ldquo;rc&amp;rdquo; den Run-Level 5 enthält. Nachdem init auf das Ende von &lt;code&gt;rc.M&lt;/code&gt; gewartet hat, startet er die &lt;code&gt;getty&lt;/code&gt;-Einträge &lt;code&gt;c2&lt;/code&gt; bis &lt;code&gt;c6&lt;/code&gt; (&lt;code&gt;c1&lt;/code&gt; ist hier auskommentiert) und den &lt;code&gt;nnmaster&lt;/code&gt;. Der Eintrag &lt;code&gt;x1&lt;/code&gt; wird ignoriert, da er nur für den Run-Level 6 gilt.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/etc/rc.d/rc.S&lt;/code&gt; ist das Script, das als erstes nach dem Systemstart abgearbeitet wird. Es findet den eingangs erwähnten Rechner ohne Dateisysteme und Ressourcen vor und macht sich daran, diesen Zustand zu ändern. Die ersten Handgriffe nach der Definition eines Suchpfades dienen dazu, den Swapspace zu aktivieren: Dazu muß &lt;code&gt;swapon -a&lt;/code&gt; eine gültige &lt;code&gt;/etc/fstab&lt;/code&gt; vorfinden und dort die Swap-Partitionen benannt bekommen. Der &lt;code&gt;update&lt;/code&gt;-Dämon sorgt dann dafür, daß der Speicherinhalt auch gelegentlich auf die Festplatte geschrieben werden. Jetzt ist auch auf Maschinen mit 4 MB RAM genügend Speicher bereitgestellt, um größere Prozesse ablaufen lassen zu können.&lt;/p&gt;
-&lt;p&gt;Die folgenden Anweisungen dienen dazu, die Dateisysteme zu prüfen und - falls möglich - das Root-Dateisystem read-write anzumelden. Wenn der &lt;code&gt;fsck&lt;/code&gt; oder der Remount fehlschlagen, druckt das Script Handlungsanweisungen und versucht noch so etwas wie ein Login hinzubekommen. Die folgenden Anweisungen ab Zeile 92 dienen dann dazu, die üblichen Konfigurations- und Statusdateien zu erzeugen, die beim Systemstart aufgefrischt werden müssen und die Systemzeit zu stellen.&lt;/p&gt;
-&lt;p&gt;Startet man Linux im &lt;i&gt;single user mode&lt;/i&gt; oder gerät man auf andere Weise auf ein System mit einer read-only angemeldeten Root-Platte, kann man sich behelfen, indem man &lt;code&gt;/etc/rc.d/rc.S&lt;/code&gt; von Hand ausführt. Mit ein wenig Glück bekommt man so ein halbwegs vernünftig konfiguriertes System, bei dem man immerhin soviele Eingriffsmöglichkeiten hat, daß man die verbleibenden Fehler von Hand korrigieren kann. Auch normale UNIX-Versionen haben ähnliche Scripte. Da das Checken und Anmelden der Platten nach dem Systemstart mit die dringlichste Aufgabe ist, findet man den Namen des Scriptes am einfachsten heraus, indem man sich den sysinit-Eintrag der betreffenden &lt;code&gt;/etc/inittab&lt;/code&gt; ansieht. Ein häufige Name für dieses Script ist zum Beispiel &lt;code&gt;bcheckrc&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/etc/rc.d/rc.M&lt;/code&gt; kümmert sich dann um die Vorbereitung des Systems auf den Mehrbenutzerbetrieb. Dieses Script kann davon ausgehen, daß alle lokalen Platten schon verfügbar sind und daß ausreichend Swapspace zur Verfügung steht. Hostnamen und andere das Netzwerk betreffende Dinge sind aber noch undefiniert. &lt;code&gt;rc.M&lt;/code&gt; konfiguriert einen Screenblanker, startet den &lt;code&gt;cron&lt;/code&gt;, setzt den Hostnamen und verzweigt dann vorübergehend in die Scripte &lt;code&gt;rc.inet1&lt;/code&gt; und &lt;code&gt;rc.inet2&lt;/code&gt;. Ersteres dient dazu, den Kernelteil des Netzwerkes zu konfigurieren: Die Interfaces erhalten ihre IP-Nummern und werden gestartet, danach setzt sich der Kernel Routingtabellen. Das gesamte Script besteht im Prinzip nur aus glorifizierten Aufrufen von &lt;code&gt;ifconfig&lt;/code&gt; und &lt;code&gt;route&lt;/code&gt;. Die zweite Datei konfiguriert dann den Anwendungsteil des Netzes, indem dort die entsprechenden Serverprozesse gestartet werden. Die folgenden Arbeiten in &lt;code&gt;rc.M&lt;/code&gt; erledigen dann einige Aufräumarbeiten, die zu verschiedenen Subsystemen gehören. Wichtig ist hier vor allen Dingen der Aufruf von &lt;code&gt;ldconfig&lt;/code&gt;, der Links auf die aktuellen Versionen der shared libraries auf den neuesten Stand bringt. Am Ende von &lt;code&gt;rc.M&lt;/code&gt; wird dann noch auf &lt;code&gt;rc.local&lt;/code&gt; verzweigt, in der der Systemverwalter lokale Modifikationen des Systemstarts unterbringen kann. Einige Versionen der Slackware verzweigen bei Bedarf noch in andere, spezialisierte rc-Dateien zum Verstellen des Zeichensatzes oder der Tastaturbelegung.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/1995/12/init-files.gif&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;h2 id=&#34;erweiterungen-der-rc-dateien&#34;&gt;
-    &lt;a href=&#34;#erweiterungen-der-rc-dateien&#34;&gt;
-	Erweiterungen der rc-Dateien
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Bei der Konstruktion der rc-Dateien, wie sie im Abschnitt &amp;ldquo;Slackware inittab&amp;rdquo; gezeigt wird, ist einzig die Datei &lt;code&gt;rc.local&lt;/code&gt; für lokale Erweiterungen des Bootvorganges vorgesehen. Der Systemverwalter kann hier neben lokalen Anpassungen für Zeichensatz und Tastatur eigene Dämon-Prozesse starten oder den Weg für den Start solcher Prozesse bereiten (indem zum Beispiel alte Lockdateien abgeräumt werden).&lt;/p&gt;
-&lt;p&gt;Dabei sollte man auf jeden Fall darauf achten, daß die &lt;code&gt;rc.local&lt;/code&gt;-Datei beendet wird! &lt;code&gt;rc.S&lt;/code&gt; wird als sysinit-Eintrag ausgeführt und &lt;code&gt;rc.local&lt;/code&gt; ist Bestandteil von &lt;code&gt;rc.M&lt;/code&gt; und wird als wait-Eintrag ausgeführt. In beiden Fällen können die folgenden Einträge der inittab erst dann ausgeführt werden, wenn &lt;code&gt;rc.S&lt;/code&gt; bzw. &lt;code&gt;rc.M&lt;/code&gt; beendet sind. Die folgenden Einträge sind aber die &lt;code&gt;getty&lt;/code&gt;-Prozesse für die Systemkonsole (c1-c6), die das Login überhaupt ermöglichen. Wenn ein Fehler in &lt;code&gt;rc.M&lt;/code&gt; also dazu führt, daß sich das Script niemals beendet, kommen niemals Loginprompts und man kann sich nicht anmelden, um den Fehler zu korrigieren.&lt;/p&gt;
-&lt;p&gt;Der Fehler tritt zum Beispiel gerne dann auf, wenn man in &lt;code&gt;rc.local&lt;/code&gt; einen Dämon startet (es ist ein Characteristikum von Dämonen, daß sie sich nach Möglichkeit nicht beenden), der sich nicht automatisch selbst in den Hintergrund schiebt. Zum Beispiel schiebt sich der &lt;code&gt;nnmaster&lt;/code&gt;-Aufruf&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	/usr/lib/nn/nnmaster -l -r -C
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;automatisch in den Hintergrund, während&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	/usr/lib/nn/nnmaster -f -l -r -C
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;keinen Hintergrundprozeß erzeugt, sondern ausdrücklich im Vordergrund bleibt. In der &lt;code&gt;rc.local&lt;/code&gt; würde nur der erste Aufruf korrekt funktionieren, der zweite würde das System blockieren.&lt;/p&gt;
-&lt;p&gt;In der &lt;code&gt;/etc/inittab&lt;/code&gt; im Abschnitt &amp;ldquo;Slackware inittab&amp;rdquo; ist &lt;code&gt;nnmaster&lt;/code&gt; jedoch in der zweiten Variante eingetragen. Wieso ist das hier notwendig? Nun, in der inittab ist &lt;code&gt;nnmaster&lt;/code&gt; als respawn-Eintrag eingetragen: init bewacht den &lt;code&gt;nnmaster&lt;/code&gt; hier und startet ihn neu, falls notwendig. Wäre &lt;code&gt;nnmaster&lt;/code&gt; hier ohne -f eingetragen, würde der Dämon sich in den Hintergrund schieben und der Vordergrundprozeß würde sich gleich wieder beenden. init bemerkt, daß sich der von ihm gestartete Prozeß beendet hat und würde sogleich einen zweiten &lt;code&gt;nnmaster&lt;/code&gt; starten, wie der respawn-Eintrag es befiehlt. Solche Einträge erzeugen dann die Meldung &amp;ldquo;respawning to rapidly&amp;rdquo;.&lt;/p&gt;
-&lt;h2 id=&#34;rc-dateien-im-stile-von-system-v&#34;&gt;
-    &lt;a href=&#34;#rc-dateien-im-stile-von-system-v&#34;&gt;
-	rc-Dateien im Stile von System V
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Das Konzept der &lt;code&gt;rc.local&lt;/code&gt;-Datei ist zwar schön einfach zu verstehen, aber für die automatische Wartung des Systems ist es nicht besonders elegant. In einer kommerziellen Umgebung würde man davon ausgehen, daß die Benutzer des Systems reine Anwender sind und kaum genug Ausbildung haben, um mit der Anwendung selbst klarzukommen. Auch von der Systemverwaltung kann man nicht in jedem Fall verlangen, daß sie zu selbstständigen Änderungen an rc-Dateien in der Lage ist. Das gilt insbesondere dann, wenn diese Änderung den fehlerfreien Wiederanlauf des Systems gefährden kann. Für Anwendungen, die durch schlecht ausgebildete Personen aus vorgefertigen Packages installiert werden sollen, wäre es wünschenswert, wenn ein Mechanismus besteht, durch den sie sich automatisch und weitgehend fehlerfrei in die Programmfolge beim Systemstart einhängen können.&lt;/p&gt;
-&lt;p&gt;Ein ähnliches Problem besteht schon seit Jahren im Bereich MS-DOS, wo Installationsprozeduren von Anwendungspaketen Änderungen an der AUTOEXEC.BAT und der CONFIG.SYS vornehmen müssen. Im Bereich MS-DOS löst man dies, indem jede Anwendung einen großen Installator mit sich herumschleppt, der in der Lage ist, solche Konfigurationsdateien zu parsen und zu korrekt verändern (oder auch nicht). Das so etwas schon bei MS-DOS nicht richtig funktioniert, bemerkt der Autor jedesmal an seiner eigenen Konfiguration, die leider nicht linear ist, sondern mehrere Verzweigungen und Aufrufe von Unterbatches enthält. Praktisch alle DOS-Installationsprogramme führen ihre Änderungen an der falschen Stelle oder nur für eine Konfiguration (meistens nicht die aktive) ein. UNIX Shellscripte sind allerdings noch mächtiger als DOS Batchdateien und für ein Installationsprogramm entsprechend schwieriger zu handhaben. Die Wahrscheinlichkeit, daß ein rc-Modifikator eine etwas komplexere &lt;code&gt;rc.local&lt;/code&gt; durch seine Änderungen zerstört sind viel größer als für ein DOS Installationsprogramm.&lt;/p&gt;
-&lt;p&gt;In System V UNIX verwendet man deswegen ein etwas anderes Konzept, daß ohne aufwendige Parser auskommt und trotzdem viel sicherer funktioniert. Statt alle Anweisungen in eine einzige Datei zu quetschen, hat man die rc-Datei dort in viele kleine Module zerlegt, von denen sich jedes um einen Aspekt des Systemstartes kümmert. Man hat für jeden Run-Level ein Unterverzeichnis &lt;code&gt;/etc/rcn.d&lt;/code&gt; (wobei n die Nummer des Run-Levels ist). Dort befinden sich die Startdateien für diesen Run-Level. Das Script &lt;code&gt;/etc/rcn&lt;/code&gt; (wieder ist n der Run-Level) ist für jeden Run-Level gleich und führt nacheinander alle Dateien im zum Run-Level gehörenden Unterverzeichnis aus.&lt;/p&gt;
-&lt;p&gt;Per Konvention haben alle Dateien im Unterverzeichnis entweder den Namen KxyNAME oder SxyNAME. Eine K-Datei dient dazu, irgendeinen Dienst beim Betreten des Run-Levels zu stoppen, eine S-Datei dient dazu, einen Dienst zu starten. Die Ziffern xy laufen von 00 bis 99 durch und dienen dazu, eine alphabethische Reihenfolge der Script zu definieren: Das Script führt die einzelnen Module in der Reihenfolge K00 bis K99 und dann S00 bis S99 aus. Es ruft K-Scripte mit dem Parameter &lt;code&gt;stop&lt;/code&gt; auf, S-Scripte werden mit dem Parameter &lt;code&gt;start&lt;/code&gt; aufgerufen. Der Bestandteil NAME dient zur Identifikation des Scriptes und bezeichnet das Subsystem, das durch das Script gestartet oder gestoppt wird.&lt;/p&gt;
-&lt;p&gt;Ein Programmpaket kann bei dieser Konstruktion ganz leicht eingefügt werden. Nehmen wir an, ein hypothetischer FAX-Server &lt;code&gt;kfax&lt;/code&gt; braucht beim Systemstart einige Anweisungen, um einen Dämon-Prozeß zu starten und ein wenig aufzuräumen. Das Installationspaket könnte eine Datei mit den benötigten Anweisungen erzeugen und sie als &lt;code&gt;/etc/init.d/kfax&lt;/code&gt; in einem Sammelverzeichnis für alle Startscripte installieren. Das Modul soll beim Betreten von Run-Level 5 getstartet werden. Also erzeugt die Installationsprozedur ein Symlink von &lt;code&gt;/etc/rc5.d/S99kfax&lt;/code&gt; nach &lt;code&gt;/etc/init.d/kfax&lt;/code&gt;. Die Installation braucht also nur eine Datei zu erzeugen und ein Link zu legen, um ihr Modul in die rc-Scripte zu integrieren. Soll das Script in mehr als einem Run-Level aktiviert werden, wird es auch von den anderen &lt;code&gt;/etc/rcn.d&lt;/code&gt;-Verzeichnissen nach &lt;code&gt;/etc/init.d&lt;/code&gt; gelinkt. Lesen und Verstehen von &lt;code&gt;rc.local&lt;/code&gt; oder anderen Scripten ist nicht notwendig. Die Deinstallationsanweisung ist genauso simpel: &amp;ldquo;Löschen Sie die Datei &lt;code&gt;/etc/rc5.d/S99kfax&lt;/code&gt; und starten Sie das System neu.&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;Beim Wechsel in den Run-Level 5 wird unser Beispielsystem das Script &lt;code&gt;/etc/rc5&lt;/code&gt; durch einen once-Eintrag aktivieren. Das Script geht alle Dateien in &lt;code&gt;/etc/rc5.d&lt;/code&gt; durch und führt sie der Reihe nach aus. Es wird zunächst alle &lt;code&gt;/etc/rc.d/K*&lt;/code&gt;-Dateien mit dem Parameter &lt;code&gt;stop&lt;/code&gt; aufrufen, danach wird es alle &lt;code&gt;/etc/rc.d/S*&lt;/code&gt;-Dateien mit dem Parameter &lt;code&gt;start&lt;/code&gt; aufrufen. Ganz am Schluss wird &lt;code&gt;S99kfax start&lt;/code&gt; ausgeführt.&lt;/p&gt;
-&lt;p&gt;Das folgende Listing zeigt den inittab-Eintrag und ein Listing von &lt;code&gt;/etc/rc5&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;system-v-startscript-etcrc5&#34;&gt;
-    &lt;a href=&#34;#system-v-startscript-etcrc5&#34;&gt;
-	System V Startscript &lt;code&gt;/etc/rc5&lt;/code&gt;
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Der Eintrag in der &lt;code&gt;/etc/inittab&lt;/code&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;r5:5:once:/etc/rc5
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Das zugehörige Script:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# /bin/sh --&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#	Das Script wird ausgefuehrt, wenn das System in den &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#	Run-Level 5 wechselt.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#	Fuer die anderen Run-Levels sollten &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#   analoge Eintraege und Scripte existieren.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/bin:/sbin:/usr/sbin:/usr/bin
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -d /etc/rc5.d &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;# Ausfuehren der Stopscripte&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nv&#34;&gt;MODE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;stop
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; f in /etc/rc5.d/K*
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -x &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			/sbin/sh &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; stop
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			. &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;# Ausfuehren der Startscripte&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nv&#34;&gt;MODE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;start
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; f in /etc/rc3.d/S*
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -x &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			/sbin/sh &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; start
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			. &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;slackware-inittab&#34;&gt;
-    &lt;a href=&#34;#slackware-inittab&#34;&gt;
-	Slackware inittab
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#
-# inittab       This file describes how the INIT process should set up
-#               the system in a certain Run-Level.
-#
-# Version:      @(#)inittab             2.04    17/05/93        MvS
-#
-# Author:       Miquel van Smoorenburg, &amp;lt;miquels@drinkel.nl.mugnet.org&amp;gt;
-#
-# Default runlevel.
-id:5:initdefault:
-
-# System initialization (runs when system boots).
-si:S:sysinit:/etc/rc.d/rc.S
-
-# Script to run when going single user.
-su:S:wait:/etc/rc.d/rc.K
-
-# Script to run when going multi user.
-rc:123456:wait:/etc/rc.d/rc.M
-
-# What to do at the &amp;#34;Three Finger Salute&amp;#34;.
-ca::ctrlaltdel:/sbin/shutdown -t3 -rf now
-
-# What to do when power fails (shutdown to single user).
-pf::powerfail:/sbin/shutdown -f +5 &amp;#34;THE POWER IS FAILING&amp;#34;
-
-# If power is back before shutdown, cancel the running shutdown.
-pg:0123456:powerokwait:/sbin/shutdown -c &amp;#34;THE POWER IS BACK&amp;#34;
-
-# If power comes back in single user mode, return to multi user mode.
-ps:S:powerokwait:/sbin/init 5
-
-# The getties in multi user mode on consoles an serial lines.
-#
-# NOTE NOTE NOTE adjust this to your getty or you will not be
-#                able to login !!
-#
-# Note: for &amp;#39;agetty&amp;#39; you use linespeed, line.
-# for &amp;#39;getty_ps&amp;#39; you use line, linespeed and also use &amp;#39;gettydefs&amp;#39;
-#c1:12345:respawn:/sbin/agetty 38400 tty1
-c2:12345:respawn:/sbin/agetty 38400 tty2
-c3:12345:respawn:/sbin/agetty 38400 tty3
-c4:45:respawn:/sbin/agetty 38400 tty4
-c5:45:respawn:/sbin/agetty 38400 tty5
-c6:456:respawn:/sbin/agetty 38400 tty6
-
-# nn
-nn:23456:respawn:/usr/lib/nn/nnmaster -f -l -r -C
-
-# Serial lines
-#s1:45:respawn:/sbin/agetty 19200 ttyS0
-#s2:45:respawn:/sbin/agetty 19200 ttyS1
-
-# Dialup lines
-#d1:45:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS0
-#d2:45:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS1
-
-# Runlevel 6 used to be for an X-window only system, until we discovered
-# that it throws init into a loop that keeps your load avg at least 1 all 
-# the time. Thus, there is now one getty opened on tty6. Hopefully no one
-# will notice. ;^)
-# It might not be bad to have one text console anyway, in case something 
-# happens to X.
-x1:6:wait:/etc/rc.d/rc.6
-
-# End of /etc/inittab
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;das-action-feld-in-der-etcinittab&#34;&gt;
-    &lt;a href=&#34;#das-action-feld-in-der-etcinittab&#34;&gt;
-	Das Action Feld in der &lt;code&gt;/etc/inittab&lt;/code&gt;
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Das Feld &lt;code&gt;action&lt;/code&gt; in der &lt;code&gt;inittab&lt;/code&gt; bestimmt, wie &lt;code&gt;init&lt;/code&gt; mit dem im Feld &lt;strong&gt;process&lt;/strong&gt; genannten Prozeß verfährt. &lt;code&gt;sysvinit&lt;/code&gt; kennt dieselben Schlüsselworte wie ein richtiger &lt;code&gt;init&lt;/code&gt; eines originalen System V UNIX plus einige eigene Schlüsselworte, die spezifisch für Linux sind.&lt;/p&gt;
-&lt;h3 id=&#34;start-und-restart-von-prozessen&#34;&gt;
-    &lt;a href=&#34;#start-und-restart-von-prozessen&#34;&gt;
-	Start und Restart von Prozessen
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;dl&gt;
-&lt;dt&gt;off:&lt;/dt&gt;
-&lt;dd&gt;Zeilen, die als &lt;code&gt;off&lt;/code&gt; gekennzeichnet sind, sind inaktiv. Dies stellt eine gute Methode dar, um Einträge in der &lt;code&gt;inittab&lt;/code&gt; vorübergehend außer Betrieb zu nehmen. Natürlich könnte man sie auch in Kommentarzeilen verwandeln, indem man an den Anfang der Zeile ein &amp;ldquo;#&amp;rdquo; setzt.&lt;/dd&gt;
-&lt;dt&gt;respawn:&lt;/dt&gt;
-&lt;dd&gt;Dies ist der häufigste Eintrag, wie er für &lt;code&gt;getty&lt;/code&gt;s und für Dämon-Prozesse verwendet wird, die automatisch neu gestartet werden sollen. Wenn sich ein so gekennzeichneter Eintrag beendet, versucht &lt;code&gt;init&lt;/code&gt; den Prozeß erneut zu starten. Kommt es dabei zu einer Endlosschleife (der Prozeß beendet sich aufgrund eines Fehlers sofort wieder, &lt;code&gt;init&lt;/code&gt; startet ihn sofort wieder neu&amp;hellip;), erkennt &lt;code&gt;init&lt;/code&gt; dies und legt den Eintrag für einige Minuten mit der Meldung &amp;ldquo;process respawning too rapidly&amp;rdquo; still.&lt;/dd&gt;
-&lt;dt&gt;initdefault:&lt;/dt&gt;
-&lt;dd&gt;Der &lt;code&gt;initdefault&lt;/code&gt;-Eintrag hat in gewisser Weise eine Sonderrolle: Er spezifiziert keinen Prozeß, sondern sein &lt;code&gt;runlevel&lt;/code&gt;-Feld gibt an, in welchen Run-Level sich das System beim Systemstart begeben soll. Fehlt dieser Eintrag, wird der gewünschte Run-Level beim Booten an der Console erfragt.&lt;/dd&gt;
-&lt;dt&gt;wait:&lt;/dt&gt;
-&lt;dd&gt;Mit wait gekennzeichnete Prozesse werden von &lt;code&gt;init&lt;/code&gt; einmal beim Betreten des Run-Levels gestartet. &lt;code&gt;init&lt;/code&gt; wartet dann darauf, daß der entsprechende Prozeß sich wieder beendet, bevor der nächste Eintrag abgearbeitet wird. Da &lt;code&gt;init&lt;/code&gt; die Einträge einer &lt;code&gt;inittab&lt;/code&gt; von oben nach unten abarbeitet, kann man so eine kontrollierte Folge von Scripten beim Erreichen eines Run-Levels starten.&lt;/dd&gt;
-&lt;dt&gt;once:&lt;/dt&gt;
-&lt;dd&gt;Mit &lt;code&gt;once&lt;/code&gt; gekennzeichnete Prozesse werden von &lt;code&gt;init&lt;/code&gt; einmal beim Betreten des Run-Levels gestartet. Im Gegensatz zur Aktion &lt;code&gt;wait&lt;/code&gt; wartet &lt;code&gt;init&lt;/code&gt; hier aber nicht auf das Ende des Prozesses, bevor der nächste Eintrag der &lt;code&gt;inittab&lt;/code&gt; abgearbeitet wird. &lt;code&gt;once&lt;/code&gt; wird normalerweise verwendet, um einen Dämon zu starten ohne in wie bei &lt;code&gt;respawn&lt;/code&gt; bewachen zu lassen. Sollte der Dämon sich beenden, wird eben kein neuer Prozeß gestartet. In System V UNIX wird &lt;code&gt;once&lt;/code&gt; verwendet, um die &lt;code&gt;/etc/rcn&lt;/code&gt;-Scripte zu starten.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;h3 id=&#34;boot&#34;&gt;
-    &lt;a href=&#34;#boot&#34;&gt;
-	Boot
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;Weil &lt;code&gt;init&lt;/code&gt; als allererster Prozeß im System gestartet wird, muß es Einträge gegeben, die spezifizieren, wie das System ans Laufen gebracht wird. Bei diesen Einträgen wird das Feld &lt;strong&gt;runlevels&lt;/strong&gt; ignoriert. Sie werden beim Start des Systems schlicht von oben nach unten abgearbeitet.&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;sysinit:&lt;/dt&gt;
-&lt;dd&gt;Die ersten Prozesse der Bootphase werden durch die &lt;code&gt;sysinit&lt;/code&gt;-Einträge bestimmt. Es handelt sich meistens um Scripte, deren Aufgabe es ist, die Platten zu checken und sie read-write anzumelden.&lt;/dd&gt;
-&lt;dt&gt;boot:&lt;/dt&gt;
-&lt;dd&gt;Nach den &lt;code&gt;sysinit&lt;/code&gt;-Scripten folgen dann die anderen Scripte der Bootphase.&lt;/dd&gt;
-&lt;dt&gt;bootwait:&lt;/dt&gt;
-&lt;dd&gt;Bei &lt;code&gt;bootwait&lt;/code&gt;-Einträgen wartet das System mit dem Starten des Folgeeintrags solange, bis der aktuelle Eintrag abgearbeitet ist. Bei &lt;code&gt;boot&lt;/code&gt;-Einträgen wird dagegen nicht gewartet.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;h3 id=&#34;speziell-für-linux&#34;&gt;
-    &lt;a href=&#34;#speziell-f%c3%bcr-linux&#34;&gt;
-	Speziell für Linux
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;sysvinit&lt;/code&gt; von Linux hat außerdem noch einige Nichtstandard-Aktionen. Sie dienen hauptsächlich der Unterstützung von USVs und zumAbfangen der Tastenkombination Control-Alt-Delete.&lt;/p&gt;
-&lt;dl&gt;
-&lt;dt&gt;ctrlaltdel:&lt;/dt&gt;
-&lt;dd&gt;Bei diesem Eintrag wird das Feld &lt;strong&gt;runlevels&lt;/strong&gt; ebenfalls ignoriert. Er wird aktiviert, wenn jemand an der Console die Tastenkombination Control-Alt-Delete gedrückt hat. Normalerweise wird man hier entweder das System herunterfahren oder in den single user mode wechseln.&lt;/dd&gt;
-&lt;dt&gt;powerwait:&lt;/dt&gt;
-&lt;dt&gt;powerfail:&lt;/dt&gt;
-&lt;dd&gt;Einträge mit der Aktion &lt;code&gt;powerwait&lt;/code&gt; oder &lt;code&gt;powerfail&lt;/code&gt; werden aktiviert, wenn das System ein SIGPWR Signal erhält. Dies ist typischerweise ein Signal, das vom Kernel generiert wird, wenn die Stromversorgung des Systems zusammenbricht und die USV übernimmt. Bei &lt;code&gt;powerwait&lt;/code&gt;-Einträgen wartet &lt;code&gt;init&lt;/code&gt; wieder auf das Ende eines Eintrages, bevor der nächste abgearbeitet wird, während dies bei &lt;code&gt;powerfail&lt;/code&gt;-Einträgen nicht geschieht.&lt;/dd&gt;
-&lt;dt&gt;powerokwait:&lt;/dt&gt;
-&lt;dd&gt;Dieser Eintrag wird aktiviert, wenn ein SIGPWR auftritt und die Datei &lt;code&gt;/etc/powerstatus&lt;/code&gt; das Wort OK enthält. Sollte die Stromversorgung wieder funktionieren, bevor das System sich auf Grund des ersten SIGPWR abgeschaltet hat, kann durch einen Eintrag hier die Abschaltung verhindert werden.&lt;/dd&gt;
-&lt;dt&gt;ondemand:&lt;/dt&gt;
-&lt;dd&gt;Ein Eintrag mit der Bezeichnung ondemand funktioniert ähnlich wie ein Eintrag &lt;code&gt;once&lt;/code&gt;. Während ein &lt;code&gt;once&lt;/code&gt;-Eintrag jedoch nur beim Betreten eines Run-Levels aktiviert wird, wird ein &lt;code&gt;ondemand&lt;/code&gt;-Eintrag auch dann aktiviert, wenn das System in den Run-Level wechseln soll, in dem es sich sowieso schon befindet.&lt;/dd&gt;
-&lt;/dl&gt;
 </description>
     </item>
     

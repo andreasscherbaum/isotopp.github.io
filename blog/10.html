@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.113.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -129,6 +129,175 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/09/feeds-tagged-and-a-mysql-feed.html" class='text-decoration-none text-dark'>Feeds tagged, and a MySQL feed</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 9, 2020
+        </div>
+
+        <div class='mt-3'>I have made changes to the RSS Feed of this blog:
+Each &lt;item/&gt; does now contain a container &lt;tags/&gt;, inside a sequence of &lt;tag/&gt; containers, with each posts tags. There is now a second RSS feed for posts tagged #mysql, because of demand. You can find it at https://blog.koehntopp.info/feed_mysql.xml . Example for the tags:
+&lt;channel&gt; &lt;title&gt;Die wunderbare Welt von Isotopp&lt;/title&gt; ... &lt;item&gt; &lt;title&gt;A post title&lt;/title&gt; &lt;link&gt;https://blog.koehntopp.info/2020/09/...&lt;/link&gt; &lt;guid isPermalink=&#34;false&#34;&gt;/2020/09/...&lt;/guid&gt; &lt;tags&gt;&lt;tag&gt;lang_en&lt;/tag&gt;&lt;tag&gt;mysql&lt;/tag&gt;&lt;tag&gt;database&lt;/tag&gt;&lt;/tags&gt; &lt;description&gt;blah blah blah&lt;/description&gt; &lt;/item&gt; &lt;/channel&gt; So if you want only the MySQL content, subscribe to this feed , if you want all the content, subscribe to the original feed .</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/07/mysql-from-a-developers-perspective.html" class='text-decoration-none text-dark'>MySQL from a Developers Perspective</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 7, 2020
+        </div>
+
+        <div class='mt-3'>So this has turned into a small series, explaining how to work with MYSQL from a developers perspective. This post is intended as a directory for the individual articles. It will be amended and re-dated as necessary.
+The code for the series is also available in isotopp/mysql-dev-examples on GitHub.
+The Tag #mysqldev will reference all articles from this series.
+MySQL Transactions - the physical side . Looking at how MySQL InnoDB handles transactions on the physical media, enabling rollback and commit.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/07/mysql-generated-columns-and-virtual-indexes.html" class='text-decoration-none text-dark'>MySQL: Generated Columns and virtual indexes</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 7, 2020
+        </div>
+
+        <div class='mt-3'>We have had a look at how MySQL 8 handles JSON recently, but with all those JSON functions and expressions it is clear that many JSON accesses cannot be fast. To grab data from a JSON column, you will use a lot of $-&gt;&gt;field expressions and similar, and without indexes nothing of this will be fast.
+JSON cannot be indexed.
+But MySQL 8 offers another feature that comes in handy: Generated columns and indexes on those.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/04/mysql-json-data-type.html" class='text-decoration-none text-dark'>MySQL: Basic usage of the JSON data type</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 4, 2020
+        </div>
+
+        <div class='mt-3'>MySQL 8 provides solid support for the JSON data type. The manual has an overview of the data type , a JSON function reference , an an overview on generated column indexes , and explains multi-values indexes .
+Creating JSON columns Creating JSON columns is easy: Make the column of the JSON data type, fill in valid JSON data.
+mysql&gt; create table t ( id integer not null primary key auto_increment, j json); Query OK, 0 rows affected (0.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/02/macos-relocated-items.html" class='text-decoration-none text-dark'>MacOS: Deleting Relocated Items</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 2, 2020
+        </div>
+
+        <div class='mt-3'>I had to upgrade my company issued MacBook pro to Catalina for fleet unity reasons. The upgrade left me with a folder Relocated Items in /Users/Shared/Desktop and a link to that prominently on my Desktop.
+Deleting that folder moved it to trash. Trying to empty trash then failed. That is because in that folder was several levels deep a folder or link to X11R6.
+Apple considers that file outdated, which is why it ended up in Relocated Items.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/31/on-touching-candles.html" class='text-decoration-none text-dark'>On Touching Candles, And Error Budgets</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          August 31, 2020
+        </div>
+
+        <div class='mt-3'>Ok, it&rsquo;s &ldquo;Dad Stories&rdquo; Time (from Twitter ). When my son was somewhat older than a year, he was learning to speak. He could already say &ldquo;Mama&rdquo; and &ldquo;Papa&rdquo;.
+It was around Christmas, and there was a candle on the table, glowing interestingly, so he wanted to touch it. &ldquo;Nein, heiß&rdquo; is what you would say in German.
+Of course, a toddler does not understand the meaning of &ldquo;heiß&rdquo;. I mean, he&rsquo;s trying to imitate the sound of it, but the meaning of &ldquo;heiß&rdquo; is something specific.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/25/null-is-null.html" class='text-decoration-none text-dark'>MySQL: NULL is NULL</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          August 25, 2020
+        </div>
+
+        <div class='mt-3'>Question: Hey, I got a UNIQUE INDEX, but I can store multiple rows with the same value, NULL. That is surprising. Is that a bug?
+This is a rewrite of the same in German from 9 years ago .
+root@localhost [kris]&gt; create table t ( a integer, b integer, unique (a,b)); Query OK, 0 rows affected (0.09 sec) root@localhost [kris]&gt; insert into t values (1, 2); Query OK, 1 row affected (0.</div>
+
+    </div>
+  </div>
   
   
   
@@ -438,174 +607,6 @@ What state is tied to a connection? Transactions A disconnect implies a ROLLBACK
         <div class='mt-3'>When writing data to disk, for small transactions the cost of writing the commit out do disk dominates the execution time of the script. In order to show that, I wrote a little Python script.
 The script creates a test table in a database and writes 10.000 rows of test data into it, in commit sizes of 1, 2, 4, &hellip;, 1024 rows.
 $ ./mysql.py --help Usage: mysql.py [OPTIONS] COMMAND [ARGS].</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/27/mysql-transactions.html" class='text-decoration-none text-dark'>MySQL Transactions - the physical side</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          July 27, 2020
-        </div>
-
-        <div class='mt-3'>So you talk to a database, doing transactions. What happens actually, behind the scenes? Let’s have a look.
-There is a test table, and we write data into it inside a transaction:
-CREATE TABLE t ( id serial, data varbinary(255) ) START TRANSACTION READ WRITE INSERT INTO t ( id, data ) VALUES (NULL, RANDOM_BYTES(255)) COMMIT The MySQL test instance we are talking to is running on a Linux machine, and otherwise idle to make observation easier.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/07/so-i-am-a-windows-user-now.html" class='text-decoration-none text-dark'>So I am a Windows User now</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          July 7, 2020
-        </div>
-
-        <div class='mt-3'>So I am a Windows User now. I have an old MacBook pro, Late-2013 13&quot; Retina, i7, 16 GB, 1 TB SSD, and the battery is done now, after 7 years. Also, the hardware is aging, and I want it refurbished and upgrade the son&rsquo;s equipment (which is the previous 2010 MBP I had at that time).
-Modern Apple is not my thing. I have a company MBP, 2018 Retina 13&quot; Four-Port, i7, 16 GB, and everything about this device is wrong.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/29/how-i-set-up-my-python.html" class='text-decoration-none text-dark'>How I set up my Python</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 29, 2020
-        </div>
-
-        <div class='mt-3'>Because Martin wanted some starting point, here is how I set up my Python. There are a lot of other things one can do, but this is supposed to be just a starting point.
-For a new project, make a project directory, usually not with a local git repository.
-kk:Python kris$ mkdir project kk:Python kris$ cd project kk:project kris$ git init Initialized empty Git repository in /Users/kris/Python/project/.git/ We need a virtual environment to keep our modules apart from the system python.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/23/schulen-digitalisieren.html" class='text-decoration-none text-dark'>Schulen digitalisieren</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 23, 2020
-        </div>
-
-        <div class='mt-3'>Da war also ein Artikel bei Golem: Schulen bemühen sich vergeblich um Geld aus dem Digitalpakt .
-Die Schulen wollten das Geld nutzen, die Mittel würden aber trotz vieler Einreichungen nicht freigegeben, sagte ein Lehrer und IT-Verantwortlicher eines Berliner Gymnasiums Golem.de.
-Das liege daran, sagt der Artikel, daß für Mittel aus dem Digitalpakt eine Minimal-Ausstattung und Anbindung der Schulen gefordert ist, die so oft nicht realisierbar sei. Außerdem
-Auf kommunaler Ebene der Schulträger gebe &ldquo;es kaum IT-Kompetenz.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/21/mysql-window-functions.html" class='text-decoration-none text-dark'>MySQL Window Functions</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 21, 2020
-        </div>
-
-        <div class='mt-3'>Two questions from Reddit&rsquo;s /r/mysql related to Window Functions: How do I make row.numbers happen and Get the difference between two values in different recordings .
-One of the new things in MySQL is the implementation of Window Functions. They are related to aggregates, but do not actually lump values together.
-To better understand what goes on, let&rsquo;s create some fake data to work with:
-#! /usr/bin/env python3 # -*- coding: utf-8 -*- import MySQLdb as mdb import MySQLdb.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/20/export-the-entire-database-to-csv.html" class='text-decoration-none text-dark'>Export the entire database to CSV</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 20, 2020
-        </div>
-
-        <div class='mt-3'>A question from Reddit&rsquo;s /r/mysql:
-Really new to MySQL and had a request to export an entire database to csv for review. I can manually export each table using workbench but there are 10+ tables and 10+ databases so I was looking to export the entire database to csv.
-It is likely that you have additional requirements on top of this, so it would be best to script this in a way that would allow for customization.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/15/pizza-people-projects-and-processes.html" class='text-decoration-none text-dark'>Pizza, People, Projects and Processes</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 15, 2020
-        </div>
-
-        <div class='mt-3'>An older talk from 2 years ago, which for some reason I was not able to find in the blog.
-For reasons that do not need exploration at this junction I had to explain Processes and Process Maturity some time ago, and a colleague asked me to put my thinking into a talk. So this is going to be boring, because you are likely to know most of this already, but on the other hand, it is good to be on the same page when it comes to models and vocabulary.</div>
 
     </div>
   </div>

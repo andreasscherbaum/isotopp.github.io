@@ -19,7 +19,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.113.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -129,6 +129,169 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/12/03/trying-lvmraid-for-real.html" class='text-decoration-none text-dark'>Trying lvmraid for real</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          December 3, 2019
+        </div>
+
+        <div class='mt-3'>So after testing LVM Raid in princple, I have been trying it on some real hardware to see what happens. The idea was to estimate if it scales and if not, how it doesn&rsquo;t. I was expecting to run into all kinds of obscure problems in my testing, but in fact, it was a quick and short death.
+Here is my box: QuantaGrid D42A-2U with an AMD EPYC 7551P CPU (32C, HT off), 1024 GB of memory, a boot disk and 12x Micron_9200_MTFDHAL11TATCW (PDF ) for 120TB of disk storage.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/12/02/cloning-and-splitting-logical-volumes.html" class='text-decoration-none text-dark'>Cloning and splitting logical volumes</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          December 2, 2019
+        </div>
+
+        <div class='mt-3'>Where I work, we routinely run our databases on XFS on LVM2.
+The setup Each database has their database on /mysql/schemaname, with the subdirectories /mysql/schemaname/{data,log,tmp}. The entire /mysql/schemname tree is a LVM2 Logical Volume mysqlVol on the Volume Group vg00, which is then formatted as an XFS filesystem.
+# pvcreate /dev/nvme*n1 # vgcreate vg00 /dev/nvme*n1 # lvcreate -n mysqlVol -L...G vg00 # mkfs -t xfs /dev/vg00/mysqlVol # mount -t xfs /dev/vg00/mysqlVol /mysql/schemaname Basic Ops You can grow an existing LVM Logical Volume with lvextend -L+50G /dev/vg00/mysqlVol or similar, and then xfs_grow /dev/vg00/myqlVol.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/11/22/fertig-gelesen-exit-strategy.html" class='text-decoration-none text-dark'>Fertig gelesen: Exit Strategy</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 22, 2019
+        </div>
+
+        <div class='mt-3'>Exit Strategy by Martha Wells is the fourth book in the the Murderbot Diaries (All Systems Red , Artificial Condition, Rogue Protocol, Exit Strategy, Network Effect).
+This novella is the culmination of the Murderbot Novellas, in which our nameless murderbot cyborg tries to nail the evil GrayCris corporation for the series of crimes against settlers and researchers, has to rescue it&rsquo;s &ldquo;owner&rdquo;, sponsor and friend Dr. Mensah from the claws of GrayCris, and make friends on the way.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/11/21/fertig-gelesen-fashion-and-its-social-agendas-class-gender-and-identity-in-clothing.html" class='text-decoration-none text-dark'>Fertig gelesen: Fashion and Its Social Agendas: Class, Gender, and Identity in Clothing</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 21, 2019
+        </div>
+
+        <div class='mt-3'>Fashion and Its Social Agendas: Class, Gender, and Identity in Clothing by Diane Crane is an analysis of the changes in society during the various phases of the industrial revolution through the lens of clothing in various societal strata.
+The book studies fashion and clothing choices in three countries - France, the United States, and England - over a period of 150 years. France and England are examples of class societies in the nineteenth century.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/11/20/fertig-gelesen-the-wiz-biz.html" class='text-decoration-none text-dark'>Fertig gelesen: The Wiz Biz</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 20, 2019
+        </div>
+
+        <div class='mt-3'>The Wiz Biz by Rick Cook is a book in the genre of &lsquo;magical realism&rsquo;. Some real-world person is being transported into a universe with predictable magic in a classical fantasy setting and is applying scientic method and industrial production methods to the setting.
+In this book, the real-world person is Walter Zumwalt, a stereotypical hacker, which as part of a hail-mary summoning rital is being transported into a magical war between the good guys and the bad guys.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/11/19/when-a-file-changes-do-a-thing.html" class='text-decoration-none text-dark'>When a file changes, do a thing</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 19, 2019
+        </div>
+
+        <div class='mt-3'>When developing there is often an edit-compile-test cycle, or an edit-distribute-changes cycle or a similar repetetive task. You could poll changes, for example with cron every minute or similarly, but that is wasteful and slow.
+All modern operating systems have mechanisms for processes to subscribe to file or directory changes. In MacOS, we do have the File System Events API since 10.5, in Linux we got three different implementations (as described in LWN ): The original dnotify, its replacement inotify and the even more recent fanotify (which got its own LWN article ).</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/11/18/a-blast-from-the-past.html" class='text-decoration-none text-dark'>A blast from the past</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          November 18, 2019
+        </div>
+
+        <div class='mt-3'>TL:DR: If you have long running transactions, MySQL does not deal well with this, and it will slow down the box. That&rsquo;s okay as long as you are basically alone on your box, but if you aren&rsquo;t, the others will hate you.
+The database machine &lsquo;somehierarchy-02&rsquo; in a general purpose load balancer pool for somehierarchy had replication delay.
+It&rsquo;s a MySQL replica and is receiving the same write workload than all the other boxen in that pool.</div>
+
+    </div>
+  </div>
   
   
   
@@ -436,180 +599,6 @@ Es gibt drei von Kyle Kingsbury getestete Implementierungen von Konsenssystemen,
         <div class='mt-3'>Saving an older twitter thread on Ceph .
 I just have finished reading Part 4: RHCS 3.2 Bluestore Advanced Performance Investigation and now I do not know what to say.
 Ceph set out with the idea to make storage a commodity by using regular PCs + a lot of local hard disks + software to make inexpensive storage. For that, you ran a number of control processes and an OSD process per disk (&ldquo;object storage demon&rdquo;).</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/06/14/not-quite-storage-any-more.html" class='text-decoration-none text-dark'>Not quite storage any more</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 14, 2019
-        </div>
-
-        <div class='mt-3'>While I was testing away on all the SSD and NVME toys, I got my hand on a test box with even stranger that usual equipment. It was a Dual Platinum-8280 box with a really weird amount of memory: 7.5 TB.
-“8280 ”. This is a machine with a “2” in the second digit, indicating Cascade Lake , CLX.
-And one thing that is new with CLX is “Intel Optane Persistent Memory Technology”.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html" class='text-decoration-none text-dark'>Adventures in Storageland</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 13, 2019
-        </div>
-
-        <div class='mt-3'>Adventures in Storageland Devices In the last few weeks, I have been benchmarking server storage in order to get a better idea what the state of the hardware is these days. There is a summary with recommendations at the end of this article. Storage technology
-In the past, we had stored data on rotating disks.
-An open hard disk chassis. You can see the topmost of a stack of disks, and the arm with the r/w heads.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/05/28/kinder-und-visuelle-medien.html" class='text-decoration-none text-dark'>Kinder und visuelle Medien</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          May 28, 2019
-        </div>
-
-        <div class='mt-3'>Ich habe ein Kind, es ist neun Jahre alt.
-Mit drei Jahren stand das Kind vor dem Fernseher und hat mit beiden Händen versucht, das Bild größer zu ziehen, wie es das als Handygeste gewohnt war.
-Mit sechs Jahren hat sich das Kind über das Fernsehen beklagt, weil man ein Live Programm nicht anhalten kann, um in Ruhe auf das Klo zu gehen, und auch nicht rückspulen kann. &ldquo;Außerdem ist das blöd, wenn man Sachen nicht anhalten und zum später gucken zurücklegen kann.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/04/29/mozilla-irc.html" class='text-decoration-none text-dark'>Mozilla und IRC</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          April 29, 2019
-        </div>
-
-        <div class='mt-3'>Heise berichtet: Mozilla will weg von IRC und sucht Alternative .
-Und das Heiseforum sabbert reflexartig:
-Aber IRC ist doch noch gut, da muß man nur einmal mit der Drahtbürste rüber und dann kann das wieder auf Lager gelegt werden.
-Und:
-XMPP! XMPP ist gut, denn es ist ein offener Standard.
-Ja, dann also mal Iso-Standard-Rant 8859-1:
-Erst mal IRC.
-IRC ist kaum mal ein Protokoll. Es gibt einen einzigen RFC zum Thema IRC, rfc1459 von 1993 und das enthält nicht mal MIME, weiß nichts von UTF-8 und definiert den Zeichensatz von IRC als ASCII-Variante Geschmacksrichtung Schweden mit []{} als lustige Sonderzeichen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/04/25/what-has-kubernetes-ever-donefor-us.html" class='text-decoration-none text-dark'>What has Kubernetes ever done for us?</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          April 25, 2019
-        </div>
-
-        <div class='mt-3'>Kubernetes and Complexity** On Twitter, Sandeep remarked:
-The complexity and amount of code involved is staggering. I&rsquo;m not sure how we can possibly justify the Kubernetes, Istio, Docker, Envoy, Prometheus, Grafana, Jaeger, Kiali, Helm stack.
-What problem are we solving that were not solving 15 years ago, again? How much time and effort are being saved (by organisations smaller than Google)?
-One reply was:
-&ldquo;The amount of code is staggering.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/03/25/sell-to-users.html" class='text-decoration-none text-dark'>Sell your users, or sell to your users</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          March 25, 2019
-        </div>
-
-        <div class='mt-3'>There is a big change currently happening in the industry, and it is what drives and enables Facebooks &ldquo;pivot to privacy&rdquo; at the moment. It&rsquo;s less the public criticism of their methods, that&rsquo;s just a justification, it&rsquo;s more a broader shift.
-A lot of people misunderstand what&rsquo;s going on: Facebook’s ‘pivot’ is less about privacy and more about profits A plan to integrate the technical infrastructure of WhatsApp and Messenger with Instagram would allow users to seamlessly communicate across three platforms for the first time.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/03/04/bashismen.html" class='text-decoration-none text-dark'>Bashismen</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          March 4, 2019
-        </div>
-
-        <div class='mt-3'>I trolled Twitter with some Ha-Ha-Only-Serious.
-Every now and then someone complains on Twitter about the use of Bashisms in Shellscripts or legacy systems that are not completely Linux-compatible. I usually troll back with the claim that anything that is not Linux is broken, and that anything that is not Bash is broken.
-That is of course a troll, and I am of course at the same time totally serious.</div>
 
     </div>
   </div>
