@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -118,7 +119,7 @@
 <div class="page mb-4">
 
   <div class='row justify-content-center text-center my-4 mx-0'>
-    <header>
+    <header class="headerbanner">
       <div class='col'>
         <h1 class="title mb-lg-4 text-white">
           Die wunderbare Welt von Isotopp
@@ -136,7 +137,7 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/11/01/mobile-devices.html" class='text-decoration-none text-dark'>Mobile Devices - Der Feind in meiner Tasche</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/02/07/von-der-gpl.html" class='text-decoration-none text-dark'>Von der GPL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -144,12 +145,11 @@
             Kristian Köhntopp
           </a>
           -
-          November 1, 2003
+          February 7, 2005
         </div>
 
-        <div class='mt-3'>Vortrag auf der NuBIT 2003
-Der Feind in meiner Tasche Firewallkonzepte vs. Mobile Geräte
-Inhalt Aufgaben und Positionierung von Firewalls Traditionelle Sicht auf das Netzwerk Neue Gefährdungen Wie sieht ein aktuelles Netz wirklich aus? Konsequenzen Neue Angriffe Neue Sicherungsmaßnahmen Wie kann sich eine Installation gegen diese Angriffe zur Wehr setzen? Aufgaben und Leistungen einer Firewall Choke Point Trennt Zonen unterschiedlicher Administration unterschiedlicher Sicherheitslevels Ist Meßpunkt Art, Menge und Gültigkeit von Netzverkehr Trust Boundary Trust Boundary Feste Grenzlinie &ldquo;dort hört die Firma auf&rdquo; Aller Verkehr passiert die Trust Boundary Prüfung auf Legalität Dekontamination Zentrales Verzeichnis aller Außen-kommunikation Zentrale Administration der Kommunikation Strukturierung der Kommunikation Firewall als Strukturbildner Abtrennung von Bereichen unterschiedlicher Gefährdung Funktion Wichtigkeit Die wahre Netzwerktopologie Bedürfnis nach Flexibilität Aufweichung der Grenzen VPN Tunnel &ldquo;virtuelle&rdquo; VPNs ssh Tunnel + Citrix/VNC Geräte Im-/Export Wireless Techniken GPRS, WLAN, Bluetooth Tunnel und andere Löcher I VPN Tunnel offizielle Löcher Endpunkte authentisiert Kommunikation verschlüsselt Endpunkte sind effektiv Rechner im LAN aber: Standort außerhalb der Firewall!</div>
+        <div class='mt-3'>Trolltech hat seine Qt Bibliothek ab der Version 4 komplett unter GPL gestellt. Das bedeutet, daß nicht nur die Unix-Version der Bibliothek unter der GPL verfügbar ist, sondern auch die Windows-Version. Grund genug einmal nachzulesen, was denn in der GPL drinsteht, und wieso das so ist.
+Die Originalquelle zum Thema ist natürlich die Licenses -Seite der GNU Website (Deutsche Version der GPL ). Dort findet man nicht nur den Text der Lizenz , sondern auch eine sehr lange GPL FAQ , die keine Frage mehr offen lassen sollte.</div>
 
     </div>
   </div>
@@ -160,7 +160,7 @@ Inhalt Aufgaben und Positionierung von Firewalls Traditionelle Sicht auf das Net
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/10/24/objc-oder-warum-dcop-so-kompliziert-ist.html" class='text-decoration-none text-dark'>ObjC - oder warum DCOP so kompliziert ist</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/01/25/der-lauf-der-dinge.html" class='text-decoration-none text-dark'>Der Lauf der Dinge</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -168,12 +168,11 @@ Inhalt Aufgaben und Positionierung von Firewalls Traditionelle Sicht auf das Net
             Kristian Köhntopp
           </a>
           -
-          October 24, 2003
+          January 25, 2005
         </div>
 
-        <div class='mt-3'>Methoden mit Klasse Am Wochenende hatte ich mit Till eine recht coole Unterhaltung über die Innereien von Qt. Qt hat den Signal-Slot-Mechanismus, mit dem es Methoden von Objekten aufruft.
-Dazu werden einige Methoden eines Objektes in eine spezielle Runtime-Tabelle der Klasse eingetragen, mit Namen. Das sind Slots.
-Signale sind Platzhalter für Funktionsnamen, die in eine andere Tabelle eingetragen werden können. Mit connect() macht man so einen Eintrag: Man kopiert den Namen einer Funktion (genauer: eines Slots) in den Signalplatzhalter.</div>
+        <div class='mt-3'>Im Spielzeugmuseum wurde neben vielen anderen Dingen auch einer der eigenartigsten Filme gezeigt, den ich je gesehen habe. Es war Der Lauf der Dinge , eine unwahrscheinliche und präzise arrangierte Kettenreaktion von Sperrmüll in einer Fabrikhalle. Die ganze &ldquo;Was passiert dann&rdquo;-Maschine läuft mehr als 30 Minuten, und ist aufgebaut mehr als 30 Meter lang.
+Leider ist das Video sehr alt (1987) und wurde ohne Budget mit Consumer-Equipment gedreht, sodass der Film an einigen Stellen mit Schärfe und Weißabgleich kämpft, aber dennoch ist das ganze Konzept so genial, daß man sich diese 30 Minuten einfach gönnen muss.</div>
 
     </div>
   </div>
@@ -184,7 +183,7 @@ Signale sind Platzhalter für Funktionsnamen, die in eine andere Tabelle eingetr
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/09/08/fertig-gelesen-dead-until-dark.html" class='text-decoration-none text-dark'>Fertig gelesen: Dead until dark</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html" class='text-decoration-none text-dark'>Ein paar ideologische Steine ins Rollen bringen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -192,11 +191,11 @@ Signale sind Platzhalter für Funktionsnamen, die in eine andere Tabelle eingetr
             Kristian Köhntopp
           </a>
           -
-          September 8, 2003
+          January 5, 2005
         </div>
 
-        <div class='mt-3'>Dead until dark ist die Geschichte einer Kellnerin, die Gedanken lesen kann und die sich einen Vampir als Liebhaber anschafft, während ihr Chef ein Werhund ist.
-Nein, es ist keine Geschichte aus dem Laurell K. Hamilton -Universum, auch wenn sich die Bestandteile fast so anhören und entsprechend ist es kein bluttriefendes Gemetzel. Na ja, okay, es gibt einen Body Count, denn schließlich will es ein Krimi sein, aber anders als bei Laurell Hamilton ergießen sich keine Ströme von Blut über die Szenerie&hellip;</div>
+        <div class='mt-3'>Im Nachbeben zu Rumble in the Jungle analysiert Malte Diedrich :
+Kai Pahl versucht (immer mal wieder in den Kommentaren), durch beständiges Nachfragen herauszubekommen, was die Blogschreiber eigentlich stört, gibt es doch eine Reihe von Aggregationslösungen wie z. B. Bloglines, Daypop oder Blogdex, bekommt aber nicht so recht eine Antwort.Drei Dinge sind meiner Meinung nach gegenüber den zitierten Lösungen anders: IzyNews will für die Blogtexte Geld haben (es gibt eine kleinere Version mit 20 Feeds umsonst, aber darüber hinaus muss man zahlen), sie ignorieren CC-Lizenzen und sie ändern das Medium.</div>
 
     </div>
   </div>
@@ -207,7 +206,7 @@ Nein, es ist keine Geschichte aus dem Laurell K. Hamilton -Universum, auch wenn 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/08/31/fertig-gelesen-googol-revisited.html" class='text-decoration-none text-dark'>Fertig gelesen: Googol revisited</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html" class='text-decoration-none text-dark'>Rumble in the Jungle</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -215,10 +214,11 @@ Nein, es ist keine Geschichte aus dem Laurell K. Hamilton -Universum, auch wenn 
             Kristian Köhntopp
           </a>
           -
-          August 31, 2003
+          January 4, 2005
         </div>
 
-        <div class='mt-3'>Lord Gamma erinnert mich an die Geschichte eines anderen deutschen Sci-Fi Autors, die ich witzigerweise auf einem USA-Urlaub las. Ein riesiger pyramidenförmiger Flugkörper dringt in das Sonnensystem ein und nur die Nostradamus, ein experimentelles deutsches Schiff, ist in der Lage schnell genug dort hinzukommen, um das Objekt zu untersuchen, bevor es wieder verschwindet. Doch stellt sich heraus, daß ein Saboteur an Bord ist, daß auch andere Nationen auf dem Weg zur Pyramide sind und daß noch eine ganze Menge anderer Dinge faul sind.</div>
+        <div class='mt-3'>Eine RSS-Plattform, izynews.de, repliziert RSS-Feeds nach IMAP. Das ist neu, und für viele Leute sicherlich praktisch. izynews.de macht das jedoch für Geld, und ohne Lizenzen für die Feeds zu kaufen oder die Lizenzen auf den Feeds zu beachten. Das ist schlecht, und verärgert den Schockwellenreiter, IT&amp;W und Herrn Vetter vom Lawblog.
+Neu ist es nicht - Slashdot versuchte zum Beispiel einst, Artikel der Benutzer als Buch zu verkaufen, und hatte einen Copyright-Vermerk, der die Artikel der Benutzer quasi in Besitz nahm.</div>
 
     </div>
   </div>
@@ -229,7 +229,7 @@ Nein, es ist keine Geschichte aus dem Laurell K. Hamilton -Universum, auch wenn 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/08/31/fertig-gelesen-lord-gamma.html" class='text-decoration-none text-dark'>Fertig gelesen: Lord Gamma</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/12/31/satay-sauce.html" class='text-decoration-none text-dark'>Satay Sauce</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -237,11 +237,12 @@ Nein, es ist keine Geschichte aus dem Laurell K. Hamilton -Universum, auch wenn 
             Kristian Köhntopp
           </a>
           -
-          August 31, 2003
+          December 31, 2004
         </div>
 
-        <div class='mt-3'>Lord Gamma hätte so cool sein können. Ein Typ, Stan, in einem Pontiac ohne Motor, fährt eine schnurgerade Gefällestrecke runter, in der sich die Landschaft alle 180 km wiederholt.
-Alle 180 km steigt er aus, dringt in einen Atombunker ein, in dem sich immer eine andere Gesellschaftsform gebildet hat, und befreit einen Klon seiner Frau, um ihn am Ende zu erschießen. Zwischen den Kapiteln Rück-, Fremd- und Zwischenblenden, die direkt aus einem Drogentraum hätten kommen können.</div>
+        <div class='mt-3'>Für Fondue oder Satay-Spieße.
+Man nehme zwischen einem halben und einem Glas Erdnussbutter creamy, je nach gewünschter Menge. Dazu dann zweimal die Menge Erdnusssauce in Wasser (besser: Kokosmilch!) in einem kleinen Topf (also 1.5 bis 3 Gläser), den man auf kleinster Flamme langsam erhitzt.
+Dazu werden vier gepresste Knoblauchzehen, vier Esslöffel Balsamico und zwei bis drei große gehäufte Esslöffel fester Honig gegeben. Dazu zwei Teelöffel Chilipulver und nach Geschmack ein wenig Ingwer.</div>
 
     </div>
   </div>
@@ -252,7 +253,7 @@ Alle 180 km steigt er aus, dringt in einen Atombunker ein, in dem sich immer ein
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2003/08/30/fertig-gelesen-kushiel-s-dart.html" class='text-decoration-none text-dark'>Fertig gelesen: Kushiel&#39;s Dart</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/12/30/alastair-reynolds.html" class='text-decoration-none text-dark'>Fertig gelesen: Alastair Reynolds</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -260,11 +261,11 @@ Alle 180 km steigt er aus, dringt in einen Atombunker ein, in dem sich immer ein
             Kristian Köhntopp
           </a>
           -
-          August 30, 2003
+          December 30, 2004
         </div>
 
-        <div class='mt-3'>Kushiel&rsquo;s Dart - Eine Mantel-und-Degen Geschichte in einer seltsamen Parallelwelt, in der die Römer Britannien nicht erobert haben und in der Jesus Sohn in Frankreich freie Liebe gepredigt hat.
-Die Heldin, eine Art Tempelkurtisane mit einer Wahrnehmungsstörung (Sie kann Pleasure und Pain nicht unterscheiden) wird von einem Altmeister der Spionage in die Lehre genommen und zu einer gefährlichen Waffe ausgebildet, die in den Salons und den Betten der Mächtigen zum Einsatz kommt.</div>
+        <div class='mt-3'>In Unendlichkeit (Revelation Space) treffen wir auf ein Universum, in dem die Menschen über eine Menge beeindruckender Technik gebieten - kilometerlange Raumschiffe, Smart Materials und Nanotechnik, AIs und cybernetische Bewußtseinsaufrüstung und was es an Spielzeug direkt aus einem GURPS Transhuman Sourcebook mehr gibt.
+Unendlichkeit (Revelation Space) Dennoch unterliegt die Menschheit noch immer den Fesseln von Lichtgeschwindigkeit, Massenträgheit und Energieerhaltung und das macht das Universum in Unendlichkeit zu einem Platz von überwaltigender Einsamkeit.</div>
 
     </div>
   </div>
@@ -275,7 +276,7 @@ Die Heldin, eine Art Tempelkurtisane mit einer Wahrnehmungsstörung (Sie kann Pl
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2002/06/01/enterprise-intranet-integration.html" class='text-decoration-none text-dark'>Enterprise Intranet Integration</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/12/15/re-open-source-und-firmen.html" class='text-decoration-none text-dark'>Re Open Source Software und Firmen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -283,10 +284,12 @@ Die Heldin, eine Art Tempelkurtisane mit einer Wahrnehmungsstörung (Sie kann Pl
             Kristian Köhntopp
           </a>
           -
-          June 1, 2002
+          December 15, 2004
         </div>
 
-        <div class='mt-3'>Vortrag auf der NuBIT, Kiel, 2002</div>
+        <div class='mt-3'>Ein Gastblogeintrag von Matthew Langham als Antwort auf Open Source und Firmen , den er mir per Mail gesendet hat und den ich auf Nachfrage als Gastblogeintrag veröffentlichen darf:
+Ein sehr interessanter Beitrag auf Deinem Weblog. Leider ist mein Kommentar zu lang - daher als E-Mail. Ich hätte das auch noch auf meinem Weblog gepostet - aber da ich dort auf Englisch schreibe&hellip;.
+Grundsätzlich würde ich diesen Ausführungen zustimmen. Auch wenn Unternehmen auf Open Source zurückgreifen, um ihre eigenen Lösungen zu erstellen, so haben auch wir häufig festgestellt, daß die Unternehmen dann lieber die Probleme im eigenen Haus beheben als z.</div>
 
     </div>
   </div>
@@ -297,7 +300,7 @@ Die Heldin, eine Art Tempelkurtisane mit einer Wahrnehmungsstörung (Sie kann Pl
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2002/03/04/mysql-3.html" class='text-decoration-none text-dark'>MySQL 3.23</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/12/14/open-source-software-und-firmen.html" class='text-decoration-none text-dark'>Open Source Software und Firmen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -305,12 +308,11 @@ Die Heldin, eine Art Tempelkurtisane mit einer Wahrnehmungsstörung (Sie kann Pl
             Kristian Köhntopp
           </a>
           -
-          March 4, 2002
+          December 14, 2004
         </div>
 
-        <div class='mt-3'>Allgemeines Verwendete Version Alle Aussagen in diesem Artikel beziehen sich auf die aktuelle stabile Version von MySQL, wie sie in SuSE Linux 7.3 geliefert wird. Diese Version ist 3.23.44.
-Die aktuelle Version des MySQL-Clients wird beim Aufruf des Kommandos mysql genannt.
-kris@valiant:~&gt; mysql Welcome to the MySQL monitor. Commands end with ; or \g. Your MySQL connection id is 217 to server version: 3.23.44-log Type &#39;help;&#39; or &#39;\h&#39; for help.</div>
+        <div class='mt-3'>Viele Firmen verwenden Open Source. Dagegen ist auch wenig zu sagen - viele Open-Source-Software ist gut, und in den meisten Fällen ist sie leichter zu durchschauen, flexibler anzupassen und sehr viel einfacher zu debuggen als Closed Source Software. Aber Open Source braucht andere Prozesse als Closed Source, wenn es um Anpassung, Änderung und Deployment geht.
+Die Tatsache, daß Open Source änderbar ist, verführt viele Firmen dazu, die Software wirklich zu ändern.</div>
 
     </div>
   </div>
@@ -321,7 +323,7 @@ kris@valiant:~&gt; mysql Welcome to the MySQL monitor. Commands end with ; or \g
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2002/02/01/enterprise-mail.html" class='text-decoration-none text-dark'>Enterprise Mail: große Mailsysteme, kleine Schmerzen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/12/08/firma-mit-blogs.html" class='text-decoration-none text-dark'>Firma mit Blogs</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -329,14 +331,12 @@ kris@valiant:~&gt; mysql Welcome to the MySQL monitor. Commands end with ; or \g
             Kristian Köhntopp
           </a>
           -
-          February 1, 2002
+          December 8, 2004
         </div>
 
-        <div class='mt-3'>Enterprise Mail Folien für eine interne Mitarbeiterschulung: Umzug und Erweiterung des Mailsystems bei mobilcom.de; für die evangelische Landeskirche Schleswig-Holstein; für Ver.di.
-Was ist Enterprise Level? Ausfallsicher
-bei Hardwareschaden bei Mailwellen Skalierbar
-über alle User pro User Mails pro Ordner Order pro User pro Standort pro Domain Integrierbar
-keine Firma ab einer bestimmten Größe hat ein homogenes Mailsystem unterschiedliche Zugänge für Anwender: POP3/IMAP4, mit SSL?, über Web? Für Anwendungen: Virus-Scanner? Mailinglisten?</div>
+        <div class='mt-3'>Bei meinem Arbeitgeber ist es verpflichtend, ein Daily zu schreiben.
+Im Daily schreibt man auf, was man an diesem Tag an persönlichen Zielen erreicht hat, und notiert weitere Dinge, von denen man glaubt, daß sie interessant sein können.
+Kalibrierung der Warpspulen abgeschlossen. Deflektorkapazität wird bei weiterem Hochgeschwindigkeitsflug nicht mehr ausreichen. Upgradeoptionen evaluiert. Energieverluste der lateralen Dämpfungsfelder untersucht. Ursache weiterhin unklar. Ich muß wohl einen der Waffenspezialisten hinzuziehen. Das Daily sendet man an seine Peers (als Teamleiter also an alle Teamleiter unter demselben Abteilungsleiter), upstream (also an den Abteilungsleiter) und an alle Leute, die man im Daily erwähnt hat (also an alle Leute, mit denen man an diesem Tag zu tun hatte).</div>
 
     </div>
   </div>
@@ -347,7 +347,7 @@ keine Firma ab einer bestimmten Größe hat ein homogenes Mailsystem unterschied
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2002/01/31/ldap-vs-sql.html" class='text-decoration-none text-dark'>LDAP vs. SQL</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/11/08/fernsehen-macht-angst.html" class='text-decoration-none text-dark'>Fernsehen macht Angst</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -355,11 +355,10 @@ keine Firma ab einer bestimmten Größe hat ein homogenes Mailsystem unterschied
             Kristian Köhntopp
           </a>
           -
-          January 31, 2002
+          November 8, 2004
         </div>
 
-        <div class='mt-3'>Directory Services vs. Relationale Datenbanken Überblick:
-Eigenschaften von LDAP Eigenschaften von SQL Anwendungsbereiche von LDAP Anwendungsbereiche von SQL Strukturelle Probleme beim Einsatz von LDAP Warum wird LDAP dennoch verwendet? Gibt es weniger problematische Alternativen? LDAP im Schnelldurchlauf Wald von Bäumen aus Knoten Jeder Knoten hat mindestens die Attribute dn, objectClass Attribute sind ein- oder mehrwertig, haben Syntax (Typ) Besonderes mehrwertiges Attribut objectClass bestimmt, welche Attribute vorhanden sind MÜSSEN und DÜRFEN Einwertiges Attribut dn enthält den Pfad durch den Baum und ist Schlüssel (PK) Novell Directory Services, Active Directory und LDAP basieren auf den Ideen von X.</div>
+        <div class='mt-3'>In &ldquo;Das Böse ist immer und überall&rdquo; schreibt Telepolis über ein Phänomen, daß wir alle bei unseren alten Tanten haben beobachten können, als wir klein waren. Besagte Tanten saßen nämlich mit den Kieler Nachrichten auf dem Schoß da und lasen in der Rubrik mit den Polizeiberichten, was letzte Nacht alles schlimmes passiert ist, um dann den Kopf zu schütteln, &ldquo;Tsk, tsk, tsk&rdquo; zu machen und sich dann darüber auszulassen, wie schlimm alles geworden ist.</div>
 
     </div>
   </div>
@@ -370,7 +369,7 @@ Eigenschaften von LDAP Eigenschaften von SQL Anwendungsbereiche von LDAP Anwendu
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2001/05/01/filtersysteme-dongles-und-co.html" class='text-decoration-none text-dark'>Filtersysteme, Dongles und Co.</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/10/29/submission-port-587.html" class='text-decoration-none text-dark'>Submission (Port 587)</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -378,12 +377,12 @@ Eigenschaften von LDAP Eigenschaften von SQL Anwendungsbereiche von LDAP Anwendu
             Kristian Köhntopp
           </a>
           -
-          May 1, 2001
+          October 29, 2004
         </div>
 
-        <div class='mt-3'>Vortrag auf der Alcatel SEL Stiftungskonferenz, Mai 2001
-Filtersysteme, Regionalcodes, Dongles &amp; Co. Intellectual Property Rights in unserer Kultur Kulturelle Synchronisation Tendenzen und Visionen Zusammenfassung Intellectual Property Rights Disclaimer: IANAL! Sicht eines Informatikers auf IP Urheberrechte Markenrechte Patentrechte → Wahrscheinlich nicht vollständige Liste (aber die, die einem täglichen Leben und in Kursen begegnet)
-Urheberrechte in Massen während der Ausbildung Allgemeinbildung, Fachausbildung bei der Arbeit Nachschlagewerke, Datenbanken, akademische Kommunikation, Zeitschriften, Handbücher Werke von Kollegen und Partnern in der Freizeit Musik, Film, Bücher, Aufführungen&hellip; in Bibliotheken und Medienzentren → Wieso &ldquo;kommende&rdquo; Informationsgesellschaft</div>
+        <div class='mt-3'>Mail wird über SMTP (Port 25) versendet, weiß man ja.
+In RFC 2476 wird nun eine Abwandlung von SMTP diskutiert, das Mail Submission Protocol. Submission ist im wesentlichen SMTP auf Port 587 (submission), mit dem zusätzlichen Requirement, daß irgendeine Art der Absender-Authentisierung stattfindet. Mail Submission spezifiziert dabei ausdrücklich nicht, wie diese Authentisierung stattfinden soll:
+3.3. Authorized SubmissionNumerous methods have been used to ensure that only authorized users are able to submit messages.</div>
 
     </div>
   </div>
@@ -394,7 +393,7 @@ Urheberrechte in Massen während der Ausbildung Allgemeinbildung, Fachausbildung
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/11/03/xml-cisco.html" class='text-decoration-none text-dark'>Cisco IP Phone XML</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/10/21/ihr-imageserver-greift-meinen-pc-an.html" class='text-decoration-none text-dark'>Ihr Imageserver greift meinen PC an</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -402,13 +401,13 @@ Urheberrechte in Massen während der Ausbildung Allgemeinbildung, Fachausbildung
             Kristian Köhntopp
           </a>
           -
-          November 3, 2000
+          October 21, 2004
         </div>
 
-        <div class='mt-3'>Cisco IP Phone XML Dokumentation bei Cisco
-Als HTML: http://www.cisco.com/en/US/products/sw/voicesw/ps556/ Auch als PDF: http://www.cisco.com/univercd/cc/td/doc/product/voice/sw_ap_to/devguide/phsvcdev.pdf Definiert nur sehr wenige Tags Ruft bei Druck der Service-Taste eine vordefinierte Seite auf Diese Seite bekommt keine Parameter Das ist doof! Diese Seite ist im Normalfall ein Menü Tagliste Definierte Elemente:
-CiscoIPPhoneMenu CiscoIPPhoneText CiscoIPPhoneInput CiscoIPPhoneDirectory CiscoIPPhoneImage CiscoIPPhoneGraphicMenu Ist das gutes XML Design?
-Upcase? CiscoIPPhone Prefix statt Namespace? Wahrscheinlich keine vollständige XML-Implementierung Dafür ist das Phone viel zu klein Häufig, daher Standard nur begrenzt von Wert Das entwertet jedoch auch XML Designtools CiscoIPPhoneMenu &lt;CiscoIPPhoneMenu&gt; &lt;Title&gt;Blafasel&lt;/Title&gt; &lt;Prompt&gt;Machwas&lt;/Prompt&gt; &lt;MenuItem&gt; &lt;Name&gt;Profit&lt;/Name&gt; &lt;URL&gt;http://boss/.</div>
+        <div class='mt-3'>Da sich dies langsam zur FAQ auswächst, hier einmal als Text, damit ich in Zukunft darauf verweisen kann.
+Sie schreiben:
+Ich erhalte von Ihnen immer 8 TCP Scans auf meinen Rechner. Da es nicht das erste Mal ist, daß mein Router mir das von Ihrem Rechner aus meldet, muß ich Sie dazu auffordern dies bitte zu unterlassen. Possible TCP port scan from 217.72.195.85 (8 ports) against (IP-Nummer).
+Sie sehen Meldungen, die die IP-Nummer 217.</div>
 
     </div>
   </div>
@@ -419,7 +418,7 @@ Upcase? CiscoIPPhone Prefix statt Namespace? Wahrscheinlich keine vollständige 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/11/03/xml-grundlagen.html" class='text-decoration-none text-dark'>XML Grundlagen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/10/19/cholera.html" class='text-decoration-none text-dark'>Cholera</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -427,14 +426,12 @@ Upcase? CiscoIPPhone Prefix statt Namespace? Wahrscheinlich keine vollständige 
             Kristian Köhntopp
           </a>
           -
-          November 3, 2000
+          October 19, 2004
         </div>
 
-        <div class='mt-3'>XML Normensalat XML ist ein sehr unübersichtliches Thema, bestehtend aus einem Strauß von ca. 10 Normen. Einige dieser Normen sind zueinander inkompatibel. Vieles ist noch experimentell, oder noch nicht verabschiedet. Was schon da ist und funktioniert ist jedoch sehr interessant.
-Wir kennen die Normen:
-HTML 4.0 -&gt; XHTML 1.0
-XML, XML DTD, Namespaces, DOM, SAX, CSS, Xlink, XPath, XQuery, XML Schema und XSLT
-Das Versprechen: Vereinfachung, Flexibilität und Datenbankintegration.</div>
+        <div class='mt-3'>Dies ist das Siegerplakat eines Plakatwetbewerbes zum Thema &ldquo;Farbe bekennen gegen globale Armut&rdquo;. Es wird nicht gezeigt, sondern nur in Worten beschrieben:
+Das Plakat zeigt eine Cola-Flasche mit schmutzigem Wasser. Das Wort &ldquo;Cholera&rdquo;, das auf dem Etikett zu sehen ist, erinnert an den Schriftzug von &ldquo;Coca-Cola&rdquo;. Das mit der Hilfe von Photographie gestaltete Plakat soll auf symbolische Weise Folgen von Armut ,wie z.B. Krankheiten, aufzeigen.
+Warum wird es nicht gezeigt?</div>
 
     </div>
   </div>
@@ -445,7 +442,7 @@ Das Versprechen: Vereinfachung, Flexibilität und Datenbankintegration.</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/08/21/web-security.html" class='text-decoration-none text-dark'>Web Security</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/10/09/it-s-all-about-the-pentiums.html" class='text-decoration-none text-dark'>It&#39;s all about the Pentiums</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -453,13 +450,12 @@ Das Versprechen: Vereinfachung, Flexibilität und Datenbankintegration.</div>
             Kristian Köhntopp
           </a>
           -
-          August 21, 2000
+          October 9, 2004
         </div>
 
-        <div class='mt-3'>NetUSE AG, http://www.netuse.de , ist ein Internet Systemhaus in Kiel.
-Gegründet 1992, war die Firma ursprünglich als Internet Service Provider tätig. Heute werden die Geschäftsfelder ISP-Geschäft, Consulting, Hard- und Softwarehandel, Service und Support sowie Anwendungsentwicklung abgedeckt. NetUSE hat derzeit etwa 60 Mitarbeiter und wächst schnell.
-Zu den Kunden gehören viele größere Konzerne, etwa Deutsche Telekom, Mobilcom, DASA/Airbus, der Landtag des Landes Schleswig-Holstein und andere.
-Gehackt &ldquo;Hacken&rdquo; einer Website ist ein Angriff auf Verfügbarkeit, Integrität oder Vertraulichkeit.</div>
+        <div class='mt-3'>Schon Weird Al hat gewußt: It&rsquo;s all about the Pentiums, baby . Im Falle eines Rechenzentrums kann man durch den Einsatz von Blades nicht nur Strom sparen, sondern auch die Leistungsdichte erhöhen (also Platz sparen) und das Management verbessern.
+Ich hatte die letzten paar Wochen Gelegenheit, Bladecenter von HP und IBM zu sehen. Beide haben sehr unterschiedliche Konzepte&hellip;
+Über Blades Blades bestehen aus einem Einschub, dem Enclosure, in den meist vertikal die Rechnereinschübe eingesteckt werden (daher der Name Blade für die Einschübe).</div>
 
     </div>
   </div>
@@ -470,7 +466,7 @@ Gehackt &ldquo;Hacken&rdquo; einer Website ist ein Angriff auf Verfügbarkeit, I
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/05/01/webserver-security.html" class='text-decoration-none text-dark'>Webserver Security</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/09/30/the-sound-of-music.html" class='text-decoration-none text-dark'>The Sound of Music</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -478,11 +474,11 @@ Gehackt &ldquo;Hacken&rdquo; einer Website ist ein Angriff auf Verfügbarkeit, I
             Kristian Köhntopp
           </a>
           -
-          May 1, 2000
+          September 30, 2004
         </div>
 
-        <div class='mt-3'>aus: iX 5/2000.
-Webserver Security In den vergangenen Monaten haben Zeitschriften des Heise-Verlages immer wieder über Sicherheitslöcher in Installationen bekannter Serverbetreiber oder Webhoster berichtet. Offensichtlich existieren tausende von Webanwendungen, die mit heißer Nadel gestrickt und online gebracht worden sind und die - wenn überhaupt - nur unzulänglich getestet worden sind. Was ist die Ursache der beobachteten Probleme und wie kann man sie für seinen eigenen Server vermeiden? Kann man als Verbraucher und Benutzer erkennen, ob der Server eines Anbieters elementaren Qualitätsanforderungen an die Sicherheit im Web genügt?</div>
+        <div class='mt-3'>Wir haben 2004. Fünf Jahre nach Napster. Noch immer beherrschen Klagen über Raubkopierer statt innovativer Konzepte die Musikindustrie. Wenn man die Berichterstattung in den Medien über die Popkomm auswertet, dann bekommen wir ein klares Bild von einer Industrie, die jeden Bezug zu ihren Kunden verloren hat, und die seit fünf Jahren statt mit Produkten mit Klagen agiert.
+Wenn dies ein Artikel von M. Roell wäre, dann müßte ich jetzt erklären, wie das Lesen von Blogs von Kunden der Industrie helfen könnte, zu verstehen, wie Musik heute wahrgenommen und abgespielt wird und was die Kunden dieser Industrie wollen und brauchen, um Musik in einer Weise zu benutzen, die sich mit ihrem Leben integriert.</div>
 
     </div>
   </div>
@@ -493,7 +489,7 @@ Webserver Security In den vergangenen Monaten haben Zeitschriften des Heise-Verl
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/04/14/neu-auf-einem-fremden-system.html" class='text-decoration-none text-dark'>Neu auf einem fremden System</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/09/28/transitiv-dumm.html" class='text-decoration-none text-dark'>Transitiv dumm</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -501,13 +497,11 @@ Webserver Security In den vergangenen Monaten haben Zeitschriften des Heise-Verl
             Kristian Köhntopp
           </a>
           -
-          April 14, 2000
+          September 28, 2004
         </div>
 
-        <div class='mt-3'>Dies ist eine aktualisierte Version der Schulung „Unix Systemsicherheit“, die ich vor einiger Zeit schon einmal gehalten habe. Der Schwerpunkt dieser Schulung hat sich etwas zu den Grundlagen hin verschoben: Es geht diesmal weniger um Unix Systemsicherheit als um die typische Situation der Consultants und Bereitschaften:
-Man kommt an eine neue Maschine und muss sich erst einmal zurechtfinden.
-Neu auf einem fremden System Orientierung:
-Typ und Ausstattung der Maschine Prozessor, Festplatten, andere Hardware Speichersituation, historische und aktuelle Lastdaten Netzwerk und Netzwerkumfeld der Maschine IP-Adressen, Routing Welche Name-Services in welcher Reihenfolge, welche Server werden verwendet?</div>
+        <div class='mt-3'>Angenommen, ich hätte einen Account bei einem größeren Laden im Internet, sagen wir einmal ebuyzone. Angenommen, ich hätte außerdem einen Account bei einem größeren Freemailprovider, sagen wir einmal hotweb. Sagen wir weiterhin, ich wäre als Benutzer im Internet eher unbedarft und nicht sehr geübt.
+Dann waren die Chancen gut, daß ich in den vergangenen Tagen eine Mail von Gestalten eher zweifelhaften Rufes bekommen habe, die sich als Mail von ebuyzone tarnt und in der ich gebeten worden bin, meine Account Details bei ebuyzone in dem folgenden Webformular (obskurer Link mit @ drin und ebuyzone vor dem @ sowie einer IP-Nummer nach dem @) zu validieren.</div>
 
     </div>
   </div>
@@ -518,7 +512,7 @@ Typ und Ausstattung der Maschine Prozessor, Festplatten, andere Hardware Speiche
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2000/04/01/datenspuren-im-internet.html" class='text-decoration-none text-dark'>Datenspuren im Internet</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/09/16/ein-komplett-ueberfluessiger-artikel.html" class='text-decoration-none text-dark'>Ein komplett überflüssiger Artikel</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -526,12 +520,11 @@ Typ und Ausstattung der Maschine Prozessor, Festplatten, andere Hardware Speiche
             Kristian Köhntopp
           </a>
           -
-          April 1, 2000
+          September 16, 2004
         </div>
 
-        <div class='mt-3'>Datenspuren im Internet (PDF)
-nach einem Artikel in der Computer und Recht, 4/2000 mit Marit Köhntopp. Diese Version wurde am 10-Sep-2000 um einige Anmerkungen ergänzt und aktualisiert.
-Der Artikel gibt einen Überblick über die Datenspuren, die ein Internetbenutzer bei der Arbeit im Netz hinterläßt. (PDF-Datei, 180 KB)</div>
+        <div class='mt-3'>Diesen Artikel sollte ich eigentlich gar nicht mehr schreiben müssen. Er basiert auf alten Dokumenten, die ich für eine Folge von Consultingjobs in den Jahren 1993, 1994 und 1995 verfaßt habe, und den Erfahrungen mit einer Redhat Enterprise 2.3-Installation mit den HP/Compaq-Packages, die ich heute habe machen dürfen. Ich bin sehr, sehr deprimiert.
+Aber von vorne: Da ist nun also ein neuer Server, nicht unser Standardsystem, sondern etwas anderes, und es befindet sich außer dem Betriebssystem bislang nur ein Sortiment Treiber und Monitoring auf der Kiste.</div>
 
     </div>
   </div>
@@ -542,7 +535,7 @@ Der Artikel gibt einen Überblick über die Datenspuren, die ein Internetbenutze
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/1999/07/17/oss-funding.html" class='text-decoration-none text-dark'>Funding Open Source Projects</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/09/14/netzmasken-ueber-den-augen.html" class='text-decoration-none text-dark'>Netzmasken über den Augen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -550,12 +543,10 @@ Der Artikel gibt einen Überblick über die Datenspuren, die ein Internetbenutze
             Kristian Köhntopp
           </a>
           -
-          July 17, 1999
+          September 14, 2004
         </div>
 
-        <div class='mt-3'>von Thomas Roessler und Kristian Köhntopp
-Am Rande der Konferenz Wizards of OS (1999) fand eine Anhörung des BMWi zum Thema &ldquo;Open Source Software&rdquo; statt. Dabei wurde der volkswirtschaftliche Nutzen von Open Source Software erörtert und es kam die Frage auf, ob man die Entwicklung von Open Source fördern könne, ohne gewachsene Strukturen zu zerstören und inwieweit dies sinnvoll wäre.
-Dieses Papier entstand auf Initiative von Thomas Roessler und ich hatte Gelegenheit, einige Ideen und Vorschläge einzubringen.</div>
+        <div class='mt-3'>Heute habe ich einem jüngeren Kollegen Netmasks und Broadcast-Adressen beibringen wollen, und habe eine Runde über Stellenwertsysteme, Logarithmen, den Unterschied zwischen Ziffer und Zahl und dergleichen Dinge mehr drehen müssen. Mir sind diese Dinge damals mehr oder weniger zugeflogen - einmal weil so etwas an der Schule unterrichtet worden ist, und zum anderen, weil ich einige Jahre mit verschiedenen Assemblern rumhantiert habe, bevor ich meine erste Hochsprache (C64 Basic zählt wohl nicht als solche :) gelernt habe.</div>
 
     </div>
   </div>
@@ -566,7 +557,7 @@ Dieses Papier entstand auf Initiative von Thomas Roessler und ich hatte Gelegenh
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/1999/05/01/rating-does-not-work.html" class='text-decoration-none text-dark'>Rating does not work</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/08/04/der-unaufhaltsame-niedergang-der-strandburg.html" class='text-decoration-none text-dark'>Der unaufhaltsame Niedergang der Strandburg</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -574,12 +565,11 @@ Dieses Papier entstand auf Initiative von Thomas Roessler und ich hatte Gelegenh
             Kristian Köhntopp
           </a>
           -
-          May 1, 1999
+          August 4, 2004
         </div>
 
-        <div class='mt-3'>Version 1.3 (Revised 29-Sep-1999, Updates from Seth Finkelstein)
-Rating does not work by Kristian and Marit Köhntopp Content rating models such as PICS have been proposed as a solution to the problem of unwanted, harmful or prohibited content on the Internet. This document contains a number of Theses which support the claim that any Internet Content Rating and Selection (ICR&amp;S) scheme including PICS cannot work as advertised.
-To our knowledge, most of the problems and objections here have not been addressed by PICS or any other ICR&amp;S scheme.</div>
+        <div class='mt-3'>Dies ist nicht mehr das Strandbild, das ich aus meiner Jugend kenne. Früher war der Strand in Ording sauber geteilt zwischen Strandkorbinhabern und Strandburgenbauern.
+Kam man morgens an den Strand, blickte man auf eine Landschaft wie nach einem Meteoritensturm, Ringwall an Ringwall. Manche von ihnen besetzt mit einem uneinnehmbaren - weil mit einem Holzgitter und Schloß verriegelten - Strandkorb, andere scheinbar leer und verfügbar. Doch wehe, wenn man sich in den Sandwällen niederließ, den eine Familie gestern in stundenlanger Kleinarbeit errichtet hat, deren Wälle sie mit Schippe und Schaufel geglättet und mit dem Familiennamen in Muscheln beschriftet hat.</div>
 
     </div>
   </div>
@@ -590,7 +580,7 @@ To our knowledge, most of the problems and objections here have not been address
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/1999/04/01/phplib-deutsch.html" class='text-decoration-none text-dark'>PHPLIB</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2004/07/24/aus-wirklich-aus.html" class='text-decoration-none text-dark'>Aus. Wirklich aus?</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -598,11 +588,12 @@ To our knowledge, most of the problems and objections here have not been address
             Kristian Köhntopp
           </a>
           -
-          April 1, 1999
+          July 24, 2004
         </div>
 
-        <div class='mt-3'>Dieser Text bildet Kapitel 24 von php, dynamische webautritte professionell realisieren. Er ist mit dem 3. Reprint der 1. Auflage dazugekommen. Für Besitzer älterer Versionen dieses Buches stelle ich den Text hier zur Verfügung (April 1999)
-PHPLIB Überblick und Installation Was leistet PHPLIB? PHPLIB ist eine Sammlung von in PHP3 geschriebenen Klassen, mit denen eine Reihe von Aufgaben gelöst werden können, die bei der Entwicklung von webgestützten Anwendungen sehr häufig auftreten.</div>
+        <div class='mt-3'>Zwei 1250 PS Schiffsdiesel powern das Rechenzentrum von web.de.
+Gestern um 20:00 Uhr hat es eine Schaltstation in einem Wohngebiet in Durlach zerlegt. Das Stromausfallgebiet erstreckt sich von der Auer Straße/Amalienbadstraße bis zur B3/Turmbergstraße, also einmal quer durch Durlach.
+Die Stadtwerke sind die ganze Nacht dabei gewesen, für Ersatz zu sorgen, aber bisher ist immer noch kein Saft da - selbst die Turmuhr steht noch immer. Daheim gehen Kabelfernsehen und QSC nicht.</div>
 
     </div>
   </div>
@@ -618,9 +609,6 @@ PHPLIB Überblick und Installation Was leistet PHPLIB? PHPLIB ist eine Sammlung 
         <a href="/blog/49.html" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/47.html" aria-label="Page 47" class="page-link" role="button">47</a>
-      </li>
-      <li class="page-item">
         <a href="/blog/48.html" aria-label="Page 48" class="page-link" role="button">48</a>
       </li>
       <li class="page-item">
@@ -633,10 +621,13 @@ PHPLIB Überblick und Installation Was leistet PHPLIB? PHPLIB ist eine Sammlung 
         <a href="/blog/51.html" aria-label="Page 51" class="page-link" role="button">51</a>
       </li>
       <li class="page-item">
+        <a href="/blog/52.html" aria-label="Page 52" class="page-link" role="button">52</a>
+      </li>
+      <li class="page-item">
         <a href="/blog/51.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/54.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -672,9 +663,6 @@ PHPLIB Überblick und Installation Was leistet PHPLIB? PHPLIB ist eine Sammlung 
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

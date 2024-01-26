@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2008/02/03/die-innodb-storage-engine-konfiguration.html">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='Die InnoDB Storage Engine: Konfiguration' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -120,7 +121,7 @@
 <div class="page">
 	<article class="die-innodb-storage-engine-konfiguration-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
-			<header>
+			<header class="headerbanner">
 				<div class='col'>
 					<h1 class="title mb-lg-4 text-white">
 						Die InnoDB Storage Engine: Konfiguration
@@ -150,9 +151,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
+						Previous Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/02/13/es-war-einmal.html">Es war einmal...</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/01/30/die-innodb-storage-engine.html">Die InnoDB Storage Engine</a>
 				</div>
 				
 			</div>
@@ -161,9 +162,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Previous Post
+						Next Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/01/30/die-innodb-storage-engine.html">Die InnoDB Storage Engine</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/02/13/es-war-einmal.html">Es war einmal...</a>
 				</div>
 				
 			</div>
@@ -245,7 +246,7 @@ schubsen. Diese Situation ist normal und wird nicht besonders registriert
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">von</span><span class="w"> </span><span class="n">Transaktionen</span><span class="w"> </span><span class="n">vor</span><span class="w"> </span><span class="n">dem</span><span class="w"> </span><span class="k">Commit</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_log_buffer_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="n">M</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Gr</span><span class="err">öß</span><span class="n">e</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">InnoDB</span><span class="w"> </span><span class="n">Buffer</span><span class="w"> </span><span class="n">Pools</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Größe</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">InnoDB</span><span class="w"> </span><span class="n">Buffer</span><span class="w"> </span><span class="n">Pools</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">etwa</span><span class="w"> </span><span class="mi">70</span><span class="o">-</span><span class="mi">80</span><span class="o">%</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">Hauptspeichers</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">auf</span><span class="w"> </span><span class="n">einer</span><span class="w"> </span><span class="n">Maschine</span><span class="w"> </span><span class="n">mit</span><span class="w"> </span><span class="mi">4</span><span class="k">G</span><span class="w"> </span><span class="n">RAM</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">also</span><span class="w"> </span><span class="n">etwa</span><span class="w"> </span><span class="mi">3</span><span class="k">G</span><span class="w">
@@ -254,16 +255,16 @@ schubsen. Diese Situation ist normal und wird nicht besonders registriert
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_buffer_pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3072</span><span class="n">M</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Anzahl</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">InnoDB</span><span class="w"> </span><span class="n">Bufferpool</span><span class="w"> </span><span class="n">Seiten</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Drity</span><span class="w"> </span><span class="n">sein</span><span class="w"> </span><span class="n">d</span><span class="err">ü</span><span class="n">rfen</span><span class="w"> </span><span class="n">bevor</span><span class="w"> </span><span class="n">ein</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Drity</span><span class="w"> </span><span class="n">sein</span><span class="w"> </span><span class="n">dürfen</span><span class="w"> </span><span class="n">bevor</span><span class="w"> </span><span class="n">ein</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">Checkpoint</span><span class="w"> </span><span class="n">erzwungen</span><span class="w"> </span><span class="n">wird</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="n">ok</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_max_dirty_pages_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="w">
 </span></span></span></code></pre></div><p>Relevante Zähler in <code>SHOW GLOBAL STATUS</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="n">Statusz</span><span class="err">ä</span><span class="n">hler</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">das</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="s2">&#34;Redo-Log voll&#34;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="n">Statuszähler</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">das</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="s2">&#34;Redo-Log voll&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Innodb_log_waits</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Statusz</span><span class="err">ä</span><span class="n">hler</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">das</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="s2">&#34;Keine Seite
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Statuszähler</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">das</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="s2">&#34;Keine Seite
 </span></span></span><span class="line"><span class="cl"><span class="s2"># im Bufferpool frei&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Innodb_buffer_pool_wait_free</span><span class="w">
 </span></span></span></code></pre></div><h3 id="eine-sinnvolle-größe-für-das-redo-log-wählen">
@@ -329,7 +330,7 @@ ib_logfile?-Dateien löschen.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="n">Anzahl</span><span class="w"> </span><span class="n">der</span><span class="w"> </span><span class="n">ib_logfile</span><span class="o">?</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_log_files_in_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Gr</span><span class="err">öß</span><span class="n">e</span><span class="w"> </span><span class="n">eines</span><span class="w"> </span><span class="n">ib_logfile</span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Größe</span><span class="w"> </span><span class="n">eines</span><span class="w"> </span><span class="n">ib_logfile</span><span class="o">?</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_log_file_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">256</span><span class="n">M</span><span class="w">
 </span></span></span></code></pre></div><h3 id="wie-innodb-die-datendateien-ablegt">
     <a href="#wie-innodb-die-datendateien-ablegt">
@@ -407,7 +408,7 @@ mit dazu gerechnet werden.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Wie</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">angelegt</span><span class="w"> </span><span class="n">werden</span><span class="o">?</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_data_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;ibdata1:10M:autoextend&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="p">)</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">wachsen</span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="p">)</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">wachsen</span><span class="o">?</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_autoextend_increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Filehandles</span><span class="w"> </span><span class="n">hoch</span><span class="w"> </span><span class="n">drehen</span><span class="w">
@@ -425,11 +426,11 @@ mit dazu gerechnet werden.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">innodb_data_home_dir</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Wie</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">angelegt</span><span class="w"> </span><span class="n">werden</span><span class="o">?</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">Tablespace</span><span class="w"> </span><span class="n">wird</span><span class="w"> </span><span class="n">hier</span><span class="w"> </span><span class="n">als</span><span class="w"> </span><span class="mi">2</span><span class="k">G</span><span class="w"> </span><span class="n">gro</span><span class="err">ß</span><span class="n">e</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">angelegt</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">Tablespace</span><span class="w"> </span><span class="n">wird</span><span class="w"> </span><span class="n">hier</span><span class="w"> </span><span class="n">als</span><span class="w"> </span><span class="mi">2</span><span class="k">G</span><span class="w"> </span><span class="n">große</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">angelegt</span><span class="p">.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_data_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;ibdata1:2048M:autoextend&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="p">)</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">wachsen</span><span class="o">?</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">Tablespace</span><span class="w"> </span><span class="n">w</span><span class="err">ä</span><span class="n">chst</span><span class="w"> </span><span class="n">hier</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="k">G</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="p">)</span><span class="w"> </span><span class="n">soll</span><span class="w"> </span><span class="n">die</span><span class="w"> </span><span class="n">Datei</span><span class="w"> </span><span class="n">wachsen</span><span class="o">?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="n">Tablespace</span><span class="w"> </span><span class="n">wächst</span><span class="w"> </span><span class="n">hier</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="k">G</span><span class="w"> </span><span class="n">Schritten</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w">   </span><span class="p">(</span><span class="mi">1</span><span class="o">%</span><span class="w"> </span><span class="n">einer</span><span class="w"> </span><span class="mi">200</span><span class="k">G</span><span class="o">-</span><span class="n">Platte</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_autoextend_increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2048</span><span class="w">
 </span></span></span></code></pre></div><h3 id="wie-innodb-seine-daten-auf-die-platte-malt">
@@ -502,11 +503,11 @@ die Daten nicht mehr mit FLUSH auf die Platte zwingen. Dies ist auch nicht
 mehr notwendig, da ja jeder WRITE bei <code>O_DIRECT</code> ungepuffert direkt auf die
 Platte geht.</p>
 <p>Relevante Konfigurationseinträge in der my.cnf (für Linux):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="n">Gew</span><span class="err">ü</span><span class="n">nschtes</span><span class="w"> </span><span class="n">Schreibverhalten</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">viele</span><span class="w"> </span><span class="n">Anwendungen</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="n">Gewünschtes</span><span class="w"> </span><span class="n">Schreibverhalten</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">viele</span><span class="w"> </span><span class="n">Anwendungen</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_flush_log_at_trx_commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_flush_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">O_DIRECT</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Alternativ</span><span class="w"> </span><span class="n">f</span><span class="err">ü</span><span class="n">r</span><span class="w"> </span><span class="n">ACID</span><span class="o">-</span><span class="n">Compliance</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Alternativ</span><span class="w"> </span><span class="n">für</span><span class="w"> </span><span class="n">ACID</span><span class="o">-</span><span class="n">Compliance</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_flush_log_at_trx_commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_flush_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">O_DIRECT</span><span class="w">
 </span></span></span></code></pre></div><h3 id="concurrency-tickets">
@@ -616,14 +617,14 @@ im Handbuch.</p>
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
 				
-				<a href="/%20tags/#mysql" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#mysql" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				mysql
 				</a>
 				
-				<a href="/%20tags/#lang_de" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#lang_de" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
@@ -647,19 +648,8 @@ im Handbuch.</p>
 		</div>
 		
 
-		<div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
+		<div class='row justify-content-center mx-0'>
 			<div class='col-lg-4 text-center text-lg-start'>
-				
-				<div>
-					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
-					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/02/13/es-war-einmal.html">Es war einmal...</a>
-				</div>
-				
-			</div>
-
-			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
@@ -669,7 +659,19 @@ im Handbuch.</p>
 				</div>
 				
 			</div>
+
+			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
+				
+				<div>
+					<div class='letter-spacing-01 text-uppercase text-secondary'>
+						Next Post
+					</div>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2008/02/13/es-war-einmal.html">Es war einmal...</a>
+				</div>
+				
+			</div>
 		</div>
+
 
 		
 	</article>
@@ -701,9 +703,6 @@ im Handbuch.</p>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

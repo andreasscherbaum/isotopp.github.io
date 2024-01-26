@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2023/05/12/50-years-in-filesystems-1994.html">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='50 years in filesystems: 1994' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -120,7 +121,7 @@
 <div class="page">
 	<article class="50-years-in-filesystems-1994-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
-			<header>
+			<header class="headerbanner">
 				<div class='col'>
 					<h1 class="title mb-lg-4 text-white">
 						50 years in filesystems: 1994
@@ -150,9 +151,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
+						Previous Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html">50 years in filesystems: A detour on vnodes</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/11/city-of-amsterdam-and-combustion-engines.html">City of Amsterdam and Combustion Engines</a>
 				</div>
 				
 			</div>
@@ -161,9 +162,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Previous Post
+						Next Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/11/city-of-amsterdam-and-combustion-engines.html">City of Amsterdam and Combustion Engines</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html">50 years in filesystems: A detour on vnodes</a>
 				</div>
 				
 			</div>
@@ -172,7 +173,7 @@
 		<div class='row justify-content-center mx-0 mt-3 mb-5'>
 			<div class="col-lg-8 mb-3">
 				
-				<header class="bg-light">
+				<header class="toc bg-light">
 					<nav id="TableOfContents">
   <ul>
     <li><a href="#1994--the-sgi-xfs-filesystem">1994 — The SGI XFS Filesystem</a></li>
@@ -409,7 +410,7 @@ The inodes themselves are not kept in the tree, but in the actual chunks which a
 </h2>
 <p>Recovering a large filesystem after a crash can be slow.
 The recovery time is proportional to the size of the filesystem, and the number of files in it,
-because the system basically has to scan the entire filesystem and rebuild the directory tree in order to sure things are consistent.
+because the system basically has to scan the entire filesystem and rebuild the directory tree in order to ensure things are consistent.
 With XFS, the filesystem also is a lot more fragile, as it provides a variable number of inodes, spread out non-contiguously over the disk.
 Recovering them would be extra expensive.</p>
 <p>Using write-ahead logging for metadata, this can be avoided most of the time.
@@ -556,21 +557,21 @@ and together with the novel idea of delayed allocation encourage contiguous file
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
 				
-				<a href="/%20tags/#lang_en" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#lang_en" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				lang_en
 				</a>
 				
-				<a href="/%20tags/#unix" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#unix" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				unix
 				</a>
 				
-				<a href="/%20tags/#filesystems" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#filesystems" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
@@ -594,19 +595,8 @@ and together with the novel idea of delayed allocation encourage contiguous file
 		</div>
 		
 
-		<div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
+		<div class='row justify-content-center mx-0'>
 			<div class='col-lg-4 text-center text-lg-start'>
-				
-				<div>
-					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
-					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html">50 years in filesystems: A detour on vnodes</a>
-				</div>
-				
-			</div>
-
-			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
@@ -616,7 +606,19 @@ and together with the novel idea of delayed allocation encourage contiguous file
 				</div>
 				
 			</div>
+
+			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
+				
+				<div>
+					<div class='letter-spacing-01 text-uppercase text-secondary'>
+						Next Post
+					</div>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/05/15/50-years-in-filesystems-vnodes.html">50 years in filesystems: A detour on vnodes</a>
+				</div>
+				
+			</div>
 		</div>
+
 
 		
 	</article>
@@ -648,9 +650,6 @@ and together with the novel idea of delayed allocation encourage contiguous file
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

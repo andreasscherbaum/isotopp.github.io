@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='I don&#39;t hate Let&#39;s Encrypt anymore' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -120,7 +121,7 @@
 <div class="page">
 	<article class="i-dont-hate-lets-encrypt-anymore-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
-			<header>
+			<header class="headerbanner">
 				<div class='col'>
 					<h1 class="title mb-lg-4 text-white">
 						I don&rsquo;t hate Let&rsquo;s Encrypt anymore
@@ -150,9 +151,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
+						Previous Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/25/mastodon-interaction-counters.html">Mastodon Interaction Counters</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/03/mysql-ways-to-run-mysqldump.html">MySQL: Ways to run mysqldump</a>
 				</div>
 				
 			</div>
@@ -161,9 +162,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Previous Post
+						Next Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/03/mysql-ways-to-run-mysqldump.html">MySQL: Ways to run mysqldump</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/25/mastodon-interaction-counters.html">Mastodon Interaction Counters</a>
 				</div>
 				
 			</div>
@@ -204,7 +205,7 @@ For good measure, I also enabled <a href="https://httpd.apache.org/docs/current/
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">MDomain</span> mybasedomain.koehntopp.de contentdomain.koehntopp.de proxydomain.koehntopp.de
 </span></span><span class="line"><span class="cl"><span class="nb">MDContactEmail</span> <span class="k">user</span>@example.com
-</span></span><span class="line"><span class="cl"><span class="nb">MDCerticateAgreement</span> accepted
+</span></span><span class="line"><span class="cl"><span class="nb">MDCertificateAgreement</span> accepted
 </span></span><span class="line"><span class="cl"><span class="nb">MDPrivateKeys</span> RSA <span class="m">4096</span>
 </span></span></code></pre></div><p>There is no additional &ldquo;SSLEngine&rdquo; needed, except <code>SSLEngine on</code>.</p>
 <p>I also add two macros that I use a lot to create virtual hosts to the same file.
@@ -339,21 +340,21 @@ You can use <code>mod_md</code> to get certificates for your Tailscale domains (
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
 				
-				<a href="/%20tags/#lang_en" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#lang_en" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				lang_en
 				</a>
 				
-				<a href="/%20tags/#security" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#security" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				security
 				</a>
 				
-				<a href="/%20tags/#devops" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#devops" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
@@ -377,19 +378,8 @@ You can use <code>mod_md</code> to get certificates for your Tailscale domains (
 		</div>
 		
 
-		<div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
+		<div class='row justify-content-center mx-0'>
 			<div class='col-lg-4 text-center text-lg-start'>
-				
-				<div>
-					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
-					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/25/mastodon-interaction-counters.html">Mastodon Interaction Counters</a>
-				</div>
-				
-			</div>
-
-			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
@@ -399,7 +389,19 @@ You can use <code>mod_md</code> to get certificates for your Tailscale domains (
 				</div>
 				
 			</div>
+
+			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
+				
+				<div>
+					<div class='letter-spacing-01 text-uppercase text-secondary'>
+						Next Post
+					</div>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2023/01/25/mastodon-interaction-counters.html">Mastodon Interaction Counters</a>
+				</div>
+				
+			</div>
 		</div>
+
 
 		
 	</article>
@@ -431,9 +433,6 @@ You can use <code>mod_md</code> to get certificates for your Tailscale domains (
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

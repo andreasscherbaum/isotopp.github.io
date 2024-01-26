@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -118,7 +119,7 @@
 <div class="page mb-4">
 
   <div class='row justify-content-center text-center my-4 mx-0'>
-    <header>
+    <header class="headerbanner">
       <div class='col'>
         <h1 class="title mb-lg-4 text-white">
           Die wunderbare Welt von Isotopp
@@ -136,7 +137,7 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/05/12/plugs-with-wifi.html" class='text-decoration-none text-dark'>Plugs with Wi-Fi</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/25/null-is-null.html" class='text-decoration-none text-dark'>MySQL: NULL is NULL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -144,11 +145,12 @@
             Kristian Köhntopp
           </a>
           -
-          May 12, 2020
+          August 25, 2020
         </div>
 
-        <div class='mt-3'>So we are baking bread, and for that we have a Wiesheu minimat oven that comes in at a full 16A - supposedly it is using 3kW or more peak plus the condenser hood that comes in at another 500W top power draw. On the other hand, when running the thing is hardly lukewarm, it is running much cooler than the Neff household oven/microwave combo we have.
-Wiesheu minimat with condenser hood.</div>
+        <div class='mt-3'>Question: Hey, I got a UNIQUE INDEX, but I can store multiple rows with the same value, NULL. That is surprising. Is that a bug?
+This is a rewrite of the same in German from 9 years ago .
+root@localhost [kris]&gt; create table t ( a integer, b integer, unique (a,b)); Query OK, 0 rows affected (0.09 sec) root@localhost [kris]&gt; insert into t values (1, 2); Query OK, 1 row affected (0.</div>
 
     </div>
   </div>
@@ -159,7 +161,7 @@ Wiesheu minimat with condenser hood.</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/05/01/data-access-programs.html" class='text-decoration-none text-dark'>Data Access Programs and Pre-SQL systems</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/19/why-do-ops-and-sec-people-wear-black.html" class='text-decoration-none text-dark'>Why do Ops and Sec people wear black</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -167,11 +169,16 @@ Wiesheu minimat with condenser hood.</div>
             Kristian Köhntopp
           </a>
           -
-          May 1, 2020
+          August 19, 2020
         </div>
 
-        <div class='mt-3'>Let&rsquo;s have a look at very old database systems. Things like dBase or compatible systems (&ldquo;xBases&rdquo;) allowed to manipulate record based files (with indexes) in a procedural way. What does that mean?
-xBase The system allows developers to create files that contain a well defined (fixed size) record structure, basically an array of struct on disk, often together with the definition of on-screen masks designed to show a single record and a (searchable) list of records.</div>
+        <div class='mt-3'>For reasons that don&rsquo;t need exploring at this juncture I tweeted Once upon a time there were shared boxes, on which the local Unix easily had 200-300 users, Junior Developers at a University.
+A /tmp/ls found easily 3-4 people per day that had . (dot) in their path.
+No particular reason. Why?
+and followed up with
+Hope is not a strategy.
+Neither is curl stackoverflow | sudo bash.
+/tmp/ls I was asked to explain: &ldquo;What is /tmp/ls?</div>
 
     </div>
   </div>
@@ -182,7 +189,7 @@ xBase The system allows developers to create files that contain a well defined (
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/05/01/fertig-gelesen-deathworlders.html" class='text-decoration-none text-dark'>Fertig gelesen: Deathworlders</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/18/mysql-character-sets.html" class='text-decoration-none text-dark'>MySQL: Some Character Set Basics</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -190,12 +197,13 @@ xBase The system allows developers to create files that contain a well defined (
             Kristian Köhntopp
           </a>
           -
-          May 1, 2020
+          August 18, 2020
         </div>
 
-        <div class='mt-3'>In the foreword to his short story &ldquo;With Friends Like These&rdquo; , Alan Dean Foster writes
-HFY? My favorite writer of science fiction was, and still is, the inimitable Eric Frank Russell. When I was turning in short stories to the magazines instead of papers to my college professors and collecting rejection slips instead of credits and grades, I often wondered why Russell had stopped writing. I miss him.
-At the 1968 World Science-Fiction Convention in Oakland, John Campbell told me that Russell was his favorite writer, and that he too sorely bemoaned the lack of yarns Russellian.</div>
+        <div class='mt-3'>This is the updated and english version of some older posts of mine in German. It is likely still incomplete, and will need information added to match current MySQL, but hopefully it is already useful.
+Old source articles in German: 1 , 2 and 3 .
+Some vocabulary Symbol, Font, Encoding and Collation - what do they even mean?
+A character set is a collection of symbols that belong together. That is a completely abstract thing, and also almost useless.</div>
 
     </div>
   </div>
@@ -206,7 +214,7 @@ At the 1968 World Science-Fiction Convention in Oakland, John Campbell told me t
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/05/01/fertig-gelesen-delta-v-and-space-barons.html" class='text-decoration-none text-dark'>Fertig gelesen: Delta-V and Space Barons</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/17/building-the-cycling-city.html" class='text-decoration-none text-dark'>Fertig gelesen: Building the Cycling City</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -214,12 +222,10 @@ At the 1968 World Science-Fiction Convention in Oakland, John Campbell told me t
             Kristian Köhntopp
           </a>
           -
-          May 1, 2020
+          August 17, 2020
         </div>
 
-        <div class='mt-3'>A lot of super rich people are currently busy blowing their money into space. Who are these people, and what drives them?
-Space Barons , Christian Davenport, 10.99 Eur (Kindle)
-In Space Barons, Christian Davenport goes through the rather short list of super rich men who are trying to get private spacecraft flying, tells their history, successes and failures, and their motivations - or, in some cases, the story of the death of their dreams and how they drop out of the second, private space race.</div>
+        <div class='mt-3'>Melissa and Chris Bruntlett have been living in Vancouver close to the station, and decided to do as many daily runs as possible without a car, using public transport or bikes. In late 2015, early 2016 they did an extended visit to the Netherlands which resulted in a changed world view about what proper Urban Infrastructure can look like. Meanwhile they are living with two kids near Delft, in the Netherlands.</div>
 
     </div>
   </div>
@@ -230,7 +236,7 @@ In Space Barons, Christian Davenport goes through the rather short list of super
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/05/01/fertig-gelesen-die-krone-der-sterne.html" class='text-decoration-none text-dark'>Fertig gelesen: Die Krone der Sterne: Hexenmacht/Maschinengötter</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/16/fertig-gelesen-defensive-baking.html" class='text-decoration-none text-dark'>Fertig gelesen: A Wizard&#39;s Guide To Defensive Baking</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -238,12 +244,11 @@ In Space Barons, Christian Davenport goes through the rather short list of super
             Kristian Köhntopp
           </a>
           -
-          May 1, 2020
+          August 16, 2020
         </div>
 
-        <div class='mt-3'>&ldquo;Hexenmacht&rdquo; (German Edition) and &ldquo;Maschinengötter&rdquo; (German Edition) are part 2 and 3 in the series &ldquo;Die Krone der Sterne&rdquo; (The Crown of Stars) by Kai Meyer. See Die Krone der Sterne for a review of part 1.
-Hexenmacht , Kai Meyer, 12.99 Eur (Kindle)
-Where part 1 spent a lot of time with world building and tourism, showing of the wonder and the atmosphere of the universe, part 2 is approaching from a different angle - we get a lot more action, and a lot less background.</div>
+        <div class='mt-3'>A Wizard&rsquo;s Guide To Defensive Baking is a Yound Adult Coming-of-Age story about Mona. Mona works in her aunt&rsquo;s bakery, and also is a hedge wizard. Her talent is mostly limited to influencing dough and baked goods, her familiar is a sourdough starter named Bob.
+A Wizards Guide To Defensive Baking, T. Kingfisher, Amazon Mona is a 14-year-old girl living in Riverbraid, a random city-state near a river in the floodplain of an otherwise unnamed country that vaguely feels like northern Italy during renaissance times.</div>
 
     </div>
   </div>
@@ -254,7 +259,7 @@ Where part 1 spent a lot of time with world building and tourism, showing of the
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/03/19/netflix-does-not-bring-down-the-internet.html" class='text-decoration-none text-dark'>Netflix does not bring down the Internet</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/14/eli5-epic-vs-apple-and-google.html" class='text-decoration-none text-dark'>ELI5: Epic vs Apple and Google</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -262,12 +267,15 @@ Where part 1 spent a lot of time with world building and tourism, showing of the
             Kristian Köhntopp
           </a>
           -
-          March 19, 2020
+          August 14, 2020
         </div>
 
-        <div class='mt-3'>It&rsquo;s Coronavirus Crisis and Netflix is killing us all, again. This time it&rsquo;s not their excessive energy use , but their dreaded HD videos that are overloading the Internet. Or is it?
-It&rsquo;s only Swisscom Supposedly Switzerland is considering Netflix shutdown to prevent Home Office workers from being disconnected.
-According to its own statements, on the first day of the quasi curfew in our neighboring country, Swisscom recorded an enormous increase in the load on the infrastructure.</div>
+        <div class='mt-3'>@jpmens asked on Twitter:
+What is Fortnite? #outingmyself
+Assuming XKCD 1053 .
+Fortnite Fortnite is a game made by Epic Games. They also make the Unreal Engine, which powers many modern computer games. Fortnite together with Roblox and Minecraft it is the set of games played most by people under 20.
+You want to follow Matthew Ball .
+Fortnite is a Battle Royal game, a 1st person shooter, in which a matchmaker puts you together with a set of other people of similar skill, drops you into an arena of ever shrinking size.</div>
 
     </div>
   </div>
@@ -278,7 +286,7 @@ According to its own statements, on the first day of the quasi curfew in our nei
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/03/18/the-lack-of-developer-centric-mysql-monitoring.html" class='text-decoration-none text-dark'>The lack of developer centric MySQL monitoring - a rant</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/04/mysql-foreign-key-constraints-and-locking.html" class='text-decoration-none text-dark'>MySQL Foreign Key Constraints and Locking</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -286,11 +294,12 @@ According to its own statements, on the first day of the quasi curfew in our nei
             Kristian Köhntopp
           </a>
           -
-          March 18, 2020
+          August 4, 2020
         </div>
 
-        <div class='mt-3'>So where I work we have a large number of MySQL instances. They are organized in a slightly smaller number of replication hierarchies, which tend to cross region boundaries.
-Structure of a large database setup A rough sketch of the setup we have. Variants of this exist in various sizes - from 6 replicas in 3 regions to hundreds of replicas per region, with Group Replication at the top and per Region Intermedia Master.</div>
+        <div class='mt-3'>Since we now know how to look at the state of locking in a live database, let&rsquo;s look at what happens when we run a normal insert or update and an insert or update with foreign key relationships defined, and compare.
+We will be using the tables and structures from our previous examples, a simple 1:n relationship between a and b:
+CREATE TABLE a ( a_id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (a_id) ); INSERT INTO a VALUES (10), (20), (30), (40); CREATE TABLE b ( b_id int NOT NULL AUTO_INCREMENT, a_id int NOT NULL, PRIMARY KEY (b_id), KEY `a_id` (a_id), CONSTRAINT a_id_exists FOREIGN KEY (a_id) REFERENCES a (a_id) ON DELETE RESTRICT ON UPDATE RESTRICT ); INSERT INTO b VALUES (10,10), (40,40); or the same definition for b without the constraint.</div>
 
     </div>
   </div>
@@ -301,7 +310,7 @@ Structure of a large database setup A rough sketch of the setup we have. Variant
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/03/09/normalitaer.html" class='text-decoration-none text-dark'>Normalitär</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html" class='text-decoration-none text-dark'>MySQL Foreign Keys and Foreign Key Constraints</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -309,12 +318,11 @@ Structure of a large database setup A rough sketch of the setup we have. Variant
             Kristian Köhntopp
           </a>
           -
-          March 9, 2020
+          August 3, 2020
         </div>
 
-        <div class='mt-3'>&ldquo;Normalitär&rdquo;, ein Begriff, der von @beimwort geprägt wurde. Nach einem Twitter Thread . In seinem Artikel auf T-Online propagiert Schaible eine Bruchlinie innerhalb der &ldquo;rechten&rdquo; Parteien, weil Teile der Mitglieder die Weltbildverschiebung der frühen 2000er mitgemacht haben, andere sie ablehnen.
-Er beschreibt die Welt von 1990, die Nachwendezeit:
-Vergewaltigung in der Ehe nicht strafbar, Diercke Weltatlas redet von Menschenrassen, unter den 250 Positionen der politischen Elite in Deutschland war nur eine Frau; alles weiße, angeblich heterosexuelle und angeblich christliche Männer.</div>
+        <div class='mt-3'>Foreign Keys are what links tables together and turns a set of tables into a model. Foreign Key Constraints are conditions that must be true for the content of the tables to be an internally consistent model. Foreign Key Constraints can be defined and enforced in InnoDB, but this comes at a considerable price, and for some it may hurt more than it is worth.
+A very simple shop as an ER-model.</div>
 
     </div>
   </div>
@@ -325,7 +333,7 @@ Vergewaltigung in der Ehe nicht strafbar, Diercke Weltatlas redet von Menschenra
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/03/06/sonos-recycled-their-recycle-mode.html" class='text-decoration-none text-dark'>Sonos recycled their recycle mode</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/02/mysql-deadlocks-with-insert.html" class='text-decoration-none text-dark'>MySQL Deadlocks with INSERT</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -333,11 +341,11 @@ Vergewaltigung in der Ehe nicht strafbar, Diercke Weltatlas redet von Menschenra
             Kristian Köhntopp
           </a>
           -
-          March 6, 2020
+          August 2, 2020
         </div>
 
-        <div class='mt-3'>So I wrote about the Sonos Recycle Program before Sonos announced their plans to actively discontinue support for their older Speakers. Back then, the program did make sense, because it was kind of voluntary and avoided sending stuff back to Sonos for a Trade-Up. Even then, people disliked it.
-Then Sonos announced that they would discontinue support for these devices and it&rsquo;s basically &lsquo;you brick them now, or we are going to brick them for you in May and without a rebate for new equipment&rsquo;.</div>
+        <div class='mt-3'>Support Channel. &ldquo;Hi, I am getting deadlocks in the database, and they occur when I have to roll back the transactions but if we don&rsquo;t have to roll back all transactions get executed.&rdquo; Wait, what? After some back and forth it becomes clear that the Dev experiences deadlocks and has data:
+mysql&gt; pager less mysql&gt; show engine innodb status\G ... MySQL thread id 142531, OS thread handle 139990258222848, query id 4799571 somehost.</div>
 
     </div>
   </div>
@@ -348,7 +356,7 @@ Then Sonos announced that they would discontinue support for these devices and i
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/02/28/some-latency-numbers-illustrated.html" class='text-decoration-none text-dark'>Some latency numbers illustrated</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/01/mysql-locks-and-deadlocks.html" class='text-decoration-none text-dark'>MySQL: Locks and Deadlocks</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -356,12 +364,11 @@ Then Sonos announced that they would discontinue support for these devices and i
             Kristian Köhntopp
           </a>
           -
-          February 28, 2020
+          August 1, 2020
         </div>
 
-        <div class='mt-3'>These images are older than time itself. I picked them up while working as a consultant for MySQL AB, but I do not know the source.
-Here are some important latency numbers. A pixel is a nanosecond (nano = 10^-9, a billionth of a second, 1 billion events/s = 1 GHz):
-And below is the HDD disk seek latency in full at the same scale. An uncached index access can result in up to 5 disk seeks, worst case.</div>
+        <div class='mt-3'>In a previous article we wrote data to the database using atomic update statements, and then using transactions with SELECT ... FOR UPDATE. In this article we will look at what happens when we continue doing this, in a more complicated way. Source code for this article is also available on GitHub.com .
+A simple row lock But first let&rsquo;s do things manually: We create a table kris with an integer primary key column and a secondary unindexed data column.</div>
 
     </div>
   </div>
@@ -372,7 +379,7 @@ And below is the HDD disk seek latency in full at the same scale. An uncached in
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/02/22/in-which-we-cycle-shopping.html" class='text-decoration-none text-dark'>In which we cycle shopping...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html" class='text-decoration-none text-dark'>MySQL Transactions - writing data</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -380,12 +387,11 @@ And below is the HDD disk seek latency in full at the same scale. An uncached in
             Kristian Köhntopp
           </a>
           -
-          February 22, 2020
+          July 30, 2020
         </div>
 
-        <div class='mt-3'>Welcome to the Netherlands. Please excuse me, I need to fetch a few things before I have time for you. I need a few things from Lidl in Hoofddorp, do you want to come with me?
-It&rsquo;s not far, we are taking the bike for some six kilometres. Also, I&rsquo;m going to show you a trick: Look, Mom! Not riding with the cars, and no lights.
-Let&rsquo;s follow path and go down Liniepad.</div>
+        <div class='mt-3'>Using the framework for testing we created in earlier articles, let&rsquo;s try to modify some data. We are writing a small program that increments a counter. Our table looks like this, and contains 10 counters:
+CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` int NOT NULL DEFAULT &#39;0&#39;, UNIQUE KEY `id` (`id`) ) INSERT INTO `demo` VALUES (1,0); INSERT INTO `demo` VALUES (2,0); ... INSERT INTO `demo` VALUES (10,0); We are using some very simple programming to increment a counter:</div>
 
     </div>
   </div>
@@ -396,7 +402,7 @@ Let&rsquo;s follow path and go down Liniepad.</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/02/21/under-the-sea.html" class='text-decoration-none text-dark'>Under the sea...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html" class='text-decoration-none text-dark'>MySQL Transactions - the logical side</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -404,12 +410,12 @@ Let&rsquo;s follow path and go down Liniepad.</div>
             Kristian Köhntopp
           </a>
           -
-          February 21, 2020
+          July 29, 2020
         </div>
 
-        <div class='mt-3'>Welcome to the Netherlands. I am living at the bottom of a lake, 3.50 meters below the sea level, and there are sea shells in my garden.
-When I dig in my garden, it looks like this.
-The Netherlands (low lands) or Holland (hollow lands) are formed in large part by the Rhine Delta . This is an estuary delta (tidal delta), which means it is formed as much by erosion as it is formed by sedimentation.</div>
+        <div class='mt-3'>After having a look how MySQL handles transactions physically , let&rsquo;s have a look at what is going on from a logical point of view.
+We are using a test table called demo with an id and a counter field, both integer. In it, we have 10 counters, all set to 0.
+CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` int NOT NULL DEFAULT &#39;0&#39;, UNIQUE KEY `id` (`id`) ) INSERT INTO `demo` VALUES (1,0); INSERT INTO `demo` VALUES (2,0); .</div>
 
     </div>
   </div>
@@ -420,7 +426,7 @@ The Netherlands (low lands) or Holland (hollow lands) are formed in large part b
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/02/19/how-to-build-a-cycling-environment.html" class='text-decoration-none text-dark'>How to build a cycling environment</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/28/mysql-connection-scoped-state.html" class='text-decoration-none text-dark'>MySQL Connection Scoped State</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -428,12 +434,11 @@ The Netherlands (low lands) or Holland (hollow lands) are formed in large part b
             Kristian Köhntopp
           </a>
           -
-          February 19, 2020
+          July 28, 2020
         </div>
 
-        <div class='mt-3'>Welcome to the Netherlands. We&rsquo;re building roads differently. They are better, safer and less stressful for cyclists, and that also makes them better, safer and less stressful for motorists. Here is how it works:
-(based on a Twitter Thread )
-What does it look like? I am living in a village. That means a speed limit of 30 km/h inside the city limits, and that is being enforced by the design of the road.</div>
+        <div class='mt-3'>MySQL speaks its own proprietary protocol. It cannot be routed by an HTTP proxy, and a MySQL connection is entire unlike an HTTP connection. Specifically, a lot of state and configuration is tied to a MySQL connection, and it cannot be recovered on disconnect.
+What state is tied to a connection? Transactions A disconnect implies a ROLLBACK. So if you are in a transaction, all changes to the database that you attempted are lost, rolled back, as if they never happened.</div>
 
     </div>
   </div>
@@ -444,7 +449,7 @@ What does it look like? I am living in a village. That means a speed limit of 30
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/01/28/mein-sohn-sitzt-vor-dem-computer.html" class='text-decoration-none text-dark'>Mein Sohn sitzt vor dem Computer</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/27/mysql-commit-size-and-speed.html" class='text-decoration-none text-dark'>MySQL Commit Size and Speed</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -452,12 +457,12 @@ What does it look like? I am living in a village. That means a speed limit of 30
             Kristian Köhntopp
           </a>
           -
-          January 28, 2020
+          July 27, 2020
         </div>
 
-        <div class='mt-3'>Oliver Rautenberg berichtet auf Twitter von &ldquo;Elternvereinbarungen zur Smartphone- und Mediennutzung&rdquo; an Waldorfschulen in Deutschland.
-»Medienvertrag einer &ldquo;Freien Schule&rdquo; der Waldorfpädagogik. Ist diese Einmischung noch vertretbar? Keine Handys in der Schule, ok. Aber auch zuhause will die Schule Handys, Computer, Filme und sogar Hörspiele vertraglich verbieten. &ldquo;Risiken und Gefahren&rdquo; drohen!«
-Dies ist meine persönliche Erfahrung, also eine Studie mit einer Sample-Gruppe von n=1. Keine Ahnung, und mir egal wie Ihr Dinge bei Euch in der Familie regelt, aber vielleicht ist das ja dennoch für irgendwen nützlich.</div>
+        <div class='mt-3'>When writing data to disk, for small transactions the cost of writing the commit out do disk dominates the execution time of the script. In order to show that, I wrote a little Python script.
+The script creates a test table in a database and writes 10.000 rows of test data into it, in commit sizes of 1, 2, 4, &hellip;, 1024 rows.
+$ ./mysql.py --help Usage: mysql.py [OPTIONS] COMMAND [ARGS].</div>
 
     </div>
   </div>
@@ -468,7 +473,7 @@ Dies ist meine persönliche Erfahrung, also eine Studie mit einer Sample-Gruppe 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/01/28/some-rules-for-primary-keys.html" class='text-decoration-none text-dark'>Some rules for primary keys</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/27/mysql-transactions.html" class='text-decoration-none text-dark'>MySQL Transactions - the physical side</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -476,12 +481,12 @@ Dies ist meine persönliche Erfahrung, also eine Studie mit einer Sample-Gruppe 
             Kristian Köhntopp
           </a>
           -
-          January 28, 2020
+          July 27, 2020
         </div>
 
-        <div class='mt-3'>On Twitter, @CaptainEyesight asked a question:
-»Database architecture question: For deleting records, instead of a DELETE, UPDATE the id to the negative (i.e. 1 becomes -1) and then add AND id &gt; 0 to every query. Great idea? or Greatest idea?«
-I was honestly a bit confused, because this idea is so weird that I took this question for a joke. But then I decided that this is a case for XKCD 1053 : »You are one of today&rsquo;s lucky 10.</div>
+        <div class='mt-3'>So you talk to a database, doing transactions. What happens actually, behind the scenes? Let’s have a look.
+There is a test table, and we write data into it inside a transaction:
+CREATE TABLE t ( id serial, data varbinary(255) ) START TRANSACTION READ WRITE INSERT INTO t ( id, data ) VALUES (NULL, RANDOM_BYTES(255)) COMMIT The MySQL test instance we are talking to is running on a Linux machine, and otherwise idle to make observation easier.</div>
 
     </div>
   </div>
@@ -492,7 +497,7 @@ I was honestly a bit confused, because this idea is so weird that I took this qu
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/01/17/mailboxorg-google-oauth-und-less-secure-applications.html" class='text-decoration-none text-dark'>Mailbox.org, Google, OAuth und Less Secure Applications</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/07/so-i-am-a-windows-user-now.html" class='text-decoration-none text-dark'>So I am a Windows User now</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -500,11 +505,11 @@ I was honestly a bit confused, because this idea is so weird that I took this qu
             Kristian Köhntopp
           </a>
           -
-          January 17, 2020
+          July 7, 2020
         </div>
 
-        <div class='mt-3'>Heise schreibt in Mailbox.org: Google sperrt &ldquo;unsichere&rdquo; Dritte vom Kalender aus über Anwendungen von Dritten und den Zugriff auf Google Kalender, Google Mail und andere Dienste, die mit GSuite interagieren. Der Artikel wirft leider eine Reihe von Dingen durcheinander, was schade ist, weil er einen wichtigen Punkt machen will.
-OAuth2 vs. LSA Im Artikel geht es um OAuth2 . OAuth2 ist kein neues Verfahren. Es handelt sich um einen Standard, bei dem ein Dienstleister Drittanwendungen den Zugriff auf Dienste erlaubt, indem er der Drittanwendung relativ automatisch ein Logintoken zuteilt, das</div>
+        <div class='mt-3'>So I am a Windows User now. I have an old MacBook pro, Late-2013 13&quot; Retina, i7, 16 GB, 1 TB SSD, and the battery is done now, after 7 years. Also, the hardware is aging, and I want it refurbished and upgrade the son&rsquo;s equipment (which is the previous 2010 MBP I had at that time).
+Modern Apple is not my thing. I have a company MBP, 2018 Retina 13&quot; Four-Port, i7, 16 GB, and everything about this device is wrong.</div>
 
     </div>
   </div>
@@ -515,7 +520,7 @@ OAuth2 vs. LSA Im Artikel geht es um OAuth2 . OAuth2 ist kein neues Verfahren. E
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/01/17/rolling-back-a-rollout.html" class='text-decoration-none text-dark'>Rolling back a rollout</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/29/how-i-set-up-my-python.html" class='text-decoration-none text-dark'>How I set up my Python</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -523,12 +528,12 @@ OAuth2 vs. LSA Im Artikel geht es um OAuth2 . OAuth2 ist kein neues Verfahren. E
             Kristian Köhntopp
           </a>
           -
-          January 17, 2020
+          June 29, 2020
         </div>
 
-        <div class='mt-3'>Florian Haas asks on Twitter :
-&ldquo;How do you solve reliable rollback. The definition of a reliable rollback being: &lsquo;get reset &ndash;hard &rsquo;, &lsquo;git push -f&rsquo; and then magic happening that returns your infra to the exact state it was at .&rdquo;
-The problem is relatively easy to solve with modern infrastructure-as-code for anything that is stateless. It becomes a bit more involved when you are dealing with things with state, such as database instances or Zookeepers or similar things.</div>
+        <div class='mt-3'>Because Martin wanted some starting point, here is how I set up my Python. There are a lot of other things one can do, but this is supposed to be just a starting point.
+For a new project, make a project directory, usually not with a local git repository.
+kk:Python kris$ mkdir project kk:Python kris$ cd project kk:project kris$ git init Initialized empty Git repository in /Users/kris/Python/project/.git/ We need a virtual environment to keep our modules apart from the system python.</div>
 
     </div>
   </div>
@@ -539,7 +544,7 @@ The problem is relatively easy to solve with modern infrastructure-as-code for a
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/01/15/disable-saitek-x52-clutch-mode.html" class='text-decoration-none text-dark'>Disable Saitek X.52 pro Clutch Mode</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/23/schulen-digitalisieren.html" class='text-decoration-none text-dark'>Schulen digitalisieren</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -547,11 +552,13 @@ The problem is relatively easy to solve with modern infrastructure-as-code for a
             Kristian Köhntopp
           </a>
           -
-          January 15, 2020
+          June 23, 2020
         </div>
 
-        <div class='mt-3'>This post is a memo to self, and describes how to disable the X.52 clutch mode. I am flying with a Saitek/Logitech X.52 pro HOTAS , and this stick has a &lsquo;clutch button&rsquo; (labelled &ldquo;i&rdquo;) in the thumb position of the throttle (image: clutch highlighed in red)
-&ldquo;Clutch mode&rdquo; for this button means that it is usable as a modfier for the other buttons, when pressed together with a second button.</div>
+        <div class='mt-3'>Da war also ein Artikel bei Golem: Schulen bemühen sich vergeblich um Geld aus dem Digitalpakt .
+Die Schulen wollten das Geld nutzen, die Mittel würden aber trotz vieler Einreichungen nicht freigegeben, sagte ein Lehrer und IT-Verantwortlicher eines Berliner Gymnasiums Golem.de.
+Das liege daran, sagt der Artikel, daß für Mittel aus dem Digitalpakt eine Minimal-Ausstattung und Anbindung der Schulen gefordert ist, die so oft nicht realisierbar sei. Außerdem
+Auf kommunaler Ebene der Schulträger gebe &ldquo;es kaum IT-Kompetenz.</div>
 
     </div>
   </div>
@@ -562,7 +569,7 @@ The problem is relatively easy to solve with modern infrastructure-as-code for a
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/12/30/sonos-recycle-mode.html" class='text-decoration-none text-dark'>Sonos Recycle Mode</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/21/mysql-window-functions.html" class='text-decoration-none text-dark'>MySQL Window Functions</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -570,12 +577,13 @@ The problem is relatively easy to solve with modern infrastructure-as-code for a
             Kristian Köhntopp
           </a>
           -
-          December 30, 2019
+          June 21, 2020
         </div>
 
-        <div class='mt-3'>Sonos is a company that makes Wi-Fi Connected speakers. They offer acceptable sound quality and an extremely good user experience. They also so far have never cancelled support for any of their speakers.
-Hardware Lineup and Timeline Some of their speakers are now qualified for a Trade-Up program, in particular their
-Play:5 (1st generation) speaker, the Connect:Amp and the Connect. The latter two (the Connect products) are somewhat obsolete as they were necessary when normal Wi-Fi was usually not able to carry sound data at the required reliability, so Sonos speakers built their own Wi-Fi Mesh network separately from the usual home Wi-Fi.</div>
+        <div class='mt-3'>Two questions from Reddit&rsquo;s /r/mysql related to Window Functions: How do I make row.numbers happen and Get the difference between two values in different recordings .
+One of the new things in MySQL is the implementation of Window Functions. They are related to aggregates, but do not actually lump values together.
+To better understand what goes on, let&rsquo;s create some fake data to work with:
+#! /usr/bin/env python3 # -*- coding: utf-8 -*- import MySQLdb as mdb import MySQLdb.</div>
 
     </div>
   </div>
@@ -586,7 +594,7 @@ Play:5 (1st generation) speaker, the Connect:Amp and the Connect. The latter two
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2019/12/28/streaming-and-energy.html" class='text-decoration-none text-dark'>Streaming and Energy</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/06/20/export-the-entire-database-to-csv.html" class='text-decoration-none text-dark'>Export the entire database to CSV</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -594,11 +602,12 @@ Play:5 (1st generation) speaker, the Connect:Amp and the Connect. The latter two
             Kristian Köhntopp
           </a>
           -
-          December 28, 2019
+          June 20, 2020
         </div>
 
-        <div class='mt-3'>A bunch of boomers in Germany is running a distraction campaign on the energy use of data centers and streaming. Example articles in german language can be found in Zeit and Bento , but there is a larger series of articles acrooss multiple newspapers.
-A better structured reasoning can be found in SRF (German), and it highlights how arbitrary and wrong the energy numbers in the former articles are. But even this article ignores the facts that the energy consumption in a typical cloud data center is most likely carbon neutral, because the power used is likely to be completely green.</div>
+        <div class='mt-3'>A question from Reddit&rsquo;s /r/mysql:
+Really new to MySQL and had a request to export an entire database to csv for review. I can manually export each table using workbench but there are 10+ tables and 10+ databases so I was looking to export the entire database to csv.
+It is likely that you have additional requirements on top of this, so it would be best to script this in a way that would allow for customization.</div>
 
     </div>
   </div>
@@ -632,7 +641,7 @@ A better structured reasoning can be found in SRF (German), and it highlights ho
         <a href="/blog/13.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/54.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -668,9 +677,6 @@ A better structured reasoning can be found in SRF (German), and it highlights ho
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

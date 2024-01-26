@@ -6,7 +6,729 @@
     <description>Recent content in computer on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jun 2023 13:28:45 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/computer/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2024 23:01:30 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/computer/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Invalid-UTF8 vs the filesystem</title>
+      <link>https://blog.koehntopp.info/2023/09/14/invalid-utf8-vs-the-filesystem.html</link>
+      <pubDate>Thu, 14 Sep 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/09/14/invalid-utf8-vs-the-filesystem.html</guid>
+      <description>&lt;p&gt;A UNIX filename can contain arbitrary bytes in an arbitrary sequence, with two exceptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It cannot contain NUL (&lt;code&gt;\0&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;It cannot contain slash (&lt;code&gt;/&lt;/code&gt;), because that is the directory separator.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But will all filesystems accept such filenames?
+And how will this work with languages such as Python, which require all strings to be valid &lt;code&gt;utf-8&lt;/code&gt; and
+which declare the filesystem interface to accept and return strings?&lt;/p&gt;
+&lt;h1 id=&#34;a-test-program&#34;&gt;
+    &lt;a href=&#34;#a-test-program&#34;&gt;
+	A test program
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Let&amp;rsquo;s check.
+Here is a small C program, based on &lt;a href=&#34;https://stackoverflow.com/questions/1301402/example-invalid-utf8-string&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this stackoverflow article&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;sys/stat.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xc3\xb1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xc3\x28&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xa0\xa1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xe2\x82\xa1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xe2\x28\xa1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xe2\x82\x28&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xf0\x90\x8c\xbc&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xf0\x28\x8c\xbc&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xf0\x90\x28\xbc&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xf0\x28\x8c\x28&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xf8\xa1\xa1\xa1\xa1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\xfc\xa1\xa1\xa1\xa1\xa1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;FILE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mkdir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;keks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mo&#34;&gt;0755&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// don&amp;#39;t care if exists
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;chdir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;keks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;// don&amp;#39;t care if succeed.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;%s&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;fp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fopen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;unable to open %d (%s)!&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;fprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;keks&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nf&#34;&gt;fclose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;xfs&#34;&gt;
+    &lt;a href=&#34;#xfs&#34;&gt;
+	XFS
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When running this on a Linux system with XFS, this works:&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/invalid-utf8-xfs.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The program runs and generates all files. Even those with byte sequences that are not valid utf-8.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This works the same with ext4 on Linux.&lt;/p&gt;
+&lt;h2 id=&#34;zfs&#34;&gt;
+    &lt;a href=&#34;#zfs&#34;&gt;
+	ZFS
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When running this on a Linux system with ZFS, filenames containing invalid utf-8 sequences are rejected.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/invalid-utf8-zfs.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The program runs and generates files with valid utf-8 names. The &lt;code&gt;open(2)&lt;/code&gt; syscall fails for names with invalid utf-8 filenames.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;apfs&#34;&gt;
+    &lt;a href=&#34;#apfs&#34;&gt;
+	APFS
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When running this on a MacOS Ventura system with APFS, filenames containing invalid utf-8 sequences are rejected.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/invalid-utf8-apfs.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The program runs and generates files with valid utf-8 names. The &lt;code&gt;open(2)&lt;/code&gt; syscall fails for names with invalid utf-8 filenames.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;unpacking-invalid-utf-8-filenames-with-python&#34;&gt;
+    &lt;a href=&#34;#unpacking-invalid-utf-8-filenames-with-python&#34;&gt;
+	Unpacking invalid utf-8 filenames with Python
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I went and creates a &lt;code&gt;tar&lt;/code&gt; archive of the files generated on XFS and copied it over to my Mac.&lt;/p&gt;
+&lt;p&gt;The following test program was used to unpack the &lt;code&gt;tar&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#! /usr/bin/env python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tarfile&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TarFile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;chardet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TarFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;test.tar&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getnames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;bname&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;bytearray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;raw&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chardet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;detect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The test run fails:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;(venv) $ python tarnames.py
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Traceback (most recent call last):
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  File &amp;#34;.../tarnames.py&amp;#34;, line 15, in &amp;lt;module&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    bname = bytearray(name, &amp;#39;raw&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;            ^^^^^^^^^^^^^^^^^^^^^^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;LookupError: unknown encoding: raw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;intermediate-result&#34;&gt;
+    &lt;a href=&#34;#intermediate-result&#34;&gt;
+	Intermediate result
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;It probably is useful to restrict POSIX further and demand that filenames are always valid utf-8.
+But that is not what the standard currently says, and also not what all filesystems guarantee.
+And it can lead to unexpected behavior.&lt;/p&gt;
+&lt;p&gt;Also, some programming languages such as Python demand of strings that they have valid utf-8 encoding,
+but use filenames and strings equivalently.&lt;/p&gt;
+&lt;p&gt;That can lead to weird behavior.&lt;/p&gt;
+&lt;h1 id=&#34;further-research&#34;&gt;
+    &lt;a href=&#34;#further-research&#34;&gt;
+	Further research
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Apparently there is a function
+&lt;a href=&#34;https://docs.python.org/3/library/sys.html#sys.getfilesystemencoding&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;sys.getfilesystemencoding()&lt;/code&gt;&lt;/a&gt;
+
+
+without parameters.
+Python seems to assume that all filesystems have the same encoding and that it is not path dependent.&lt;/p&gt;
+&lt;p&gt;Apparently there are &lt;code&gt;os.fsencode()&lt;/code&gt; and
+&lt;a href=&#34;https://docs.python.org/3/library/os.html#os.fsencode&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;os.fsdecode()&lt;/code&gt;&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;h2 id=&#34;modified-python-code&#34;&gt;
+    &lt;a href=&#34;#modified-python-code&#34;&gt;
+	Modified Python code
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;We are using &lt;code&gt;os.fsencode()&lt;/code&gt; to get &lt;code&gt;bytes&lt;/code&gt; from the filesystem interface.
+We are then using &lt;code&gt;chardet.detect()&lt;/code&gt; on this byte-string and check the guesses.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#! /usr/bin/env python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tarfile&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TarFile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;chardet&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TarFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;test.tar&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;getnames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;bname&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fsencode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bname&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;=}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;chardet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;detect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The result:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ascii&amp;#39;, &amp;#39;confidence&amp;#39;: 1.0, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/a&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ascii&amp;#39;, &amp;#39;confidence&amp;#39;: 1.0, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xc3\xb1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ISO-8859-1&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xc3(&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ISO-8859-1&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xa0\xa1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;IBM866&amp;#39;, &amp;#39;confidence&amp;#39;: 0.99, &amp;#39;language&amp;#39;: &amp;#39;Russian&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xe2\x82\xa1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1252&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xe2(\xa1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ISO-8859-1&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xe2\x82(&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1252&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xf0\x90\x8c\xbc&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1254&amp;#39;, &amp;#39;confidence&amp;#39;: 0.48310298982778344, &amp;#39;language&amp;#39;: &amp;#39;Turkish&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xf0(\x8c\xbc&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1252&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xf0\x90(\xbc&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1254&amp;#39;, &amp;#39;confidence&amp;#39;: 0.5521177026603239, &amp;#39;language&amp;#39;: &amp;#39;Turkish&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xf0(\x8c(&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;Windows-1252&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xf8\xa1\xa1\xa1\xa1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ISO-8859-1&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;bname=b&amp;#39;keks/\xfc\xa1\xa1\xa1\xa1\xa1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;{&amp;#39;encoding&amp;#39;: &amp;#39;ISO-8859-1&amp;#39;, &amp;#39;confidence&amp;#39;: 0.73, &amp;#39;language&amp;#39;: &amp;#39;&amp;#39;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The guesses are trying to find a valid charset for the bytestring, and they find the lowest (least large) charset that matches.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Der Admin-Beruf</title>
+      <link>https://blog.koehntopp.info/2023/08/28/der-admin-beruf.html</link>
+      <pubDate>Mon, 28 Aug 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/08/28/der-admin-beruf.html</guid>
+      <description>&lt;p&gt;(based on a series of posts on Mastdon)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.heise.de/hintergrund/Gehaelter-2023-Das-verdienen-Admins-in-Deutschland-9282686.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ein Heise-Artikel über Admin-Gehälter&lt;/a&gt;
+
+
+und ich schrieb dazu auf Mastodon:&lt;/p&gt;
+&lt;h1 id=&#34;ein-hoffentlich-aussterbender-beruf&#34;&gt;
+    &lt;a href=&#34;#ein-hoffentlich-aussterbender-beruf&#34;&gt;
+	Ein hoffentlich aussterbender Beruf
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Der Beruf des &amp;ldquo;Admins&amp;rdquo; ist - hoffentlich - eine aussterbende Tätigkeit.&lt;/p&gt;
+&lt;p&gt;Er wird zunehmend ersetzt durch die Kombination von &lt;em&gt;Infrastrukturentwicklung&lt;/em&gt; und &lt;em&gt;Support&lt;/em&gt;.
+Infrastrukturentwicklung befasst sich dabei mit der Automatisierung von Provisionierung, Konfiguration, Betrieb, Überwachung und Aktualisierung.
+Neben Kenntnissen über Betrieb sind auch Kenntnisse der Programmentwicklung notwendig.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/2015/03/27/go-away-or-i-will-replace-you.html&#34;&gt;Mehr zu Devops&lt;/a&gt;
+
+
+in einem älteren Talk von mir.&lt;/p&gt;
+&lt;h1 id=&#34;betriebsprozesse-finden-und-durch-code-unterstützen&#34;&gt;
+    &lt;a href=&#34;#betriebsprozesse-finden-und-durch-code-unterst%c3%bctzen&#34;&gt;
+	Betriebsprozesse finden und durch Code unterstützen
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Der Wert von Infrastrukturentwicklung bemisst sich dabei im Finden und Schaffen von operativen Prozessen,
+die einen Dienst sicher in vorhersagbarer Qualität unterbrechungsfrei anbieten zu erlauben.&lt;/p&gt;
+&lt;p&gt;Das - der Wert und die Schwierigkeit von Operations - ist auch etwas, das von vielen Feature-Entwicklern und Software-Entwicklungsorganisationen weit unterschätzt wird.
+Das ist einer der Gründe, wieso Amazon reich ist und Elastic oder HashiCorp im Vergleich eher nicht.&lt;/p&gt;
+&lt;p&gt;Auf eine Weise ist es auch der Grund warum viele deutsche Betriebe dem modernen DevOps Hipster skeptisch gegenüber stehen.
+Man spürt, daß es mit dem Entwickeln, Day 1 Installation und Inbetriebnahme nicht getan ist.
+Zugleich scheitert man an der Transferleistung, die Schaffung von Betriebsprozessen,
+die aus der eigenen Produktion wohlbekannt ist, auf die IT auszudehnen und methodisch umzusetzen.&lt;/p&gt;
+&lt;p&gt;Die Hälfte des Problems ist dabei das Unterschätzen der Schwierigkeit bzw fehlendes ernst nehmen der Aufgabenstellung.&lt;/p&gt;
+&lt;h1 id=&#34;aws-bringt-struktur&#34;&gt;
+    &lt;a href=&#34;#aws-bringt-struktur&#34;&gt;
+	AWS bringt Struktur
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Der &amp;ldquo;Wert&amp;rdquo; von Amazon besteht darin, dem Betrieb genau messbare Kosten und harte betriebliche Einschränkungen zu geben,
+um die sich eine Firma nun auf einmal gezwungenermaßen herum organisieren muss,
+während sie vorher unkontrolliert Druck auf interne Betriebsteams ausgeübt hat.&lt;/p&gt;
+&lt;p&gt;Grenzen und Kosten, die vorher nicht fassbar waren, werden nun greifbar.
+Firmen sind gezwungen, sich damit ernsthaft zu befassen.
+Insofern ist Cloud eine gute Sache, weil sie Läden ins Meta zwingt.&lt;/p&gt;
+&lt;p&gt;Wie teuer ist &amp;ldquo;ein Admin-Team&amp;rdquo;?
+So teuer wie Deine AWS Rechnung hoch wäre,
+und die ist in den meisten Läden dreimal bis fünfmal höher als ursprünglich gedacht.
+Das ist das Ausmaß des Understaffing in Operations in den meisten Firmen.&lt;/p&gt;
+&lt;h1 id=&#34;fragen-und-antworten&#34;&gt;
+    &lt;a href=&#34;#fragen-und-antworten&#34;&gt;
+	Fragen und Antworten
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;aber-admins-haben-doch-immer-schon-code-geschrieben&#34;&gt;
+    &lt;a href=&#34;#aber-admins-haben-doch-immer-schon-code-geschrieben&#34;&gt;
+	Aber Admins haben doch immer schon Code geschrieben
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Jens Finkhäuser&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Heute Programmentwicklung, damals Perl.
+Was hat sich jetzt genau geändert?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Es gibt Perl und es gibt SysAdmin Perl.
+Das ist im Grunde die Diskussion aus &lt;a href=&#34;https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html&#34;&gt;Using Python to bash&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;h2 id=&#34;anerkennung&#34;&gt;
+    &lt;a href=&#34;#anerkennung&#34;&gt;
+	Anerkennung?
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tobias Fiebig:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ich kann dir da nur zustimmen.
+Ich denke, dass grad das end-to-end understanding verloren geht.
+Und das ist halt über kurz oder lang gefährlich.
+Denn ohne end-to-end understanding APIs nutzen geht wohl.
+Aber Bauen eher nicht.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Das ist ein anderes, auch wichtiges Thema.
+Ein Ex-Arbeitgeber von mir war in 2018 durchaus in der Lage, 3 RZ mit 50k Maschinen voll automatisiert zu betreiben und zu vernetzen.
+Dieselbe Firma in 2023 ist dazu definitiv nicht mehr in der Lage, weil nach der Ankündigung des Cloud-Move
+und den Änderungen im Management viele Leute weggegangen sind,
+weil sie keine Zukunft mehr für sich gesehen haben.
+Und weil Leute, die so etwas betreiben können, auch zunehmend schwieriger zu bekommen sind.&lt;/p&gt;
+&lt;h2 id=&#34;kubernetes-ist-zu-fett&#34;&gt;
+    &lt;a href=&#34;#kubernetes-ist-zu-fett&#34;&gt;
+	Kubernetes ist zu fett?
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Juliane:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Wobei ich aber auch behaupten würde, dass eine Kubernetes-Landschaft nicht immer die korrekte Lösung ist,
+und es mutmasslich genug Betriebe gibt, die sowas haben, obwohl sie es besser nicht sollten.&lt;/p&gt;
+&lt;p&gt;Überdimensionierte und dann tendenziell schlecht gepflegte Systeme sind für uns alle auch eine Gefahr.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Da machst Du ein Fass auf.
+Das TL;DR ist, daß Du zu große und zu wenige Maschinen hast und daher Technik zum Kleinschneiden von Servern brauchst.&lt;/p&gt;
+&lt;p&gt;Und dann landest Du schnell bei Kubernetes.&lt;/p&gt;
+&lt;p&gt;Die letzten Bare metal-Maschinen, mit denen ich gearbeitet habe, sind in etwa das Äquivalent von i3.4xl oder i3.8xl gewesen.&lt;/p&gt;
+&lt;p&gt;Da waren &lt;a href=&#34;https://www.intel.com/content/www/us/en/products/sku/123547/intel-xeon-silver-4110-processor-11m-cache-2-10-ghz/specifications.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;zwei $400 CPUs drin&lt;/a&gt;
+
+,
+eine oder zwei 2 TB NVME und 10 Gbit Netz, sowie 128 GB in RAM.
+Das war schon damals nicht mehr kosteneffektiv in dem Sinne, daß man lieber größere Kisten gekauft und klein gesägt hätte.&lt;/p&gt;
+&lt;p&gt;Das erzeugt zwei Probleme, eines für kleine Betriebe und eines für alle:
+Du hast weniger Maschinen und in Folge weniger Racks.
+Das heißt, ein Ausfall betrifft nicht mehr eine Anwendung, sondern viele oder alle.
+Der Blast-Radius steigt.&lt;/p&gt;
+&lt;p&gt;Da kann man was gegen tun:
+Sich mit anderen zusammen tun und Anwendungen mischen.
+Wenn dann eine Maschine oder ein Rack umfällt, dann betrifft das alle ein wenig, aber niemanden groß.
+Das ist die Idee hinter Cloud – große shared Infrastruktur,
+und Du belegst auf vielen Maschinen ein Fitzel statt auf einer Maschine alles.&lt;/p&gt;
+&lt;p&gt;Und das zweite Problem:
+Du hast jetzt viel mehr Komplexität, weil Du nicht nur Deine Anwendungen managen mußt,
+sondern auch die enorm aufwendige Abstraktion darunter: Openstack oder Kubernetes.
+Mit verteiltem Compute und Isolation von Anwendungen, verteiltem Storage und dessen Komplexitäten und mit einer Menge Netz.
+Oder Du kaufst das fertig dazu von jemandem, der das für Dich betreibt – wieder landest Du in einer Cloud.&lt;/p&gt;
+&lt;p&gt;Was Du nicht mehr tun kannst: Anwendungen lokal auf Rechnern betreiben, eine Anwendung pro Rechner.
+Das geht deswegen nicht, weil Du keine Kisten mehr bekommst, die so klein sind, daß Du sie mit einer Anwendung voll bekommst.&lt;/p&gt;
+&lt;p&gt;Du wirst Dich also gezwungenermaßen mit solchen Dingen auseinandersetzen müssen,
+oder jemanden dazu nehmen müssen, der das für Dich tut.&lt;/p&gt;
+&lt;p&gt;Openstack oder Kubernetes (oder das Äquivalent in einer Public Cloud) bringen eine Menge Komplexität mit,
+aber es sind Standardprodukte, für die Du Leute finden und einstellen kannst.
+Mit etwas Kleinerem, das nur die für Dich notwendigen Optionen hat, kannst Du das nicht, weil es kein Standardprodukt ist.&lt;/p&gt;
+&lt;p&gt;Die Behauptung ist, daß eine Reihe von finanziellen, strukturellen und demografischen Faktoren Dich als Unternehmen zwingen,
+so viel als möglich in eine Cloud zu verlagern.
+Das kann eine öffentliche Cloud oder eine private sein, aber Du kommst da nicht dran vorbei.&lt;/p&gt;
+&lt;h2 id=&#34;standardprodukte-helfen&#34;&gt;
+    &lt;a href=&#34;#standardprodukte-helfen&#34;&gt;
+	Standardprodukte helfen
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Thilo Fromm:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kris spricht im zweiten Toot des Threads an, dass das Ziel Prozesse und SLAs sind.
+Dafür muss man über technologische Notwendigkeiten (wie z.B. effizienten Betrieb) hinausgehen.
+Die Erlernbarkeit und die Bekanntheit, die Verbreitung der eingesetzten Technologie und des Ökosystems zählen hier ebenso,
+wie die Verfügbarkeit von Schulungen, Zertifizierungen, usw.
+Das schafft enorme Erleichterung auf der Management-Ebene.&lt;/p&gt;
+&lt;p&gt;Du tauschst also Performance gegen Betriebssicherheit:
+Kubernetes macht es Dir im Vergleich zu &amp;ldquo;klassischer&amp;rdquo; Administration mehrerer Rechner
+(Chef, Ansible, etc. kombiniert mit Fail-Over usw.) deutlich schwerer,
+Dir in den eigenen Fuß zu schießen.
+Denn es impliziert etablierte Pattern, die oft aus Erfahrungen aus dem &amp;ldquo;klassischen&amp;rdquo; Betrieb stammen.&lt;/p&gt;
+&lt;p&gt;Zudem kommt das Ökosystem als Komplettpaket mit einer großen Entwickler- und Nutzer-Community, was das Staffing erleichtert.&lt;/p&gt;
+&lt;p&gt;Die Lernkurve bei der Übernahme bestehender Systeme ist niedriger als bei handgestrickten Lösungen,
+und standardisierte Zertifizierungen erleichtern Dir das Anstellen neuer Mitarbeiter.
+Dafür bezahlst Du dann mit Rechenressourcen, aber das ist für viele Betreiber eben der weitaus geringere Kostenfaktor.&lt;/p&gt;
+&lt;p&gt;Ich vergleiche Kubernetes und die (oft subjektive) Skepsis, die dem entgegenschlägt,
+gern mit der steigenden Popularität von Java in der Applikationsentwicklung vor ~20 Jahren.&lt;/p&gt;
+&lt;p&gt;Java löst auch kein allein technisches Problem - Objektorientierung gab es schon vorher,
+portable Software und managed code auch.
+Es kommt mit Infrastruktur und einem Ökosystem, das über die reine Applikationsentwicklung hinaus geht:&lt;/p&gt;
+&lt;p&gt;Du konntest mit Java einen arbeitslosen Physiker von der Straße holen, durch ein paar Kurse schleusen, und nach ein paar Monaten war der produktiv.
+Das ging davor nicht.
+Die ermöglichte Applikationsentwicklung in Firmen und Organisationen, die vorher dazu nicht in der Lage waren.
+So ist das mit Kubernetes in der Infrastrukturautomatisierung.&lt;/p&gt;
+&lt;p&gt;Natürlich gibt es dadurch nun Randfälle,
+die aufgrund des niederschwelligen Einstiegslevels komplett neben der Spur laufen.
+Aber sich allein auf diese Totalausfälle zu konzentrieren &amp;ndash; oder
+zu ignorieren, dass Kubernetes ein weitgehend nicht-technisches Problem löst &amp;ndash; verfehlt
+meiner Meinung nach den Punkt.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;kubernetes-ist-nicht-komplex-das-problem-ist-es&#34;&gt;
+    &lt;a href=&#34;#kubernetes-ist-nicht-komplex-das-problem-ist-es&#34;&gt;
+	Kubernetes ist nicht komplex, das Problem ist es
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Sören entgegnet:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;der Vergleich hinkt, finde ich. Die Kritik an Kubernetes ist nicht, dass es kein Fortschritt ist. Das ist es in einigen Szenarien.&lt;/p&gt;
+&lt;p&gt;Die Kritik ist, dass du dir eine komplexe Architektur an Containern aufbaust,
+die du häufig auch mit weniger Wartungsaufwand und weniger laufenden Infrastrukturkosten auf einem physischen System hinbekommen hättest.
+Klar, die sind jetzt individuell skalierbarer, aber damit löst du ein häufig rein hypothetisches Problem.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Als Antwort und Ergänzung zu Thilo Fromm:&lt;/p&gt;
+&lt;p&gt;Kubernetes löst einen Satz spezifische Probleme, und die Komplexität kommt aus den Problemen und nicht aus den Lösungen.&lt;/p&gt;
+&lt;p&gt;Du willst eine sehr große Kiste in benutzbare Häppchen klein schneiden.
+Das kannst Du mit Virtualisierung (Openstack) oder mit Containern (K8s) machen, aber für den Outcome ist es hinsichtlich der Komplexität egal.&lt;/p&gt;
+&lt;p&gt;Das Erste zu lösende Problem ist die Installation von Anwendungen und deren rückstandsfreie Entfernung.
+Du bekommst Images:&lt;/p&gt;
+&lt;p&gt;Wenn Du die nicht hast, mußt Du gezwungenermaßen einen 250k Files, 10 GB Size großen Linux-Tree an die Stelle kopieren, wo Deine Anwendung sitzt,
+zusammen mit den Binaries, Configdateien und Daten der Anwendung.
+Das dauert lange.&lt;/p&gt;
+&lt;p&gt;Wenn Du ein Image oder eine Sequenz von Images (&amp;ldquo;Docker Layers&amp;rdquo;) hast,
+kannst Du die mit Disk Speed (400 MB/s) an Ort und Stelle kopieren und hast einen Loop Mount.&lt;/p&gt;
+&lt;p&gt;Das eskaliert schnell:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;root@server:~# df -Th | wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;71
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Die Images willst Du irgendwo zentral bereithalten und abrufen können,
+also hast Du eine oder zwei Registries.
+Ob die nun Glance, Docker-Registry oder Artifactory heißen ist am Ende egal.&lt;/p&gt;
+&lt;p&gt;Dein Image läuft nun auf diesem Host oder jenem, wo gerade Platz ist.
+Das zieht weitere Dinge nach sich:&lt;/p&gt;
+&lt;p&gt;Wo kommt der Storage her?
+Entweder lokal, dann hast Du eine Scheduling-Constraint und Du kannst nur noch &lt;em&gt;hier&lt;/em&gt; laufen und nicht mehr &lt;em&gt;dort&lt;/em&gt;, oder aus dem Netz.
+Oder Du hast einen Filer, iSCSI oder NVMEoF, und Volume Management.
+Das kann Cinder heißen, oder CSI mit PVC/PV, auch das ist am Ende egal.
+Du brauchst jedenfalls was, das Volumes durch Dein Netz an die Anwendung kabelt, egal wo die ist.&lt;/p&gt;
+&lt;p&gt;Und apropos &amp;ldquo;egal wo die ist&amp;rdquo;, wie kommen Nutzer an die Anwendung, wenn die Anwendung im Cluster mobil ist?&lt;/p&gt;
+&lt;p&gt;Du brauchst Netz, einen Network Entry-Point (einen Load-Balancer oder so was), eine Backend-Erkennung,
+und eine Methode eine feste externe IP an einen Endpoint zu kabeln, auch wenn der Endpoint im Cluster mobil ist.
+Das endet im Fall Openstack mit einem SDN, und im Fall K8s mit einem SDN, einem Service Mesh oder beidem,
+weil manche Leute Hosenträger und Gürtel wollen.&lt;/p&gt;
+&lt;p&gt;In jedem Fall hast Du eine komplett neue Anforderungsliste für das Netz und das Netzwerk-Debugging an der Backe,
+einfach dadurch, daß Du Images irgendwo im Cluster haben und debuggen können mußt.
+So weit, so billig.
+Das hat ja auch was Gutes.&lt;/p&gt;
+&lt;p&gt;Wir gewinnen nun die Möglichkeit, die Ausführungsumgebung einer Anwendung maschinenlesbar zu beschreiben,
+und nach dieser Beschreibung zu bauen – das ist Infrastructure as Code (IaC).&lt;/p&gt;
+&lt;p&gt;Wir gewinnen dadurch auch ein Manifest der Anwendung und ihrer Dependencies,
+weil das ja für das Bauen vom Image Voraussetzung ist.
+Das macht Compliance re CVEs, Lizenzen und Dependencies viel einfacher.&lt;/p&gt;
+&lt;p&gt;Wie bekommen aber auch einen kompletten Methodenwechsel beim Debugging und beim Monitoring:&lt;/p&gt;
+&lt;p&gt;Jede Form von Introspektion &lt;em&gt;vor&lt;/em&gt; Openstack und K8s war hostbasiert.
+Maschinen schrieben Logs in Files, und Entwickler loggten sich auf Kisten ein,
+lasen die Logfiles oder starteten einen Debugger, der sich an die Anwendung attached,
+und dann kann man in den laufenden Code gucken.&lt;/p&gt;
+&lt;p&gt;Wenn die Anwendung irgendwo im Cluster läuft, das in n+2 Kopien tut - dann geht das nicht mehr.
+Du bekommst Prometheus und Metriken mit Dutzenden von Tags,
+Honeycomb/Open Telemetry und viele andere Dinge &lt;em&gt;nur&lt;/em&gt;,
+weil Entwickler das so nicht mehr tun können, denn die Anwendung läuft halt x-mal und irgendwo und ggf laufend woanders.&lt;/p&gt;
+&lt;p&gt;Das heißt, das Handwerk der Softwareentwicklung wechselt einmal komplett die Methodik.&lt;/p&gt;
+&lt;p&gt;Aber auch wie wir über Anwendungen denken ändert sich:&lt;/p&gt;
+&lt;p&gt;Um Images zu bauen brauchen wir eine Bauanleitung, die beschreibt, was da rein geht – ein Manifest, das die Anwendung und ihre Komponenten (neue und fertig eingebundenen, also Dependencies) beschreibt. Dazu die Privilegien, die die Anwendung braucht.&lt;/p&gt;
+&lt;p&gt;Das alles wird einfacher, wenn wir Mutability vermeiden oder isolieren, also State in Datenbanken oder S3 Buckets oder anderen Sammelstellen konzentrieren.
+Auch das Deployment wird so einfacher. Wir bekommen &lt;em&gt;Struktur&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Dazu kommen Dienste, die die Infrastruktur jetzt wegen dieser festen Regeln,
+und wegen ihrer eigenen Konstruktion bereitstellen und garantieren kann:&lt;/p&gt;
+&lt;p&gt;Der Cluster wird gesteuert.
+Dazu gibt es eine Controlplane, und die weiß, was wo läuft und wem es gehört.
+Wir bekommen also vom Cluster garantierte Identitäten und das Management dazu.&lt;/p&gt;
+&lt;p&gt;Ich weiß, daß die Gegenstelle auf meinem Port 8080 der Dienst x für den User z ist,
+denn die Controlplane kann es mir garantieren oder mir sagen.
+Und weil jede Kommunikation im Cluster von der Controlplane gesteuert und erlaubt wird,
+ist diese Auskunft so verbindlich wie die Sicherheitsstruktur und Isolation des Clusters selbst.&lt;/p&gt;
+&lt;p&gt;Ich bekomme also eine vollkommen neue Dimension von Verlässlichkeit und Identität,
+die ich so auf dedizierten Bare-Metal Maschinen in der Regel nicht habe.&lt;/p&gt;
+&lt;p&gt;Mit einem Mesh kann ich sogar den Code dazu weglassen,
+denn Verschlüsselung, Metriken sammeln, Finden von Endpoints, Backoff und viele andere Dinge
+passieren automatisch und standardisiert im Mesh, sodaß ich das in meine Anwendung nicht rein codieren muss.&lt;/p&gt;
+&lt;p&gt;Ich mache einfach ein GET auf &lt;code&gt;localhost:3081&lt;/code&gt; und das &amp;ldquo;Richtige&amp;rdquo; passiert.&lt;/p&gt;
+&lt;p&gt;Nichts davon ist sinnlose Komplexität oder &amp;ldquo;nur deswegen da, weil ein paar Hipster es cool fanden&amp;rdquo;,
+sondern es kommt als logische Folge der Eskalation,
+die in Gang gesetzt wird, wenn ich Hardware klein schneiden und effizient nutzen will.&lt;/p&gt;
+&lt;p&gt;Und all das wirst Du duplizieren oder sogar in V1 dupliziert haben müssen, wenn Du selbst Clustern willst.
+Nur daß Du K8s-Leute direkt einstellen kannst, die für Deinen selbst gekochten Cluster nicht.&lt;/p&gt;
+&lt;h2 id=&#34;versteckt-das-nicht-kosten&#34;&gt;
+    &lt;a href=&#34;#versteckt-das-nicht-kosten&#34;&gt;
+	Versteckt das nicht Kosten?
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Nils Goroll:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nur, dass das neue Admin-Team, das jetzt &amp;ldquo;Devops&amp;rdquo; heisst, trotzdem noch obendrauf kommt.
+Oder halt die Leute, die devopsen, auch wenn sie nicht mehr Team heissen dürfen.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ja. Nein. Es ist kompliziert.&lt;/p&gt;
+&lt;p&gt;Große Teile an Standard-Aufgaben werden auf die eine oder andere Weise an das Fachteam oder an AWS outgesourct.
+Davon ist es nicht notwendigerweise weniger Arbeit, aber sie ist jetzt teilweise unsichtbar.
+Du weißt halt nicht mehr, wie viele Stunden DBA KTLO sind, wenn jedes Fachteam sich selbst mit RDS Daten- und Schema-Migrationen rumschlagen muss.&lt;/p&gt;
+&lt;p&gt;Andererseits wirst Du sicher eine Gruppe von Menschen brauchen,
+die sich auf Cloud-Infrastruktur, deren Design, Betriebs- und Sicherheitsarchitektur,
+Abrechnung und Kostenkontrolle und derlei Dinge kümmert.
+Und das sind nicht notwendigerweise weniger Menschen als Du vorher für Bare-Metal daheim eingeplant hattest.&lt;/p&gt;
+&lt;p&gt;Und schließlich ist es kompliziert, weil Du durch eine Cloud mit IAM, einer Controlplane und Services eventuell Dinge gewinnst.
+Nicht geldmäßig, denn Cloud ist immer 3-5x teurer als was immer Du vorher hattest.&lt;/p&gt;
+&lt;p&gt;Aber eventuell bekommst Du durch die harte administrative Grenze und den Zwang zur Kostenkontrolle als Organisation eine Motivation,
+Deine betrieblichen Abläufe besser zu dokumentieren, strukturieren und in Beziehung zu den betriebsWIRTSCHAFTLICHEN Abläufen zu setzen.&lt;/p&gt;
+&lt;p&gt;Also &amp;ldquo;Was tun wir hier eigentlich und was davon dient dem Geld verdienen&amp;rdquo;?
+Viele Unternehmen scheuen enorm vor diesen Fragen zurück.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Früher hatten wir Festplatten...</title>
+      <link>https://blog.koehntopp.info/2023/08/09/frueher-hatten-wir-festplatten.html</link>
+      <pubDate>Wed, 09 Aug 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/08/09/frueher-hatten-wir-festplatten.html</guid>
+      <description>&lt;p&gt;Früher hatten wir Festplatten.
+Das ist ein Stapel Glasplatten, die mit Eisenoxid beschichtet sind, gleichmäßig schnell rotieren
+und auf dem wir mit einem Kamm voller Schreib-Lese-Köpfe Teile magnetisieren oder die Magnetspuren auslesen.
+Platten hatten CHS-Adressen für Sektoren, also Cylinder (drinnen, weiter draußen), Head (Scheibe) und Sektor (also welches Stück Scheibe).
+Diese CHS-Adressen waren für das Betriebssystem sichtbar und das hat damit optimiert.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Platten wurden dann schnell kompliziert.
+Der Radius einer Spur auf einer drehenden Platte wächst, wenn man die Köpfe nach draußen schiebt.
+Also passen draußen mehr Sektoren darauf.&lt;/p&gt;
+&lt;p&gt;Das bedeutet aber, daß das ganze CHS-System so nicht mehr funktioniert,
+außer das OS kennt die spezielle und variable Geometrie der Platte.
+Stattdessen hat die Platte einen eigenen Computer, den Controller, die Elektronik an der Unterseite der Platte.
+Der kennt die Geometrie.
+Das OS nicht.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-02.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Für das OS ist die Platte nun sehr viel einfacher: ein Array aus Sektoren.
+Diese auf die wie auch immer geartete Plattengeometrie abzubilden ist Sache des Controllers,
+der physisch mit der Platte verbunden ist.&lt;/p&gt;
+&lt;p&gt;Wir bekommen &amp;ldquo;Lineare Block Addressen&amp;rdquo;, LBA.
+Viele OS kannten am Anfang gar keine LBA.
+Daher geben Platten eine Fake-Geometrie raus,
+die aufgeht und darstellbar ist &amp;ndash; und unsinnig ist.
+255 Cylinders, 63 sectors/track –– von einer SSD.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;root@server:/run/user/1000# fdisk -l -u=cylinders /dev/sde
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Disk /dev/sde: 3.64 TiB, 4000787030016 bytes, 7814037168 sectors
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Disk model: Samsung SSD 860
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Geometry: 255 heads, 63 sectors/track, 486401 cylinders
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Units: cylinders of 16065 * 512 = 8225280 bytes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Sector size (logical/physical): 512 bytes / 512 bytes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;I/O size (minimum/optimal): 512 bytes / 512 bytes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Disklabel type: gpt
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Disk identifier: A5C7EF27-A7B1-4E84-AFC8-24FC1DB1C7FB
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Device     Start    End  Size Type
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;/dev/sde1      1 486402  3.6T Linux LVM
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Viele Leute hätten gerne, aus was für Gründen auch immer, mehr als eine Festplatte - auch wenn sie nur eine haben.
+Zum Beispiel um mehr als ein Betriebssystem zu installieren oder um sonst wie Dinge aufzuteilen.
+Die Lösung war die &amp;ldquo;Partition&amp;rdquo;.
+Das ist eine Gruppe zusammenhängender Cylinder, die vom System als &amp;ldquo;eine logische Festplatte&amp;rdquo; angesehen werden.
+Man schließt also sda an, und sieht bis zu 4 Geräte: sda1, sda2, sda3 und sda4.&lt;/p&gt;
+&lt;p&gt;Aus Gründen, die mit Microsoft und MS-DOS zu tun haben, gingen nur 4 Partitionen –
+die Partitionstabelle am Anfang der Platte war ein festes Array mit genau 4 Einträgen.
+Es sind auch immer 4, nur manche sind als unbenutzt markiert und werden dann stillschweigend ignoriert.&lt;/p&gt;
+&lt;p&gt;Wenn man nun mehr als 4 haben will?
+Sehr einfach:
+macht man sich eine &amp;ldquo;Erweiterte Partition&amp;rdquo;, die den ganzen Rest der Platte abdeckt und kann darin dann weitere Partitionen einrichten.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-03.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Das ist dann eine lineare Liste.
+Die Nummern der logischen Partitionen in der erweiterten Partition fangen immer bei 5 an.
+Man kann also eine Bootpartition sda1 haben und eine erweiterte Partition sda2, die dann sda5, sda6 und sda7 enthält.
+Kein normal denkender Mensch will das so, weil das auch nervt:
+Partitionen müssen ja zusammenhängend sein und auf eine Platte passen.
+Man kann sie also nur dann erweitern, wenn hinter ihnen freier Platz ist.&lt;/p&gt;
+&lt;p&gt;Ist da keiner, muss man den ganzen Rest der Platte &amp;ldquo;weiter nach hinten&amp;rdquo; kopieren und dann die Partition der Wahl erweitern.
+Das kann sehr, sehr weh tun.
+Was man stattdessen macht:&lt;/p&gt;
+&lt;p&gt;Man tut alle seine Platten in einen Sack.
+Diesen Sack nennen wir Volume Group, VG.
+Die einzelnen Platten, die Physical Volumes, PVs, schneiden wir in gleich große Scheiben, die Physical Extents, PEs.
+Die VG ist also ein Sack voll PEs, alle gleich groß, die auf unterschiedlichen Platten liegen.&lt;/p&gt;
+&lt;p&gt;Man will so um die 1000 bis 10.000 PEs in seiner VG haben.
+Dann hantiert man mit Platz in Units von 1 Promille bis 0.1 Promille &amp;ndash; das ist genau genug.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-04.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Wir können uns so Logical Volumes, also Laufwerke, zusammenbauen, die ein ganzes Vielfaches eines Extents groß sind und die aus LEs bestehen, Logical Extents.
+Jedem LE wird mindestens ein PE als Backing Storage zugewiesen, aber da dies über eine Lookup-Tabelle passiert, können die PEs von irgendwoher kommen.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-05.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Das Subsystem in Linux, das das macht, heißt LVM2, der Logical Volume Manager.
+Er kann noch mehr:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Es ist möglich, einem LE mehr als ein PE zuzuweisen. Dann hat man ein RAID 1.&lt;/li&gt;
+&lt;li&gt;Es ist möglich, die Blöcke aus zwei PE auf unterschiedlichen PVs zu nehmen und blockweise abwechselnd zu benutzen. Dann hat man ein RAID 0.&lt;/li&gt;
+&lt;li&gt;Mithilfe der Device Mapper Layer, die unterhalb von LVM Dienst tut, kann man so jede Menge absurde Storage Artistik abziehen.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Für uns ist wichtig zu verstehen, daß Partitionen in LVM – wegen LVM! – nicht mehr zusammenhängend sein müssen.&lt;/p&gt;
+&lt;p&gt;Es ist 2023.
+Die Leute benutzen noch Devices, Partitionen und LVM, aber niemand benutzt noch Festplatten.
+Alles ist SSD, eventuell sogar ohne beknacktes SATA-Interface, sondern mit dem Flash direkt auf dem PCIe-Bus.
+Das ist dann NVME.&lt;/p&gt;
+&lt;p&gt;Das ist super, weil das S in SATA für Seriell steht, also auch Zugriffe auf das Gerät serialisiert.
+Das Gerät hat aber einen Haufen Chips, die man alle parallel anblasen könnte,
+wenn das SSSSSSSATA nicht Zugriffe sssssserialsierte.
+Also weg damit!&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-06.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Flash Storage hat nun noch ein anderes Problem.
+Flash beschreibt &amp;ldquo;gelöschte&amp;rdquo; Blöcke in Sektoren von 512 Byte oder – neuerdings - 4096 Bytes.&lt;/p&gt;
+&lt;p&gt;Flash kann solche Sektoren aber nicht löschen, nur als &amp;ldquo;gelöscht&amp;rdquo; markieren.
+Die eigentliche Löschung dauert recht lange und passiert in recht großen Erase Segmenten, die viele Sektoren enthalten.&lt;/p&gt;
+&lt;p&gt;Daher gibt es einen Hintergrundprozeß, der auf dem Controller läuft und guckt, ob valide Daten umsortiert werden können, sodaß ganze Erase Segmente frei werden.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-07.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Dieser Hintergrundprozeß ist die Flash Translation Layer (FTL).&lt;/p&gt;
+&lt;p&gt;Sie hat eine große Zuordnungstabelle, die die eingehende LBA vom Computer auf eine physikalische Blockadresse im Flash mapped.
+Und die FTL kann im Hintergrund Blöcke verschieben, umsortieren oder reorganisieren, ohne daß das vorne an der LBA sichtbar wäre.
+Das hat eine Reihe von Konsequenzen.
+Eine ist, daß man eine SSD nicht zum Löschen überschreiben kann –
+die FTL sortiert hinten lustig Kram hin und her und es ist nicht gesagt,
+dass ein Durchschreiben von LBA 0 nach LBA n alle Daten auf der SSD überschreibt, oder daß Allgemein nichts Lesbares mehr auf der SSD steht.&lt;/p&gt;
+&lt;p&gt;Daher gibt es bei vielen SSD eine Hardware Drive Encryption,
+und zum Löschen des Laufwerkes geben wir der Disk einfach das Kommando, den Key zu vergessen.
+Damit ist die faktisch gelöscht.&lt;/p&gt;
+&lt;p&gt;Oder wäre es, &lt;a href=&#34;https://www.bleepingcomputer.com/news/security/flaws-in-popular-ssd-drives-bypass-hardware-disk-encryption/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;könnte man der Implementierung der Hardware Drive Encryption vertrauen&lt;/a&gt;
+
+.
+Eventuell ist man mit so was wie LUKS und dem Wegwerfen der LUKS-Schlüssel besser dran als mit der Hardware Verschlüsselung von Drive-Controllern aus Chinesium.
+Aber in jedem Fall ist man mit einem verschlüsselten Flash Drive besser dran als mit &amp;ldquo;Überschreiben&amp;rdquo;.
+Oder man etabliert einen Prozess,
+bei dem jeder Storage in einem Server in unseren RZ dies nur noch durch einen Shredder verlassen kann.
+Falls man seinen Leuten vertraut, dass sie nicht doch mal ein Drive aus der Schrottkiste mitnehmen.&lt;/p&gt;
+&lt;p&gt;Eine bemerkenswerte Eigenschaft von Flash sind &amp;ldquo;Seeks&amp;rdquo;, also Datentransfers zwischen nicht physisch aufeinander folgenden Blöcken.
+Disks schaffen so um die 200 Disk Seeks pro Sekunde, und die tatsächlichen Zeiten variieren auch stark – je Seek, desto Wait.
+Bei SATA/SAS SSD haben wir circa 20.000 Seeks pro Sekunde und bei NVME bis zu 800.000 davon (weniger, je mehr Bits pro Flash-Zelle).&lt;/p&gt;
+&lt;p&gt;Wenn Ihr bei der FTL aufgepasst habt,
+dann wißt ihr, dass aufeinanderfolgende LBA eventuell gar keine aufeinanderfolgenden PBA sind,
+also im Flash nicht nebeneinander liegen müssen.
+Das merkt niemand, weil die Seek Zeiten bei Flash uniform sind.
+Aber Moment mal &amp;hellip;&lt;/p&gt;
+&lt;p&gt;Wir haben uniforme Seekzeiten und wir haben in der FTL eine Lookup-Tabelle die verdammt ähnlich aussieht wie die Lookup-Tabelle in LVM.
+Können wir dann nicht auch Nichtzusammenhängende Partitionen in Hardware bekommen?
+Können wir. Jedenfalls ein paar.
+Das sind NVME Namespaces, also die &amp;ldquo;nX&amp;rdquo; an Euren /dev/nvme1n1-Devices.&lt;/p&gt;
+&lt;p&gt;Die kann man mit dem &amp;ldquo;nvme&amp;rdquo; Kommando einrichten und abreißen und ihnen auch Platz zuweisen.
+Der liegt dann irgendwo und die FTL weiß, wo genau.
+Aber zusammenhängend ist das nicht, auch wenn Ihr das nie sehen werdet.
+NVME Namespaces sind also so eine Art Hardware LVM mit einer limitierten Anzahl Plätzen.&lt;/p&gt;
+&lt;p&gt;Wie Hardware ist mein Hardware LVM denn?
+Nun.
+Mit SR-IOV bekommt jede einer Hardware-Nichtpartitionen auch ein Haufen Fake-PCI-Register,
+die ich in den Adressraum etwa einer VM mappen könnte, sodaß effektiv jede VM eine &amp;ldquo;Partition&amp;rdquo; meiner NVME als fast echtes PCIe Busdevice sehen kann.&lt;/p&gt;
+&lt;p&gt;Leider gerät an dieser Stelle die Implementierung ins Zielfeld,
+und teilt uns mit, daß das zwar schnell ist, aber leider nicht dicht,
+und man darauf also nicht unbedingt vertrauen sollte.
+Aber schön wäre es gewesen!&lt;/p&gt;
+&lt;p&gt;Wie dem auch sei:
+Jetzt haben wir dieselbe Idee also&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;einmal in einem ARM-Rechner, der am Flash jenseites des PCIe Busses klebt – dem Flash Controller mit der FTL, als NVME Namespaces.&lt;/li&gt;
+&lt;li&gt;Und dann noch einmal eine Ebene höher, diesseits des PCIe, als LVM2 unter dem Filesystem.&lt;/li&gt;
+&lt;li&gt;Und dann noch einmal eine Ebene höher, im Dateisystem, jedenfalls wenn es APFS oder ZFS ist, auf Dateisystem und Datei-Ebene.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dreimal dieselbe Idee, mit einer Lookup-Tabelle, Namespaces und dem Zusammenkleben von Blocks.
+Außer, wenn man Apple ist.
+Dann baut man seine Hardware selbst, realisiert den Flashcontroller in denselben Die wie die CPU oder lässt ihn gleich als Teil der CPU laufen,
+schließlich ist es sowieso ein System-on-a-Chip.
+Und redet dann mit den Flash-Chips neben der CPU.
+Die sind eh nur neben dem Die mit der CPU, weil sie dort noch nicht hineinpassen.&lt;/p&gt;
+&lt;p&gt;Und dann kann man diese Ebenen zumindest teilweise integrieren, einige Indirektionen sparen und generell schneller sein.
+Das setzt aber natürlich voraus, daß man seine Hardware komplett kontrolliert, sodaß die Komponenten aufeinander abgestimmt werden können.&lt;/p&gt;
+&lt;p&gt;Außer Apple können das nur zwei Hände voll andere Firmen auf diesem Planeten,
+und die anderen sind alle Cloudbetreiber, die ihre Hardware oder gar – wie Amazon-Annapurna-ARM – ihre CPUs selbst fertigen können.
+Dann gehen auf einmal ein Haufen Abkürzungen und man kann so Sachen wie kaputte Hypervisoren und SR-IOV direkt selbst fixen.
+Und das ist, warum Amazon schöne Dinge haben kann, aber ein &amp;ldquo;Private Cloud&amp;rdquo; Openstack nicht.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/08/disk-08.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Jan schreibt: &amp;ldquo;Was Betriebssysteme noch nicht verstanden haben, ist das es nur noch Memory gibt.
+In unterschiedlichen Geschwindigkeitsklassen.
+Und Anbindungen.
+Lokal, Netzwerk.
+Das ist der einzige Unterschied.
+Es gibt nur noch wenige Fälle.
+Memory ist da oder nicht.
+Latenz ist close to zero oder nicht deterministisch.
+Deal with it.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In Unix ist ja alles entweder ein File, also persistent, und via open/read/write/seek/tell/close zu bearbeiten.
+Oder ephemeral, und via malloc zu bekommen.&lt;/p&gt;
+&lt;p&gt;Speicher, so wie ihn Unix kennt, hat keine Eigenschaften (ephemeral, persistent), Granularität (byte, page welcher Größe auch immer),
+und auch keine Eigner und Zugriffsrechte, sowie keine Verzeichnisdienste.
+Die Infrastruktur, die ein Dateisystem bereitstellt, ist ja weit mehr als nur die open/read/write/close API.&lt;/p&gt;
+&lt;p&gt;Es ist auch der Verzeichnisbaum und die an den Dateien klebenden Zugriffsrechte, Flags, xattr und was es sonst noch so gibt, und eine bestimmte Locking-API.
+Speicher hat zwar auch Locks, aber andere, und kennt die Konzepte Eigner, hierarchischer Namespace und was da sonst noch so existiert nicht.
+Sun hat mal eine Zeit lang mit &lt;a href=&#34;https://en.wikipedia.org/wiki/Transactional_memory&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wilden Dingen&lt;/a&gt;
+
+ herumgespielt, die Teile dieses Problemraumes adressiert haben.
+HP auch, mit &lt;a href=&#34;https://www.nextplatform.com/2019/09/09/inside-hpes-gen-z-switch-fabric/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;einem anderen Teilaspekt&lt;/a&gt;
+
+ dieser Sache.
+In beiden Fällen geht es um einen Haufen CPUs, die gemeinsam auf einem Speicher herumdengeln, der vielleicht oder vielleicht auch nicht lokal ist.
+Das löst aber jeweils nur einen Teilaspekt des Problems.
+Und es gibt keinerlei Software, die damit um könnte.&lt;/p&gt;
+&lt;p&gt;In Unix.
+Anderswo gibt es schon seit den späten 80er Jahren Rechner mit einer Art &amp;ldquo;hardware unabhängigem Bytecode&amp;rdquo;,
+64 Bit Uniform Address Space und einer Art speicherbasierten, transaktionsorientierten Datenbank, Namespaces und Zugriffsrechten.
+Das ist dann aber kein Unix, sondern etwas anderes, bizarres, außerirdisches, das keiner von Euch je gesehen hat.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/IBM_AS/400&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Alien Systems/400&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Das ist das, was man bekommt, wenn man eine JVM erfindet,
+bevor es Java gibt und wenn man persistenten Speicher mit RAM und &amp;ldquo;mmap() aber in richtig&amp;rdquo; und wie eine Datenbank riechend erfindet.
+AS/400 ist irgendeine CPU – das wurde in der Zwischenzeit auch mehrfach geändert und keiner hat es gemerkt – und
+irgendwelcher Speicher (viel weniger als 64 Bit, aber das hat auch keiner gemerkt, das RAM ist ja nur Cache).
+Statt &amp;ldquo;everything is a file&amp;rdquo; &amp;ldquo;everything is an object&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;In der Zwischenzeit hat Intel Optane wieder eingestellt.
+Das Pricing war falsch, aber vor allen Dingen hat keiner das richtig nutzen können.
+Zu RAM für ein Filesystem, und zu persistent für RAM – meh, was soll ich damit?
+Wenn alles entweder ephemeral oder ein File ist, dann ist &amp;ldquo;persistent, und so schnell wie RAM&amp;rdquo; irgendwie nicht zu gebrauchen.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>It&#39;s a Modulith</title>
       <link>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</link>
@@ -1916,20 +2638,20 @@ if the system has spare capacity?&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running this, we get:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;kris@linux:/tmp/kris&amp;gt; make probe1
@@ -1969,31 +2691,31 @@ if the system has spare capacity?&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;sys/wait.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child, 10 seconds later.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;End of process %d: &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFEXITED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with exit(%d).&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WEXITSTATUS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFSIGNALED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with kill -%d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WTERMSIG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child, 10 seconds later.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;End of process %d: &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFEXITED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with exit(%d).&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WEXITSTATUS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFSIGNALED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with kill -%d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WTERMSIG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the runtime protocol:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;kris@linux:/tmp/kris&amp;gt; make probe2
@@ -2032,31 +2754,31 @@ if the system has spare capacity?&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;sys/wait.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kt&#34;&gt;pid_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;execl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/bin/ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;-l&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/tmp/kris&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In exec(): &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, and the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;End of process %d: &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFEXITED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with exit(%d).&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WEXITSTATUS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFSIGNALED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with kill -%d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WTERMSIG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fork&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the child.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;execl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/bin/ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;-l&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/tmp/kris&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In exec(): &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;I am the parent, and the child is %d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;End of process %d: &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFEXITED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with exit(%d).&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WEXITSTATUS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;WIFSIGNALED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        &lt;span class=&#34;nf&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The process ended with kill -%d.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;WTERMSIG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;perror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;In fork():&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;err&#34;&gt; &lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The runtime protocol:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;kris@linux:/tmp/kris&amp;gt; make probe3
@@ -2902,401 +3624,6 @@ that is likely not NVME, but many large disk drives.&lt;/p&gt;
     &lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;Intel has classes for developers on using the persistent memory development kit (PMDK) and the underlying stuff. They are necessary, because an application rethink it coming up, which will fundamentally change the way we think about storage.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Adventures in Storageland</title>
-      <link>https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html</link>
-      <pubDate>Thu, 13 Jun 2019 14:37:35 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html</guid>
-      <description>&lt;h2 id=&#34;adventures-in-storageland&#34;&gt;
-    &lt;a href=&#34;#adventures-in-storageland&#34;&gt;
-	Adventures in Storageland
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;h3 id=&#34;devices&#34;&gt;
-    &lt;a href=&#34;#devices&#34;&gt;
-	Devices
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;In the last few weeks, I have been benchmarking server storage in order to get a better idea what the state of the hardware is these days. There is a summary with recommendations at the end of this article.
-Storage technology&lt;/p&gt;
-&lt;p&gt;In the past, we had stored data on rotating disks.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2019/06/storage-hdd.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;An open hard disk chassis. You can see the topmost of a stack of disks, and the arm with the r/w heads.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;While the capacities of hard disks changed, access speeds and the underlying technology did not change so much. So today you can get a stack of rotating disks that stores 10, 12 or 14 TB per drive, but the access time is still in the millisecond range.&lt;/p&gt;
-&lt;p&gt;It is likely around or slightly below 5ms, so you get to transfer data from 200-250 different locations per second. Databases do mostly random access, and that means you get to write 200-250 commit/s to disk.&lt;/p&gt;
-&lt;p&gt;All of that changed around 2012 or so. At that time, NAND flash based storage became available at scale under the name of Solid State Drive (SSD). At work, first deployment of SSD at scale was in that year, in a very volatile replication chain and it completely transformed the way we worked with hotel room availability data.&lt;/p&gt;
-&lt;p&gt;SSD are plug-in replacements for traditional hard disks: They have the same connectors and bus systems, and the same form factor. They may be flatter, though: A modern U.2 (2.5”) SSD is either tall (15mm) or flat (7mm).&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2019/06/storage-ssd.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;15mm U.2 drive and it’s content.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;On the inside they are different, though: They contain one logic board which houses a lot of flash NAND chips and a custom flash NAND controller. The logic board may be folded in order to make most use of the available height to increase storage capacity. The image above shows a SSD chassis and its content, unfolded.&lt;/p&gt;
-&lt;p&gt;The folded design is far from optimal: Inside such a chassis you have a thermal design power of 7W-9W in a consumer device, and up to 25W in an enterprise device - power consumption is linear with the number of chips, and superlinear with the clock rates of the chips. U.2 form factor is good for HDD, but not so good for SSD, because it is hard to cool.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2019/06/storage-m2.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;M.2 flash drive in a holder on a mainboard.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;One attempt of handling this better is M.2, which is basically a logic board for flash NAND chips and a controller, and a board holder on the main board. This cools obviously much better, but is very hard to handle inside a data center and has a very limited lifetime in terms of number of plug-in/removal operations inside a consumer device.&lt;/p&gt;
-&lt;p&gt;The attempt to fix all of that is the “flash ruler”, “EDSFF”.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2019/06/storage-ruler.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Intel flash rulers in a 1U high chassis.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;“Ruler” type flash is built to the height of a rack unit, has a specificed chassis form that allows for cooling (up to 40W TDP per “long” device), has managed air flow, and is designed to be toolless, field replaceable and hot pluggable. It looks like the perfect solution.&lt;/p&gt;
-&lt;p&gt;Until you realise that there are two incompatible competing standards, each of which has exactly one supplier: Intel and Samsung.&lt;/p&gt;
-&lt;p&gt;So, for most, at the moment, U.2 it is, until the “ruler” proponents get their stuff sorted out.&lt;/p&gt;
-&lt;h3 id=&#34;interfaces&#34;&gt;
-    &lt;a href=&#34;#interfaces&#34;&gt;
-	Interfaces
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;The interface we use to talk to hard disks has evolved and not evolved at the same time, for a very long time. In the past, we spoke SCSI commands over a parallel SCSI bus to our disks.&lt;/p&gt;
-&lt;p&gt;Today, we use multi-Gbit rated serial buses to speak ancient SCSI commands and SCSI command extensions to our devices. The bus is SATA or SAS - either serial attached consumer disk protocol, or serial attached enterprise disk protocol, so to speak, only that SATA has become good enough to be used in the enterprise, too. Bus speed is 3 GBit/s, 6 GBit/s (what most people actually use) or 12 Gbit/s.&lt;/p&gt;
-&lt;p&gt;SATA interfaces are block storage interfaces, so you get to access and address blocks of 512 bytes or 4096 bytes on the device, and you specify block numbers. In the past that was geometry addresses ( cylinder-head-sector ), but that became meaningless very quickly as storage technology improved and in the last 20 years everybody always has been using LBA and letting the storage controller do its thing.&lt;/p&gt;
-&lt;p&gt;Still, these days we are actually speaking to memory chips, and doing this through a block interface originally designed for rotating storage makes a lot of overhead and increasingly little sense.&lt;/p&gt;
-&lt;p&gt;How about putting the flash chips directly on the PCIe 3.0 bus, and dropping the controller interface? That’s NVME. You are taking the same form factor, the same flash chips and the same controller chip, with a different firmware and are plugging it into a PCIe 3.0 extension instead.&lt;/p&gt;
-&lt;p&gt;The result is about half the latency, and a much higher transfer bandwidth. We can in fact build connectors that accept and automatically switch between SATA and NVME, no problem.&lt;/p&gt;
-&lt;h3 id=&#34;benchmarking-it&#34;&gt;
-    &lt;a href=&#34;#benchmarking-it&#34;&gt;
-	Benchmarking it
-    &lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;So, in testing, what can we expect? In MySQL land, I/O is done in blocks of 16 KB, and is done as random I/O mostly, in reads as well as writes. So we are writing a benchmark specification for fio that is testing things: A single threaded 16 KB sequential read test for a baseline throughput benchmark, a 16 KB block size random-write benchmark, 8-way parallel for random I/O calibration, and a mixed r/w benchmark, 8 way parallel, to simulate an operational database.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[seq-read]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; rw=read
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; size=40g
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; directory=/a/fio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; fadvise_hint=0
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; blocksize=16k
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; direct=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; numjobs=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; nrfiles=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; runtime=300
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; ioengine=libaio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; time_based
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This spec defines a 40g test file in a benchmark directory, which is being read without caching, for 300s, linearly and single threaded.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[random-write]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; # 8 processes, 5g files each = 40g
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; rw=randwrite
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; size=5g
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; directory=/a/fio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; fadvise_hint=0
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; blocksize=16k
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; direct=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; numjobs=8
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; nrfiles=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; runtime=300
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; ioengine=libaio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; time_based
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The same, but random writes, in 8 threads in parallel. Each writer has their own file, so 8 files at 5GB each, for 40 GB total.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;[read-write]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; rw=rw
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; rwmixread=80
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; size=5g
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; directory=/a/fio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; fadvise_hint=0
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; blocksize=16k
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; direct=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; numjobs=8
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; nrfiles=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; runtime=300
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; ioengine=libaio
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; time_based
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the same as the randwrite, only this time 80% reads, 20% writes.&lt;/p&gt;
-&lt;h4 id=&#34;a-blade-with-a-sata-ssd&#34;&gt;
-    &lt;a href=&#34;#a-blade-with-a-sata-ssd&#34;&gt;
-	A blade with a SATA SSD
-    &lt;/a&gt;
-&lt;/h4&gt;
-&lt;p&gt;When running this on a normal blade, the SSD is actually attached to a caching RAID controller.&lt;/p&gt;
-&lt;p&gt;Such a controller is actually an ARM based computer in it’s own right, sitting on the PCIe board. It has a multi-core CPU, a few GB memory, and a supercapacitor to buffer things when the power fails. It is taking disk writes, caching them on the onboard memory and then does its things in the background to write this to some kind of storage.&lt;/p&gt;
-&lt;p&gt;Originally it is designed to make slow hard disks fast, but with SSD as a backing storage it is not unlikely that the only thing it does is increasing latency.&lt;/p&gt;
-&lt;p&gt;So here is the baseline for a traditional Dell M630 with a PERC controller and a 1.92TB SSD:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; fio --section&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;seq-read ./fio.cfg
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;seq-read: (g=0): rw=read, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=libaio, iodepth=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;fio-3.1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Starting 1 process
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;seq-read: Laying out IO file (1 file / 40960MiB)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Jobs: 1 (f=1): [R(1)][100.0%][r=245MiB/s,w=0KiB/s][r=15.7k,w=0 IOPS][eta 00m:00s]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;seq-read: (groupid=0, jobs=1): err= 0: pid=18818: Fri May 10 10:31:29 2019
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=15.3k, BW=239MiB/s (251MB/s)(70.0GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    slat (usec): min=4, max=186, avg= 5.63, stdev= 2.48
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat (nsec): min=1500, max=145648k, avg=58921.07, stdev=109647.10
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     lat (usec): min=56, max=145652, avg=64.67, stdev=109.74
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   53],  5.00th=[   53], 10.00th=[   53], 20.00th=[   53],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[   53], 40.00th=[   54], 50.00th=[   55], 60.00th=[   55],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[   59], 80.00th=[   60], 90.00th=[   73], 95.00th=[   75],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[   91], 99.50th=[   99], 99.90th=[  235], 99.95th=[  433],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 2343]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   bw (  KiB/s): min=38912, max=263456, per=100.00%, avg=244768.87, stdev=24405.41, samples=599
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   iops        : min= 2432, max=16466, avg=15298.03, stdev=1525.34, samples=599
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  lat (usec)   : 2=0.01%, 4=0.01%, 10=0.01%, 50=0.04%, 100=99.47%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  lat (usec)   : 250=0.39%, 500=0.05%, 750=0.01%, 1000=0.01%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  lat (msec)   : 2=0.02%, 4=0.01%, 10=0.01%, 20=0.01%, 50=0.01%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  lat (msec)   : 250=0.01%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  cpu          : usr=4.95%, sys=12.28%, ctx=4589759, majf=0, minf=114
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, &amp;gt;=64=0.0%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &amp;gt;=64=0.0%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &amp;gt;=64=0.0%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     issued rwt: total=4589635,0,0, short=0,0,0, dropped=0,0,0
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     latency   : target=0, window=0, percentile=100.00%, depth=1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Run status group 0 (all jobs):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   READ: bw=239MiB/s (251MB/s), 239MiB/s-239MiB/s (251MB/s-251MB/s), io=70.0GiB (75.2GB), run=300001-300001msec
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Disk stats (read/write):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    dm-4: ios=4588416/35691, merge=0/0, ticks=259207/18045, in_queue=277259, util=86.48%, aggrios=4605315/37547, aggrmerge=274/2057, aggrticks=262279/21346, aggrin_queue=283104, aggrutil=86.21%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  sda: ios=4605315/37547, merge=274/2057, ticks=262279/21346, in_queue=283104, util=86.21%
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That’s a lot of output, but we are interested into a few key numbers here. This is a sequential benchmark, because we asked for that (–section=). We get 15.300 IO operations per second (IOPS), and a bandwidth of 239 MB/s (with 1024-based metric). In our 300s benchmark, we transferred 70 GB.&lt;/p&gt;
-&lt;p&gt;fio dynamically shifts units as it sees fit, so we need to make sure if we are looking at milliseconds (ms, 1/1000 of a second, 1 kHz event frequency), microseconds (µs, us, 1/1 000 000 of a second, 1 MHz event frequency) or nanoseconds (ns, 1/1 000 000 000 of a second, 1 GHz event frequency).&lt;/p&gt;
-&lt;p&gt;fio also knows three different latencies, lat, clat and slat. They do mean different things for different I/O engines, and in our case (using async I/O with libaio), the meaningful numbers are clat (completion latency) or overall lat, but not slat (submission latency numbers).&lt;/p&gt;
-&lt;p&gt;We do get a clat histogram in usec, and that is useful: There is a relatively stable completion time up to the 99.50th percentile, and then things rise. clat is 50µs (20 000 per second) to 100µs (10 000 per second), and we do indeed get 15 000 IOPS in total.&lt;/p&gt;
-&lt;p&gt;For the random write benchmark we get 8 times output like&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  write: IOPS=2454, BW=38.4MiB/s (40.2MB/s)(11.2GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[  202],  5.00th=[  237], 10.00th=[  249], 20.00th=[  269],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  285], 40.00th=[  302], 50.00th=[  314], 60.00th=[  330],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  347], 80.00th=[  396], 90.00th=[  482], 95.00th=[  570],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[ 2212], 99.50th=[ 2966], 99.90th=[ 6915], 99.95th=[ 7832],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 9503]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The total of the IOPS is 19588, and the clat inflection is around the 95th percentile with 200µs to 570µs write latency, and then runaway times in the ms range. Aggregated bandwidth is around 300 MB/s (6 GBit/s are 715 MB/s theoretical max).&lt;/p&gt;
-&lt;p&gt;And for the r/w mix (80% read/20% write), we get 8 readers and 8 writers, each reporting&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...   
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  read: IOPS=2153, BW=33.6MiB/s (35.3MB/s)(9.86GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[  155],  5.00th=[  204], 10.00th=[  231], 20.00th=[  265],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  297], 40.00th=[  322], 50.00th=[  338], 60.00th=[  355],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  379], 80.00th=[  412], 90.00th=[  478], 95.00th=[  873],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[ 2073], 99.50th=[ 2212], 99.90th=[ 2409], 99.95th=[ 2540],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 6849]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  write: IOPS=540, BW=8647KiB/s (8855kB/s)(2533MiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   60],  5.00th=[   76], 10.00th=[   85], 20.00th=[  105],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  127], 40.00th=[  149], 50.00th=[  172], 60.00th=[  194],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  217], 80.00th=[  241], 90.00th=[  277], 95.00th=[  314],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  371], 99.50th=[  449], 99.90th=[ 1696], 99.95th=[ 2737],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 6456]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The sum of all IOPS is 21412, and the clat inflection is at the 95th with 155µs to 873µs for read, and at the 99.50th for write with 60µs to 449µs (and it’s actually more complicated than this for writers, but that’s a different story). We do see a total aggregated bandwidth of 336 MB/s (out of 715 MB/s max).&lt;/p&gt;
-&lt;p&gt;We are looking at a device that has a read-latency in the range of 150 µs, and that in linear read mode can likely leverage readahead and local buffers in some way to get below 50 µs in good cases.&lt;/p&gt;
-&lt;p&gt;Write latency is likely 3x that, unbuffered, but like all flash devices it has RAM and can use a fraction of that RAM to buffer a part of the writes. This is more effective for smaller write loads, and we can see that in the comparison of the numbers between the full write test compared to the r/w mix.&lt;/p&gt;
-&lt;h4 id=&#34;a-blade-without-the-smart-controller&#34;&gt;
-    &lt;a href=&#34;#a-blade-without-the-smart-controller&#34;&gt;
-	A blade without the smart controller
-    &lt;/a&gt;
-&lt;/h4&gt;
-&lt;p&gt;Let’s try a blade without the smart controller, this time a HP BL460c with a directly attached SSD without the caching RAID controller. In this test device, the disk controller is a dumb SATA attachment, no buffering, processing, RAIDing or other “smartness” inbetween.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=14.2k, BW=222MiB/s (233MB/s)(64.0GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   50],  5.00th=[   51], 10.00th=[   52], 20.00th=[   53],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[   53], 40.00th=[   55], 50.00th=[   56], 60.00th=[   62],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[   64], 80.00th=[   64], 90.00th=[   66], 95.00th=[   68],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[   77], 99.50th=[   79], 99.90th=[  355], 99.95th=[  537],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 3130]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So 14.2k instead of 15.3k with the expensive controller, and 50-79µs instead of 53-99µs with the expensive controller. For pure writes (times 8):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  write: IOPS=3458, BW=54.0MiB/s (56.7MB/s)(15.8GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[  151],  5.00th=[  188], 10.00th=[  194], 20.00th=[  227],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  237], 40.00th=[  245], 50.00th=[  253], 60.00th=[  260],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  262], 80.00th=[  269], 90.00th=[  306], 95.00th=[  375],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  938], 99.50th=[ 1057], 99.90th=[ 3916], 99.95th=[ 4228],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 5211]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So, 28507 IOPS in total (compared to 19588 for the expensive controller), and 150-375µs (compared to 200-570µs for the expensive controller), and better behavior for the runaway times, too.&lt;/p&gt;
-&lt;p&gt;For the mix (times 8):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=2296, BW=35.9MiB/s (37.6MB/s)(10.5GiB/300002msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[  174],  5.00th=[  202], 10.00th=[  223], 20.00th=[  258],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  285], 40.00th=[  310], 50.00th=[  334], 60.00th=[  363],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  400], 80.00th=[  445], 90.00th=[  529], 95.00th=[  635],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[ 1876], 99.50th=[ 2966], 99.90th=[ 3490], 99.95th=[ 3654],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 4555]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  write: IOPS=576, BW=9225KiB/s (9446kB/s)(2703MiB/300002msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   52],  5.00th=[   58], 10.00th=[   63], 20.00th=[   72],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[   89], 40.00th=[   98], 50.00th=[  116], 60.00th=[  124],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  139], 80.00th=[  155], 90.00th=[  174], 95.00th=[  190],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  223], 99.50th=[  237], 99.90th=[  258], 99.95th=[  273],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[  293]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That comes out as a total of 23005 IOPS (as opposed to 21412), and for reads, a range of 174-635µs (155-873µs for the expensive controller), while for writes it is 52-237µs (60-449µs).&lt;/p&gt;
-&lt;p&gt;Indeed, latency and degraded behavior are better for directly attached disks, the caching RAID controller (200€ extra per device) is substracting value.&lt;/p&gt;
-&lt;p&gt;We can confirm these results with more benchmarking in additional, slightly different configurations (Dell, HP, new and old machines) across the test zoo.&lt;/p&gt;
-&lt;h4 id=&#34;some-nvme&#34;&gt;
-    &lt;a href=&#34;#some-nvme&#34;&gt;
-	Some NVME
-    &lt;/a&gt;
-&lt;/h4&gt;
-&lt;p&gt;A colleague donated a NVME based HP box to the test. It actually has 4 NVME devices, and we naively build a striped RAID-0 from it using LVM2, because why not? Each 16 KB write goes to a different NVME device, in a round-robin fashion (This is a silly thing to do, but that would require a longer digression to explain - the 1M stripe setup does not fundamentally change things, though).&lt;/p&gt;
-&lt;p&gt;The outcome is unexpected and disappointing, or is it?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=8459, BW=132MiB/s (139MB/s)(38.7GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   97],  5.00th=[  101], 10.00th=[  102], 20.00th=[  102],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  103], 40.00th=[  106], 50.00th=[  116], 60.00th=[  119],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  123], 80.00th=[  123], 90.00th=[  124], 95.00th=[  127],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  133], 99.50th=[  145], 99.90th=[  186], 99.95th=[  196],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[  221]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;My colleague claims that a single NVME device is capable of a million IOPS, yet here we see fewer than 10 000, and 100-200µs completion latencies. What’s wrong?&lt;/p&gt;
-&lt;p&gt;Write test (times 8):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;write: IOPS=23.3k, BW=365MiB/s (383MB/s)(107GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   19],  5.00th=[   19], 10.00th=[   20], 20.00th=[   20],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[   21], 40.00th=[   22], 50.00th=[   24], 60.00th=[   26],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[   36], 80.00th=[   47], 90.00th=[   61], 95.00th=[   70],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[   95], 99.50th=[  114], 99.90th=[  192], 99.95th=[  293],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 2409]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Total IOPS: 183000, range: 19-200µs. Mix (times 8):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=6960, BW=109MiB/s (114MB/s)(31.9GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   97],  5.00th=[  103], 10.00th=[  104], 20.00th=[  108],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  112], 40.00th=[  118], 50.00th=[  121], 60.00th=[  125],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  126], 80.00th=[  129], 90.00th=[  141], 95.00th=[  169],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  412], 99.50th=[  611], 99.90th=[ 1385], 99.95th=[ 1696],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 2311]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;  write: IOPS=1740, BW=27.2MiB/s (28.5MB/s)(8161MiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[   19],  5.00th=[   19], 10.00th=[   20], 20.00th=[   20],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[   20], 40.00th=[   20], 50.00th=[   21], 60.00th=[   21],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[   22], 80.00th=[   23], 90.00th=[   27], 95.00th=[   30],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[   60], 99.50th=[   70], 99.90th=[   95], 99.95th=[  113],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[  202]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Total IOPS: 70010, range: 19-100µs for writes, and 100-200µs for reads. So we do get a large number of IOPS, but not in the first scenario.&lt;/p&gt;
-&lt;p&gt;What’s wrong? Well, latency is.&lt;/p&gt;
-&lt;p&gt;In the read-only case, we have a clat of 116µs in the 50th percentile, so with 1000000µs to the second, we get 1000000/116 = 8620 IOPS single threaded, and indeed we measured 8459. Math works, every single time.&lt;/p&gt;
-&lt;p&gt;So we might have a total IOPS capacity of the total device that may be 100k or even a million IOPS, but we also do have a (surprisingly constant) read latency of 100-200µs and that is not going to change. The only way to get all these IOPS is to have many concurrent accesses, all of which will take at least 100µs per read.&lt;/p&gt;
-&lt;p&gt;As we can see by going 8-way parallel (for pure writes) or 16 way parallel (8 readers, 8 writers) we get a lot more in terms of IOPS, at the expected latencies per thread.&lt;/p&gt;
-&lt;p&gt;And indeed, a sequential read test with 128 readers in parallel yields (times 128):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;   read: IOPS=5289, BW=82.7MiB/s (86.7MB/s)(24.2GiB/300001msec)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    clat percentiles (usec):
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     |  1.00th=[  118],  5.00th=[  126], 10.00th=[  133], 20.00th=[  141],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 30.00th=[  147], 40.00th=[  155], 50.00th=[  163], 60.00th=[  176],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 70.00th=[  192], 80.00th=[  215], 90.00th=[  247], 95.00th=[  281],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.00th=[  367], 99.50th=[  412], 99.90th=[  523], 99.95th=[  586],
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;     | 99.99th=[ 1090]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;These are not bad numbers at all: 648223 IOPS in total, at 100-400µs, and even above the 99.50th relatively stable times. The total aggregated bandwidth is 9.9GB/s (80 Gbit/s) with very little jitter (so we are not even maxing this out, we are not even at 1/3 the max for PCIe).&lt;/p&gt;
-&lt;h2 id=&#34;recommendations-and-learnings&#34;&gt;
-    &lt;a href=&#34;#recommendations-and-learnings&#34;&gt;
-	Recommendations and Learnings
-    &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;From a SSD, we can expect about 20k IOPS, and about 3-4 GBit/s bandwidth (6 GBit/s bus) using MySQL type of workloads.&lt;/p&gt;
-&lt;p&gt;A caching RAID controller adds negative value: It costs more, but does not improve the numbers. Latency and jitter actually increase. We lose access to the SMART data, too, and have to rely on controller diagnostics instead. We should stop buying caching RAID controllers (and we have indeed done that).&lt;/p&gt;
-&lt;p&gt;NVME is a different bus to the same disk hardware (Flash NAND and controller) that is in a SSD, but it creates a much better latency and throughput. It can do that, because it attaches the storage directly to the PCIe bus instead of the much slower and more complicated SATA bus. It opens the gate to much higher bandwidth and IOPS numbers from the same hardware, but latency is unchanged (but much more stable under load).&lt;/p&gt;
-&lt;p&gt;We should stop buying SATA attached devices and focus on NVME instead. We should make sure that the pricing matches, because the hardware is essentially the same, only the bus interface changes.&lt;/p&gt;
-&lt;p&gt;Read latency is around 100µs for a NVME read, and write latency is around 420µs for an unbuffered flash write (20µs for a write to the supercap buffered cache RAM on the NVME device, and we have probably around 512 MB of that per NVME device).&lt;/p&gt;
-&lt;p&gt;That also means that access to the NVME flash disk needs to be as parallel as possible, up and beyond 100-way parallel, in order to unlock the full IOPS yield the hardware can do:&lt;/p&gt;
-&lt;p&gt;We have 1 000 000 µs to the second, but latency is not 1µs, but 100µs/400µs, so we can and need to run 100-400 parallel accesses to be able to saturate the device.&lt;/p&gt;
-&lt;p&gt;It is very hard to impossible to get 100-way parallel commits from a relational database, so in order to saturate even a single NVME device we are likely to need multiple applications or database instances on a single device. From an IOPS point-of-view, it should never be necessary to have more than one NVME device per box.&lt;/p&gt;
-&lt;p&gt;That means in order to make most of NVME you really need the capability to run multiple workloads on a single device. Virtual machine and Kubernetes based databases are becoming a necessity in order to make full use of our hardware, even at the storage level.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mozilla und IRC</title>
-      <link>https://blog.koehntopp.info/2019/04/29/mozilla-irc.html</link>
-      <pubDate>Mon, 29 Apr 2019 17:41:47 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2019/04/29/mozilla-irc.html</guid>
-      <description>&lt;p&gt;Heise berichtet: &lt;a href=&#34;https://www.heise.de/newsticker/meldung/Mozilla-will-weg-von-IRC-und-sucht-Alternative-4409327.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mozilla will weg von IRC und sucht Alternative&lt;/a&gt;
-
-.&lt;/p&gt;
-&lt;p&gt;Und das Heiseforum sabbert reflexartig:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Aber IRC ist doch noch gut, da muß man nur einmal mit der Drahtbürste rüber und dann kann das wieder auf Lager gelegt werden.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Und:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;XMPP! XMPP ist gut, denn es ist ein offener Standard.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Ja, dann also mal Iso-Standard-Rant 8859-1:&lt;/p&gt;
-&lt;p&gt;Erst mal IRC.&lt;/p&gt;
-&lt;p&gt;IRC ist kaum mal ein Protokoll.
-Es gibt einen einzigen RFC zum Thema IRC, rfc1459 von 1993 und das enthält nicht mal MIME, weiß nichts von UTF-8 und definiert den Zeichensatz von IRC als ASCII-Variante Geschmacksrichtung Schweden mit []{} als lustige Sonderzeichen.&lt;/p&gt;
-&lt;p&gt;Moderne Anforderungen an Chat werden nicht abgedeckt:
-In der Variante wie im RFC gibt es keine Identitäten und keine Authentisierung, kein TLS und auch sonst keine Sicherheit.
-Ein IRC-Server nach diesem Standard würde Spam, Identitätsdiebstahl und Abhören Tür und Tor öffnen.
-Ircnet ist ein deutsches Netz nach diesem Standard und hat genau alle diese Probleme &amp;ndash; Ban und Blockierung erfolgt nach IP-Ranges und als Nutzer aus dem AS der Deutschen Telekom muß man im Ircnet schwere Einschränkungen hin nehmen, weil Ircnet seine Nutzer nicht unterscheiden kann.&lt;/p&gt;
-&lt;p&gt;Irc hat keine Presence und keine Persistenz.
-Das ist natürlich blöd, wenn man ein Mobilnutzer ist und nicht nur laufend Disconnected, sondern auch noch laufend eine wechselnde Portnummer und IP auf dem Gateway des Mobilnetzes hat.
-Das Konzept von Pushnachrichten-Servern wie sie Google und Apple für mobile Nutzung voraussetzen kennt IRC nicht.
-Damit ist eine sinnvolle Teilnahme an IRC mit einem mobilen Client nicht möglich und man belästigt alle Channelteilnehmer laufend mit QUIT-Nachrichten, und hat keine Historie des Chats, wenn man gerade offline ist.&lt;/p&gt;
-&lt;p&gt;IRC hat nicht nur keine Zeichensätze, sondern auch sonst keine Form von moderner Kommunikation:
-Keinen funktionierenden File Transfer, denn DCC und CTCP funktionieren weitverbreitet nicht mehr, keine Inline Images, keine Eskalation zu Voice- und Videochat, keine strukturierte Kommunikation mit Threads, sodaß man auch nicht Themen und Replies auf Themen bannen kann, und auch alle anderen Merkmale moderner Chat-Anwendungen fehlen.&lt;/p&gt;
-&lt;p&gt;IRC baut Chat um eine spatiale Metapher - Räume oder Channels, offene Gruppen.
-Es ist möglich, geschlossene Gruppen oder 1:1 zu machen, aber das ist mehr so aufgesetzt.
-Zugangskontrollen sind - auch wegen des fehlenden Identitätsmanagements - primitiv:
-Geschlossene Gruppen sind offene Gruppen mit einem globalen Paßwort, Zugangskontrolle um Identität und ACLs gibt es mehr so nicht.&lt;/p&gt;
-&lt;p&gt;TLS und Verschlüsselung existieren in unterschiedlichen Geschmacksrichtungen, sind aber undefiniert.&lt;/p&gt;
-&lt;p&gt;Dann XMPP.&lt;/p&gt;
-&lt;p&gt;Das ist quasi das Gegenteil von IRC:
-Es gibt nicht einen Standard für XMPP, es gibt &lt;a href=&#34;https://xmpp.org/extensions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://xmpp.org/extensions/&lt;/a&gt;
-
-.
-Es gibt keine Profile.
-Es ist jedem Client und Server überlassen, einen beliebigen Subset dieser Standards beliebig mißzuverstehen und zu implementieren und dann zu hoffen, daß etwas Sinnvolles dabei herauskommt.&lt;/p&gt;
-&lt;p&gt;Das Resultat ist dann zum Beispiel ein Cisco Jabber Server, der für jede Nachricht ein DELAYED-Attribut setzt, auch bei Nachrichten, die nicht delayed sind und erwartet, daß der Client das an den Timestamp-Values in den Attributen selbst auseinander fisselt.
-Und ein libpurple, wie es in Adium eingesetzt wird, das das nicht juckt und daß alle Nachrichten mit DELAYED-Attribut immer als gelesen anzeigt.&lt;/p&gt;
-&lt;p&gt;Und wenn jemand zwei beliebige Jabber-Clients und einen beliebigen XMPP-Server dazu bekommt, einen Filetransfer zu machen, wenn auf einer Seite ein NAT involviert ist, ohne eine schwarze Ziege oder gar einige Menschen zu opfern - meinen Respekt.
-Im Allgemeinen kann man aber sagen, daß das für normalsterbliche Menschen auch mit viel Blutvergießen nicht lösbar ist.&lt;/p&gt;
-&lt;p&gt;XMPP ist ein Protokoll, das für alles mögliche eingesetzt ist - nicht nur für Chaträume, sondern auch für einen Haufen anderer Maschine-Maschine Kommunikation.
-Das Ergebnis ist ein Protokoll, das von jedem irgendwie eingesetzt wird, aber eigentlich für niemanden funktioniert und ganz sicher nicht interoperabel ist.
-Das ist auch einer der Gründe, warum Jabber als Chat allgemein tot ist und sich proprietäre Chat-Lösungen durchgesetzt haben - Client installieren, loslegen.
-Es geht einfach.&lt;/p&gt;
-&lt;p&gt;Offene Protokolle und Lösungen haben bei Chat einen Marktanteil von nahe 0 und das wird sich auch in naher Zukunft nicht ändern.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Bashismen</title>
-      <link>https://blog.koehntopp.info/2019/03/04/bashismen.html</link>
-      <pubDate>Mon, 04 Mar 2019 11:36:29 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2019/03/04/bashismen.html</guid>
-      <description>&lt;p&gt;I &lt;a href=&#34;https://twitter.com/isotopp/status/1102527703033491456&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trolled Twitter&lt;/a&gt;
-
- with some Ha-Ha-Only-Serious.&lt;/p&gt;
-&lt;p&gt;Every now and then someone complains on Twitter about the use of Bashisms in Shellscripts or legacy systems that are not completely Linux-compatible.
-I usually troll back with the claim that anything that is not Linux is broken, and that anything that is not Bash is broken.&lt;/p&gt;
-&lt;p&gt;That is of course a troll, and I am of course at the same time totally serious.&lt;/p&gt;
-&lt;p&gt;Yes, MacOS exists and does not have a Linux userland, and that is a problem (just try to use Docker, you get a VM that runs Linux that then starts Containers).
-Yes, Debian ships systems with ash, and your Openwrt runs Busybox, and in both cases that is the first thing everybody changes.
-At least if they are going to use these systems for real, and for good reasons, too.&lt;/p&gt;
-&lt;p&gt;The thing is, time did not stop.
-It&amp;rsquo;s 2019, and the by far dominant majority of all systems run Linux, bash and a few other things.
-It is perfectly okay to demand that these things are present, because the world has moved on and is way beyond kernel, operating systems and shell questions.
-In fact, the need to be able to run Docker images at scale is so huge that even Microsoft implemented a Linux kernel API on their operating system, which underneath is anything but close to what Linux requires.&lt;/p&gt;
-&lt;p&gt;The other thing is, of course, if portability matters, you do not run Bash or any other kind of Shell.
-Or if security matters.
-Or extensibility.
-Or anything at all.
-Use Python.
-Or, PHP or even Perl, if you are like from the last millennium.&lt;/p&gt;
-&lt;p&gt;But never write Shell Scripts.
-Ever.
-Or if you do, do not expect them to run anywhere but on your box.
-This in the history of mankind has never worked.&lt;/p&gt;
-&lt;p&gt;So, get yourself a real computer.
-And use a proper programming language.
-Thank you.&lt;/p&gt;
 </description>
     </item>
     

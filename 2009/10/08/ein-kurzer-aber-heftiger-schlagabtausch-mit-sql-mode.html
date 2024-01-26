@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2009/10/08/ein-kurzer-aber-heftiger-schlagabtausch-mit-sql-mode.html">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='Ein kurzer, aber heftiger Schlagabtausch mit SQL_MODE' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -120,7 +121,7 @@
 <div class="page">
 	<article class="ein-kurzer-aber-heftiger-schlagabtausch-mit-sql_mode-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
-			<header>
+			<header class="headerbanner">
 				<div class='col'>
 					<h1 class="title mb-lg-4 text-white">
 						Ein kurzer, aber heftiger Schlagabtausch mit SQL_MODE
@@ -150,9 +151,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
+						Previous Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/10/09/wieviel-speicher-brauchst-du-denn.html">Wieviel Speicher brauchst Du denn?</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/08/22/megapanzer.html">links for 2009-08-22</a>
 				</div>
 				
 			</div>
@@ -161,9 +162,9 @@
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Previous Post
+						Next Post
 					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/08/22/megapanzer.html">links for 2009-08-22</a>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/10/09/wieviel-speicher-brauchst-du-denn.html">Wieviel Speicher brauchst Du denn?</a>
 				</div>
 				
 			</div>
@@ -516,8 +517,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">MIN</span><span class="p">(</span><span class="n">latitude</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">latitude</span><span class="p">),</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">longitude</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Objects</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">99910</span><span class="p">,</span><span class="w"> </span><span class="mi">98561</span><span class="p">,</span><span class="w"> </span><span class="mi">10200</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">    </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w"> </span><span class="err"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">    </span><span class="k">AND</span><span class="w"> </span><span class="n">longitude</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w">  </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">longitude</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ERROR</span><span class="w"> </span><span class="mi">1140</span><span class="w"> </span><span class="p">(</span><span class="mi">42000</span><span class="p">):</span><span class="w"> </span><span class="n">Mixing</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="n">columns</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">MIN</span><span class="p">(),</span><span class="k">MAX</span><span class="p">(),</span><span class="k">COUNT</span><span class="p">(),...)</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="n">columns</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">is</span><span class="w"> </span><span class="n">illegal</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">clause</span><span class="w">
@@ -527,9 +528,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MIN</span><span class="p">(</span><span class="n">latitude</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">latitude</span><span class="p">),</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MIN</span><span class="p">(</span><span class="n">longitude</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Objects</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">99910</span><span class="p">,</span><span class="w"> </span><span class="mi">98561</span><span class="p">,</span><span class="w"> </span><span class="mi">10200</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="err"> </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w"> </span><span class="err"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="err"> </span><span class="k">AND</span><span class="w"> </span><span class="n">longitude</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">99910</span><span class="p">,</span><span class="w"> </span><span class="mi">98561</span><span class="p">,</span><span class="w"> </span><span class="mi">10200</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w">  </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">longitude</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><p>Beachte, daß man <code>GROUP BY 1=1</code> schreiben muß und nicht einfach <code>GROUP BY 1</code> machen kann. Letzteres ist eine (obsolete und nicht empfohlene) Schreibweise um nach Spalte 1 zu gruppieren (oder, mit <code>ORDER BY</code>, zu sortieren).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">
@@ -537,7 +538,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MIN</span><span class="p">(</span><span class="n">longitude</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">Objects</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">99910</span><span class="p">,</span><span class="w"> </span><span class="mi">98561</span><span class="p">,</span><span class="w"> </span><span class="mi">10200</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w"> </span><span class="err"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">latitude</span><span class="w">  </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">longitude</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ERROR</span><span class="w"> </span><span class="mi">1056</span><span class="w"> </span><span class="p">(</span><span class="mi">42000</span><span class="p">):</span><span class="w"> </span><span class="n">Can</span><span class="s1">&#39;t group on &#39;</span><span class="k">MIN</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span><span class="s1">&#39;
 </span></span></span></code></pre></div><h3 id="insert-on-duplicate-key-update-breakage-i">
@@ -706,14 +707,14 @@
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
 				
-				<a href="/%20tags/#mysql" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#mysql" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
 				mysql
 				</a>
 				
-				<a href="/%20tags/#lang_de" class='btn btn-sm btn-outline-primary mb-1'>
+				<a href="/tags/#lang_de" class='btn btn-sm btn-outline-primary mb-1'>
 				<svg class="bi" width="1rem" height="1rem" fill="currentColor">
 					<use xlink:href="/bootstrap-icons.svg#tag-fill"></use>
 				</svg>
@@ -737,19 +738,8 @@
 		</div>
 		
 
-		<div class='row justify-content-center mb-5 pt-5 border-top mx-0'>
+		<div class='row justify-content-center mx-0'>
 			<div class='col-lg-4 text-center text-lg-start'>
-				
-				<div>
-					<div class='letter-spacing-01 text-uppercase text-secondary'>
-						Next Post
-					</div>
-					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/10/09/wieviel-speicher-brauchst-du-denn.html">Wieviel Speicher brauchst Du denn?</a>
-				</div>
-				
-			</div>
-
-			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
 				
 				<div>
 					<div class='letter-spacing-01 text-uppercase text-secondary'>
@@ -759,7 +749,19 @@
 				</div>
 				
 			</div>
+
+			<div class='col-lg-4 text-lg-end mt-5 mt-lg-0 text-center'>
+				
+				<div>
+					<div class='letter-spacing-01 text-uppercase text-secondary'>
+						Next Post
+					</div>
+					<a class='text-decoration-none' href="https://blog.koehntopp.info/2009/10/09/wieviel-speicher-brauchst-du-denn.html">Wieviel Speicher brauchst Du denn?</a>
+				</div>
+				
+			</div>
 		</div>
+
 
 		
 	</article>
@@ -791,9 +793,6 @@
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

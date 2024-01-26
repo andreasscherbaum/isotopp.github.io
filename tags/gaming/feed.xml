@@ -6,7 +6,63 @@
     <description>Recent content in gaming on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jun 2023 13:28:45 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/gaming/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2024 23:01:30 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/gaming/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Elite</title>
+      <link>https://blog.koehntopp.info/2023/09/20/elite.html</link>
+      <pubDate>Wed, 20 Sep 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/09/20/elite.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LhTTpV5qFrs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/elite.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LhTTpV5qFrs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;C64 Elite (1983) Longplay&lt;/a&gt;
+
+&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Das ist Elite (1984).
+Das Spiel wird heute 39 Jahre alt.&lt;/p&gt;
+&lt;p&gt;Spiele zu jener Zeit waren nicht nur 2D,
+sie waren auch Arcade.
+Man spielt, und wenn man stirbt, ist das Spiel vorbei – die nächste Partie fängt man von vorne an.&lt;/p&gt;
+&lt;p&gt;Elite ist das erste Spiel mit animierter 3D-Grafik, und es ist auch das erste Spiel mit Savegames und Progression.
+Als solches hat es die Spieleentwicklung sehr umfassend beeinflusst.
+Wing Commander, EVE und No Man&amp;rsquo;s Sky haben ihre Quellen hier.&lt;/p&gt;
+&lt;p&gt;Elite war eine Idee von David Braben und Ian Bell,
+beides Engländer und daher kam das Spiel zunächst für den BBC Micro raus.
+Es wurde später auf viele andere 8-Bit Systeme portiert,
+darunter auch der C64.
+Es verkaufte sich rund 100.000 mal auf dem BBC Micro und weitere 600.000 mal für den C64.
+Insgesamt wurden rund 1 Million Exemplare umgesetzt.&lt;/p&gt;
+&lt;p&gt;Insgesamt gab es von Elite selbst noch drei Nachfolgespiele, die aktuelle Version ist Elite: Dangerous.
+Da sieht das Gameplay dann so aus:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LPMVLk7dwfs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/elite-dangerous.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=LPMVLk7dwfs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Elite Dangerous&lt;/a&gt;
+
+ Gameplay.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Mein Elite T-Shirt hat das C64 Elite Wireframe Model der Cobra und den Text &amp;ldquo;Keep Calm And Jump Onwards&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/elite-jump-retrowinder.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;T-Shirt Design &lt;a href=&#34;https://blog.koehntopp.info/uploads/2023/09/elite-jump-retrowinder.png&#34;&gt;mit schwarzem Hintergrund&lt;/a&gt;
+
+ und &lt;a href=&#34;https://blog.koehntopp.info/uploads/2023/09/elite-jump-onwards-transparent.png&#34;&gt;in transparent&lt;/a&gt;
+
+.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Minecraft: unable to create native thread</title>
       <link>https://blog.koehntopp.info/2023/02/17/minecraft-unable-to-create-native-thread.html</link>
@@ -14,14 +70,14 @@
       
       <guid>https://blog.koehntopp.info/2023/02/17/minecraft-unable-to-create-native-thread.html</guid>
       <description>&lt;p&gt;A minecraft server has problems creating threads. The error message reads:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;OutOfMemoryError&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;native&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;thread&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;possibly&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;memory&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;limits&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reached&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;start0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Native&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~[?:?]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;802&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~[?:?]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;addWorker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;945&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~[?:?]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1353&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~[?:?]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Executors$DelegatedExecutorService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Executors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;721&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~[?:?]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;org&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;bukkit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;craftbukkit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;v1_19_R2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;scheduler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;CraftAsyncScheduler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;mainThreadHeartbeat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CraftAsyncScheduler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;73&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The server in question has 32 GB of memory (6 GB used), 8 cores, and processes threads running.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;OutOfMemoryError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;unable&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;native&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;possibly&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;of&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;memory&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resource&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;limits&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reached&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;start0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Native&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~[?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;802&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~[?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;addWorker&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;945&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~[?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1353&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~[?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;util&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;concurrent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Executors$DelegatedExecutorService&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Executors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;721&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~[?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;org&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;bukkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;craftbukkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;v1_19_R2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;scheduler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;CraftAsyncScheduler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;mainThreadHeartbeat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CraftAsyncScheduler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;java&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;73&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The server in question has 32 GB of memory (6 GB used), 8 cores, and processes threads running.
 It is mostly idle.
 There is no reason at all why this machine should be out of resources.&lt;/p&gt;
 &lt;h1 id=&#34;vps-limits-and-how-to-check-them&#34;&gt;
@@ -714,7 +770,7 @@ throttle (image: clutch highlighed in red)&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Clutch mode&amp;rdquo; for this button means that it is usable as a
 modfier for the other buttons, when pressed together with a
 second button. Alone, it does nothing. For me, that is useless.&lt;/p&gt;
-&lt;p&gt;In order to disable function, go into Windows Settings, click
+&lt;p&gt;In order to disable the function, go into Windows Settings, click
 Devices, and search for &amp;ldquo;Set up USB Game Controllers&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/01/x.52-clutch-1.png&#34; alt=&#34;&#34;  /&gt;
@@ -740,6 +796,31 @@ with the MFD at all).&lt;/p&gt;
 &lt;p&gt;Because Windows is stupid and saves this configuration per
 USB-port, you will have to redo it every time you plug the stick
 into a different USB port.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EDIT:&lt;/strong&gt; Göran Nilsson explained:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can reach the Saitek modding using the original Saitek way as follows on Win10:&lt;/p&gt;
+&lt;p&gt;-Control Panel-Devices and Printers-Right Click on the HOTAS&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/01/x.52-clutch-4.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;The main use of the &amp;ldquo;Clutch Mode&amp;rdquo; is to get the current key function displayed on the MFD, without actually activating that function.
+I find that useful when you change between different SIMS, where you have alternative assignments to a specific key or function.
+So pressing &amp;ldquo;Clutch&amp;rdquo;+&amp;ldquo;Anykey&amp;rdquo; displays the current functionality of &amp;ldquo;Anykey&amp;rdquo; as text on the MFD as long as you keep Clutch depressed.
+Latch Clutch means that you have to press the Clutch once for uncoupling the function and once again to switch between actual function and text describing the tested key.
+The text you want is of course possible to set when you program the keys
+Personally I find that very useful as I tend to forget all these possible allocations of various functions to keys.
+Different sims needs different fast keys.&lt;/p&gt;
+&lt;p&gt;Example : Programming the &amp;ldquo;FireA&amp;rdquo; button to issue &amp;ldquo;KRIS&amp;rdquo; to my software.
+&amp;ldquo;Clutch&amp;rdquo;+&amp;ldquo;FireA&amp;rdquo; will now show &amp;ldquo;Kristian&amp;rdquo; on the MFD without actually sending anything to the running program.
+Given the rich programmimg possibilities I definitely need an online &amp;ldquo;cheat sheet&amp;rdquo; that the &amp;ldquo;Clutch&amp;rdquo; makes available.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/01/x.52-clutch-5.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

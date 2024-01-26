@@ -6,7 +6,44 @@
     <description>Recent content in usenet on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jun 2023 13:28:45 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/usenet/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2024 23:01:30 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/usenet/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Need for Smarter Clients</title>
+      <link>https://blog.koehntopp.info/2023/09/18/the-need-for-smarter-clients.html</link>
+      <pubDate>Mon, 18 Sep 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/09/18/the-need-for-smarter-clients.html</guid>
+      <description>&lt;p&gt;Somebody asked me very politely on the Fedi:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Would you please post all but the first post in a thread as &amp;ldquo;unlisted&amp;rdquo;?&lt;/p&gt;
+&lt;p&gt;I like to follow you, but the sum of all posts by you takes up so much space on my front page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The answer to that request, also politely, is a firm &amp;ldquo;No.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Selection, ordering and presentation of posts is a client problem, which it has to solve, according to your configured preferences.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Of course, my client (Tusky) recognizes a thread and shows it as such.&lt;/p&gt;
+&lt;p&gt;But all posts that are being sent as &amp;ldquo;public&amp;rdquo; are also shown separately on my front page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That is an understandable problem, but not mine.&lt;/p&gt;
+&lt;p&gt;I believe Tusky will also show you reposts of the same article by 17 different persons.
+In total, you get to see 18 copies of that article (the original and 17 copies).
+Would you ask these people to not repost because another of your followers already did that?
+You would not.&lt;/p&gt;
+&lt;p&gt;Tusky, and every other client must learn what it has shown previously, and to not show middle posts of threads if so desired.&lt;/p&gt;
+&lt;p&gt;If we start to take care of recipient presentation preferences on the sender&amp;rsquo;s side, we are getting into an impossible situation.
+The sum of all recipients has irreconcilable preferences.&lt;/p&gt;
+&lt;p&gt;Also, we would end up in a &amp;ldquo;USENET-situation,&amp;rdquo; where advancement becomes impossible.
+&amp;ldquo;No Umlauts, because my VT100 can&amp;rsquo;t render them.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;I can&amp;rsquo;t and won&amp;rsquo;t ever care for any client&amp;rsquo;s presentation preferences.
+Get a client that can render stuff the way you want, and pay your client developers of choice to build the client you want.&lt;/p&gt;
+&lt;p&gt;This network is federated, with dozens of clients.
+This offers you choice and makes it impossible for me to care for you all.
+If you don&amp;rsquo;t like this, please unsubscribe to my account.
+The network is large, and you won&amp;rsquo;t miss my content.&lt;/p&gt;
+&lt;p&gt;Thanks.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>USENET und Tiernetze</title>
       <link>https://blog.koehntopp.info/2022/12/02/usenet-und-tiernetze.html</link>
@@ -202,41 +239,68 @@ und die Totaleskalation danach, die dazu geführt hat, daß octodon.social socia
 .&lt;/p&gt;
 &lt;p&gt;In the context of the impending shutdown of Google plus, some people reminisce about USENET, especially in the context of social media.&lt;/p&gt;
 &lt;p&gt;Before being abused as a broadcast protocol for TV series, Porn and illegal copies of software, USENET was a kind of decentralized social media used for discussion.
-There was a small number of interoperable server implementations, and a plethora of clients, with different audiences and optimisations.&lt;/p&gt;
+There was a small number of interoperable server implementations, and a plethora of clients, with different audiences and optimizations.&lt;/p&gt;
+&lt;h1 id=&#34;tldr&#34;&gt;
+    &lt;a href=&#34;#tldr&#34;&gt;
+	TL;DR
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;We can not only learn from the successes of USENET, but even more from its failures.&lt;/p&gt;
 &lt;h1 id=&#34;how-did-usenet-work&#34;&gt;
     &lt;a href=&#34;#how-did-usenet-work&#34;&gt;
 	How did USENET work?
     &lt;/a&gt;
 &lt;/h1&gt;
-&lt;p&gt;The idea behind USENET is that you have a very large number of servers that forward articles between each other, so that any user can post any article anywhere to any server, and eventually it would end up with exactly one copy of that article on each server that wants it.
+&lt;p&gt;The idea behind USENET is that you have a very large number of servers that forward articles between each other,
+so that any user can post any article anywhere to any server,
+and eventually it would end up with exactly one copy of that article on each server that wants it.
 Servers can have one or more connections with other servers, some had hundreds of links to other servers.
 Message would ideally still be transported only once, and in no case stored multiple times.&lt;/p&gt;
-&lt;p&gt;A server keeps a message for a configurable amount of time, and eventually deletes the local copy as the expiration date of this message is being exceeded.&lt;/p&gt;
-&lt;p&gt;The format of any USENET post was superficially that of a (pre-multimedia) mail.
-So a USENET article had a number of header lines as Key-Value pairs, broken according to mail long-line folding rules, and a body, which was ASCII text.
-Later additions tried to improve on that, but failed - more about that later.&lt;/p&gt;
+&lt;p&gt;Unlike modern federation protocols which were born on the Internet, USENET was a store-and-forward network.
+So articles would not be forwarded directly to subscribers, but were stored locally and forwarded to a few immediate neighbors.
+They would keep a copy of the message and in turn offer it to their direct neighbors, and so on.
+Usually, any two servers on the network would be &lt;a href=&#34;https://en.wikipedia.org/wiki/Six_degrees_of_separation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;only very few hops apart&lt;/a&gt;
+
+ from each other.&lt;/p&gt;
+&lt;p&gt;Each server keeps a message for a configurable amount of time, and eventually deletes the local copy as the expiration date of this message is being exceeded.&lt;/p&gt;
+&lt;h2 id=&#34;message-format-and-identity&#34;&gt;
+    &lt;a href=&#34;#message-format-and-identity&#34;&gt;
+	Message format and identity
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The format of any USENET post was superficially that of (pre-multimedia) mail.
+So a USENET article had a number of header lines as Key-Value pairs,
+broken according to e-mails long-line folding rules, and a body, which contained ASCII.
+Later additions tried to improve on that, but failed — more on that later.&lt;/p&gt;
 &lt;p&gt;A somewhat basic usenet header would look somewhat like this:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;From: user@host (User Name)
 Date: Thu, 24 Jan 2019 22:15:15 +0100
 Path: news.nntp.dca.giganews.com!news.koehntopp.de!kris
 Newsgroups: kiel.allgemein
 Message-ID: &amp;lt;treXfsfeg17354@news.koehntopp.de&amp;gt;
+Subject: Neue Gruppen einrichten
 In-Reply-To: &amp;lt;eueytdj2625@news.koehntopp.de&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A few header keywords were more important than others, because without them the protocol would not work.&lt;/p&gt;
 &lt;p&gt;The key header is the Message-ID:
-It defines the identity of a message for purposes of the protocol &amp;ndash; two instances of a message are considered identical if they have the same ID, different if they ID is different.
+It defines the identity of a message for purposes of the protocol.
+Two instances of a message are considered identical if they have the same ID, and different if their ID is different.
 It was crucial for all implementations to never modify a messages &amp;ldquo;Message-ID:&amp;rdquo; line.&lt;/p&gt;
 &lt;p&gt;Servers know which messages they have already seen by keeping a list of Message-IDs in a special database, the server history table.
 Servers would remember the IDs of messages longer than they would remember articles, and they would reject any message with any Message-ID that is even older than their history reaches back in time.
 So a particular server might want to keep messages for 30 days, and a history table for 90 days.
 That particular server would roundabout reject any message older than 90 days.&lt;/p&gt;
 &lt;p&gt;Whenever a server sees a message young enough to qualify for lookup in the history table, it would do that lookup.
-If the Message-ID is already known, a decision about this message had already been made in the past and the message is being rejected as a duplicate.&lt;/p&gt;
-&lt;p&gt;Only when a message qualifies younger than the history, and as as-of-now unknown in the history, a decision about it (keep it, discard it, &amp;hellip;) has to be made.
-In any case, the server would store the ID as &amp;ldquo;seen&amp;rdquo; in the history table and it would reject any second message with that ID.
-That way duplicates from multiple connections are being recognized and eliminated.&lt;/p&gt;
+If the Message-ID is already known, a decision about this message had already been made in the past,
+and the message will be rejected as a duplicate.&lt;/p&gt;
+&lt;p&gt;Only when a message qualifies younger than the history, and is so far unknown in the history,
+a decision about it (keep it, discard it, &amp;hellip;) has to be made.
+In any case, the server would store the ID as &amp;ldquo;seen&amp;rdquo; in the history table,
+and it would reject any second message with that ID.
+That way, duplicates from multiple connections are being recognized and eliminated.&lt;/p&gt;
 &lt;p&gt;This allows a dense and redundant set of connections between servers without the need of any connection management or requirements on the server topology at all.
-It would also allow a new server to connect to an existing server and request re-feeding any amount of old messages without the danger of accidentally feeding these old messages a second time to other existing servers over another link.&lt;/p&gt;
+It would also allow a new server to connect to an existing server
+and request re-feeding any number of old messages without the danger
+of accidentally feeding these old messages a second time to other existing servers over another link.&lt;/p&gt;
 &lt;p&gt;Of course, it still is possible for a server with a hundred links to get dozens of copies of the same message through different links, all of which except for the first copy are being rejected.&lt;/p&gt;
 &lt;p&gt;That was particularly common for servers that did not have a live connection on the internet, but were batch fed:
 Such servers would have their articles collected in a series of compressed files over the day, would then dial up using a modem and download the compressed batches in one go, multiple times a day.
@@ -244,56 +308,91 @@ After disconnection, they would decompress and process these articles, discardin
 &lt;p&gt;Interactive transfer on live internet lines was slightly more intelligent, and worked somewhat like two kids comparing collection cards.
 One server would post Message-IDs of messages in &lt;code&gt;IHAVE&lt;/code&gt; statements, and the receiving server would look up these IDs in turn in their history.
 Anything missing they would ask for with &lt;code&gt;SENDME&lt;/code&gt; messages, asking for new files by Message-ID.&lt;/p&gt;
-&lt;p&gt;One way to optimise this is the &amp;ldquo;Path&amp;rdquo; header line, which lists all the servers that have seen this copy of a message in order to traversal.
+&lt;h2 id=&#34;optimizing-duplicate-delivery-with-path-headers&#34;&gt;
+    &lt;a href=&#34;#optimizing-duplicate-delivery-with-path-headers&#34;&gt;
+	Optimizing duplicate delivery with Path-headers
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One way to optimize this is the &amp;ldquo;Path&amp;rdquo; header line, which lists all the servers that have seen this copy of a message in order to traversal.
 So a message posted to &lt;code&gt;news.koehnntopp.de&lt;/code&gt; by the user &lt;code&gt;kris&lt;/code&gt; would start out with a &amp;ldquo;&lt;code&gt;Path: news.koehntopp.de!kris&lt;/code&gt;&amp;rdquo;.
-That server would feed it for example to &lt;code&gt;news.nntp.dca.giganews.com&lt;/code&gt; and to &lt;code&gt;news.toppoint.de&lt;/code&gt;, so one copy of that message would end up with a &amp;ldquo;&lt;code&gt;Path: news.nntp.dca.giganews.com!news.koehntopp.de!kris&lt;/code&gt;&amp;rdquo;, and the other would end up with &amp;ldquo;&lt;code&gt;Path: news.toppoint.de!news.koehntopp.de!kris&lt;/code&gt;&amp;rdquo; in their Path.
-Both copies of the original message would have divergent Path header lines, but identical Message-ID lines, and the same message body.&lt;/p&gt;
-&lt;p&gt;The Path line was being used to detect circles before they happen - you would not even offer anything that already has &lt;code&gt;news.koehntopp.de&lt;/code&gt; in the Path in any position back to &lt;code&gt;news.koehntopp.de&lt;/code&gt;.
-Also, as a server operator you could do stats on Path lines to see which of your links was fast (brought you copies of messages first) and which would be slower.&lt;/p&gt;
-&lt;h1 id=&#34;message-selection&#34;&gt;
-    &lt;a href=&#34;#message-selection&#34;&gt;
-	Message Selection
+That server would feed it for example to &lt;code&gt;news.nntp.dca.giganews.com&lt;/code&gt; and to &lt;code&gt;news.toppoint.de&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One copy of that message would end up with a &amp;ldquo;&lt;code&gt;Path: news.nntp.dca.giganews.com!news.koehntopp.de!kris&lt;/code&gt;&amp;rdquo;,
+and the other would end up with &amp;ldquo;&lt;code&gt;Path: news.toppoint.de!news.koehntopp.de!kris&lt;/code&gt;&amp;rdquo; in their Path.
+Both copies of the original message would have divergent Path header lines, but identical Message-ID lines,
+and the same message body.&lt;/p&gt;
+&lt;p&gt;The Path line was being used to detect circles before they happen:
+you would not even offer anything that already has &lt;code&gt;news.koehntopp.de&lt;/code&gt; in the Path in any position back to &lt;code&gt;news.koehntopp.de&lt;/code&gt;.
+Also, as a server operator,
+you could do stats on Path lines to see which of your links was fast
+(brought you copies of messages first) and which would be slower.&lt;/p&gt;
+&lt;h1 id=&#34;building-links-between-servers&#34;&gt;
+    &lt;a href=&#34;#building-links-between-servers&#34;&gt;
+	Building Links between Servers
     &lt;/a&gt;
 &lt;/h1&gt;
-&lt;p&gt;So how would a server operator get connections to other servers, and how would they decide which messages they want and not want?&lt;/p&gt;
+&lt;p&gt;So how would a server operator get connections to other servers,
+and how would they decide which messages they want and not want?&lt;/p&gt;
 &lt;p&gt;This is the first of the weak points of USENET, and often glossed over in glorifying USENET.&lt;/p&gt;
-&lt;p&gt;Setting up a link between two servers was a completely manual process, and it was completely controlled by the upstream server feeding a downstream server with messages.&lt;/p&gt;
+&lt;p&gt;Setting up a link between two servers was a completely manual process,
+and it was completely controlled by the upstream server feeding a downstream server with messages.&lt;/p&gt;
 &lt;p&gt;First, you had to manually discover a server wanting to act as a feed to you.
 Often that was done with mailing lists where server operators and wannabe-server operators offered feeds, or asked for peers.&lt;/p&gt;
-&lt;p&gt;Then, after making contact, you would exchange contact information, and negotiate the parameters of setting up a link.
-That required the exchange of login credentials, and the configuration of what the receiving server operator would want from the feed.
-The upstream operator would manually configure these selection criteria and then send stuff to the receiver, which may or may not have been what these people wanted, and they could take that or discard it.&lt;/p&gt;
+&lt;p&gt;Then, after making contact, you would exchange contact information and negotiate the parameters of setting up a link.
+That required the exchange of login credentials,
+and the configuration of what the receiving server operator would want from the feed.
+The upstream operator would manually configure these selection criteria,
+and then send stuff to the receiver, which may or may not have been what these people wanted.
+They could take that or discard it.&lt;/p&gt;
 &lt;p&gt;This is totally not what anybody would want today or back then.
-There was no automated negotiation where the feeding server would advertise what they have, and the receiving server would then state interactively what they would want to subscribe to and what not.&lt;/p&gt;
-&lt;p&gt;Also, all selection was based on another header line, the Newsgroup header.
-So you could not express wishes based on language, author, content type, message-size or any other criteria.
-You could only say you want messages &amp;ldquo;in kiel.allgemein and kiel.uni&amp;rdquo; or &amp;ldquo;in any kiel.* newsgroup&amp;rdquo; or exclusion criteria such as &amp;ldquo;kiel.&lt;em&gt;, but not kiel.binaries.&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Conversely, server operators and end users where guarding newsgroups strongly - the creation and deletion of newsgroups was a heavily guarded process and misposting and crossposting - posting to the wrong newsgroup or posting to too many newsgroups at once - came attached with social stigma and sanctions.&lt;/p&gt;
+There was no automated negotiation where the feeding server would advertise the stuff they offer,
+and the receiving server would then state interactively what they would want to subscribe to and what not.&lt;/p&gt;
+&lt;h2 id=&#34;gatekeeping-newsgroups&#34;&gt;
+    &lt;a href=&#34;#gatekeeping-newsgroups&#34;&gt;
+	Gatekeeping newsgroups
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Also, all selections were based on one single header line, the Newsgroup header.
+This is very much analogous to subscribing to a hashtag on modern social media,
+only the hashtag is gatekept by a server operator cabal.&lt;/p&gt;
+&lt;p&gt;In any way, USENET servers offered to way to express wishes based on language, author, content type, message-size,
+or any other criteria.
+You could only say you want messages &amp;ldquo;in kiel.allgemein and kiel.uni&amp;rdquo; or &amp;ldquo;in any kiel.* Newsgroup&amp;rdquo;
+or exclusion criteria such as &amp;ldquo;kiel.&lt;em&gt;, but not kiel.binaries.&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;When I say &amp;ldquo;gatekept hashtags&amp;rdquo;, I mean server operators and end users were guarding newsgroups strongly.
+The creation and deletion of newsgroups was a heavily formalized process.
+Also, posting to the wrong newsgroup, crossposting to multiple newsgroups came with social stigma and sanctions.&lt;/p&gt;
 &lt;p&gt;This made USENET very cumbersome for the end user.
-Users that wanted social space and reach wanted a newsgroup.
-But to get that they had to go through a very slow and formalised discussion process that was designed to keep the number of groups small and audiences in groups large and generalised.
-Protected or small spaces, with a designed, non-public audience were frowned upon, making the creation of safe spaces hard or impossible.&lt;/p&gt;
-&lt;h1 id=&#34;the-client-dilemma&#34;&gt;
-    &lt;a href=&#34;#the-client-dilemma&#34;&gt;
-	The client dilemma
+Users often wanted a social space, or simply recognition of a topic as a thing and asked for a newsgroup.&lt;/p&gt;
+&lt;p&gt;In order to get that, they had to go through a very slow and formalized discussion process
+which purposefully was designed to keep the number of groups small and audiences in groups large and generalized.&lt;/p&gt;
+&lt;p&gt;Protected or small spaces with a designated, non-public audience were frowned upon,
+making the creation of safe spaces hard or impossible.&lt;/p&gt;
+&lt;h1 id=&#34;client-flexibility-but-also-no-common-feature-set&#34;&gt;
+    &lt;a href=&#34;#client-flexibility-but-also-no-common-feature-set&#34;&gt;
+	Client flexibility, but also no common feature set
     &lt;/a&gt;
 &lt;/h1&gt;
 &lt;p&gt;USENET clients were written as early versions of free software.
 Their source was packaged and posted on USENET itself.
 You would read a newsgroup that transported packaged software, and would find a new version of an end user client posted there.
-You would unpackage the source, configure it for your system and compile it, and then try out the new program.
+You would unpack the source, configure it for your system and compile it, and then try out the new program.
 If it worked, you would roll out the new version on your systems for your end users.&lt;/p&gt;
 &lt;p&gt;There were many client programs.
-Sven Guckes maintains a list at &lt;a href=&#34;http://www.guckes.net/newsreaders/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.guckes.net/newsreaders/&lt;/a&gt;
+Sven Guckes maintained a list at &lt;a href=&#34;http://www.guckes.net/newsreaders/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.guckes.net/newsreaders/&lt;/a&gt;
 
 .&lt;/p&gt;
 &lt;p&gt;The wide diversity in reading software also was a main cause of impediment in the evolution of USENET.
-If a news reading program added features that required additional data in the header or the body of an article, all other reading programs would have problems decoding that.
-Simple things as support for Umlauts for example required encoding of characters, because some systems broke Non-ASCII characters.
+If a news reading program added features that required additional data in the header or the body of an article,
+all other reading programs would have problems decoding that.
+Simple things, such as support for Umlauts, required encoding of characters because some systems broke Non-ASCII characters.
 So &amp;ldquo;Kristian Köhntopp&amp;rdquo; was encoded as &amp;ldquo;Kristian =?iso-8859?Q?K=F6hntopp?=&amp;rdquo;.
-While it was displayed properly in readers that supported decoding this, it was shown as &amp;ldquo;Kristian Iso-something-topp&amp;rdquo; to everybody else.&lt;/p&gt;
-&lt;p&gt;Putting rich content, such as formatting in Markup or HTML, or inline-images into messages was even worse, because it made messages completely unreadable to users with clients that did not support these new formats.&lt;/p&gt;
-&lt;p&gt;Consequently, all extensions got heavy resistance from end-users and operators everywhere, and eventually USENET evolution stopped and everybody moved to web forums.
+While it was displayed properly in readers that supported decoding this,
+it was shown as &amp;ldquo;Kristian Iso-something-topp&amp;rdquo; to everybody else
+(and that is how I got my nickname, Isotopp, by the way).&lt;/p&gt;
+&lt;p&gt;Putting rich content, such as formatting in Markup or HTML, or inline-images into messages was even worse,
+because it made messages completely unreadable to users with clients that did not support these new formats.&lt;/p&gt;
+&lt;p&gt;Consequently, all extensions got heavy resistance from end-users and operators everywhere,
+and eventually USENET evolution stopped, and everybody moved to web forums.
 Essentially, USENET died with the appearance of phpBB and friends.&lt;/p&gt;
 &lt;h1 id=&#34;how-web-forum-software-won&#34;&gt;
     &lt;a href=&#34;#how-web-forum-software-won&#34;&gt;
@@ -301,18 +400,33 @@ Essentially, USENET died with the appearance of phpBB and friends.&lt;/p&gt;
     &lt;/a&gt;
 &lt;/h1&gt;
 &lt;p&gt;Web Forum software was, in the eyes of USENET users, a big step backwards.
-It was not distributed, the client was primitive and put a lot of emphasis on presentation, and it was proscribed by the board operator instead of being a choice of the reader.&lt;/p&gt;
+It was not distributed, the client was primitive and put emphasis on presentation.
+The presentation was proscribed by the board operator instead of being a choice of the reader.&lt;/p&gt;
 &lt;p&gt;But web boards were easy to upgrade:
-With an upgrade, the same set of features was available to all users at once, and there was no possible resistance from users who were slow or negligent in upgrading their software.
-Also, while you had to go through a slow and lengthy discussion process and voting process to get just one newsgroup, it was easy to get a web server with a copy of phpBB up and running and then you could run any number of groups on that.
-Also, you controlled audience and admission, so it was possible to create protected safe spaces - by design an impossibility on USENET.&lt;/p&gt;
-&lt;p&gt;In the end that made all but the most hardware tech audience move away from USENET rather quickly, and eventually USENET became irrelevant.&lt;/p&gt;
-&lt;h1 id=&#34;tldr&#34;&gt;
-    &lt;a href=&#34;#tldr&#34;&gt;
-	TL;DR
+With an upgrade, the same set of features was available to all users at once,
+and there was no possible resistance from users who were slow or negligent in upgrading their software.&lt;/p&gt;
+&lt;p&gt;While you had to go through a slow and lengthy discussion process and voting process to get just one newsgroup,
+web forums offered an easy way to get any number of groups on a simple web server with phpBB.
+Also, you controlled audience and admission, so it was possible to create protected safe spaces — by design an impossibility on USENET.&lt;/p&gt;
+&lt;p&gt;In the end, that made all but the most hardware tech audience move away from USENET rather quickly,
+and eventually USENET became irrelevant.&lt;/p&gt;
+&lt;h1 id=&#34;see-also&#34;&gt;
+    &lt;a href=&#34;#see-also&#34;&gt;
+	See also
     &lt;/a&gt;
 &lt;/h1&gt;
-&lt;p&gt;We can not only learn from the successes of USENET, but even more from its failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Netnews: The Origin Story&amp;rdquo;, (&lt;a href=&#34;https://www.cs.columbia.edu/~smb/papers/netnews-hist.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF&lt;/a&gt;
+
+),
+Steven M. Bellovin, June 27, 2023.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Flames und Kommunikationszusammenbrüche im Netz&amp;rdquo;, Kristian Köhntopp (&lt;a href=&#34;https://www.youtube.com/watch?v=FXD3vk9M7SQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video&lt;/a&gt;
+
+,
+&lt;a href=&#34;https://blog.koehntopp.info/2007/02/11/flames-kommunikationszusammenbrueche-im-netz.html&#34;&gt;Text&lt;/a&gt;
+
+)&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -1073,23 +1187,20 @@ erfolgen.&lt;/p&gt;
 zwei Personen ohne Kontrolle durch einen Mittler oder Filter miteinander
 kommunizieren dürfen und wieso das eine wichtige Frage ist.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Zum Ausspruch &amp;ldquo;The Internet treats censorship as damage &amp;hellip;&amp;rdquo; von John
-Gilmore: Das ist die historisch-kaltkriegerische Formulierung des obigen
-Sachverhaltes - &amp;ldquo;MittlerfreieKommunikation&amp;rdquo; &lt;em&gt;und&lt;/em&gt; &amp;ldquo;freie Wahl des
-Kommunikationsmodus&amp;rdquo; sind es, die eine Informationsgesellschaft
-tatsaechlich definieren.In einer solchen Gesellschaft kann Regulierung nur
-beim Sender oder beim Empfaenger ansetzen. Wenn bei diesen beiden Parteien
-keine Kooperation besteht, wird es extrem schwierig werden, die
-Beruecksichtigung dritter Interessen zu erzwingen. Und das ist genau der
-Grund, warum &amp;ldquo;Besitz der Privatsphere&amp;rdquo; das Wohlstand definierende
-Kriterium der Informationsgesellschaft ist wie &amp;ldquo;Besitz von
-Produktionsmitteln&amp;rdquo; das Wohlstand definierende Kriterium der
-Industriegesellschaft war und &amp;ldquo;Besitz von Land&amp;rdquo; das Wohlstand definierende
-Kriterium der Agrargesellschaft.Durchdenkt man das zum Ende, fuehrt dies
-zwingend dazu, dass wir den Begriffen &amp;ldquo;Privatsphaere&amp;rdquo; und &amp;ldquo;Datenschutz&amp;rdquo;
-viel umfassendere Bedeutung zumessen muessen, als dies im derzeitigen
-Datenschutzmodell und -recht in Deutschland bzw. in der EU bisher der Fall
-ist.&lt;/p&gt;
+&lt;p&gt;Zum Ausspruch &amp;ldquo;The Internet treats censorship as damage &amp;hellip;&amp;rdquo; von John  Gilmore:&lt;/p&gt;
+&lt;p&gt;Das ist die historisch-kaltkriegerische Formulierung des obigen Sachverhaltes.
+&amp;ldquo;Mittlerfreie Kommunikation&amp;rdquo; &lt;em&gt;und&lt;/em&gt; &amp;ldquo;freie Wahl des Kommunikationsmodus&amp;rdquo; sind es,
+die eine Informationsgesellschaft tatsächlich definieren.&lt;/p&gt;
+&lt;p&gt;In einer solchen Gesellschaft kann Regulierung nur beim Sender oder beim Empfänger ansetzen.
+Wenn bei diesen beiden Parteien keine Kooperation besteht,
+wird es extrem schwierig werden, die Berücksichtigung dritter Interessen zu erzwingen.&lt;/p&gt;
+&lt;p&gt;Und das ist genau der Grund, warum &amp;ldquo;Besitz der Privatsphäre&amp;rdquo;
+das Wohlstand definierende Kriterium der Informationsgesellschaft ist
+wie &amp;ldquo;Besitz von Produktionsmitteln&amp;rdquo; das Wohlstand definierende Kriterium der Industriegesellschaft war
+und &amp;ldquo;Besitz von Land&amp;rdquo; das Wohlstand definierende Kriterium der Agrargesellschaft.&lt;/p&gt;
+&lt;p&gt;Durchdenkt man das zum Ende, führt dies zwingend dazu,
+dass wir den Begriffen &amp;ldquo;Privatsphäre&amp;rdquo; und &amp;ldquo;Datenschutz&amp;quot;viel umfassendere Bedeutung zumessen müssen,
+als dies im derzeitigen Datenschutzmodell und -recht in Deutschland bzw. in der EU bisher der Fall ist.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Ebenfalls aus dem April 2000 stammt ein Artikel zum Thema
 &lt;a href=&#34;http://www.fitug.de/debate/0004/msg00561.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jugendschutzfilter&lt;/a&gt;
@@ -1109,6 +1220,385 @@ stellen muß, lautet:
 
 Die Frage, die auch kommen muß: Ist das Konzept des Zwangsmittlers technisch
 und rechtlich durchsetzbar? Ist es gesellschaftlich erwünscht?&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Der eigene USENET Server</title>
+      <link>https://blog.koehntopp.info/2005/03/19/der-eigene-usenet-server.html</link>
+      <pubDate>Sat, 19 Mar 2005 20:08:30 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2005/03/19/der-eigene-usenet-server.html</guid>
+      <description>&lt;p&gt;Der Wegfall von &amp;ldquo;news.individual.net&amp;rdquo; als kostenloser Server für USENET News mag den einen oder anderen Benutzer des Servers motiviert haben,
+sich selber mit News zu versorgen.
+Dieser Text soll dabei helfen,
+etwa auf einem der üblichen Dedicated Server bei einem Hoster oder an einer anderen geeigneten Stelle im Netz einen eigenen INN als News-Server aufzusetzen,
+und so zu konfigurieren, dass er ein nützlicher Teil der USENET-Infrastruktur in Deutschland ist,
+und dass einige Benutzer dort News lesen können.&lt;/p&gt;
+&lt;h1 id=&#34;ressourcenplanung&#34;&gt;
+    &lt;a href=&#34;#ressourcenplanung&#34;&gt;
+	Ressourcenplanung
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;traffic&#34;&gt;
+    &lt;a href=&#34;#traffic&#34;&gt;
+	Traffic
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Die Gruppen im deutschsprachigen Teil des USENET haben das Prefix &lt;code&gt;de.*&lt;/code&gt;.
+Lediglich im Teil &lt;code&gt;de.alt.dateien.*&lt;/code&gt; dürfen Bild- und Programmdateien veröffentlicht werden,
+und so kommt es, dass sich das Verkehrsaufkommen im Restteil &lt;code&gt;de.*,!de.alt.dateien.*&lt;/code&gt; in recht engen Grenzen hält:
+Pro Tag sind etwa 20 MB Traffic einzuplanen.
+Internationale Gruppen können ein Verkehrsaufkommen zwischen 150 und 200 MB am Tag erzeugen.&lt;/p&gt;
+&lt;p&gt;Die Maschine, auf der inn-Server laufen soll, sollte eine feste IP-Nummer haben, die unterbrechungsfrei verfügbar ist.
+Es sind Setups denkbar, in denen einer der beiden am Austausch beteiligten Partner eine wechselnde oder nur mit Unterbrechungen verfügbare Adresse hat,
+aber diese sind nicht Gegenstand dieser Dokumentation.&lt;/p&gt;
+&lt;h2 id=&#34;ram--und-festplattenbedarf&#34;&gt;
+    &lt;a href=&#34;#ram--und-festplattenbedarf&#34;&gt;
+	RAM- und Festplattenbedarf
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Ein laufender &lt;code&gt;innd&lt;/code&gt; auf einem Intel-basierenden Suse-Linux-System verbraucht 12 MB RAM für den &lt;code&gt;innd&lt;/code&gt;, den eigentlichen Newsserver.
+Außerdem werden noch ein &lt;code&gt;innfeed&lt;/code&gt;-Prozess (2 MB RAM) zur Artikelweitergabe und einige Hilfsprozesse für statistische Zwecke
+und zur Ausführung von Wartungsarbeiten gestartet.
+Alles in allem werden 25-30 MB RAM verbraucht.&lt;/p&gt;
+&lt;p&gt;Die Speicherung der Artikel erfolgt am günstigsten in sogenannten &amp;ldquo;CNFS Cyclebuffs&amp;rdquo;.
+Dabei handelt es sich um Ringpuffer-Dateien fester Größe, sodass der Speicherbedarf für Artikel auf der Festplatte konstant ist.
+Die Installation des Autors hat jeweils ein halbes Gigabyte für &lt;code&gt;de.*,!de.alt.dateien.*&lt;/code&gt; und für regionale deutschsprachige Hierarchien reserviert.
+Drei Gigabyte sind für internationale Artikel aus den Big8-Hierarchien bereitgestellt.&lt;/p&gt;
+&lt;p&gt;INN muss für lesenden Zugriff auf die Artikel eine Overview-Datenbank pflegen.
+Diese belegt etwa 10% des Speichers zusätzlich, der für Artikel belegt wird.&lt;/p&gt;
+&lt;h2 id=&#34;weitere-anforderungen&#34;&gt;
+    &lt;a href=&#34;#weitere-anforderungen&#34;&gt;
+	Weitere Anforderungen
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Der CPU-Aufwand und die IO-Last auf dem Server des Autors sind vernachlässigbar.
+Dazu trägt die Verwendung von CNFS ganz erheblich bei.&lt;/p&gt;
+&lt;p&gt;NNTP und NNRP, die Protokolle zum Übertragen von News und zum Lesen von News, verwenden standardmäßig den Port 119/TCP.&lt;/p&gt;
+&lt;p&gt;Der Autor verwendet Suse Linux 9.1 als Grundlage für diese Installation.
+Sie ist jedoch auf allen Linux-Distributionen grundsätzlich ähnlich.&lt;/p&gt;
+&lt;h1 id=&#34;installation&#34;&gt;
+    &lt;a href=&#34;#installation&#34;&gt;
+	Installation
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Suse Linux 9.1 liefert im Paket &lt;code&gt;inn&lt;/code&gt; einen INN in der Version 2.4.1.
+Dies ist relativ aktuell.
+Nach der Installation befinden sich die Konfigurationsdateien in &lt;code&gt;/etc/news&lt;/code&gt;,
+die öffentlichen Programme in &lt;code&gt;/usr/bin&lt;/code&gt;,
+die nicht öffentlichen Programme in &lt;code&gt;/usr/lib/news/bin&lt;/code&gt;,
+einige wichtige Arbeitsdateien in &lt;code&gt;/var/lib/news&lt;/code&gt;
+und der Artikelspeicher wird in &lt;code&gt;/var/spool/news&lt;/code&gt; angelegt.
+INN wird nach &lt;code&gt;/var/log/news&lt;/code&gt; loggen.&lt;/p&gt;
+&lt;p&gt;Andere Distributionen verwenden möglicherweise leicht unterschiedliche Speicherorte, die Anleitung ist dann passend abzuwandeln.&lt;/p&gt;
+&lt;p&gt;Alle Konfiguration am INN ist immer als User &lt;code&gt;news&lt;/code&gt; durchzuführen und niemals als User &lt;code&gt;root&lt;/code&gt;,
+außer dies wird ausdrücklich gesagt.
+Sobald durch Änderungen als &lt;code&gt;root&lt;/code&gt; Konfigurations-, Log- oder andere Dateien einem anderen Benutzer als &lt;code&gt;news&lt;/code&gt; gehören,
+wird INN möglicherweise nicht mehr sauber funktionieren.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:-/bin&amp;gt; cat /etc/SusE-release
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;SusE Linux 9.1 (1586)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;VERSION = 9.1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:~/bin&amp;gt; rpm -q inn
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;inn-2.4.1-33
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Man muss also als &lt;code&gt;root&lt;/code&gt; das Kommando &lt;code&gt;su – news&lt;/code&gt; eingeben,
+um auf den Useraccount von &lt;code&gt;news&lt;/code&gt; zu wechseln und auch das Environment des &lt;code&gt;news&lt;/code&gt;-Users zu bekommen.
+Man befindet sich dann auch gleich im Home-Verzeichnis des News-Users.
+In SuSE Linux ist das &lt;code&gt;/etc/news&lt;/code&gt;, wo sich auch die im Folgenden beschriebenen Konfigurationsdateien befinden.&lt;/p&gt;
+&lt;h1 id=&#34;inbetriebnahme&#34;&gt;
+    &lt;a href=&#34;#inbetriebnahme&#34;&gt;
+	Inbetriebnahme
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;artikelspeicher-bereit-stellen&#34;&gt;
+    &lt;a href=&#34;#artikelspeicher-bereit-stellen&#34;&gt;
+	Artikelspeicher bereit stellen
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In unserer Beispielinstallation soll der INN mit einem Artikelspeicher in CNFS (&amp;ldquo;Cyclic News File System&amp;rdquo;) betrieben werden,
+weil dies die ressourcensparendste und wartungsärmste Art der Artikelspeicherung ist.
+Die CNFS-Puffer müssen konfiguriert und angelegt werden.&lt;/p&gt;
+&lt;p&gt;Versäumt man das, verwendet INN den in der Default-Konfiguration definierten Traditional Spool.
+Dieser erzeugt jedoch mehr I/O-Last auf dem System und ist in der Größe variabel.
+Dafür steht sein Inhalt Scripten leichter zu Verfügung:
+Artikel werden als Dateien unterhalb von &lt;code&gt;/var/spool/news/articles/&lt;/code&gt; in Verzeichnissen abgelegt,
+die aus dem Namen der Newsgroup abgeleitet sind und müssen durch einen Aufräumjob (&lt;code&gt;expire&lt;/code&gt;) von dort gelöscht werden.
+Die Verwendung von Traditional Spool ist nicht empfohlen, insbesondere nicht für INN Neueinsteiger.&lt;/p&gt;
+&lt;p&gt;Die Puffer werden in der Datei &lt;code&gt;cycbuff.conf&lt;/code&gt; definiert.
+Eine Pufferdefinition besteht aus einer oder mehr Zeilen, von denen jede einen &lt;code&gt;cycbuff&lt;/code&gt; definiert.
+Diese Puffer müssen dann zu einem &lt;code&gt;metacycbuff&lt;/code&gt; zusammengeklebt werden, damit sie durch den INN benutzbar werden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:-/peerdata&amp;gt; cat ~/cycbuff.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; 512MB Puffer fuer de.*
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: DE1: /var/spool/news/cycbuffs/file_de.1:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Sechs &lt;span class=&#34;m&#34;&gt;512&lt;/span&gt; MB Puffer fuer den Rest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL1:/var/spool/news/cycbuffs/file_intl.1:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL2:/var/spool/news/cycbuffs/file_intl.2:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL3:/var/spool/news/cycbuffs/file_intl.3:524288 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL4:/var/spool/news/cycbuffs/file_intl.4:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL5:/var/spool/news/cycbuffs/file_intl.5:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;cycbuff: INTL6:/var/spool/news/cycbuffs/file_intl.6:524288
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Puffer zusammenkleben zu Metapuffern
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;metacycbuff: DE: DE1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;metacycbuff: INTL: INTL1, INTL2, INTL3, INTL4, INTL5, INTL6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Leider ist INN bei der Benennung der &amp;ldquo;cycbuff&amp;rdquo; und &amp;ldquo;metacycbuff&amp;rdquo; sehr eingeschränkt:
+Namen müssen kurz sein und dürfen nur aus Zahlen und Buchstaben bestehen.&lt;/p&gt;
+&lt;p&gt;Im Beispiel wird ein &amp;ldquo;cycbuff&amp;rdquo; mit dem Namen &amp;ldquo;DE1&amp;rdquo; definiert, der 524288 KB (512 MB) groß sein soll.
+Die Location im Dateisystem für diesen Puffer ist &lt;code&gt;/var/spool/news/cycbuffs/file_de.1&lt;/code&gt;.
+Dort muss diese Datei auch angelegt werden.
+Dies erfolgt mit dem Kommando &lt;code&gt;dd&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; dd &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/var/spool/news/cycbuffs/file_de.1 &lt;span class=&#34;nv&#34;&gt;bs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1024k &lt;span class=&#34;nv&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;512&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;INN selber arbeitet immer nur mit &amp;ldquo;metacycbuffs&amp;rdquo;.
+Ein &amp;ldquo;metacycbuff&amp;rdquo; faßt dabei einen oder mehrere einzelne &amp;ldquo;cycbuff&amp;rdquo; zu einer für den INN benutzbaren Einheit zusammen.
+Der &amp;ldquo;metacycbuff&amp;rdquo; DE besteht dabei ausschließlich aus dem einzelnen cycbuff &amp;ldquo;DE1&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Das Beispiel definiert außerdem noch sechs jeweils 512 MB umfassende cycbuffs INTL1 bis INTL6.
+Auch diese müssen mit entsprechenden &lt;code&gt;dd&lt;/code&gt;-Kommandos angelegt werden
+und können dann alle zusammen zu einem &amp;ldquo;metacycbuff&amp;rdquo; INTL mit 3 GB Gesamtgröße zusammengefasst werden.&lt;/p&gt;
+&lt;p&gt;Damit INN weiß, welche Artikel in welchem Puffer abgelegt werden sollen,
+müssen in der &lt;code&gt;storage.conf&lt;/code&gt; entsprechende Einträge gemacht werden.&lt;/p&gt;
+&lt;p&gt;Die Zeile &lt;code&gt;newsgroups&lt;/code&gt; legt dabei fest, welche Gruppen in welchem Puffer abgelegt werden.
+Die Zeile &lt;code&gt;class&lt;/code&gt; ist eine eindeutige Nummer für jeden Eintrag, damit man an anderer Stelle auf den Eintrag Bezug nehmen kann.&lt;/p&gt;
+&lt;p&gt;Die Zeile &lt;code&gt;options&lt;/code&gt; legt für CNFS-Einträge fest, welcher &lt;code&gt;metacycbuff&lt;/code&gt; Speicher für den entsprechenden Eintrag bereitstellen soll.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:-/peerdata&amp;gt; cat ~/storage.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;method cnfs {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    newsgroups: de.*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    class: 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    options: DE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;method cnfs {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    newsgroups: *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    class: 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    options: INTL
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Traditional Spool Klappert leer und wird dann gelöscht...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;method tradspool {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    newsgroups: *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    class: 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Im Beispiel wandern Artikel für die Newsgroups &lt;code&gt;de.*&lt;/code&gt; immer in den CNFS-Speicher &lt;code&gt;DE&lt;/code&gt; mit der eindeutigen Nummer 3.
+Alle anderen Artikel wandern in den CNFS-Speicher &lt;code&gt;INTL&lt;/code&gt; mit der Nummer 2.&lt;/p&gt;
+&lt;p&gt;Der Eintrag 1 definiert einen Speicher im Format &lt;code&gt;tradspool&lt;/code&gt;.
+Er wird niemals verwendet, weil der Eintrag 2 vorher alle Artikel abfängt.
+Der Eintrag 1 ist der (nicht empfohlene, aber rückwärts kompatible) Default-Eintrag in der &lt;code&gt;storage.conf&lt;/code&gt; von INN.&lt;/p&gt;
+&lt;p&gt;Sobald INN erst einmal gestartet ist (siehe unten), werden die Puffer initialisiert.
+Zu einem späteren Zeitpunkt kann man dann mit dem Kommando &lt;code&gt;cnfsstat -a&lt;/code&gt; ansehen, wie ausgelastet die Puffer sind.&lt;/p&gt;
+&lt;h2 id=&#34;grundkonfiguration-inn&#34;&gt;
+    &lt;a href=&#34;#grundkonfiguration-inn&#34;&gt;
+	Grundkonfiguration inn
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Vor dem ersten Start des Servers ist die &lt;code&gt;/etc/news/inn.conf&lt;/code&gt; anzupassen.
+Zu ändern sind:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-organization: &amp;#34;A pooly-installed InterNetNews site&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;+organization: &amp;#34;Deine Organisations-Zeile
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Definiert den Inhalt der Zeile &lt;code&gt;Organization&lt;/code&gt;, die Bestandteil eines jeden Artikels ist.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-#pathhost: localhost
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;+pathhost: news.example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Definiert, was Deine Site in den Path-Header einträgt.
+Dies ist ein sehr wichtiges Datum für das Peering mit anderen Sites.
+Es sollte Dein Domainname sein, oder ein vom Domainnamen abgeleiteter Name wie &lt;code&gt;news.koehntopp.de&lt;/code&gt; für &lt;code&gt;koehntopp.de&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Mit Hilfe des &lt;code&gt;pathhost&lt;/code&gt; erkennt ein entfernter Server,
+ob ein bestimmter Artikel schon einmal Dein System passiert hat.
+Wenn ja, wird Dir der Artikel kein zweites Mal angeboten.
+Dies kann sehr viel Traffic einsparen, wenn man mehrere Feeds für eine Hierarchie hat.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;+complaints: abuse@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;+fromhost: example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Definiert den Inhalt der Headerzeile &lt;code&gt;X-Complaints-To&lt;/code&gt; und die Domain,
+mit deren Hilfe Usernamen zu Mailadressen komplettiert werden, wenn dies notwendig ist.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-docnfsstat: false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;+docnfsstat: true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dieser Eintrag ist optional.
+Wenn man jedoch später statistische Auswertungen auf dem System für den Betrieb plant,
+sollten laufende Meßdaten für die Auslastung der CNFS-Puffer vorliegen.
+Dazu muss dieser Eintrag aktiv geschaltet sein.&lt;/p&gt;
+&lt;h2 id=&#34;crontab-aufsetzen&#34;&gt;
+    &lt;a href=&#34;#crontab-aufsetzen&#34;&gt;
+	Crontab aufsetzen
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;INN muss in regelmäßigen Abständen einige Wartungsaufgaben erledigen.
+Daher sollte für den User &lt;code&gt;news&lt;/code&gt; eine Crontab wie die folgende definiert sein:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:~&amp;gt; cat crontab.current
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; to expire old news-articles
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;15 4 * * * /usr/lib/news/bin/news.daily expireover delayrm lowmark
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; dump path databases
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; * * * /usr/lib/news/bin/ctlinnd flush &lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;inpaths! &amp;gt; /dev/null 2&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; 1,15 * * /us/lib/news/bin/sendinaths
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; inews stores news-articles in /var/spool/news/in.coming, &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; INN ist
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; not running. the next &lt;span class=&#34;s2&#34;&gt;&amp;#34;rnews -U&amp;#34;&lt;/span&gt; will feed those news-articles into
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; inn.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;10 * * * * /usr/bin/rnews-U
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;33&lt;/span&gt; * * * * /usr/lib/news/bin/scanlogs norotate 2&amp;gt;/dev/null &amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:~&amp;gt; crontab crontab.current 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3113:~&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Die Crontab enthält nur die für den Betrieb unmittelbar notwendigen Einträge in aktivierter Form.
+Die auskommentierten Einträge sind für spätere Erweiterungen notwendig oder nützlich.&lt;/p&gt;
+&lt;p&gt;Der Eintrag &lt;code&gt;news.daily&lt;/code&gt; führt die zum Betrieb von INN notwendigen Wartungsaufgaben durch.
+Er muss einmal pro Tag ausgeführt werden.&lt;/p&gt;
+&lt;p&gt;Der Eintrag &lt;code&gt;rnews- U&lt;/code&gt; kann einmal pro Stunde ausgeführt werden.
+Er dient dazu, während Betriebspausen aufgelaufene Artikel nachträglich ins System einzuspeisen.&lt;/p&gt;
+&lt;p&gt;Die beiden Einträge &amp;ldquo;inpaths!&amp;rdquo; und &amp;ldquo;sendinpaths&amp;rdquo; sind nur notwendig,
+wenn das System Statistikdaten in die &amp;ldquo;Top 1000 der Newsserver&amp;rdquo; einspielen will.
+Damit das funktioniert sind jedoch noch weitere Konfigurationen notwendig (siehe unten).&lt;/p&gt;
+&lt;p&gt;Der Eintrag &lt;code&gt;scanlogs norotate&lt;/code&gt; dient dazu,
+stündlich den Statistikreport für das laufende System zu aktualisieren.
+Damit das funktioniert sind jedoch noch weitere Konfigurationen notwendig (siehe unten).&lt;/p&gt;
+&lt;h2 id=&#34;server-hochfahren&#34;&gt;
+    &lt;a href=&#34;#server-hochfahren&#34;&gt;
+	Server hochfahren
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Mit der angegebenen Konfiguration sollte der INN durch den Systemadministrator startbar sein.&lt;/p&gt;
+&lt;p&gt;Das Kommando &lt;code&gt;chkconfig inn on&lt;/code&gt; sorgt dafür, dass beim Systemstart automatisch auch der INN mit hochgefahren wird.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Als User root:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; chkconfig inn on
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; rcinn start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das Kommando &lt;code&gt;rcinn start&lt;/code&gt; fährt den Server manuell hoch.
+Der Server sollte Startmeldungen in &lt;code&gt;/var/log/news/news.notice&lt;/code&gt; hinterlassen
+und in der Prozessliste sollte ein Prozess &lt;code&gt;innd&lt;/code&gt; erkennbar sein,
+der mit den Rechten des Users &lt;code&gt;news&lt;/code&gt; ausgeführt wird.
+Mit &lt;code&gt;lsof -i -n -P&lt;/code&gt; sollte dieser Prozess auf Port 119 lauschen.
+Von localhost aus kann man jetzt einen Testconnect gegen den NNTP-Port machen.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:~&amp;gt; telnet localhost 119
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Trying 127.0.0.1...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Connected to localhost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Escape character is &amp;#39;^]&amp;#39;.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;200 koehntopp.de InterNetNews server INN 2.4.1 ready
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; mode reader
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;200 koehntopp.de InterNetNews NNRP server INN 2.4.1 ready (posting ok).
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;list
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;215
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;control 0000000000 0000000001 n 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;control.cancel 0000000000 0000000001 n
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;contrel.checkgroups 0000000000 0000000001 n
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;contrel.newgroup 0000000000 0000000001 n 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;control.rmgroup 0000000000 0000000001 n
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;junk 0000000000 0000000001 n
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;quit
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;205
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Connection closed by foreign host.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wenn das funktioniert, ist der Server erfolgreich grundkonfiguriert und hochgefahren.&lt;/p&gt;
+&lt;h1 id=&#34;gruppen-anlegen&#34;&gt;
+    &lt;a href=&#34;#gruppen-anlegen&#34;&gt;
+	Gruppen anlegen
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;testgruppe-einrichten&#34;&gt;
+    &lt;a href=&#34;#testgruppe-einrichten&#34;&gt;
+	Testgruppe einrichten
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Der Server läuft nun und hat einige Standard-Newsgroups, die für die interne Verwaltung des Servers notwendig sind.
+Um die weitere Funktion des Servers zu testen, ist es notwendig, mindestens eine lokale Testgruppe anzulegen.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ctlinnd newgroup local.test y news@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;andere-gruppen-einrichten&#34;&gt;
+    &lt;a href=&#34;#andere-gruppen-einrichten&#34;&gt;
+	Andere Gruppen einrichten
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Die anderen benötigten Gruppen kann man leicht anlegen,
+indem man sich eine Liste der Gruppen beim zukünftigen Upstream-Server abholt und sie in Kommandos zur Gruppeneinrichtung umwandelt.&lt;/p&gt;
+&lt;p&gt;Das Kommando &lt;code&gt;getlist&lt;/code&gt; holt die Liste der aktiven Gruppen vom Server &lt;code&gt;news.koehntopp.de&lt;/code&gt; ab
+und legt sie in der Datei &lt;code&gt;active.news.koehntopp.de&lt;/code&gt; ab.
+Durch das &lt;code&gt;grep&lt;/code&gt;-Kommando werden aus dieser Datei alle Gruppen der Hierarchie &lt;code&gt;de.*&lt;/code&gt; extrahiert.
+Für die Einrichtung der Gruppen sind nur das erste und vierte Feld einer jeden Zeile notwendig.
+Mit dem &lt;code&gt;awk&lt;/code&gt;-Kommando ziehen wir also diese Felder aus der Datei heraus und wandeln sie in &lt;code&gt;ctlinnd&lt;/code&gt;-Kommandos um.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; getlist -h news.koehntopp.de &amp;gt; active.news.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; grep &lt;span class=&#34;s2&#34;&gt;&amp;#34;^de\.&amp;#34;&lt;/span&gt; active.news.koehntopp.de &amp;gt; de-groups
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{ printf &amp;#34;ctlinnd newgroup %s %s news@localhost\n&amp;#34;, $1, $4 }&amp;#39;&lt;/span&gt; de-groups &amp;gt; einrichten.sh 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ctlinnd throttle now
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; sh einrichten.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ctlinnd go now
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Die Datei &lt;code&gt;einrichten.sh&lt;/code&gt; enthält nun die benötigten Kommandos zur Gruppeneinrichtung.
+Die Ausführung der Datei ist sehr viel schneller,
+wenn man den Server vor der Ausführung der Kommandos in einen Standby-Modus schaltet und danach wieder in Produktivmodus versetzt.&lt;/p&gt;
+&lt;h1 id=&#34;zugangskontrolle-konfigurieren&#34;&gt;
+    &lt;a href=&#34;#zugangskontrolle-konfigurieren&#34;&gt;
+	Zugangskontrolle konfigurieren
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Mit den Default-Einstellungen kann man jetzt schon lokal (von localhost aus) gegen den Server connecten.
+Um Connects von außen zu erlauben, ist es notwendig, einen Anmeldemechanismus und eine Passwortquelle zu konfigurieren.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;auth all {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    auth: &amp;#34;chkpasswd -f /etc/news/passwd.nnrp&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    default-domain: example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;access full {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    users: *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    newsgroups: *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    access: RPA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;INN verwendet intern ein Programm namens &lt;code&gt;ckpasswd&lt;/code&gt; für die Zugangskontrolle.
+Dieses Programm kann entweder auf eine lokale Passwortdatei zugreifen,
+in der INN-spezifische Passwörter konfiguriert werden,
+oder man kann es mit Priviliegien austatten,
+die ihm erlauben, auf die Systempasswortdatei zuzugreifen.
+Letzteres ist nicht empfohlen, da NNTP ohne weitere Maßnahmen Passwörter im Klartext überträgt.&lt;/p&gt;
+&lt;p&gt;Welche Authentisierungsmechanismen in welcher Reihenfolge von INN verwendet werden,
+wird in der readers.conf festgelegt.
+Die folgenden Einträge legen fest, dass INN die Datei &lt;code&gt;/etc/news/passwd.nnrp&lt;/code&gt; verwenden soll,
+um Logins zu gestatten.
+Die Datei hat dasselbe Format wie eine htpasswd-Datei von Apache und kann mit dem Apache-Programm htpasswd angelegt und verwaltet werden.&lt;/p&gt;
+&lt;p&gt;Der Abschnitt &lt;code&gt;auth&lt;/code&gt; legt fest, mit welchem Kommando die Anmeldeinformationen geprüft werden sollen,
+der Abschnitt access legt dann fest, welche Zugriffsrechte diese Benutzer erhalten sollen.&lt;/p&gt;
+&lt;p&gt;Wenn alles funktioniert, ist nun eine Anmeldung mit Benutzername und Passwort von entfernten Systemen möglich.&lt;/p&gt;
+&lt;h1 id=&#34;verbindungen-feeds-konfigurieren&#34;&gt;
+    &lt;a href=&#34;#verbindungen-feeds-konfigurieren&#34;&gt;
+	Verbindungen (Feeds) konfigurieren
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ein Feed ist eine Verbindung zwischen zwei Newsservern,
+über die gegenseitig Artikel in bestimmten Newsgroups austauschen.
+Der Feed besteht aus einer eingehenden Verbindung, die in der &lt;code&gt;incoming.conf&lt;/code&gt; konfiguriert wird
+und einer ausgehenden Verbindung, die in der &lt;code&gt;innfeed.conf&lt;/code&gt; definiert wird,
+und für die in der &lt;code&gt;newsfeeds&lt;/code&gt; festgelegt wird, welche Dateien gesendet werden sollen.&lt;/p&gt;
+&lt;p&gt;In der &lt;code&gt;incoming.conf&lt;/code&gt; wird festgelegt, welche entfernten Server dem eigenen Server Daten senden dürfen
+und welche Gruppen diese Server beschicken dürfen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;peer koehntopp.de {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    hostname: &amp;#34;news.koehntopp.de&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    patterns: &amp;#34;de.*,!de.alt.dateien.*&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    max-connections: 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ein solcher Eintrag gestattet dem entfernten Rechner &lt;code&gt;koehntopp.de&lt;/code&gt; bis zu 5 parallele Verbindungen
+zu dem eigenen Server aufzubauen, über die er Artikel ausschließlich in die genannten Gruppen einliefern darf.&lt;/p&gt;
+&lt;p&gt;Ausgehende Verbindungen werden in die &lt;code&gt;innfeed.conf&lt;/code&gt; eingetragen.
+Analog zur &lt;code&gt;incoming.conf&lt;/code&gt; muss dort ein Link für eine ausgehende Verbindung konfiguriert werden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;peer koehntopp-all {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    ip-name: news.koehntopp.de
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    max-connections: 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Schließlich wird in der Datei &lt;code&gt;newsfeeds&lt;/code&gt; festgelegt, welche Daten über die ausgehende Verbindung gesendet werden sollen.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conole&#34; data-lang=&#34;conole&#34;&gt;# koehntopp.de Kristian Koehntopp &amp;lt;kris@koehntopp.de&amp;gt;
+koehntopp-all/koehntopp.de\
+    :!*,@*,de.*,!de.alt.dateien.*/!local\
+    :Ap,Tm:innfeed!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Die Bestellung für den Channel &lt;code&gt;koehntopp-all&lt;/code&gt; aus dem Beispiel liest sich
+&amp;ldquo;keine Artikel, die &lt;code&gt;koehntopp.de&lt;/code&gt; im Path haben (&lt;code&gt;/koehntopp.de&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Das Pattern legt fest, welche Newsgruppen über den Kanal gesendet werden sollen.
+Es liest sich &lt;code&gt;!*&lt;/code&gt; (&amp;ldquo;nix, gar nix&amp;rdquo;), &lt;code&gt;@*&lt;/code&gt; (auch keine Crossposts, das ist doppelt gemoppelt),
+&lt;code&gt;de.*,!de.alt.dateien.*&lt;/code&gt; (alle de-Gruppen außer de.alt.dateien.*), jedoch keine Artikel mit der Distribution: &lt;code&gt;local&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Die Flags und der Kanalname legen fest, dass die Daten über den Kanal &lt;code&gt;innfeed!&lt;/code&gt; herausgesendet werden sollen.&lt;/p&gt;
+&lt;p&gt;Deswegen muss der vordefinierte &lt;code&gt;innfeed!&lt;/code&gt;-Kanal in der Datei &lt;code&gt;newsfeeds&lt;/code&gt; aktiviert werden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;innfeed!\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    :!*\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;    :Tc,Wnm*:/usr/lib/news/bin/startinnfeed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Außerdem muss das System Steuernachrichten zur Einrichtung neuer Gruppen,
+zum Löschen von Artikeln usw. verarbeiten können.
+Dazu ist die Aktivierung des Controlchan notwendig.&lt;/p&gt;
+&lt;p&gt;Um die Änderungen wirksam werden zu lassen, muss dem INN-Server ein  &amp;ldquo;reload&amp;rdquo;-Kommando gesendet werden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;news@h3118:~&amp;gt; lsof -i -n -P | grep koehntopp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;innd  28144 news   57u  IPv4 9342609
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;      TCP example.com:199-&amp;gt;koehntopp.de:2418 (ESTABLISHED)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;innd  32740 news   25u  IPv4 9342489
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;      TCP example.com:42275-&amp;gt;koehntopp.de:119 (ESTABLISHED)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wenn alles funktioniert hat,
+ist das Link jetzt sichtbar und kann mit &lt;code&gt;lsof&lt;/code&gt;
+oder &lt;code&gt;tail -f /var/log/news/news /var/log/news/news.notice&lt;/code&gt; gesehen werden.&lt;/p&gt;
 </description>
     </item>
     
@@ -1262,20 +1752,20 @@ an den Kopf werfen. Ihr suckt. Kapital.&lt;/p&gt;
       <pubDate>Wed, 14 May 1997 16:15:56 +0000</pubDate>
       
       <guid>https://blog.koehntopp.info/1997/05/14/sperrungen-im-internet.html</guid>
-      <description>&lt;h2 id=&#34;zusammenfassung&#34;&gt;
+      <description>&lt;h1 id=&#34;zusammenfassung&#34;&gt;
     &lt;a href=&#34;#zusammenfassung&#34;&gt;
 	Zusammenfassung
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Wie alle anderen Medien wird auch das Internet zur Verbreitung von beispielsweise rechtsradikalen oder kinderpornographischen Informationen mißbraucht. Dies hat in letzter Zeit den Ruf nach einem staatlichen Eingriff laut werden lassen, um zentrale Sperrungen bestimmter Inhalte zu erreichen.&lt;/p&gt;
 &lt;p&gt;Die Autoren halten einen solchen Schritt fuer nicht angemessen. Zum einen haben bisher alle technischen Ansätze zur Realisierung versagt. Strukturelle überlegungen lassen vermuten, daß dies auch in Zukunft der Fall sein wird. Auf der anderen Seite haben Sperren stets Auswirkungen auch auf Bereiche, deren Sperrung nicht beabsichtigt ist. Diese Nebenwirkungen sind um so schwerwiegender, je wirksamer die Sperren sein sollen.&lt;/p&gt;
 &lt;p&gt;Dezentrale Lösungsansaetze können dem Nutzer die Möglichkeit geben, im eigenen Bereich selbstverantwortlich Inhalte zu filtern. Bewertungen von Inhalten durch nichtstaatliche Organisationen können dazu führen, daß der Bewertungsmechanismus zur Durchsetzung fragwürdiger Interessen mißbraucht wird. Um diesem Risiko entgegenzuwirken, ist es unverzichtbar, daß nicht nur die Bewertungsmaßstäbe, sondern auch die Bewertungen selbst vollständig offengelegt werden.&lt;/p&gt;
 &lt;p&gt;Jede Art von staatlicher Regulierung treibt die Kosten in die Höhe. Es ist abzusehen, daß der Versuch, Inhalte im Internet zu bewerten, sehr personalintensiv sein wird. Bereits heute sind die Kommunikationskosten am Standort Deutschland wesentlich höher als bei konkurrierenden Nationen wie den USA. Regulierungen können daher zu einem Standortnachteil führen.&lt;/p&gt;
-&lt;h2 id=&#34;was-soll-mit-einer-sperrung-erreicht-werden&#34;&gt;
+&lt;h1 id=&#34;was-soll-mit-einer-sperrung-erreicht-werden&#34;&gt;
     &lt;a href=&#34;#was-soll-mit-einer-sperrung-erreicht-werden&#34;&gt;
 	Was soll mit einer Sperrung erreicht werden?
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Bevor man über technische Maßnahmen zur Sperrung von Inhalten im Internet und die Chancen ihrer Realisierung reden kann, muß man sich darüber klar werden, welche Ziele man mit einer solchen Sperrung erreichen möchte.&lt;/p&gt;
 &lt;p&gt;Mögliche Ziele sind:&lt;/p&gt;
 &lt;ul&gt;
@@ -1287,11 +1777,11 @@ an den Kopf werfen. Ihr suckt. Kapital.&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Rating:&lt;/strong&gt; Für jeden Teilnehmer im Netz soll weiterhin frei definierbar sein, welches Material empfangen/nicht empfangen werden soll, aber es soll eine Bewertungsstruktur geschaffen werden, die es jedem Konsumenten in  eigener Verantwortung ermöglicht, seine Präferenzen anzugeben (kein Sex/viel Sex, keine Gewalt/Blood and Splatter, politisch links/politisch rechts, konform mit den Vorstellungen der katholischen Kirche/islamisch korrekt) und nur noch den Ausschnitt aus dem Internet wahrzunehmen, der diesen selbstgewählten Filter passieren kann.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Nichtregulation:&lt;/strong&gt; Jeder Netzteilnehmer soll freien Zugriff auf alle angebotene Information haben. Sogar die Existenz von Bewertungskriterien Dritter wird als schädlich angesehen und die Bildung einer Bewertungsinfrastruktur nicht gefördert bzw. sogar behindert.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;welche-dienste-werden-betrachtet&#34;&gt;
+&lt;h1 id=&#34;welche-dienste-werden-betrachtet&#34;&gt;
     &lt;a href=&#34;#welche-dienste-werden-betrachtet&#34;&gt;
 	Welche Dienste werden betrachtet?
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Unter der Bezeichnung &lt;em&gt;Inhalte im Internet&lt;/em&gt; wird in der Regel eine ganze Reihe von Diensten subsumiert, die technisch vollkommen unterschiedlich realisiert werden und administrativ zu großen Teilen disjunkte Strukturen aufweisen. Allen Diensten ist lediglich gemeinsam, dass ihnen das Datenübertragungsprotokoll TCP/IP zugrunde liegt.&lt;/p&gt;
 &lt;p&gt;Man muß mindestens die beiden folgenden Dienste unterscheiden:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;WWW, World Wide Web:&lt;/strong&gt; Das World Wide Web ist der graphisch ansprechendste Dienst des Internet. Es handelt sich um Server, die auf die Anfrage eines Benutzers Seiten beliebigen Inhaltes an das Darstellungsprogramm (&lt;em&gt;Browser&lt;/em&gt;) auf seinem Rechner ausliefern. Der Zugriff auf diese Seiten erfolgt in der Regel mit Hilfe des HyperText Transport Protocol (&lt;em&gt;HTTP&lt;/em&gt;). Dieses Protokoll erfordert keine Identifizierung oder Authentisierung des Abrufers und des Anbieters; die Daten werden im Klartext und nicht fälschungssicher übermittelt.&lt;/p&gt;
@@ -1315,11 +1805,11 @@ eigene Artikel auf dem Server ablegen (&lt;em&gt;posten&lt;/em&gt;, von engl. &l
 &lt;p&gt;Die Kommunikation zwischen Leser und Server sowie die Kommunikation zwischen den Servern erfolgt in der Regel unverschlüsselt und ohne Identifizierung und Authentisierung der Leser oder der Autoren von Artikeln. Die Fälschung von Absenderadresse oder Herkunftspfad eines Artikels ist trivial und in einigen Diskussionsforen sogar üblich. Es existieren Konverter von E-Mail nach USENET News und Anonymous- sowie Pseudonymous-Server, die zum Teil mit kryptographisch starken Methoden die Identität des Absenders sowie seinen Aufenthaltsort im Netz zu verschleiern suchen. Einige Newsserver lassen Lese- und Schreibzugriff von jedermann und ohne Authentisierung zu (&lt;em&gt;open servers&lt;/em&gt;); es ist Sache des Veröffentlichenden, seine Identität in einem Artikel offenzulegen oder nicht.&lt;/p&gt;
 &lt;p&gt;Die Entscheidung über die von einem Server angebotenen Diskussionsforen obliegt in der Regel jedem einzelnen Serverbetreiber. Teilweise existieren Kataloge von offiziellen Newsgroups, diese sind jedoch in der Regel weder vollständig noch für irgendwen verbindlich. Name oder überschrift einer Newsgroup haben nur den Charakter von Empfehlungen. Thematisch falsch eingeordnete Artikel (&lt;em&gt;off topic postings&lt;/em&gt;) oder bewußt massenhaft in alle Newsgroups verbreitete Artikel (&lt;em&gt;spam&lt;/em&gt;) machen einen festen Anteil aller Artikel aus.&lt;/p&gt;
 &lt;p&gt;Die Dienste &lt;strong&gt;IRC&lt;/strong&gt; (&lt;strong&gt;Internet Relay Chat&lt;/strong&gt;) und &lt;em&gt;E-Mail&lt;/em&gt; (Private elektronische Post sowie halböffentliche Mailinglists als Diskussionsforen) wären ebenfalls zu betrachten, sollen hier aber im Interesse einer kompakten Darstellung nicht diskutiert werden, da sie weniger im Rampenlicht der öffentlichen Diskussion stehen. Die genannten Argumente gelten aber in ähnlicher Form auch dort. Es existieren weitere Dienste, die fuer die öffentliche Kommunikation in der Regel von geringerer Bedeutung sind (&lt;em&gt;telnet&lt;/em&gt;) oder deren Diskussion keine neuen Aspekte zu Tage foerdern wuerde (&lt;em&gt;ftp&lt;/em&gt;, siehe &lt;em&gt;http&lt;/em&gt;).&lt;/p&gt;
-&lt;h2 id=&#34;wie-koennen-zu-sperrende-inhalte-identifiziert-werden&#34;&gt;
+&lt;h1 id=&#34;wie-koennen-zu-sperrende-inhalte-identifiziert-werden&#34;&gt;
     &lt;a href=&#34;#wie-koennen-zu-sperrende-inhalte-identifiziert-werden&#34;&gt;
 	Wie koennen zu sperrende Inhalte identifiziert werden?
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Um Inhalte zuverlässig sperren zu können, ist es notwendig, diese Inhalte in irgendeiner Form zu identifizieren. Diese Identifizierung kann von unterschiedlicher Auflösung sein.&lt;/p&gt;
 &lt;p&gt;Auf der Basis von IP-Adressen kann ein einzelner Rechner identifiziert werden. Ein solcher Rechner erbringt jedoch in der Regel eine Vielzahl von Diensten für mehrere unterschiedliche Anbieter. Webserver von IP-Providern bringen unter einer IP-Adresse teilweise die Angebote von Tausenden Inhaltsanbietern ins Netz, Rechner von Kleinprovidern bieten teilweise alle Dienste des Providers unter einer IP-Nummer an. Eine Sperrung von IP-Nummern trifft also außer den zu sperrenden Inhalten meist auch eine große Menge von Inhalten und Diensten, deren Sperrung nicht beabsichtigt ist.&lt;/p&gt;
 &lt;p&gt;Mit entsprechendem Mehraufwand können dienstspezifische Kennzeichen von einzelnen Einheiten des Angebotes identifiziert werden. Im World Wide Web ist dies der Name einer Seite (ihr &lt;em&gt;Universal Resource Locator&lt;/em&gt;, &lt;em&gt;URL&lt;/em&gt;), in den USENET News erfolgt die Identifizierung über die Message-ID einer einzelnen Nachricht oder den Namen einer Newsgroup. Für neu entstehende Dienste müssen dienstspezifische Methoden zur Identifikation einzelner Einheiten neu gefunden werden.&lt;/p&gt;
@@ -1370,11 +1860,11 @@ Mailingliste).&lt;/p&gt;
 &lt;p&gt;Die meisten Ratingorganisationen dokumentieren ihre Ratings nicht oder nur sehr ungern. Zum Teil erfolgt noch nicht einmal eine Benachrichtigung des Bewerteten über die Bewertung seines Angebotes. Vollständige Verzeichnisse aller vergebenen Ratings werden meist mit der Begründung unter Verschluss gehalten, daß diese Verzeichnisse als Kataloge fuer Schmutz und Schund mißbraucht werden könnten. Bei den Programmen, die die Bewertungen von Webseiten Dritter nicht online beziehen, sondern als Datei auf der lokalen Festplatte installiert haben, ist diese Liste grundsätzlich verschlüsselt - und meistens auch veraltet. Auch gegenüber dem Benutzer solcher Software ist damit nicht offengelegt, welche Angebote ihm nicht mehr zugänglich sind.&lt;/p&gt;
 &lt;p&gt;Inzwischen existieren (illegal) entschlüsselte Versionen der Sperrlisten aller Hersteller von Programmen mit statischer, in Dateien gelieferter Sperrliste. Die Auswertung der Sperrungen hat bei allen Herstellern eine klare politische Agenda und persönliche Feindschaften dokumentiert.&lt;/p&gt;
 &lt;p&gt;Beispielsweise wurden vielfach Angebote von &lt;em&gt;womens organizations&lt;/em&gt;, Informationsangebote über Abtreibung und Angebote schwuler und lesbischer Gruppen zensiert. Es ist weiterhin üblich, Webseiten in die Sperrlisten aufzunehmen, die den Hersteller des Sperrprogramms kritisieren, die Sperrliste offenlegen oder allgemein gegen Rating argumentieren. Beim Hersteller des Programms Cybersitter geht dies so weit, daß bei installiertem Cybersitter alle Seiten nicht mehr abrufbar sind, in denen die Namen von Kritikern seines Programms erwähnt werden.&lt;/p&gt;
-&lt;h2 id=&#34;mit-welchen-mitteln-kann-eine-sperrung-erreicht-werden&#34;&gt;
+&lt;h1 id=&#34;mit-welchen-mitteln-kann-eine-sperrung-erreicht-werden&#34;&gt;
     &lt;a href=&#34;#mit-welchen-mitteln-kann-eine-sperrung-erreicht-werden&#34;&gt;
 	Mit welchen Mitteln kann eine Sperrung erreicht werden?
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Sperrungen können auf unterschiedlichen Ebenen der Kommunikation ansetzen:&lt;/p&gt;
 &lt;p&gt;Um erfolgreich zu kommunizieren, müssen beide Kommunikationspartner eine physikalische Verbindung zueinander aufbauen. Dies kann eine Standleitung, eine Telefonleitung, eine Richtfunkstrecke oder eine andere Kommunikationsform sein. Eine normalerweise nicht praktikable Möglichkeit der Sperrung besteht darin, diese physikalische Kommunikation zu verhindern, indem man etwa einen Telefonanschluss sperrt oder bestimmte Telefonnummern nicht erreichbar schaltet, Standleitungen unterbricht oder Störsender in Richtfunkstrecken einbringt. Das Opfer der Sperrung verliert damit in der Regel alle seine Kommunikationsmöglichkeiten.&lt;/p&gt;
 &lt;p&gt;Im Internet wird meist keine homogene physikalische Verbindung verwendet, sondern diese Verbindung wird aus Teilstücken unterschiedlicher Technologie zusammengestückelt. An den übergangspunkten zwischen den Teilstücken befindet sich ein Router, der IP-Pakete von einem Teilstück zum nächsten hinueberhievt.&lt;/p&gt;
@@ -1393,11 +1883,11 @@ Mailingliste).&lt;/p&gt;
 &lt;p&gt;Eine Sperrung beim Anbieter würde bedeuten, daß der Anbieter die zu sperrenden Inhalte entweder niemandem anbietet oder daß er sie nur bestimmten Personen nicht anbietet. Ein personenselektives Anbieten von Inhalten setzt selbst bei Kooperation des Anbieters voraus, daß der Anbieter den Abrufer einer Information zweifelsfrei identifizieren kann und daß ihm genaue und juristisch hieb- und stichfeste Entscheidungstabellen vorgelegt werden, die es ihm erlauben, automatisch zu entscheiden, wem er welche Inhalte ausliefern darf.&lt;/p&gt;
 &lt;p&gt;Ein Identifikationsmechanismus, der das Geforderte leistet, existiert derzeit nicht einmal im Ansatz und ist auch nicht in absehbarer Zeit realisierbar. Insbesondere kann nicht aus der IP-Adresse oder dem Rechnernamen eines Absenders auf seine Identität oder seinen physikalischen Aufenthalt geschlossen werden: Deutsche Kunden von amerikanischen Online-Diensten erscheinen im Netz als aus den Vereinigten Staaten kommend. Ähnliches gilt für Mitarbeiter multinationaler Konzerne.&lt;/p&gt;
 &lt;p&gt;Eine Sperrung beim Abrufer würde bedeuten, daß die angebotenen Inhalte nach bestimmten Bewertungskriterien ausgezeichnet sind (&lt;em&gt;rating&lt;/em&gt;, z.B. nach PICS) und daß der Abrufer selbst seine Software so konfiguriert, daß Seiten mit bestimmten Ratings nicht mehr abgerufen werden können. Eine Kooperation des Anbieters wäre hier wünschenswert, ist aber nicht notwendig, da die Bewertungen auch von Servern Dritter geliefert werden können.&lt;/p&gt;
-&lt;h2 id=&#34;auf-welche-weise-koennen-sperrungen-unterlaufen-werden&#34;&gt;
+&lt;h1 id=&#34;auf-welche-weise-koennen-sperrungen-unterlaufen-werden&#34;&gt;
     &lt;a href=&#34;#auf-welche-weise-koennen-sperrungen-unterlaufen-werden&#34;&gt;
 	Auf welche Weise koennen Sperrungen unterlaufen werden?
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Für den Nutzer stellt sich eine Sperrung von Inhalten als Betriebsstörung dar. Er wird nach Wegen suchen, die ordnungsgemäße Funktion des Netzes wiederherzustellen, d.h. die Sperrung zu unterlaufen. Diese Motivation ist um so größer, je stärker sich der Benutzer durch die Sperrung behindert fühlt.&lt;/p&gt;
 &lt;p&gt;Bei einer Sperrung der physikalischen Kommunikation ist dies nur durch einen Wechsel des Mediums möglich: Wenn etwa ein Störsender in Betrieb genommen wird, wird man versuchen, auf das Telefonnetz auszuweichen und umgekehrt.&lt;/p&gt;
 &lt;p&gt;Bei einer Sperrung von bestimmten IP-Adressen stehen dem Benutzer mehrere Möglichkeiten offen, die Störung zu umgehen. Alle laufen darauf hinaus, den sperrenden Router vollständig zu umgehen (siehe auch &lt;a href=&#34;http://www.fitug.de/ulf/zensur/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ulf Moeller&lt;/a&gt;
@@ -1433,51 +1923,51 @@ myriad.ml.org&lt;/li&gt;
 &lt;p&gt;Für einen Beobachter erscheint der Nutzer als normaler Kunde des zweiten IP-Providers. Der sperrende Router des lokalen Providers sieht nur eine Verbindung zum entfernten zweiten Provider. Die Sperre ist wirkungslos. Mobile-IP ist ein Routineangebot fuer IP-Provider, die Geschäftskunden betreuen.&lt;/p&gt;
 &lt;p&gt;Der Anbieter der gesperrten Information kann Abrufer unterstützen, indem er ebenfalls versucht, die Sperre zu unterlaufen. Im Falle der Sperrung des Rechners &lt;code&gt;www.xs4all.nl&lt;/code&gt; hat der gesperrte Anbieter die Internet-Adresse seines Rechners alle paar Minuten verändert. Sperrungen einer einzelnen Adresse wurden dadurch wirkungslos, statt dessen mußten ganze Teilnetze gesperrt werden (die Sperrung wurde noch unspezifischer, es wurden als Nebenwirkung noch mehr unbeteiligte Anbieter mitgesperrt).&lt;/p&gt;
 &lt;p&gt;Während die bisher diskutierten Möglichkeiten des Unterlaufens von Sperrungen unabhängig vom gesperrten Dienst waren, sind die folgenden Moeglichkeiten dienstspezifisch:&lt;/p&gt;
-&lt;h4 id=&#34;www&#34;&gt;
+&lt;h2 id=&#34;www&#34;&gt;
     &lt;a href=&#34;#www&#34;&gt;
-	WWW&amp;lt;
+	WWW
     &lt;/a&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Ähnlich der erwähnten Veränderung der IP-Nummer eines Serverrechners kann  auch die Adresse eines Angebotes auf einem Server automatisch verändert werden. Eine automatische Sperrung einzelner Angebote würde dadurch unterlaufen werden, und man müßte wieder den gesamten Rechner pauschal sperren. Dort greifen dann wieder die Methoden zum Unterlaufen einer Komplettsperrung.&lt;/p&gt;
 &lt;p&gt;Wenn zu einem Angebot eine Suchmaschine existiert, mit der alle Seiten eines Angebotes nach bestimmten Begriffen durchsucht werden können, ist eine einzelne Seite praktisch unter beliebig vielen Adressen zu bekommen (nämlich allen Begriffen, die den Text in der Suchmaschine finden). Eine Sperrung müßte hier zusätzlich den Zugriff auf die Suchmaschine verhindern.&lt;/p&gt;
 &lt;p&gt;Das Verfahren des indirekten Zugriffs, wie es unter Mobile-IP diskutiert wurde, läßt sich mit Veränderungen auch für WWW einsetzen: Mit Hilfe eines entfernten Webservers, der Zugriffe im Auftrag Dritter abwickelt (&lt;em&gt;Proxy-Server&lt;/em&gt;), ist ein indirekter Abruf der Seite möglich. Da Proxy-Server mit Zwischenspeicher zur Beschleunigung von Zugriffen üblich sind, ist es in der Regel kein Problem, einen solchen dritten Server zu finden. Im Rahmen der Zensurdiskussion der letzten Monate sind mittlerweile im In- und Ausland auch schon Proxy-Server für solche Umgehungen explizit eingerichtet worden (etwa am MIT fuer chinesische Staatsbürger, die die Zensur im eigenen Land unterlaufen möchten).&lt;/p&gt;
 &lt;p&gt;Bei verschlüsselter Kommunikation (etwa mit dem in allen gängigen Browsern eingebauten SSL-Support) entsteht ein nicht mehr in Echtzeit einsehbarer und nicht einfach verfälschbarer Kanal zwischen Server und Client. Für Dritte ist nicht erkennbar, welche Seiten abgerufen werden und welche Informationen sie enthalten.&lt;/p&gt;
-&lt;h4 id=&#34;news&#34;&gt;
+&lt;h2 id=&#34;news&#34;&gt;
     &lt;a href=&#34;#news&#34;&gt;
 	News
     &lt;/a&gt;
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;p&gt;Artikel in den USENET News liegen in zahlreichen Kopien auf Tausenden von Servern überall auf der Welt vor. Löschungen (&lt;em&gt;Cancel&lt;/em&gt;) werden von vielen dieser Server nicht mehr ausgeführt, nachdem es seit einigen Jahren immer wieder zu gefälschten Löschaufforderungen von Saboteuren kam. Die großen Archive fuer USENET News (DejaNews und AltaVista) führen grundsätzlich keine Löschungen aus. Über Archivanfragen ist es daher in der Regel möglich, auch auf ältere und lokal nicht mehr verfügbare Texte zuzugreifen. Dabei gilt wie bei Suchmaschinen für Webseiten (siehe oben): Artikel sind nicht nur unter einer festen Bezeichnung abrufbar, sondern werden auch zu beliebigen im Artikel enthaltenen Stichworten gefunden.&lt;/p&gt;
 &lt;p&gt;Im Rahmen einer Untersuchung der bayrischen Staatsanwaltschaft wurde der Betreiber Compuserve aufgefordert, einige Newsgroups grundsätzlich nicht mehr bereitzustellen, da bei ihnen davon auszugehen sei, dass diese in Deutschland strafrechtlich relevante Inhalte enthielten. Die Leser dieser Gruppen beziehen diese jetzt direkt von anderen, nicht gesperrten Newsservern. Ausserdem gehen die Autoren von Artikeln für solche schlecht verbreiteten Newsgroups immer mehr dazu über, ihre Artikel zusätzlich in andere, thematisch unpassende, aber besser verbreitete Gruppen zu setzen.&lt;/p&gt;
 &lt;p&gt;So kam es zum Beispiel anläßlich der Sperrung des Servers &lt;code&gt;www.xs4all.nl&lt;/code&gt; wegen des Angebotes der verbotenen Zeitschrift Radikal, Ausgabe 154 zweimal zu je einem Posting der Komplettausgabe der Radikal in den Diskussionsforen de.soc.zensur (Diskussion über Zensur und Inhaltskontrolle) und
 de.org.politik.spd (Forum des virtuellen Ortsverbandes der SPD).&lt;/p&gt;
 &lt;p&gt;Da die Neueinrichtung von Newsgroups technisch automatisiert werden kann, kommt es vielfach zur Neueinrichtung schlecht verbreiteter Gruppen unter neuem Namen oder zum Angebot bekannter Gruppen unter Aliasnamen. So wurde die Gruppe de.talk.sex (Diskussionsforum über Sexualität) an einer deutschen Universität mehrere Jahre lang unter dem Namen de.soc.verkehr geführt, nachdem dort entschieden worden war, keine Gruppen mehr anzubieten, deren Bezeichnung den Begriff sex enthält.&lt;/p&gt;
-&lt;h2 id=&#34;andere-effekte-von-sperrungsversuchen&#34;&gt;
+&lt;h1 id=&#34;andere-effekte-von-sperrungsversuchen&#34;&gt;
     &lt;a href=&#34;#andere-effekte-von-sperrungsversuchen&#34;&gt;
 	Andere Effekte von Sperrungsversuchen
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Jede Sperre kann unterlaufen werden, indem die gesperrte Information vielfach repliziert wird. Dann ist jedes Vorkommen dieser Information gesondert zu sperren. Dadurch werden die unangenehmen Nebenwirkungen der Sperrung vervielfacht, bis die Kosten fuer die Sperrung ihren Nutzen übersteigen. Im Falle der Sperrung von &lt;a href=&#34;https://www.xs4all.nl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.xs4all.nl&lt;/a&gt;
 
  wegen des Angebotes der verbotenen Radikal 154 existierten innerhalb kürzester Zeit über 40 Kopien der gesperrten Information. Die 6000 aus technischen Gründen mitgesperrten Anbieter wurden jedoch nicht repliziert. Bezüglich der angestrebten Wirkung wurde also eher das Gegenteil erreicht, während viele Anbieter durch die unbeabsichtigten Nebenwirkungen Verluste hinnehmen mußten.&lt;/p&gt;
 &lt;p&gt;Mit Hilfe der USENET News ist diese Replikation tausendfach automatisiert und mit minimalem Aufwand vorzunehmen. Aus diesem Grunde kam es nach der Sperrung von xs4all auch zu einer Verbreitung der Webseiten der Radikal in den News (die Webseiten der anderen 6000 Kunden von xs4all wurden nicht in die News eingespielt).&lt;/p&gt;
 &lt;p&gt;Alle Kommunikation mit Hilfe des TCP/IP-Protokolls ist konstruktionsbedingt eine individuelle Ende-zu-Ende-Kommunikation zwischen zwei Partnern. Selbst bei Betrachtung des Dienstes ist nicht erkennbar, ob die abgerufenen Informationen privater Natur sind (es ist möglich und für viele Anwender auch notwendig, ihre persönliche Post per WWW zu lesen) oder ob es sich um öffentliche Information handelt. Derartige Information kann sogar gemischt auf einer Webseite auftreten. Es ist zweifelhaft, inwieweit eine Kontrolle solcher Verbindungen durch unspezifisches Abhören (ohne richterlichen Beschluß) gestattet ist, selbst wenn dieses Abhören durch einen Roboter geschieht, der auf Schlüsselworte oder Ratings reagiert.&lt;/p&gt;
 &lt;p&gt;Nicht nur vom Standpunkt der Kontrolle der Bewerter, sondern auch vom Standpunkt des technischen Netzbetriebes ist eine Offenlegung aller Sperrungen unbedingt notwendig. Wenn Sperrungen von Rechnern oder einzelnen Angeboten massenhaft umgesetzt werden, ist für den einzelnen Systembetreiber genau wie für den einzelnen Anwender nämlich nicht mehr entscheidbar, ob eine technische Störung vorliegt, die zu beheben ist, oder ob eine inhaltlich begründete Sperrung vorgenommen wurde. Damit wird einer zuverlässigen Fehleranalyse durch die Betreiber von Netzen oder einzelnen Maschinen jede Grundlage entzogen, da aus dem Vorliegen einer Störung keine sichere Verhaltensvorschrift zu ihrer Behebung abgeleitet werden kann. Andererseits können offengelegte Sperrlisten natuerlich leicht als Kataloge fuer sexuell explizite oder gewalttätige Angebote mißbraucht werden. Eine Sperrung wäre dann eine Art Qualitaetssiegel. Offengelegte Sperrungen sind mit entsprechend modifizierten Programmen außerdem automatisiert umgehbar.&lt;/p&gt;
-&lt;h2 id=&#34;modifikation-des-internet&#34;&gt;
+&lt;h1 id=&#34;modifikation-des-internet&#34;&gt;
     &lt;a href=&#34;#modifikation-des-internet&#34;&gt;
 	Modifikation des Internet
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;In dem heutigen Internet können Sperren nach den obigen Ausführungen also nicht oder nur mit unvertretbar hohen Kosten und Nebenwirkungen realisiert werden. Daraus ergibt sich die Frage, inwieweit das Internet modifiziert werden müßte, um effizientes Sperren von Inhalten zu erlauben.&lt;/p&gt;
 &lt;p&gt;Prinzipiell bieten Firewallsysteme (die von Unternehmen eingesetzt werden, um ihr Netz gegen unbefugtes Eindringen aus dem Internet zu schützen) einen Ansatz, effektive Sperren aufzubauen. Durch die Philosophie, nur solchen Daten das Passieren der Barriere zu gestatten, denen es explizit gestattet wurde, erzwingt man das Einhalten von Richtlinien.&lt;/p&gt;
 &lt;p&gt;Ähnliche Richtlinien müßten fuer die Nutzung der Internet-Dienste durch die Benutzer aufgestellt und ihre Einhaltung erzwungen werden. Dies kann durch die Verwendung der Firewalltechnologie als Barriere zwischen den Anwendern und dem Internet oder durch die Verwendung proprietärer Protokolle erzwungen werden. Entscheidend ist, daß Teilnehmer im Netz ausschließlich identifizierbar agieren koennen, daß nur freigegebene Dienste, Protokolle und Datenformate verwendet werden, daß die Verwendung kryptographischer Verfahren verboten wird und daß sämtliche Aktivitäten protokolliert werden. Durch diese Massnahmen soll sichergestellt werden, daß der Benutzer einer Sperre nicht mehr ausweichen kann durch Wechsel der Identität, des Protokolls oder durch Verschleierung der Daten.&lt;/p&gt;
 &lt;p&gt;Unabhängig von der Frage, ob ein solches Verfahren mit einem demokratischen Rechtsstaat vereinbar wäre, gibt es auch wirtschaftliche und technische Gründe, die dagegen sprechen: Ein solches Netz wäre zentralistisch gesteuert und könnte nur unter großem Zeit- und Kostenaufwand an veränderte Anforderungen angepaßt werden. Sämtliche Online-Dienste haben dieses Modell auf Druck ihrer kommerziellen Benutzer aufgegeben. Der administrative Overhead einer solchen Lösung auf nationaler Ebene wäre gewaltig. Ausserdem wuerde jede Beschraenkung kryptographischer Verfahren eine Nutzung des Internet zur Übermittlung sensitiver Informationen beeinträchtigen.&lt;/p&gt;
 &lt;p&gt;Insgesamt könnte ein solches Modell katastrophale Standortnachteile mit sich bringen. Kommunikation ist eine Ressource, die in ihrer Bedeutung den Arbeitskräften oder der Verkehrsinfrastruktur in keiner Weise nachsteht. Auf der anderen Seite kann man, wie sich am Beispiel China zeigen läßt, selbst auf diese Art die Verbreitung unerwünschter Inhalte nur begrenzt unterbinden, denn für jede der oben genannten Massnahmen existieren wiederum Gegenmaßnahmen.&lt;/p&gt;
-&lt;h2 id=&#34;bewertung&#34;&gt;
+&lt;h1 id=&#34;bewertung&#34;&gt;
     &lt;a href=&#34;#bewertung&#34;&gt;
 	Bewertung
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Eine zentrale Sperre von Inhalten im Internet läßt sich technisch nicht paßgenau vornehmen, ließe sich von den Benutzern bei Bedarf umgehen und wäre mit hohen Kosten verbunden (siehe auch Heimo Ponnath: &lt;a href=&#34;http://bda.netuse.de/bda/jp/home/heimo.ponnath/articles/SiN.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pornographie im Internet&lt;/a&gt;
 
 ? Dichtung und Wahrheit, inside online 2/3 1996). Bedingt durch die globalen Datennetze zeigt sich hier der Paradigmenwechsel in den Aufgaben des Staates durch die Informationsgesellschaft, wie Alexander Rossnagel beschreibt (Alexander Rossnagel: Globale Datennetze: Ohnmacht des Staates - Selbstschutz der Buerger, ZRP 1997, Heft 1, 26-30). Die Ohnmachtserfahrung des Staates in der globalisierten Welt bedeutet jedoch nicht gleichzeitig eine Kapitulation vor den neuen Gefahren, sondern die modernen Informationstechnologien bergen vielfältige Möglichkeiten, daß der Bürger sich selbst schützen kann. Daraus erwächst die Verpflichtung für den Staat, Strukturen zu schaffen, die seine Bürger befähigen, ihre Interessen in der Welt der Netze selbstbestimmt zu schützen.&lt;/p&gt;
@@ -1486,20 +1976,20 @@ de.org.politik.spd (Forum des virtuellen Ortsverbandes der SPD).&lt;/p&gt;
 
 ).&lt;/p&gt;
 &lt;p&gt;Die Erfahrungen in den USA zeigen, daß Organisationen das Instrument der Bewertung von Inhalten für die Durchsetzung ihrer eigenen politischen Ziele unter dem Deckmantel des Jugendschutzes oder der Aufrechterhaltung der öffentlichen Moral mißbrauchen. Es ist zu verhindern, daß die Definition moralischer und gesellschaftlicher Werte in den Aufgabenbereich privater Organisationen übertragen wird. Durch eine Offenlegung der Bewertungsmaßstäbe und aller Bewertungen kann diese Gefahr des Mißbrauchs reduziert werden.&lt;/p&gt;
-&lt;h2 id=&#34;danksagung&#34;&gt;
+&lt;h1 id=&#34;danksagung&#34;&gt;
     &lt;a href=&#34;#danksagung&#34;&gt;
 	Danksagung
     &lt;/a&gt;
-&lt;/h2&gt;
+&lt;/h1&gt;
 &lt;p&gt;Wir danken Hannes Federrath und Andreas Pfitzmann von der Technischen Universitaet Dresden für zahlreiche Anregungen und Diskussionen, die zur Entstehung dieses Textes beigetragen haben.&lt;/p&gt;
-&lt;h3 id=&#34;die-autoren&#34;&gt;
+&lt;h1 id=&#34;die-autoren&#34;&gt;
     &lt;a href=&#34;#die-autoren&#34;&gt;
 	Die Autoren
     &lt;/a&gt;
-&lt;/h3&gt;
+&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;mailto:kris@koehntopp.de&#34;&gt;Kristian Köhntopp&lt;/a&gt; ist Diplominformatiker und arbeitet als freiberuflicher Consultant fuer heterogene Datennetze und Rechnersicherheit.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;mailto:marit@koehntopp.de&#34;&gt;Marit Köhntopp&lt;/a&gt; ist Diplominformatikerin und arbeitet beim Landesbeauftragten für den Datenschutz Schleswig-Holstein als Referentin in den Bereichen &amp;ldquo;Neue Medien und Informationstechnologien&amp;rdquo; sowie &amp;ldquo;Technikfolgenabschätzung&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;mailto:ms@netuse.de&#34;&gt;Martin Seeger&lt;/a&gt; ist Diplominformatiker und Geschäftsfuehrer der &lt;a href=&#34;http://www.netuse.de&#34;&gt;NetUSE ommunikationstechnologie GmbH&lt;/a&gt;. Das Unternehmen beschäftigt sich mit der Internet-/Intranet-Technologie und der Sicherheit von Rechnern in Netzen.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;mailto:ms@netuse.de&#34;&gt;Martin Seeger&lt;/a&gt; ist Diplominformatiker und Geschäftsführer der &lt;a href=&#34;http://www.netuse.de&#34;&gt;NetUSE ommunikationstechnologie GmbH&lt;/a&gt;. Das Unternehmen beschäftigt sich mit der Internet-/Intranet-Technologie und der Sicherheit von Rechnern in Netzen.&lt;/p&gt;
 </description>
     </item>
     

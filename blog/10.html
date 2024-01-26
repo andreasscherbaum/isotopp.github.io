@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -118,7 +119,7 @@
 <div class="page mb-4">
 
   <div class='row justify-content-center text-center my-4 mx-0'>
-    <header>
+    <header class="headerbanner">
       <div class='col'>
         <h1 class="title mb-lg-4 text-white">
           Die wunderbare Welt von Isotopp
@@ -136,7 +137,7 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/09/feeds-tagged-and-a-mysql-feed.html" class='text-decoration-none text-dark'>Feeds tagged, and a MySQL feed</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/03/12/memory-saturated-mysql.html" class='text-decoration-none text-dark'>Memory saturated MySQL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -144,12 +145,11 @@
             Kristian Köhntopp
           </a>
           -
-          September 9, 2020
+          March 12, 2021
         </div>
 
-        <div class='mt-3'>I have made changes to the RSS Feed of this blog:
-Each &lt;item/&gt; does now contain a container &lt;tags/&gt;, inside a sequence of &lt;tag/&gt; containers, with each posts tags. There is now a second RSS feed for posts tagged #mysql, because of demand. You can find it at https://blog.koehntopp.info/feed_mysql.xml . Example for the tags:
-&lt;channel&gt; &lt;title&gt;Die wunderbare Welt von Isotopp&lt;/title&gt; ... &lt;item&gt; &lt;title&gt;A post title&lt;/title&gt; &lt;link&gt;https://blog.koehntopp.info/2020/09/...&lt;/link&gt; &lt;guid isPermalink=&#34;false&#34;&gt;/2020/09/...&lt;/guid&gt; &lt;tags&gt;&lt;tag&gt;lang_en&lt;/tag&gt;&lt;tag&gt;mysql&lt;/tag&gt;&lt;tag&gt;database&lt;/tag&gt;&lt;/tags&gt; &lt;description&gt;blah blah blah&lt;/description&gt; &lt;/item&gt; &lt;/channel&gt; So if you want only the MySQL content, subscribe to this feed , if you want all the content, subscribe to the original feed .</div>
+        <div class='mt-3'>»If at all possible, we build databases so that the working set of the database fits into memory.« What does that even mean?
+Working Set In computer science, the “Working Set” of a program is the set of things it will be accessing in the near future. Because computer science has not yet solved looking into the future, we are looking at the set of things we accessed most recently and hope for The Best™.</div>
 
     </div>
   </div>
@@ -160,7 +160,7 @@ Each &lt;item/&gt; does now contain a container &lt;tags/&gt;, inside a sequence
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/07/mysql-from-a-developers-perspective.html" class='text-decoration-none text-dark'>MySQL from a Developers Perspective</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/02/28/rechenaufgaben-loesen.html" class='text-decoration-none text-dark'>Rechenaufgaben lösen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -168,13 +168,12 @@ Each &lt;item/&gt; does now contain a container &lt;tags/&gt;, inside a sequence
             Kristian Köhntopp
           </a>
           -
-          September 7, 2020
+          February 28, 2021
         </div>
 
-        <div class='mt-3'>So this has turned into a small series, explaining how to work with MYSQL from a developers perspective. This post is intended as a directory for the individual articles. It will be amended and re-dated as necessary.
-The code for the series is also available in isotopp/mysql-dev-examples on GitHub.
-The Tag #mysqldev will reference all articles from this series.
-MySQL Transactions - the physical side . Looking at how MySQL InnoDB handles transactions on the physical media, enabling rollback and commit.</div>
+        <div class='mt-3'>Das Kind möchte ein Programm zum Üben von Rechenaufgaben sehen. Nun gut. Hier ist eine Version in PyQt5.
+Unsere Oberfläche soll so aussehen.
+Wir wollen ein kleines Fenster, in dem eine billig generierte Rechenaufgabe angezeigt wird. Der Schüler soll die Antwort eingeben und den Knopf &ldquo;Antworten&rdquo; drücken. Danach wird angesagt, ob die Antwort korrekt war, oder ob sie falsch war. Wenn sie falsch war, wird auch die korrekte Antwort angezeigt.</div>
 
     </div>
   </div>
@@ -185,7 +184,7 @@ MySQL Transactions - the physical side . Looking at how MySQL InnoDB handles tra
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/07/mysql-generated-columns-and-virtual-indexes.html" class='text-decoration-none text-dark'>MySQL: Generated Columns and virtual indexes</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/02/25/mysql-from-below.html" class='text-decoration-none text-dark'>MySQL from Below</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -193,12 +192,10 @@ MySQL Transactions - the physical side . Looking at how MySQL InnoDB handles tra
             Kristian Köhntopp
           </a>
           -
-          September 7, 2020
+          February 25, 2021
         </div>
 
-        <div class='mt-3'>We have had a look at how MySQL 8 handles JSON recently, but with all those JSON functions and expressions it is clear that many JSON accesses cannot be fast. To grab data from a JSON column, you will use a lot of $-&gt;&gt;field expressions and similar, and without indexes nothing of this will be fast.
-JSON cannot be indexed.
-But MySQL 8 offers another feature that comes in handy: Generated columns and indexes on those.</div>
+        <div class='mt-3'>When you insert data into a database and run COMMIT you expect things to be there: Atomically, Consistent, Isolated and Durable , like Codd commanded us 40 years ago, but also quickly. There is a surprising amount of sophistication being poured into this, but since I do not want to shame MongoDB and Redis developers in this post, I am not going to talk about that much in this place.</div>
 
     </div>
   </div>
@@ -209,7 +206,7 @@ But MySQL 8 offers another feature that comes in handy: Generated columns and in
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/04/mysql-json-data-type.html" class='text-decoration-none text-dark'>MySQL: Basic usage of the JSON data type</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/02/24/validating-storage.html" class='text-decoration-none text-dark'>Validating storage</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -217,12 +214,12 @@ But MySQL 8 offers another feature that comes in handy: Generated columns and in
             Kristian Köhntopp
           </a>
           -
-          September 4, 2020
+          February 24, 2021
         </div>
 
-        <div class='mt-3'>MySQL 8 provides solid support for the JSON data type. The manual has an overview of the data type , a JSON function reference , an an overview on generated column indexes , and explains multi-values indexes .
-Creating JSON columns Creating JSON columns is easy: Make the column of the JSON data type, fill in valid JSON data.
-mysql&gt; create table t ( id integer not null primary key auto_increment, j json); Query OK, 0 rows affected (0.</div>
+        <div class='mt-3'>Where I work, we try to run databases in a memory saturated way. That is, we try to provide so much memory that the working set of the database is memory resident, or in other words, the number of disk reads after an initial warmup is no longer dependent on the database load.
+Workload Intelligence Analytics showing &ldquo;IOPS over time&rdquo; for a mixed read/write benchmark on Datera iSCSI.
+We can validate and prove that with automated load testing: For each replication chain we single out a production host, and increase the hosts weight in the load balancer until the system load1 becomes critical.</div>
 
     </div>
   </div>
@@ -233,7 +230,7 @@ mysql&gt; create table t ( id integer not null primary key auto_increment, j jso
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/09/02/macos-relocated-items.html" class='text-decoration-none text-dark'>MacOS: Deleting Relocated Items</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/01/28/database-as-a-queue.html" class='text-decoration-none text-dark'>Database as a Queue</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -241,12 +238,11 @@ mysql&gt; create table t ( id integer not null primary key auto_increment, j jso
             Kristian Köhntopp
           </a>
           -
-          September 2, 2020
+          January 28, 2021
         </div>
 
-        <div class='mt-3'>I had to upgrade my company issued MacBook pro to Catalina for fleet unity reasons. The upgrade left me with a folder Relocated Items in /Users/Shared/Desktop and a link to that prominently on my Desktop.
-Deleting that folder moved it to trash. Trying to empty trash then failed. That is because in that folder was several levels deep a folder or link to X11R6.
-Apple considers that file outdated, which is why it ended up in Relocated Items.</div>
+        <div class='mt-3'>The DBA experience at work suggests that every single schema at some point in its lifecycle holds a queue table. These are tables in which some processes (the “producers”) put rows, which a swarm of other processes (the “consumers”) lock and consume.
+A variation on that theme is the state machine, in which jobs are placed by producers. Consumers do not immediately delete them, but update them a few times to indicate processing progress, before the rows are ultimately being deleted.</div>
 
     </div>
   </div>
@@ -257,7 +253,7 @@ Apple considers that file outdated, which is why it ended up in Relocated Items.
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/31/on-touching-candles.html" class='text-decoration-none text-dark'>On Touching Candles, And Error Budgets</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/01/20/unlimited-mail-adresses.html" class='text-decoration-none text-dark'>Unlimited Mail Addresses</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -265,12 +261,10 @@ Apple considers that file outdated, which is why it ended up in Relocated Items.
             Kristian Köhntopp
           </a>
           -
-          August 31, 2020
+          January 20, 2021
         </div>
 
-        <div class='mt-3'>Ok, it&rsquo;s &ldquo;Dad Stories&rdquo; Time (from Twitter ). When my son was somewhat older than a year, he was learning to speak. He could already say &ldquo;Mama&rdquo; and &ldquo;Papa&rdquo;.
-It was around Christmas, and there was a candle on the table, glowing interestingly, so he wanted to touch it. &ldquo;Nein, heiß&rdquo; is what you would say in German.
-Of course, a toddler does not understand the meaning of &ldquo;heiß&rdquo;. I mean, he&rsquo;s trying to imitate the sound of it, but the meaning of &ldquo;heiß&rdquo; is something specific.</div>
+        <div class='mt-3'>When people ask for my mail address, they usually get a personalized address from me. That is particularly true for all commercial email. So you don&rsquo;t get to send mail to my main account, but to kris-yourbusiness@koehntopp.de , and that will end up going into INBOX.special.yourbusiness. At least until it leaks, receives spam or is otherwise burned. In which case I will short it out and route all incoming mail on that address to /dev/null.</div>
 
     </div>
   </div>
@@ -281,7 +275,7 @@ Of course, a toddler does not understand the meaning of &ldquo;heiß&rdquo;. I m
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/25/null-is-null.html" class='text-decoration-none text-dark'>MySQL: NULL is NULL</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/01/12/600000-user-in-baden-wurttemberg.html" class='text-decoration-none text-dark'>940.000 User in Baden-Württemberg</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -289,12 +283,11 @@ Of course, a toddler does not understand the meaning of &ldquo;heiß&rdquo;. I m
             Kristian Köhntopp
           </a>
           -
-          August 25, 2020
+          January 12, 2021
         </div>
 
-        <div class='mt-3'>Question: Hey, I got a UNIQUE INDEX, but I can store multiple rows with the same value, NULL. That is surprising. Is that a bug?
-This is a rewrite of the same in German from 9 years ago .
-root@localhost [kris]&gt; create table t ( a integer, b integer, unique (a,b)); Query OK, 0 rows affected (0.09 sec) root@localhost [kris]&gt; insert into t values (1, 2); Query OK, 1 row affected (0.</div>
+        <div class='mt-3'>Deutschland ist im Lockdown, die Schulen sind endlich geschlossen und es wird remote unterrichtet. Weil es Deutschland ist, passiert das in jedem Bundesland anders und uneinheitlich. In Baden-Württemberg verwendet man Moodle . Wer sich da drunter nichts vorstellen kann, kann es sich hier ansehen.
+In Bawü wird eine getrennte Moodle-Instanz pro Schule installiert, aber halt viele Instanzen pro Server, weil Server recht groß sind. In Summe muß man bummelig 940.000 Schüler abfrühstücken.</div>
 
     </div>
   </div>
@@ -305,7 +298,7 @@ root@localhost [kris]&gt; create table t ( a integer, b integer, unique (a,b)); 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/19/why-do-ops-and-sec-people-wear-black.html" class='text-decoration-none text-dark'>Why do Ops and Sec people wear black</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/01/10/labyrinths-in-python.html" class='text-decoration-none text-dark'>Labyrinths (in Python)</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -313,16 +306,12 @@ root@localhost [kris]&gt; create table t ( a integer, b integer, unique (a,b)); 
             Kristian Köhntopp
           </a>
           -
-          August 19, 2020
+          January 10, 2021
         </div>
 
-        <div class='mt-3'>For reasons that don&rsquo;t need exploring at this juncture I tweeted Once upon a time there were shared boxes, on which the local Unix easily had 200-300 users, Junior Developers at a University.
-A /tmp/ls found easily 3-4 people per day that had . (dot) in their path.
-No particular reason. Why?
-and followed up with
-Hope is not a strategy.
-Neither is curl stackoverflow | sudo bash.
-/tmp/ls I was asked to explain: &ldquo;What is /tmp/ls?</div>
+        <div class='mt-3'>My son wants labyrinths. Ok, let&rsquo;s make them like it&rsquo;s the first semester.
+We need a class Labyrinth that holds the dimensions of our maze, and the actual maze, in grid - a List of Lists of integers. That&rsquo;s not exactly a two-dimensional array (it can have a ragged right edge), but it will do for us.
+A basic container for labyrinths class Labyrinth: &#34;&#34;&#34;Store a labyrinth as a List of Lists of Integers.</div>
 
     </div>
   </div>
@@ -333,7 +322,7 @@ Neither is curl stackoverflow | sudo bash.
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/18/mysql-character-sets.html" class='text-decoration-none text-dark'>MySQL: Some Character Set Basics</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html" class='text-decoration-none text-dark'>Using Python to bash</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -341,13 +330,13 @@ Neither is curl stackoverflow | sudo bash.
             Kristian Köhntopp
           </a>
           -
-          August 18, 2020
+          January 5, 2021
         </div>
 
-        <div class='mt-3'>This is the updated and english version of some older posts of mine in German. It is likely still incomplete, and will need information added to match current MySQL, but hopefully it is already useful.
-Old source articles in German: 1 , 2 and 3 .
-Some vocabulary Symbol, Font, Encoding and Collation - what do they even mean?
-A character set is a collection of symbols that belong together. That is a completely abstract thing, and also almost useless.</div>
+        <div class='mt-3'>Heise writes an introduction to bash programming (in german) :
+Bash ist eine vollwertige Programmiersprache, mit der Sie alltägliche Aufgaben leicht automatisieren.
+Bash is a fully featured programming language that you can use to automate everyday tasks.
+Bash is not a fully featured programming language at all, and nothing in bash is ever easy. You are advised to use a proper programming language early on in development, and if possible never put bash commands into a file.</div>
 
     </div>
   </div>
@@ -358,7 +347,7 @@ A character set is a collection of symbols that belong together. That is a compl
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/17/building-the-cycling-city.html" class='text-decoration-none text-dark'>Fertig gelesen: Building the Cycling City</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/12/28/fork-exec-wait-and-exit.html" class='text-decoration-none text-dark'>fork, exec, wait and exit</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -366,10 +355,12 @@ A character set is a collection of symbols that belong together. That is a compl
             Kristian Köhntopp
           </a>
           -
-          August 17, 2020
+          December 28, 2020
         </div>
 
-        <div class='mt-3'>Melissa and Chris Bruntlett have been living in Vancouver close to the station, and decided to do as many daily runs as possible without a car, using public transport or bikes. In late 2015, early 2016 they did an extended visit to the Netherlands which resulted in a changed world view about what proper Urban Infrastructure can look like. Meanwhile they are living with two kids near Delft, in the Netherlands.</div>
+        <div class='mt-3'>This is the english version of a 2007 article .
+In de.comp.os.unix.linux.misc somebody asked:
+Are commands in a script executed strictly sequentially, that is, will the next command only be executed when the previous command has completed, or will the shell automatically start the next command if the system has spare capacity? Can I change the default behavior - whatever it may be - in any way? If you are looking into the fine manual, it may explain at some point that the shell starts each command in a separate process.</div>
 
     </div>
   </div>
@@ -380,7 +371,7 @@ A character set is a collection of symbols that belong together. That is a compl
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/16/fertig-gelesen-defensive-baking.html" class='text-decoration-none text-dark'>Fertig gelesen: A Wizard&#39;s Guide To Defensive Baking</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/12/26/sql-clause-is-coming-to-town.html" class='text-decoration-none text-dark'>SQL Clause is coming to town</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -388,11 +379,15 @@ A character set is a collection of symbols that belong together. That is a compl
             Kristian Köhntopp
           </a>
           -
-          August 16, 2020
+          December 26, 2020
         </div>
 
-        <div class='mt-3'>A Wizard&rsquo;s Guide To Defensive Baking is a Yound Adult Coming-of-Age story about Mona. Mona works in her aunt&rsquo;s bakery, and also is a hedge wizard. Her talent is mostly limited to influencing dough and baked goods, her familiar is a sourdough starter named Bob.
-A Wizards Guide To Defensive Baking, T. Kingfisher, Amazon Mona is a 14-year-old girl living in Riverbraid, a random city-state near a river in the floodplain of an otherwise unnamed country that vaguely feels like northern Italy during renaissance times.</div>
+        <div class='mt-3'>Olya Kudriavtseva has an ugly Christmas sweater :
+He&rsquo;s making a table. He&rsquo;s sorting it twice. SELECT * FROM contacts WHERE behavior = &ldquo;nice&rdquo;; SQL Clause is coming town! (buy here )
+Katie Bauer observes :
+I mean, except for the fact that sorting something twice is TERRIBLY optimized
+So how bad is this? Let&rsquo;s find out.
+Some test data We are defining a table santa, where we store peoples names (GDPR, EU Regulation 2016/679 applies!</div>
 
     </div>
   </div>
@@ -403,7 +398,7 @@ A Wizards Guide To Defensive Baking, T. Kingfisher, Amazon Mona is a 14-year-old
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/14/eli5-epic-vs-apple-and-google.html" class='text-decoration-none text-dark'>ELI5: Epic vs Apple and Google</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/12/17/der-testing-in-production-blues.html" class='text-decoration-none text-dark'>Der Testing-in-Production-Blues</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -411,15 +406,10 @@ A Wizards Guide To Defensive Baking, T. Kingfisher, Amazon Mona is a 14-year-old
             Kristian Köhntopp
           </a>
           -
-          August 14, 2020
+          December 17, 2020
         </div>
 
-        <div class='mt-3'>@jpmens asked on Twitter:
-What is Fortnite? #outingmyself
-Assuming XKCD 1053 .
-Fortnite Fortnite is a game made by Epic Games. They also make the Unreal Engine, which powers many modern computer games. Fortnite together with Roblox and Minecraft it is the set of games played most by people under 20.
-You want to follow Matthew Ball .
-Fortnite is a Battle Royal game, a 1st person shooter, in which a matchmaker puts you together with a set of other people of similar skill, drops you into an arena of ever shrinking size.</div>
+        <div class='mt-3'>Kalenderwoche 51/2020: Lockdown mit Schulschließungen. Nachdem es im März schon einmal Schulschließungen wegen Corona gab, und dort die Defizite technischer und organisatorischer Natur offenbar wurden, hat man in Deutschland die Zeit genutzt und sich auf die vorhergesagte 2. Welle vorbereitet, die jetzt genau eingetroffen ist. Deutschland ist schließlich nicht nur das Land der Dichter und Denker, sondern auch ein Land der Ingenieure und Tüftler, und bekannt für seine funktionierende und effiziente Bürokratie.</div>
 
     </div>
   </div>
@@ -430,7 +420,7 @@ Fortnite is a Battle Royal game, a 1st person shooter, in which a matchmaker put
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/04/mysql-foreign-key-constraints-and-locking.html" class='text-decoration-none text-dark'>MySQL Foreign Key Constraints and Locking</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/12/09/embracing-the-stream.html" class='text-decoration-none text-dark'>Embracing the Stream</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -438,12 +428,10 @@ Fortnite is a Battle Royal game, a 1st person shooter, in which a matchmaker put
             Kristian Köhntopp
           </a>
           -
-          August 4, 2020
+          December 9, 2020
         </div>
 
-        <div class='mt-3'>Since we now know how to look at the state of locking in a live database, let&rsquo;s look at what happens when we run a normal insert or update and an insert or update with foreign key relationships defined, and compare.
-We will be using the tables and structures from our previous examples, a simple 1:n relationship between a and b:
-CREATE TABLE a ( a_id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (a_id) ); INSERT INTO a VALUES (10), (20), (30), (40); CREATE TABLE b ( b_id int NOT NULL AUTO_INCREMENT, a_id int NOT NULL, PRIMARY KEY (b_id), KEY `a_id` (a_id), CONSTRAINT a_id_exists FOREIGN KEY (a_id) REFERENCES a (a_id) ON DELETE RESTRICT ON UPDATE RESTRICT ); INSERT INTO b VALUES (10,10), (40,40); or the same definition for b without the constraint.</div>
+        <div class='mt-3'>So this happened: CentOS Project shifts focus to CentOS Stream The future of the CentOS Project is CentOS Stream, and over the next year we’ll be shifting focus from CentOS Linux, the rebuild of Red Hat Enterprise Linux (RHEL), to CentOS Stream, which tracks just ahead of a current RHEL release. CentOS Linux 8, as a rebuild of RHEL 8, will end at the end of 2021. CentOS Stream continues after that date, serving as the upstream (development) branch of Red Hat Enterprise Linux.</div>
 
     </div>
   </div>
@@ -454,7 +442,7 @@ CREATE TABLE a ( a_id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (a_id) ); INSERT 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html" class='text-decoration-none text-dark'>MySQL Foreign Keys and Foreign Key Constraints</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/12/01/not-joining-on-performance-schema.html" class='text-decoration-none text-dark'>Not JOINing on PERFORMANCE_SCHEMA</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -462,11 +450,11 @@ CREATE TABLE a ( a_id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (a_id) ); INSERT 
             Kristian Köhntopp
           </a>
           -
-          August 3, 2020
+          December 1, 2020
         </div>
 
-        <div class='mt-3'>Foreign Keys are what links tables together and turns a set of tables into a model. Foreign Key Constraints are conditions that must be true for the content of the tables to be an internally consistent model. Foreign Key Constraints can be defined and enforced in InnoDB, but this comes at a considerable price, and for some it may hurt more than it is worth.
-A very simple shop as an ER-model.</div>
+        <div class='mt-3'>The tables in PERFORMANCE_SCHEMA (P_S) are not actually tables. You should not think of them as tables, even if your SQL works on them. You should not JOIN them, and you should not GROUP or ORDER BY them.
+Unlocked memory buffers without indexes The stuff in P_S has been created with &ldquo;keep the impact on production small&rdquo; in mind. That is, from a users point of view, you can think of them as unlocked memory buffers - the values in there change as you look at them, and there are precisely zero stability guarantees.</div>
 
     </div>
   </div>
@@ -477,7 +465,7 @@ A very simple shop as an ER-model.</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/02/mysql-deadlocks-with-insert.html" class='text-decoration-none text-dark'>MySQL Deadlocks with INSERT</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/11/27/backups-and-replication.html" class='text-decoration-none text-dark'>MySQL: Backups and Replication</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -485,11 +473,13 @@ A very simple shop as an ER-model.</div>
             Kristian Köhntopp
           </a>
           -
-          August 2, 2020
+          November 27, 2020
         </div>
 
-        <div class='mt-3'>Support Channel. &ldquo;Hi, I am getting deadlocks in the database, and they occur when I have to roll back the transactions but if we don&rsquo;t have to roll back all transactions get executed.&rdquo; Wait, what? After some back and forth it becomes clear that the Dev experiences deadlocks and has data:
-mysql&gt; pager less mysql&gt; show engine innodb status\G ... MySQL thread id 142531, OS thread handle 139990258222848, query id 4799571 somehost.</div>
+        <div class='mt-3'>There was a question at work about MySQL backups and restore. I needed to explain more.
+We use databases to make state persistent. That is: As a developer you can think of your database as a single giant, structured global variable with a weird access method, and to make things worse, concurrent access.
+A database is just a global variable to your code
+We can log statements that change the state of our database in a log.</div>
 
     </div>
   </div>
@@ -500,7 +490,7 @@ mysql&gt; pager less mysql&gt; show engine innodb status\G ... MySQL thread id 1
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/08/01/mysql-locks-and-deadlocks.html" class='text-decoration-none text-dark'>MySQL: Locks and Deadlocks</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/11/22/gitlab-in-docker.html" class='text-decoration-none text-dark'>Gitlab in Docker</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -508,11 +498,12 @@ mysql&gt; pager less mysql&gt; show engine innodb status\G ... MySQL thread id 1
             Kristian Köhntopp
           </a>
           -
-          August 1, 2020
+          November 22, 2020
         </div>
 
-        <div class='mt-3'>In a previous article we wrote data to the database using atomic update statements, and then using transactions with SELECT ... FOR UPDATE. In this article we will look at what happens when we continue doing this, in a more complicated way. Source code for this article is also available on GitHub.com .
-A simple row lock But first let&rsquo;s do things manually: We create a table kris with an integer primary key column and a secondary unindexed data column.</div>
+        <div class='mt-3'>These installation notes are mostly a note to myself, documenting the installation process of a Gitlab Omnibus Container in Docker, plus Gitlab Runners.
+OS Setup We are installing into /export/gitlab, a 10G xfs slice from the local flash pool:
+# lvcreate -n gitlab -L 10G data # mkfs -t xfs /dev/data/gitlab # mkdir /export/gitlab # mount /dev/data/gitlab /export/gitlab # echo &#34;/dev/data/gitlab\t/export/gitlab\txfs\tbsdgroups,usrquota,grpquota,attr2,nofail,noatime 1 2&#34; &gt;&gt; /etc/fstab # mkdir /export/gitlab/{gitlab,gitlab-runner} # mkdir /export/gitlab/gitlab/{config,data,logs} Docker We are using docker-compose to run this, with a .</div>
 
     </div>
   </div>
@@ -523,7 +514,7 @@ A simple row lock But first let&rsquo;s do things manually: We create a table kr
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html" class='text-decoration-none text-dark'>MySQL Transactions - writing data</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/11/19/on-the-observability-of-outliers.html" class='text-decoration-none text-dark'>On the Observability of Outliers</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -531,11 +522,12 @@ A simple row lock But first let&rsquo;s do things manually: We create a table kr
             Kristian Köhntopp
           </a>
           -
-          July 30, 2020
+          November 19, 2020
         </div>
 
-        <div class='mt-3'>Using the framework for testing we created in earlier articles, let&rsquo;s try to modify some data. We are writing a small program that increments a counter. Our table looks like this, and contains 10 counters:
-CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` int NOT NULL DEFAULT &#39;0&#39;, UNIQUE KEY `id` (`id`) ) INSERT INTO `demo` VALUES (1,0); INSERT INTO `demo` VALUES (2,0); ... INSERT INTO `demo` VALUES (10,0); We are using some very simple programming to increment a counter:</div>
+        <div class='mt-3'>At work, I am in an ongoing discussion with a number of people on the Observability of Outliers. It started with the age-old question “How do I find slow queries in my application?” aka “What would I want from tooling to get that data and where should that tooling sit?”
+As a developer, I just want to automatically identify and isolate slow queries!
+Where I work, we do have SolarWinds Database Performance Monitor aka Vividcortex to find slow queries, so that helps.</div>
 
     </div>
   </div>
@@ -546,7 +538,7 @@ CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` in
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html" class='text-decoration-none text-dark'>MySQL Transactions - the logical side</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/11/15/my-home-sensor-network.html" class='text-decoration-none text-dark'>My home sensor network</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -554,12 +546,11 @@ CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` in
             Kristian Köhntopp
           </a>
           -
-          July 29, 2020
+          November 15, 2020
         </div>
 
-        <div class='mt-3'>After having a look how MySQL handles transactions physically , let&rsquo;s have a look at what is going on from a logical point of view.
-We are using a test table called demo with an id and a counter field, both integer. In it, we have 10 counters, all set to 0.
-CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` int NOT NULL DEFAULT &#39;0&#39;, UNIQUE KEY `id` (`id`) ) INSERT INTO `demo` VALUES (1,0); INSERT INTO `demo` VALUES (2,0); .</div>
+        <div class='mt-3'>I have been asked to document my home sensor network. Being married to a person with a background in web security sets boundary conditions:
+No cloud. We are running all services locally. No control, only metrics. I am collecting data from a number of plugs with power meters over Wi-Fi, using the MQTT protocol. I am also collecting data from a number of temperature sensors over Zigbee, and convert to MQTT.</div>
 
     </div>
   </div>
@@ -570,7 +561,7 @@ CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` in
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/28/mysql-connection-scoped-state.html" class='text-decoration-none text-dark'>MySQL Connection Scoped State</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/11/01/rechenzentren-und-ihren-stromverbrauch-regulieren.html" class='text-decoration-none text-dark'>Rechenzentren und ihren Stromverbrauch regulieren</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -578,11 +569,11 @@ CREATE TABLE `demo` ( `id` bigint unsigned NOT NULL AUTO_INCREMENT, `counter` in
             Kristian Köhntopp
           </a>
           -
-          July 28, 2020
+          November 1, 2020
         </div>
 
-        <div class='mt-3'>MySQL speaks its own proprietary protocol. It cannot be routed by an HTTP proxy, and a MySQL connection is entire unlike an HTTP connection. Specifically, a lot of state and configuration is tied to a MySQL connection, and it cannot be recovered on disconnect.
-What state is tied to a connection? Transactions A disconnect implies a ROLLBACK. So if you are in a transaction, all changes to the database that you attempted are lost, rolled back, as if they never happened.</div>
+        <div class='mt-3'>Es gibt ein Interview mit Stefan Ramesohl vom Umweltministerium (des Bundes) in Netzpolitik.org: &ldquo;Warum niemand weiß, wie viele Rechenzentren es in Europa gibt &rdquo;. Im Wesentlichen hat das Umweltministerium angesagt, daß es auf europäischer Ebene Rechenzentren erfassen und katalogisieren will, um in einem zweiten Schritt den Energieverbrauch von Rechenzentren zu regulieren.
+Das ist sehr spannend, denn derzeit gibt es keine Übersicht über Rechenzentren in Europa, und tatsächlich sind einige Rechenzentrumsbetreiber sehr paranoid, was den genauen Standort ihrer Hardware angeht und wieviel und welche Hardware darin ist oder was diese tut.</div>
 
     </div>
   </div>
@@ -593,7 +584,7 @@ What state is tied to a connection? Transactions A disconnect implies a ROLLBACK
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/07/27/mysql-commit-size-and-speed.html" class='text-decoration-none text-dark'>MySQL Commit Size and Speed</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2020/10/28/mysql-ecosystem-fragmentation.html" class='text-decoration-none text-dark'>MySQL: Ecosystem fragmentation</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -601,12 +592,11 @@ What state is tied to a connection? Transactions A disconnect implies a ROLLBACK
             Kristian Köhntopp
           </a>
           -
-          July 27, 2020
+          October 28, 2020
         </div>
 
-        <div class='mt-3'>When writing data to disk, for small transactions the cost of writing the commit out do disk dominates the execution time of the script. In order to show that, I wrote a little Python script.
-The script creates a test table in a database and writes 10.000 rows of test data into it, in commit sizes of 1, 2, 4, &hellip;, 1024 rows.
-$ ./mysql.py --help Usage: mysql.py [OPTIONS] COMMAND [ARGS].</div>
+        <div class='mt-3'>Sometimes things change in a way that is hard to put a finger on, but I am doing this MySQL thing since 3.23, and commercially since 2005, and the environment is changing. These days, when you talk to people in need of MySQL, the first thing you have to ask them is &ldquo;Which MySQL&rdquo;. And by that I do not mean a version number in the first place.
+The answer may be:</div>
 
     </div>
   </div>
@@ -640,7 +630,7 @@ $ ./mysql.py --help Usage: mysql.py [OPTIONS] COMMAND [ARGS].</div>
         <a href="/blog/11.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/54.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -676,9 +666,6 @@ $ ./mysql.py --help Usage: mysql.py [OPTIONS] COMMAND [ARGS].</div>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>

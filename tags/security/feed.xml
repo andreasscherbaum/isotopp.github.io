@@ -6,7 +6,84 @@
     <description>Recent content in security on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jun 2023 13:28:45 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/security/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Jan 2024 23:01:30 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/security/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sshpass</title>
+      <link>https://blog.koehntopp.info/2023/09/15/sshpass.html</link>
+      <pubDate>Fri, 15 Sep 2023 01:02:03 +0000</pubDate>
+      
+      <guid>https://blog.koehntopp.info/2023/09/15/sshpass.html</guid>
+      <description>&lt;p&gt;Heute lernte ich, daß das Utility &lt;code&gt;sshpass&lt;/code&gt; existiert.
+Ich habe das beim Lesen eines &lt;code&gt;.gitlab.ci.yml&lt;/code&gt; Files gelernt.
+Und ihr wundert Euch, wieso Sysadmins alle Schwarz tragen und an Whisky interessiert sind.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2023/09/sshpass-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Was ist &lt;code&gt;sshpass&lt;/code&gt; werdet ihr jetzt fragen?&lt;/p&gt;
+&lt;p&gt;Und
+&lt;a href=&#34;https://www.redhat.com/sysadmin/ssh-automation-sshpass&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RedHat&lt;/a&gt;
+
+
+erklärt:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The sshpass utility is designed to run SSH using the keyboard-interactive password authentication mode,
+but in a non-interactive way.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Warum der Artikel jetzt nach und vor diesem Satz dann erklärt,
+wie man das &lt;em&gt;benutzt&lt;/em&gt;, statt zu zeigen, warum man das &lt;em&gt;nie braucht&lt;/em&gt; und &lt;em&gt;wie man es ersetzt&lt;/em&gt; ist unklar.&lt;/p&gt;
+&lt;p&gt;Aber Homebrew ist hilfreich:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; brew search sshpass
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;==&amp;gt; Formulae
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;sshs
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;If you meant &amp;#34;sshpass&amp;#34; specifically:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;We won&amp;#39;t add sshpass because it makes it too easy for novice SSH users to ruin SSH&amp;#39;s security.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das fasst es in etwa zusammen.
+Okay, einmal das ganze gitlab, alle &lt;code&gt;.gitlab-ci.yml&lt;/code&gt;, alle Branches, nach &lt;code&gt;sshpass -p&lt;/code&gt; suchen.&lt;/p&gt;
+&lt;h2 id=&#34;es-wird-schlimmer&#34;&gt;
+    &lt;a href=&#34;#es-wird-schlimmer&#34;&gt;
+	Es wird schlimmer
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Ich konnte das nicht auf sich beruhen lassen, obwohl es Dinge gibt, bei denen einem das Wissen mehr schadet als das Unwissen.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/32255660/how-to-install-sshpass-on-mac&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stackoverflow weiß&lt;/a&gt;
+
+:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How to install sshpass on Mac?&lt;/p&gt;
+&lt;p&gt;Accepted Answer:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;curl -L https://raw.githubusercontent.com/&amp;lt;...&amp;gt;Formula/sshpass.rb &amp;gt; sshpass.rb &amp;amp;&amp;amp; \
+brew install sshpass.rb &amp;amp;&amp;amp; \
+rm sshpass.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;Ich will hochgebeamt werden. Hier ist kein intelligentes Leben möglich.&lt;/p&gt;
+&lt;h2 id=&#34;an-die-zwischenrufer&#34;&gt;
+    &lt;a href=&#34;#an-die-zwischenrufer&#34;&gt;
+	An die Zwischenrufer
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aber ich brauche das doch, weil mein BMC keine Keys &amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Github: &lt;a href=&#34;https://github.com/seveas/python-hpilo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hpilo&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&#34;https://github.com/bmc-toolbox/bmcbutler&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bmcbutler&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&#34;https://github.com/bmc-toolbox/dora&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dora&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Normal wird man die entsprechenden Zertifikate und Pubkeys beim Start der VM oder des Containers durch &lt;code&gt;cloud-init&lt;/code&gt; installieren,
+nachdem sie von der Controlplane des Clusters da hin transportiert worden sind.
+Bei Bare Metal kann der Installserver die Bootstrap-Pubkeys als Teil der Customization des Installationsprozesses mit installieren.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Getting rid of phishing training mails</title>
       <link>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</link>
@@ -365,7 +442,7 @@ Manual and often undocumented work went into creating new systems, so that the a
 This is a &amp;ldquo;loss of control&amp;rdquo; scenario, not &amp;ldquo;loss of availability&amp;rdquo;.
 You do not lose web servers, but you lose the ability to make new ones or to decommission old ones or change the config of the existing ones.
 Systems usually can continue to run without their automation controller for a few hours, provided the operational circumstances are somewhat stable.&lt;/p&gt;
-&lt;p&gt;In some cases, loss of state in the control plane highlighted that the control plan could not rediscover its clients out there and scan them for state.
+&lt;p&gt;In some cases, loss of state in the control plane highlighted that the control plane could not rediscover its clients out there and scan them for state.
 Instead, it was assumed that the entire region was to be recreated from scratch, when it was in fact there, and perfectly functional, just unknown to the controller.&lt;/p&gt;
 &lt;p&gt;In some cases the automation assumed that new systems were to be recreated from scratch by cloning over data from remote regions.
 But if all teams are doing that at the same time, the line capacity is insufficient.
@@ -374,7 +451,7 @@ It is necessary to do something more sophisticated and use local state (cloned o
 &lt;p&gt;Teams picked up the new requirements, development learned a thing or two, and by simply repeating until good the message arrived and improvements got implemented.
 We have now reached a state where automation is only considered &amp;ldquo;done done&amp;rdquo; when it survives one of the regularly simulated outages,
 and when the state of the Opdocs is good enough for members of adjacent teams (instead of the native team) to manage the outage.&lt;/p&gt;
-&lt;p&gt;Also, we have reached a sophistication of automation that allows us to drop each and ever instance and each and every image after 90 days,
+&lt;p&gt;Also, we have reached a sophistication of automation that allows us to drop each and every instance and each and every image after 90 days,
 because replacements are redeployed automatically, and state is cloned over.&lt;/p&gt;
 &lt;h1 id=&#34;burning-it-all-down&#34;&gt;
     &lt;a href=&#34;#burning-it-all-down&#34;&gt;
@@ -500,7 +577,7 @@ For good measure, I also enabled &lt;a href=&#34;https://httpd.apache.org/docs/c
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDomain&lt;/span&gt; mybasedomain.koehntopp.de contentdomain.koehntopp.de proxydomain.koehntopp.de
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDContactEmail&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;user&lt;/span&gt;@example.com
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDCerticateAgreement&lt;/span&gt; accepted
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDCertificateAgreement&lt;/span&gt; accepted
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;MDPrivateKeys&lt;/span&gt; RSA &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There is no additional &amp;ldquo;SSLEngine&amp;rdquo; needed, except &lt;code&gt;SSLEngine on&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;I also add two macros that I use a lot to create virtual hosts to the same file.
@@ -1403,10 +1480,10 @@ That resulted in &lt;a href=&#34;https://securitylab.github.com/advisories/GHSL-
 
 .
 The exploit goes like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringSubstitutor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;interpolator&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringSubstitutor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createInterpolator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;interpolator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${script:javascript:java.lang.Runtime.getRuntime().exec(&amp;#39;touch /tmp/foo&amp;#39;)}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next to &lt;code&gt;${script:...}&lt;/code&gt; there are apparently also a &lt;code&gt;${url:...}&lt;/code&gt; and `${dns} as other unsuitable substitutions, and they nest.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringSubstitutor&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interpolator&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringSubstitutor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createInterpolator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interpolator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${script:javascript:java.lang.Runtime.getRuntime().exec(&amp;#39;touch /tmp/foo&amp;#39;)}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next to &lt;code&gt;${script:...}&lt;/code&gt; there are apparently also a &lt;code&gt;${url:...}&lt;/code&gt; and `${dns} as other unsuitable substitutions, and they nest.&lt;/p&gt;
 &lt;p&gt;This was fixed in October 2022, after being reminded by GHSL in May and August.&lt;/p&gt;
 &lt;p&gt;It was introduced in October 2018, in Version 1.5, and only discovered in March this year.&lt;/p&gt;
 &lt;h1 id=&#34;whats-wrong-with-this&#34;&gt;
@@ -3017,81 +3094,6 @@ Also wieviel Zeit, Kapital und Ausbildung braucht ein Angreifer, um uns gefährl
  kann man annehmen, daß es nicht das Problem von Google ist, Anforderungen an die Anwendungen zu stellen, die ein Anwender für seinen Account zuläßt. Insbesondere wenn der Anwender eine Firma ist und der Account Teil eines GSuite Business Accounts ist.&lt;/p&gt;
 &lt;p&gt;Und das ist die eigentliche Frage, die geklärt werden muß.&lt;/p&gt;
 &lt;p&gt;OAuth2 ist eine gute Sache. Auch Mailbox.org und OX wissen das und haben das korrekt implementiert, sind dabei aber in die OAuth2 Restricted Scope Requirements für Serverbetreiber gelaufen.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mehr Paßwort-Sicherheit</title>
-      <link>https://blog.koehntopp.info/2019/02/08/mehr-passwort-sicherheit.html</link>
-      <pubDate>Fri, 08 Feb 2019 10:14:19 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2019/02/08/mehr-passwort-sicherheit.html</guid>
-      <description>&lt;p&gt;Basierend auf &lt;a href=&#34;https://twitter.com/isotopp/status/1093771082400714753&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;einem Twitter-Thread&lt;/a&gt;
-
-&lt;/p&gt;
-&lt;p&gt;In &lt;a href=&#34;https://pca.st/rEmK&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Aus dem Journalistischen Maschinenraum&lt;/a&gt;
-
- diskutieren Peter Welchering und Kollegen von ihm den &amp;ldquo;Ändere Dein Paßwort Tag&amp;rdquo;.
-Die fehlende Frage dabei:
-Warum behaupten Leute, daß Ändern des Passworts unsicherer ist oder jemanden sicherer macht?&lt;/p&gt;
-&lt;p&gt;Szenarien sind wichtig, wann immer man über Security (oder Management) diskutiert.&lt;/p&gt;
-&lt;p&gt;Ohne Passwortmanager macht man sich das Leben schwerer, weil man sich Dinge merken muss.
-Damit das funktioniert nehmen Leute schwache Passwörter, und in Folge sinkt das Sicherheitheitsniveau.
-Steht so auch in der originalen Studie.&lt;/p&gt;
-&lt;p&gt;Die Hauptgefahr dieser Tage ist die transitive Ausnutzung von Paßworten:
-Leute, die dasselbe Paßwort etwa bei eBay und web.de haben lassen sich das eBay Paßwort abphishen, wie es so gerne getan wird.
-Im eBay Account ist im Admin-Panel die Mailadresse hinterlegt, sagen wir bei web.de.
-Dort wird dasselbe Paßwort verwendet wie bei eBay und zack, ist der Mailaccount weg.
-Der ist aber Passwort-Vergessen Recovery-Account für ein Dutzend andere Dinge (und im IMAP Archiv kann man auch sehen, wo).
-Und zack, sind die Accounts auch alle weg.&lt;/p&gt;
-&lt;p&gt;Daher ist es wichtig, generierte, starke, zufällige Passwörter zu haben.
-&lt;strong&gt;Und für jede Site ein anderes.&lt;/strong&gt;
-Das kann man gar nicht genug betonen.&lt;/p&gt;
-&lt;p&gt;Dabei heißt aber, eigentlich sollte es »Verwende einen Passwort-Manager Tag« sein.
-Das hat noch weitere Vorteile:
-Man weiß, ob man ein Paßwort für eine Site hat, das älter ist als deren letzte Sicherheitsschwankung.&lt;/p&gt;
-&lt;p&gt;Re den Podcast:
-Im Grunde ist es ganz einfach - Nachdenken hilft.
-Journalismus ist die Frage nach dem Warum.
-Davon haben wir zu wenig.&lt;/p&gt;
-&lt;p&gt;Im Nachgang gab es dann die &lt;a href=&#34;https://twitter.com/joschtl/status/1093780755048812544&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Frage&lt;/a&gt;
-
-:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Kann man einem Passwortmanager uneingeschränkt vertrauen?
-Schafft man damit nicht einen Single Point of Failure?
-Was hältst Du von &amp;ldquo;sicheres, zufallserzeugtes, nirgends elektronisch gespeichertes Passwort, das je nach Verwendungsort mit einem Prä -/In-/Sufffix versehen wird&amp;rdquo;?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Natürlich man einem Paßwortmanager nicht uneingeschränkt vertrauen.
-Das kannst Du nix und niemandem.
-Das ist aber auch nicht die Frage.
-Die Frage ist, ob Du im Mittel hinterher sicherer bist als vorher und die Antwort ist uneingeschränkt ja, sogar bei einem trivialen Setup.
-Paßwortmanager speichern nicht nur Paßworte, die managen sie auch.
-Was heißt das?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Paßworte zufällig generieren.&lt;/li&gt;
-&lt;li&gt;Paßwort Änderungshistorie dokumentieren - Wann hast Du Wo Was geändert. Das erlaubt Dir Zugriff auf alte Paßworte und erlaubt Dir auch 3.:
-3.Zusammen mit der Historie kannst Du nun wissen, ob Dein Paßwort für &lt;a href=&#34;http://x.de&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://x.de&lt;/a&gt;
-
-  neuer ist als der letzte Security-Fail bei &lt;a href=&#34;http://x.de&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://x.de&lt;/a&gt;
-
-&lt;/li&gt;
-&lt;li&gt;Und damit kommen wir zum Reporting: Ein Paßwort-Manager erlaubt Dir Deine gesamte Security Posture in der Gesamtschau zu beurteilen. Wie viele schlechte Paßworte hast Du? Wie viele Paßworte hast Du, die Du ändern mußt, wegen 3.?&lt;/li&gt;
-&lt;li&gt;Erlaubt Dir Nachfolgemanagement. Wenn Du ge-bus-t wirst, können Deine Rechtsnachfolger sehen, wo Du Account hast und die Kontrolle über Deine Accounts und Assets gezielt übernehmen.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Der Unterschied zwischen &amp;ldquo;Ich hab ein Schema um mir ähnliche Paßworte auszudenken, die eventuell sicher sind&amp;rdquo; und einem Management-Schema wird so hoffentlich klar.&lt;/p&gt;
-&lt;p&gt;»Was hältst Du von &amp;ldquo;Paßwort mit Site-Suffix&amp;rdquo;?« Nix.&lt;/p&gt;
-&lt;p&gt;Warum nicht?
-Es löst das Transitivitäts-Problem, halb.
-Es ist keine &lt;strong&gt;Management&lt;/strong&gt; Strategie für virtuelle Assets.
-Es dokumentiert nix.
-Weder Du noch die Leute, für die Du verantwortlich bist, haben davon einen Gewinn.&lt;/p&gt;
-&lt;p&gt;Die Frage, die Du auch lösen mußt:
-Was tun Dein Sohn oder Deine Frau mit all Deinem virtuellen Besitz, wenn Du mit dem Familienmobil einen Alleebaum kuschelst oder über dem guten Steak einen Infarkt bekommst - itunes Musik und Apps, Play Store Apps, Kindle Library, Steam Lib?
-Leute, das ist alles nicht so schwierig: Stellt Euch einfach vor, das seien echte, anfaßbare Dinge.
-Für die habt Ihr Versicherungen, Treuhänder, Hinterlegungen, Kontrollen und Qualitätsstandards, sogar in einer Familie.&lt;/p&gt;
-&lt;p&gt;Jetzt dasselbe, auch für nicht anfaßbare Dinge.
-Die Antwort ist zwangsläufig ein Paßwortmanager und ein Gespräch mit der Familie und ein Umschlag irgendwo mit Siegel drauf, wo Frau und Kinder wissen wo der ist.&lt;/p&gt;
 </description>
     </item>
     

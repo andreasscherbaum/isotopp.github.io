@@ -9,6 +9,7 @@
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/">
 
 
@@ -19,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0">
+<meta name="generator" content="Hugo 0.122.0">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -54,7 +55,7 @@
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.6b600fb66ca1591ba6dcc9b3bdfc59ebd5c0fdc49622889f839fc36f71dde892.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
 
 
     </head>
@@ -118,7 +119,7 @@
 <div class="page mb-4">
 
   <div class='row justify-content-center text-center my-4 mx-0'>
-    <header>
+    <header class="headerbanner">
       <div class='col'>
         <h1 class="title mb-lg-4 text-white">
           Die wunderbare Welt von Isotopp
@@ -136,7 +137,7 @@
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/03/03/mysql-fuer-dummies-2.html" class='text-decoration-none text-dark'>MySQL für Dummies (2)</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/12/26/bundestrojaner.html" class='text-decoration-none text-dark'>Bundestrojaner</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -144,11 +145,12 @@
             Kristian Köhntopp
           </a>
           -
-          March 3, 2006
+          December 26, 2006
         </div>
 
-        <div class='mt-3'>Für die folgenden Beispiele wird eine breitere Tabelle gebraucht, und es müssen auch einige Testdaten vorhanden sein. Daher hier einmal eine Tabellendefinition und ein Generatorscript für Testdaten:
-root@localhost [rootforum]&gt; drop table t; Query OK, 0 rows affected (0.00 sec) root@localhost [rootforum]&gt; create table t ( id bigint unsigned not null, d char(12) not null, e char(25) not null, i integer unsigned not null ); Query OK, 0 rows affected (0.22 sec) root@localhost [rootforum]&gt; [1]+ Stopped mysql -u root -p und</div>
+        <div class='mt-3'>Und die finale Analyse des Problemkomplexes Bundestrojaner kann man gemeinschaftlich so schnell wie hier in #lug-kiel durchführen:
+Z&gt; In den letzten Tagen ist der Dedi 3x einfach stehengeblieben oder jemand hat ihn abgeschossen. In den Logdateien ist nix verdächtiges zu finden. Festplattentests sind in Ordnung.
+I&gt; Z: Verschiedene Versionen vom Bundestrojaner haben diesen Effekt. Die Linux version ist noch nicht sehr stabil. Die Dinger werden zur Zeit auf allen möglichen Erotiksites als teil des Kipopräventionsprogrammes installiert.</div>
 
     </div>
   </div>
@@ -159,7 +161,7 @@ root@localhost [rootforum]&gt; drop table t; Query OK, 0 rows affected (0.00 sec
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/03/02/mysql-fuer-dummies-1.html" class='text-decoration-none text-dark'>MySQL für Dummies (1)</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/12/26/filesysteme-fuer-theclaw-30-jahre-unix-source.html" class='text-decoration-none text-dark'>Filesysteme für theclaw (30 Jahre Unix Source)</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -167,11 +169,17 @@ root@localhost [rootforum]&gt; drop table t; Query OK, 0 rows affected (0.00 sec
             Kristian Köhntopp
           </a>
           -
-          March 2, 2006
+          December 26, 2006
         </div>
 
-        <div class='mt-3'>Ein MySQL Datenbankserver hat ein datadir. Das Kommando
-root@localhost [(none)]&gt; show variables like &#34;datadir&#34;; +---------------+-----------------+ | Variable_name | Value | +---------------+-----------------+ | datadir | /var/lib/mysql/ | +---------------+-----------------+ 1 row in set (0.00 sec) sagt uns, wo das liegt. In datadir wird für jede mit CREATE DATABASE angelegte Datenbank ein Verzeichnis angelegt, und für jede mit CREATE TABLE in dieser Datenbank vorhandene Tabelle eine *.frm-Datei. Dies gilt für alle Tabellentypen, die MySQL verwendet, sogar für MEMORY-Tables.</div>
+        <div class='mt-3'>&mdash; Log opened Di Dez 26 15:52:09 2006
+theclaw&gt; Hey :] Spitze erklaerung zu ext2. Isotopp&gt; Danke
+theclaw&gt; Bist du Kerneldeveloper?
+Isotopp&gt; Nein. Mysql Consultant.
+theclaw&gt; Hmm. Hab da was nicht verstanden bei der Erklärung. Und zwar: Was sind Datenblockzeiger?
+Isotopp&gt; Die Blockadressen von Datenblöcken einer Datei.
+theclaw&gt; Ich paste mal was
+(0-11):9711-9722, (IND):9723, (12-267):9724-9979, (DIND):9980, (IND):9981, (268-523):9982-10237, (IND):10238, (524-779):10239-10494, (IND):10495, (780-1035):10496-10751, (IND):10752, (1036-1291):10753-11008, (IND):11009, (1292-1547):11010-11265, (IND):11266, (1548-1795):11267-11514 Isotopp&gt; Habs im Originalartikel .</div>
 
     </div>
   </div>
@@ -182,7 +190,7 @@ root@localhost [(none)]&gt; show variables like &#34;datadir&#34;; +------------
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/01/25/ist-sony-schizophren.html" class='text-decoration-none text-dark'>Ist Sony schizophren?</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/11/24/an-on.html" class='text-decoration-none text-dark'>AN.ON</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -190,14 +198,11 @@ root@localhost [(none)]&gt; show variables like &#34;datadir&#34;; +------------
             Kristian Köhntopp
           </a>
           -
-          January 25, 2006
+          November 24, 2006
         </div>
 
-        <div class='mt-3'>Sony, die Firma, die uns die ersten kommerziell eingesetzten Rootkits gebracht hat, präsentiert nun den VAIO XL2 .
-Sony:
-The Windows Media Center PC sports a 200-disc changer that, with a single click, lets you rip that many CDs while you sleep.
-Es ist unbekannt, ob das Gerät dabei vom Sony Rootkit infiziert werden kann oder nicht.
-Ist Sony schizophren?</div>
+        <div class='mt-3'>Wie in AN.ON: Thilo Weichert lädt ein angekündigt war heute die Konferenz zu AN.ON im BMWi in Berlin. AN.ON hat den Java Anon Proxy entwickelt, ein Anonymisierungssystem für HTTP-Zugriffe ähnlich, aber unterschiedlich von tor.
+In der Konferenz kam sehr schön heraus, was der Unterschied zwischen JAP und tor ist: Die Unterschiede sind nicht primär technischer Art (die technischen Unterschiede existieren auch, sind aber im Grunde unwesentlich), sondern in den Prozessen über der Technik.</div>
 
     </div>
   </div>
@@ -208,7 +213,7 @@ Ist Sony schizophren?</div>
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/01/24/rechte-und-inhaber-wen-juckt-s.html" class='text-decoration-none text-dark'>Rechte und Inhaber - wen juckt&#39;s?</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/11/12/gpl-microsoft-novell-samba-org-und-die-freiheiten-der-gpl.html" class='text-decoration-none text-dark'>GPL: Microsoft, Novell, Samba.org und die Freiheiten der GPL</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -216,11 +221,13 @@ Ist Sony schizophren?</div>
             Kristian Köhntopp
           </a>
           -
-          January 24, 2006
+          November 12, 2006
         </div>
 
-        <div class='mt-3'>Wer die Ereignisse rund um das Sony Rootkit verfolgt hat, der weiß schon, daß es Rechteinhaber mit dem Urheberrecht selbst nicht so genau nehmen und zum Beispiel schon mal gerne GPL Sourcecode ohne Beachtung der Lizenzbestimmungen in ihre Software einbauen, bevor sie diese ungefragt und getarnt auf fremden Rechnern einschmuggeln.
-Da ist es nur konsequent, wenn ausgerechnet die Oberschreihälse und Raubkopiererjäger von der Gesellschaft zur Verfolgung von Urheberrechtsverletzungen (GVU) (no less!</div>
+        <div class='mt-3'>In Business und OSS verweist Jörg Möllenkamp auf Samba Team Asks Novell zu Reconsider und spielt ein Gedankenexperiment durch:
+So im gedanklichen Hintergrund stellt sich mir jetzt die Frage, was wohl passieren würde, wenn das Entwicklungsteam eines wesentlichen Bestandteils der Umgebung einer der Großdistributionen plötzlich die Lizenz entziehen würde. Als Gedankenspiel: Das Samba-Team zieht die Lizenz von Novell für Samba zurück.
+Samba beschreibt sich selbst wie folgt:
+Samba is an Open Source /Free Software suite that has, since 1992 , provided file and print services to all manner of SMB/CIFS clients, including the numerous versions of Microsoft Windows operating systems.</div>
 
     </div>
   </div>
@@ -231,7 +238,7 @@ Da ist es nur konsequent, wenn ausgerechnet die Oberschreihälse und Raubkopiere
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/01/16/noch-mehr-lauschen-einfach-mal-mithoeren.html" class='text-decoration-none text-dark'>Noch mehr lauschen: &#34;Einfach mal mithören&#34;</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/11/01/an-on-thilo-weichert-laedt-ein.html" class='text-decoration-none text-dark'>AN.ON: Thilo Weichert lädt ein</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -239,12 +246,12 @@ Da ist es nur konsequent, wenn ausgerechnet die Oberschreihälse und Raubkopiere
             Kristian Köhntopp
           </a>
           -
-          January 16, 2006
+          November 1, 2006
         </div>
 
-        <div class='mt-3'>Die Polizei in Schleswig-Holstein will gerne einfach mal mithören : So soll zum Beispiel auch ohne konkreten Anfangsverdacht einfach jeder abgehört werden können. Beim ULD schreibt man dazu in einer Stellungnahme , was man davon hält.
-Der Schleswig-Holsteinische Innenminister Ralf Stegner hält in &ldquo;Thilo allein zu Haus &rdquo; diese Stellungnahme für weltfremd:
-Der Datenschützer tue aber so, als gehe von der Polizei grundsätzlich eine Bedrohung der Bürgerrechte aus. &ldquo;Das ist eine verkehrte Welt, in der Thilo Weichert allein lebt&rdquo;, sagte Stegner am Donnerstag (12.</div>
+        <div class='mt-3'>Am 24.11.2006 findet in Berlin am BMWi die Abschlußveranstaltung des Projektes &ldquo;Starke Anonymität und Unbeobachtbarkeit im Internet &rdquo; (AN.ON) statt. AN.ON entwickelt und betreibt den vom BMWi geförderten Anonymisierungsdienst AN.ON/JAP , unter anderem in Zusammenarbeit mit dem ULD Schleswig-Holstein . Die finanzielle Projektförderung durch das BMWi läuft zum Ende des Jahres 2006 aus.
+Das Programm der Veranstaltung findet man im Flyer (PDF).
+Anonyme Kommunikation ist in Zeiten der Vorratsdatenspeicherung wichtiger denn je.</div>
 
     </div>
   </div>
@@ -255,7 +262,7 @@ Der Datenschützer tue aber so, als gehe von der Polizei grundsätzlich eine Bed
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/12/30/bist-du-deutschland-oder-ein-vereinfachtes-weltbild-fuer-anfaenger.html" class='text-decoration-none text-dark'>&#34;Bist Du Deutschland?&#34; oder &#34;Ein vereinfachtes Weltbild für Anfänger&#34;</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/31/ein-jahr-auf-der-strasse.html" class='text-decoration-none text-dark'>Ein Jahr auf der Straße</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -263,14 +270,11 @@ Der Datenschützer tue aber so, als gehe von der Polizei grundsätzlich eine Bed
             Kristian Köhntopp
           </a>
           -
-          December 30, 2005
+          October 31, 2006
         </div>
 
-        <div class='mt-3'>Ganz platt-klischeehaftes Deutschland
-Im Spiegel vertritt Markus Söder, CSU die Auffassung:
-Seine Partei trete dafür ein, in Deutschland wieder ein stärkeres Gemeinschafts- und Nationalgefühl zu entwickeln, sagte CSU-Generalsekretär Markus Söder der &ldquo;Berliner Zeitung&rdquo;. &ldquo;Deutschland braucht einen ideellen Überbau&rdquo;, sagte Söder dem Blatt.
-Das trifft in dieser allgemeinen Form eine ganze Menge Knöpfe bei mir.
-Da ist einmal der Hintergrund zu den Unruhen in den französischen Trabantenstädten - das Schlagwort der Berichterstattung, das in Bezug auf die deutsche Gesellschaft verwendet worden ist, ist &ldquo;Parallelgesellschaft&rdquo;.</div>
+        <div class='mt-3'>Jetzt bin ich genau ein Jahr lang für MySQL auf der Straße gewesen. Eigentlich begann alles schon ein wenig früher, als ich meinen Resturlaub Anfang September 2005 dazu verwendet habe, am MySQL Consulting Bootcamp 2005 in München teilzunehmen und mich dort auch zertifizieren zu lassen. Zwei Monate später, am 1. November, habe ich dann meinen neuen Job angetreten.
+Die ersten zwei Wochen habe ich Peter Zaitsev beim c&rsquo;t DVD-Shop Benchmark begleitet und dabei eine Menge über MySQL Performance Tuning gelernt.</div>
 
     </div>
   </div>
@@ -281,7 +285,7 @@ Da ist einmal der Hintergrund zu den Unruhen in den französischen Trabantenstä
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/12/28/sony-rootkit-timeline.html" class='text-decoration-none text-dark'>Sony Rootkit Timeline</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/26/mut-64er-10-86.html" class='text-decoration-none text-dark'>MuT 64er 10/86</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -289,12 +293,11 @@ Da ist einmal der Hintergrund zu den Unruhen in den französischen Trabantenstä
             Kristian Köhntopp
           </a>
           -
-          December 28, 2005
+          October 26, 2006
         </div>
 
-        <div class='mt-3'>Rootkit - Sonys digitaler Hausfriedensbruch : Eine Timeline. Hintergrundmaterial zum Vortrag auf dem 22C3.
-Update: Preliminary settlement filed in Sony suit :
-Lawyers in a class action lawsuit filed against Sony BMG, First 4 Internet and SunnComm last month have submitted a preliminary settlement, which calls for Sony to stop manufacturing CDs with XCP and MediaMax DRM, provide replacement discs, and make cash payments to affected customers&hellip;.&ldquo;Incentive #1&rdquo; will provide customers with a cash payment of $7.</div>
+        <div class='mt-3'>Im März 1983 bekam ich meinen ersten eigenen Computer, einen Commodore 64. Meiner war das alte Modell mit braunen statt schwarzen Funktionstasten und dem VIC I, bei dem die linken Ränder von Sprites immer flackerten. Im Sommer 1983 kam dann eine 1541 dazu.
+Irgendwann in dieser Zeit zog ich außerdem aus der Probsteier Pampa in die tosende Großstadt, nach Kiel. Dort lernte ich irgendwo an den üblichen Diskettentauschstellen Daniel kennen. Das war gut, denn so kannte ich jemanden, der wie ich im Gegensatz zu den üblichen Kopierkiddies auch selber was machte.</div>
 
     </div>
   </div>
@@ -305,7 +308,7 @@ Lawyers in a class action lawsuit filed against Sony BMG, First 4 Internet and S
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/24/k-nstler-vs-sony.html" class='text-decoration-none text-dark'>Künstler vs. Sony</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/14/mysql-performanceprobleme-mit-einem-profiler-analysieren.html" class='text-decoration-none text-dark'>MySQL Performanceprobleme mit einem Profiler analysieren</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -313,12 +316,10 @@ Lawyers in a class action lawsuit filed against Sony BMG, First 4 Internet and S
             Kristian Köhntopp
           </a>
           -
-          November 24, 2005
+          October 14, 2006
         </div>
 
-        <div class='mt-3'>Was sagen die Künstler, deren Werke von Sony mit dem illegalen Rootkit verschönert worden sind, dazu und was macht die Sony Affäre mit deren Einnahmen?
-Businessweek schreibt:
-Van Zant&rsquo;s Get Right with the Man CD was released in May, but six months later it still was doing better-than-respectable business on Amazon.com. The album ranked No. 887 on the online retailer&rsquo;s list of music sales on Nov. 2. &hellip; GROWING OUTRAGE.</div>
+        <div class='mt-3'>Oprofile ist ein Profiler. Und zwar einer, der die Performance Measurement Instrumentation verwendet, die in moderne CPUs eingebaut ist, wenn diese vorhanden ist. Der Profiler braucht also keine speziell für Profiling compilierten Binaries, sondern zieht sich statische Samples des Programmzählers aus dem laufenden System und analysiert diese: Es findet heraus, welcher Prozeß gerade aktiv ist, welche Bibliothek in diesem Prozeß gerade verwendet wird und wenn Symboltabellen vorhanden sind (Kein &ldquo;strip&rdquo; auf die Bibliothek oder das Programm angewendet), dann weiß Oprofile sogar, welche Funktion oder Methode gerade aktiv ist.</div>
 
     </div>
   </div>
@@ -329,7 +330,7 @@ Van Zant&rsquo;s Get Right with the Man CD was released in May, but six months l
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/22/eff-vs-sony.html" class='text-decoration-none text-dark'>EFF vs. Sony</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/10/google-kauft-youtube.html" class='text-decoration-none text-dark'>Google kauft YouTube</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -337,11 +338,12 @@ Van Zant&rsquo;s Get Right with the Man CD was released in May, but six months l
             Kristian Köhntopp
           </a>
           -
-          November 22, 2005
+          October 10, 2006
         </div>
 
-        <div class='mt-3'>Fred schickt mir den folgenden Link: EFF Files Class Action Lawsuit Against Sony BMG :
-The Electronic Frontier Foundation (EFF), along with two leading national class action law firms, today filed a lawsuit against Sony BMG, demanding that the company repair the damage done by the First4Internet XCP and SunnComm MediaMax software it included on over 24 million music CDs&hellip;.Both the XCP and MediaMax CDs include outrageous, anti-consumer terms in their &ldquo;clickwrap&rdquo; EULAs.</div>
+        <div class='mt-3'>Google Pressemeldung :
+Google Inc. announced today that it has agreed to acquire YouTube, the consumer media company for people to watch and share original videos through a Web experience, for $1.65 billion in a stock-for-stock transaction. Following the acquisition, YouTube will operate independently to preserve its successful brand and passionate community.
+Bezahlt wurden 1.65 Milliarden US-Dollar in Aktien.</div>
 
     </div>
   </div>
@@ -352,7 +354,7 @@ The Electronic Frontier Foundation (EFF), along with two leading national class 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/20/fertig-gelesen-alastair-reynolds-pushing-ice.html" class='text-decoration-none text-dark'>Fertig gelesen: Alastair Reynolds: &#34;Pushing Ice&#34;</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/04/kris-vs-2xmsa-30.html" class='text-decoration-none text-dark'>Kris vs. 2xMSA 30</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -360,11 +362,13 @@ The Electronic Frontier Foundation (EFF), along with two leading national class 
             Kristian Köhntopp
           </a>
           -
-          November 20, 2005
+          October 4, 2006
         </div>
 
-        <div class='mt-3'>Pushing Ice&quot; ist der neuste Roman von Alastair Reynolds.
-&ldquo;Pushing Ice&rdquo; beginnt ganz klein, nach den Maßstäben einer Alastair Reynolds Der zehnte Mond von Saturn, Janus , macht sich auf, das Sonnensystem zu verlassen. Nur ein einziges Schiff, Rockhopper, ist derzeit weit genug draußen und gut genug ausgestattet, um die Verfolgung aufzunehmen und den Raumschiffmond zu erforschen. Doch natürlich gelingt es der Crew der Rockhopper nicht, von Janus zu entkommen, während der Mond immer weiter beschleunigt, und so wird aus der Raumreise auch eine Zeitreise&hellip;</div>
+        <div class='mt-3'>&lt; Ein MSA-30 Array mit 14 Platten.
+Liebes Tagebuch!
+Heute bin ich gegen eine HP 585 und zwei MSA 30 angetreten und ich bin mir nicht ganz sicher, wer gewonnen hat. Aber laß mich von vorne erzählen.
+Wie Du weißt, liebes Tagebuch, berechnet sich die Anzahl der Zugriffe, die man von einer einzelnen Platte pro Sekunde erwarten kann, wie folgt: 1000 ms/(Average Seek Time in ms + Rotational Delay in ms + Transfer Time in ms).</div>
 
     </div>
   </div>
@@ -375,7 +379,7 @@ The Electronic Frontier Foundation (EFF), along with two leading national class 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/06/cso-vs-sony.html" class='text-decoration-none text-dark'>CSO vs. Sony</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/10/01/mysql-zeichensatz-grundlagen.html" class='text-decoration-none text-dark'>MySQL: Zeichensatz-Grundlagen</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -383,13 +387,12 @@ The Electronic Frontier Foundation (EFF), along with two leading national class 
             Kristian Köhntopp
           </a>
           -
-          November 6, 2005
+          October 1, 2006
         </div>
 
-        <div class='mt-3'>Update zu Nützliche Kombinationen :
-Als Chief Security Officer ist man natürlich verantwortlich dafür festzulegen, welche Software auf den Rechnern einer Firma installiert werden darf. Ein Rootkit gehört sicherlich nicht dazu. Welche CDs sind also für das Hören in der Firma zu verbieten, weil sie sonst Firmenrechner verseuchen?
-Hier die Antwort von Sony mit der kompletten Liste :
-Every Sony BMG release starting April 1, 2004 has been suject to content protection technology.</div>
+        <div class='mt-3'>Markus fragt:
+Durch &hellip; wechseln wir gerade unseren Root-Server. Dort habe ich bereits das Gentoo-Basissystem am fluppen. Bei der Umstellung möchte ich gleich von MySQL 4 auf 5 wechseln.Dabei stellt sich die Frage, ob ich das System nicht gleich von latin1 auf utf-8 umstellen soll. Sollte ich lieber bei latin1 bleiben und alles so migrieren oder doch den großen Wurf zu utf-8 wagen?
+Die Frage habe ich ihm schon beantwortet, aber versprochen, das Thema noch einmal im Blog &ldquo;in groß&rdquo; durchzudeklinieren.</div>
 
     </div>
   </div>
@@ -400,7 +403,7 @@ Every Sony BMG release starting April 1, 2004 has been suject to content protect
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/04/nuetzliche-kombinationen.html" class='text-decoration-none text-dark'>Nützliche Kombinationen</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/09/22/gesetz-ber-die-deutsche-nationalbibliothek.html" class='text-decoration-none text-dark'>Gesetz über die Deutsche Nationalbibliothek</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -408,11 +411,12 @@ Every Sony BMG release starting April 1, 2004 has been suject to content protect
             Kristian Köhntopp
           </a>
           -
-          November 4, 2005
+          September 22, 2006
         </div>
 
-        <div class='mt-3'>Das Sony BMG Rootkit aus Legal, Illegal, Scheißegal hat eine dicke Spur von Artikeln nach sich gezogen. Sony bietet jetzt ein Toolkit an, mit dem man die Rootkit-Funktionen deinstallieren kann, der Filtertreiber (den man in der EULA dennoch nicht abgenickt hat) bleibt aber drin. Das ist sehr gnädig von Sony BMG.
-In World of Warcraft hackers using Sony BMG rootkit auf Securityfocus wird inzwischen von einer sinnvollen Anwendung des Sony BMG Rootkits berichtet: Es ist offenbar problemlos möglich, auf einer Maschine, die mit einer Sony CD verseucht worden ist, Cheats für World of Warcraft zu installieren, die von der Spyware, die Blizzard mit dem Spiel zusammen installiert, nicht entdeckt werden kann.</div>
+        <div class='mt-3'>Deutsche Politiker haften nicht für die Produkte ihrer Arbeit. Dadurch unterscheidet sich ihre Tätigkeit von der so ziemlich aller anderen Leute. Unsere Politiker haben ein Gesetz über die Deutsche Nationalbibliothek beschlossen, das am 22. Juni diesen Jahres verkündet worden ist. Das Gesetz ist offensichtlich in grandiosem Unverständis über die Natur des Netzes gemacht worden, aber wer nicht haftet, darf halt auch öffentlich dumm sein.
+Schauen wir also mal:
+In §14 definiert dieses Gesetz eines Ablieferungspflicht für Medienwerke, die nach §14 (3) auch Webseiten (&ldquo;Medienwerke in unkörperlicher Form&rdquo;) erfaßt.</div>
 
     </div>
   </div>
@@ -423,7 +427,7 @@ In World of Warcraft hackers using Sony BMG rootkit auf Securityfocus wird inzwi
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/01/legal-illegal-scheissegal.html" class='text-decoration-none text-dark'>Legal, Illegal, Scheißegal...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/09/22/urteilsbegr-ndung-zu-gpl-in-deutschland-vor-gericht-durchgesetzt.html" class='text-decoration-none text-dark'>Urteilsbegründung zu GPL in Deutschland vor Gericht durchgesetzt</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -431,11 +435,12 @@ In World of Warcraft hackers using Sony BMG rootkit auf Securityfocus wird inzwi
             Kristian Köhntopp
           </a>
           -
-          November 1, 2005
+          September 22, 2006
         </div>
 
-        <div class='mt-3'>Sony BMG baut ein Rootkit, um damit das ihrer Meinung nach illegale Kopieren von Dateien auf den Rechnern ihrer Kunden zu verhindern. Die Software gefährdet die Stabilität der Kundensysteme, ist nicht Bestandteil der Lizenzvereinbarung und tut mehr, als sie für die Erreichung ihres Ziels tun müßte. Die Meldung bei Heise zieht man das folgende Fazit:
-In den Lizenzvereinbarungen (EULA) der CD – der man zustimmen muss, damit die darauf befindliche Abspiel-Software für PCs startet - steht laut Russinovich nichts davon, dass eine Software installiert würde oder sich gar tief im System verankert.</div>
+        <div class='mt-3'>Nachtrag zu GPL in Deutschland vor Gericht durchgesetzt :
+Harald Weltes Blog zum Thema gpl-violations.org Press Release Urteilsbegründung (hier im Volltext als PDF ) Groklaw Artikel Golem Artikel Heise Artikel Aus der Urteilsbegründung:
+Die GPL ist auf das Rechtverhältnis zwischen den Urhebern und der Beklagten anwendbar. Die drei Softwareprogramme [ msdosfs, initrd und mtd ] werden unstreitig ausschließlich unter den Bedingungen der GPL lizensiert. Im Fall der freien Software ist anzunehmen, daß der Rechteinhaber durch die unterstellung des Programms unter die GPL ein ANgebot an einen bestimmten Personenkreis abgibt, das von den Nutzern durch Vornahme der zustimmungsbedürftigen Handlung angenommen wird; insoweit wird man von einem Verzicht auf den Zugang der Annahmeerklärung (§151 BGB) ausgehen können.</div>
 
     </div>
   </div>
@@ -446,7 +451,7 @@ In den Lizenzvereinbarungen (EULA) der CD – der man zustimmen muss, damit die 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/11/01/user-und-gruppen-prozesse-und-dateien.html" class='text-decoration-none text-dark'>User und Gruppen, Prozesse und Dateien</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/09/19/gpl-marktdurchdringung-ist-kein-wert-an-sich.html" class='text-decoration-none text-dark'>GPL: Marktdurchdringung ist kein Wert an sich</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -454,12 +459,11 @@ In den Lizenzvereinbarungen (EULA) der CD – der man zustimmen muss, damit die 
             Kristian Köhntopp
           </a>
           -
-          November 1, 2005
+          September 19, 2006
         </div>
 
-        <div class='mt-3'>Heute im Irc stellte eine Teilnehmerin den folgenden Fragenschwall:
-Wie finde ich eigentlich heraus, was für Gruppen es auf einem Linuxsystem gibt? Wie füge ich da jemanden hinzu? Lege ich den zuerst als User an, ganz normal? Und: Wenn ich einen Ordner anlege, der nur für eine bestimmte Gruppe zugänglich sein soll, mache ich das doch über File Permissions, oder habe ich falsch gedacht?
-Die offensichtliche Antwort, das Nachsehen in /etc/group, funktioniert bei modernen Unixen nicht mehr zwingend, denn Gruppendefinitionen können nicht nur in lokalen Dateien stehen, sondern auch aus dem NIS, dem NIS+, einem LDAP oder einem Active Directory kommen.</div>
+        <div class='mt-3'>Kommentar zu GPL in Deutschland vor Gericht durchgesetzt.
+Ich glaube nicht das bei der BSD Lizenz ein Konstruktionsfehler vorliegt. Ich denke, es war beabsichtigt das auch &ldquo;Codeklauer&rdquo; damit Geld verdienen können. Man könnte auch sagen, das dies die wahre Freiheit ist. Übrigens kann mit GPL Software auf ähnlicher Weise Geld verdient werden. Was machen denn die Distributoren, auch wenn das jetzt etwas überspitzt ist. Es wird niemand daran gehindert GPL Software zu verkaufen.</div>
 
     </div>
   </div>
@@ -470,7 +474,7 @@ Die offensichtliche Antwort, das Nachsehen in /etc/group, funktioniert bei moder
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/10/28/in-with-the-out-old-with-the-new.html" class='text-decoration-none text-dark'>In with the out, old with the new...</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/09/10/gpl-in-deutschland-vor-gericht-durchgesetzt.html" class='text-decoration-none text-dark'>GPL in Deutschland vor Gericht durchgesetzt</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -478,11 +482,11 @@ Die offensichtliche Antwort, das Nachsehen in /etc/group, funktioniert bei moder
             Kristian Köhntopp
           </a>
           -
-          October 28, 2005
+          September 10, 2006
         </div>
 
-        <div class='mt-3'>Das war&rsquo;s .
-Bis heute - fast zwei Jahre lang - war ich Security-Fuzzi für web.de. Das bedeutet: Ich habe Security Policy definiert, Fachabteilungen bei der Umsetzung von Policies beraten und entweder selbst oder von Dritten die Umsetzung von Policies prüfen lassen, und außerdem den Security Incident Management Prozess betrieben. In der Praxis bedeutet das, daß ich am härtesten Arbeitstag meines Lebens mit der Hilfe von vielen Kollegen einmal das gesamte Rechenzentrum von web.</div>
+        <div class='mt-3'>Auf dem Heise Newsticker heißt es:
+Harald Welte, Mitentwickler des Netfilter-Firewallcodes im Linux-Kernel und Gründer des Projekts gpl-violations , hat vor Gericht einen Erfolg für die GPL erzielt. Wie er in seinem Blog berichtet, entschied das Landgericht Frankfurt am 6.9. im Sinne seiner Klage wegen GPL-Verletzung. Details dazu wollen Welte und sein Anwalt Till Jaeger, Mitbegründer des Instituts für Rechtsfragen der Freien und Open Source Software (ifrOSS ), allerdings erst nach Veröffentlichung des der schriftlichen Urteilsbegründung nennen.</div>
 
     </div>
   </div>
@@ -493,7 +497,7 @@ Bis heute - fast zwei Jahre lang - war ich Security-Fuzzi für web.de. Das bedeu
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/10/08/bin-bash-brace-expansion.html" class='text-decoration-none text-dark'>#!/bin/bash -- Brace Expansion</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/08/07/the-heat-is-on.html" class='text-decoration-none text-dark'>The Heat Is On</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -501,12 +505,13 @@ Bis heute - fast zwei Jahre lang - war ich Security-Fuzzi für web.de. Das bedeu
             Kristian Köhntopp
           </a>
           -
-          October 8, 2005
+          August 7, 2006
         </div>
 
-        <div class='mt-3'>Eine Unix-Kommandoshell nimmt die Benutzereingabe und unterteilt sie in Worte. Das erste Wort einer Zeile ist ein Kommando, der Rest sind die Parameter des Kommandos. So weit so langweilig.
-Interessant wird die Sache, weil eine Unix Shell gut mit Worten umgehen kann. So kann sie Worte ersetzen und dabei auch neue Worte generieren. Dies nennt man Expansion, und die Bash hat sehr viele Expansion-Mechanismen:
-brace expansion, tilde expansion, parameter expansion, variable expansion, arithmetic expansion, command substitution, word splitting und pathname expansion, sowie process substitution werden in dieser Reihenfolge auf den Worten einer Zeile durchgeführt.</div>
+        <div class='mt-3'>Rückkühler, 2x3m (6 qm) Kupferkühlfläche pro Seite
+[ Dieser Artikel hätte vor zwei Wochen fertiggestellt werden sollen, auf dem Höhepunkt der Hitzewelle, aber ich war zu schlapp zum Schreiben. &ndash; kris ]
+&ldquo;1.21 Gigawatt? Tom Edison, wie erzeugt man so viel Strom?&rdquo; &ndash; Dr. Emmett Brown
+Ein Rechenzentrum ist im Wesentlichen eine große isolierte Kiste, deren Türen die meiste Zeit geschlossen gehalten werden. In das Rechenzentrum herein führen - da kommen die meisten Leute von selber drauf - Stromkabel und Netzwerkkabel.</div>
 
     </div>
   </div>
@@ -517,7 +522,7 @@ brace expansion, tilde expansion, parameter expansion, variable expansion, arith
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/10/08/dynamisch-geladener-code.html" class='text-decoration-none text-dark'>Dynamisch geladener Code</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/08/06/zeichensatzaerger.html" class='text-decoration-none text-dark'>Zeichensatzärger</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -525,11 +530,13 @@ brace expansion, tilde expansion, parameter expansion, variable expansion, arith
             Kristian Köhntopp
           </a>
           -
-          October 8, 2005
+          August 6, 2006
         </div>
 
-        <div class='mt-3'>Inzwischen bin ich so weit, daß ich viele Unix-Kommandozeilenprogramme zwar nützlich finde, aber in einem größeren Maßstab als unhandlich und schlecht wiederzuverwenden ansehe. Das liegt daran, daß das Konzept der Pipeline und der Kommandozeile zwar sehr mächtig sind, insbesondere wenn man sie mit einer guten Shell verwendet, aber einen nur so weit bringen.
-Manchmal muß man doch richtigen Code schreiben, und wenn man dann den Compiler oder auch nur eine Scriptsprache schwingen muß, dann nützen einem die ganzen Kommandozeilen-Utilities gar nichts mehr.</div>
+        <div class='mt-3'>Choose any font you like
+Seit MySQL 4.1 existiert in MySQL Support für Zeichensätze und Sortierreihenfolgen. Das bedeutet im Wesentlichen, daß an jedem CHAR, VARCHAR und TEXT in der Datenbank und an jeder Stringkonstante dranklebt, in welcher Codierung der String vorliegt und mit welcher Sortierreihenfolge der String beim Sortieren und Vergleichen zu behandeln ist.
+Vokabeln Aber zuerst einmal ein bischen Vokabular:
+Ein Zeichensatz ist eine Sammlung von Symbolen, die verwendet werden dürfen.</div>
 
     </div>
   </div>
@@ -540,7 +547,7 @@ Manchmal muß man doch richtigen Code schreiben, und wenn man dann den Compiler 
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/09/11/nermalisation.html" class='text-decoration-none text-dark'>Nermalisation</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/08/03/fertig-gelesen-greg-s-bazillenprosa.html" class='text-decoration-none text-dark'>Fertig gelesen: Greg&#39;s Bazillenprosa</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -548,13 +555,10 @@ Manchmal muß man doch richtigen Code schreiben, und wenn man dann den Compiler 
             Kristian Köhntopp
           </a>
           -
-          September 11, 2005
+          August 3, 2006
         </div>
 
-        <div class='mt-3'>This article was previously shared on mysqldump.azundris.com, and salvaged from the old blog: An introduction to the normalisation of databases that requires no prior knowledge.
-Simply speaking, normalization is about flexibility, and avoiding redundantly storing information. That is, avoiding the storage of the same piece of knowledge in more than one place.
-Consider some cats and their owners (or, in Cat, our &ldquo;tin-openers&rdquo;):
-cat owner city Ada Andrea Anchorage Shelley Sarah San Diego Lynn Louise Los Angeles So far, so good.</div>
+        <div class='mt-3'>Okay, weil es so schön war, hier gleich noch mehr Bazillenprosa von Greg Bear, denn das Thema hat es ihm schon seit langer Zeit angetan. In Blutmusik erschafft ein verrückter Wissenschaftler einen bazillenbasierten Hivemind/Supercomputer, der nicht nur alle Zellen auf diesem Planeten in seine tumorhafte Superstruktur integriert, sondern dabei die derzeit auf dieser Wetware laufenden Programme assimiliert, illegal kopiert und in einer Reihe von Was-Wäre-Wenn Matrix-Szenarien laufen läßt. Las sich damals, weit vor Matrix und Bear&rsquo;s Selbstkopie recht flott und amüsant.</div>
 
     </div>
   </div>
@@ -565,7 +569,7 @@ cat owner city Ada Andrea Anchorage Shelley Sarah San Diego Lynn Louise Los Ange
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/09/10/mysql-consulting-bootcamp-munich-2005.html" class='text-decoration-none text-dark'>MySQL Consulting Bootcamp Munich 2005</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/07/30/fertig-gelesen-deutsch-fuer-profis.html" class='text-decoration-none text-dark'>Fertig gelesen: Deutsch für Profis - Wege zu gutem Stil</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -573,10 +577,11 @@ cat owner city Ada Andrea Anchorage Shelley Sarah San Diego Lynn Louise Los Ange
             Kristian Köhntopp
           </a>
           -
-          September 10, 2005
+          July 30, 2006
         </div>
 
-        <div class='mt-3'>Hinter mir liegt eine Woche MySQL Consulting Bootcamp Munich 2005. Für mich eine Woche mit Intensivkursen in MySQL 5, Performanceoptimierung und MySQL Cluster - wir haben das Schlungsprogramm, das sonst mehr als zwei Wochen abgewickelt wird, in 5 Tagen durchgezogen. Nebenbei habe ich noch das MySQL 4 Core und Pro Exam abgelegt (Ergebnisse liegen noch nicht vor, aber ich fand die Prüfung ziemlich schwierig), und wir waren an 5 Tagen zirka viermal in verschiedenen Bierhallen, Biergärten oder im Hofbräuhaus.</div>
+        <div class='mt-3'>Besser schreiben für nur 8 EUR.
+Irgendwann 1992 hatte ich eine Mailbox auf der Basis von SCO Xenix bei mir im Haus, und fing an, Gateways in Netze zu betreiben, die nicht auf der Grundlage von USENET funktionierten. Über mein lokales Fido-Gateway kam CT.GER auf meine Kiste, und ich wurde Zeuge einer wirklich schlechten Betriebssystem-Diskussion. Wie auch immer, jedenfalls fühlte ich mich bemüßigt, da einzugreifen und mal ein paar grundlegende Sachen zu erklären.</div>
 
     </div>
   </div>
@@ -587,7 +592,7 @@ cat owner city Ada Andrea Anchorage Shelley Sarah San Diego Lynn Louise Los Ange
   <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
     <div class='col-lg-8'>
 
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2005/08/13/ueber-umzuege.html" class='text-decoration-none text-dark'>Über Umzüge</a></h1>
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2006/07/30/greg-bear-vitals.html" class='text-decoration-none text-dark'>Fertig gelesen: Greg Bear: Vitals</a></h1>
 
         <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
           <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
@@ -595,11 +600,11 @@ cat owner city Ada Andrea Anchorage Shelley Sarah San Diego Lynn Louise Los Ange
             Kristian Köhntopp
           </a>
           -
-          August 13, 2005
+          July 30, 2006
         </div>
 
-        <div class='mt-3'>Umzüge sind total toll. Umzüge anderer Leute jedenfalls. Denn da lernt man immer jede Menge Dinge über diese Menschen, die man vorher so nicht gewusst hatte.
-Meine gute Freundin J. zum Beispiel zieht gerade um. Nicht weit. Sie ist Lehrerin in einem Internat, und weil sie jetzt 13 Mädels zum Betreuen bekommt, zieht sie aus der bisherigen Wohnung auf dem Internatsgelände aus und mit ihrem Mann B. in eine andere Wohnung auf demselben Gelände.</div>
+        <div class='mt-3'>Jäger ( Vitals ): Eine Geschichte über russische Puppen: Bakterien, die in Bakterien leben, und Bakterien, die das Verhalten der Lebewesen, die sie bewohnen von innen heraus steuern. Aber auch Verschwörungen in Verschwörungen und Menschen, die das Verhalten von anderen Menschen von innen heraus steuern.
+In der Anlage der Story folgt Greg Bear den Ideen von Philipp K. Dick: Er beschreibt die Realität aus der Sicht seiner Helden, und wie sich diese Realität unter der Beeinflussung verändert, er beschreibt der Verlust von Fixpunkten, und sich daraus ergebende Orientierungslosigkeit.</div>
 
     </div>
   </div>
@@ -633,7 +638,7 @@ Meine gute Freundin J. zum Beispiel zieht gerade um. Nicht weit. Sie ist Lehreri
         <a href="/blog/47.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/blog/51.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/blog/54.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>
@@ -669,9 +674,6 @@ Meine gute Freundin J. zum Beispiel zieht gerade um. Nicht weit. Sie ist Lehreri
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
 	</a>
 
-        <a href='https://www.reddit.com/user/isotopp' title='Follow on Reddit' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#reddit'/></svg>
-        </a>
 
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
