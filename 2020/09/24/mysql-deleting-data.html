@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='MySQL: Deleting data' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: Deleting data","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: Deleting data","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -178,7 +178,7 @@
 				<p>Completing the data lifecycle is often harder than originally expected:
 Deleting data can sometimes cost way more than inserting it in the first place.
 MySQL Partitions can offer a way out.
-We have an <a href="https://blog.koehntopp.info/2020/05/13/deleting-data-from-mysql.html">earlier post</a>
+We have an <a href="/2020/05/13/deleting-data-from-mysql.html">earlier post</a>
 
  on the subject.</p>
 <h2 id="a-sample-table-and-a-problem-statement">
@@ -237,7 +237,7 @@ We have an <a href="https://blog.koehntopp.info/2020/05/13/deleting-data-from-my
 </span></span><span class="line"><span class="cl"><span class="n">sql</span><span class="p">()</span>
 </span></span></code></pre></div><p>This is our basic Python framework for experimentation, using the <code>click</code> framework, and a command <code>setup-tables</code>. This command will run a number of SQL statements to initialize our log table named <code>data</code>.</p>
 <p>The log table has three columns: <code>id</code>, an auto_increment counter, and two columns <code>d</code> and <code>e</code>, each containing 64 characters of data. To get things started, we add an initial partition, containing all id-values below 10.000 and an initial row.</p>
-<p>If we were to add data to this table in a loop, we would increment our id-counter, and with InnoDB being what it is, all new rows will be added at the end of the table: We remember from <a href="https://blog.koehntopp.info/2020/09/22/alter-table-for-uuid.html">ALTER TABLE for UUID</a>
+<p>If we were to add data to this table in a loop, we would increment our id-counter, and with InnoDB being what it is, all new rows will be added at the end of the table: We remember from <a href="/2020/09/22/alter-table-for-uuid.html">ALTER TABLE for UUID</a>
 
  that the physical order of any InnoDB table is by primary key - our id-counter.</p>
 <p>Now, if we were to expire old data, we would start to delete rows with the lowest id-values, so we would delete rows from the beginning of the table, or the left-hand side of the B+-Tree. To keep the tree balanced, MySQL would have to execute balancing operations, which will be expensive, because rows are being shuffled around in the tree.</p>
@@ -474,33 +474,6 @@ kris@localhost [kris]&gt; select count(*) from data;
 
 		
 		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f24%2fmysql-deleting-data.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f24%2fmysql-deleting-data.html&title=MySQL%3a%20Deleting%20data' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=MySQL%3a%20Deleting%20data&body=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f24%2fmysql-deleting-data.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
-			</div>
-		</div>
-
-		
-		
 		<div class='row justify-content-center py-3 mb-3 mx-0'>
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
@@ -598,38 +571,49 @@ kris@localhost [kris]&gt; select count(*) from data;
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

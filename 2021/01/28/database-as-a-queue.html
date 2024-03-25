@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='Database as a Queue' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Database as a Queue","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Database as a Queue","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -235,9 +235,9 @@ Your state machine would be eating one item from the input, perform the associat
 	Undo-Log woes
     </a>
 </h3>
-<p>In <a href="https://blog.koehntopp.info/2019/11/18/a-blast-from-the-past.html">A Blast From The Past</a>
+<p>In <a href="/2019/11/18/a-blast-from-the-past.html">A Blast From The Past</a>
 
- we see what happens to MySQL with long-running transactions, and in <a href="https://blog.koehntopp.info/2020/07/27/mysql-transactions.html">MySQL Transactions</a>
+ we see what happens to MySQL with long-running transactions, and in <a href="/2020/07/27/mysql-transactions.html">MySQL Transactions</a>
 
  we discuss what goes on internally in the database when we do transactions, and especially how that can be painful if these transactions are long-running.</p>
 <p>Note that any database will at some point in time have long-running transactions, even if your code does not. Database maintenance operations such as cloning replicas or making backups can do that without interruption only by maintaining a read view, which leads to Undo-Log explosion.</p>
@@ -284,33 +284,6 @@ Binlog woes and Replication Delay</p>
 <p>In the cloud, the limits are likely to be much lower, depending on instance and volume sizes chosen, and going there is a solid cost item.</p>
 <p>You will need to look at things with a much sharper lens.</p>
 
-			</div>
-		</div>
-
-		
-		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2021%2f01%2f28%2fdatabase-as-a-queue.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2021%2f01%2f28%2fdatabase-as-a-queue.html&title=Database%20as%20a%20Queue' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=Database%20as%20a%20Queue&body=https%3a%2f%2fblog.koehntopp.info%2f2021%2f01%2f28%2fdatabase-as-a-queue.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
 			</div>
 		</div>
 
@@ -392,38 +365,49 @@ Binlog woes and Replication Delay</p>
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='MySQL: Integer Overflow' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: Integer Overflow","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: Integer Overflow","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -192,21 +192,21 @@ Dies hat zu einem
 
 geführt, die Signed Integer als ID für Flickr-Bilder verwendet hat.</p>
 <p>Hier sind ein paar simple Abfragen von <code>INFORMATION_SCHEMA</code>, mit denen man offensichtliche Designdummheiten bei Datenbankschemata finden kann:</p>
-<pre tabindex="0"><code>mysql&gt; select table_schema, table_name, column_name, column_type 
-from information_schema.columns 
-where table_schema not in (&#34;information_schema&#34;, &#34;mysql&#34;) 
-and column_name like &#34;%id%&#34;
--- and column_type not like &#34;%unsigned%&#34;;
-+--------------+------------+-------------+---------------------+
-| table_schema | table_name | column_name | column_type         |
-+--------------+------------+-------------+---------------------+
-| rootforum    | counter    | id          | bigint(20) unsigned |
-| rootforum    | s          | id          | bigint(20) unsigned |
-| rootforum    | t          | id          | bigint(20) unsigned |
-| rootforum    | telefon    | id          | bigint(20) unsigned |
-+--------------+------------+-------------+---------------------+
-4 rows in set (0.01 sec)
-</code></pre><p>Diese Query durchsucht <code>INFORMATION_SCHEMA.COLUMNS</code> nach allen Spalten, die ein <code>id</code> im Namen haben, aber, wenn man den auskommentierten Teil aktiviert, nicht als <code>UNSIGNED</code> definiert sind.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mysql&gt; select table_schema, table_name, column_name, column_type 
+</span></span></span><span class="line"><span class="cl"><span class="go">from information_schema.columns 
+</span></span></span><span class="line"><span class="cl"><span class="go">where table_schema not in (&#34;information_schema&#34;, &#34;mysql&#34;) 
+</span></span></span><span class="line"><span class="cl"><span class="go">and column_name like &#34;%id%&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">-- and column_type not like &#34;%unsigned%&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="go">+--------------+------------+-------------+---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| table_schema | table_name | column_name | column_type         |
+</span></span></span><span class="line"><span class="cl"><span class="go">+--------------+------------+-------------+---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| rootforum    | counter    | id          | bigint(20) unsigned |
+</span></span></span><span class="line"><span class="cl"><span class="go">| rootforum    | s          | id          | bigint(20) unsigned |
+</span></span></span><span class="line"><span class="cl"><span class="go">| rootforum    | t          | id          | bigint(20) unsigned |
+</span></span></span><span class="line"><span class="cl"><span class="go">| rootforum    | telefon    | id          | bigint(20) unsigned |
+</span></span></span><span class="line"><span class="cl"><span class="go">+--------------+------------+-------------+---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">4 rows in set (0.01 sec)
+</span></span></span></code></pre></div><p>Diese Query durchsucht <code>INFORMATION_SCHEMA.COLUMNS</code> nach allen Spalten, die ein <code>id</code> im Namen haben, aber, wenn man den auskommentierten Teil aktiviert, nicht als <code>UNSIGNED</code> definiert sind.
 Das ist schon mal ein recht offensichtlicher Fehler, den man sich von vorneherein schenken kann.
 Für die meisten Menschen - im Grunde jeder außer Flickr - sollte ein <code>INTEGER UNSIGNED</code> als <code>PRIMARY KEY</code> ausreichen.
 Ein <code>BIGINT UNSIGNED</code> ist doppelt so groß, und speichert 2^32 mal mehr Daten.
@@ -214,33 +214,6 @@ Kann man benutzen, muss man aber nicht dringend tun und hat so ein wenig was von
 <p>Dieselbe Regel kann man auch auf Spalten anwenden, die etwa ein <code>price</code> oder <code>%age%</code> im Namen haben (oder die mit <code>INET_ATON()</code> in <code>INTEGER UNSIGNED</code> umgewandelte IP V4 Nummern abspeichern sollen).</p>
 <p>Wenig bekannt: Auch eine <code>SERVER_ID</code> ist in MySQL ein <code>INTEGER UNSIGNED</code>. Sollte man bedenken, wenn man Werkzeuge zur Administration von MySQL-Servern entwickelt.</p>
 
-			</div>
-		</div>
-
-		
-		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2008%2f01%2f04%2fmysql-integer-overflow.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2008%2f01%2f04%2fmysql-integer-overflow.html&title=MySQL%3a%20Integer%20Overflow' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=MySQL%3a%20Integer%20Overflow&body=https%3a%2f%2fblog.koehntopp.info%2f2008%2f01%2f04%2fmysql-integer-overflow.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
 			</div>
 		</div>
 
@@ -322,38 +295,49 @@ Kann man benutzen, muss man aber nicht dringend tun und hat so ein wenig was von
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

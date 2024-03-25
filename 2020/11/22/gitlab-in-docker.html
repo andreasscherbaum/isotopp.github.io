@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='Gitlab in Docker' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Gitlab in Docker","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Gitlab in Docker","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -325,10 +325,10 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># cat src/__init__.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">src.main</span> <span class="kn">import</span> <span class="n">my_name</span>  <span class="c1"># noqa</span>
 </span></span></code></pre></div><p>and</p>
-<pre tabindex="0"><code># cat src/main.py
-def my_name():
-    return &#34;Kris&#34;
-</code></pre><p>In a <code>src/tests/</code> directory, we are running <code>pytest</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> cat src/main.py
+</span></span><span class="line"><span class="cl"><span class="go">def my_name():
+</span></span></span><span class="line"><span class="cl"><span class="go">    return &#34;Kris&#34;
+</span></span></span></code></pre></div><p>In a <code>src/tests/</code> directory, we are running <code>pytest</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#! /usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">src</span>
@@ -459,33 +459,6 @@ def my_name():
 
 		
 		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2020%2f11%2f22%2fgitlab-in-docker.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2020%2f11%2f22%2fgitlab-in-docker.html&title=Gitlab%20in%20Docker' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=Gitlab%20in%20Docker&body=https%3a%2f%2fblog.koehntopp.info%2f2020%2f11%2f22%2fgitlab-in-docker.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
-			</div>
-		</div>
-
-		
-		
 		<div class='row justify-content-center py-3 mb-3 mx-0'>
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
@@ -576,38 +549,49 @@ def my_name():
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

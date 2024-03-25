@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -130,6 +130,192 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html" class='text-decoration-none text-dark'>Gruppenweises TOP N in MySQL: Der Tabellengrößenreport</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 9, 2010
+        </div>
+
+        <div class='mt-3'>Jeder Datenbankserver bei uns hat ein Script laufen, daß den Inhalt von information_schema.tables jede Nacht einmal in eine Systemdatenbank in das DBA Schema kopiert. Dort haben wir dba.table_sizes:
+root@sysmdb [dba]&gt; show create table table_sizes\G Table: table_sizes Create Table: CREATE TABLE `table_sizes` ( `hostname` varchar(64) NOT NULL, `datadir` varchar(64) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL, `report_date` date NOT NULL, `table_schema` varchar(64) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL, `table_name` varchar(64) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL, `engine` varchar(64) NOT NULL, `data_length` bigint(20) NOT NULL, `index_length` bigint(20) NOT NULL, `table_rows` bigint(20) NOT NULL, UNIQUE KEY `hostname` (`hostname`,`datadir`,`report_date`,`table_schema`,`table_name`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1 1 row in set (0.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/09/insert-on-duplicate-key-update.html" class='text-decoration-none text-dark'>INSERT  ON DUPLICATE KEY UPDATE</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 9, 2010
+        </div>
+
+        <div class='mt-3'>Auf Yourhelpcenter.de gibt es einen Artikel mit dem irreführenden Titel Update if exists else insert record , der sich mit INSERT ON DUPLICATE KEY UPDATE beschäftigt.
+Dieses Kommando macht genau nicht das, was der Titel des Artikels suggeriert und wünschenswert wäre, sondern er macht genau das, was der SQL-Text des Kommandos sagt und leider nervt. Es wäre schön, wenn der Artikel auf Yourhelpcenter auch auf diese Probleme eingegangen wäre - da er es nicht tut hole ich es hier gerade mal nach.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/07/das-gespaltene-piratische-verh-ltnis-zur-identit-t.html" class='text-decoration-none text-dark'>Das gespaltene piratische Verhältnis zur Identität</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 7, 2010
+        </div>
+
+        <div class='mt-3'>Die inhaltliche Debatte um Aaron Koenig ist ein wenig abgeklungen, und auch der Berliner Landesparteitag der Piratenpartei ist durch, sodaß ich einmal die Gedanken zu Blog bringen kann, an denen ich im Rahmen der Debatte immer wieder hängen geblieben bin, obwohl sie mit den Inhalten primär nur am Rande zu tun haben.
+Da ist zum Beispiel das seltsame Verhältnis der Piraten zur Identität, speziell zur Wahl und zum Gebrauch von Namen.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/03/07/die-leute-sind-nicht-dumm-genug-f-r-drm.html" class='text-decoration-none text-dark'>Die Leute sind nicht dumm genug für DRM...</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 7, 2010
+        </div>
+
+        <div class='mt-3'>Torrent vs. DVD
+Die Grafik da rechts zeigt sehr schön den Unterschied im Medienerlebnis auf, das Torrent-Benutzer gegenüber dem Käufer einer DVD haben. Das haben die meisten Leute auch verstanden. Diejenigen, die es nicht verstanden haben -
+Microsoft Yahoo! Fictionwise Migros Netflix Ubisoft sind nur ein paar Beispiele - gehen nacheinander vom Markt und lehren ihre jeweiligen Kunden.
+Das Resultat?
+Nachfrageschwäche bei Downloadfilmen - nicht wegen &lsquo;illegaler Downloads&rsquo;, sondern wegen DRM:</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/28/kulturelles-defizit.html" class='text-decoration-none text-dark'>Kulturelles Defizit</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 28, 2010
+        </div>
+
+        <div class='mt-3'>Seitdem ich für Geld andere Leute glücklich mache bin ich immer wieder einige Jahre auf der Walz gewesen, und habe mich als Angehöriger des fahrendes Volkes als Projektkraft bei wechselden Auftraggebern verdingt, um danach wieder einige Jahre fest in einem Laden angestellt ein wenig seßhafter zu werden, Kraft zu tanken und das Gelernte zu verarbeiten. Eine der Sachen, die ich mich dabei immer wieder fasziniert haben sind die unterschiedlichen Arbeitsstile der verschiedenen europäischen Kulturen.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/25/downloading-communism.html" class='text-decoration-none text-dark'>Downloading communism...</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 25, 2010
+        </div>
+
+        <div class='mt-3'>Eigentlich war es ja als Witz gedacht, aber die Mediendinosaurier nehmen so etwas schon mal ernst.
+Schreibt der Inquirer :
+A MAFIAA CABAL called the International Intellectual Property Alliance, which is an umbrella group for the entertainment cartels such as the MPAA and RIAA, has demanded that Indonesia, Brazil and India should be placed on a special trade watchlist merely because they recommend the use of open source software.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/23/grundrechtsfusion-und-ein-grundrecht-auf-netzneutralit-t.html" class='text-decoration-none text-dark'>Grundrechtsfusion und ein Grundrecht auf Netzneutralität</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 23, 2010
+        </div>
+
+        <div class='mt-3'>Es gibt in Deutschland ein Grundrecht, die Meinungsfreiheit . Es ist ein Recht, das einem Menschen etwas erlaubt, nämlich die freie Rede sowie die freie Äußerung und öffentliche Verbreitung einer Meinung in Wort, Schrift und Bild sowie allen weiteren verfügbaren Übertragungsmitteln.
+Es ist in Deutschland unseligerweise anders als in den USA ein Recht mit einer Schrankenbestimmung, und in der Schrankenbestimmung sind neben anderen Dingen explizit die &ldquo;gesetzlichen Bestimmungen zum Schutze der Jugend&rdquo; genannt.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2010/02/22/philipp-schindler-ber-alte-m-nner-mit-kugelschreibern.html" class='text-decoration-none text-dark'>Philipp Schindler über alte Männer mit Kugelschreibern</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 22, 2010
+        </div>
+
+        <div class='mt-3'>Google-Chef im Zeit Online Dialog über Kulturwandel Das ist die netteste Weise jemandem zu sagen, daß er ein Dinosaurier ist und bald aussterben wird, die ich je erlebt habe.</div>
+
+    </div>
+  </div>
   
   
   
@@ -408,198 +594,6 @@ CBM 4001 Series, Stand Januar 1982. CBM 8001 Series, Stand Januar 1982. CBM 8050
 
     </div>
   </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/17/der-ccc-vernichtet-den-hamburger-wahlstift.html" class='text-decoration-none text-dark'>Der CCC vernichtet den Hamburger Wahlstift</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 17, 2009
-        </div>
-
-        <div class='mt-3'>&ldquo;Millions of starlings swarming at dusk before settling in the woods below.&rdquo; &ndash; Gail Johnson (CC-BY-NC)
-Der Hamburger Wahlstift sah zunächst ja mal aus wie eine gute Idee: Der Wähler wählt mit einem Stift auf einem Blatt Papier und kreuzt ganz normal an, welche Partei er wählen will. Der Stift ist jedoch in Wahrheit ein Scanner, der ein Muster vom Papier abliest, das dem Stift mitteilt, an welcher Stelle der Wähler sein Kreuz macht.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/17/die-nachrichtenverlage-bringen-sich-um.html" class='text-decoration-none text-dark'>Die Nachrichtenverlage bringen sich um</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 17, 2009
-        </div>
-
-        <div class='mt-3'>In Can Newspaper publishers survive this revenue freefall? stellt Martin Langeveld fest, daß in den letzten 50 Jahren der Anteil der gesamten verfügbaren Budgets in der Werbebrance bei ziemlich konstant 2% des Bruttosozialproduktes lag. Jedoch: Die Verteilung der Werbebudgets ist nicht konstant.
-Medienanteile am Werbebudget in den letzten 50 Jahren.
-Die Reaktion der Zeitungsverlagsbranche ist nicht eine Modernisierung, sondern der Ruf nach einem Leistungsschutzrecht. Das werden sie nun bekommen , gegen den Rat zahlreicher Expertengutachten.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/13/communityfix.html" class='text-decoration-none text-dark'>Communityfix</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 13, 2009
-        </div>
-
-        <div class='mt-3'>Ich schrieb in Der alljährliche Wikimedia-Spendenaufruf :
-Bitte seht davon ab, die Spende mit einer Zweckbindung &ldquo;für …&rdquo; zu versehen. Das macht der Vereinsbuchhaltung bei Wikipedia geradezu unglaubliche Arbeit. Danke sehr!
-Daraufhin fragte Thomas:
-Ui, ist das ein Aufruf zum dDOS?
-Meine Antwort ist länger geworden und verdient einen eigenen Artikel.
-&ldquo;Nein, das ist genau das, was da steht.&rdquo;
-Ihr helft niemandem, wenn ihr die Verwaltung von Wikimedia Deutschland blockiert, insbesondere nicht dem meiner persönlichen Meinung nach berechtigten Anliegen, die Strukturen der Wikipedia transparenter und offener zu machen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/12/mysql-sun-oracle-und-die-eu.html" class='text-decoration-none text-dark'>MySQL, Sun, Oracle - und die EU</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 12, 2009
-        </div>
-
-        <div class='mt-3'>Am 20. April 2009 hat Sun verkündet, daß sie von Oracle gekauft werden. Das hätte MySQL mit eingeschlossen. Am 10. November hat die EU dann mitgeteilt, daß sie diesem Kauf widerspricht und zwar ausschließlich wegen MySQL.
-Groklaw hat Hintergründe dazu , die ein wenig komisch erscheinen. Ausgerechnet Monty und Florian Müller argumentieren gegen diesen Verkauf und verwenden in den Texten, die sie öffentlich gemacht haben noch dazu die GPL: Diese verhindere nämlich kommerzielle Spinoffs und Forks von MySQL.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/12/update-der-allj-hrliche-wikimedia-spendenaufruf.html" class='text-decoration-none text-dark'>Update: Der alljährliche Wikimedia-Spendenaufruf</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 12, 2009
-        </div>
-
-        <div class='mt-3'>Wikimedia ruft auf zum Spenden! Nach dem Kohlepfennig der Exklusionistencent? Wenn Sie nicht spenden löschen wir diesen Artikel! &ndash; @dyfa auf Twitter
-Ihr löscht sogar im Spendenticker – lol
-&ndash; Susanna Korn Da ist er also wieder mal, der alljährliche Wikimedia Foundation Fundraiser. Parallel dazu startet das Profi-Admin-Team der deutschen Wikipedia eine Sympathie-Offensive , nachdem die Wikipedia-Diskussion am 5.11. eher unschön über die Bühne ging: Mit Hausverboten für wichtige Diskussionsteilnehmer, vorab angefertigten Abschluß-Statements und ohne irgendein Ergebnis.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/12/wenn-wikipedia-einmal-funktioniert-tagebuch-eines-selbstversuches.html" class='text-decoration-none text-dark'>Wenn Wikipedia einmal funktioniert... Tagebuch eines Selbstversuches</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 12, 2009
-        </div>
-
-        <div class='mt-3'>Während ich mir in Communitygift einmal angesehen habe, warum Wikipedia nicht funktioniert, wenn sie nicht funktioniert, findet man bei Helge Städtler einen wunderbaren Beitrag mit dem Titel Ein Eintrag in der Enzyklopädie Wikipedia: Wie geht das eigentlich? .
-Helge beschreibt seine Erfahrungen mit der Wikipedia und der Erzeugung eines Eintrages zum Thema Educast , also Lehr- Podcasts . Dazu hat er sich einen Benutzer Lgxxl angelegt und danach dann einen Eintrag erzeugt.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/11/communitygift.html" class='text-decoration-none text-dark'>Communitygift</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 11, 2009
-        </div>
-
-        <div class='mt-3'>Update: Diejenigen von Euch, die vom Trackback hierher kommen, finden alle Artikel zum Thema Wikipedia unter dem Tag Wikipedia. Die Diskussion ist seit der Aufnahme für die Sendung schon ein paar Artikel weiter gegangen.
-KaiL hatte mich heute im IRC noch auf Der alljährliche Wikimedia-Spendenaufruf angesprochen und ich hatte ihm versprochen, noch einmal genauer aufzuschreiben, wieso ich Wikipedia als Projekt für kaputt halte. Dies ist der Versuch, meine zunehmende Distanz zum Projekt Wikipedia als positive und konstruktive Kritik zu formulieren.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2009/11/09/principal.html" class='text-decoration-none text-dark'>&#39;Principal&#39;?</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          November 9, 2009
-        </div>
-
-        <div class='mt-3'>Links: Benutzer in der realen Welt. Rechts: Eine Unix UID, die diesen Benutzer im System repräsentiert.
-Ich bin ich. Aber in einem Computersystem kann ich nicht sein, denn dort existieren nur Bits und Bytes. Daher werde ich dort durch einen Identifier repräsentiert. Diesen Identifier nennt man meinen Principal .
-Wenn ich mich in einem System einlogge, dann gebe ich einen Usernamen an - ich behaupte, jemand zu sein. Diese Phase des Logins nennt man Identifikation, und zur Identifikation gebe ich entweder meinen Principal direkt ein, oder etwas, das vom System eindeutig auf den Principal abgebildet wird.</div>
-
-    </div>
-  </div>
 
   <div class='row mb-4 py-4 mx-0 justify-content-center'>
     <div class='col-lg-8 fs-5'>
@@ -645,38 +639,49 @@ Wenn ich mich in einem System einlogge, dann gebe ich einen Usernamen an - ich b
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -130,6 +130,202 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/12/understanding-git.html" class='text-decoration-none text-dark'>Understanding git</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 12, 2021
+        </div>
+
+        <div class='mt-3'>It occurred to me that I do not know nearly enough how git works, internally. The contents of the .git directory seem to be accessible enough, so I am going on a Safari in the git repository of this blog. You can follow along if you check out the blog .
+Refs All things git live in .git. The thing we are working with seem to live in .git/refs:
+$ find .</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/06/empty-commits-and-other-wrong-tools-for-the-job.html" class='text-decoration-none text-dark'>Empty commits and other wrong tools for the job</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 6, 2021
+        </div>
+
+        <div class='mt-3'>This is how you can make an empty commit:
+$ git commit --allow-empty -m &#34;Kick it&#34; This has the disadvantage of also generating a commit message. Another way to achieve this seems to be
+$ git commit --amend --no-edit &amp;&amp; git push -f but that will make people hate you in other ways.
+So lets stop and ask: Why would you want to make an empty commit?
+Most people want this because they attached a server-side action to a commit, a CI/CD activity.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/02/99-secure.html" class='text-decoration-none text-dark'>99% secure</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 2, 2021
+        </div>
+
+        <div class='mt-3'>Linus Neumann zitiert Prof. Norbert Pohlmann :
+Ich glaube, das ist so. Diese 100%ige Sicherheit wird es nicht geben, und wenn der Chaos Computer Bild was findet, dann findet er das, und dann sagen wir, das ist gut. Und dann überlegen wir uns, wie wir das wieder schließen können und dann ist es wieder besser. Und dann können sie auch weiter suchen.
+Also, ich glaube, wir brauchen auch eine andere Grundhaltung und es geht nicht immer um 100 %, sondern die 99 %, die reichen und wir müssen mit den Restrisiken umgehen.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/10/01/projektschmerzen.html" class='text-decoration-none text-dark'>Projektschmerzen</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          October 1, 2021
+        </div>
+
+        <div class='mt-3'>Es beginnt mit einem Tweet von Manuel Atug :
+&ldquo;Wegen Überlastung der Server: #Notruf-App vorerst nicht mehr in App-Stores&rdquo;
+und der Tweet verlinkte einen (inzwischen nicht mehr existierenden) Artikel beim Deutschlandfunk. Christoph Petrausch erklärt, wie solche Projekte falsch laufen können:
+Sowas erfordert eine Fehlerkultur. Du musst als Organisation in der Lage sein, nach so einem Incident einen Schritt zurückzutreten. Alle Fakten auf den Tisch zu legen und zu fragen: Warum kam es dazu?</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/30/software-defined-silicon.html" class='text-decoration-none text-dark'>Software Defined Silicon</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 30, 2021
+        </div>
+
+        <div class='mt-3'>Golem titelt Intel will Xeon-Funktionen als Lizenz-Update verkaufen :
+Intel will Xeon-Funktionen als Lizenz-Update verkaufen.
+Mit dem Software Defined Silicon will Intel in Xeon-Hardware zunächst abgeschaltete Funktionen künftig als Lizenz-Upgrade bereitstellen.
+Manuel Atug ranted darüber auf Twitter:
+Wenn dir die eigene Hardware nicht mehr gehört&hellip; Intel will Xeon-Funktionen als Lizenz-Update verkaufen &ldquo;Mit dem Software Defined Silicon will Intel in Xeon-Hardware zunächst abgeschaltete Funktionen künftig als Lizenz-Upgrade bereitstellen.&rdquo;
+Ich antwortete :</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/27/mysql-booking-2010-a-hiring-interview-question.html" class='text-decoration-none text-dark'>MySQL: Our MySQL in 2010, a hiring interview question</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 27, 2021
+        </div>
+
+        <div class='mt-3'>I ranted about hiring interviews, and the canned questions that people have to answer. One of the interviews we do is a systems design interview, where we want to see how (senior) people use components and patterns to design a system for reliability and scale-out.
+A sample question (based on a Twitter thread in German):
+It is 2010, and the company has a database structure where a fixed number front end machines form a cell.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/17/binding-the-orm.html" class='text-decoration-none text-dark'>MySQL: Binding the ORM</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 17, 2021
+        </div>
+
+        <div class='mt-3'>My task is to collect performance data about a single query, using PERFORMANCE_SCHEMA (P_S for short) in MySQL, to ship it elsewhere for integration with other data.
+In a grander scheme of things, I will need to define what performance data from a query I am actually interested in. I will also need to find a way to attribute the query (as seen on the server) to a point in the codebase of the client, which is not always easy when an ORM or other SQL generator is being used.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/09/15/mysql-tracing-a-single-query-with-performanceschema.html" class='text-decoration-none text-dark'>MySQL: Tracing a single query with PERFORMANCE_SCHEMA</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          September 15, 2021
+        </div>
+
+        <div class='mt-3'>My task is to collect performance data about a single query, using PERFORMANCE_SCHEMA (P_S for short) in MySQL, to ship it elsewhere for integration with other data.
+In a grander scheme of things, I will need to define what performance data from a query I am actually interested in. I will also need to find a way to attribute the query (as seen on the server) to a point in the codebase of the client, which is not always easy when an ORM or other SQL generator is being used.</div>
+
+    </div>
+  </div>
   
   
   
@@ -418,195 +614,6 @@ Kernighan takes us through the history and the setting of Bell Labs, why it exis
 
     </div>
   </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/08/18/epochalypse.html" class='text-decoration-none text-dark'>Epochalypse</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 18, 2021
-        </div>
-
-        <div class='mt-3'>I had reason to look into the UNIX Eschaton, the time when the signed 32 bit counter of seconds since Midnight, 1970-01-01 UTC overflows. Going to Wikipedia , I learned we will die two years earlier, because in 2036-02-07, 06:28:16 UTC NTP will kill us all:
-At 06:28:16 UTC on Thursday, 7 February 2036, Network Time Protocol will loop over to the next epoch, as the 32-bit time stamp value used in NTP (unsigned, but based on 1 January 1900) will overflow.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/08/03/fertig-gelesen-88-names.html" class='text-decoration-none text-dark'>Fertig gelesen: 88 Names</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 3, 2021
-        </div>
-
-        <div class='mt-3'>It began with a tweet by Sebastian Bergmann , which made me buy &ldquo;88 names &rdquo; by Matt Ruff. The book is a tour of massive multiplayer online role playing games for people who do not play, and also a discussion of identity on the Internet.
-John Chu has a small sherpa company, an outfit that helps causal players who have the coin to experience hard content in MMORPGs in an easy and successful way without investing too much time into the game.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/08/03/fertig-gelesen-a-kim-jong-il-production.html" class='text-decoration-none text-dark'>Fertig gelesen: A Kim Jong-Il Production</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 3, 2021
-        </div>
-
-        <div class='mt-3'>Paul Fischer writes &ldquo;A Kim Jong-Il Production &rdquo;, a documentary the 1978 abduction of the famous South Korean actress Madam Choi, and her ex-husband, the filmmaker Shin Sang-Ok.
-Before becoming the leader of North Korea, Kim Jong-Il headed the Ministry for Propaganda. Dissatisfied with the talent available, he had the famous actress Choi Eun-Hee kidnammed. When her ex-husband started to investigate, he had him kidnapped in Hong Kong and transported to North Korea by ship.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/08/03/fertig-gelesen-mara-und-der-feuerbringer.html" class='text-decoration-none text-dark'>Fertig gelesen: Mara und der Feuerbringer</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          August 3, 2021
-        </div>
-
-        <div class='mt-3'>Tommmy Krappweis ist nicht nur der Schöpfer von &ldquo;Bernd, das Brot&rdquo;, sondern auch ein Musiker, Stuntman, Filmemacher und Autor diverser Bücher. In der Trilogie um &ldquo;Mara und der Feuerbringer&rdquo; nimmt er uns mit in die Geschichten um die 14-jährige Münchnerin Mara Lorbeer in der Welt der nordischen Sagen.
-&quot;Mara und der Feuerbringer , Band 1&quot;, Tommy Krappweis
-Mara Lorbeer ist 14, Scheidungskind und lebt bei ihrer esoterisch angehauchten Mutter in München.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/07/28/fertig-gelesen-the-merchant-princes-omnibus.html" class='text-decoration-none text-dark'>Fertig gelesen: The Merchant Princes Omnibus</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          July 28, 2021
-        </div>
-
-        <div class='mt-3'>Charles Stross &ldquo;The Merchant Princes &rdquo; series of six books is another &ldquo;Sliders &rdquo; type of story, with the usual Stross-like twist. The story follows Miriam Beckstein, a woman who thinks she is a tech journalist. Miriam falls off a chair while looking at a strange pattern, and finds herself in a medival parallel earth.
-&quot;The Merchant Princes Omnibus &quot;, Charles Stross
-In the course of the story, Miriam learns that she is actually from this parallel earth, and really is the Countess Helge Thorold-Hjorth in the kingdom of Gruinmarkt, which sits in the place of her world lines Boston.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/07/23/fertig-gelesen-outland.html" class='text-decoration-none text-dark'>Fertig gelesen: Outland</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          July 23, 2021
-        </div>
-
-        <div class='mt-3'>&ldquo;Outland &rdquo; is the first book by Dennis E. Taylor, preceding the Bobiverse and also &ldquo;The Singularity Trap&rdquo;. It is a &ldquo;Sliders &rdquo; storyline, much like Pratchett&rsquo;s and Baxter&rsquo;s &ldquo;Long Earth&rdquo; , in which our heroes discover a parallel dimension with a seemingly uninhabited earth, and then need to colonize it.
-Outland , Dennis E. Taylor
-Dennis E. Taylor is a computer programmer writing Scifi, and had problems finding a publisher for his debut novel, &ldquo;Outland&rdquo;, in 2015, so he self-published.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/07/13/mysql-a-job-queue-in-python.html" class='text-decoration-none text-dark'>MySQL: A job queue in Python</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          July 13, 2021
-        </div>
-
-        <div class='mt-3'>Somebody needed a job queue in Python: Multiple writers insert into it in random order, and the jobs are written into the MySQL table jobs. From the jobs table, multiple consumers claim jobs in batches of n or smaller (n=100), and process them. After processing, the consumers delete the jobs. We need concurrent job generation and consumption, with proper and efficient locking.
-The full source for this example can be seen in mysql-dev-examples in mysql-claim-jobs.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2021/06/05/fertig-gelesen-montecrypto.html" class='text-decoration-none text-dark'>Fertig gelesen: Montecrypto</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          June 5, 2021
-        </div>
-
-        <div class='mt-3'>Wir hatten hier in den Reviews schon eine ganze Menge Tom Hillenbrand: Drachenväter , Drohnenland , und Die Drohnen des Monsieur Leclerq .
-Das aktuelle Buch von Tom Hillenbrand ist Montecrypto , das sich mit dem Hype um Cryptocurrencies beschäftigt und eine Art &ldquo;Der Graf von Monte Cristo&rdquo;-Geschichte erzählt.
-Montecrypto , von Tom Hillenbrand
-Gregory Hollister, ein reicher Investor, ist verstorben. Angeblich hat er noch eine große Menge Geld, und dieses ist in Bitcoin angelegt und irgendwo versteckt.</div>
-
-    </div>
-  </div>
 
   <div class='row mb-4 py-4 mx-0 justify-content-center'>
     <div class='col-lg-8 fs-5'>
@@ -652,38 +659,49 @@ Gregory Hollister, ein reicher Investor, ist verstorben. Angeblich hat er noch e
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

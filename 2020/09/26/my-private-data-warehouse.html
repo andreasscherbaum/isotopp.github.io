@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='Importing account statements and building a data warehouse' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Importing account statements and building a data warehouse","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Importing account statements and building a data warehouse","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -175,7 +175,7 @@
 				
 			</div>
 			<div class='col-lg-8'>
-				<p>This is an update and translation of a <a href="https://blog.koehntopp.info/2006/07/23/mein-privates-datawarehouse-sparen-mit-mysql.html">much older article</a>
+				<p>This is an update and translation of a <a href="/2006/07/23/mein-privates-datawarehouse-sparen-mit-mysql.html">much older article</a>
 
 , which I wrote in German Language back then. I was experimenting with importing the account statements from my German Sparkasse, which at that time were being made available as a CSV.</p>
 <h2 id="the-initial-data-load">
@@ -449,7 +449,7 @@ Hence, we log literal attributes, never ids pointing to the current article or c
     </a>
 </h3>
 <p>This often leads to data duplication. In our example, the string &ldquo;SCHECK IN CENTER KA DURLACH&rdquo; is repeated 36 times. For the amount of data shown in our example this does not matter.</p>
-<p>Even in the one million rows example in <a href="https://blog.koehntopp.info/2020/09/18/mysql-encoding-fields-for-great-profit.html">Coding fields for great profit</a>
+<p>Even in the one million rows example in <a href="/2020/09/18/mysql-encoding-fields-for-great-profit.html">Coding fields for great profit</a>
 
  the gain is not critical, though substantial. A data warehouse starting out can often skip encoding the values and just take the hit from the duplication. An encoding step can be performed later, as long as there is infrastructure in place for online schema change, and sufficient disk space.</p>
 <h3 id="the-star-and-the-snowflake">
@@ -502,7 +502,7 @@ Hence, we log literal attributes, never ids pointing to the current article or c
 </h3>
 <p>Fact tables in the data warehouse have a time dimension, and as time passes, they will accumulate more data. In order to manage our data warehouse, we will also have to complete the data lifecycle on this side of the ETL boundary, and establish some deletion policy.</p>
 <p>Queries to the data warehouse table are often time bounded (&ldquo;How did sales change in the last 2 years&rdquo;) and binned by - among other things - a time dimension (&ldquo;How did demand change month-over-month&rdquo;, &ldquo;Which of our products are seasonal?&rdquo;).</p>
-<p>Handling data at volume, and getting rid of data no longer needed, is much easier in MySQL <a href="https://blog.koehntopp.info/2020/09/24/mysql-deleting-data.html">when using partitions</a>
+<p>Handling data at volume, and getting rid of data no longer needed, is much easier in MySQL <a href="/2020/09/24/mysql-deleting-data.html">when using partitions</a>
 
 .</p>
 <p>In data warehouses, partitions are usually on a time value as the first dimension. That is, we partition our data set by year, month or day, and we delete data by dropping old partitions. This leaves all internal B-Trees in all the partitions sub-tables untouched and as they have been after the import, optimization and compression.</p>
@@ -514,33 +514,6 @@ Hence, we log literal attributes, never ids pointing to the current article or c
 </h3>
 <p>A daily snapshot ETL import is slow - you do not get realtime data updates - but simple to implement retroactively on existing structures. Realtime structures require more engineering, but can be crafted on top of existing architectures as well. We are going to look at them in some later examples.</p>
 
-			</div>
-		</div>
-
-		
-		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f26%2fmy-private-data-warehouse.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f26%2fmy-private-data-warehouse.html&title=Importing%20account%20statements%20and%20building%20a%20data%20warehouse' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=Importing%20account%20statements%20and%20building%20a%20data%20warehouse&body=https%3a%2f%2fblog.koehntopp.info%2f2020%2f09%2f26%2fmy-private-data-warehouse.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
 			</div>
 		</div>
 
@@ -636,38 +609,49 @@ Hence, we log literal attributes, never ids pointing to the current article or c
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

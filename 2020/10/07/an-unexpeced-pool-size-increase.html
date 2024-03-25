@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='An unexpected pool size increase' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"An unexpected pool size increase","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"An unexpected pool size increase","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -291,9 +291,9 @@
 <li>a machine load going up by 2 from 1 to 3 (per thread problem, two queries?)</li>
 <li>long-running</li>
 </ul>
-<p>We have <a href="https://blog.koehntopp.info/2019/11/18/a-blast-from-the-past.html">seen this before</a>
+<p>We have <a href="/2019/11/18/a-blast-from-the-past.html">seen this before</a>
 
-, and we have seen it <a href="https://blog.koehntopp.info/2011/04/28/mysql-undo-log.html">a long time before that</a>
+, and we have seen it <a href="/2011/04/28/mysql-undo-log.html">a long time before that</a>
 
  as well. Let’s check the undo-log size:</p>
 <p><p class="md__image">
@@ -308,10 +308,10 @@
 	We knew this is bad
     </a>
 </h2>
-<p>We know from <a href="https://blog.koehntopp.info/2020/07/27/mysql-transactions.html">MySQL Transactions - the physical side</a>
+<p>We know from <a href="/2020/07/27/mysql-transactions.html">MySQL Transactions - the physical side</a>
 
  what the Undo-Log is and what it is being used for: It’s keeping old versions of a row so that a transaction can have a stable read view preventing phantom reads.</p>
-<p>We learned in <a href="https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html">MySQL Transactions - the logical side</a>
+<p>We learned in <a href="/2020/07/29/mysql-transactions-the-logical-view.html">MySQL Transactions - the logical side</a>
 
  how the Undo-Log is consulted, depending on the transaction isolation level setting of the reading connection. Go to that article now, and read the section on “Repeatable Read and Long Running Transactions”, now.</p>
 <p>The part where it says:</p>
@@ -352,7 +352,7 @@
 .</p>
 <p>With such tooling, we need to connect what we teach with actual incidents that show how the teachings connect to real world cases.</p>
 <p>Which is why I am typing up this thing, right now and link to the actual write-ups that enabled me to show you this. Go, read these things again, please, in the light of this particular episode.</p>
-<p>You know in your head what &ldquo;Undo-Log&rdquo; means. Here you can understand what &ldquo;Undo-Log&rdquo; feels like. Go, <a href="https://blog.koehntopp.info/2020/08/31/on-touching-candles.html">touch the candle</a>
+<p>You know in your head what &ldquo;Undo-Log&rdquo; means. Here you can understand what &ldquo;Undo-Log&rdquo; feels like. Go, <a href="/2020/08/31/on-touching-candles.html">touch the candle</a>
 
 .</p>
 <p>We have all the tooling, but it is from a different age.
@@ -368,33 +368,6 @@ Observability by shell script on a root shell is a thing we have in abundance, b
  without having a privileged shell on the broken system.</p>
 <p>So yeah, let’s upgrade.</p>
 
-			</div>
-		</div>
-
-		
-		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2020%2f10%2f07%2fan-unexpeced-pool-size-increase.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2020%2f10%2f07%2fan-unexpeced-pool-size-increase.html&title=An%20unexpected%20pool%20size%20increase' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=An%20unexpected%20pool%20size%20increase&body=https%3a%2f%2fblog.koehntopp.info%2f2020%2f10%2f07%2fan-unexpeced-pool-size-increase.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
 			</div>
 		</div>
 
@@ -490,38 +463,49 @@ Observability by shell script on a root shell is a thing we have in abundance, b
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

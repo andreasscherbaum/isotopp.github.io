@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":null,"image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -130,6 +130,202 @@
   </div>
 
   
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/03/18/editing-remotely-in-pycharm.html" class='text-decoration-none text-dark'>Editing Remotely in PyCharm</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 18, 2024
+        </div>
+
+        <div class='mt-3'>A friend asks me on IRC:
+Do you happen to know how I can edit code locally on my PyCharm (MacOS, Professional) but run it remotely in a virtual environment? I know how to do that in VS Code, but I don&rsquo;t know how to do it in PyCharm, even with ssh configured and tested.
+The TL;DR is that this specific person has disabled the FTP/SFTP/Webdav Plugin in an attempt to configure PyCharm in a way that it doesn&rsquo;t upload development data to Jetbrains Servers or similar.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/03/03/dynamically-loading-classes-in-java.html" class='text-decoration-none text-dark'>Dynamically loading Classes in Java</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 3, 2024
+        </div>
+
+        <div class='mt-3'>The son needed to dynamically load some Java class into Minecraft, and then call a method on this. The dynamically loaded class may have additional dependencies. I wanted to see how this works, so I sketched a quick example. You can follow along on GitHub .
+Project Layout Using IntelliJ, we are creating a project using Maven which has three submodules. The layout:
+$ tree . |-- dependent | |-- pom.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/03/01/breaking-changes-in-hugo-123.html" class='text-decoration-none text-dark'>Breaking Changes in Hugo 123</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          March 1, 2024
+        </div>
+
+        <div class='mt-3'>I had my GitHub pipeline for this blog running with latest. Recently, that broke.
+Checking on the reasons for that, I found that I ran into two breaking changes:
+Incomplete date specifications are now an error. Slightly more typesafe date handling from front matter. Hugo switches the page reference model to logical paths, breaking ref and relref shortcodes with REF_NOT_FOUND. This is easily fixed with two mass commits.
+Incomplete date specifications are now an error In my front matter, I have code such as this:</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/02/19/python-slots.html" class='text-decoration-none text-dark'>Python: Slots</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 19, 2024
+        </div>
+
+        <div class='mt-3'>I am playing a bit with __slots__ in Python, and I am trying to understand if I am holding them wrongly.
+I am defining a small test program with two classes, both having 20 instance variables with long names, holding a bit of string data. I make one million instances and put them into a list. Then I am trying to measure the size of this in memory.
+Supposedly using __slots__ the instances should save me a lot of memory, and for a single instance they seem to do that.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/02/13/the-matrix-trashfire.html" class='text-decoration-none text-dark'>The Matrix Trashfire</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 13, 2024
+        </div>
+
+        <div class='mt-3'>For reasons, I tried to evaluate the distributed Matrix chat and their clients. That did not work out very well.
+Onboarding experience I was told that the default Matrix chat client is called Elements, so I looked it up on the iOS App store. Unfortunately, there are two, &ldquo;Element&rdquo; and &ldquo;Element X.&rdquo; No explanation is given, and no preference is stated. &ldquo;Element&rdquo; is categorized business, &ldquo;Element X&rdquo; is in &ldquo;Social Networking.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/02/10/snake-oil.html" class='text-decoration-none text-dark'>Snake Oil</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 10, 2024
+        </div>
+
+        <div class='mt-3'>Dieser Text ist auch in deutscher Sprache vorhanden.
+This week was &ldquo;Broken Security Software Advertising Week.&rdquo;
+Fortigate and Ivanti First off, today was Fortigate patch day:
+CVE-2024-23113, CVSSV3 Score 9.8, Unauthorized Code Execution, &ldquo;Format String Bug&rdquo;
+&ldquo;A use of externally-controlled format string vulnerability in FortiOS fgfmd daemon may allow a remote unauthenticated attacker to execute arbitrary code or commands via specially crafted requests.&rdquo;
+This is a case where a C function accepts a format string like &quot;Blah %s Nonsense&quot;, to assemble a log message or a command for a system() call.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/02/09/schlangenoel.html" class='text-decoration-none text-dark'>Schlangenöl</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 9, 2024
+        </div>
+
+        <div class='mt-3'>This text also has a version in english language .
+Diese Woche war &ldquo;Kaputte Security Software Werbewoche&rdquo;.
+Fortigate und Ivanti Zunächst einmal war heute Fortigate Patchday:
+CVE-2024-23113, CVSSV3 Score 9.8, Unauthorized Code Execution, &ldquo;Format String Bug&rdquo;
+&ldquo;A use of externally-controlled format string vulnerability in FortiOS fgfmd daemon may allow a remote unauthenticated attacker to execute arbitrary code or commands via specially crafted requests.&rdquo;
+Das ist ein Fall, wo eine C-Funktion einen Formatstring mit &quot;Bla %s Fasel&quot; annimmt, um etwa eine Log-Nachricht oder ein Kommando für einen system() Aufruf zusammenzubauen.</div>
+
+    </div>
+  </div>
+  
+  
+  
+
+  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
+    <div class='col-lg-8'>
+
+        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2024/02/06/wie-chatgpt-funktioniert.html" class='text-decoration-none text-dark'>Wie ChatGPT funktioniert</a></h1>
+
+        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
+          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
+          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
+            Kristian Köhntopp
+          </a>
+          -
+          February 6, 2024
+        </div>
+
+        <div class='mt-3'>Es gibt einen wunderbaren Artikel von Stephen Wolfram, What Is ChatGPT Doing … and Why Does It Work? Dies ist ein etwa ein Jahr alter und langer Text, und man muss dran bleiben, wenn man ihn verstehen möchte. Er erklärt wie ChatGPT intern funktioniert, warum das so viel Ressourcen kostet, und er erklärt auch, daß wir keine Ahnung haben, wieso das &ldquo;funktioniert&rdquo;. Er zeigt aber auch, was ChatGPT alles prinzipbedingt niemals erreichen kann, und auch nicht lernen wird.</div>
+
+    </div>
+  </div>
   
   
   
@@ -419,198 +615,6 @@ In the middle of this she manages to explain the biggest machine on our planet: 
 
     </div>
   </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/20/elite.html" class='text-decoration-none text-dark'>Elite</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 20, 2023
-        </div>
-
-        <div class='mt-3'>C64 Elite (1983) Longplay Das ist Elite (1984). Das Spiel wird heute 39 Jahre alt.
-Spiele zu jener Zeit waren nicht nur 2D, sie waren auch Arcade. Man spielt, und wenn man stirbt, ist das Spiel vorbei – die nächste Partie fängt man von vorne an.
-Elite ist das erste Spiel mit animierter 3D-Grafik, und es ist auch das erste Spiel mit Savegames und Progression. Als solches hat es die Spieleentwicklung sehr umfassend beeinflusst.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/19/the-gospel-of-efficiency-vs-actual-growth.html" class='text-decoration-none text-dark'>The Gospel of Efficiency vs. Actual Growth</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 19, 2023
-        </div>
-
-        <div class='mt-3'>A decade ago, I came as a performance specialist into a rapidly growing environment. With rapid growth, I mean anything that is larger than what Moore&rsquo;s Law once delivered. Moore&rsquo;s law comes out at upwards of 45% Year-on-Year (YoY). In my case, we experienced 80% YoY worldwide with 220% YoY in certain regions of the world for many years. Even in 2008, when the economy stagnated, we still made 45% or more.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/18/flugtaxi.html" class='text-decoration-none text-dark'>Flugtaxi</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 18, 2023
-        </div>
-
-        <div class='mt-3'>Golem schreibt: Über 2000 Skydrive-Lufttaxis vorbestellt .
-Das eVTOL Skydrive ist 13 x 13 Meter groß und 3 Meter hoch. Angetrieben wird es von zwölf Elektropropellern, die auf einem Gestell angebracht sind, ähnlich wie bei den Volocoptern. In dem eVTOL ist Platz für drei Personen: zwei Passagiere und eine, die es fliegt. Die Fluggeräte, die später ohne Pilot fliegen sollen, können auf einer relativ kleinen Fläche senkrecht starten und landen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/18/the-need-for-smarter-clients.html" class='text-decoration-none text-dark'>The Need for Smarter Clients</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 18, 2023
-        </div>
-
-        <div class='mt-3'>Somebody asked me very politely on the Fedi:
-Would you please post all but the first post in a thread as &ldquo;unlisted&rdquo;?
-I like to follow you, but the sum of all posts by you takes up so much space on my front page.
-The answer to that request, also politely, is a firm &ldquo;No.&rdquo;
-Selection, ordering and presentation of posts is a client problem, which it has to solve, according to your configured preferences.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/17/kernfusion.html" class='text-decoration-none text-dark'>Kernfusion</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 17, 2023
-        </div>
-
-        <div class='mt-3'>Heise schreibt: Kernfusion: Deutschland fehlt laut Studie eine Strategie .
-&ldquo;Der Fusionsenergie könnte in den nächsten zehn bis fünfzehn Jahren der entscheidende Durchbruch gelingen, aber Deutschland schaut nur staunend oder skeptisch zu&rdquo;, kritisierte von Tschirschky. Deutschland brauche eine Fusionsstrategie für sämtliche Schritte von Lieferketten über Forschungsförderung bis zu Verwaltungsvorschriften.
-Golem schreibt: Deutschland fehlt laut Studie eine Strategie dafür In zehn bis fünfzehn Jahren könnte die Technik für die Stromerzeugung einsatzfertig sein, meint die Unternehmensberatung Strategy&amp;.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/16/haftungsfragen.html" class='text-decoration-none text-dark'>Haftungsfragen</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 16, 2023
-        </div>
-
-        <div class='mt-3'>Die Niederlande halten es so: Aanrijding met voetganger of fietser .
-Wer haftet bei einem Unfall mit einem Fußgänger oder Radfahrer? Radfahrer oder Fußgänger gelten als schwächere Verkehrsteilnehmer. Da sie im Verkehr gefährdet sind, sieht das Gesetz eine besondere Regelung für Unfälle mit Kraftfahrzeugen vor. Abhängig vom Alter des Radfahrers ist der Eigentümer des Kraftfahrzeugs ganz oder teilweise für den Schaden des Radfahrers verantwortlich. Umgekehrt kann der Autofahrer den Schaden, den er aufgrund eines Fehlers eines Radfahrers oder Fußgängers erleidet, beim Radfahrer oder Fußgänger (oder seiner Haftpflichtversicherung) geltend machen.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/15/sshpass.html" class='text-decoration-none text-dark'>sshpass</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 15, 2023
-        </div>
-
-        <div class='mt-3'>Heute lernte ich, daß das Utility sshpass existiert. Ich habe das beim Lesen eines .gitlab.ci.yml Files gelernt. Und ihr wundert Euch, wieso Sysadmins alle Schwarz tragen und an Whisky interessiert sind.
-Was ist sshpass werdet ihr jetzt fragen?
-Und RedHat erklärt:
-The sshpass utility is designed to run SSH using the keyboard-interactive password authentication mode, but in a non-interactive way.
-Warum der Artikel jetzt nach und vor diesem Satz dann erklärt, wie man das benutzt, statt zu zeigen, warum man das nie braucht und wie man es ersetzt ist unklar.</div>
-
-    </div>
-  </div>
-  
-  
-  
-
-  <div class='row justify-content-center mb-4 py-4 border-bottom mx-0'>
-    <div class='col-lg-8'>
-
-        <h1 style='font-weight: 700'><a href="https://blog.koehntopp.info/2023/09/14/invalid-utf8-vs-the-filesystem.html" class='text-decoration-none text-dark'>Invalid-UTF8 vs the filesystem</a></h1>
-
-        <div class='text-uppercase text-secondary' style='letter-spacing: 0.1rem;'>
-          <img src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0' style='width: 1.9rem; border-radius: 1rem;'>
-          <a href="https://chaos.social/@isotopp" class='text-secondary text-decoration-none'>
-            Kristian Köhntopp
-          </a>
-          -
-          September 14, 2023
-        </div>
-
-        <div class='mt-3'>A UNIX filename can contain arbitrary bytes in an arbitrary sequence, with two exceptions:
-It cannot contain NUL (\0). It cannot contain slash (/), because that is the directory separator. But will all filesystems accept such filenames? And how will this work with languages such as Python, which require all strings to be valid utf-8 and which declare the filesystem interface to accept and return strings?
-A test program Let&rsquo;s check.</div>
-
-    </div>
-  </div>
 
   <div class='row mb-4 py-4 mx-0 justify-content-center'>
     <div class='col-lg-8 fs-5'>
@@ -656,38 +660,49 @@ A test program Let&rsquo;s check.</div>
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>

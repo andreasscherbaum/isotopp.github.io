@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>schulung on Die wunderbare Welt von Isotopp</title>
+    <title>Schulung on Die wunderbare Welt von Isotopp</title>
     <link>https://blog.koehntopp.info/tags/schulung.html</link>
-    <description>Recent content in schulung on Die wunderbare Welt von Isotopp</description>
+    <description>Recent content in Schulung on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jan 2024 23:01:30 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/schulung/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/schulung/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rechenaufgaben lösen</title>
       <link>https://blog.koehntopp.info/2021/02/28/rechenaufgaben-loesen.html</link>
@@ -308,7 +308,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aufgabe&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ausdenken&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;alles_updaten&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wir lesen die Benutzeringabe aus dem Antwortfeld mit &lt;code&gt;text()&lt;/code&gt; aus. Sie kann leer sein, dann ignorieren wir sie.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wir lesen die Benutzereingabe aus dem Antwortfeld mit &lt;code&gt;text()&lt;/code&gt; aus. Sie kann leer sein, dann ignorieren wir sie.&lt;/p&gt;
 &lt;p&gt;Danach versuchen wir diese Eingabe in eine ganze Zahl umzuwandeln. Wenn das nicht gelingt, ignorieren wir die Eingabe ebenfalls.&lt;/p&gt;
 &lt;p&gt;Schließlich rufen wir &lt;code&gt;pruefung()&lt;/code&gt; in unserer Aufgabe-Klasse auf. Wenn die Antwort richtig war, erzeugen wir einen passenden Ausgabestring und zählen den Score als &lt;code&gt;correct()&lt;/code&gt;. War sie falsch, erzeugen wir den anderen Ausgabestring und zählen den Score als &lt;code&gt;incorrect()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In jedem Fall setzen wir den Ausgabestring in das Label &lt;code&gt;label_richtig&lt;/code&gt; und löschen das Eingabefeld. Danach aktualisieren wir das Userinterface durch Aufruf von &lt;code&gt;alles_updaten()&lt;/code&gt;.&lt;/p&gt;

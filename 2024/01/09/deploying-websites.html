@@ -20,7 +20,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.124.1">
 <meta property="og:title" content='Deploying websites - an escalation' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
 
@@ -31,7 +31,7 @@
 <meta name="description" content='' />
 <meta property="og:description" content='' />
 
-<meta property="og:url" content="https://blog.koehntopp.info" />
+<meta property="og:url" content="https://blog.koehntopp.info/" />
 
 
 <meta property="og:type" content="article" />
@@ -48,7 +48,7 @@
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
 <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Deploying websites - an escalation","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info"}
+    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Deploying websites - an escalation","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
 </script>
 
     
@@ -64,7 +64,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light px-lg-4 pt-lg-4">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info" rel="home" title="Die wunderbare Welt von Isotopp">
+        <a class="navbar-brand justify-content-center" href="https://blog.koehntopp.info/" rel="home" title="Die wunderbare Welt von Isotopp">
             <img alt="Kris" height='48' width='48' src='/assets/img/avatars/isotopp.jpg' class='p-0 me-3 d-block d-lg-inline'>
             <span class='h4 d-block d-lg-inline'>Die wunderbare Welt von Isotopp</span>
         </a>
@@ -128,7 +128,7 @@
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
 						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
-							 style='width: 1.9rem; border-radius: 1rem;'>
+						     style='width: 1.9rem; border-radius: 1rem;'>
 						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
@@ -199,7 +199,7 @@ It is pretty nifty.</p>
 An easy problem to solve, naturally.</p>
 <p>A bit of Ansible, deploy a few config files into the system and be done with it.</p>
 <p>Only, these are different types of websites, and over time additional sites are being added.
-When a new website is being added, we need to collect all website names<br>
+When a new website is being added, we need to collect all website names
 and generate an
 <a href="https://httpd.apache.org/docs/2.4/mod/mod_md.html#mdomain" target="_blank" rel="noopener"><code>MDomain</code></a>
 
@@ -208,8 +208,8 @@ statement in the config for Apache&rsquo;s
 <a href="https://httpd.apache.org/docs/2.4/mod/mod_md.html" target="_blank" rel="noopener"><code>mod_md</code></a>
 
 .
-This module will then automatically the necessary certificates for the webserver&rsquo;s TLS.</p>
-<p>Collecting all domain names from the configuration files can be done that in Ansible, but it kind of hurts.
+This module will then automatically request the necessary certificates for the webserver&rsquo;s TLS.</p>
+<p>Collecting all domain names from the configuration files can be done in Ansible, but it kind of hurts.
 Ansible works best when you run it to deploy a few templated config files, and then have services doing the actual work.</p>
 <p>It is also more complicated than this, because we have different types of websites.
 Initially we had only</p>
@@ -217,6 +217,7 @@ Initially we had only</p>
 <li><code>static sites</code> (<code>https://example.com</code>)</li>
 <li>We also needed <code>redirect_sites</code> (<code>https://www.example.com</code> -&gt; <code>https://example.com</code>)</li>
 <li>We also needed reverse proxies for applications (<code>https://grafana.example.com</code> -&gt; <code>https://localhost:3000</code>)</li>
+<li>We also need a Discord bot.</li>
 <li>Then we also needed the <code>wsgi_site</code> deployed.</li>
 </ul>
 <p>But a <code>wsgi_site</code> needs to be redeployed when the code has changed on GitHub.
@@ -232,7 +233,7 @@ and installation of the requirements.</p>
 <p>Okay, let&rsquo;s not do this in Ansible.
 Let&rsquo;s write a simple and easy shell script for this.</p>
 <p>That kind of worked, initially, but quickly fell apart when the number of variants grew,
-error checking became complicated.</p>
+also error checking became complicated.</p>
 <p>Ultimately, it broke when we needed to collect and store per-site config parameters as a JSON, and act on it.
 The moment you write shell functions with parameters, traps and other bells and whistles,
 it is time to cut your losses and start over differently.
@@ -316,33 +317,6 @@ has better error handling and can handle borderline cases more safely.</p>
 
 		
 		
-		<div class='row justify-content-center mb-3 mx-0'>
-			<div class='col-lg-8 text-center'>
-				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Share</span>
-				<a href='https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.koehntopp.info%2f2024%2f01%2f09%2fdeploying-websites.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#facebook'/>
-					</svg>
-				</a>
-				
-				<a href='http://www.reddit.com/submit?url=https%3a%2f%2fblog.koehntopp.info%2f2024%2f01%2f09%2fdeploying-websites.html&title=Deploying%20websites%20-%20an%20escalation' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#reddit'/>
-					</svg>
-				</a>
-				<a href='mailto:?subject=Deploying%20websites%20-%20an%20escalation&body=https%3a%2f%2fblog.koehntopp.info%2f2024%2f01%2f09%2fdeploying-websites.html' target='_blank'
-				   class='text-decoration-none'>
-					<svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
-						<use xlink:href='/bootstrap-icons.svg#envelope-fill'/>
-					</svg>
-				</a>
-			</div>
-		</div>
-
-		
-		
 		<div class='row justify-content-center py-3 mb-3 mx-0'>
 			<div class='col-lg-8 text-center'>
 				<span class='letter-spacing-01 text-uppercase text-secondary me-2'>Tags</span>
@@ -419,38 +393,49 @@ has better error handling and can handle borderline cases more safely.</p>
             <footer class='row justify-content-center mb-4 pb-4 mx-0'>
   <div class='col-8 text-center'>
     <div>
-      A collection of old stuff, new stuff and random stuff. 
+      A collection of old stuff, new stuff and random stuff.
     </div>
     <div class='row text-primary mt-4'>
       <div class='col'>
 
         <a href='/feed.xml' title='Follow RSS feed' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#rss-fill'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#rss-fill'/>
+          </svg>
         </a>
 
         <a href='mailto:kristian.koehntopp@gmail.com' title='Email' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#envelope'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#envelope'/>
+          </svg>
         </a>
 
         <a href='https://github.com/isotopp' title='Follow on GitHub' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#github'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#github'/>
+          </svg>
         </a>
 
-	<a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#mastodon'/></svg>
-	</a>
+        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#mastodon'/>
+          </svg>
+        </a>
 
-
+        
         <a href='http://steamcommunity.com/id/ixotopp' title='Follow on Steam' class='me-3 text-decoration-none'>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#steam'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#steam'/>
+          </svg>
         </a>
 
-
+        
 
         <a href='https://www.youtube.com/user/isotopp' title='Follow on YouTube' class=''>
-          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'><use xlink:href='/bootstrap-icons.svg#youtube'/></svg>
+          <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
+            <use xlink:href='/bootstrap-icons.svg#youtube'/>
+          </svg>
         </a>
-
       </div>
     </div>
   </div>
