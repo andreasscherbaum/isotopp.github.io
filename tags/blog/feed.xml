@@ -6,12 +6,18 @@
     <description>Recent content in Blog on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/blog/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>This Blog is now Hugo powered</title>
       <link>https://blog.koehntopp.info/2021/11/07/this-blog-is-now-hugo-powered.html</link>
-      <pubDate>Sun, 07 Nov 2021 11:28:27 +0100</pubDate>
-      
+      <pubDate>Sun, 07 Nov 2021 11:28:27 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/07/this-blog-is-now-hugo-powered.html</guid>
       <description>&lt;p&gt;I started blogging almost 20 years ago, because a piece of software I was using to manage calendars and discussion boards to organize the &amp;ldquo;Dienstag&amp;rdquo; also offered blogging functionality.
 That software was very buggy and full of HTML injections.
@@ -59,18 +65,14 @@ That is &lt;em&gt;checks calendar&lt;/em&gt; more than 20 years ago, and would  
 &lt;p&gt;Mein Blog verwendet Jekyll, und &lt;a href=&#34;https://github.com/sylhare/Type-on-Strap&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/sylhare/Type-on-Strap&lt;/a&gt;
 
 &lt;/p&gt;
-&lt;p&gt;Das ist lahm, und ich will Hugo.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Das ist lahm, und ich will Hugo.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich verwende das Theme, weil es light und text-freundlich ist, und weil es eine gute Suche mitbringt (JS basierend, aber funktioniert leidlich).&lt;/p&gt;
-&lt;p&gt;Gibt es dieses Theme oder was Vergleichbares für Hugo, oder mag jemand das portieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Gibt es dieses Theme oder was Vergleichbares für Hugo, oder mag jemand das portieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Original ist MIT License.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Original ist MIT License.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Bin Privatperson, Blog nicht monetarisiert, kann nur symbolisch zahlen, wenn es jemand es für Geld tun will, sollte das Resultat ebenfalls MIT oder frei verfügbar sein.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Bin Privatperson, Blog nicht monetarisiert, kann nur symbolisch zahlen, wenn es jemand es für Geld tun will, sollte das Resultat ebenfalls MIT oder frei verfügbar sein.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://twitter.com/darixzen/status/1451567686484467723&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@Darixzen&lt;/a&gt;
 
  as a member of the &lt;a href=&#34;https://pixls.us/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pixls.us&lt;/a&gt;
@@ -81,8 +83,7 @@ That is &lt;em&gt;checks calendar&lt;/em&gt; more than 20 years ago, and would  
 &lt;blockquote&gt;
 &lt;p&gt;I&amp;rsquo;m a member of the GIMP team, occasional photographer, digital dabbler, and lover of Free Software. Started @pixlsus &lt;a href=&#34;https://pixls.us&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://pixls.us&lt;/a&gt;
 
-&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;who took it upon himself to create a foundation for me to build on, and this weekend I was able to provisionally move over things from Jekyll to Hugo.
 There are still many visual and other bugs, but this is on GitHub: You can open issues, and even better, provide PRs.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -112,8 +113,8 @@ If you do stuff with software for a living, and are not using their products, yo
     <item>
       <title>Feeds tagged, and a MySQL feed</title>
       <link>https://blog.koehntopp.info/2020/09/09/feeds-tagged-and-a-mysql-feed.html</link>
-      <pubDate>Wed, 09 Sep 2020 17:34:33 +0000</pubDate>
-      
+      <pubDate>Wed, 09 Sep 2020 17:34:33 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/09/09/feeds-tagged-and-a-mysql-feed.html</guid>
       <description>&lt;p&gt;I have made changes to the RSS Feed of this blog:&lt;/p&gt;
 &lt;ol&gt;
@@ -145,8 +146,8 @@ If you do stuff with software for a living, and are not using their products, yo
     <item>
       <title>Ein paar Zwischenbemerkungen, bevor der Tanz wieder losgeht</title>
       <link>https://blog.koehntopp.info/2010/12/15/ein-paar-zwischenbemerkungen-bevor-der-tanz-wieder-losgeht.html</link>
-      <pubDate>Wed, 15 Dec 2010 18:00:35 +0000</pubDate>
-      
+      <pubDate>Wed, 15 Dec 2010 18:00:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/12/15/ein-paar-zwischenbemerkungen-bevor-der-tanz-wieder-losgeht.html</guid>
       <description>&lt;p&gt;Es ist ein Fehler anzunehmen, die CDU hätte in NRW gegen den JMStV gestimmt,
 weil sie inhaltlich gegen den JMStV gewesen wäre - keine der Parteien
@@ -180,8 +181,7 @@ diese Erkenntnis muß halt rein in die Köpfe.&lt;/p&gt;
 &lt;p&gt;Ich bekam eine Anfrage per Mail:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Hallo Kristian,&amp;hellip;Hättest du nicht Lust, einen Gastbeitrag [ zu
-Filtersoftware ] bei uns zu schreiben?&lt;/p&gt;
-&lt;/blockquote&gt;
+Filtersoftware ] bei uns zu schreiben?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das habe ich nun drei Mal angefangen und den Text wieder weg geworfen -
 daher auch die langsame Reaktion. Das Thema macht mich müde, oder ich werde,
 wenn ich nicht müde werde, zu spitzzüngig für eine sinnvolle Diskussion. Es
@@ -323,8 +323,7 @@ akzeptieren, warum dies die einzige Möglichkeit ist, die uns im Angesicht
 moderner Technologie bleibt.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich denke, der Jugendmedienschutz ist ein gutes Beispiel dafür, wie
-mangelhaft die Zusammenarbeit zwischen Juristen und Technikern oft ist.&lt;/p&gt;
-&lt;/blockquote&gt;
+mangelhaft die Zusammenarbeit zwischen Juristen und Technikern oft ist.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich denke, der Jugendmedienschutz ist ein gutes Beispiel dafür, wie Menschen
 versuchen, Heil in der Entwicklung von Technologien zu suchen, wenn
 Technologie für die Lösung der gestellten Aufgabe komplett ungeeignet ist.
@@ -339,8 +338,7 @@ brauchen ist JugendmedienERZIEHUNG. Durch Menschen. Mit Werten und
 &lt;blockquote&gt;
 &lt;p&gt;Egal wie es mit dem JMStV in nächster Zukunft läuft - verändern kann man
 nur etwas, wenn man sich über Alternativen Gedanken macht. Könntest du dir
-vorstellen, da mit uns zusammen einen ersten Schritt zu machen?&lt;/p&gt;
-&lt;/blockquote&gt;
+vorstellen, da mit uns zusammen einen ersten Schritt zu machen?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wie gesagt, ich bin dieser Diskussion unsagbar müde. Ich führe sie seit fast
 15 Jahren. Den Text da oben könnt Ihr verwenden, falls Ihr den brauchbar
 findet.&lt;/p&gt;
@@ -351,8 +349,8 @@ findet.&lt;/p&gt;
     <item>
       <title>Statifizierung für S9Y - eine Blaupause</title>
       <link>https://blog.koehntopp.info/2010/05/11/statifizierung-fuer-s9y-eine-blaupause.html</link>
-      <pubDate>Tue, 11 May 2010 08:54:12 +0000</pubDate>
-      
+      <pubDate>Tue, 11 May 2010 08:54:12 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/05/11/statifizierung-fuer-s9y-eine-blaupause.html</guid>
       <description>&lt;p&gt;An anderer Stelle gab es in einem komplett anderen Kontext eine Diskussion
 (&lt;a href=&#34;http://mysqldump.azundris.com/archives/36-Serving-Images-From-A-Database.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1&lt;/a&gt;
@@ -558,8 +556,7 @@ wird.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Solche Features wie &amp;ldquo;Leserechte auf Userbasis&amp;rdquo;, &amp;ldquo;Adminlinks für
 Redakteure&amp;rdquo;, &amp;ldquo;Content-Negotiated-Language&amp;rdquo; wird man verlieren, auch das
-Statistik-Tracking.&lt;/p&gt;
-&lt;/blockquote&gt;
+Statistik-Tracking.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist in erster Näherung sicher wahr, aber wahrscheinlich auch für die
 Masse der S9Y-Anwender und alle S9Y-Anwender mit Last wahrscheinlich egal.&lt;/p&gt;
 &lt;p&gt;Nebenbei kann man
@@ -583,8 +580,8 @@ Adminlinks für Redakteure mit statischen Dateien implementieren.&lt;/p&gt;
     <item>
       <title>Persona - was Julia Seeliger mit Marcel D&#39;Avis verbindet</title>
       <link>https://blog.koehntopp.info/2010/03/15/persona-was-julia-seeliger-mit-marcel-d-avis-verbindet.html</link>
-      <pubDate>Mon, 15 Mar 2010 10:43:28 +0000</pubDate>
-      
+      <pubDate>Mon, 15 Mar 2010 10:43:28 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/03/15/persona-was-julia-seeliger-mit-marcel-d-avis-verbindet.html</guid>
       <description>&lt;p&gt;Ich schreibe diesen Beitrag einmal provisorisch in meine Kategorie &amp;lsquo;Blog&amp;rsquo;,
 aber es könnte genau so gut auch in die Kategorie &amp;lsquo;Politik&amp;rsquo;, &amp;lsquo;Piraten&amp;rsquo;, in
@@ -641,8 +638,7 @@ formuliert das so:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ihr bescheuerten Pisser (und Wichserinnen), die mich ständig auf Twitter
 für jegliches, was die taz tut (vermutlich auch für den Diekmann-Schwanz,
-die Rudi-Dutschke-Straße und die tazze) verantwortlich machen&lt;/p&gt;
-&lt;/blockquote&gt;
+die Rudi-Dutschke-Straße und die tazze) verantwortlich machen&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das hilft natürlich kein Stück, weder bei der Markenkommunikation noch bei
 der Lösung ihres Problems, aber es verdeutlicht die Situation.&lt;/p&gt;
 &lt;p&gt;Der andere Aspekt ist die Sache mit dem
@@ -654,8 +650,7 @@ Julia Seeliger verliert nämlich die Nerven oder zumindest die Haltung:&lt;/p&gt
 &lt;p&gt;Es führt nämlich zu nichts. Seitdem ich im September 2009 den Artikel “Die
 Freiheit, die wir meinen” verfasste, sah ich mich einem Mob gegenüber, dem
 man auch nur mit Worten wie “geh kacken” “Halts Maul” etc entgegnen
-konnte.&lt;/p&gt;
-&lt;/blockquote&gt;
+konnte.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nun hat sie es hier aber mit einer offenen Community zu tun und nicht mit
 einer walled garden Community. Das bedeutet, es gibt keine Instanz und keine
 Methoden die Personen wirksam sanktionieren könnte, in irgendeiner Form
@@ -743,8 +738,7 @@ formuliert:&lt;/p&gt;
 jeder, was er/sie will. Bei uns gibt es keine “Order von oben”, was
 geschrieben wird – und auch ich bin nicht für das verantwortlich, was
 meine Kollegen schreiben. Und schon gar nicht bin ich die
-Piraten-Müllhalde für un-unkritische taz-Artikel.&lt;/p&gt;
-&lt;/blockquote&gt;
+Piraten-Müllhalde für un-unkritische taz-Artikel.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;gilt ja auch andersherum, wird aber so nicht wahrgenommen - nicht einmal von
 Julia Seeliger selbst.&lt;/p&gt;
 </description>
@@ -753,8 +747,8 @@ Julia Seeliger selbst.&lt;/p&gt;
     <item>
       <title>Ab 18</title>
       <link>https://blog.koehntopp.info/2010/01/26/ab-18.html</link>
-      <pubDate>Tue, 26 Jan 2010 10:30:40 +0000</pubDate>
-      
+      <pubDate>Tue, 26 Jan 2010 10:30:40 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/01/26/ab-18.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/blog_altersfreigabe.png&#34; alt=&#34;&#34;  /&gt;
@@ -867,8 +861,8 @@ etablierten Parteien für die Piratenpartei interpretieren.&lt;/p&gt;
     <item>
       <title>Warum alle meine Texte frei im Netz zu lesen sind</title>
       <link>https://blog.koehntopp.info/2007/03/18/warum-alle-meine-texte-frei-im-netz-zu-lesen-sind.html</link>
-      <pubDate>Sun, 18 Mar 2007 10:58:00 +0000</pubDate>
-      
+      <pubDate>Sun, 18 Mar 2007 10:58:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2007/03/18/warum-alle-meine-texte-frei-im-netz-zu-lesen-sind.html</guid>
       <description>&lt;p&gt;Die Süddeutsche Zeitung hat einen etwas unklaren Artikel mit dem Titel
 &lt;a href=&#34;http://www.sueddeutsche.de/kultur/artikel/9/105903/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet: Ende der Kultur?&lt;/a&gt;
@@ -941,8 +935,7 @@ die Bitte, mich nicht anzurufen, sondern Mail zu schicken:&lt;/p&gt;
 Es ist wirklich meine Telefonnummer.
 Sie ist für Freunde und Bekannte und für Notfälle.
 Sie ist nicht für &amp;gt; Kontaktaufnahme wegen Fragen zu meinen Vorträgen, oder für &amp;ldquo;mal eben eine &amp;gt; Frage zu PHP&amp;rdquo;.
-Dafür gibt es Mail.&lt;/p&gt;
-&lt;/blockquote&gt;
+Dafür gibt es Mail.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die
 &lt;a href=&#34;http://www.php-faq.de/q/q-private-anfragen.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;entsprechende Passage&lt;/a&gt;
 
@@ -954,8 +947,7 @@ Keine dieser Fragen wird beantwortet - das ist arbeitsmäßig einfach nicht zu s
 Allgemein: Es ist sinnlos, Fragen per Mail an einen der Autoren dieser FAQ zu senden.
 Du belastest damit eine einzelne Person mit Arbeit, statt die Arbeit auf die Newsgroup zu verteilen.
 Außerdem ist diese Arbeit verschwendet, denn die Antwort wird nur von Dir und nicht von den anderen Lesern der Newsgroup gelesen.
-Auch kann die Antwort nicht vom FAQ-Team weiterverarbeitet werden.&lt;/p&gt;
-&lt;/blockquote&gt;
+Auch kann die Antwort nicht vom FAQ-Team weiterverarbeitet werden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Beide Hinweise waren recht dringend, weil die Texte auf der Site und die FAQ weitaus mehr Öffentlichkeit (und Arbeitsgelegenheiten) produziert haben als ich sinnvoll brauchen konnte.&lt;/p&gt;
 &lt;p&gt;Zusammenfassend kann ich also sagen:
 Meiner persönlichen Erfahrung nach kann ich von der Veröffentlichung von Texten in Zeitschriften oder Büchern ganz gut leben.
@@ -980,8 +972,7 @@ fasst dieselbe Erkenntnis folgendermaßen zusammen:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Our message to all content owners, including all the rights owners in our programs, is uncompromising.
 We&amp;amp;&amp;rsquo;re saying that the greatest danger today to their property is not piracy.
-It&amp;rsquo;s obscurity.&lt;/p&gt;
-&lt;/blockquote&gt;
+It&amp;rsquo;s obscurity.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Meine Website ist nichts anderes als mein privater Versuch, dies für mich selbst zu vermeiden.&lt;/p&gt;
 </description>
     </item>
@@ -989,8 +980,8 @@ It&amp;rsquo;s obscurity.&lt;/p&gt;
     <item>
       <title>Fertig gelesen: Deutsch für Profis - Wege zu gutem Stil</title>
       <link>https://blog.koehntopp.info/2006/07/30/fertig-gelesen-deutsch-fuer-profis.html</link>
-      <pubDate>Sun, 30 Jul 2006 08:14:22 +0000</pubDate>
-      
+      <pubDate>Sun, 30 Jul 2006 08:14:22 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/07/30/fertig-gelesen-deutsch-fuer-profis.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/deutschfuerprofis.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1014,8 +1005,8 @@ Schneiders &lt;a href=&#34;http://www.amazon.de/gp/product/3442161754/&#34; targ
     <item>
       <title>Ein paar ideologische Steine ins Rollen bringen</title>
       <link>https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html</link>
-      <pubDate>Wed, 05 Jan 2005 12:44:36 +0000</pubDate>
-      
+      <pubDate>Wed, 05 Jan 2005 12:44:36 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html</guid>
       <description>&lt;p&gt;Im Nachbeben zu
 &lt;a href=&#34;https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html&#34;&gt;Rumble in the Jungle&lt;/a&gt;
@@ -1033,8 +1024,7 @@ oder Blogdex, bekommt aber nicht so recht eine Antwort.Drei Dinge sind
 meiner Meinung nach gegenüber den zitierten Lösungen anders: IzyNews will
 für die Blogtexte Geld haben (es gibt eine kleinere Version mit 20 Feeds
 umsonst, aber darüber hinaus muss man zahlen), sie ignorieren CC-Lizenzen
-und sie ändern das Medium.&lt;/p&gt;
-&lt;/blockquote&gt;
+und sie ändern das Medium.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Antwort auf die Frage von Kai Pahl bleibt aus, weil sie in den
 betreffenden Communities selber nicht ganz sauber definiert ist. Ich will
 hier zwei Worte einführen, und versuchen deutlich zu machen, welchen
@@ -1135,8 +1125,7 @@ zwar explizit da, aber das ist nur der rechtliche Default:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Der Inhalt dieses Blogs ist © Copyright 2004 Kristian Köhntopp. Jegliche
 Reproduktion und Wiederverwertung nur mit schriftlicher Genehmigung des
-Autors.&lt;/p&gt;
-&lt;/blockquote&gt;
+Autors.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Letztendlich steht ein Dienst wie izynews.de, der ja Kopien von Inhalten
 macht und diese Kopien weiter verbreitet, ohne Lizenzen für alles da, CC
 oder nicht. Genau wie Google Groups, Bloglines, oder letztendlich mein
@@ -1149,8 +1138,7 @@ Planet, was das angeht.&lt;/p&gt;
 &lt;p&gt;Was mir in der ganzen Diskussion manchmal schon etwas merkwürdig
 vorkommet, ist allerdings wie hier das Schwert Creative Commons als Waffe
 gegen die Nutzung von Inhalten eingesetzt wird. Dazu war CC eigentlich
-nicht unbedingt gedacht.&lt;/p&gt;
-&lt;/blockquote&gt;
+nicht unbedingt gedacht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Da Rache oder eine andere Emotion hineinzuinterpretieren ist falsch. Es
 handelt sich einfach nur um vollkommen normale die Abgrenzungsreaktion der
 kooperativen Wertschöpfer gegenüber jemandem, den sie der kompetetiven
@@ -1162,8 +1150,7 @@ Schutzmechanismen eingebaut, wenn auch andere als die GPL.&lt;/p&gt;
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich bin gespannt, was passiert, wenn Bloglines.com Mehrwertdienste
-einführt. Wird dann Bloglines von Paulus zum Saulus ernannt?&lt;/p&gt;
-&lt;/blockquote&gt;
+einführt. Wird dann Bloglines von Paulus zum Saulus ernannt?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Genau das. Wobei das hauptsächlich (vergleiche Google Groups) ein
 Wahrnehmungsproblem und Marketingproblem ist.&lt;/p&gt;
 &lt;p&gt;Markus führt weiter aus:&lt;/p&gt;
@@ -1171,8 +1158,7 @@ Wahrnehmungsproblem und Marketingproblem ist.&lt;/p&gt;
 &lt;p&gt;Um für einen Burgfrieden zu sorgen, wäre es vielleicht wirklich das
 einfachste, wenn umgekehrt jeder Betreiber eines Service, der Blog-Inhalte
 syndiziert, eine einfache Möglichkeit schafft, Weblogs gezielt von seinem
-Dienst auszuschließen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Dienst auszuschließen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist letztendlich der Mechanismus von Google Groups, ein opt-out System.
 Bei Google ist es der &amp;ldquo;X-No-Archive: yes&amp;rdquo; Header, den man setzen muß, damit
 der eigene Content nicht von Google Groups vereinnahmt wird. Per Default
@@ -1211,8 +1197,7 @@ kompetetiven Sphäre nicht beschäftigen.&lt;/p&gt;
 &lt;p&gt;Alles in allem scheint mir dieser Fall (und ähnliche) ein wunderbares
 Lehrstück dafür zu sein, wie hilflos eine Gesellschaft, ihr Rechtssystem,
 ihre Moral, ihre Wirtschaft etc. vor neuen technologischen Möglichkeiten
-stehen kann.&lt;/p&gt;
-&lt;/blockquote&gt;
+stehen kann.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich empfinde das nicht so. Probleme gibt es immer nur dann, wenn Mitglieder
 der kompetetiven Sphäre meinen, sie könnten die Regeln der kooperativen
 Sphäre ignorieren, weil die kooperativen Wertschöpfer untereinander das tun.
@@ -1260,8 +1245,8 @@ werden.&lt;/p&gt;
     <item>
       <title>Rumble in the Jungle</title>
       <link>https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html</link>
-      <pubDate>Tue, 04 Jan 2005 11:22:09 +0000</pubDate>
-      
+      <pubDate>Tue, 04 Jan 2005 11:22:09 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html</guid>
       <description>&lt;p&gt;Eine RSS-Plattform, izynews.de, repliziert RSS-Feeds nach IMAP. Das ist neu, und für viele Leute sicherlich praktisch. izynews.de macht das jedoch für Geld, und ohne Lizenzen für die Feeds zu kaufen oder die Lizenzen auf den Feeds zu beachten. Das ist schlecht, und verärgert den &lt;a href=&#34;http://blog.schockwellenreiter.de/7558&#34;&gt;Schockwellenreiter&lt;/a&gt;, &lt;a href=&#34;http://www.industrial-technology-and-witchcraft.de/index.php/ITW/13214&#34;&gt;IT&amp;amp;W&lt;/a&gt; und &lt;a href=&#34;http://www.lawblog.de/index.php/archives/2005/01/04/content-klau/&#34;&gt;Herrn Vetter vom Lawblog&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Neu ist es nicht - Slashdot versuchte zum Beispiel einst, Artikel der Benutzer als Buch zu verkaufen, und hatte einen Copyright-Vermerk, der die Artikel der Benutzer quasi in Besitz nahm. Seitdem habe ich einen Copyright-Vermerk als Signature auf Slashdot, und verweise dort auf &lt;a href=&#34;http://kris.koehntopp.de/copyright.txt&#34;&gt;eine Erklärung&lt;/a&gt;, warum ich das so halte.&lt;/p&gt;
@@ -1303,8 +1288,8 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
     <item>
       <title>Firma mit Blogs</title>
       <link>https://blog.koehntopp.info/2004/12/08/firma-mit-blogs.html</link>
-      <pubDate>Wed, 08 Dec 2004 16:03:47 +0000</pubDate>
-      
+      <pubDate>Wed, 08 Dec 2004 16:03:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2004/12/08/firma-mit-blogs.html</guid>
       <description>&lt;p&gt;Bei meinem Arbeitgeber ist es verpflichtend, ein Daily zu schreiben.&lt;/p&gt;
 &lt;p&gt;Im Daily schreibt man auf, was man an diesem Tag an persönlichen Zielen erreicht hat, und notiert weitere Dinge, von denen man glaubt, daß sie interessant sein können.&lt;/p&gt;
@@ -1313,8 +1298,7 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
 &lt;li&gt;Kalibrierung der Warpspulen abgeschlossen.&lt;/li&gt;
 &lt;li&gt;Deflektorkapazität wird bei weiterem Hochgeschwindigkeitsflug nicht mehr ausreichen. Upgradeoptionen evaluiert.&lt;/li&gt;
 &lt;li&gt;Energieverluste der lateralen Dämpfungsfelder untersucht. Ursache weiterhin unklar. Ich muß wohl einen der Waffenspezialisten hinzuziehen.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das Daily sendet man an seine Peers (als Teamleiter also an alle Teamleiter unter demselben Abteilungsleiter), upstream (also an den Abteilungsleiter) und an alle Leute, die man im Daily erwähnt hat (also an alle Leute, mit denen man an diesem Tag zu tun hatte). Außerdem kann jeder das Daily von jedem Kollegen anfordern, wenn er möchte.&lt;/p&gt;
 &lt;p&gt;Da im Daily nicht nur die Sachen stehen, die einen angehen, sondern auch die Sachen, die der andere an diesem Tag sonst noch so gemacht hat, bekommt man einen recht schnellen und überraschend effektiven Informationsfluß hin. Es handelt sich quasi um ein institutionalisiertes &lt;strike&gt;Flur&lt;/strike&gt;Turbolift-Gespräch.&lt;/p&gt;
 &lt;p&gt;Dailies wurden in der Firma bisher per Mail getauscht. Das war okay, erzeugt aber keinen nachlesbaren Trail, auf dem man später noch einmal suchen kann.&lt;/p&gt;
@@ -1339,12 +1323,10 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
 &lt;p&gt;Schließlich noch die Beobachtung am Rande:&lt;/p&gt;
 &lt;p&gt;Die Auswahl des Tools hat beeindruckende Rückwirkungen auf die Qualität des geschriebenen Textes. Während im Wiki häufig Einzeiler entstanden sind,&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;ame, kris und kabl diskutieren die Auswirkungen des Upgrades der Warpfeldgeneratoren&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;ame, kris und kabl diskutieren die Auswirkungen des Upgrades der Warpfeldgeneratoren&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;finden sich jetzt eher brauchbare Texte.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;ame, kris und kabl stimmen das Upgrade der Warpfeldgeneratoren ab. Die neuen Spulen werden gute 60% mehr Leistung brauchen. ame diskutiert derzeit mit Anbietern von Dilithiumkristallen. kris fragt, ob die Kapazität der EPS-Kupplungen diesen Belastungen standhalten kann oder ob wir das Energienetz upgraden müssen. kabl merkt an, daß wir in diesem Fall den Onlinetermin für Warp 8 nicht halten können.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;ame, kris und kabl stimmen das Upgrade der Warpfeldgeneratoren ab. Die neuen Spulen werden gute 60% mehr Leistung brauchen. ame diskutiert derzeit mit Anbietern von Dilithiumkristallen. kris fragt, ob die Kapazität der EPS-Kupplungen diesen Belastungen standhalten kann oder ob wir das Energienetz upgraden müssen. kabl merkt an, daß wir in diesem Fall den Onlinetermin für Warp 8 nicht halten können.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Mal sehen, ob das Werkzeug abteilungsweit angenommen wird. Eigentlich aber ein leichter Fall: Das Bloggen ist bei uns sowieso schon seit Jahren Bestandteil der Firmenkultur, und jetzt wird nur ein besseres Werkzeug dafür installiert.&lt;/p&gt;
 </description>
     </item>
@@ -1352,8 +1334,8 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
     <item>
       <title>URLs sind keine IDs</title>
       <link>https://blog.koehntopp.info/2004/02/18/urls-sind-keine-ids.html</link>
-      <pubDate>Wed, 18 Feb 2004 20:45:55 +0000</pubDate>
-      
+      <pubDate>Wed, 18 Feb 2004 20:45:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2004/02/18/urls-sind-keine-ids.html</guid>
       <description>&lt;p&gt;Ich habe mich an
 &lt;a href=&#34;https://blog.koehntopp.info/2004/02/12/wir-sind-so-geil.html&#34;&gt;anderer Stelle&lt;/a&gt;
@@ -1681,8 +1663,8 @@ formalisieren möchte.&lt;/p&gt;
     <item>
       <title>Wir sind so geil, ...</title>
       <link>https://blog.koehntopp.info/2004/02/12/wir-sind-so-geil.html</link>
-      <pubDate>Thu, 12 Feb 2004 18:01:46 +0000</pubDate>
-      
+      <pubDate>Thu, 12 Feb 2004 18:01:46 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2004/02/12/wir-sind-so-geil.html</guid>
       <description>&lt;p&gt;Wir sind so geil,
 &lt;a href=&#34;http://www.supergarv.de/serendipity/archives/311_s9y_Individualisierter_RSSFeed_per_Conditional_Get.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wir sprechen XML&lt;/a&gt;
@@ -1767,4 +1749,3 @@ an den Kopf werfen. Ihr suckt. Kapital.&lt;/p&gt;
     
   </channel>
 </rss>
-

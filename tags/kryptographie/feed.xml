@@ -6,12 +6,18 @@
     <description>Recent content in Kryptographie on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/kryptographie/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/kryptographie/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Cryptowars, twenty years ago</title>
       <link>https://blog.koehntopp.info/2017/06/27/the-cryptowars-twenty-years-ago.html</link>
-      <pubDate>Tue, 27 Jun 2017 12:15:29 +0000</pubDate>
-      
+      <pubDate>Tue, 27 Jun 2017 12:15:29 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/06/27/the-cryptowars-twenty-years-ago.html</guid>
       <description>&lt;p&gt;So there was
 &lt;a href=&#34;https://motherboard.vice.com/en_us/article/43ymjd/why-fbi-investigated-dungeons-and-dragons-players-1990s&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this article&lt;/a&gt;
@@ -32,8 +38,7 @@ an early Sun Microsystems employee and hardware (VLSI chip) designer, and
 this part of his career made him financially independent. He&amp;rsquo;s also
 politically active, libertarian, and coined the famous saying&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Net interprets censorship as damage and routes around it.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The Net interprets censorship as damage and routes around it.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Gilmore was running &lt;a href=&#34;https://en.wikipedia.org/wiki/Cygnus_Solutions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cygnus Solutions&lt;/a&gt;
 
 
@@ -186,8 +191,7 @@ sound precisely like those today:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ginge es nach dem Willen von Innenminister Kanther, dürfte es in der
 Bundesrepublik &amp;ldquo;keine Nischen kontrollfreier Kommunikation für Verbrecher&amp;rdquo;
-geben&lt;/p&gt;
-&lt;/blockquote&gt;
+geben&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Around that time, a lot of political lobbying action took place, resulting
 in a up to this day generally unchallenged ban on key escrow in Germany:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -196,8 +200,7 @@ anonym veröffentlichtes CDU-Thesenpapier aus den Kreisen des
 Bundeskanzleramts bekommen, doch schon nach der Verabschiedung des
 Multimediagesetzes im Bundestag ließ das Innenministerium die Katze aus
 dem Sack: Eine staatlich verordnete Schlüsselhinterlegung wird es vorerst
-nicht geben, dafür setzt man auf freiwilliges Hinterlegen.&lt;/p&gt;
-&lt;/blockquote&gt;
+nicht geben, dafür setzt man auf freiwilliges Hinterlegen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;which then resulted in the
 &amp;ldquo;&lt;a href=&#34;https://hp.kairaven.de/law/eckwertkrypto.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Eckpunkte der deutschen Kryptopolitik&lt;/a&gt;
 
@@ -225,8 +228,8 @@ surveillance and control.&lt;/p&gt;
     <item>
       <title>Einige kryptographische Grundlagen</title>
       <link>https://blog.koehntopp.info/2011/06/03/einige-kryptographische-grundlagen.html</link>
-      <pubDate>Fri, 03 Jun 2011 14:54:32 +0000</pubDate>
-      
+      <pubDate>Fri, 03 Jun 2011 14:54:32 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/06/03/einige-kryptographische-grundlagen.html</guid>
       <description>&lt;p&gt;Heute gibt es hier alten Scheiß: Vor vielen Jahren, in einem anderen Leben,
 habe ich im Rahmen der Ausbildung von Auszubildenden und Neuanstellungen
@@ -913,8 +916,8 @@ zertifiziert verlangt.&lt;/p&gt;
     <item>
       <title>Die Kosten von SSL</title>
       <link>https://blog.koehntopp.info/2011/02/10/die-kosten-von-ssl.html</link>
-      <pubDate>Thu, 10 Feb 2011 19:08:54 +0000</pubDate>
-      
+      <pubDate>Thu, 10 Feb 2011 19:08:54 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/10/die-kosten-von-ssl.html</guid>
       <description>&lt;p&gt;Bei web.de waren schon 2003 mehr als 80% des Datenverkehrs
 SSL-verschlüsselt, da dort die Policy herrschte &amp;ldquo;Paßworte werden nur
@@ -971,15 +974,14 @@ Jedenfalls ist das Problem bei SSL
     <item>
       <title>Ein paar Worte zu SSL</title>
       <link>https://blog.koehntopp.info/2009/02/11/ein-paar-worte-zu-ssl.html</link>
-      <pubDate>Wed, 11 Feb 2009 19:19:44 +0000</pubDate>
-      
+      <pubDate>Wed, 11 Feb 2009 19:19:44 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/02/11/ein-paar-worte-zu-ssl.html</guid>
       <description>&lt;p&gt;Slowtiger antwortet in einem Kommentar zu &lt;a href=&#34;https://blog.koehntopp.info/2009/02/10/mein-natives-ip-v6.html&#34;&gt;Mein natives IP V6&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Wenn ich Sätze wie &amp;ldquo;Ob ich überhaupt noch unverschlüsseltes http auf V6 anbieten werde weiß ich nicht - die politische Situation legt nahe, daß dies Unsinn ist.&amp;rdquo; in einem Technikblog lese, dann gruselts mich wirklich.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Wenn ich Sätze wie &amp;ldquo;Ob ich überhaupt noch unverschlüsseltes http auf V6 anbieten werde weiß ich nicht - die politische Situation legt nahe, daß dies Unsinn ist.&amp;rdquo; in einem Technikblog lese, dann gruselts mich wirklich.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Also, die ganze Erklärung ist wie immer in wenig länger.&lt;/p&gt;
 &lt;h3 id=&#34;rechenleistung-ist-kein-problem&#34;&gt;
     &lt;a href=&#34;#rechenleistung-ist-kein-problem&#34;&gt;
@@ -1049,8 +1051,8 @@ Jedenfalls ist das Problem bei SSL
     <item>
       <title>Wann soll ich verschlüsseln?</title>
       <link>https://blog.koehntopp.info/2008/11/17/wann-soll-ich-verschluesseln.html</link>
-      <pubDate>Mon, 17 Nov 2008 09:36:07 +0000</pubDate>
-      
+      <pubDate>Mon, 17 Nov 2008 09:36:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/11/17/wann-soll-ich-verschluesseln.html</guid>
       <description>&lt;p&gt;Drüben bei
 &lt;a href=&#34;http://securosis.com/2006/12/21/the-three-laws-of-data-encryption/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Securosis&lt;/a&gt;
@@ -1098,4 +1100,3 @@ Dabei darf man Key Recovery jedoch nicht aus dem Blick verlieren.&lt;/p&gt;
     
   </channel>
 </rss>
-

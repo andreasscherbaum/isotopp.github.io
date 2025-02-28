@@ -6,12 +6,18 @@
     <description>Recent content in C on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/c/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/c/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fertig gelesen: UNIX: A History and a Memoir</title>
       <link>https://blog.koehntopp.info/2021/09/05/fertig-gelesen-unix-a-history-and-a-memoir.html</link>
-      <pubDate>Sun, 05 Sep 2021 15:47:06 +0000</pubDate>
-      
+      <pubDate>Sun, 05 Sep 2021 15:47:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/09/05/fertig-gelesen-unix-a-history-and-a-memoir.html</guid>
       <description>&lt;p&gt;The memoir of Brian Kernighan, and the story of how UNIX came to be and what working at Bell Labs was like at that time:
 &lt;a href=&#34;https://www.amazon.de/UNIX-History-English-Brian-Kernighan-ebook/dp/B07ZQHX3R1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UNIX: A History and a Memoir&lt;/a&gt;
@@ -39,8 +45,8 @@ He finishes with the commercialization of Unix, Unix descendants - BSD, Minix, L
     <item>
       <title>Dennis Ritchie (Sep 1941-Okt 2011)</title>
       <link>https://blog.koehntopp.info/2011/10/13/dennis-ritchie-sep-1941-okt-2011.html</link>
-      <pubDate>Thu, 13 Oct 2011 03:39:44 +0000</pubDate>
-      
+      <pubDate>Thu, 13 Oct 2011 03:39:44 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/10/13/dennis-ritchie-sep-1941-okt-2011.html</guid>
       <description>&lt;p&gt;Das da ist
 &lt;a href=&#34;http://en.wikipedia.org/wiki/Dennis_Ritchie&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dennis Ritchie&lt;/a&gt;
@@ -77,8 +83,8 @@ Kontakt zu kommen.&lt;/p&gt;
     <item>
       <title>fork und exec vs. CreateProcess</title>
       <link>https://blog.koehntopp.info/2007/01/07/fork-und-exec-vs-createprocess.html</link>
-      <pubDate>Sun, 07 Jan 2007 09:06:13 +0000</pubDate>
-      
+      <pubDate>Sun, 07 Jan 2007 09:06:13 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2007/01/07/fork-und-exec-vs-createprocess.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; Meine Windows-Kenntnisse sind beschränkt, veraltet und ausschließlich theoretischer Natur. Im Zweifel erzählt dieser Artikel Unsinn nach Hörensagen.&lt;/p&gt;
 &lt;p&gt;Nach dem Artikel &lt;a href=&#34;https://blog.koehntopp.info/2007/01/07/fork-exec-wait-und-exit.html&#34;&gt;form, exec, wait und exit&lt;/a&gt;
@@ -90,8 +96,7 @@ Kontakt zu kommen.&lt;/p&gt;
 
 (10 Parameters). Die liest sich so:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;BOOL WINAPI CreateProcess(  LPCTSTR lpApplicationName,  LPTSTR lpCommandLine,  LPSECURITY_ATTRIBUTES lpProcessAttributes,  LPSECURITY_ATTRIBUTES lpThreadAttributes,  BOOL bInheritHandles,  DWORD dwCreationFlags,  LPVOID lpEnvironment,  LPCTSTR lpCurrentDirectory,  LPSTARTUPINFO lpStartupInfo,  LPPROCESS_INFORMATION lpProcessInformation);&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;BOOL WINAPI CreateProcess(  LPCTSTR lpApplicationName,  LPTSTR lpCommandLine,  LPSECURITY_ATTRIBUTES lpProcessAttributes,  LPSECURITY_ATTRIBUTES lpThreadAttributes,  BOOL bInheritHandles,  DWORD dwCreationFlags,  LPVOID lpEnvironment,  LPCTSTR lpCurrentDirectory,  LPSTARTUPINFO lpStartupInfo,  LPPROCESS_INFORMATION lpProcessInformation);&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Funktion erzeugt einen neuen Prozeß und lädt in diesen ein neues Programm. Dieses wird dann gestartet. lpApplicationName ist der Pfadname des auszuführenden Programmes.&lt;/p&gt;
 &lt;p&gt;lpCommandLine ist die Kommandozeile (der argv) des neuen Programmes. Sie wird als String und nicht als Vektor von Strings übergeben. Das Parsen der Kommandozeile in Wort wird also durch das Betriebssystem übernommen und kann nicht durch den Aufrufer kontrolliert werden. In Unix muß man bei execve() einen Vektor von Strings übergeben, das Zerlegen der Kommandozeile in Worte muß also durch den Aufrufer, z.B. die Shell übernommen werden. Die anderen Funktionen der exec-Familie sind Bibliotheksfunktionen, die einem hier einen Teil der Arbeit abnehmen.&lt;/p&gt;
 &lt;p&gt;lpApplicationName und lpCommandLine interagieren: lpApplicationName darf NULL sein, dann wird das erste Wort von lpCommandLine nach der Zerlegung in Worte als lpApplicationName interpretiert. lpApplicationName darf ohne Endung angegeben werden, dann rät Windows die Extension bzw. probiert eine Liste von ausführbaren System-Extensions aus.&lt;/p&gt;
@@ -130,4 +135,3 @@ Kontakt zu kommen.&lt;/p&gt;
     
   </channel>
 </rss>
-

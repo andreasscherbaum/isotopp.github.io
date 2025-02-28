@@ -6,12 +6,18 @@
     <description>Recent content in Software on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/software/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/software/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>It&#39;s a Modulith</title>
       <link>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</link>
-      <pubDate>Wed, 10 May 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Wed, 10 May 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</guid>
       <description>&lt;p&gt;&amp;ldquo;Computers are simple&amp;rdquo; is what I am telling people I train.
 &amp;ldquo;There are only Zeroes and Ones, and it is not getting much more complicated.&amp;rdquo;&lt;/p&gt;
@@ -65,8 +71,7 @@ Similarly, the lambdas and step function somewhere out on the network are now lo
 &lt;blockquote&gt;
 &lt;p&gt;Conceptually, the high-level architecture remained the same.
 We still have exactly the same components as we had in the initial design (media conversion, detectors, or orchestration).
-This allowed us to reuse a lot of code and quickly migrate to a new architecture.&lt;/p&gt;
-&lt;/blockquote&gt;
+This allowed us to reuse a lot of code and quickly migrate to a new architecture.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;they summarize.&lt;/p&gt;
 &lt;p&gt;And that is maybe the takeaway from this article:
 In a cleanly architected and properly encapsulated system, the components can be redistributed and rearranged with only minor code changes.
@@ -116,8 +121,8 @@ The application can be made to run on different substrates, in order to react to
     <item>
       <title>Software Supply Chain Issues</title>
       <link>https://blog.koehntopp.info/2022/10/18/software-supply-chain-issues.html</link>
-      <pubDate>Tue, 18 Oct 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Tue, 18 Oct 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/10/18/software-supply-chain-issues.html</guid>
       <description>&lt;p&gt;The GitHub Security Lab has a long hard look at &amp;ldquo;Apache Commons Text&amp;rdquo; in March this year.
 That resulted in &lt;a href=&#34;https://securitylab.github.com/advisories/GHSL-2022-018_Apache_Commons_Text/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CVE-2022-42889&lt;/a&gt;
@@ -257,8 +262,8 @@ Some languages or projects seem to have problems even with creating an inventory
     <item>
       <title>Architektur heißt umbauen</title>
       <link>https://blog.koehntopp.info/2012/03/06/architektur-hei-t-umbauen.html</link>
-      <pubDate>Tue, 06 Mar 2012 13:42:47 +0000</pubDate>
-      
+      <pubDate>Tue, 06 Mar 2012 13:42:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/03/06/architektur-hei-t-umbauen.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/Architekturheisstumbauen.jpg&#34; alt=&#34;Theatre of Marcellus&#34;  /&gt;
@@ -420,8 +425,8 @@ fühlen.&lt;/p&gt;
     <item>
       <title>Fertig gelesen: The Lean Startup</title>
       <link>https://blog.koehntopp.info/2011/12/02/fertig-gelesen-the-lean-startup.html</link>
-      <pubDate>Fri, 02 Dec 2011 19:44:03 +0000</pubDate>
-      
+      <pubDate>Fri, 02 Dec 2011 19:44:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/12/02/fertig-gelesen-the-lean-startup.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.de/Lean-Startup-Entrepreneurs-Continuous-ebook/dp/B004J4XGN6&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Lean Startup&lt;/a&gt;
 
@@ -502,8 +507,8 @@ Jahren täglich zu tun hatte.&lt;/p&gt;
     <item>
       <title>Testing in Production</title>
       <link>https://blog.koehntopp.info/2011/12/02/testing-in-production.html</link>
-      <pubDate>Fri, 02 Dec 2011 18:55:45 +0000</pubDate>
-      
+      <pubDate>Fri, 02 Dec 2011 18:55:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/12/02/testing-in-production.html</guid>
       <description>&lt;p&gt;Mitte November ist auf The Testing Planet ein Artikel von Seth Eliot
 (Microsoft) erschienen mit dem Titel
@@ -532,8 +537,7 @@ werden, daß man sicher in der Produktion testen kann.&lt;/p&gt;
 &lt;p&gt;For some TiP methodologies we can reduce risk by reducing the exposure of
 the new code under test.  This technique is called “Exposure Control” and
 limits risk by limiting the user base potentially impacted by the new
-code.&lt;/p&gt;
-&lt;/blockquote&gt;
+code.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Was er damit meint, wird weiter unten klar, wenn er erläutert, welche Klassen von TIP er unterscheidet.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -704,8 +708,8 @@ traditionellem Testen nicht zur Verfügung stehen.&lt;/p&gt;
     <item>
       <title>Git &#34;gewinnt&#34;</title>
       <link>https://blog.koehntopp.info/2009/01/05/git-gewinnt.html</link>
-      <pubDate>Mon, 05 Jan 2009 08:52:56 +0000</pubDate>
-      
+      <pubDate>Mon, 05 Jan 2009 08:52:56 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/01/05/git-gewinnt.html</guid>
       <description>&lt;p&gt;Irgendwann war allen klar, daß CVS es nicht mehr bringt und was Besseres her muss.
 Das hat dazu geführt, daß ich statt einem Versionskontrollsystem in 2000 jetzt in 2009 etwa vier davon parallel verwenden muss.
@@ -729,8 +733,8 @@ Auch der X-Server von X.org wird mit Git versioniert.&lt;/p&gt;
     <item>
       <title>Steve Ballmer lernt etwas</title>
       <link>https://blog.koehntopp.info/2008/04/20/steve-ballmer-lernt-etwas.html</link>
-      <pubDate>Sun, 20 Apr 2008 05:04:52 +0000</pubDate>
-      
+      <pubDate>Sun, 20 Apr 2008 05:04:52 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/04/20/steve-ballmer-lernt-etwas.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://blog.seattletimes.nwsource.com/techtracks/2008/04/microsoft_ceo_steve_ballmer_spoke.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Microsoft&amp;rsquo;s Ballmer gives unvarnished take on Windows, online businesses&lt;/a&gt;
 
@@ -749,16 +753,15 @@ said, to more laughter.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;How many of you use Google as your default?&amp;rdquo; Ballmer asked. The vast
 majority in the audience raised their hands, cheering and hooting.&lt;/p&gt;
 &lt;p&gt;Ballmer looked around. Smiled. Scratched his cheek. Rubbed his face with
-his hand.&lt;/p&gt;
-&lt;/blockquote&gt;
+his hand.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Softwarepatente? Abgelehnt!</title>
       <link>https://blog.koehntopp.info/2005/07/06/softwarepatente-abgelehnt.html</link>
-      <pubDate>Wed, 06 Jul 2005 10:52:19 +0000</pubDate>
-      
+      <pubDate>Wed, 06 Jul 2005 10:52:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/07/06/softwarepatente-abgelehnt.html</guid>
       <description>&lt;p&gt;Die Abstimmung zu Software-Patenten im EU-Parlament hat stattgefunden und das Parlament lehnt die umstrittene Richtlinie ab.
 Golem berichtet in
@@ -769,8 +772,7 @@ Golem berichtet in
 &lt;p&gt;Europäisches Parlament lehnt umstrittene Richtlinie ab
 Wie sich gestern bereits abzeichnete, hat das Europäische Parlament am heutigen Mittwoch die Softwarepatent-Richtlinie mit einer Mehrheit von 648 Stimmen abgelehnt und damit das Gesetzgebungsverfahren beendet.
 Zwar wurde nach außen hin fast einhellig gefordert, Softwarepatente nach dem US-Vorbild in Europa zu verhindern, in der Frage, wie weit diese Ablehnung gehen sollte, gab es jedoch große Differenzen, die zu einer regelrechten Lobbyschlacht führten.
-Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschieden, statt einer, die dem jeweiligen Lager missfällt.&lt;/p&gt;
-&lt;/blockquote&gt;
+Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschieden, statt einer, die dem jeweiligen Lager missfällt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.spiegel.de/netzwelt/technologie/0,1518,363904,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Europaparlament stimmt gegen Software-Patente&lt;/a&gt;
@@ -804,4 +806,3 @@ Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschied
     
   </channel>
 </rss>
-

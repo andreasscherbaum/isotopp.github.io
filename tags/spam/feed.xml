@@ -6,12 +6,18 @@
     <description>Recent content in Spam on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/spam/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/spam/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting rid of phishing training mails</title>
       <link>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</link>
-      <pubDate>Tue, 23 May 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Tue, 23 May 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</guid>
       <description>&lt;p&gt;Just like your work computer is being infested with corporate malware as to prevent it from being taken over from other people&amp;rsquo;s malware,
 your account is also being spammed with corporate malware spam as to prevent it from being taken over by other malware spam.
@@ -150,8 +156,8 @@ Our mailer will automatically ignore subsequent runs of the phishing training, f
     <item>
       <title>Alle vier Stunden - zum Nutzen von Antivirus und zum Nutzen von Testverfahren</title>
       <link>https://blog.koehntopp.info/2012/04/27/alle-vier-stunden-zum-nutzen-von-antivirus-und-zum-nutzen-von-testverfahren.html</link>
-      <pubDate>Fri, 27 Apr 2012 21:24:02 +0000</pubDate>
-      
+      <pubDate>Fri, 27 Apr 2012 21:24:02 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/04/27/alle-vier-stunden-zum-nutzen-von-antivirus-und-zum-nutzen-von-testverfahren.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;http://www.faz.net/aktuell/technik-motor/computer-internet/virenschutzprogramme-nur-bedingt-abwehrbereit-11727592.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nur bedingt abwehrbereit&lt;/a&gt;
@@ -164,8 +170,7 @@ Schmerzen:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Einen 99-prozentigen Schutz verspricht Marco Preuß vom Antivirenhersteller
 Kaspersky.  Auf 35 bis 96 Prozent taxieren die Softwaretester der
-„Stiftung Warentest“ das Schutzniveau von Antivirenprogrammen.&lt;/p&gt;
-&lt;/blockquote&gt;
+„Stiftung Warentest“ das Schutzniveau von Antivirenprogrammen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In einem früheren Leben vor vielen Jahren war ich einmal Securityfuzzi in
 einem größeren Internetladen, und hatte in dieser Eigenschaft gelegentlich
 mit Viren und ihrer Verbreitung zu tun, etwa die
@@ -304,8 +309,8 @@ Programmes genau gar nichts zu tun haben.  Und dieser bemißt sich in der
 realen Welt gegen eine echte Bedrohung vermutlich nicht nach der getesteten,
 aber in der wirklichen Welt eher nutzlosen Signaturdatei, sondern nach der
 Qualität der Verhaltensanalyse von Programmen.&lt;/p&gt;
-&lt;h2 id=&#34;_nachtrag_-wie-sind-die-angreifer-an-loginnamen-und-mailadressen-von-mailaccounts-gekommen&#34;&gt;
-    &lt;a href=&#34;#_nachtrag_-wie-sind-die-angreifer-an-loginnamen-und-mailadressen-von-mailaccounts-gekommen&#34;&gt;
+&lt;h2 id=&#34;nachtrag-wie-sind-die-angreifer-an-loginnamen-und-mailadressen-von-mailaccounts-gekommen&#34;&gt;
+    &lt;a href=&#34;#nachtrag-wie-sind-die-angreifer-an-loginnamen-und-mailadressen-von-mailaccounts-gekommen&#34;&gt;
 	&lt;em&gt;Nachtrag:&lt;/em&gt; Wie sind die Angreifer an Loginnamen und Mailadressen von Mailaccounts gekommen?
     &lt;/a&gt;
 &lt;/h2&gt;
@@ -320,8 +325,8 @@ senden soll.&lt;/p&gt;
 automatisiert bei dem Provider einzuloggen.  Hat der Benutzer bei allen
 seinen Accounts dasselbe Paßwort verwendet, gelingt das und man ist
 zusätzlich zu seinem eBay-Account auch noch sein web.de/GMX/T-Online los.&lt;/p&gt;
-&lt;h2 id=&#34;_nachtrag_-wieso-machen-die-das&#34;&gt;
-    &lt;a href=&#34;#_nachtrag_-wieso-machen-die-das&#34;&gt;
+&lt;h2 id=&#34;nachtrag-wieso-machen-die-das&#34;&gt;
+    &lt;a href=&#34;#nachtrag-wieso-machen-die-das&#34;&gt;
 	&lt;em&gt;Nachtrag:&lt;/em&gt; Wieso machen die das?
     &lt;/a&gt;
 &lt;/h2&gt;
@@ -340,16 +345,15 @@ unschöne Dinge damit tun.&lt;/p&gt;
     <item>
       <title>Spam und IP-Blacklisten</title>
       <link>https://blog.koehntopp.info/2008/11/09/spam-und-ip-blacklisten.html</link>
-      <pubDate>Sun, 09 Nov 2008 08:24:00 +0000</pubDate>
-      
+      <pubDate>Sun, 09 Nov 2008 08:24:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/11/09/spam-und-ip-blacklisten.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://blog.balrog.de/archives/490-Anti-Spam-Appliances-Considered-Harmful.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Axel hat Ärger&lt;/a&gt;
 
  mit Blacklists:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I&amp;rsquo;ve had this problem in the past, when the company I was working for was justifiably listed on an RBL.
-And I had it again, now - only this time I am reasonably sure that the system is a) configured tightly enough not to be usable as an open relay and b) not being used for sending out marketing or other possibly spam-alike emails.&lt;/p&gt;
-&lt;/blockquote&gt;
+And I had it again, now - only this time I am reasonably sure that the system is a) configured tightly enough not to be usable as an open relay and b) not being used for sending out marketing or other possibly spam-alike emails.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Solche IP-Blacklists sind in der Theorie eine gute Idee:
 Betreiber von Systemen, die als Quellen von Spam oder als Spamrelays dienen können, sollen dort gelistet werden.
 Benutzer der Blacklist können bei eingehenden Mails erkennen, ob sie von einer IP-Adresse eingeliefert wird, die in so eine Blacklist steht und die Mail dann schon vor dem Spamfilter ablehnen.&lt;/p&gt;
@@ -390,4 +394,3 @@ Voraussetzung dazu ist eine feste Absender-IP und die Nennung eines Abuse-Anspre
     
   </channel>
 </rss>
-

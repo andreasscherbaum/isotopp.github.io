@@ -6,12 +6,18 @@
     <description>Recent content in Spackeria on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/spackeria/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/spackeria/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Die Erzwingung der Privatsphäre</title>
       <link>https://blog.koehntopp.info/2012/08/17/die-erzwingung-der-privatsphaere.html</link>
-      <pubDate>Fri, 17 Aug 2012 07:26:55 +0000</pubDate>
-      
+      <pubDate>Fri, 17 Aug 2012 07:26:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/08/17/die-erzwingung-der-privatsphaere.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html&#34;&gt;&lt;/a&gt;
@@ -36,8 +42,7 @@ construct social networks among people with minority interests; suddenly
 all sorts of stuff that was hidden back when it was just one person per
 10,000 population town emerges as a 30,000-strong continental community.
 The 0.01% are no longer hidden, can no longer be marginalized.  Never mind
-the 1% or the LGBT 10%.&lt;/p&gt;
-&lt;/blockquote&gt;
+the 1% or the LGBT 10%.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In Deutsch: &amp;ldquo;Zeugs, für das man 1970 zu einem Spezialgeschäft hätte gehen
 müssen [&amp;hellip;], ist heute mit einem Mausklick leicht erhältlich.  Aber das ist
 auch sein Nebeneffekt des Web, welches es leicht macht, sich in sozialen
@@ -71,8 +76,7 @@ marriage.  [&amp;hellip;] But like the Republican Party, whose leaders have begu
 to step away from anti-gay positions that are deeply unpopular with
 younger voters, Fox appears to be feeling pressure both from its younger
 staff and key audience segments to reflect what polls suggest is a rapidly
-shifting consensus.&lt;/p&gt;
-&lt;/blockquote&gt;
+shifting consensus.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Es ist genau wie Charles Stross schreibt: die LBGT 10% können auch und
 gerade von den Republikanern nicht mehr marginalisiert werden, weil sie
 jetzt als eine Gruppe auftreten können und seit dem Internet auch massiv
@@ -106,8 +110,7 @@ sondern auch geistige Grenze gegenüber den Nachbarn ziehen.  Der Arbeiter
 sollte lernen, sich als getrennt von seinem Nebenmann zu betrachten, statt
 als Teil derselben Schicksalsgemeinschaft im Klassenkampf.  Der Zaun
 sollte den Mob auftrennen und den Horizont der Arbeiter auf ihre
-Privatsphäre verengen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Privatsphäre verengen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das Konstrukt, das hier angestrebt wird, ist genau das, das solche
 Normalisierungen und Neubildungen von gesellschaftlichen Interessengruppen
 verhindern soll: Der Einzelne soll horizontal durch das Konstrukt der
@@ -138,8 +141,8 @@ Strukturen) zu erschweren oder gar zu verhindern.&lt;/p&gt;
     <item>
       <title>Wieso wir uns veröffentlichen</title>
       <link>https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html</link>
-      <pubDate>Sat, 03 Mar 2012 16:05:06 +0000</pubDate>
-      
+      <pubDate>Sat, 03 Mar 2012 16:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html</guid>
       <description>&lt;p&gt;Der folgende Text entstand aus einigen Zeilen, die ich zwischen Tür und
 Angel in #spackeria abgeworfen habe, und die von Jürgen Geuter und Sven Türpe
@@ -245,8 +248,8 @@ nicht alles über uns, aber wir verstecken uns auch nicht vor der Welt.&lt;/p&gt
     <item>
       <title>Recht auf Vergeben</title>
       <link>https://blog.koehntopp.info/2012/03/01/recht-auf-vergeben.html</link>
-      <pubDate>Thu, 01 Mar 2012 10:06:31 +0000</pubDate>
-      
+      <pubDate>Thu, 01 Mar 2012 10:06:31 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/03/01/recht-auf-vergeben.html</guid>
       <description>&lt;p&gt;Unser Innenminister diskutiert das &amp;ldquo;&lt;a href=&#34;http://www.spiegel.de/netzwelt/netzpolitik/0,1518,817830,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Recht auf Vergessen&lt;/a&gt;
 
@@ -289,8 +292,7 @@ first place&lt;/strong&gt;, but if you really need that kind of privacy, the rea
 is that search engines including Google do retain this information for
 some time, and it’s important to remember, for example, that we are all
 subject in the United States to the Patriot Act.  It is possible that that
-information could be made available to the authorities.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+information could be made available to the authorities.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Man beachte die Hervorhebung - das ist der Teil, der normalerweise zitiert
 wird.  Der größere Kontext ist hier zur korrekten Interpretation zwingend
 notwendig.&lt;/p&gt;
@@ -338,8 +340,7 @@ Licht auf mich als Person werfen.&lt;/p&gt;
 &lt;p&gt;In diesem Sinne bin ich ein Post-Privacy-Spacko.  Schon immer gewesen:
 auch dann, wenn ich mich nicht an der Diskussion beteilige und auch
 damals, als es den Begriff noch nicht gab, habe ich wie einer gelebt -
-leben müssen.  Und halte Popcorn bereit.&lt;/p&gt;
-&lt;/blockquote&gt;
+leben müssen.  Und halte Popcorn bereit.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und stelle fest, daß Friedrich da eben einen großen Schritt in die
 vorhergesagte Richtung getan hat.&lt;/p&gt;
 </description>
@@ -348,8 +349,8 @@ vorhergesagte Richtung getan hat.&lt;/p&gt;
     <item>
       <title>Datenschutztheater: Die informierte Zustimmung</title>
       <link>https://blog.koehntopp.info/2012/01/02/datenschutztheater-die-informierte-zustimmung.html</link>
-      <pubDate>Mon, 02 Jan 2012 20:34:00 +0000</pubDate>
-      
+      <pubDate>Mon, 02 Jan 2012 20:34:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/01/02/datenschutztheater-die-informierte-zustimmung.html</guid>
       <description>&lt;p&gt;Das BDSG, ein Produkt der 80er.  Damals waren
 Computer wahlweise
@@ -364,8 +365,7 @@ genommen sagt das BDSG:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die Erhebung, Verarbeitung und Nutzung personenbezogener Daten sind nur
 zulässig, soweit dieses Gesetz oder eine andere Rechtsvorschrift dies
-erlaubt oder anordnet oder der Betroffene eingewilligt hat.&lt;/p&gt;
-&lt;/blockquote&gt;
+erlaubt oder anordnet oder der Betroffene eingewilligt hat.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das heißt natürlich, daß die Verarbeitung personenbezogener Daten nicht
 wirklich &lt;em&gt;komplett&lt;/em&gt; verboten ist.  Sie ist erlaubt, &amp;ldquo;soweit dieses Gesetz
 oder eine andere Rechtsvorschrift dies erlaubt oder anordnet&amp;rdquo;.  Das heißt,
@@ -508,8 +508,8 @@ mit Existenzrechtfertigungsnotstand.&lt;/p&gt;
     <item>
       <title>Defaultseitenhieb(&#34;Post-Privacy&#34;)</title>
       <link>https://blog.koehntopp.info/2011/11/16/defaultseitenhieb-post-privacy.html</link>
-      <pubDate>Wed, 16 Nov 2011 16:49:01 +0000</pubDate>
-      
+      <pubDate>Wed, 16 Nov 2011 16:49:01 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/16/defaultseitenhieb-post-privacy.html</guid>
       <description>&lt;p&gt;Es begannt mit einem &lt;a
 href=&#39;https://plus.google.com/u/0/117024231055768477646/posts/JYteShQvzHi&#39;&gt;Google
@@ -568,8 +568,8 @@ ignoriert wird.&lt;/p&gt;
     <item>
       <title>Datenschutztheater: dynamische IPv6 Adressen</title>
       <link>https://blog.koehntopp.info/2011/11/09/datenschutztheater-dynamische-ipv6-adressen.html</link>
-      <pubDate>Wed, 09 Nov 2011 13:18:38 +0000</pubDate>
-      
+      <pubDate>Wed, 09 Nov 2011 13:18:38 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/09/datenschutztheater-dynamische-ipv6-adressen.html</guid>
       <description>&lt;p&gt;Wir hatten das Thema schon einmal in
 &lt;a href=&#34;https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html&#34;&gt;IP V6 verkehrt&lt;/a&gt;
@@ -586,8 +586,7 @@ heißt es in der am Freitag von Schaar
 &lt;a href=&#34;http://www.bfdi.bund.de/SharedDocs/Publikationen/Entschliessungssammlung/IntDSK/2011InternetIPv6.pdf?__blob=publicationFile&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;veröffentlichten Entschließung&lt;/a&gt;
 
 
-(PDF-Datei).&lt;/p&gt;
-&lt;/blockquote&gt;
+(PDF-Datei).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Lutz Donnerhacke hat das zum Anlaß genommen, IP V6 einmal unter
 Datenschutzgesichtspunkten zu analysieren.&lt;/p&gt;
 &lt;p&gt;Sein &lt;a href=&#34;http://www.iks-jena.de/ger/Blog/IPv6-und-der-Datenschutz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artikel&lt;/a&gt;
@@ -610,8 +609,7 @@ lassen. Sie glauben mit dynamischen IP-Adressen das Grundübel des Internet
 aus ihrer Sicht entschärfen zu können. Schließlich invalidiert ja ein
 ständiger Wechsel der IP-Nutzer Zuordnung die von verschiedenen
 Webdiensten ausgeführten Idenitifizerierungen – bis zum nächsten Login,
-Cookie, soziale Netze-Button, E-Mail-Abruf, Tweet oder Werbebanner.&lt;/p&gt;
-&lt;/blockquote&gt;
+Cookie, soziale Netze-Button, E-Mail-Abruf, Tweet oder Werbebanner.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Eines der Hauptprobleme beim Umgang mit IP V6 ist, es als IP V4 mit langen
 Adressen anzusehen. Das ist nicht der Fall, wie Lutz an mehreren Beispielen
 mit Datenschutzbezug illustriert: Mit IP V6 haben wir so viele Adressen zur
@@ -638,8 +636,7 @@ leisten: Er hat den Bildungsauftrag, eigenverantwortlichen Umgang mit
 persönlichen Daten sicherzustellen und den Regulierungsauftrag, die
 betreffenden Hersteller und ISPs zur Entwicklung datensparsamer Konzepte
 anzuhalten. Er bekommt dafür die Chance, aktiv das techno-soziale Gefüge
-des Internets wieder zu demokratisieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+des Internets wieder zu demokratisieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(Den &lt;a href=&#34;http://www.iks-jena.de/ger/Blog/IPv6-und-der-Datenschutz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vollständigen Artikel lesen&lt;/a&gt;
 
 )&lt;/p&gt;
@@ -649,8 +646,8 @@ des Internets wieder zu demokratisieren.&lt;/p&gt;
     <item>
       <title>Datenschutztheater: Google Analytics ist amtlich datenschutzkonform </title>
       <link>https://blog.koehntopp.info/2011/09/15/datenschutztheater-google-analytics-ist-amtlich-datenschutzkonform.html</link>
-      <pubDate>Thu, 15 Sep 2011 10:28:55 +0000</pubDate>
-      
+      <pubDate>Thu, 15 Sep 2011 10:28:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/09/15/datenschutztheater-google-analytics-ist-amtlich-datenschutzkonform.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.heise.de/newsticker/meldung/Google-Analytics-ist-amtlich-datenschutzkonform-1343698.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heise Newsticker&lt;/a&gt;
 
@@ -661,8 +658,7 @@ titelt &amp;ldquo;Google Analytics ist amtlich datenschutzkonform&amp;rdquo;:&lt
 Analytics scheint beendet zu sein. Nach Angaben des Hamburgischen
 Datenschutzbeauftragten Johannes Caspar, der für Google zuständig
 zeichnet, ist für deutsche Webseitenbetreiber ein &amp;ldquo;beanstandungsfreier
-Betrieb von Google Analytics ab sofort möglich&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
+Betrieb von Google Analytics ab sofort möglich&amp;rdquo;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In diesem Fall war es der hamburgische Datenschutzbeauftragte Johannes
 Caspar, der sich im September 2009 über Google Analytics echauffierte.&lt;/p&gt;
 &lt;p&gt;Google Analytics ist ein Trackingdienst, der in etwa genau dasselbe macht
@@ -741,8 +737,8 @@ Welt.&lt;/p&gt;
     <item>
       <title>Datenschutztheater: Opt-Out für WLAN Access Points</title>
       <link>https://blog.koehntopp.info/2011/09/14/datenschutztheater-opt-out-f-r-wlan-access-points.html</link>
-      <pubDate>Wed, 14 Sep 2011 17:59:34 +0000</pubDate>
-      
+      <pubDate>Wed, 14 Sep 2011 17:59:34 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/09/14/datenschutztheater-opt-out-f-r-wlan-access-points.html</guid>
       <description>&lt;p&gt;Jürgen Geuter erklärt bei der Spackeria den Begriff
 &lt;a href=&#34;http://blog.spackeria.org/2011/09/12/datenschutztheater/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Datenschutztheater&lt;/a&gt;
@@ -756,8 +752,7 @@ von Schneier modelliert ist:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Datenschutztheater bezeichnet eine Massnahme oder eine Sammlung von
 Massnahmen, die den gefühlten Schutz von Daten verbessern ohne dabei die
-Daten funktional vor Ge- oder Missbrauch zu schützen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Daten funktional vor Ge- oder Missbrauch zu schützen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Schauen wir uns das Stück einmal an&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.golem.de/1109/86451.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Golem&lt;/a&gt;
 
@@ -766,8 +761,7 @@ Daten funktional vor Ge- oder Missbrauch zu schützen.&lt;/p&gt;
 &lt;p&gt;Google schafft für Besitzer von WLAN-Access-Points weltweit die
 Möglichkeit, einer Nutzung der WLAN-Daten ihres Geräts im Rahmen von
 Googles ortsbezogenen Diensten zu widersprechen. Das Unternehmen folgt
-damit den Forderungen europäischer Datenschützer.&lt;/p&gt;
-&lt;/blockquote&gt;
+damit den Forderungen europäischer Datenschützer.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Was ist passiert? Das habe ich in einem
 &lt;a href=&#34;https://blog.koehntopp.info/2010/05/17/wlans-mappen.html&#34;&gt;älteren Artikel&lt;/a&gt;
 
@@ -818,8 +812,7 @@ um dieser Person zu sagen, wo sie sich vermutlich befindet.&lt;/p&gt;
 &lt;p&gt;Google schafft für Besitzer von WLAN-Access-Points weltweit die
 Möglichkeit, einer Nutzung der WLAN-Daten ihres Geräts im Rahmen von
 Googles ortsbezogenen Diensten zu widersprechen. Das Unternehmen folgt
-damit den Forderungen europäischer Datenschützer.&lt;/p&gt;
-&lt;/blockquote&gt;
+damit den Forderungen europäischer Datenschützer.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Verschiedene europäische Datenschützer haben nun gefordert, daß für die
 Betreiber eines WLAN die Möglichkeit eines Opt-Out besteht.&lt;/p&gt;
 &lt;p&gt;Äh. Ja.&lt;/p&gt;
@@ -889,8 +882,7 @@ werden ein wenig größer. Geholfen hat sich mit dem Opt-Out niemand.&lt;/p&gt;
 
 bezeichnet eine Massnahme oder eine Sammlung von Massnahmen, die den
 gefühlten Schutz von Daten verbessern ohne dabei die Daten funktional vor
-Ge- oder Missbrauch zu schützen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Ge- oder Missbrauch zu schützen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Diese Definition haben wir hier exemplarisch einmal erfüllt gesehen.&lt;/p&gt;
 </description>
     </item>
@@ -898,8 +890,8 @@ Ge- oder Missbrauch zu schützen.&lt;/p&gt;
     <item>
       <title>IP V6 verkehrt</title>
       <link>https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html</link>
-      <pubDate>Sun, 05 Jun 2011 12:41:40 +0000</pubDate>
-      
+      <pubDate>Sun, 05 Jun 2011 12:41:40 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Johannes Caspar, Hamburgischer Beauftragter für Datenschutz und
@@ -909,8 +901,7 @@ dazu auf, die Provider dazu zu verpflichten, dass sie IP-Adressen
 weiterhin dynamisch vergeben.
 &amp;ndash; &lt;a href=&#34;http://www.heise.de/netze/meldung/Datenschuetzer-sorgt-sich-wegen-IPv6-1235312.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heise Netze&lt;/a&gt;
 
-&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Schon seit &lt;a href=&#34;https://blog.koehntopp.info/2005/05/23/identifizierung-durch-ip.html&#34;&gt;vielen Jahren&lt;/a&gt;
 
 
@@ -986,8 +977,8 @@ Thema&lt;/a&gt;
     <item>
       <title>Von der Spackeria, von Aluhüten und vom Kontrollverlust</title>
       <link>https://blog.koehntopp.info/2011/05/12/von-der-spackeria-von-aluhueten-und-vom-kontrollverlust.html</link>
-      <pubDate>Thu, 12 May 2011 19:10:47 +0000</pubDate>
-      
+      <pubDate>Thu, 12 May 2011 19:10:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/05/12/von-der-spackeria-von-aluhueten-und-vom-kontrollverlust.html</guid>
       <description>&lt;h2 id=&#34;spackeria-wtf&#34;&gt;
     &lt;a href=&#34;#spackeria-wtf&#34;&gt;
@@ -1096,8 +1087,7 @@ vertrauen, sondern muß den Schutz seiner Daten selbst in die Hand nehmen -
 sie also geheim halten. Die Deutsche Telekom formuliert es so:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;hellip;weil, so wörtlich, &amp;ldquo;eine Veröffentlichung geheimer Daten zum
-Lebensrisiko&amp;rdquo; gehöre.&lt;/p&gt;
-&lt;/blockquote&gt;
+Lebensrisiko&amp;rdquo; gehöre.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Oder direkter formuliert:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Wo es um Dinge geht, die sich direkt auf mein Leben, meine Gesundheit oder
@@ -1107,8 +1097,7 @@ Dinge mehr über mich an einen geschlossenen Personenkreis oder mit einer
 Zweckbindung veröffentlichen, sondern ich muß bei allen Daten, die ich
 direkt oder indirekt produziere oder veröffentliche davon ausgehen, daß
 sie allgemein verfügbar sind und mit allen anderen Daten verknüpft werden.&lt;/p&gt;
-&lt;p&gt;Danach muß ich mein Leben ausrichten.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Danach muß ich mein Leben ausrichten.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist das Credo der Spackeria, der Ausgangspunkt aller weiteren
 Betrachtungen.&lt;/p&gt;
 &lt;p&gt;Belege, die diesen Ausgangspunkt plausibel erscheinen lassen, gibt es genug:
@@ -1132,8 +1121,7 @@ Ziele noch mehr Überwachung erforderlich machen würde.&lt;/p&gt;
     &lt;/a&gt;
 &lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Privatsphäre ist auch der Ort, wo Ehemänner ihre Frauen schlagen.&amp;rdquo;  &amp;ndash; Julia Schramm&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;Privatsphäre ist auch der Ort, wo Ehemänner ihre Frauen schlagen.&amp;rdquo;  &amp;ndash; Julia Schramm&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Spackeria ist der Ansicht, daß man gegen die Entstehung einer Datenspur
 nichts tun kann. Der Grünen-Poltiker Malte Spitz hat dies sehr deutlich
 gemacht, indem er die Vorratsdaten seines Mobiltelefons genommen und
@@ -1188,8 +1176,7 @@ heutigen Tages findet sich in
 ungarischen Präsidentschaft eingeladen war, und die Präsentation von 27
 Mitgliedstaaten und der EU-Komission besucht wurde, wird der Name des
 Vortragenden nicht veröffentlicht – angeblich, um seine Privatsphäre zu
-schützen.&lt;/p&gt;
-&lt;/blockquote&gt;
+schützen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Spackeria behauptet nun, daß wir gesamtgesellschaftlich wahrscheinlich
 eine ganze Menge gewinnen können, indem wir alle gesellschaftlichen Prozesse
 offenlegen.&lt;/p&gt;
@@ -1286,8 +1273,8 @@ müssen. Und halte Popcorn bereit.&lt;/p&gt;
     <item>
       <title>Kein Streetview für Deutschland</title>
       <link>https://blog.koehntopp.info/2011/04/10/kein-streetview-f-r-deutschland.html</link>
-      <pubDate>Sun, 10 Apr 2011 21:31:27 +0000</pubDate>
-      
+      <pubDate>Sun, 10 Apr 2011 21:31:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/10/kein-streetview-f-r-deutschland.html</guid>
       <description>&lt;p&gt;Laut
 &lt;a href=&#34;http://computer.t-online.de/google-street-view-keine-neuen-staedte-in-deutschland/id_45187128/index&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mehreren&lt;/a&gt;
@@ -1342,4 +1329,3 @@ ihm nicht abgewöhnt).&lt;/p&gt;
     
   </channel>
 </rss>
-

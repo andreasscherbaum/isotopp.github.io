@@ -6,12 +6,18 @@
     <description>Recent content in Performance on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/performance/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/performance/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Waffle House Index of Tooling</title>
       <link>https://blog.koehntopp.info/2020/06/08/waffle-house-index-of-tooling.html</link>
-      <pubDate>Mon, 08 Jun 2020 11:46:42 +0000</pubDate>
-      
+      <pubDate>Mon, 08 Jun 2020 11:46:42 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/06/08/waffle-house-index-of-tooling.html</guid>
       <description>&lt;p&gt;Charity Majors was &lt;a href=&#34;https://twitter.com/mipsytipsy/status/1268418428542443520&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on fire and on target, again&lt;/a&gt;
 
@@ -27,8 +33,7 @@
 
 ?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Waffle House Index is an informal metric named after the Waffle House restaurant chain and is used by the Federal Emergency Management Agency (FEMA) to determine the effect of a storm and the &lt;strong&gt;likely scale of assistance required for disaster recovery&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The Waffle House Index is an informal metric named after the Waffle House restaurant chain and is used by the Federal Emergency Management Agency (FEMA) to determine the effect of a storm and the &lt;strong&gt;likely scale of assistance required for disaster recovery&lt;/strong&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;A &amp;ldquo;Waffle House Index for Tooling&amp;rdquo; would be an indicator how bad the situation on the ground in an IT department is. Charity Majors suggest &amp;ldquo;CPU load alerts&amp;rdquo; as a tooling emergency indicator.&lt;/p&gt;
 &lt;p&gt;Why? CPU load or %CPU used is a useful metric, because it tells you how &amp;ldquo;full&amp;rdquo; the compute part of a thing is.&lt;/p&gt;
 &lt;h3 id=&#34;rightsizing-capacity-is-not-easy&#34;&gt;
@@ -95,8 +100,8 @@
     <item>
       <title>Some latency numbers illustrated</title>
       <link>https://blog.koehntopp.info/2020/02/28/some-latency-numbers-illustrated.html</link>
-      <pubDate>Fri, 28 Feb 2020 10:45:23 +0000</pubDate>
-      
+      <pubDate>Fri, 28 Feb 2020 10:45:23 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/28/some-latency-numbers-illustrated.html</guid>
       <description>&lt;p&gt;These images are older than time itself. I picked them up while working as a consultant for MySQL AB, but I do not know the source.&lt;/p&gt;
 &lt;p&gt;Here are some important latency numbers. A pixel is a nanosecond (nano = 10^-9, a billionth of a second, 1 billion events/s = 1 GHz):&lt;/p&gt;
@@ -124,8 +129,8 @@
     <item>
       <title>MySQL Performance Limits</title>
       <link>https://blog.koehntopp.info/2019/09/06/mysql-performance-limits.html</link>
-      <pubDate>Fri, 06 Sep 2019 15:30:14 +0000</pubDate>
-      
+      <pubDate>Fri, 06 Sep 2019 15:30:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/09/06/mysql-performance-limits.html</guid>
       <description>&lt;p&gt;The last time I saw a MySQL server operating at a performance limit
 was in 2012. Back them we had a production master on (then) current
@@ -406,8 +411,8 @@ sucky handling of SK in InnoDB.&lt;/p&gt;
     <item>
       <title>d = a*b&#43;c at scale</title>
       <link>https://blog.koehntopp.info/2017/11/25/d-abc-at-scale.html</link>
-      <pubDate>Sat, 25 Nov 2017 20:44:52 +0000</pubDate>
-      
+      <pubDate>Sat, 25 Nov 2017 20:44:52 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/11/25/d-abc-at-scale.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/11/dabc.png&#34; alt=&#34;&#34;  /&gt;
@@ -474,8 +479,7 @@ that is not quite GPU.&lt;/p&gt;
 widely on the cloud environment contains a few thousands of 32-bit
 floating-point multipliers. As long as you can meet the accuracy
 requirements of your application with 8-bits, that can be up to 25X or
-more multipliers.&lt;/p&gt;
-&lt;/blockquote&gt;
+more multipliers.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Their design is basically a monster 8-bit matrix multiplier with neural
 network specific postprocessing.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -494,8 +498,7 @@ smaller matrix multiplies. This architecture is about doing those things -
 when you’ve accumulated all the partial sums and are outputting from
 the accumulators, everything goes through this activation pipeline. The
 nonlinearity is what makes it a neural network even if it’s mostly
-linear algebra.”&lt;/p&gt;
-&lt;/blockquote&gt;
+linear algebra.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The large matrix multiplier is implemented as a
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Systolic_array&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Systolic Array&lt;/a&gt;
 
@@ -543,8 +546,8 @@ happens to have their own data center.&lt;/p&gt;
     <item>
       <title>Latency Numbers, visualised and memorised</title>
       <link>https://blog.koehntopp.info/2017/10/12/latency-numbers-visualised-and-memorised.html</link>
-      <pubDate>Thu, 12 Oct 2017 22:36:21 +0000</pubDate>
-      
+      <pubDate>Thu, 12 Oct 2017 22:36:21 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/10/12/latency-numbers-visualised-and-memorised.html</guid>
       <description>&lt;p&gt;There is a well known Github Gist
 &amp;ldquo;&lt;a href=&#34;https://gist.github.com/jboner/2841832&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Latency Numbers Every Programmer Should Know&lt;/a&gt;
@@ -585,8 +588,8 @@ becomes a second. And suddenly things are relateable.
     <item>
       <title>What GPUs can do…</title>
       <link>https://blog.koehntopp.info/2017/10/12/what-gpus-can-do.html</link>
-      <pubDate>Thu, 12 Oct 2017 23:51:20 +0000</pubDate>
-      
+      <pubDate>Thu, 12 Oct 2017 23:51:20 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/10/12/what-gpus-can-do.html</guid>
       <description>&lt;p&gt;Pcgamer reports &amp;ldquo;&lt;a href=&#34;http://www.pcgamer.com/nvidia-ceo-says-moores-law-is-dead-and-gpus-will-replace-cpus/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nvidia CEO says Moore’s Law is dead and GPUs wi replace CPUs&lt;/a&gt;
 
@@ -617,8 +620,8 @@ creates more optimised precompiled GPU setups and code).&lt;/p&gt;
     <item>
       <title>Scaling, automatically and manually</title>
       <link>https://blog.koehntopp.info/2017/08/09/scaling-automatically-and-manually.html</link>
-      <pubDate>Wed, 09 Aug 2017 10:19:30 +0000</pubDate>
-      
+      <pubDate>Wed, 09 Aug 2017 10:19:30 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/08/09/scaling-automatically-and-manually.html</guid>
       <description>&lt;p&gt;There is an interesting article by Brendan Gregg out there, about
 &lt;a href=&#34;http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the actual data that goes into the Load Average&lt;/a&gt;
@@ -629,20 +632,17 @@ Gregg states&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Load averages are an industry-critical metric – my company spends
 millions auto-scaling cloud instances based on them and other metrics
-[…]&lt;/p&gt;
-&lt;/blockquote&gt;
+[…]&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;but in the article we find Matthias Urlichs saying&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The point of &amp;ldquo;load average&amp;rdquo; is to arrive at a number relating how busy the
-system is from a human point of view.&lt;/p&gt;
-&lt;/blockquote&gt;
+system is from a human point of view.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and the article closes with Gregg quoting a comment by Peter Zijlstra in the
 kernel source:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This file contains the magic bits required to compute the global loadavg
 figure. &lt;strong&gt;Its a silly number but people think its important.&lt;/strong&gt; We go
-through great pains to make it work on big machines and tickless kernels.&lt;/p&gt;
-&lt;/blockquote&gt;
+through great pains to make it work on big machines and tickless kernels.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Let&amp;rsquo;s go back to the start. What&amp;rsquo;s the problem to solve here?&lt;/p&gt;
 &lt;p&gt;Brendan Gregg wants his company to scale his virtual machines to demand,
 because they are paying per use and so they have an incentive to use enough
@@ -738,8 +738,8 @@ autoscaling. Also, fix your predictive model if you ever scale reactively.&lt;/l
     <item>
       <title>An abundance of IOPS and Zero Jitter</title>
       <link>https://blog.koehntopp.info/2017/07/26/an-abundance-of-iops-and-zero-jitter.html</link>
-      <pubDate>Wed, 26 Jul 2017 14:51:55 +0000</pubDate>
-      
+      <pubDate>Wed, 26 Jul 2017 14:51:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/07/26/an-abundance-of-iops-and-zero-jitter.html</guid>
       <description>&lt;p&gt;Two weeks ago, I wrote about
 &lt;a href=&#34;https://blog.koehntopp.info/2017/07/07/the-data-center-in-the-age-of-abundance.html&#34;&gt;The Data Center in the Age of Abundance&lt;/a&gt;
@@ -781,8 +781,8 @@ client was Dell PowerEdge R630, 2x E5-2620v4, 128G, 10GBit/s networking.&lt;/p&g
     <item>
       <title>On cache problems, and what they mean for the future</title>
       <link>https://blog.koehntopp.info/2017/06/23/on-cache-problems-and-what-they-mean-for-the-future.html</link>
-      <pubDate>Fri, 23 Jun 2017 14:12:04 +0000</pubDate>
-      
+      <pubDate>Fri, 23 Jun 2017 14:12:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/06/23/on-cache-problems-and-what-they-mean-for-the-future.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/06/ssd-problem.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -849,8 +849,7 @@ but there are many more. Each of them now has the potential to become the
 next bottleneck. Or as one of my database colleagues has been known to say
 in one form or the other more than once:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Forget caches, just make everything fast all the time.&amp;rdquo; &amp;ndash; Nicolai Plum&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;Forget caches, just make everything fast all the time.&amp;rdquo; &amp;ndash; Nicolai Plum&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;hadoop-in-the-face-of-many-iops&#34;&gt;
     &lt;a href=&#34;#hadoop-in-the-face-of-many-iops&#34;&gt;
 	Hadoop in the face of many IOPS
@@ -891,8 +890,7 @@ stored at all. Or, as one of the networking colleagues of mine puts it:&lt;/p&gt
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;Any sufficiently funded technology is indistinguishable from Magic.&amp;rdquo;
 (Brian Sayler on the networking underneath a containerized Hadoop and
-Compute/Storage disaggregation)&lt;/p&gt;
-&lt;/blockquote&gt;
+Compute/Storage disaggregation)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Premise #1 is going out of the window as well. Next year, latest the year
 after that, we likely will stop buying rotating rust even for the Hadoop
 servers. But that means we could seek again, which means that we could be
@@ -941,8 +939,8 @@ not really Unix any more.&lt;/p&gt;
     <item>
       <title>&#34;Usage Patterns and the Economics of the Public Cloud&#34;</title>
       <link>https://blog.koehntopp.info/2017/06/12/usage-patterns-and-the-economics-of-the-public-cloud.html</link>
-      <pubDate>Mon, 12 Jun 2017 16:00:10 +0000</pubDate>
-      
+      <pubDate>Mon, 12 Jun 2017 16:00:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/06/12/usage-patterns-and-the-economics-of-the-public-cloud.html</guid>
       <description>&lt;p&gt;The paper (&lt;a href=&#34;http://vita.mcafee.cc/PDF/EconPublicCloud.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF&lt;/a&gt;
 
@@ -1029,8 +1027,8 @@ savings outweigh wins from leveraging dynamic market forces.&lt;/p&gt;
     <item>
       <title>The cost of winning…</title>
       <link>https://blog.koehntopp.info/2017/03/10/the-cost-of-winning.html</link>
-      <pubDate>Fri, 10 Mar 2017 18:50:38 +0000</pubDate>
-      
+      <pubDate>Fri, 10 Mar 2017 18:50:38 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/03/10/the-cost-of-winning.html</guid>
       <description>&lt;p&gt;Tech.co has an article titled
 &lt;a href=&#34;http://tech.co/ai-startups-winning-cybersecurity-race-2017-03&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artificial Intelligence Startups Are Winning the Cybersecurity Race&lt;/a&gt;
@@ -1045,8 +1043,7 @@ closes with&lt;/p&gt;
 against hackers by easily detecting repacked viruses. It’s just a matter
 of time. That’s why, more than resources or experience, companies who
 actively apply AI, especially cybersecurity companies, will ultimately be
-successful.&lt;/p&gt;
-&lt;/blockquote&gt;
+successful.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That will be interesting to see. Here is a data point:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;On a computer without any protection installed, unpacking a node.js based
@@ -1092,8 +1089,8 @@ on battery and has to live with 5W or less.&lt;/p&gt;
     <item>
       <title>OMG, our cybervaccines are failing</title>
       <link>https://blog.koehntopp.info/2017/02/17/omg-our-cybervaccines-are-failing.html</link>
-      <pubDate>Fri, 17 Feb 2017 15:37:50 +0000</pubDate>
-      
+      <pubDate>Fri, 17 Feb 2017 15:37:50 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/02/17/omg-our-cybervaccines-are-failing.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.darkreading.com/threat-intelligence/-what-to-do-when-all-malware-is-zero-day/a/d-id/1328155&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dark Reading&lt;/a&gt;
 
@@ -1117,8 +1114,7 @@ memory, after all.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In today&amp;rsquo;s detection industry, one should think of hashing as more of a
 shortcut to locate the easy stuff, or rule out known good files
-(whitelisting).&lt;/p&gt;
-&lt;/blockquote&gt;
+(whitelisting).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That&amp;rsquo;s more like the state of the detection reality from 15 years ago. On
 the other hand, threat detection software is getting out of hand. A Macbook
 I have had access to can unzip a piece of software with some 7000 files just
@@ -1159,8 +1155,8 @@ problem.&lt;/p&gt;
     <item>
       <title>Load, Load Testing and Benchmarking</title>
       <link>https://blog.koehntopp.info/2017/02/16/load-load-testing-and-benchmarking.html</link>
-      <pubDate>Thu, 16 Feb 2017 21:13:28 +0000</pubDate>
-      
+      <pubDate>Thu, 16 Feb 2017 21:13:28 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/02/16/load-load-testing-and-benchmarking.html</guid>
       <description>&lt;p&gt;(This article also available in &lt;a href=&#34;https://blog.koehntopp.info/2012/08/28/load-load-testing-und-benchmarks.html&#34;&gt;german language&lt;/a&gt;
 
@@ -1357,8 +1353,8 @@ under test in overload is being visualized as well.&lt;/p&gt;
     <item>
       <title>Hipsterdoom with Mongobingo</title>
       <link>https://blog.koehntopp.info/2017/02/10/hipsterdoom-at-mongobingo.html</link>
-      <pubDate>Fri, 10 Feb 2017 04:07:54 +0000</pubDate>
-      
+      <pubDate>Fri, 10 Feb 2017 04:07:54 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/02/10/hipsterdoom-at-mongobingo.html</guid>
       <description>&lt;p&gt;Felix Gessert does a postmortem of the failed Parse startup and product:
 &amp;ldquo;&lt;a href=&#34;https://medium.baqend.com/parse-is-gone-a-few-secrets-about-their-infrastructure-91b3ab2fcf71#.ve5hi5lcd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The AWS and MongoDB Infrastructure of Parse: Lessons Learned&lt;/a&gt;
@@ -1366,8 +1362,7 @@ under test in overload is being visualized as well.&lt;/p&gt;
 &amp;rdquo;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Technical problem II: the real problem and bottleneck was not the API
-servers but almost always the shared MongoDB database cluster.&lt;/p&gt;
-&lt;/blockquote&gt;
+servers but almost always the shared MongoDB database cluster.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And that was with MongoRocks (Mongo on RocksDB) and replacing the initial
 app in Ruby with a Go implementation of said thing, with WriteConcern = 1,
 and other horrible presets. All in all, this is like the perfect nightmare
@@ -1376,8 +1371,7 @@ project:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If this idea sounds interesting to you, have a look at Baqend. It is a
 high-performance BaaS that focuses on web performance through transparent
-caching and scalability through auto-sharding and polyglot persistence.&lt;/p&gt;
-&lt;/blockquote&gt;
+caching and scalability through auto-sharding and polyglot persistence.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bingo. Also, found the Hipster.&lt;/p&gt;
 </description>
     </item>
@@ -1385,8 +1379,8 @@ caching and scalability through auto-sharding and polyglot persistence.&lt;/p&gt
     <item>
       <title>Dude, where is my memory?</title>
       <link>https://blog.koehntopp.info/2012/11/12/dude-where-is-my-memory.html</link>
-      <pubDate>Mon, 12 Nov 2012 14:06:40 +0000</pubDate>
-      
+      <pubDate>Mon, 12 Nov 2012 14:06:40 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/11/12/dude-where-is-my-memory.html</guid>
       <description>&lt;p&gt;&amp;ldquo;Kris, bitte schau Dir mal unsere Datenbank an.  Wir haben hier einen
 Generator für unsere Materialized Views, und auf einer Datenbank von 6 GB
@@ -1541,20 +1535,17 @@ braucht eine dreistellige Anzahl von Queries, ein Zugriff auf die
 vorgerechneten Daten generiert dieselbe Seite mit weniger als 7 Queries.&lt;/p&gt;
 &lt;p&gt;Wir schließen unser Debugging ab:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Kristian&amp;gt; Diese Blobs, werden die oft neu berechnet?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Kristian&amp;gt; Diese Blobs, werden die oft neu berechnet?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;SimonB&amp;gt; Im Moment ja, weil ich sie immer aktualisiere.  Normalerweise
-würde ich das nur tun, wenn sich der Digest ändert.&lt;/p&gt;
-&lt;/blockquote&gt;
+würde ich das nur tun, wenn sich der Digest ändert.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Kristian&amp;gt; Resident Set Size ist jetzt bei 15 GB und stabil.  Das heißt,
 wenn ich den Buffer Pool klein genug halte wird die Maschine nicht
 swappen.  Wir verbrauchen eine Menge Network Buffer zusätzlich, wegen der
 ganzen Blobs, und das ist weswegen wir so einen großen Speicher-Overhead
 pro Connection haben&amp;hellip;  Jedenfalls ist das grad meine operative Theorie.
-MySQL &amp;amp; BLOBs = ganz übler Mist.&lt;/p&gt;
-&lt;/blockquote&gt;
+MySQL &amp;amp; BLOBs = ganz übler Mist.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;avg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
@@ -1578,8 +1569,8 @@ sollten wir die SQL-Schicht mit HandlerSocket oder etwas anderem umgehen.&lt;/p&
     <item>
       <title>Enemy Action</title>
       <link>https://blog.koehntopp.info/2012/10/31/enemy-action.html</link>
-      <pubDate>Wed, 31 Oct 2012 15:30:14 +0000</pubDate>
-      
+      <pubDate>Wed, 31 Oct 2012 15:30:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/10/31/enemy-action.html</guid>
       <description>&lt;p&gt;&amp;ldquo;Kris, guck mal, connection surge auf $WICHTIGER_MASTER, davor kurzer Activity drop. Alle anderen Graphen sehen normal aus.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;![Graph: Connection Surge]({{ site.baseurl }}/uploads/screenshot-kris-20121031-1.png)&lt;/p&gt;
@@ -1601,8 +1592,8 @@ Oct 31 13:20:20 master kernel: bnx2 0000:03:00.0: eth0: NIC Copper Link is Up, 1
     <item>
       <title>MySQL Replication Load Monitor</title>
       <link>https://blog.koehntopp.info/2012/09/28/mysql-replication-load-monitor.html</link>
-      <pubDate>Fri, 28 Sep 2012 11:26:04 +0000</pubDate>
-      
+      <pubDate>Fri, 28 Sep 2012 11:26:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/28/mysql-replication-load-monitor.html</guid>
       <description>&lt;p&gt;Mein Kollege Dennis Kaarsemaker hat jetzt einen
 &lt;a href=&#34;//www.kaarsemaker.net/blog/2012/09/27/monitoring-replication-load-graphite/&#34;&gt;Artikel&lt;/a&gt;
@@ -1623,29 +1614,29 @@ von Booking.com gebloggt.  Der Monitor basiert auf Arbeiten von
     <item>
       <title>House und Heisenberg revisited</title>
       <link>https://blog.koehntopp.info/2012/09/25/house-und-heisenberg-revisited.html</link>
-      <pubDate>Tue, 25 Sep 2012 11:11:06 +0000</pubDate>
-      
+      <pubDate>Tue, 25 Sep 2012 11:11:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/25/house-und-heisenberg-revisited.html</guid>
-      <description>&lt;p&gt;Ich habe heute an dem Problem weiter geforscht und wir haben etabliert, dass
-die Ursache nicht der Quelltext des betreffenden Diamond-Collectors sein
-kann.&lt;/p&gt;
-&lt;p&gt;Auf allen betroffenen Kisten habe ich dann gesehen, daß die entsprechenden
-Queries gegen Performance-Schema ein&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;threads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+      <description>&lt;p&gt;Ich habe heute an dem Problem weiter geforscht und wir haben etabliert,
+dass die Ursache nicht der Quelltext des betreffenden Diamond-Collectors sein kann.&lt;/p&gt;
+&lt;p&gt;Auf allen betroffenen Kisten habe ich dann gesehen,
+das die entsprechenden Queries gegen Performance-Schema ein&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;threads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Empty&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;01&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;zurück liefern.&lt;/p&gt;
-&lt;p&gt;Weitere Untersuchung stellt heraus: P_S ist aber an. Jedoch:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_instruments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;p&gt;Weitere Untersuchung stellt heraus: P_S ist aber an.
+Jedoch:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_instruments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Empty&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;03&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_timers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_timers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Empty&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;01&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_consumers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup_consumers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Empty&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;02&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und das bleibt auch so, sogar über Server-Restarts hinweg.  Warum ist das
-so?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /mysql/&lt;span class=&#34;se&#34;&gt;\*&lt;/span&gt;/data/performance_schema/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und das bleibt auch so, sogar über Server-Restarts hinweg.&lt;br&gt;
+Warum ist das so?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /mysql/*/data/performance_schema/
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; ls -l
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;total 1840
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-rw-rw---- 1 mysql mysql  8624 Oct  6  2011 cond_instances.frm
@@ -1654,26 +1645,24 @@ so?&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-rw-rw---- 1 mysql mysql  9220 Oct  6  2011 events_waits_current.frm
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-rw-rw---- 1 mysql mysql 98304 Oct  6  2011 events_waits_current.ibd
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und ein SHOW CREATE TABLE bestätigt das.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und ein &lt;code&gt;SHOW CREATE TABLE&lt;/code&gt; bestätigt das:
+Die betreffenden Tabellen sind gar keine &lt;code&gt;P_S&lt;/code&gt;-Tabellen, sondern InnoDB.
+Das soll nicht so sein.&lt;/p&gt;
 &lt;p&gt;Damit ist klar, wieso es überhaupt zu Transaktionen kommen kann:&lt;/p&gt;
-&lt;p&gt;Der Code im Diamond-Collector setzt nur Queries gegen performance_schema ab.
-Da dort normal keine Tabellen vorhanden sind, die Transaktionen
-unterstützen, kann es auch nie zu Transaktionen kommen.  In den defekten
-Kisten wurden die Tabellen in performance_schema fälschlicherweise als
-InnoDB erzeugt.  Das alleine hätte kein Problem erzeugt, weil jedes Kommando
-in MySQL eine Transaktion in sich selbst ist - AUTOCOMMIT = 1.&lt;/p&gt;
+&lt;p&gt;Der Code im Diamond-Collector setzt nur Queries gegen &lt;code&gt;performance_schema&lt;/code&gt; ab.
+Da dort normal keine Tabellen vorhanden sind, die Transaktionen unterstützen, kann es auch nie zu Transaktionen kommen.
+In den defekten Kisten wurden die Tabellen in &lt;code&gt;performance_schema&lt;/code&gt; fälschlicherweise als InnoDB erzeugt.
+Das alleine hätte kein Problem erzeugt,
+weil jedes Kommando in MySQL eine Transaktion in sich selbst ist- &lt;code&gt;AUTOCOMMIT = 1&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Aber:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Starting with 1.2.0, MySQLdb disables autocommit by default, as required
-by the DB-API standard (PEP-249)&amp;quot;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In diesem Fall generiert das Lesen von InnoDB-Tabellen den Start einer r/o
-Transaktion und erzeugt einen Stable View auf alle InnoDB Tabellen.  Dieser
-wird gehalten bis zum Ende der Transaktion, das niemals kommt, außer der
-Collector disconnected.&lt;/p&gt;
-&lt;p&gt;Die immer weiter wachsende Größe des Undo-Logs verlangsamt den Server bis
-zum Stillstand.  Ein KILL auf die Verbindung bringt nur vorübergehende
-Linderung.&lt;/p&gt;
+by the DB-API standard (PEP-249)&amp;quot;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;In diesem Fall generiert das Lesen von InnoDB-Tabellen den Start einer r/o Transaktion
+und erzeugt einen Stable View auf alle InnoDB Tabellen.
+Dieser wird gehalten bis zum Ende der Transaktion, das niemals kommt, außer der Collector disconnected.&lt;/p&gt;
+&lt;p&gt;Die immer weiter wachsende Größe des Undo-Logs verlangsamt den Server bis zum Stillstand.
+Ein KILL auf die Verbindung bringt nur vorübergehende Linderung.&lt;/p&gt;
 &lt;p&gt;Der Fix ist in der Tat&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BNe&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;select 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;  concat(&amp;#39;drop table &amp;#39;, table_name, &amp;#39;;&amp;#39;) 
@@ -1683,85 +1672,93 @@ Linderung.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;  table_schema = &amp;#39;performance_schema&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;performance_schema&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql_upgrade&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;…&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und alles wird gut - sogar ohne Neustart.&lt;/p&gt;
-&lt;p&gt;Die Ursache für das Seltsame Verhalten™ der betroffenen Büchsen bei einer
-automatisierten Installation verbleibt weiter unklar.  Der betreffende
-Collector läuft jetzt jedoch auch auf diesen Maschinen und liefert Daten.&lt;/p&gt;
-&lt;p&gt;Wie viele MySQLer bin ich der Auffassung, dass AUTOCOMMIT = 0 oder SELECT
-&amp;hellip;  FOR UPDATE eher schädlich sind.  Dies hier wird ein weiteres
-ausgezeichnetes Beispiel in meinem argumentativen Arsenal sein.&lt;/p&gt;
+&lt;p&gt;Die Ursache für das Seltsame Verhalten™ der betroffenen Büchsen
+bei einer automatisierten Installation verbleibt weiter unklar.&lt;br&gt;
+Der betreffende Collector läuft jetzt jedoch auch auf diesen Maschinen und liefert Daten.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Der Herr House und der Herr Heisenberg haben Replication Delay</title>
       <link>https://blog.koehntopp.info/2012/09/24/der-herr-house-und-der-herr-heisenberg-haben-replication-delay.html</link>
-      <pubDate>Mon, 24 Sep 2012 19:24:19 +0000</pubDate>
-      
+      <pubDate>Mon, 24 Sep 2012 19:24:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/24/der-herr-house-und-der-herr-heisenberg-haben-replication-delay.html</guid>
-      <description>&lt;p&gt;Heute erreicht mich eine Mail, in der ein DBA sich über steigende
-Replication Delay in einer bestimmten Replikationshierarchie beschwert.&lt;/p&gt;
-&lt;p&gt;Das ist schlecht, denn die betreffende Hierarchie ist wichtig. Also die
-&amp;lsquo;Wenn die nicht geht schlafen Leute unter Brücken&amp;rsquo;-Art von wichtig.&lt;/p&gt;
-&lt;p&gt;Die Theorie war, daß die Änderungsrate in dieser Hierarchie so hoch ist, daß
-die Schreiblast von MySQL Replikation, die ja Single Threaded ist, nicht
-mehr bewältigt werden kann.  Für diese Theorie sprach nach dem ersten
-Augenschein, daß alle betroffenen Kisten keine lokalen Platten hatten,
-sondern auf einem Filer lagen, und Filer sterben wegen der hohen
-Kommunikationslatenz im SAN bei uns in der Regel weit vor lokalen Platten,
-wenn es um Replikation geht: Filer sind mehr so beim parallelen Schreiben
-mit mehreren Threads gut.&lt;/p&gt;
-&lt;p&gt;Wenn dem so wäre, wäre das schon einen Seufzer wert, denn die betreffende
-Replikationshierarchie war gerade beim Reengineering auf dem OP und sollte
-eigentlich derzeit kaum ausbeutbare Technical Debt haben.  Wenn die trotzdem
-Replication Delay akkumuliert, dann haben wir ein ernstes Problem.&lt;/p&gt;
-&lt;p&gt;Nun bin ich jemand, der Lügen gewohnt ist.  Leute lügen.  Und Maschinen
-lügen auch.  Aber schauen wir erst mal ins
+      <description>&lt;p&gt;Heute erreicht mich eine Mail,
+in der ein DBA sich über steigende Replication Delay in einer bestimmten Replikationshierarchie beschwert.&lt;/p&gt;
+&lt;p&gt;Das ist schlecht, denn die betreffende Hierarchie ist wichtig.
+Also die &amp;lsquo;Wenn die nicht geht schlafen Leute unter Brücken&amp;rsquo;-Art von wichtig.&lt;/p&gt;
+&lt;p&gt;Die Theorie war, dass die Änderungsrate in dieser Hierarchie so hoch ist,
+dass die Schreiblast von MySQL Replikation, die ja Single Threaded ist, nicht mehr bewältigt werden kann.
+Für diese Theorie sprach nach dem ersten Augenschein,
+dass alle betroffenen Kisten keine lokalen Platten hatten, sondern auf einem Filer lagen,
+und Filer sterben wegen der hohen Kommunikationslatenz im SAN bei uns in der Regel weit vor lokalen Platten,
+wenn es um Replikation geht:
+Filer sind mehr so beim parallelen Schreiben mit mehreren Threads gut.&lt;/p&gt;
+&lt;p&gt;Wenn dem so wäre, wäre das schon einen Seufzer wert,
+denn die betreffende Replikationshierarchie war gerade beim Reengineering auf dem OP
+und sollte eigentlich derzeit kaum auswertbare Technical Debt haben.&lt;br&gt;
+Wenn die trotzdem Replication Delay akkumuliert, dann haben wir ein ernstes Problem.&lt;/p&gt;
+&lt;p&gt;Nun bin ich jemand, der Lügen gewohnt ist.&lt;br&gt;
+Leute lügen.&lt;br&gt;
+Und Maschinen lügen auch.
+Aber schauen wir erst mal ins
 &lt;a href=&#34;http://graphite.wikidot.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Monitoring&lt;/a&gt;
 
- und schauen wie schlimm es ist.
+
+und schauen wie schlimm es ist.
 Ich greife mir einen Host aus der angeblich kränkelnden Hierarchie:&lt;/p&gt;
-&lt;p&gt;![Graph: Replication Delay Monitor]({{ site.baseurl }}/uploads/replication-delay1.png)&lt;/p&gt;
-&lt;p&gt;Der brandneue Replication Load Monitor ist ein tolles Spielzeug.&lt;/p&gt;
-&lt;p&gt;Wir sehen eine Weiterentwicklung einer &lt;a href=&#34;http://www.markleith.co.uk/2012/07/24/a-mysql-replication-load-average-with-performance-schema/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Idee&lt;/a&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay1.png&#34; alt=&#34;Graph: Replication Delay Monitor&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Der brandneue Replication Load Monitor ist ein tolles Spielzeug.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wir sehen eine Weiterentwicklung einer
+&lt;a href=&#34;http://www.markleith.co.uk/2012/07/24/a-mysql-replication-load-average-with-performance-schema/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Idee&lt;/a&gt;
 
 
-von Mark Leith: Mit Hilfe des Performance Schema überwachen wir,
-womit der SQL Thread der MySQL Replikation denn so seine Zeit verbringt und
-wieviel Prozent einer jeden Zeitscheibe er idle ist.&lt;/p&gt;
-&lt;p&gt;Mein SQL Thread auf der von mir zufällig herausgesuchten Maschine bringt
-etwa 20% seiner Zeit mit InnoDB Log IO zu und weitere 10-20% mit InnoDB Data
-IO.  60% sind Idle.  Montag irgendwann nach 13 Uhr hat jemand dann in Panik
-&amp;lsquo;innodb_flush_log_at_trx_commit = 2&amp;rsquo; gesetzt und damit fällt die InnoDB Log
-IO-Wartezeit komplett weg (Data IO natürlich nicht).&lt;/p&gt;
-&lt;p&gt;Wie dem auch sei, &lt;em&gt;so&lt;/em&gt; sieht der Graph einer überlasteten Hierarchie
-nicht aus.  Wir haben möglicherweise ein Problem auf einigen Servern der
-Hierarchie, aber definitiv nicht auf diesem.  Damit ist aber auch klar, daß
-das Problem nicht vom Master her kommen kann.  Gute Nachrichten!&lt;/p&gt;
-&lt;p&gt;Weiteres Nachbohren ergibt eine Liste von betroffenen Servern.  Zwei von
-denen sind Qualitätssicherungssysteme, die haben keinen Speicher und
-interessieren mich nicht.  Eines ist eine potentielle Produktionskiste, die
-derzeit aber vor sich hin idled.  Die hat Speicher, und ist trotzdem
-langsam.&lt;/p&gt;
-&lt;p&gt;Seit wann?  Ich schnappe mir den Replication Delay Graph und zoome einmal
-raus.  Das Problem besteht seit dem 20-Sep nachmittags, sagt der Graph.&lt;/p&gt;
-&lt;p&gt;Also zoome ich mich durch alle Graphen dieser Kiste für den 20-Sep und
-schaue einmal was mir da noch entgegen kommt.&lt;/p&gt;
-&lt;p&gt;![Graph: Betroffener Rechner]({{ site.base_url }}/uploads/replication-delay2.png)&lt;/p&gt;
-&lt;p&gt;Krankheitsbild: Akute und lebensbedrohliche DML-Schwäche seit Mitte des
-20-Sep.&lt;/p&gt;
-&lt;p&gt;Es ist offensichtlich, daß der Eimer ein Problem hat: Irgendwann am 20-Sep
-Nachmittags ist der von  150/250/50 I/U/D auf infinitesimal kleine Werte
-runter, und zwar nicht ruckartig wie bei einer Konfigurationsänderung,
-sondern in einer Entladungskurve, als ob sich irgendetwas zu zieht.
-Irgendwann am 21-Sep ist es der kranken Box dann noch mal ruckartig besser
-gegangen und wieder zieht sie sich dann bis zum Stillstand zu.&lt;/p&gt;
-&lt;p&gt;Das ist doch schon mal ein guter Hinweis: Erstens suchen wir fast sicher
-nicht nach einem direkten Config Change und zweitens sehen wir an dem Spike
-dahinter, daß Recovery möglich ist.&lt;/p&gt;
-&lt;p&gt;Wir suchen nicht nach einem direkten Config Change, und das ist gut so, denn
-es hat in letzter Zeit auch keine solchen gegeben:&lt;/p&gt;
+von Mark Leith:
+Mit Hilfe des Performance Schema überwachen wir,
+womit der SQL Thread der MySQL Replikation denn so seine Zeit verbringt
+und wieviel Prozent einer jeden Zeitscheibe er idle ist.&lt;/p&gt;
+&lt;p&gt;Mein SQL Thread auf der von mir zufällig herausgesuchten Maschine bringt etwa 20% seiner Zeit mit InnoDB Log IO zu
+und weitere 10-20% mit InnoDB Data IO.
+60% sind Idle.
+Montag irgendwann nach 13 Uhr hat jemand dann in Panik &amp;lsquo;innodb_flush_log_at_trx_commit = 2&amp;rsquo; gesetzt
+und damit fällt die InnoDB Log IO-Wartezeit komplett weg (Data IO natürlich nicht).&lt;/p&gt;
+&lt;p&gt;Wie dem auch sei, &lt;em&gt;so&lt;/em&gt; sieht der Graph einer überlasteten Hierarchie nicht aus.
+Wir haben möglicherweise ein Problem auf einigen Servern der Hierarchie,
+aber definitiv nicht auf diesem.
+Damit ist aber auch klar, daß das Problem nicht vom Master her kommen kann.
+Gute Nachrichten!&lt;/p&gt;
+&lt;p&gt;Weiteres Nachbohren ergibt eine Liste von betroffenen Servern.
+Zwei von denen sind Qualitätssicherungssysteme, die haben keinen Speicher und interessieren mich nicht.
+Eines ist eine potentielle Produktionskiste, die derzeit aber vor sich hin idled.
+Die hat Speicher und ist trotzdem langsam.&lt;/p&gt;
+&lt;p&gt;Seit wann?&lt;br&gt;
+Ich schnappe mir den Replication Delay Graph und zoome einmal raus.
+Das Problem besteht seit dem 20-Sep nachmittags, sagt der Graph.&lt;/p&gt;
+&lt;p&gt;Also zoome ich mich durch alle Graphen dieser Kiste für den 20-Sep und schaue einmal was mir da noch entgegen kommt.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay2.png&#34; alt=&#34;Graph: Betroffener Rechner&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Krankheitsbild: Akute und lebensbedrohliche DML-Schwäche seit Mitte des 20-Sep.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Es ist offensichtlich, daß der Eimer ein Problem hat:
+Irgendwann am 20-Sep Nachmittags ist der von 150/250/50 I/U/D auf infinitesimal kleine Werte runter,
+und zwar nicht ruckartig wie bei einer Konfigurationsänderung, sondern in einer Entladungskurve,
+als ob sich irgendetwas zu zieht.
+Irgendwann am 21-Sep ist es der kranken Box dann noch mal ruckartig besser gegangen
+und wieder zieht sie sich dann bis zum Stillstand zu.&lt;/p&gt;
+&lt;p&gt;Das ist doch schon mal ein guter Hinweis:
+Erstens suchen wir fast sicher nicht nach einem direkten Config Change
+und zweitens sehen wir an dem Spike dahinter, daß Recovery möglich ist.&lt;/p&gt;
+&lt;p&gt;Wir suchen nicht nach einem direkten Config Change, und das ist gut so,
+denn es hat in letzter Zeit auch keine solchen gegeben:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dba&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;master&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;01&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dba&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;report_date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config_variable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
@@ -1784,70 +1781,73 @@ es hat in letzter Zeit auch keine solchen gegeben:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2012&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;05&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;innodb_max_dirty_pages_pct&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;           &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;75&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;           &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-------------+----------------------------+--------------+--------------+
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;rows&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;82&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Weiteres Wühlen im Graphite bringt Erleuchtung, denn wir finden das Inverse
-des Activity Patterns hier:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Wir archivieren alle Configuration Variables von MySQL von allen Instanzen in regelmäßigen Abständen in…
+einer Datenbank!
+Damit kann man sinnvolle Fragen stellen.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Weiteres Wühlen im Graphite bringt Erleuchtung, denn wir finden das Inverse des Activity Patterns hier:&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay3.png&#34; alt=&#34;Graph: InnoDB Undo-Log Length&#34;  /&gt;
 &lt;/p&gt;
 
 &lt;/p&gt;
-&lt;p&gt;Die Causa: Der InnoDB Purge Thread hat seine Arbeit Mitte des 20-Sep
-eingestellt, zuckt noch einmal kurz und idled dann lustig weiter.  Sollte
+&lt;p&gt;&lt;em&gt;Wir wissen aus früheren Incidents schon, daß ein großes Undo-Log MySQL langsam macht.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Die Causa:
+Der InnoDB Purge Thread hat seine Arbeit Mitte des 20-Sep eingestellt,
+zuckt noch einmal kurz und idled dann lustig weiter.
+Sollte
 &lt;a href=&#34;https://blog.koehntopp.info/2011/04/28/mysql-undo-log.html&#34;&gt;Captain Undo-Log&lt;/a&gt;
 
 
-wieder unterwegs sein und mit dem Baseballschläger ausgeloggt
-werden wollen?&lt;/p&gt;
-&lt;p&gt;Eine kurze Inspektion der Prozeßliste zeigt nur zwei andere
-Kandidatenprozesse, einer ist ein root-User und einer ist ein cacti-Login.
-Mein Geld wette ich auf den root-user, ein kurzes Rumfragen auf dem Jabber
-und danach ein KILL auf die Connection-ID von dem Gesellen wird mir zeigen,
-ob ich Recht habe oder nicht: Wer nicht im Live-Channel auf dem Jabber ist
-wird sich schon melden, wenn ihm die Verbindungen wegfliegen.&lt;/p&gt;
-&lt;p&gt;Der Effekt ist&amp;hellip;  Null.&lt;/p&gt;
-&lt;p&gt;Also gut.  Dann kriegt halt der Cacti auf&amp;rsquo;s Maul, weil ich grad schlechte
-Laune habe.&lt;/p&gt;
+wieder unterwegs sein und mit dem Baseballschläger ausgeloggt werden wollen?&lt;/p&gt;
+&lt;p&gt;Eine kurze Inspektion der Prozeßliste zeigt nur zwei andere Kandidatenprozesse,
+einer ist ein root-User und einer ist ein cacti-Login.
+Mein Geld wette ich auf den root-user,
+ein kurzes Rumfragen auf dem Jabber und danach ein KILL auf die Connection-ID von dem Gesellen wird mir zeigen,
+ob ich Recht habe oder nicht:
+Wer nicht im Live-Channel auf dem Jabber ist wird sich schon melden, wenn ihm die Verbindungen wegfliegen.&lt;/p&gt;
+&lt;p&gt;Der Effekt ist…  Null.&lt;/p&gt;
+&lt;p&gt;Also gut.&lt;br&gt;
+Dann kriegt halt der Cacti auf&amp;rsquo;s Maul, weil ich grad schlechte Laune habe.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay4.png&#34; alt=&#34;Graph: QPS &amp;amp;amp; Undo-Log Size&#34;  /&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay4.png&#34; alt=&#34;Graph: QPS &amp;amp; Undo-Log Size&#34;  /&gt;
 &lt;/p&gt;
 
 &lt;/p&gt;
-&lt;p&gt;Nach Zufuhr einer passenden Dosis Laxativ (DBA KILL forte N) spontane
-Erholung, aber nach kurzer Linderung ein Wiedereinsetzen der Symptomatik.&lt;/p&gt;
-&lt;p&gt;Herzallerliebst.  Wir haben das Gegenteil eines Stehaufmännchens - ein
-Fallumchen.  Immer wenn der Cacti User eine Kelle kriegt, fällt das Undo-Log
-wunschgemäß in sich zusammen und die Performance geht rauf.  Danach zieht es
-sich in kürzester Zeit wieder zu und wir fallen auf das alte Niveau runter.&lt;/p&gt;
-&lt;p&gt;Der alte Trick mit der Processlist klappt auch hier wieder: Das Login kommt
-von&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;performance_schema | ```
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Moment.  performance_schema?  Cacti?
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Nein.  Das ist nicht cacti.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;```console lsof -i -n -P | grep 44467 mysqld 17242 mysql 178u
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; IPv6 &lt;span class=&#34;m&#34;&gt;3599986352&lt;/span&gt; TCP
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...:3306-&amp;gt;...:44467 (ESTABLISHED) diamond 18596 root 1u IPv4 3599986351 TCP
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...:44467-&amp;gt;10.147.206.122:3306 (ESTABLISHED) ```
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Ja.  Das ist diamond, der Datenkollektor für Graphite.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Und welches Modul von Diamond/Graphite ist am 20-Sep nachmittags global
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ausgerollt worden?
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;```console cd /etc/graphite/collectors ls -l MySQL*conf
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;p&gt;Nach Zufuhr einer passenden Dosis Laxativ (DBA KILL forte N) spontane Erholung,
+aber nach kurzer Linderung ein Wiedereinsetzen der Symptomatik.&lt;/p&gt;
+&lt;p&gt;Herzallerliebst.&lt;br&gt;
+Wir haben das Gegenteil eines Stehaufmännchens - ein Fallumchen.
+Immer wenn der Cacti User eine Kelle kriegt, fällt das Undo-Log wunschgemäß in sich zusammen
+und die Performance geht rauf.
+Danach zieht es sich in kürzester Zeit wieder zu und wir fallen auf das alte Niveau runter.&lt;/p&gt;
+&lt;p&gt;Der alte Trick mit der Processlist klappt auch hier wieder:
+Das Login kommt von&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;| 6694419 | cacti | &amp;lt;hostname&amp;gt;:44467 | performance_schema | 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Moment.
+performance_schema?
+Cacti?&lt;/p&gt;
+&lt;p&gt;Nein.
+Das ist nicht cacti.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; lsof -i -n -P &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep &lt;span class=&#34;m&#34;&gt;44467&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt; mysqld 17242 mysql 178u # IPv6 3599986352 TCP ...:3306-&amp;gt;...:44467 (ESTABLISHED)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;diamond 18596 root    1u   IPv4 3599986351 TCP ...:44467-&amp;gt;...:3306 (ESTABLISHED) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ja.  Das ist diamond, der Datenkollektor für Graphite.&lt;/p&gt;
+&lt;p&gt;Und welches Modul von Diamond/Graphite ist am 20-Sep nachmittags global ausgerollt worden?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /etc/graphite/collectors
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; ls -l MySQL*conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;…
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-r-------- 1 root root 471 Sep 20 14:19 MySQLPerfCollector.conf 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Der Replication Load Monitor.  Ja, der da ganz oben im ersten Bild.&lt;/p&gt;
-&lt;p&gt;Der liest zwar nur, aber aus irgendeinem Grund macht er das auf einigen
-Promille aller Boxen, und nur in dieser Replikationshierarchie!, in einer
-REPEATABLE READ read-only Transaction.  Und die macht Diamond beim Login
-einmal auf und hält sie dann für immer und ewig, es sei denn, die
-Diamond-MySQL-Verbindung kippt, aus welchen Gründen auch immer, um.  Und da
-die Verbindung auch nie Idle ist, timed sie auch nie aus.&lt;/p&gt;
-&lt;p&gt;Kurze Zeit nachdem Puppet dem Diamond die &lt;code&gt;MySQLPerfCollector.conf&lt;/code&gt; auf
-&lt;code&gt;enabled = false&lt;/code&gt; gesetzt hat haben wir eine dauerhafte Recovery:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Der Replication Load Monitor.
+Ja, der da ganz oben im ersten Bild.&lt;/p&gt;
+&lt;p&gt;Der liest zwar nur, aber aus irgendeinem Grund macht er das auf einigen Promille aller Boxen,
+und nur in dieser Replikationshierarchie,
+in einer REPEATABLE READ read-only Transaction.&lt;/p&gt;
+&lt;p&gt;Und die macht Diamond beim Login einmal auf und hält sie dann für immer und ewig,
+es sei denn, die Diamond-MySQL-Verbindung kippt um,
+aus welchen Gründen auch immer.
+Und da die Verbindung auch nie Idle ist, timed sie auch nie aus.&lt;/p&gt;
+&lt;p&gt;Kurze Zeit nachdem Puppet dem Diamond die &lt;code&gt;MySQLPerfCollector.conf&lt;/code&gt; auf &lt;code&gt;enabled = false&lt;/code&gt; gesetzt hat
+haben wir eine dauerhafte Recovery:&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/replication-delay5.png&#34; alt=&#34;Graph: Replication Delay&#34;  /&gt;
 &lt;/p&gt;
@@ -1860,8 +1860,8 @@ die Verbindung auch nie Idle ist, timed sie auch nie aus.&lt;/p&gt;
 &lt;a href=&#34;http://blog.wl0.org/2012/09/checking-procnuma_maps-can-be-dangerous-for-mysql-client-connections/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;keine neue Erkenntnis&lt;/a&gt;
 
 &lt;/li&gt;
-&lt;li&gt;So ein Undo-Log und langlaufende Transaktionen können einen ganz schön runter ziehen.  Okay,
-auch keine neue Erkenntnis.&lt;/li&gt;
+&lt;li&gt;So ein Undo-Log und langlaufende Transaktionen können einen ganz schön runter ziehen.&lt;br&gt;
+Okay, auch keine neue Erkenntnis.&lt;/li&gt;
 &lt;li&gt;Es lag nicht an der Replikationslast, und auch nicht am Filer, auch wenn das gerade Mode ist,
 in diese Richtung zu blamen.&lt;/li&gt;
 &lt;li&gt;Und Graphite ist meine Hündin.&lt;/li&gt;
@@ -1871,7 +1871,7 @@ in diese Richtung zu blamen.&lt;/li&gt;
 &lt;/p&gt;
 
 &lt;/p&gt;
-&lt;p&gt;Was House sagt.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Was House sagt.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Morgen schauen wir dem &lt;code&gt;MySQLPerfCollector.py&lt;/code&gt; mal tiefer in die Eingeweide.&lt;/p&gt;
 </description>
     </item>
@@ -1879,8 +1879,8 @@ in diese Richtung zu blamen.&lt;/li&gt;
     <item>
       <title>Load, Load Testing und Benchmarks</title>
       <link>https://blog.koehntopp.info/2012/08/28/load-load-testing-und-benchmarks.html</link>
-      <pubDate>Tue, 28 Aug 2012 10:01:00 +0000</pubDate>
-      
+      <pubDate>Tue, 28 Aug 2012 10:01:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/08/28/load-load-testing-und-benchmarks.html</guid>
       <description>&lt;p&gt;(Diesen Artikel gibt es auch in &lt;a href=&#34;https://blog.koehntopp.info/2017/02/16/load-load-testing-and-benchmarking.html&#34;&gt;englischer Sprache&lt;/a&gt;
 
@@ -2075,8 +2075,7 @@ Systemversagens und der Punkt der letzten Stabilität gut erkennbar.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Nachtrag:&lt;/strong&gt; Alexander Aulbach fragte in der Diskussion zum Artikel oben:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Es wäre mal interessant zu schauen, welchem physikalischen Modell das am
-ehesten gehorcht.&lt;/p&gt;
-&lt;/blockquote&gt;
+ehesten gehorcht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Guckst Du hier:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Raj Jain, &lt;a href=&#34;http://www.amazon.de/The-Computer-Systems-Performance-Analysis/dp/0471503363&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Art of Computer Systems Performance Analysis: Techniques for Experimental Design, Measurement, Simulation, and   Modeling&lt;/a&gt;
@@ -2100,4 +2099,3 @@ bestätigen.&lt;/p&gt;
     
   </channel>
 </rss>
-

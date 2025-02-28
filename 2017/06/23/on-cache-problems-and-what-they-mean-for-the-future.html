@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>On cache problems, and what they mean for the future | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2017/06/23/on-cache-problems-and-what-they-mean-for-the-future.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='On cache problems, and what they mean for the future' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='On cache problems, and what they mean for the future | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="en_US" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2017/06/23/on-cache-problems-and-what-they-mean-for-the-future.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2017-06-23T14:12:04Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='On cache problems, and what they mean for the future' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"On cache problems, and what they mean for the future","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="on-cache-problems-and-what-they-mean-for-the-future-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						On cache problems, and what they mean for the future
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>June 23, 2017</div>
 						
-
 					</div>
 				</div>
 				
@@ -240,8 +226,7 @@ but there are many more. Each of them now has the potential to become the
 next bottleneck. Or as one of my database colleagues has been known to say
 in one form or the other more than once:</p>
 <blockquote>
-<p>&ldquo;Forget caches, just make everything fast all the time.&rdquo; &ndash; Nicolai Plum</p>
-</blockquote>
+<p>&ldquo;Forget caches, just make everything fast all the time.&rdquo; &ndash; Nicolai Plum</p></blockquote>
 <h2 id="hadoop-in-the-face-of-many-iops">
     <a href="#hadoop-in-the-face-of-many-iops">
 	Hadoop in the face of many IOPS
@@ -282,8 +267,7 @@ stored at all. Or, as one of the networking colleagues of mine puts it:</p>
 <blockquote>
 <p>&ldquo;Any sufficiently funded technology is indistinguishable from Magic.&rdquo;
 (Brian Sayler on the networking underneath a containerized Hadoop and
-Compute/Storage disaggregation)</p>
-</blockquote>
+Compute/Storage disaggregation)</p></blockquote>
 <p>Premise #1 is going out of the window as well. Next year, latest the year
 after that, we likely will stop buying rotating rust even for the Hadoop
 servers. But that means we could seek again, which means that we could be
@@ -438,7 +422,7 @@ not really Unix any more.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

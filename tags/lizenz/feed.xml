@@ -6,12 +6,18 @@
     <description>Recent content in Lizenz on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/lizenz/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/lizenz/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GPL V3 RC3 - Was steht drin?</title>
       <link>https://blog.koehntopp.info/2007/04/02/gpl-v3-rc3-was-steht-drin.html</link>
-      <pubDate>Mon, 02 Apr 2007 09:36:00 +0000</pubDate>
-      
+      <pubDate>Mon, 02 Apr 2007 09:36:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2007/04/02/gpl-v3-rc3-was-steht-drin.html</guid>
       <description>&lt;p&gt;Die GPL V3 ist sehr einfach zu lesen - wenn man wissen will, was drin steht, muss man lediglich die Präambel lesen, die in sehr klaren Worten und ohne juristisches Blafasel genau erklärt, was die Ziele und Methoden der GPL V3 sind und wieso sie Lizenz so aussieht wie sie aussieht.
 Der
@@ -53,8 +59,7 @@ Es kann keine Koexistenz mit Closed Source geben, sondern nur eine strikte Trenn
 Diese Erkenntnis ist nicht neu:
 Am 27. September 1983, also vor nunmehr 23 Jahren wurde das GNU Projekt gegründet.
 Es entstand unter anderem, weil jemand Code aus der Allmende genommen und unter seine Käseglocke gestellt hat.
-Die Funktion der GPL ist es, eine Wiederholung eines solchen Szenarios zu verhindern.&lt;/p&gt;
-&lt;/blockquote&gt;
+Die Funktion der GPL ist es, eine Wiederholung eines solchen Szenarios zu verhindern.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die GPL ist eine wehrhafte Lizenz und die Version 3 paßt sie an die Erfordernisse einer neuen Zeit an, um die
 &lt;a href=&#34;https://blog.koehntopp.info/2006/11/12/gpl-microsoft-novell-samba-org-und-die-freiheiten-der-gpl.html&#34;&gt;Freiheiten der GPL&lt;/a&gt;
 
@@ -86,8 +91,7 @@ Therefore, we have designed this version of the GPL to prohibit the practice for
 If such problems arise substantially in other domains, we stand ready to extend this provision to those domains in future versions of the GPL, as needed to protect the freedom of users.&lt;/p&gt;
 &lt;p&gt;Finally, every program is threatened constantly by software patents.
 States should not allow patents to restrict development and use of software on general-purpose computers, but in places where they do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary.
-To prevent this, the GPL assures that patents cannot be used to render the program non-free.&lt;/p&gt;
-&lt;/blockquote&gt;
+To prevent this, the GPL assures that patents cannot be used to render the program non-free.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Neu in der GPL V3: Der Absatz 3 &amp;ldquo;No Denying Users&amp;rsquo; Rights through Technical Measures&amp;rdquo;. sagt, daß ein GPL V3 Programm nicht Teil eines
 &lt;a href=&#34;http://de.wikipedia.org/wiki/Digitale_Rechteverwaltung&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DRM-Mechanismus&lt;/a&gt;
 
@@ -100,15 +104,13 @@ und die daraus entstandenen nationalen Gesetze zur Umsetzung dieses Vertrages.
 Ein Gerät wie der Tivo, bei dem man die Quellen erhält, modifizieren, die daraus resultierende geänderte Software dann so aber nicht mehr auf dem Gerät installieren kann wäre mit der GPL V2 möglich, mit der GPL V3 aber nicht mehr.&lt;/p&gt;
 &lt;p&gt;In dieselbe Richtung zielen nun Abschnitte von Absatz 6, die ebenfalls klarstellen, was denn nun genau zum Lieferumfang gehört:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Oder in anderen Worten: Die Schlüssel, die man braucht um sein selbstgemachtes Binary so zu signieren, daß es auf ein einem Tivo tut gehören auch dazu.&lt;/p&gt;
 &lt;p&gt;Ebenfalls neu in der GPL V3:
 Die Klarstellung in Absatz 10 &amp;ldquo;Automatic Licensing of Downstream Recipients&amp;rdquo; und der gesamte Absatz 11 &amp;ldquo;Patents&amp;rdquo;.
 Der Kern der Sache ist jetzt der erste Absatz von Absatz 11:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor&amp;rsquo;s essential patent claims in its contribution, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contribution.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor&amp;rsquo;s essential patent claims in its contribution, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contribution.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Oder in anderen Worten: Wenn ich Code in ein Stück GPL einbaue, das durch eines meiner Softwarepatente geschützt ist, dann gebe ich damit auch gleich eine kostenfreie, unbefristete und unbeschränkte Lizenz für die Nutzung dieser Patente an jedem Nutzer dieser Software mit.
 Dies ist übrigens nichts neues -
 &lt;a href=&#34;http://www.groklaw.net/article.php?story=20070328071651351&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;schon die GPL V2 hat einen ähnlichen Effekt&lt;/a&gt;
@@ -127,8 +129,8 @@ beschrieben.&lt;/p&gt;
     <item>
       <title>Urteilsbegründung zu GPL in Deutschland vor Gericht durchgesetzt</title>
       <link>https://blog.koehntopp.info/2006/09/22/urteilsbegr-ndung-zu-gpl-in-deutschland-vor-gericht-durchgesetzt.html</link>
-      <pubDate>Fri, 22 Sep 2006 12:57:39 +0000</pubDate>
-      
+      <pubDate>Fri, 22 Sep 2006 12:57:39 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/09/22/urteilsbegr-ndung-zu-gpl-in-deutschland-vor-gericht-durchgesetzt.html</guid>
       <description>&lt;p&gt;Nachtrag zu
 &lt;a href=&#34;https://blog.koehntopp.info/2004/04/15/gnu-gpl-in-deutschland.html&#34;&gt;GPL in Deutschland vor Gericht durchgesetzt&lt;/a&gt;
@@ -182,16 +184,15 @@ der Nutzer gegen die in Ziff. 2 der GPL niedergelegten Verhaltenspflichten
 verstößt. Die dortigen Verhaltenspflichten sehen insbesondere vor, daß der
 Nutzer mit jeder Kopie einen Haftungsausschluß veröffentlicht, auf die GPL
 hinweist und einen Lizenztext beifügt sowie den Sourcecode des Programmes
-offen legt.&lt;/p&gt;
-&lt;/blockquote&gt;
+offen legt.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>GPL: Marktdurchdringung ist kein Wert an sich</title>
       <link>https://blog.koehntopp.info/2006/09/19/gpl-marktdurchdringung-ist-kein-wert-an-sich.html</link>
-      <pubDate>Tue, 19 Sep 2006 16:58:35 +0000</pubDate>
-      
+      <pubDate>Tue, 19 Sep 2006 16:58:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/09/19/gpl-marktdurchdringung-ist-kein-wert-an-sich.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/2006/09/10/gpl-in-deutschland-vor-gericht-durchgesetzt.html&#34;&gt;Kommentar&lt;/a&gt;
 
@@ -206,8 +207,7 @@ machen denn die Distributoren, auch wenn das jetzt etwas
 überspitzt ist. Es wird niemand daran gehindert GPL Software
 zu verkaufen. Sie müssen nur die GPL einhalten, was bedeutet
 die Lizenz mitliefern und dürfen die Hinweise auf die GPL im
-Code nicht entfernen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Code nicht entfernen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Der wesentliche Punkt der GPL ist ein anderer: Unter der GPL
 muss man den Quelltext - so wie er verwendet worden ist, um das
 eigene Produkt zu bauen - mitliefern. Mit allen Rechten und
@@ -247,16 +247,14 @@ unter einem kompetitiven Gesichtspunkt:&lt;/p&gt;
 &lt;p&gt;Es ist klar, das ein System nicht notwendigerweise offener
 wird, wenn sich dort verschiedene nicht freigegebene Module
 tummeln. Es ist allerdings ein Trugschluss, das man einen
-Hersteller durch die GPL in die Offenheit zwingen kann.&lt;/p&gt;
-&lt;/blockquote&gt;
+Hersteller durch die GPL in die Offenheit zwingen kann.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist das Missverständnis: Die GPL will niemanden zu irgendetwas zwingen.
 Sie will nur trennen.
 Die GPL sagt nicht &amp;ldquo;Du musst offen/frei/whatever sein.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Sie sagt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;Wenn&lt;/strong&gt; Du unseren Code nutzen möchtest, was Du
-nicht musst, &lt;strong&gt;dann&lt;/strong&gt; musst Du das zu unseren Bedingungen tun.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+nicht musst, &lt;strong&gt;dann&lt;/strong&gt; musst Du das zu unseren Bedingungen tun.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist ganz genau das, was jede andere Lizenz auch sagt. Die
 GPL nennt außerdem diese &lt;a href=&#34;https://blog.koehntopp.info/2005/02/07/von-der-gpl.html&#34;&gt;Bedingungen&lt;/a&gt;
 
@@ -302,8 +300,7 @@ wegen ihrer einzigartigen Konstruktion schützen helfen.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Sehen wir es doch mal realistisch, wie gross ist den die
 Gruppe jener Menschen die in der Lage und Willens ist, auf
-einem Handy oder einem Router den Kernel auszutauschen.&lt;/p&gt;
-&lt;/blockquote&gt;
+einem Handy oder einem Router den Kernel auszutauschen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Größe der Gruppe der Menschen ist aus der Sicht der GPL
 vollkommen irrelevant. Die meisten Leute wissen ja auch nicht,
 was ein Rootkit ist. Die GPL zwingt auch niemanden, mit dem
@@ -385,8 +382,7 @@ eine ganze Reihe von Geschäftsgeheimnissen offenlegen würde
 (schönes Beispiel sind da für mich die Treiber von
 hochgezüchteten Grafikkarten). Warum sollte eine Firma das
 tun? Ist es der Firma zu verübeln, Auswege zu suchen, Umwege
-zu finden und wenn es irgendwie geht, Linux ganz zu vermeiden?&lt;/p&gt;
-&lt;/blockquote&gt;
+zu finden und wenn es irgendwie geht, Linux ganz zu vermeiden?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nein, wenn Du kein GPL willst, dann benutze halt keinen
 GPL-Code. Nur, ähm, das ist nicht der Sachverhalt.&lt;/p&gt;
 &lt;p&gt;Es ist nicht so, daß da plötzlich eine Gruppe von Leuten ist,
@@ -408,8 +404,7 @@ nicht das Recht am Markt zu agieren, denn es handelt sich um
 einen Haufen von Dilettanten.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich weiß aber auch, das dieses Dilemma das Potenzial hat, der
-Marktdurchdringung von Linux erheblichen Widerstand zu bieten.&lt;/p&gt;
-&lt;/blockquote&gt;
+Marktdurchdringung von Linux erheblichen Widerstand zu bieten.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Marktdurchdringung ist für ein GPL-Produkt kein Wert an sich,
 so cool das auch ist, etwa auf einem Kassensystem, einer
 Sina-Box, einem Voip-Telefon, einem WLAN-Router, einem
@@ -455,8 +450,8 @@ im Open Source Bereich.&lt;/p&gt;
     <item>
       <title>GPL in Deutschland vor Gericht durchgesetzt</title>
       <link>https://blog.koehntopp.info/2006/09/10/gpl-in-deutschland-vor-gericht-durchgesetzt.html</link>
-      <pubDate>Sun, 10 Sep 2006 18:07:21 +0000</pubDate>
-      
+      <pubDate>Sun, 10 Sep 2006 18:07:21 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/09/10/gpl-in-deutschland-vor-gericht-durchgesetzt.html</guid>
       <description>&lt;p&gt;Auf dem
 &lt;a href=&#34;http://www.heise.de/newsticker/meldung/77951&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heise Newsticker&lt;/a&gt;
@@ -477,8 +472,7 @@ Jaeger, Mitbegründer des Instituts für Rechtsfragen der Freien und Open
 Source Software (&lt;a href=&#34;http://www.ifross.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ifrOSS&lt;/a&gt;
 
 ), allerdings erst nach
-Veröffentlichung des der schriftlichen Urteilsbegründung nennen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Veröffentlichung des der schriftlichen Urteilsbegründung nennen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Jörg Möllenkamp sieht dies als
 &lt;a href=&#34;http://www.c0t0d0s0.org/index.php?url=archives/1989-GPL-vor-Gericht-durchgesetzt.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Phyrrussieg&lt;/a&gt;
 
@@ -496,8 +490,7 @@ in voller Länge:&lt;/p&gt;
 &lt;p&gt;Wenn die GPL nicht gälte (also Harald Welte den Prozeß verloren hätte), dann
 säßen alle Hersteller dieser netten kleinen embedded Systeme ohne Lizenz da
 und müßten sich an jeden einzelnen Autoren der Komponenten ihres embedded
-Linux Systems einzeln wenden, um sich eine Nutzungslizenz zu holen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Linux Systems einzeln wenden, um sich eine Nutzungslizenz zu holen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist ein Szenario, daß sich die Hersteller dieser Systeme keinesfalls
 wünschen können, denn während die GPL einem &lt;strong&gt;automatisch&lt;/strong&gt; Rechte gibt,
 sobald man die Bedingungen erfüllt, ist dies bei manuellen
@@ -548,8 +541,7 @@ GPL zwingt niemanden dazu, seine eigenen Eigentumsrechte aufzugeben.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Sie zwingt einen dazu, sich zu entscheiden zwischen dem kompetetiven und
 dem kooperativen Lager, und sie zwingt die Spieler im kooperativen Lager,
-die Regeln der Kooperation einzuhalten.&lt;/p&gt;
-&lt;/blockquote&gt;
+die Regeln der Kooperation einzuhalten.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die GPL hält die Spieler im kooperativen Lagen ehrlich und fair. Damit macht
 sie eine dauerhafte Kooperation überhaupt erst möglich. Sie benutzt dazu das
 Urheberrecht, eigentlich ein Instrument des kompetetiven Lagers. Ohne dies
@@ -596,8 +588,7 @@ verletzten, indem sie ihnen die viel höheren Transaktionskosten des
 kompetetiven Bereichs auferlegen (&amp;ldquo;Zieh erst mal Deine Lizenzen gerade.&amp;rdquo;)
 und sie von der Nutzung der freien, aber nicht kostenlosen kooperativen
 Werte ausschließen (Der zu zahlende Preis ist die Einhaltung der Regeln
-der Kooperation).&lt;/p&gt;
-&lt;/blockquote&gt;
+der Kooperation).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist das, was Harald Welte hier tut, und er hat zumindest meine
 uneingeschränkte ideologische Unterstützung (und mein Geld, wenn er es
 braucht): Er fordert die Bezahlung der Lizenzen ein, und hält so den Deal am
@@ -608,8 +599,8 @@ Leben. Das ist wichtig, ja sogar zentral.&lt;/p&gt;
     <item>
       <title>GPL V3 (2nd draft)</title>
       <link>https://blog.koehntopp.info/2006/07/30/gpl-v3-2nd-draft.html</link>
-      <pubDate>Sun, 30 Jul 2006 07:52:20 +0000</pubDate>
-      
+      <pubDate>Sun, 30 Jul 2006 07:52:20 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/07/30/gpl-v3-2nd-draft.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/uploads/gpl3-dd1to2-markup.pdf&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/gpl3-dd1to2-markup.png&#34; alt=&#34;&#34;  /&gt;
@@ -650,8 +641,8 @@ Ihr werdet alle in dem Umfeld arbeiten, daß hier definiert wird.&lt;/p&gt;
     <item>
       <title>Open Source und kommerzielle Software</title>
       <link>https://blog.koehntopp.info/2005/07/06/open-source-und-kommerzielle-software.html</link>
-      <pubDate>Wed, 06 Jul 2005 09:21:00 +0000</pubDate>
-      
+      <pubDate>Wed, 06 Jul 2005 09:21:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/07/06/open-source-und-kommerzielle-software.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;https://blog.koehntopp.info/2004/12/14/open-source-software-und-firmen.html&#34;&gt;Open Source Software und Firmen&lt;/a&gt;
@@ -663,16 +654,14 @@ Ihr werdet alle in dem Umfeld arbeiten, daß hier definiert wird.&lt;/p&gt;
 Dadurch sind wir die Verantwortung für diesen Code los und können Weiterentwicklungen an diesem Code aus der offiziellen Codebasis ohne Änderung im Hause nutzen.&lt;/p&gt;
 &lt;p&gt;Alle geschäftsspezifische Logik entwickeln wir im Hause so weit, daß wir allgemeingültige Plugin-Schnittstellen oder andere Isolationsmechanismen in die Software einbauen oder einbauen lassen, und wir realisieren unsere geschäftsspezifische Logik dann grundsätzlich so, daß wir die offizielle Codebasis nicht patchen, sondern lediglich Plugins für sie schreiben.&lt;/p&gt;
 &lt;p&gt;So halten wir die Trennlinie zwischen offiziellem und firmeneigenem Code sauber aufrecht, und verbauen uns nicht die Möglichkeit, offiziellen Code jederzeit in die Produktion im Hause integrieren zu können.
-Andererseits stellen wir so sicher, daß geschäftsspezifische Logik nicht aus Versehen veröffentlicht wird.&lt;/p&gt;
-&lt;/blockquote&gt;
+Andererseits stellen wir so sicher, daß geschäftsspezifische Logik nicht aus Versehen veröffentlicht wird.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Inzwischen kommen solche Ideen auch bei Beraterfirmen wie Gartner an. Unter der irreführenden Überschrift
 &lt;a href=&#34;http://www.golem.de/0507/39047.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Open Source - eine Bedrohung für Software-Entwickler?&lt;/a&gt;
 
 
 findet sich trotz des falschen Titels sinnvoller Content:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Viele große Software-Hersteller würden ihr gesamtes Software-Portfolio prüfen, um festzustellen, welche Produkte von strategischer Bedeutung sind, um andere Produkte oder solche, mit denen kein Geld verdient wird, als Open Source freizugeben, so Hayward laut ZDNet Australia.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Viele große Software-Hersteller würden ihr gesamtes Software-Portfolio prüfen, um festzustellen, welche Produkte von strategischer Bedeutung sind, um andere Produkte oder solche, mit denen kein Geld verdient wird, als Open Source freizugeben, so Hayward laut ZDNet Australia.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Letztendlich zwinge die Open-Source-Bewegung Software-Hersteller, über die Art und Weise nachzudenken, wie diese ihre Produkte verkaufen.
 Eine große Zukunft für das Geschäft mit Software-Lizenzen sieht Hayward dabei nicht.
@@ -687,8 +676,8 @@ Dadurch wird es am Open Source Prozess teilnehmenden und fair spielenden Firmen 
     <item>
       <title>Softwarepatente? Abgelehnt!</title>
       <link>https://blog.koehntopp.info/2005/07/06/softwarepatente-abgelehnt.html</link>
-      <pubDate>Wed, 06 Jul 2005 10:52:19 +0000</pubDate>
-      
+      <pubDate>Wed, 06 Jul 2005 10:52:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/07/06/softwarepatente-abgelehnt.html</guid>
       <description>&lt;p&gt;Die Abstimmung zu Software-Patenten im EU-Parlament hat stattgefunden und das Parlament lehnt die umstrittene Richtlinie ab.
 Golem berichtet in
@@ -699,8 +688,7 @@ Golem berichtet in
 &lt;p&gt;Europäisches Parlament lehnt umstrittene Richtlinie ab
 Wie sich gestern bereits abzeichnete, hat das Europäische Parlament am heutigen Mittwoch die Softwarepatent-Richtlinie mit einer Mehrheit von 648 Stimmen abgelehnt und damit das Gesetzgebungsverfahren beendet.
 Zwar wurde nach außen hin fast einhellig gefordert, Softwarepatente nach dem US-Vorbild in Europa zu verhindern, in der Frage, wie weit diese Ablehnung gehen sollte, gab es jedoch große Differenzen, die zu einer regelrechten Lobbyschlacht führten.
-Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschieden, statt einer, die dem jeweiligen Lager missfällt.&lt;/p&gt;
-&lt;/blockquote&gt;
+Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschieden, statt einer, die dem jeweiligen Lager missfällt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.spiegel.de/netzwelt/technologie/0,1518,363904,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Europaparlament stimmt gegen Software-Patente&lt;/a&gt;
@@ -735,8 +723,8 @@ Letztendlich einigte man sich nun darauf, besser keine Richtlinie zu verabschied
     <item>
       <title>Qt4 wird vollständig GPL</title>
       <link>https://blog.koehntopp.info/2005/02/07/qt4-wird-vollstaendig-gpl.html</link>
-      <pubDate>Mon, 07 Feb 2005 14:12:10 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Feb 2005 14:12:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/02/07/qt4-wird-vollstaendig-gpl.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/trolltech.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -770,8 +758,8 @@ Windows und MacOS zu portieren ist extrem gering.&lt;/p&gt;
     <item>
       <title>Von der GPL</title>
       <link>https://blog.koehntopp.info/2005/02/07/von-der-gpl.html</link>
-      <pubDate>Mon, 07 Feb 2005 22:25:22 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Feb 2005 22:25:22 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/02/07/von-der-gpl.html</guid>
       <description>&lt;p&gt;Trolltech hat seine &lt;a href=&#34;https://blog.koehntopp.info/2005/02/07/qt4-wird-vollstaendig-gpl.html&#34;&gt;Qt Bibliothek ab der Version 4 komplett unter GPL&lt;/a&gt;
 
@@ -1005,8 +993,8 @@ freizugeben. Die GPL ist nicht viral. Sie ist nur fair.&lt;/p&gt;
     <item>
       <title>Ein paar ideologische Steine ins Rollen bringen</title>
       <link>https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html</link>
-      <pubDate>Wed, 05 Jan 2005 12:44:36 +0000</pubDate>
-      
+      <pubDate>Wed, 05 Jan 2005 12:44:36 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html</guid>
       <description>&lt;p&gt;Im Nachbeben zu
 &lt;a href=&#34;https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html&#34;&gt;Rumble in the Jungle&lt;/a&gt;
@@ -1024,8 +1012,7 @@ oder Blogdex, bekommt aber nicht so recht eine Antwort.Drei Dinge sind
 meiner Meinung nach gegenüber den zitierten Lösungen anders: IzyNews will
 für die Blogtexte Geld haben (es gibt eine kleinere Version mit 20 Feeds
 umsonst, aber darüber hinaus muss man zahlen), sie ignorieren CC-Lizenzen
-und sie ändern das Medium.&lt;/p&gt;
-&lt;/blockquote&gt;
+und sie ändern das Medium.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Antwort auf die Frage von Kai Pahl bleibt aus, weil sie in den
 betreffenden Communities selber nicht ganz sauber definiert ist. Ich will
 hier zwei Worte einführen, und versuchen deutlich zu machen, welchen
@@ -1126,8 +1113,7 @@ zwar explizit da, aber das ist nur der rechtliche Default:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Der Inhalt dieses Blogs ist © Copyright 2004 Kristian Köhntopp. Jegliche
 Reproduktion und Wiederverwertung nur mit schriftlicher Genehmigung des
-Autors.&lt;/p&gt;
-&lt;/blockquote&gt;
+Autors.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Letztendlich steht ein Dienst wie izynews.de, der ja Kopien von Inhalten
 macht und diese Kopien weiter verbreitet, ohne Lizenzen für alles da, CC
 oder nicht. Genau wie Google Groups, Bloglines, oder letztendlich mein
@@ -1140,8 +1126,7 @@ Planet, was das angeht.&lt;/p&gt;
 &lt;p&gt;Was mir in der ganzen Diskussion manchmal schon etwas merkwürdig
 vorkommet, ist allerdings wie hier das Schwert Creative Commons als Waffe
 gegen die Nutzung von Inhalten eingesetzt wird. Dazu war CC eigentlich
-nicht unbedingt gedacht.&lt;/p&gt;
-&lt;/blockquote&gt;
+nicht unbedingt gedacht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Da Rache oder eine andere Emotion hineinzuinterpretieren ist falsch. Es
 handelt sich einfach nur um vollkommen normale die Abgrenzungsreaktion der
 kooperativen Wertschöpfer gegenüber jemandem, den sie der kompetetiven
@@ -1153,8 +1138,7 @@ Schutzmechanismen eingebaut, wenn auch andere als die GPL.&lt;/p&gt;
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich bin gespannt, was passiert, wenn Bloglines.com Mehrwertdienste
-einführt. Wird dann Bloglines von Paulus zum Saulus ernannt?&lt;/p&gt;
-&lt;/blockquote&gt;
+einführt. Wird dann Bloglines von Paulus zum Saulus ernannt?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Genau das. Wobei das hauptsächlich (vergleiche Google Groups) ein
 Wahrnehmungsproblem und Marketingproblem ist.&lt;/p&gt;
 &lt;p&gt;Markus führt weiter aus:&lt;/p&gt;
@@ -1162,8 +1146,7 @@ Wahrnehmungsproblem und Marketingproblem ist.&lt;/p&gt;
 &lt;p&gt;Um für einen Burgfrieden zu sorgen, wäre es vielleicht wirklich das
 einfachste, wenn umgekehrt jeder Betreiber eines Service, der Blog-Inhalte
 syndiziert, eine einfache Möglichkeit schafft, Weblogs gezielt von seinem
-Dienst auszuschließen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Dienst auszuschließen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist letztendlich der Mechanismus von Google Groups, ein opt-out System.
 Bei Google ist es der &amp;ldquo;X-No-Archive: yes&amp;rdquo; Header, den man setzen muß, damit
 der eigene Content nicht von Google Groups vereinnahmt wird. Per Default
@@ -1202,8 +1185,7 @@ kompetetiven Sphäre nicht beschäftigen.&lt;/p&gt;
 &lt;p&gt;Alles in allem scheint mir dieser Fall (und ähnliche) ein wunderbares
 Lehrstück dafür zu sein, wie hilflos eine Gesellschaft, ihr Rechtssystem,
 ihre Moral, ihre Wirtschaft etc. vor neuen technologischen Möglichkeiten
-stehen kann.&lt;/p&gt;
-&lt;/blockquote&gt;
+stehen kann.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich empfinde das nicht so. Probleme gibt es immer nur dann, wenn Mitglieder
 der kompetetiven Sphäre meinen, sie könnten die Regeln der kooperativen
 Sphäre ignorieren, weil die kooperativen Wertschöpfer untereinander das tun.
@@ -1251,8 +1233,8 @@ werden.&lt;/p&gt;
     <item>
       <title>Rumble in the Jungle</title>
       <link>https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html</link>
-      <pubDate>Tue, 04 Jan 2005 11:22:09 +0000</pubDate>
-      
+      <pubDate>Tue, 04 Jan 2005 11:22:09 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/01/04/rumble-in-the-jungle.html</guid>
       <description>&lt;p&gt;Eine RSS-Plattform, izynews.de, repliziert RSS-Feeds nach IMAP. Das ist neu, und für viele Leute sicherlich praktisch. izynews.de macht das jedoch für Geld, und ohne Lizenzen für die Feeds zu kaufen oder die Lizenzen auf den Feeds zu beachten. Das ist schlecht, und verärgert den &lt;a href=&#34;http://blog.schockwellenreiter.de/7558&#34;&gt;Schockwellenreiter&lt;/a&gt;, &lt;a href=&#34;http://www.industrial-technology-and-witchcraft.de/index.php/ITW/13214&#34;&gt;IT&amp;amp;W&lt;/a&gt; und &lt;a href=&#34;http://www.lawblog.de/index.php/archives/2005/01/04/content-klau/&#34;&gt;Herrn Vetter vom Lawblog&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Neu ist es nicht - Slashdot versuchte zum Beispiel einst, Artikel der Benutzer als Buch zu verkaufen, und hatte einen Copyright-Vermerk, der die Artikel der Benutzer quasi in Besitz nahm. Seitdem habe ich einen Copyright-Vermerk als Signature auf Slashdot, und verweise dort auf &lt;a href=&#34;http://kris.koehntopp.de/copyright.txt&#34;&gt;eine Erklärung&lt;/a&gt;, warum ich das so halte.&lt;/p&gt;
@@ -1293,4 +1275,3 @@ deny from env=leecher&lt;/tt&gt;&lt;/p&gt;
     
   </channel>
 </rss>
-

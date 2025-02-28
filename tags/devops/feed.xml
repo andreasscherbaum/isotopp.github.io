@@ -6,12 +6,113 @@
     <description>Recent content in Devops on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/devops/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/devops/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows abschalten</title>
+      <link>https://blog.koehntopp.info/2024/11/26/windows-abschalten.html</link>
+      <pubDate>Tue, 26 Nov 2024 04:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/11/26/windows-abschalten.html</guid>
+      <description>&lt;h1 id=&#34;an&#34;&gt;
+    &lt;a href=&#34;#an&#34;&gt;
+	An
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ich kann meinen Windows-Rechner anschalten.
+Also ohne hin zu gehen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; cat bin/wake-steam
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt;! /bin/sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;wakeonlan 70:8b:cd:4f:4d:5e
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und dann geht er an, loggt sich ein, startet Steam und ich kann mich von einem richtigen Computer aus mit Stream verbinden.&lt;/p&gt;
+&lt;h1 id=&#34;aus&#34;&gt;
+    &lt;a href=&#34;#aus&#34;&gt;
+	Aus
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ich will den Spielerechner auch abschalten.
+Ich könnte warten.
+Dann geht er nach 30 Minuten idle aus.
+Aber das sind 30 Minuten 80 Watt für nix.&lt;/p&gt;
+&lt;p&gt;Man kann einem Windows auf der Kommandozeile sagen, daß es ritellen Selbstmord begehen soll:
+&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/shutdown&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Shutdown Command&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;C:\Users\Admin&amp;gt; shutdown /s /f /t 0&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Ich kann also OpenSSH auf dem Windows installieren, mich remote auf der Kiste anmelden und das Kommando ausführen.&lt;/p&gt;
+&lt;p&gt;Oder gleich ganz remote:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; ssh Admin@rtx.local &lt;span class=&#34;s2&#34;&gt;&amp;#34;shutdown /s /f /t 0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Password:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das Paßwort stört.&lt;/p&gt;
+&lt;h1 id=&#34;passwordless-ssh-for-admininstrators&#34;&gt;
+    &lt;a href=&#34;#passwordless-ssh-for-admininstrators&#34;&gt;
+	Passwordless &lt;code&gt;ssh&lt;/code&gt; for &lt;code&gt;Admininstrators&lt;/code&gt;
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;HINWEIS:&lt;/strong&gt; Die folgenden Instruktionen sind für Windows 11. In Windows 10 ist das nicht so.&lt;/p&gt;
+&lt;p&gt;Macht ja nix, ich kann ja meinen Key installieren:
+&lt;a href=&#34;https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Key-based authentication in OpenSSH for Windows&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Für Standard-User:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The contents of your public key (&lt;code&gt;\.ssh\id_ecdsa.pub&lt;/code&gt;)
+needs to be placed on the server into a text file called &lt;code&gt;authorized_keys&lt;/code&gt; in &lt;code&gt;C:\Users\username\.ssh\&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Aber: Das funktioniert nicht, wenn der User Mitglied in der &lt;code&gt;Administrators&lt;/code&gt; Group ist.
+Dann ist es so:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The contents of your public key (&lt;code&gt;\.ssh\id_ecdsa.pub&lt;/code&gt;)
+needs to be placed on the server into a text file called &lt;code&gt;administrators_authorized_keys&lt;/code&gt; in &lt;code&gt;C:\ProgramData\ssh\&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Beachte, dass das nicht per User ist, sondern Shared für alle User, die in &lt;code&gt;Administrators&lt;/code&gt; sind.&lt;/p&gt;
+&lt;p&gt;Nun gut, ist ja eine Personal Workstation, gibt also nur einen User und der ist immer Administrator, also muß das immer nach da und nie nach &lt;code&gt;%HOME%\.ssh&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Get the public key file generated previously on your client
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;authorizedKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; Get-Content -Path &lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;:USERPROFILE&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;ssh&lt;span class=&#34;se&#34;&gt;\i&lt;/span&gt;d_ecdsa.pub
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Generate the PowerShell to be run remote that will copy the public key file generated previously on your client to the authorized_keys file on your server
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;remotePowershell&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;powershell Add-Content -Force -Path &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:ProgramData\ssh\administrators_authorized_keys -Value &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$authorizedKey&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39;&amp;#39;&amp;#39;;icacls.exe &amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:ProgramData\ssh\administrators_authorized_keys&amp;#34;&amp;#34; /inheritance:r /grant &amp;#34;&amp;#34;Administrators:F&amp;#34;&amp;#34; /grant &amp;#34;&amp;#34;SYSTEM:F&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gp&#34;&gt;#&lt;/span&gt; Connect to your server and run the PowerShell using the &lt;span class=&#34;nv&#34;&gt;$remotePowerShell&lt;/span&gt; variable
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;ssh username@domain1@contoso.com $remotePowershell
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;localization&#34;&gt;
+    &lt;a href=&#34;#localization&#34;&gt;
+	Localization
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Und dann, damit alle, alles zerbricht:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;For non-English localized versions of the operating system, the script will need to be modified to reflect group names accordingly. 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Mein Windows ist English, also geht es, aber die armen Würste, die Windows scripten müssen.&lt;/p&gt;
+&lt;p&gt;Aber nein:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;remotePowershell&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;powershell Add-Content -Force -Path &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:ProgramData\ssh\administrators_authorized_keys -Value &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$authorizedKey&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39;&amp;#39;&amp;#39;;icacls.exe &amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$env&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:ProgramData\ssh\administrators_authorized_keys&amp;#34;&amp;#34; /inheritance:r /grant &amp;#34;&amp;#34;*S-1-5-32-544:F&amp;#34;&amp;#34; /grant &amp;#34;&amp;#34;SYSTEM:F&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Und bei Microsoft wundern sich hochbezahlte Marketingmenschen wieso Linux die Welt erobert hat.&lt;/p&gt;
+&lt;h1 id=&#34;andere-methoden&#34;&gt;
+    &lt;a href=&#34;#andere-methoden&#34;&gt;
+	Andere Methoden
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/1746456/windows-11-net-rpc-shutdown&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Samba: NET RPC SHUTDOWN -f -I 192.168.0.147 -U user%password&lt;/a&gt;
+
+
+File and Printer Sharing must be enabled in &lt;code&gt;Settings &amp;gt; Network &amp;amp; Internet &amp;gt; Status &amp;gt; Network and Sharing Centre &amp;gt; Change advanced sharing settings&lt;/code&gt;.
+The firewall must allow File and Printer Sharing through in &lt;code&gt;Start &amp;gt; Windows Defender Firewall with Advanced Security &amp;gt; Inbound Rules&lt;/code&gt;. All of them.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/brann0n/SleepOnLan&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SleepOnLAN&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
     <item>
       <title>Deploying websites - an escalation</title>
       <link>https://blog.koehntopp.info/2024/01/09/deploying-websites.html</link>
-      <pubDate>Tue, 09 Jan 2024 05:06:07 +0000</pubDate>
-      
+      <pubDate>Tue, 09 Jan 2024 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2024/01/09/deploying-websites.html</guid>
       <description>&lt;p&gt;We are still playing minecraft.
 This time it is a highly modded Fabric server, which requires more memory than the old box had.
@@ -144,8 +245,8 @@ has better error handling and can handle borderline cases more safely.&lt;/p&gt;
     <item>
       <title>Restic</title>
       <link>https://blog.koehntopp.info/2023/12/30/restic.html</link>
-      <pubDate>Sat, 30 Dec 2023 05:06:07 +0000</pubDate>
-      
+      <pubDate>Sat, 30 Dec 2023 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/12/30/restic.html</guid>
       <description>&lt;p&gt;Ich hatte Grund, mich mit &lt;a href=&#34;&#34;&gt;Restic&lt;/a&gt;
 
@@ -662,8 +763,8 @@ Owner laufen läßt.&lt;/p&gt;
     <item>
       <title>Der Admin-Beruf</title>
       <link>https://blog.koehntopp.info/2023/08/28/der-admin-beruf.html</link>
-      <pubDate>Mon, 28 Aug 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Mon, 28 Aug 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/08/28/der-admin-beruf.html</guid>
       <description>&lt;p&gt;(based on a series of posts on Mastdon)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.heise.de/hintergrund/Gehaelter-2023-Das-verdienen-Admins-in-Deutschland-9282686.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ein Heise-Artikel über Admin-Gehälter&lt;/a&gt;
@@ -725,8 +826,7 @@ Das ist das Ausmaß des Understaffing in Operations in den meisten Firmen.&lt;/p
 &lt;p&gt;Jens Finkhäuser&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Heute Programmentwicklung, damals Perl.
-Was hat sich jetzt genau geändert?&lt;/p&gt;
-&lt;/blockquote&gt;
+Was hat sich jetzt genau geändert?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Es gibt Perl und es gibt SysAdmin Perl.
 Das ist im Grunde die Diskussion aus &lt;a href=&#34;https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html&#34;&gt;Using Python to bash&lt;/a&gt;
 
@@ -742,8 +842,7 @@ Das ist im Grunde die Diskussion aus &lt;a href=&#34;https://blog.koehntopp.info
 Ich denke, dass grad das end-to-end understanding verloren geht.
 Und das ist halt über kurz oder lang gefährlich.
 Denn ohne end-to-end understanding APIs nutzen geht wohl.
-Aber Bauen eher nicht.&lt;/p&gt;
-&lt;/blockquote&gt;
+Aber Bauen eher nicht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist ein anderes, auch wichtiges Thema.
 Ein Ex-Arbeitgeber von mir war in 2018 durchaus in der Lage, 3 RZ mit 50k Maschinen voll automatisiert zu betreiben und zu vernetzen.
 Dieselbe Firma in 2023 ist dazu definitiv nicht mehr in der Lage, weil nach der Ankündigung des Cloud-Move
@@ -759,8 +858,7 @@ Und weil Leute, die so etwas betreiben können, auch zunehmend schwieriger zu be
 &lt;blockquote&gt;
 &lt;p&gt;Wobei ich aber auch behaupten würde, dass eine Kubernetes-Landschaft nicht immer die korrekte Lösung ist,
 und es mutmasslich genug Betriebe gibt, die sowas haben, obwohl sie es besser nicht sollten.&lt;/p&gt;
-&lt;p&gt;Überdimensionierte und dann tendenziell schlecht gepflegte Systeme sind für uns alle auch eine Gefahr.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Überdimensionierte und dann tendenziell schlecht gepflegte Systeme sind für uns alle auch eine Gefahr.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Da machst Du ein Fass auf.
 Das TL;DR ist, daß Du zu große und zu wenige Maschinen hast und daher Technik zum Kleinschneiden von Servern brauchst.&lt;/p&gt;
 &lt;p&gt;Und dann landest Du schnell bei Kubernetes.&lt;/p&gt;
@@ -828,8 +926,7 @@ So ist das mit Kubernetes in der Infrastrukturautomatisierung.&lt;/p&gt;
 die aufgrund des niederschwelligen Einstiegslevels komplett neben der Spur laufen.
 Aber sich allein auf diese Totalausfälle zu konzentrieren &amp;ndash; oder
 zu ignorieren, dass Kubernetes ein weitgehend nicht-technisches Problem löst &amp;ndash; verfehlt
-meiner Meinung nach den Punkt.&lt;/p&gt;
-&lt;/blockquote&gt;
+meiner Meinung nach den Punkt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;kubernetes-ist-nicht-komplex-das-problem-ist-es&#34;&gt;
     &lt;a href=&#34;#kubernetes-ist-nicht-komplex-das-problem-ist-es&#34;&gt;
 	Kubernetes ist nicht komplex, das Problem ist es
@@ -840,8 +937,7 @@ meiner Meinung nach den Punkt.&lt;/p&gt;
 &lt;p&gt;der Vergleich hinkt, finde ich. Die Kritik an Kubernetes ist nicht, dass es kein Fortschritt ist. Das ist es in einigen Szenarien.&lt;/p&gt;
 &lt;p&gt;Die Kritik ist, dass du dir eine komplexe Architektur an Containern aufbaust,
 die du häufig auch mit weniger Wartungsaufwand und weniger laufenden Infrastrukturkosten auf einem physischen System hinbekommen hättest.
-Klar, die sind jetzt individuell skalierbarer, aber damit löst du ein häufig rein hypothetisches Problem.&lt;/p&gt;
-&lt;/blockquote&gt;
+Klar, die sind jetzt individuell skalierbarer, aber damit löst du ein häufig rein hypothetisches Problem.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Als Antwort und Ergänzung zu Thilo Fromm:&lt;/p&gt;
 &lt;p&gt;Kubernetes löst einen Satz spezifische Probleme, und die Komplexität kommt aus den Problemen und nicht aus den Lösungen.&lt;/p&gt;
 &lt;p&gt;Du willst eine sehr große Kiste in benutzbare Häppchen klein schneiden.
@@ -922,8 +1018,7 @@ Nur daß Du K8s-Leute direkt einstellen kannst, die für Deinen selbst gekochten
 &lt;p&gt;Nils Goroll:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Nur, dass das neue Admin-Team, das jetzt &amp;ldquo;Devops&amp;rdquo; heisst, trotzdem noch obendrauf kommt.
-Oder halt die Leute, die devopsen, auch wenn sie nicht mehr Team heissen dürfen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Oder halt die Leute, die devopsen, auch wenn sie nicht mehr Team heissen dürfen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ja. Nein. Es ist kompliziert.&lt;/p&gt;
 &lt;p&gt;Große Teile an Standard-Aufgaben werden auf die eine oder andere Weise an das Fachteam oder an AWS outgesourct.
 Davon ist es nicht notwendigerweise weniger Arbeit, aber sie ist jetzt teilweise unsichtbar.
@@ -944,8 +1039,8 @@ Viele Unternehmen scheuen enorm vor diesen Fragen zurück.&lt;/p&gt;
     <item>
       <title>Don&#39;t say Backup, say Restore</title>
       <link>https://blog.koehntopp.info/2023/08/23/dont-say-backup-say-restore.html</link>
-      <pubDate>Wed, 23 Aug 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Wed, 23 Aug 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/08/23/dont-say-backup-say-restore.html</guid>
       <description>&lt;p&gt;This is about the third story I hear about a Fedi instance losing all their data because of a CI/CD mistake.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://firefish.social/notes/9iqefgi8rzfksnqc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lily Cohen (@lily@firefish.social) has bad news.&lt;/a&gt;
@@ -1017,8 +1112,8 @@ Everybody wants restore.&amp;rdquo;
     <item>
       <title>Ubuntu: systemctl --user does not work</title>
       <link>https://blog.koehntopp.info/2023/07/12/ubuntu-systemctl-user-does-not-work.html</link>
-      <pubDate>Wed, 12 Jul 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Wed, 12 Jul 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/07/12/ubuntu-systemctl-user-does-not-work.html</guid>
       <description>&lt;p&gt;Memo to self:
 I have a VPS with a legacy Ubuntu 20.04, and when creating a user to run a user-based service,
@@ -1126,8 +1221,8 @@ As the service user, run &lt;code&gt;systemctl --user edit --full theservice.ser
     <item>
       <title>Rotating Accounts or Passwords?</title>
       <link>https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html</link>
-      <pubDate>Mon, 20 Feb 2023 12:13:14 +0000</pubDate>
-      
+      <pubDate>Mon, 20 Feb 2023 12:13:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html</guid>
       <description>&lt;p&gt;Some applications allow you to have multiple passwords.
 For example, in &lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/password-management.html#dual-passwords&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL, since 8.0.14 you can dual passwords for an account&lt;/a&gt;
@@ -1209,8 +1304,7 @@ Lack of multiple password support is stopping no-one from implementing rotation,
 Even in MySQL and Redis it was not immediately obvious to me how password rotation can be validated to function correctly.
 That is, I have been unable to find a way to isolate instances of logins using the &amp;ldquo;non-primary&amp;rdquo; (or old) password, and somehow make sure that all logins in the last hour or so have been using the newly updated password.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As an engineer running the application, I would want to make sure that the old password is unused before I ask the service to deprovision it.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;As an engineer running the application, I would want to make sure that the old password is unused before I ask the service to deprovision it.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;But observability on this seems to be completely non-existent.
 Which is weird, because any security engineer will tell you that a control is only valid, if you can verify it is working as intended.&lt;/p&gt;
 &lt;p&gt;With account rotation, usage of old accounts is immediately visible.
@@ -1267,8 +1361,8 @@ In neither case you will be done by simply turning on a feature.&lt;/li&gt;
     <item>
       <title>This is not a Drill, this is just Tuesday</title>
       <link>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</link>
-      <pubDate>Sat, 18 Feb 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Sat, 18 Feb 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</guid>
       <description>&lt;h1 id=&#34;master-of-disaster&#34;&gt;
     &lt;a href=&#34;#master-of-disaster&#34;&gt;
@@ -1390,8 +1484,8 @@ This is just Tuesday.&lt;/p&gt;
     <item>
       <title>Service Directories, and what they are good for</title>
       <link>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</link>
-      <pubDate>Mon, 06 Feb 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Mon, 06 Feb 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</guid>
       <description>&lt;p&gt;At a previous job we had a home-grown application &amp;ldquo;Service Directory&amp;rdquo;, which allowed a team to declare a service or deployed application.
 The record for a service not only declared the application with pointers to the source code repository, artifacts and documentation.&lt;/p&gt;
@@ -1443,8 +1537,8 @@ But this would at least bring the nag-level down to manageable sizes.&lt;/p&gt;
     <item>
       <title>I don&#39;t hate Let&#39;s Encrypt anymore</title>
       <link>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</link>
-      <pubDate>Wed, 04 Jan 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Wed, 04 Jan 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</guid>
       <description>&lt;p&gt;So, Rachel is in a bad mood:
 &lt;a href=&#34;https://rachelbythebay.com/w/2023/01/03/ssl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why I still have an old-school cert on my https site&lt;/a&gt;
@@ -1580,15 +1674,14 @@ You can use &lt;code&gt;mod_md&lt;/code&gt; to get certificates for your Tailsca
     <item>
       <title>Ansible: List Cross-Join</title>
       <link>https://blog.koehntopp.info/2022/12/12/ansible-list-crossproduct.html</link>
-      <pubDate>Mon, 12 Dec 2022 21:22:23 +0000</pubDate>
-      
+      <pubDate>Mon, 12 Dec 2022 21:22:23 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/12/ansible-list-crossproduct.html</guid>
       <description>&lt;p&gt;A friend asked in Discord:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I need a pointer to a solution in Jinja.&lt;/p&gt;
 &lt;p&gt;Given two lists, &lt;code&gt;x: [a,b,c]&lt;/code&gt; and &lt;code&gt;y: [d,e,f]&lt;/code&gt;, I need the cross-join &lt;code&gt;[&amp;quot;a.d&amp;quot;,&amp;quot;a.e&amp;quot;,&amp;quot;a.f&amp;quot;,&amp;quot;b.d&amp;quot;,…,&amp;quot;c.e&amp;quot;,&amp;quot;c.f&amp;quot;]&lt;/code&gt;.
-I know how to cross-join, but that then is a list of lists, and I want join the inner lists.&lt;/p&gt;
-&lt;/blockquote&gt;
+I know how to cross-join, but that then is a list of lists, and I want join the inner lists.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;After some experimentation the result was a set of nasty templating loops.
 There has to be a better way.&lt;/p&gt;
 &lt;p&gt;There are two:&lt;/p&gt;
@@ -1863,8 +1956,8 @@ instead of messing with an un-debuggable and untestable DSL.&lt;/p&gt;
     <item>
       <title>Systemd and docker -H fd://</title>
       <link>https://blog.koehntopp.info/2022/11/28/systemd-and-docker-fd.html</link>
-      <pubDate>Mon, 28 Nov 2022 09:10:11 +0000</pubDate>
-      
+      <pubDate>Mon, 28 Nov 2022 09:10:11 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/11/28/systemd-and-docker-fd.html</guid>
       <description>&lt;p&gt;Based on what I learned in
 &lt;a href=&#34;https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html&#34;&gt;Systemd Service and Socket Activation&lt;/a&gt;
@@ -1934,8 +2027,8 @@ In our case, the part after the &lt;code&gt;fd://&lt;/code&gt; is empty, so line
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;       &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Listener&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// socket activation
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// socket activation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;TLSListeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;tlsConfig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -1948,8 +2041,8 @@ In our case, the part after the &lt;code&gt;fd://&lt;/code&gt; is empty, so line
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no sockets found via socket activation: make sure the service was started by systemd&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// default to all fds just like unix:// and tcp://
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// default to all fds just like unix:// and tcp://&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;listeners&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line hl&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -2022,8 +2115,8 @@ And this appears that the answer to this question is:&lt;/p&gt;
     <item>
       <title>Systemd Service and stdio</title>
       <link>https://blog.koehntopp.info/2022/11/28/systemd-service-and-stdio.html</link>
-      <pubDate>Mon, 28 Nov 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Mon, 28 Nov 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/11/28/systemd-service-and-stdio.html</guid>
       <description>&lt;p&gt;After yesterday&amp;rsquo;s article, Arne Blankerts pointed me at
 &lt;a href=&#34;https://edit.thephp.cc/s/3MqWPLAJW#&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;a note&lt;/a&gt;
@@ -2157,8 +2250,8 @@ This simplifies the code for a service considerably, and also makes it much easi
     <item>
       <title>Systemd Service and Socket Activation</title>
       <link>https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html</link>
-      <pubDate>Sun, 27 Nov 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Sun, 27 Nov 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/11/27/systemd-service-and-socket-activation.html</guid>
       <description>&lt;p&gt;In today&amp;rsquo;s Yak Shaving session I needed to understand how to expose the docker socket of a remote machine over the network.
 You should not do that, it is totally insecure, but I needed to do that to test something.&lt;/p&gt;
@@ -2366,8 +2459,8 @@ After running &lt;code&gt;systemctl --user start kris.service&lt;/code&gt; we wi
     <item>
       <title>Empty commits and other wrong tools for the job</title>
       <link>https://blog.koehntopp.info/2021/10/06/empty-commits-and-other-wrong-tools-for-the-job.html</link>
-      <pubDate>Wed, 06 Oct 2021 09:46:10 +0000</pubDate>
-      
+      <pubDate>Wed, 06 Oct 2021 09:46:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/10/06/empty-commits-and-other-wrong-tools-for-the-job.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/akrey/status/1445656529877680129&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;This&lt;/a&gt;
 
@@ -2455,16 +2548,15 @@ Shoddy engineering begets pager calls, outages and suffering.&lt;/p&gt;
     <item>
       <title>Using Python to bash</title>
       <link>https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html</link>
-      <pubDate>Tue, 05 Jan 2021 17:11:57 +0000</pubDate>
-      
+      <pubDate>Tue, 05 Jan 2021 17:11:57 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html</guid>
       <description>&lt;p&gt;Heise writes &lt;a href=&#34;https://www.heise.de/hintergrund/Einfuehrung-in-die-Bash-Programmierung-Minesweeper-in-der-Linux-Shell-entwickeln-5002358.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;an introduction to bash programming (in german)&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Bash ist eine vollwertige Programmiersprache, mit der Sie alltägliche Aufgaben leicht automatisieren.&lt;/p&gt;
-&lt;p&gt;Bash is a fully featured programming language that you can use to automate everyday tasks.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Bash is a fully featured programming language that you can use to automate everyday tasks.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bash is not a fully featured programming language at all, and nothing in bash is ever easy. You are advised to use a proper programming language early on in development, and if possible never put bash commands into a file.&lt;/p&gt;
 &lt;p&gt;A few early warning signs to look out for:&lt;/p&gt;
 &lt;ul&gt;
@@ -2526,13 +2618,11 @@ Shoddy engineering begets pager calls, outages and suffering.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I do not think that&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;subprocesss.run([&amp;quot;ls&amp;quot;, &amp;quot;-l&amp;quot;, &amp;quot;/dev/null&amp;quot;], capture_output=True)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;is more intuitive or less error prone, but different people have different opinions.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;is more intuitive or less error prone, but different people have different opinions.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That is correct.&lt;/p&gt;
 &lt;p&gt;The point here is that this is not useful at all, in a Python program. That line will then produce output such as&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;crw-rw-rw- 1 root root 1, 3 Dec  7 12:15 /dev/null&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;crw-rw-rw- 1 root root 1, 3 Dec  7 12:15 /dev/null&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and that needs parsing to be useful for anything. You&amp;rsquo;d not do that at all in Python, ever.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pathlib&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Path&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/dev/null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -2786,16 +2876,15 @@ Shoddy engineering begets pager calls, outages and suffering.&lt;/p&gt;
     <item>
       <title>Embracing the Stream</title>
       <link>https://blog.koehntopp.info/2020/12/09/embracing-the-stream.html</link>
-      <pubDate>Wed, 09 Dec 2020 15:12:22 +0000</pubDate>
-      
+      <pubDate>Wed, 09 Dec 2020 15:12:22 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/12/09/embracing-the-stream.html</guid>
       <description>&lt;p&gt;So this happened: &lt;a href=&#34;https://lists.centos.org/pipermail/centos-announce/2020-December/048208.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CentOS Project shifts focus to CentOS Stream&lt;/a&gt;
 
 &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The future of the CentOS Project is CentOS Stream, and over the next  year we’ll be shifting focus from CentOS Linux, the rebuild of Red Hat Enterprise Linux (RHEL), to CentOS Stream, which tracks just ahead of a current RHEL release. CentOS Linux 8, as a rebuild of RHEL 8, will end at the end of 2021. CentOS Stream continues after that date, serving as
-the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
-&lt;/blockquote&gt;
+the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And a lot of people react like this:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://twitter.com/nixcraft/status/1336348208184741888&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/12/stream-migrate-now.png&#34; alt=&#34;&#34;  /&gt;
@@ -2915,8 +3004,8 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
     <item>
       <title>Gitlab in Docker</title>
       <link>https://blog.koehntopp.info/2020/11/22/gitlab-in-docker.html</link>
-      <pubDate>Sun, 22 Nov 2020 20:33:10 +0000</pubDate>
-      
+      <pubDate>Sun, 22 Nov 2020 20:33:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/11/22/gitlab-in-docker.html</guid>
       <description>&lt;p&gt;These installation notes are mostly a note to myself, documenting the installation process of a Gitlab Omnibus Container in Docker, plus Gitlab Runners.&lt;/p&gt;
 &lt;h2 id=&#34;os-setup&#34;&gt;
@@ -2958,7 +3047,7 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;hostname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;${GITLAB_DOMAIN}&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;        external_url &amp;#34;https://gitlab.home.koehntopp.de&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;        external_url &amp;#34;https://gitlab.home.koehntopp.de&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;${GITLAB_HTTP_PORT}:80&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s1&#34;&gt;&amp;#39;${GITLAB_HTTPS_PORT}:443&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -3202,13 +3291,12 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
     <item>
       <title>On the Observability of Outliers</title>
       <link>https://blog.koehntopp.info/2020/11/19/on-the-observability-of-outliers.html</link>
-      <pubDate>Thu, 19 Nov 2020 17:08:09 +0000</pubDate>
-      
+      <pubDate>Thu, 19 Nov 2020 17:08:09 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/11/19/on-the-observability-of-outliers.html</guid>
       <description>&lt;p&gt;At work, I am in an ongoing discussion with a number of people on the Observability of Outliers. It started with the age-old question “How do I find slow queries in my application?” aka “What would I want from tooling to get that data and where should that tooling sit?”&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As a developer, I just want to automatically identify and isolate slow queries!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;As a developer, I just want to automatically identify and isolate slow queries!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Where I work, we do have &lt;a href=&#34;https://www.solarwinds.com/database-performance-monitor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SolarWinds Database Performance Monitor&lt;/a&gt;
 
  aka Vividcortex to find slow queries, so that helps. But that collects data at the database, which means you get to see slow queries, but maybe not application context.&lt;/p&gt;
@@ -3287,8 +3375,8 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
     <item>
       <title>On Touching Candles, And Error Budgets</title>
       <link>https://blog.koehntopp.info/2020/08/31/on-touching-candles.html</link>
-      <pubDate>Mon, 31 Aug 2020 17:51:27 +0000</pubDate>
-      
+      <pubDate>Mon, 31 Aug 2020 17:51:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/31/on-touching-candles.html</guid>
       <description>&lt;p&gt;Ok, it&amp;rsquo;s &amp;ldquo;Dad Stories&amp;rdquo; Time (from &lt;a href=&#34;https://twitter.com/isotopp/status/1300414521169907713&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twitter&lt;/a&gt;
 
@@ -3314,8 +3402,7 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I lament that so many orgs/people/uptimes have to suffer to build the wisdom.&lt;/p&gt;
-&lt;p&gt;I dream of a university/bootcamp of &amp;ldquo;candle touching&amp;rdquo; where learners practice scaling a service.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;I dream of a university/bootcamp of &amp;ldquo;candle touching&amp;rdquo; where learners practice scaling a service.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Another &amp;ldquo;Dad Story&amp;rdquo;: I once worked at a company which used to own the domain &lt;a href=&#34;https://wahl.de&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wahl.de&lt;/a&gt;
 
  (&amp;ldquo;election.de&amp;rdquo;). They did not do much with it, they usually gave it do apprentices to play with. Usually the apprentices built elaborate PHP based websites that did pre-election mix- and match &amp;ldquo;Find the party that matches my interests&amp;rdquo;.&lt;/p&gt;
@@ -3330,241 +3417,9 @@ the upstream (development) branch of Red Hat Enterprise Linux.&lt;/p&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Error Budget&amp;rdquo;: How much infrastructure you&amp;rsquo;re allowed to set on fire to learn the meaning of the word &amp;ldquo;heiß&amp;rdquo;. Every organization has an error budget, but most don&amp;rsquo;t plan for it.&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pizza, People, Projects and Processes</title>
-      <link>https://blog.koehntopp.info/2020/06/15/pizza-people-projects-and-processes.html</link>
-      <pubDate>Mon, 15 Jun 2020 10:37:23 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2020/06/15/pizza-people-projects-and-processes.html</guid>
-      <description>&lt;p&gt;&lt;em&gt;An older talk from 2 years ago, which for some reason I was not able to find in the blog.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;For reasons that do not need exploration at this junction,
-I had to explain Processes and Process Maturity some time ago,
-and a colleague asked me to put my thinking into a talk.
-This talk is likely going to be boring,
-because you may know most of the subject already.
-On the other hand,
-it is good to be on the same page when it comes to models and vocabulary.&lt;/p&gt;
-&lt;h1 id=&#34;projects-and-deliverables&#34;&gt;
-    &lt;a href=&#34;#projects-and-deliverables&#34;&gt;
-	Projects, and Deliverables
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;You want a pizza. What is pizza?&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/scooter.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A deliverable: A defined product delivered at a deadline.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Pizza is a project.
-Projects have a deliverable (a defined product) that is available at a certain deadline, latest.
-So, &amp;ldquo;a Margherita within the next 20 minutes&amp;rdquo; is a project.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/margherita-project.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Pizza as a project&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;If you phone up a Pizza, you are outsourcing:
-You offer money for Pizza as a Service.
-On the other hand, the shop is delivering Pizza as a Service.
-How are they able to do that?&lt;/p&gt;
-&lt;h1 id=&#34;repeated-demands-and-processes&#34;&gt;
-    &lt;a href=&#34;#repeated-demands-and-processes&#34;&gt;
-	Repeated demands and Processes
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;They need a Pizza Delivery Process to be able to pull that off repeatedly and reliably, at a projected cost and speed.
-We get processes because we have “A regular demand on an organization,
-and the organization wants the capability to handle the repeated demand in a predictable fashion.”&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/process-demand.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Why process?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;If something is a one-off, you will not get a process and you should not.
-Instead, it is “individual heroics.”
-If something is done a second or a third time,
-it’s probably time to make it official.
-You put it on the service catalog, you plan for it, and you create a structure in your org around it.&lt;/p&gt;
-&lt;p&gt;In the end, it can look like this:&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/pizza-as-a-service.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.wibas.com/cmmi/service-establishment-and-delivery-cmmi-svc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CMMI for services, Service Delivery&lt;/a&gt;
-
- (pretty much the same as ITIL SD)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;CMMI for services 1.3 creates a set of processes interacting to build a structure for service delivery.
-It looks complicated, but it’s not.&lt;/p&gt;
-&lt;p&gt;There is the customer, and service delivery delivers.
-Things may go wrong, and that is an incident such as the oven being on fire.
-Incident Resolution takes care of that.&lt;/p&gt;
-&lt;p&gt;The Strategic Service Management looks at how we set up the kitchen,
-and what goes on the menu — the production process.&lt;/p&gt;
-&lt;p&gt;Service Development thinks up the way the kitchen is structured and works,
-and Service Transition makes sure the kitchen is being built and that cooks and servers are trained.&lt;/p&gt;
-&lt;p&gt;The Incident Resolution in ITIL has deeper structure,
-looking at larger scale problems that can be extracted from individual services,
-and interacts with the Service Transition in Change Management.&lt;/p&gt;
-&lt;p&gt;Nothing here deals with billing, that would be service management — contracts
-for supplies, subscriptions, catering for events or individual pizza sales, and quality control (complaints).&lt;/p&gt;
-&lt;p&gt;What we build here could be a single pizzeria, but also a chain that deals with Pizza at a scale.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/sd-process.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;h1 id=&#34;pdca-plan-do-check-act&#34;&gt;
-    &lt;a href=&#34;#pdca-plan-do-check-act&#34;&gt;
-	PDCA: Plan, Do, Check, Act
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;em&gt;The ideal outcome of proper process&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;When you perform a process, you are in a cycle.
-The stages of the cycle are named differently, depending on your management ideology,
-but it’s always a planning stage, a doing stage (“a sprint” in Agile),
-and a stage where you look back at how things work and what we can learn (“a retrospective” in Agile, “Check” in PDCA).
-Then you implement potential improvements (“Act” in &lt;a href=&#34;https://en.wikipedia.org/wiki/PDCA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDCA&lt;/a&gt;
-
-).&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/pcda.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&amp;ldquo;Continuous Improvement&amp;rdquo; goes by many names&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;No matter what you call these things, these cycles form the bones of a continuous improvement process.&lt;/p&gt;
-&lt;h1 id=&#34;things-to-look-at-when-improving&#34;&gt;
-    &lt;a href=&#34;#things-to-look-at-when-improving&#34;&gt;
-	Things to look at when improving
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/checking.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;From closest to furthest, looking at product and process.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Checking can be done by continually distancing yourself from the product and the process.&lt;/p&gt;
-&lt;p&gt;So the closest way of looking at a thing is checking for compliance: Are we following the recipe? If not, maybe we should fix that.&lt;/p&gt;
-&lt;p&gt;Then you can ask yourself if that recipe is the most efficient way of getting the result.
-Are there other ways of getting the same outcome,
-in which we need fewer resources or can do it faster, with fewer people or less training?&lt;/p&gt;
-&lt;p&gt;Then, is the recipe effective? That is, is the Pizza any good? If not, can we fix that?&lt;/p&gt;
-&lt;p&gt;And finally, is the process still applicable?
-There is little point to having a Pizza Process in an Artisanal Burger Shop, is there?&lt;/p&gt;
-&lt;h1 id=&#34;change-is-a-meta-project&#34;&gt;
-    &lt;a href=&#34;#change-is-a-meta-project&#34;&gt;
-	Change is a Meta-Project
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;After the retrospective, the checking, we have a list of changes.
-How do we implement them?&lt;/p&gt;
-&lt;p&gt;That, in itself, is a meta-project:
-We want to change the recipe (adjust the written documentation),
-and the minds of the people (training them to follow the new recipe),
-then test that the change happened.
-And we want to have done that by $DEADLINE.&lt;/p&gt;
-&lt;p&gt;So processes spawn meta-projects to change themselves.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/acting.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Change is a Meta-Project. It has deliverables, and a deadline.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;We always need to take all three pillars into account:&lt;/p&gt;
-&lt;p&gt;There is always an &lt;strong&gt;organization&lt;/strong&gt;, with roles that have defined tasks, skills, and that need staffing.&lt;/p&gt;
-&lt;p&gt;There are &lt;strong&gt;people&lt;/strong&gt; that staff the roles.
-They need training to get the skills they need and to understand the specific tasks they are supposed to perform.&lt;/p&gt;
-&lt;p&gt;Finally, there is the &lt;strong&gt;Tech&lt;/strong&gt; that is supposed to support People to perform their roles.
-Usually, Tech is the least important thing in a process – it is easy to scale, quicker to adjust than people,
-and is always a supporting role for people doing the work.&lt;/p&gt;
-&lt;h1 id=&#34;are-we-good-at-processes&#34;&gt;
-    &lt;a href=&#34;#are-we-good-at-processes&#34;&gt;
-	Are we good at processes?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;So &lt;a href=&#34;https://en.wikipedia.org/wiki/File:Characteristics_of_Capability_Maturity_Model.svg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on a scale of 1-5&lt;/a&gt;
-
-, how good are we at a thing?&lt;/p&gt;
-&lt;p&gt;Suppose you are a Pizzeria, and you are superb at Pizza as a Service.
-Now somebody comes in and wants Spaghetti.
-Bologna, of all things.
-You happen to have the noodles, and you have the sauce, because of the Pizza of the same style you serve.&lt;/p&gt;
-&lt;p&gt;So, you make it.
-You just went from 0 to 1: &amp;ldquo;Not Performed&amp;rdquo; to &amp;ldquo;Individual Heroics&amp;rdquo; – doing a one-off.
-That was a success!&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/noodles-as-a-service.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Getting Noodles as a Service.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;The next level would be 2: &amp;ldquo;Planned &amp;amp; Tracked.&amp;rdquo;
-That means it’s on the menu.
-You buy noodles, train the servers and the cooks (plan performance),
-you track noodle dish popularity, and customer satisfaction.&lt;/p&gt;
-&lt;p&gt;Then you get a pasta section on the menu: Level 3 – you have a standard noodle process next to your pizza process,
-and you derive individual noodle dishes from that by adjusting the noodle process.&lt;/p&gt;
-&lt;p&gt;Level 4 - &amp;ldquo;Quantitative Tracking,&amp;rdquo; is the next step.
-You start to measure, and compare.
-Or want to, but that is not possible for one-offs, you need iterations.
-It’s also not possible for rare things because statistics need large numbers,
-and you don’t even know what the relevant numbers are when you start out.&lt;/p&gt;
-&lt;p&gt;It’s also not possible when you are in hyper-growth.
-Each iteration will be very different from the previous iteration — if you grow 10x,
-the process to achieve the same deliverables is too different from the previous iterations for meaningful comparison.&lt;/p&gt;
-&lt;p&gt;Anyway, we now track Pizza and Pasta properly, across all of our outlets in our global Italian Fast Food chain,
-account for regional differences
-(“Calzone Hutspot” does seem to be popular only in the Netherlands, and is frowned upon in Italy, for example)
-and we take that into account.&lt;/p&gt;
-&lt;h1 id=&#34;investing-time-and-money-to-get-things-right&#34;&gt;
-    &lt;a href=&#34;#investing-time-and-money-to-get-things-right&#34;&gt;
-	Investing time and money to get things right
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Finally, you get a continuous improvement process that tracks change quantitatively
-and has the appropriate controls to make change accessible to management.&lt;/p&gt;
-&lt;p&gt;So where do we invest when we care about improvement?&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/where-to-improve.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Where to put money and time for improvement?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;We have to sort processes by Criticality, obviously, to make important things better.
-We also sort by Maturity – no need to invest into things that are already in good shape.
-And then we decide how much we can and should spend, and where.&lt;/p&gt;
-&lt;p&gt;Maybe we give up Pizza production, and outsource ourselves, or just pre-products and reduce our capability to assembly.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2020/06/pizza/outsourcing.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Must be at least this tall to successfully outsource.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;In any case, that will fail, if we and our partner are below level 4, each, in process maturity.
-Without a shared understanding of the deliverable and the relevant metrics,
-there is no common understanding of what is being sold or bought,
-and a lot of pain and finger pointing will be the result.&lt;/p&gt;
-&lt;p&gt;That is, without a proper process maturity, you need to do stuff yourself, no matter what.
-You can&amp;rsquo;t outsource new or rare things because you don&amp;rsquo;t understand them yet.
-You can&amp;rsquo;t outsource things that grow very quickly
-because they change from growth alone so much
-that you cannot afford the administrative barrier between business and execution.&lt;/p&gt;
-&lt;p&gt;And without having a set of well-understood snd tested quantitative metrics that both sides of the outsourcing relationship
-agree on, it is going to be tough to have a useful discussion about the quality of the services rendered.
-Only mature and somewhat stagnating businesses can be outsourced.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Error Budget&amp;rdquo;: How much infrastructure you&amp;rsquo;re allowed to set on fire to learn the meaning of the word &amp;ldquo;heiß&amp;rdquo;. Every organization has an error budget, but most don&amp;rsquo;t plan for it.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
   </channel>
 </rss>
-

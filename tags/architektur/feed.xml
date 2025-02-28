@@ -6,12 +6,18 @@
     <description>Recent content in Architektur on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/architektur/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/architektur/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>It&#39;s a Modulith</title>
       <link>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</link>
-      <pubDate>Wed, 10 May 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Wed, 10 May 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/05/10/its-a-modulith.html</guid>
       <description>&lt;p&gt;&amp;ldquo;Computers are simple&amp;rdquo; is what I am telling people I train.
 &amp;ldquo;There are only Zeroes and Ones, and it is not getting much more complicated.&amp;rdquo;&lt;/p&gt;
@@ -65,8 +71,7 @@ Similarly, the lambdas and step function somewhere out on the network are now lo
 &lt;blockquote&gt;
 &lt;p&gt;Conceptually, the high-level architecture remained the same.
 We still have exactly the same components as we had in the initial design (media conversion, detectors, or orchestration).
-This allowed us to reuse a lot of code and quickly migrate to a new architecture.&lt;/p&gt;
-&lt;/blockquote&gt;
+This allowed us to reuse a lot of code and quickly migrate to a new architecture.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;they summarize.&lt;/p&gt;
 &lt;p&gt;And that is maybe the takeaway from this article:
 In a cleanly architected and properly encapsulated system, the components can be redistributed and rearranged with only minor code changes.
@@ -116,8 +121,8 @@ The application can be made to run on different substrates, in order to react to
     <item>
       <title>Materialized View</title>
       <link>https://blog.koehntopp.info/2012/08/15/materialized-view.html</link>
-      <pubDate>Wed, 15 Aug 2012 03:45:04 +0000</pubDate>
-      
+      <pubDate>Wed, 15 Aug 2012 03:45:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/08/15/materialized-view.html</guid>
       <description>&lt;p&gt;Daten in einer SQL-Datenbank werden in einer Tabelle abgelegt, also einer
 Struktur mit Spalten, die Namen und in vielen Fällen auch einen Datentyp
@@ -304,8 +309,8 @@ unattraktiv machen kann.&lt;/p&gt;
     <item>
       <title>Automatisierung und Skalierung - Teil 2</title>
       <link>https://blog.koehntopp.info/2011/02/18/automatisierung-und-skalierung-teil-2.html</link>
-      <pubDate>Fri, 18 Feb 2011 20:47:49 +0000</pubDate>
-      
+      <pubDate>Fri, 18 Feb 2011 20:47:49 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/18/automatisierung-und-skalierung-teil-2.html</guid>
       <description>&lt;p&gt;Dies ist der 2. Teil zum Thema Automatisierung von Systemverwaltungsaufgaben.
 &lt;a href=&#34;https://blog.koehntopp.info/2011/02/17/automatisierung-und-skalierung.html&#34;&gt;Den ersten Teil gibt es hier&lt;/a&gt;
@@ -321,8 +326,7 @@ Spezifikation möglichst gut entsprechen soll. Dabei sind die Prozeßziele
 die möglichst genaue Einhaltung der Spezifikation, und die möglichst
 schnelle Abwicklung des Auftrages. Dabei ist das Wissen eines Experten in
 Programmcode auskristallisiert worden - den Hilfs-Scripten und Anpassungen
-des Installationsservers.&lt;/p&gt;
-&lt;/blockquote&gt;
+des Installationsservers.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich muß die wichtigen Punkte hier noch einmal herausstellen: Wenn wir in
 einem Umfeld solche Aufgaben automatisieren, dann wollen wir damit
 verschiedene Dinge erreichen.&lt;/p&gt;
@@ -458,8 +462,8 @@ Datenbank zum Konfigurationsmanagement abgelöst worden ist.&lt;/p&gt;
     <item>
       <title>Automatisierung und Skalierung</title>
       <link>https://blog.koehntopp.info/2011/02/17/automatisierung-und-skalierung.html</link>
-      <pubDate>Thu, 17 Feb 2011 17:09:00 +0000</pubDate>
-      
+      <pubDate>Thu, 17 Feb 2011 17:09:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/17/automatisierung-und-skalierung.html</guid>
       <description>&lt;p&gt;Ich hatte im Vorfeld der OSDC 2011 eine interessante Unterhaltung mit Julian
 Hein zum Thema Automatisierung. Er wollte, daß ich einmal erkläre, warum man
@@ -469,8 +473,7 @@ fahren kann und dort auch nicht reden kann, will ich einmal versuchen,
 meinen Text zumindest in groben Zügen hier aufzuschreiben.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die Zusammenfassung ist jedenfalls, daß Automatisierung kein technisches
-Problem ist.&lt;/p&gt;
-&lt;/blockquote&gt;
+Problem ist.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Aber von vorne:&lt;/p&gt;
 &lt;p&gt;Ich komme von MySQL, aus einem Consultingumfeld, und ich habe dort mit
 Kunden in jeder möglichen Betriebsgröße zu tun gehabt - von einzelnen MySQL
@@ -672,8 +675,8 @@ skalieren.&lt;/p&gt;
     <item>
       <title>Das MySQL-Sun-Dilemma</title>
       <link>https://blog.koehntopp.info/2008/11/17/das-mysql-sun-dilemma.html</link>
-      <pubDate>Mon, 17 Nov 2008 19:52:10 +0000</pubDate>
-      
+      <pubDate>Mon, 17 Nov 2008 19:52:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/11/17/das-mysql-sun-dilemma.html</guid>
       <description>&lt;p&gt;Sun hat
 &lt;a href=&#34;http://catalog.sun.com/is-bin/INTERSHOP.enfinity/WFS/Sun_Catalogue-Sun_Catalogue_DE-Site/de_DE/-/EUR/ViewCatalog-Browse?CatalogCategoryID=ZXVIBe.d7kYAAAEZYYsJ0gWj&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eine Box&lt;/a&gt;
@@ -700,8 +703,8 @@ Bis dahin jedoch ist eine 256-Core-Box für ein normales MySQL-Setup eher nicht 
     <item>
       <title>The Importance Of FAIL</title>
       <link>https://blog.koehntopp.info/2008/05/30/the-importance-of-fail.html</link>
-      <pubDate>Fri, 30 May 2008 07:47:55 +0000</pubDate>
-      
+      <pubDate>Fri, 30 May 2008 07:47:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/05/30/the-importance-of-fail.html</guid>
       <description>&lt;p&gt;Wenn man mit Featureentwicklern spricht, dann reden sie immer gerne über tolle
 neue Dinge die sie gerade eingebaut haben.&lt;/p&gt;
@@ -759,8 +762,8 @@ Infrastrukturen keine Themen.&lt;/p&gt;
     <item>
       <title>Leben mit Fehlern - der Schlüssel zum Scaleout</title>
       <link>https://blog.koehntopp.info/2006/07/30/leben-mit-fehlern-der-schluessel-zum-scaleout.html</link>
-      <pubDate>Sun, 30 Jul 2006 07:17:12 +0000</pubDate>
-      
+      <pubDate>Sun, 30 Jul 2006 07:17:12 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/07/30/leben-mit-fehlern-der-schluessel-zum-scaleout.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/scale.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -815,8 +818,7 @@ responsible for its data encapsulation. And then, depending on what kind
 of service it is and what kind of consistency guarantees they require, you
 use different technologies. But it must be absolutely clear I think to
 everyone that we&amp;rsquo;re not using two phase commit to update distributed
-resources all over the world.&lt;/p&gt;
-&lt;/blockquote&gt;
+resources all over the world.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nicht anders viel anders web.de: Das, was der Anwender sieht, wenn er sich
 an web.de connected, sieht mehr oder weniger aus wie eine große Anwendung.
 Intern besteht seit einigen Jahren es aus ca. 150 verschiedenen Diensten,
@@ -1009,8 +1011,7 @@ requirements: that services has to be monitorable, that they have to be
 tractable in all sorts of different ways. But in essence, operation is all
 up to the service owners themselves. This allows for a large-let&amp;rsquo;s say
 controlled chaos-which actually works very well because everybody&amp;rsquo;s
-responsible for their own services.&lt;/p&gt;
-&lt;/blockquote&gt;
+responsible for their own services.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Service Oriented Architectures sind nur eine Ausprägung von &amp;ldquo;gelockerten
 Anforderungen&amp;rdquo;. Indem wir die Anforderungen an die Dienstabstraktion
 lockern, lassen wir den Dienstimplementatoren mehr Optionen bei der
@@ -1087,4 +1088,3 @@ O&amp;rsquo;Reilly Radar, Series of 8 articles&lt;/li&gt;
     
   </channel>
 </rss>
-

@@ -6,12 +6,18 @@
     <description>Recent content in Nosql on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/nosql/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/nosql/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zu Besuch bei Redis</title>
       <link>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</link>
-      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate>
-      
+      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</guid>
       <description>&lt;p&gt;Hier ist eine wichtige Zahl: Ein Coredump von einem MySQL auf einer Maschine mit knapp unter 200 GB Speicher dauert 15 Minuten.
 Auf SSD.
@@ -125,8 +131,8 @@ InnoDB ist ziemlich genau eine Lehrbuchimplementierung des Gray.&lt;/p&gt;
     <item>
       <title>Zusammenfassung &#39;Schemaless&#39;</title>
       <link>https://blog.koehntopp.info/2011/04/20/zusammenfassung-schemaless.html</link>
-      <pubDate>Wed, 20 Apr 2011 15:01:54 +0000</pubDate>
-      
+      <pubDate>Wed, 20 Apr 2011 15:01:54 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/20/zusammenfassung-schemaless.html</guid>
       <description>&lt;h2 id=&#34;die-antwort-alter-table-vs-schemaless&#34;&gt;
     &lt;a href=&#34;#die-antwort-alter-table-vs-schemaless&#34;&gt;
@@ -212,8 +218,7 @@ Nun fand die DB aber plötzlich keine Datensätze mehr, die das Feld noch
 nicht besaßen.Auf der einen Seite richtig, auf der anderen kommt da gerne
 auch eine Migration auf einen zu, für einen einzigen neues Key. Aber damit
 kann man leben und man fällt wahrscheinlich nur einmal drauf rein und
-beachtet dies in der Entwicklung.&lt;/p&gt;
-&lt;/blockquote&gt;
+beachtet dies in der Entwicklung.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Leider erhielt ich auf meine Nachfrage, mit welcher technischen oder
 organisatorischen Maßnahme das für die Zukunft geklärt wurde (&amp;lsquo;beachtet dies
 in der Entwicklung&amp;rsquo;) keine Antwort.&lt;/p&gt;
@@ -224,8 +229,7 @@ ein weiteres Feld hinzu, musste ein Updateprogramm geschrieben werden,
 dass die bereits vorhandenen Dokumente um dieses Feld erweiterte [&amp;hellip;],
 sonst flog einem das ganze in Views um die Ohren oder die Dokumente
 tauchten in den Views gar nicht erst auf, da das neue Feld als
-Selektionskriterium verwendet wurde.&lt;/p&gt;
-&lt;/blockquote&gt;
+Selektionskriterium verwendet wurde.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Dies entspricht weitgehend einem prozedural auscodierten ALTER TABLE.&lt;/p&gt;
 &lt;p&gt;Zu Option 3 erhielt ich dieses Anwendungsbeispiel:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -236,23 +240,20 @@ letztendlich auch tun würde (wenn man die Tabelle nicht locken will):&lt;/p&gt;
 &lt;li&gt;Gucken in welcher Version der Datensatz ist (bzw. ob Daten migriert werden müssen)&lt;/li&gt;
 &lt;li&gt;Datensatz gegf. aktualisieren&lt;/li&gt;
 &lt;li&gt;Datensatz speichern (oder warten bis der Datensatz eh gespeichert wird)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ein weiterer Beitrag:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Als Anwendungsentwickler muss ich mich auf einmal in meinem Data
 Abstraction Layer (DAL) um das Handling von Datensatz-bezogenen Versionen
 kümmern und dort im Laufe der Zeit immer mehr Code implementieren, nur um
-aus den aus dem Storage geladenen Daten sinnvolle Objekte zu erzeugen.&lt;/p&gt;
-&lt;/blockquote&gt;
+aus den aus dem Storage geladenen Daten sinnvolle Objekte zu erzeugen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Option 4 wurde dort ebenfalls andiskutiert, aber verworfen:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Schiebt man das Problem noch weiter &amp;ldquo;den Stack hoch&amp;rdquo;, etwa weil man auch
 im Domain Model nicht mit klaren Objekt-Definitionen, sondern vielleicht
 mit Hashtables, JSON-Datenformaten oder sonst was rumhantiert, so
 erschwert dies meiner Meinung nach nicht nur die Übersicht im Code,
-sondern auch die weitere Verarbeitung in Controllern, Services und Views.&lt;/p&gt;
-&lt;/blockquote&gt;
+sondern auch die weitere Verarbeitung in Controllern, Services und Views.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;modellierung-von-spezialisierungen&#34;&gt;
     &lt;a href=&#34;#modellierung-von-spezialisierungen&#34;&gt;
 	Modellierung von Spezialisierungen
@@ -335,8 +336,7 @@ einer SQL-Datenbank müssen die Daten beim INSERT dem Schema entsprechen,
 d.h. ich muß sie gleich normalisiert, wenn ich sie entgegennehme. Bei
 einem schemalosen Store kann ich die Daten auch erst ganz spät
 normalisieren, möglicherweise erst wenn ich sie ausgelesen habe und nun
-darstellen will.&lt;/p&gt;
-&lt;/blockquote&gt;
+darstellen will.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und meint dann:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Wenn ich Daten normalisiere, bevor ich sie in einen schemalosen Store
@@ -345,8 +345,7 @@ SQL-Datenbank (modulo der von Dir erwähnten table locking
 Implementationsdetails einiger spezieller Implementationen). Das
 Haupt-Feature ist also IMHO genau die Möglichkeit, erst ganz spät zu
 normalisieren, und dann hat man möglicherweise viel mehr Kontext, was man
-mit den Daten überhaupt anfangen will.&lt;/p&gt;
-&lt;/blockquote&gt;
+mit den Daten überhaupt anfangen will.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich arbeite möglicherweise zu lange mit SQL, denn ich habe Schwierigkeiten
 mir vorzustellen, wieso das ein Vorteil ist. Also, genauer: Ich kenne
 Anwendungsfälle, wo mich die interne Struktur der Daten nicht tangiert und
@@ -404,8 +403,8 @@ DejaVu hatte: Das Publikum dort fühlt sich an wie eine MySQL-Community von
     <item>
       <title>Schemaless?</title>
       <link>https://blog.koehntopp.info/2011/04/19/schemaless.html</link>
-      <pubDate>Tue, 19 Apr 2011 11:49:31 +0000</pubDate>
-      
+      <pubDate>Tue, 19 Apr 2011 11:49:31 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/19/schemaless.html</guid>
       <description>&lt;h2 id=&#34;die-frage&#34;&gt;
     &lt;a href=&#34;#die-frage&#34;&gt;
@@ -451,8 +450,8 @@ lazy implementiert wie oben geschildert?&lt;/p&gt;
     <item>
       <title>Ein paar Gedanken zum Thema NoSQL</title>
       <link>https://blog.koehntopp.info/2010/11/05/ein-paar-gedanken-zum-thema-nosql.html</link>
-      <pubDate>Fri, 05 Nov 2010 06:41:00 +0000</pubDate>
-      
+      <pubDate>Fri, 05 Nov 2010 06:41:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/11/05/ein-paar-gedanken-zum-thema-nosql.html</guid>
       <description>&lt;p&gt;Beim Durchstöbern der verschiedenen NoSQL-Datenspeicher stellt sich mir die
 Frage, wieso man das alles überhaupt will. Genauer: Was genau ist das
@@ -616,8 +615,7 @@ addressieren kann.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The meaning of the statement was that NoSQL systems (really the various
 map-reduce systems) are lacking a standard model for describing and
-querying and that developing one should be a high priority task for them.&lt;/p&gt;
-&lt;/blockquote&gt;
+querying and that developing one should be a high priority task for them.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Unterdessen (nein: deswegen!) nähern sich SQL- und NoSQL auf eine Weise auch
 wieder einander an. Weil SQL eine sinnvolle Sache ist, gibt es
 &lt;a href=&#34;http://jaksprats.wordpress.com/2010/09/28/introducing-redisql-the-lightning-fast-polyglot/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redisql&lt;/a&gt;
@@ -682,8 +680,7 @@ zu propagieren. Dabei werden oftmals
 
 gezogen:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Avoiding schema changes and data migration are good reasons.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Avoiding schema changes and data migration are good reasons.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Folgerung &amp;ldquo;Aus Schemalessness folgt, daß man Schema Changes und
 Datenmigration vermeiden kann&amp;rdquo; ist offensichtlicher Unsinn, wie jeder
 erkennen kann, der einmal reale Anwendungen entwickelt hat - die Migration
@@ -726,8 +723,8 @@ verborgen werden können.&lt;/li&gt;
     <item>
       <title>Die relationale Datenbank wird 40.</title>
       <link>https://blog.koehntopp.info/2010/06/08/die-relationale-datenbank-wird-40.html</link>
-      <pubDate>Tue, 08 Jun 2010 06:15:00 +0000</pubDate>
-      
+      <pubDate>Tue, 08 Jun 2010 06:15:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/06/08/die-relationale-datenbank-wird-40.html</guid>
       <description>&lt;p&gt;Nicht nur wird PHP im Juni 15 Jahre alt, sondern ein anderer, älterer
 Begleiter von PHP feiert ebenfalls ein Jubiläum:&lt;/p&gt;
@@ -867,4 +864,3 @@ Eigenschaften hat), das die Vorteile von SQL nicht aufgibt.&lt;/p&gt;
     
   </channel>
 </rss>
-

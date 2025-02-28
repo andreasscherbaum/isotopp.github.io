@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>MySQL: InnoDB Fragmentation | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2023/07/06/mysql-innodb-fragmentation.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='MySQL: InnoDB Fragmentation' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='MySQL: InnoDB Fragmentation | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="en_US" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2023/07/06/mysql-innodb-fragmentation.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2023-07-06T01:02:03Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='MySQL: InnoDB Fragmentation' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: InnoDB Fragmentation","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="mysql-innodb-fragmentation-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						MySQL: InnoDB Fragmentation
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>July 6, 2023</div>
 						
-
 					</div>
 				</div>
 				
@@ -203,8 +189,7 @@ and then issue you a Logical Block Address (LBA) that has no bearing whatsoever 
 It may even move the actual physical data under you behind the scenes, and still refer to it by the same LBA.</p>
 <p>What matters a lot as a concept, though, is the Working Set Size (WSS) of your database.</p>
 <blockquote>
-<p>The Working Set is the set of pages your database is going to reference in the next future interval</p>
-</blockquote>
+<p>The Working Set is the set of pages your database is going to reference in the next future interval</p></blockquote>
 <p>This interval may be, for example, the next 1m, 10m or 1h.
 That is, it makes initially limited sense to speak of the WSS as an unqualified term.
 You&rsquo;d have to use it with an interval instead, so the WSS-1m, WSS-10m, WSS-1h and so on.</p>
@@ -212,8 +197,7 @@ You&rsquo;d have to use it with an interval instead, so the WSS-1m, WSS-10m, WSS
 This would bring the disk reads to zero or close to zero for the coming 10 minutes.</p>
 <blockquote>
 <p>Predicting the future is hard, though, especially if accuracy is required.
-What we do instead is look to the past and hope the future looks alike.</p>
-</blockquote>
+What we do instead is look to the past and hope the future looks alike.</p></blockquote>
 <p>So most people would want to look at the past 10 minutes,
 and the recorded page numbers requested from disk as a triple of <code>(timestamp, tablespace_id, page_number)</code>.
 From this, we can build a histogram for a sliding 10m window, and we would know which pages have been in demand.
@@ -248,8 +232,7 @@ Even when using HDD.</p>
 <p>By choosing a primary key smartly, we can make sure that primary keys that are being accessed &ldquo;together&rdquo; have similar values,
 and each page is filled closely with many rows that we will be needing at the same time.</p>
 <p>For a fixed data size, this lowers the number of pages active concurrently, bringing down WSS size,
-bringing down pool size, bringing down instance size, bringing down cloud cost.</p>
-</blockquote>
+bringing down pool size, bringing down instance size, bringing down cloud cost.</p></blockquote>
 <p>Also, it is important to keep the row size down, so many rows fit into the same page,
 and finally getting a handle on fragmentation inside a page – but this is actually the least important factor in design.</p>
 <p>For the various MySQL flavors, exposing disk read request traces (as <code>(ts, tablespace_id, page#)</code> triples)
@@ -482,7 +465,7 @@ This needs fixing in the mainline server source.</li>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

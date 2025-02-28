@@ -6,12 +6,18 @@
     <description>Recent content in Storage on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/storage/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/storage/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Revisiting the file server</title>
       <link>https://blog.koehntopp.info/2022/02/06/revisiting-the-file-server.html</link>
-      <pubDate>Sun, 06 Feb 2022 21:06:03 +0100</pubDate>
-      
+      <pubDate>Sun, 06 Feb 2022 21:06:03 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/02/06/revisiting-the-file-server.html</guid>
       <description>&lt;p&gt;The new disks in the file server had synchronized nicely, and that resulted in an interesting graph:&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -324,8 +330,8 @@ And &lt;code&gt;integritysetup&lt;/code&gt; is part of &lt;code&gt;cryptsetup-bi
     <item>
       <title>Time to grow the file server</title>
       <link>https://blog.koehntopp.info/2022/02/01/time-to-grow-the-file-server.html</link>
-      <pubDate>Tue, 01 Feb 2022 21:06:03 +0100</pubDate>
-      
+      <pubDate>Tue, 01 Feb 2022 21:06:03 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/02/01/time-to-grow-the-file-server.html</guid>
       <description>&lt;p&gt;The old file server was full, and since the little one got more local storage in his laptop, I also needed more storage for backup to match.
 I am running a 5x cage using up 3 disk slots in a Midi-Tower.
@@ -463,8 +469,8 @@ After the sync completes, I will &lt;code&gt;lvconvert&lt;/code&gt; two existing
     <item>
       <title>NVME is not a hard disk</title>
       <link>https://blog.koehntopp.info/2021/05/25/nvme-is-not-a-hard-disk.html</link>
-      <pubDate>Tue, 25 May 2021 14:41:50 +0000</pubDate>
-      
+      <pubDate>Tue, 25 May 2021 14:41:50 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/05/25/nvme-is-not-a-hard-disk.html</guid>
       <description>&lt;p&gt;So &lt;a href=&#34;https://twitter.com/leclercfl/status/1396909628949155845&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;somebody tweeted&lt;/a&gt;
 
@@ -495,8 +501,7 @@ After the sync completes, I will &lt;code&gt;lvconvert&lt;/code&gt; two existing
 &lt;p&gt;Customers of the data track have stateless applications, because they have outsourced all their state management to the various products and services of the data track. They are deploying their applications, and they largely do not care about the content of hard disks, or even entire machines. Usually their instances are nuked on rollout, or after 30 days, whichever comes first, and replaced with fresh instances.&lt;/p&gt;
 &lt;p&gt;Customers of the data track care about placement:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Place my instances as distributed as possible, no two instances on the same host, if possible, not in the same rack or even the same stack&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Place my instances as distributed as possible, no two instances on the same host, if possible, not in the same rack or even the same stack&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(A stack is a network unit of 32-48 racks) This property is called &amp;ldquo;anti-affinity&amp;rdquo;, the spread-out placement of instances.&lt;/p&gt;
 &lt;h2 id=&#34;database-like-systems&#34;&gt;
     &lt;a href=&#34;#database-like-systems&#34;&gt;
@@ -506,8 +511,7 @@ After the sync completes, I will &lt;code&gt;lvconvert&lt;/code&gt; two existing
 &lt;p&gt;The data track has things such as Kafka, Elastic, Cassandra or MySQL, and a few snowflakes.&lt;/p&gt;
 &lt;p&gt;All of these services are doing their own redundancy: individual drives, or even instances, are not a thing they care a lot about. Loss of hosts or racks is factored in.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;They care a lot about anti-affine placement, because they care a lot about fault isolation through &amp;ldquo;not sharing common infrastructure&amp;rdquo; between instances.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;They care a lot about anti-affine placement, because they care a lot about fault isolation through &amp;ldquo;not sharing common infrastructure&amp;rdquo; between instances.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Often these services do create instances for read capacity, and getting fault tolerance by having the instances not sharing infrastructure is a welcome secondary effect.&lt;/p&gt;
 &lt;h2 id=&#34;adding-distributed-storage-forces-n3&#34;&gt;
     &lt;a href=&#34;#adding-distributed-storage-forces-n3&#34;&gt;
@@ -633,8 +637,8 @@ After the sync completes, I will &lt;code&gt;lvconvert&lt;/code&gt; two existing
     <item>
       <title>Trying lvmraid for real</title>
       <link>https://blog.koehntopp.info/2019/12/03/trying-lvmraid-for-real.html</link>
-      <pubDate>Tue, 03 Dec 2019 14:10:12 +0000</pubDate>
-      
+      <pubDate>Tue, 03 Dec 2019 14:10:12 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/12/03/trying-lvmraid-for-real.html</guid>
       <description>&lt;p&gt;So after testing &lt;a href=&#34;https://blog.koehntopp.info/2019/12/02/cloning-and-splitting-logical-volumes.html&#34;&gt;LVM Raid&lt;/a&gt;
 
@@ -782,8 +786,8 @@ controlled mdraid code.&lt;/p&gt;
     <item>
       <title>Cloning and splitting logical volumes</title>
       <link>https://blog.koehntopp.info/2019/12/02/cloning-and-splitting-logical-volumes.html</link>
-      <pubDate>Mon, 02 Dec 2019 15:01:41 +0000</pubDate>
-      
+      <pubDate>Mon, 02 Dec 2019 15:01:41 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/12/02/cloning-and-splitting-logical-volumes.html</guid>
       <description>&lt;p&gt;Where I work, we routinely run our databases on XFS on LVM2.&lt;/p&gt;
 &lt;h2 id=&#34;the-setup&#34;&gt;
@@ -1075,8 +1079,8 @@ elsewhere. Over there, we can &lt;code&gt;vgimport&lt;/code&gt; things and proce
     <item>
       <title>Filling disk space fast</title>
       <link>https://blog.koehntopp.info/2019/11/11/filling-disk-space-fast.html</link>
-      <pubDate>Mon, 11 Nov 2019 16:23:55 +0000</pubDate>
-      
+      <pubDate>Mon, 11 Nov 2019 16:23:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/11/11/filling-disk-space-fast.html</guid>
       <description>&lt;p&gt;Some of the databases at work are a tad on the large side, in the high
 2-digit terabytes of size. Copying these to new machines at the moment takes
@@ -1171,8 +1175,8 @@ inside our data centers will add 20 micros or less in latency.&lt;/p&gt;
     <item>
       <title>Ceph and NVME - not a good combination?</title>
       <link>https://blog.koehntopp.info/2019/07/16/ceph-and-nvme---not-a-good-combination.html</link>
-      <pubDate>Tue, 16 Jul 2019 08:21:25 +0000</pubDate>
-      
+      <pubDate>Tue, 16 Jul 2019 08:21:25 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/07/16/ceph-and-nvme---not-a-good-combination.html</guid>
       <description>&lt;p&gt;Saving an &lt;a href=&#34;https://twitter.com/isotopp/status/1151013922528534528&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;older twitter thread on Ceph&lt;/a&gt;
 
@@ -1282,8 +1286,8 @@ that is likely not NVME, but many large disk drives.&lt;/p&gt;
     <item>
       <title>Not quite storage any more</title>
       <link>https://blog.koehntopp.info/2019/06/14/not-quite-storage-any-more.html</link>
-      <pubDate>Fri, 14 Jun 2019 15:01:43 +0000</pubDate>
-      
+      <pubDate>Fri, 14 Jun 2019 15:01:43 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/06/14/not-quite-storage-any-more.html</guid>
       <description>&lt;p&gt;While I was testing away on all the SSD and NVME toys, I got my hand on a test box with even stranger that usual equipment. It was a Dual Platinum-8280 box with a really weird amount of memory: 7.5 TB.&lt;/p&gt;
 &lt;p&gt;“&lt;a href=&#34;https://ark.intel.com/content/www/us/en/ark/products/192478/intel-xeon-platinum-8280-processor-38-5m-cache-2-70-ghz.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;8280&lt;/a&gt;
@@ -1421,8 +1425,8 @@ that is likely not NVME, but many large disk drives.&lt;/p&gt;
     <item>
       <title>Adventures in Storageland</title>
       <link>https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html</link>
-      <pubDate>Thu, 13 Jun 2019 14:37:35 +0000</pubDate>
-      
+      <pubDate>Thu, 13 Jun 2019 14:37:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/06/13/adventures-in-storageland.html</guid>
       <description>&lt;h2 id=&#34;adventures-in-storageland&#34;&gt;
     &lt;a href=&#34;#adventures-in-storageland&#34;&gt;
@@ -1725,4 +1729,3 @@ Storage technology&lt;/p&gt;
     
   </channel>
 </rss>
-

@@ -6,12 +6,87 @@
     <description>Recent content in Web on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/web/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/web/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Details in Hugo</title>
+      <link>https://blog.koehntopp.info/2024/09/28/details-in-hugo.html</link>
+      <pubDate>Sat, 28 Sep 2024 04:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/09/28/details-in-hugo.html</guid>
+      <description>&lt;p&gt;Ich habe ja seit circa 2000 kein Frontend mehr gemacht.&lt;/p&gt;
+&lt;h1 id=&#34;details-&#34;&gt;
+    &lt;a href=&#34;#details-&#34;&gt;
+	&lt;code&gt;&amp;lt;details /&amp;gt;&lt;/code&gt;
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Heute habe ich also gelernt,
+dass es ein &lt;a href=&#34;https://wiki.selfhtml.org/wiki/HTML/Elemente/details&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;&amp;lt;details&amp;gt;&lt;/code&gt;&lt;/a&gt;
+
+-Element gibt.
+Das ist ein Element, das zusammengeklappt gerendert wird, und das man Aufklappen kann, um den Inhalt zu enthüllen.&lt;/p&gt;
+&lt;p&gt;Der Teil von &lt;code&gt;&amp;lt;details&amp;gt;&lt;/code&gt;, der zusammengeklappt sichtbar ist, heißt &lt;a href=&#34;https://wiki.selfhtml.org/wiki/HTML/Elemente/summary&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;&amp;lt;summary&amp;gt;&lt;/code&gt;&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Nach der Summary kann dann beliebig viel &amp;ldquo;flow-content&amp;rdquo; kommen, also ein oder mehr &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; zum Beispiel.&lt;/p&gt;
+&lt;h1 id=&#34;shortcodes&#34;&gt;
+    &lt;a href=&#34;#shortcodes&#34;&gt;
+	Shortcodes
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Ich will das nun in Hugo nutzen können, ohne daß ich HTML tippen muss.
+Dazu kann ich in Hugo einen Shortcode &lt;code&gt;reveal&lt;/code&gt; definieren, den ich dann als &lt;code&gt;{{&amp;lt; reveal &amp;gt;}}&lt;/code&gt; aufrufen kann.
+Ein vordefinierter Shortcode, der hier im Blog laufend verwendet wird, ist zum Beispiel &lt;code&gt;{{&amp;lt; relref &amp;gt;}}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Dazu lege ich &lt;code&gt;./layouts/shortcodes/reveal.html&lt;/code&gt; mit folgendem Inhalt an:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;details&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;reveal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;summary&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;reveal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Get &amp;#34;question&amp;#34; }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;reveal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Inner | markdownify }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;details&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;und verwende das in der Form&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;question&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Was ist los?&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Nix.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;mit dem Ergebnis:&lt;/p&gt;
+&lt;details class=&#34;reveal&#34;&gt;
+	&lt;summary class=&#34;reveal&#34;&gt;Was ist los?&lt;/summary&gt;
+	&lt;div class=&#34;reveal&#34;&gt;Nix.&lt;/div&gt;
+&lt;/details&gt;
+
+&lt;p&gt;Dazu kommt noch Styling:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;margin-bottom&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;em&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;err&#34;&gt;summary&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;cursor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;pointer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;#3d80bb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;padding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;em&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;background-color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;#f5f5f5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;margin-top&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;em&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;padding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;em&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;background-color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;#fafafa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;hover&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;background-color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Auf diese Weise lassen sich lange optionale Inhalte rendern ohne den Artikel zu unübersichtlich zu machen.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>JusProg ist nur der Anfang</title>
       <link>https://blog.koehntopp.info/2024/01/16/jusprog-ist-nur-der-anfang.html</link>
-      <pubDate>Tue, 16 Jan 2024 01:02:03 +0000</pubDate>
-      
+      <pubDate>Tue, 16 Jan 2024 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2024/01/16/jusprog-ist-nur-der-anfang.html</guid>
       <description>&lt;p&gt;Es ist also dies hier passiert:
 &lt;a href=&#34;https://lilithwittmann.medium.com/wen-sch%C3%BCtzen-eigentlich-jugendschutzprogramme-7f13fb8ebc51&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wen schützen eigentlich Jugendschutzprogramme?&lt;/a&gt;
@@ -185,8 +260,7 @@ Lilith Wittmann nennt Mitglieder und stellt die Motivation klar:&lt;/p&gt;
 &lt;p&gt;[JusProg eV] wurde mit dem Ziel gegründet, eine solche Software bereitzustellen.
 Seine Mitglieder sind große deutsche Digitalunternehmen wie z.B. Vodafone oder RTL.
 Die finanzieren das gerne.
-Denn solange es ein anerkanntes Jugendschutzprogramm gibt, können sie eben auf viele andere Jugendschutzmaßnahmen verzichten.&lt;/p&gt;
-&lt;/blockquote&gt;
+Denn solange es ein anerkanntes Jugendschutzprogramm gibt, können sie eben auf viele andere Jugendschutzmaßnahmen verzichten.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Mission ist also, die Inhalte der Mitglieder kostengünstig aus dem Schußfeld des Jugendschutzgesetzes herauszuholen,
 nicht effektiven Jugendschutz zu leisten.
 Das wäre auch, wie oben gezeigt, systematisch sehr schwierig, wenn nicht unmöglich.&lt;/p&gt;
@@ -249,8 +323,8 @@ Warum wir nicht einfach alles &amp;ldquo;ab 18&amp;rdquo; machen können und war
     <item>
       <title>Die Kosten von SSL</title>
       <link>https://blog.koehntopp.info/2011/02/10/die-kosten-von-ssl.html</link>
-      <pubDate>Thu, 10 Feb 2011 19:08:54 +0000</pubDate>
-      
+      <pubDate>Thu, 10 Feb 2011 19:08:54 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/10/die-kosten-von-ssl.html</guid>
       <description>&lt;p&gt;Bei web.de waren schon 2003 mehr als 80% des Datenverkehrs
 SSL-verschlüsselt, da dort die Policy herrschte &amp;ldquo;Paßworte werden nur
@@ -307,8 +381,8 @@ Jedenfalls ist das Problem bei SSL
     <item>
       <title>Jugendschutzfilter saugen und dafür gibt es einen Grund</title>
       <link>https://blog.koehntopp.info/2009/08/06/jugendschutzfilter-saugen-und-daf-r-gibt-es-einen-grund.html</link>
-      <pubDate>Thu, 06 Aug 2009 09:10:00 +0000</pubDate>
-      
+      <pubDate>Thu, 06 Aug 2009 09:10:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/08/06/jugendschutzfilter-saugen-und-daf-r-gibt-es-einen-grund.html</guid>
       <description>&lt;p&gt;Heise newstickert:
 &lt;a href=&#34;http://www.heise.de/newsticker/Bundesregierung-sieht-grosse-Maengel-bei-Jugendschutz-Filtern--/meldung/143110&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bundesregierung sieht große Mängel bei
@@ -326,8 +400,7 @@ Bundestagsfraktion. Zu viele zulässige Inhalte würden blockiert, und zu
 viele ungeeignete Angebote würden durchgelassen, schreibt der
 CDU-Politiker unter Berufung auf Tests im Prüflabor der Kommission für
 Jugendmedienschutz (KJM) bei der länderübergreifenden Stelle
-jugendschutz.net. Beide Mängel seien nicht wünschenswert.&lt;/p&gt;
-&lt;/blockquote&gt;
+jugendschutz.net. Beide Mängel seien nicht wünschenswert.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Der Bericht hebt weiter darauf ab, daß die Anzahl der zu bewertenden Sites
 sehr groß sei und die Inhalte sich zum Teil recht schnell ändern würden.
 Eine automatische Klassifizierung von Inhalten funktioniere nicht, und daher
@@ -396,8 +469,7 @@ in dem Artikel:&lt;/p&gt;
 redaktionellen auch automatische Klassifizierungsverfahren zum Einsatz.
 Diese sollten die Jugendschutzproblematik von Webseiten &amp;ldquo;an Hand
 bestimmter Muster erkennen&amp;rdquo;. Falsche Einordnungen seien beim derzeitigen
-Stand der Technik aber nicht zu vermeiden.&lt;/p&gt;
-&lt;/blockquote&gt;
+Stand der Technik aber nicht zu vermeiden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist wenig überraschend. Die Klassifizierung einer Site nach
 Jugendgefährdung ist am Ende eben keine syntaktische, sondern eine
 semantische und moralische - es kommt nicht auf die verwendeten Worte an,
@@ -424,15 +496,14 @@ sinnloses Unterfangen ist.&lt;/p&gt;
     <item>
       <title>Ein paar Worte zu SSL</title>
       <link>https://blog.koehntopp.info/2009/02/11/ein-paar-worte-zu-ssl.html</link>
-      <pubDate>Wed, 11 Feb 2009 19:19:44 +0000</pubDate>
-      
+      <pubDate>Wed, 11 Feb 2009 19:19:44 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/02/11/ein-paar-worte-zu-ssl.html</guid>
       <description>&lt;p&gt;Slowtiger antwortet in einem Kommentar zu &lt;a href=&#34;https://blog.koehntopp.info/2009/02/10/mein-natives-ip-v6.html&#34;&gt;Mein natives IP V6&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Wenn ich Sätze wie &amp;ldquo;Ob ich überhaupt noch unverschlüsseltes http auf V6 anbieten werde weiß ich nicht - die politische Situation legt nahe, daß dies Unsinn ist.&amp;rdquo; in einem Technikblog lese, dann gruselts mich wirklich.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Wenn ich Sätze wie &amp;ldquo;Ob ich überhaupt noch unverschlüsseltes http auf V6 anbieten werde weiß ich nicht - die politische Situation legt nahe, daß dies Unsinn ist.&amp;rdquo; in einem Technikblog lese, dann gruselts mich wirklich.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Also, die ganze Erklärung ist wie immer in wenig länger.&lt;/p&gt;
 &lt;h3 id=&#34;rechenleistung-ist-kein-problem&#34;&gt;
     &lt;a href=&#34;#rechenleistung-ist-kein-problem&#34;&gt;
@@ -502,8 +573,8 @@ sinnloses Unterfangen ist.&lt;/p&gt;
     <item>
       <title>Gesetz über die Deutsche Nationalbibliothek</title>
       <link>https://blog.koehntopp.info/2006/09/22/gesetz-ber-die-deutsche-nationalbibliothek.html</link>
-      <pubDate>Fri, 22 Sep 2006 07:10:33 +0000</pubDate>
-      
+      <pubDate>Fri, 22 Sep 2006 07:10:33 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/09/22/gesetz-ber-die-deutsche-nationalbibliothek.html</guid>
       <description>&lt;p&gt;Deutsche Politiker haften nicht für die Produkte ihrer Arbeit. Dadurch
 unterscheidet sich ihre Tätigkeit von der so ziemlich aller anderen Leute.
@@ -552,8 +623,8 @@ bewehrt mit einer Geldbuße von bis zu €10000.&lt;/p&gt;
     <item>
       <title>PHP Kongress Köln</title>
       <link>https://blog.koehntopp.info/2000/10/07/php-kongress-koeln.html</link>
-      <pubDate>Sat, 07 Oct 2000 09:00:00 +0000</pubDate>
-      
+      <pubDate>Sat, 07 Oct 2000 09:00:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2000/10/07/php-kongress-koeln.html</guid>
       <description>&lt;h1 id=&#34;day-1&#34;&gt;
     &lt;a href=&#34;#day-1&#34;&gt;
@@ -927,8 +998,8 @@ organizing the congress and see you next year.&lt;/p&gt;
     <item>
       <title>Webserver verstehen und tunen</title>
       <link>https://blog.koehntopp.info/1999/10/15/webserver-verstehen-und-tunen.html</link>
-      <pubDate>Fri, 15 Oct 1999 09:00:00 +0000</pubDate>
-      
+      <pubDate>Fri, 15 Oct 1999 09:00:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/1999/10/15/webserver-verstehen-und-tunen.html</guid>
       <description>&lt;p&gt;&lt;em&gt;Diesen Artikel habe ich als Schulungsunterlage für
 eine PHP-Fortgeschrittenenschulung bei
@@ -1815,8 +1886,8 @@ ohne weitere Prüfung vertrauen.&lt;/p&gt;
     <item>
       <title>CGI Programmierung</title>
       <link>https://blog.koehntopp.info/1996/11/27/cgi-programmierung.html</link>
-      <pubDate>Wed, 27 Nov 1996 01:02:03 +0000</pubDate>
-      
+      <pubDate>Wed, 27 Nov 1996 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/1996/11/27/cgi-programmierung.html</guid>
       <description>&lt;h1 id=&#34;der-apache-www-server&#34;&gt;
     &lt;a href=&#34;#der-apache-www-server&#34;&gt;
@@ -3259,34 +3330,34 @@ Fließkommazahlen. Zahlen können in Perl wie in C notiert
 werden, die folgende Abbildung
 gibt einen Überblick.&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Format&lt;/th&gt;
-&lt;th&gt;Notation&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Fließkomma&lt;/td&gt;
-&lt;td&gt;1.24&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;7.24e17&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ganzzahl&lt;/td&gt;
-&lt;td&gt;17&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ganzzahl (oktal)&lt;/td&gt;
-&lt;td&gt;0377&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Ganzzahl (hex)&lt;/td&gt;
-&lt;td&gt;0xff&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Format&lt;/th&gt;
+          &lt;th&gt;Notation&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Fließkomma&lt;/td&gt;
+          &lt;td&gt;1.24&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;7.24e17&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ganzzahl&lt;/td&gt;
+          &lt;td&gt;17&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ganzzahl (oktal)&lt;/td&gt;
+          &lt;td&gt;0377&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ganzzahl (hex)&lt;/td&gt;
+          &lt;td&gt;0xff&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;em&gt;Zahlenformate in Perl.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Wie in der UNIX-Shell kann und muss man auch in Perl
@@ -3315,82 +3386,82 @@ Backslash-Sequenzen notiert werden (siehe die folgende Tabelle).&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Aufwachen!\007&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Spalte1\tSpalte2&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Zeichen&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Bedeutung&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;\n&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Newline&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\r&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Return&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\t&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Tab&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\f&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Formfeed&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\b&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Backspace&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\v&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Vertical Tab&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\a&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Bell&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\e&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Escape&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\007&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Zeichen mit dem oktalen Zahlencode 7&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;0x7f&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Zeichen mit dem hex Zahlencode 0x7f&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\cC&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Controlzeichen, hier Control-C&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Backslash&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\l&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Folgendes Zeichen in Kleinschrift wandeln&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\L&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Alle folgenden Zeichen bis \E in Kleinschrift wandeln&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\u&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Folgendes Zeichen in Großschrift wandeln&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\U&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Alle folgenden Zeichen bis \E in Großschrift wandeln&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\E&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Beende \L oder \U&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Zeichen&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Bedeutung&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\n&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Newline&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\r&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Return&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\t&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Tab&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\f&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Formfeed&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\b&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Backspace&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\v&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Vertical Tab&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\a&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Bell&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\e&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Escape&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\007&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Zeichen mit dem oktalen Zahlencode 7&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;0x7f&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Zeichen mit dem hex Zahlencode 0x7f&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\cC&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Controlzeichen, hier Control-C&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Backslash&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\l&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Folgendes Zeichen in Kleinschrift wandeln&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\L&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Alle folgenden Zeichen bis \E in Kleinschrift wandeln&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\u&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Folgendes Zeichen in Großschrift wandeln&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\U&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Alle folgenden Zeichen bis \E in Großschrift wandeln&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\E&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Beende \L oder \U&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;em&gt;Controlzeichen in Perl.&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;operationen-mit-skalaren&#34;&gt;
@@ -3806,34 +3877,34 @@ oder das Zeichen &lt;code&gt;c&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Perl kennt einige vordefinierte Zeichenklassen (und deren
 Negationen), die oft benötigt werden:&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Kürzel&lt;/th&gt;
-&lt;th&gt;Bedeutung&lt;/th&gt;
-&lt;th&gt;Kürzel&lt;/th&gt;
-&lt;th&gt;Bedeutung&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;\d (digits)&lt;/td&gt;
-&lt;td&gt;[0-9]&lt;/td&gt;
-&lt;td&gt;\D (not digits)&lt;/td&gt;
-&lt;td&gt;[^0-9]&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\w (words)&lt;/td&gt;
-&lt;td&gt;[a-zA-Z0-9_]&lt;/td&gt;
-&lt;td&gt;\W (not words)&lt;/td&gt;
-&lt;td&gt;[^a-zA-Z0-9_]&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;\s (space)&lt;/td&gt;
-&lt;td&gt;[ \r\t\n\f]&lt;/td&gt;
-&lt;td&gt;\S (not space)&lt;/td&gt;
-&lt;td&gt;[^ \r\n\t\f]&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Kürzel&lt;/th&gt;
+          &lt;th&gt;Bedeutung&lt;/th&gt;
+          &lt;th&gt;Kürzel&lt;/th&gt;
+          &lt;th&gt;Bedeutung&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\d (digits)&lt;/td&gt;
+          &lt;td&gt;[0-9]&lt;/td&gt;
+          &lt;td&gt;\D (not digits)&lt;/td&gt;
+          &lt;td&gt;[^0-9]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\w (words)&lt;/td&gt;
+          &lt;td&gt;[a-zA-Z0-9_]&lt;/td&gt;
+          &lt;td&gt;\W (not words)&lt;/td&gt;
+          &lt;td&gt;[^a-zA-Z0-9_]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;\s (space)&lt;/td&gt;
+          &lt;td&gt;[ \r\t\n\f]&lt;/td&gt;
+          &lt;td&gt;\S (not space)&lt;/td&gt;
+          &lt;td&gt;[^ \r\n\t\f]&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -4206,4 +4277,3 @@ Sicherheitsprobleme, wenn Pfadnamen aus Variablen direkt
     
   </channel>
 </rss>
-

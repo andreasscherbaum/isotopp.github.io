@@ -6,12 +6,18 @@
     <description>Recent content in Innodb on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/innodb/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/innodb/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL: automatic partitions surely would be nice</title>
       <link>https://blog.koehntopp.info/2020/09/25/mysql-dynamic-partitions-suck.html</link>
-      <pubDate>Fri, 25 Sep 2020 12:02:24 +0000</pubDate>
-      
+      <pubDate>Fri, 25 Sep 2020 12:02:24 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/09/25/mysql-dynamic-partitions-suck.html</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;https://blog.koehntopp.info/2020/09/24/mysql-deleting-data.html&#34;&gt;Deleting data&lt;/a&gt;
 
@@ -120,8 +126,8 @@
     <item>
       <title>MySQL: Deleting data</title>
       <link>https://blog.koehntopp.info/2020/09/24/mysql-deleting-data.html</link>
-      <pubDate>Thu, 24 Sep 2020 21:39:24 +0000</pubDate>
-      
+      <pubDate>Thu, 24 Sep 2020 21:39:24 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/09/24/mysql-deleting-data.html</guid>
       <description>&lt;p&gt;Completing the data lifecycle is often harder than originally expected:
 Deleting data can sometimes cost way more than inserting it in the first place.
@@ -422,8 +428,8 @@ kris@localhost [kris]&amp;gt; select count(*) from data;
     <item>
       <title>MySQL: Encoding fields for great profit.</title>
       <link>https://blog.koehntopp.info/2020/09/18/mysql-encoding-fields-for-great-profit.html</link>
-      <pubDate>Fri, 18 Sep 2020 17:39:10 +0000</pubDate>
-      
+      <pubDate>Fri, 18 Sep 2020 17:39:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/09/18/mysql-encoding-fields-for-great-profit.html</guid>
       <description>&lt;p&gt;Iterating schemas over time is not an uncommon thing. Often requirements emerge only after you have data, and then directed action is possible. Consequently, working on existing data, and structuring and cleaning it up is a common task.&lt;/p&gt;
 &lt;p&gt;In today&amp;rsquo;s example we work with a log table that logged state transitions of things in freeform &lt;code&gt;VARCHAR&lt;/code&gt; fields. After some time the log table grew quite sizeable, and the log strings are repeated rather often, contributing to the overall size of the table considerably.&lt;/p&gt;
@@ -786,8 +792,8 @@ We need this indexed, and we also need indices on the two source columns.&lt;/p&
     <item>
       <title>MySQL from a Developers Perspective</title>
       <link>https://blog.koehntopp.info/2020/09/07/mysql-from-a-developers-perspective.html</link>
-      <pubDate>Mon, 07 Sep 2020 09:18:16 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Sep 2020 09:18:16 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/09/07/mysql-from-a-developers-perspective.html</guid>
       <description>&lt;p&gt;So this has turned into a small series, explaining how to work with MYSQL from a developers perspective. This post is intended as a directory for the individual articles. It will be amended and re-dated as necessary.&lt;/p&gt;
 &lt;p&gt;The code for the series is also available in &lt;a href=&#34;https://github.com/isotopp/mysql-dev-examples.git&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;isotopp/mysql-dev-examples&lt;/a&gt;
@@ -876,8 +882,8 @@ MySQL 8 gains support of a JSON data type. How to get data in and out of JSON fi
     <item>
       <title>MySQL Foreign Key Constraints and Locking</title>
       <link>https://blog.koehntopp.info/2020/08/04/mysql-foreign-key-constraints-and-locking.html</link>
-      <pubDate>Tue, 04 Aug 2020 17:05:14 +0000</pubDate>
-      
+      <pubDate>Tue, 04 Aug 2020 17:05:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/04/mysql-foreign-key-constraints-and-locking.html</guid>
       <description>&lt;p&gt;Since we now know how to look at the state of locking in a live database, let&amp;rsquo;s look at what happens when we run a normal insert or update and an insert or update with foreign key relationships defined, and compare.&lt;/p&gt;
 &lt;p&gt;We will be using the tables and structures from our previous examples, a simple 1:n relationship between &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;:&lt;/p&gt;
@@ -1084,8 +1090,8 @@ MySQL 8 gains support of a JSON data type. How to get data in and out of JSON fi
     <item>
       <title>MySQL Foreign Keys and Foreign Key Constraints</title>
       <link>https://blog.koehntopp.info/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html</link>
-      <pubDate>Mon, 03 Aug 2020 07:29:49 +0000</pubDate>
-      
+      <pubDate>Mon, 03 Aug 2020 07:29:49 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html</guid>
       <description>&lt;p&gt;Foreign Keys are what links tables together and turns a set of tables into a model. Foreign Key Constraints are conditions that must be true for the content of the tables to be an internally consistent model. Foreign Key Constraints can be defined and enforced in InnoDB, but this comes at a considerable price, and for some it may hurt more than it is worth.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -1331,8 +1337,8 @@ MySQL 8 gains support of a JSON data type. How to get data in and out of JSON fi
     <item>
       <title>MySQL Deadlocks with INSERT</title>
       <link>https://blog.koehntopp.info/2020/08/02/mysql-deadlocks-with-insert.html</link>
-      <pubDate>Sun, 02 Aug 2020 02:25:21 +0000</pubDate>
-      
+      <pubDate>Sun, 02 Aug 2020 02:25:21 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/02/mysql-deadlocks-with-insert.html</guid>
       <description>&lt;p&gt;Support Channel. &amp;ldquo;Hi, I am getting deadlocks in the database, and they occur when I have to roll back the transactions but if we don&amp;rsquo;t have to roll back all transactions get executed.&amp;rdquo;
 Wait, what?
@@ -1391,8 +1397,7 @@ After some back and forth it becomes clear that the Dev experiences deadlocks an
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;SERIALIZABLE&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This level is like &lt;code&gt;REPEATABLE READ&lt;/code&gt;, but InnoDB implicitly converts all plain &lt;code&gt;SELECT&lt;/code&gt;  statements to &lt;code&gt;SELECT ... FOR SHARE&lt;/code&gt; if autocommit is disabled.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;This level is like &lt;code&gt;REPEATABLE READ&lt;/code&gt;, but InnoDB implicitly converts all plain &lt;code&gt;SELECT&lt;/code&gt;  statements to &lt;code&gt;SELECT ... FOR SHARE&lt;/code&gt; if autocommit is disabled.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It then goes on to explain how &lt;code&gt;SERIALIZABLE&lt;/code&gt; does nothing when there is no explicit transaction going on. It does not explain what it is good for (mostly: shooting yourself into the foot) and when you should use it (mostly: don&amp;rsquo;t).&lt;/p&gt;
 &lt;p&gt;It does answer the question of &amp;ldquo;Where to the S-Locks come from?&amp;rdquo;, though.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;SERIALIZABLE&lt;/code&gt; isolation mode turns a normal &lt;code&gt;SELECT&lt;/code&gt; statement into a Medusa&amp;rsquo;s freeze ray that shoots S-Locks all over the tables onto everything it looks at, preventing other threads from changing these things until we end our transaction and drop our locks (And that is why you should not use it, and why I personally believe that your code is broken if it needs it).&lt;/p&gt;
@@ -1517,8 +1522,8 @@ The database needs to acquire the X-lock, that is, it needs to upgrade the S-loc
     <item>
       <title>MySQL: Locks and Deadlocks</title>
       <link>https://blog.koehntopp.info/2020/08/01/mysql-locks-and-deadlocks.html</link>
-      <pubDate>Sat, 01 Aug 2020 14:11:37 +0000</pubDate>
-      
+      <pubDate>Sat, 01 Aug 2020 14:11:37 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/01/mysql-locks-and-deadlocks.html</guid>
       <description>&lt;p&gt;In a &lt;a href=&#34;https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html&#34;&gt;previous article&lt;/a&gt;
 
@@ -1782,8 +1787,8 @@ The database needs to acquire the X-lock, that is, it needs to upgrade the S-loc
     <item>
       <title>MySQL Transactions - writing data</title>
       <link>https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html</link>
-      <pubDate>Thu, 30 Jul 2020 08:37:32 +0000</pubDate>
-      
+      <pubDate>Thu, 30 Jul 2020 08:37:32 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/07/30/mysql-transactions---writing-data.html</guid>
       <description>&lt;p&gt;Using the framework for testing we created in earlier articles, let&amp;rsquo;s try to
 modify some data. We are writing a small program that increments a counter.
@@ -2053,8 +2058,7 @@ operation.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;SELECT ... FOR UPDATE&lt;/code&gt; is a read statement, but locks the rows it fetches
 as if it were a write statement. In doing that, it anticipates the
-&lt;code&gt;UPDATE&lt;/code&gt; operation that is to follow.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;code&gt;UPDATE&lt;/code&gt; operation that is to follow.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;What happens is that the &lt;code&gt;SELECT ... FOR UPDATE&lt;/code&gt; creates X-locks on &lt;em&gt;at
 least&lt;/em&gt; the rows it returns. An X-lock or exclusive lock is a lock that
 guarantees that only one thread (us) can access the row while the lock is
@@ -2117,8 +2121,8 @@ slower.&lt;/p&gt;
     <item>
       <title>MySQL Transactions - the logical side</title>
       <link>https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html</link>
-      <pubDate>Wed, 29 Jul 2020 20:40:09 +0000</pubDate>
-      
+      <pubDate>Wed, 29 Jul 2020 20:40:09 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/07/29/mysql-transactions-the-logical-view.html</guid>
       <description>&lt;p&gt;After having a look &lt;a href=&#34;https://blog.koehntopp.info/2020/07/27/mysql-transactions.html&#34;&gt;how MySQL handles transactions physically&lt;/a&gt;
 
@@ -2197,8 +2201,7 @@ been there - but still Session2 saw it.&lt;/p&gt;
 &lt;p&gt;At &lt;code&gt;TRANSACTION ISOLATION LEVEL READ UNCOMMITTED&lt;/code&gt; we are reading stuff
 directly from the tablespace file. This can contain data that is not yet
 committed, and due to &lt;code&gt;ROLLBACK&lt;/code&gt; never will be - mere phantasies.
-The Undo-Log is never consulted.&lt;/p&gt;
-&lt;/blockquote&gt;
+The Undo-Log is never consulted.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;transaction-isolation-level-read-committed&#34;&gt;
     &lt;a href=&#34;#transaction-isolation-level-read-committed&#34;&gt;
 	Transaction Isolation Level Read Committed
@@ -2223,8 +2226,7 @@ committed.&lt;/p&gt;
 the tablespace file, unless there is an ongoing transaction for a row. In
 that case, the reader will consult the Undo-Log one level deep and show us
 the previous, committed version of the data. We never get to see ephemeral
-data that can be rolled back.&lt;/p&gt;
-&lt;/blockquote&gt;
+data that can be rolled back.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Now, let&amp;rsquo;s commit that change, and check:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Session1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Session2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;transaction&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;isolation&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;level&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;read&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;committed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -2248,8 +2250,7 @@ in Session2:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;----+---------+
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;At &lt;code&gt;TRANSACTION ISOLATION LEVEL READ COMMITTED&lt;/code&gt;, if we read the same row
-twice, we can see it changing.&lt;/p&gt;
-&lt;/blockquote&gt;
+twice, we can see it changing.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;transaction-isolation-level-repeatable-read&#34;&gt;
     &lt;a href=&#34;#transaction-isolation-level-repeatable-read&#34;&gt;
 	Transaction Isolation Level Repeatable Read
@@ -2310,8 +2311,7 @@ been made after we started the transaction.&lt;/p&gt;
 the tablespace, unless it has been changed after we started our
 transaction. In that case, the reader will consult the Undo-Log multiple
 levels deep, in order to present us the newest version of the row that is
-older than our read-only transaction.&lt;/p&gt;
-&lt;/blockquote&gt;
+older than our read-only transaction.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;As soon as we drop our read-only transaction with commit (nothing changed,
 so nothing is actually committed) our world jumps forward in time to the
 present, skipping any intermediate steps.&lt;/p&gt;
@@ -2372,8 +2372,7 @@ Undo-Log space.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;At no point in time a read operation is ever stalled by a writer and
 forced to wait. There are no write-locks ever stalling a reader. These two
-operations are completely independent.&lt;/p&gt;
-&lt;/blockquote&gt;
+operations are completely independent.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;For writers, this is quite different, and for good reason.&lt;/p&gt;
 </description>
     </item>
@@ -2381,8 +2380,8 @@ operations are completely independent.&lt;/p&gt;
     <item>
       <title>MySQL Commit Size and Speed</title>
       <link>https://blog.koehntopp.info/2020/07/27/mysql-commit-size-and-speed.html</link>
-      <pubDate>Mon, 27 Jul 2020 21:03:09 +0000</pubDate>
-      
+      <pubDate>Mon, 27 Jul 2020 21:03:09 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/07/27/mysql-commit-size-and-speed.html</guid>
       <description>&lt;p&gt;When writing data to disk, for small transactions the cost of writing the
 commit out do disk dominates the execution time of the script. In order to
@@ -2430,122 +2429,122 @@ step sizes of &lt;code&gt;5..14&lt;/code&gt; (32 rows to 16384 rows).&lt;/p&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Script runtime as a function of commit batch size. x-Axis is logarithmic, y-axis is linear.&lt;/em&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Txn Sz&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Runtime&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Rows/s&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Runtime&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Rows/s&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;127&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;78&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;68.7&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;145&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;38.4&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;260&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;20.93&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;477&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;12.03&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;831&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7.04&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1420&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;71.01&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1409&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;6&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;4.38&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2283&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;46.40&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2156&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2.92&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;3412&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;30.13&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;3319&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;8&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2.24&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;4464&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;20.94&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;4776&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;9&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1.77&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;5649&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;17.51&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;5712&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;10&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1.58&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;6329&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;15.35&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;6515&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;11&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;14.16&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7063&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;12&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;13.63&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7337&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;13&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;13.59&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7359&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;14&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;13.26&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7542&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Txn Sz&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Runtime&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Rows/s&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Runtime&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Rows/s&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;0&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;127&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;78&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;68.7&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;145&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;38.4&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;260&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;3&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;20.93&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;477&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;12.03&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;831&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;5&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7.04&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1420&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;71.01&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1409&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;6&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;4.38&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2283&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;46.40&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2156&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2.92&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;3412&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;30.13&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;3319&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;8&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2.24&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;4464&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;20.94&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;4776&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;9&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1.77&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;5649&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;17.51&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;5712&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;10&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1.58&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;6329&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;15.35&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;6515&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;11&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;14.16&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7063&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;12&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;13.63&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7337&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;13&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;13.59&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7359&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;14&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;13.26&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;7542&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;em&gt;Raw data from the test runs.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;We observe:&lt;/em&gt; Going from single row commits to 16 row commits, we get a
@@ -2697,8 +2696,8 @@ rows/commit to 1024 rows/commit.&lt;/p&gt;
     <item>
       <title>MySQL Transactions - the physical side</title>
       <link>https://blog.koehntopp.info/2020/07/27/mysql-transactions.html</link>
-      <pubDate>Mon, 27 Jul 2020 11:15:58 +0000</pubDate>
-      
+      <pubDate>Mon, 27 Jul 2020 11:15:58 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/07/27/mysql-transactions.html</guid>
       <description>&lt;p&gt;So you talk to a database, doing transactions. What happens actually, behind the scenes? Let’s have a look.&lt;/p&gt;
 &lt;p&gt;There is a test table, and we write data into it inside a transaction:&lt;/p&gt;
@@ -2904,8 +2903,8 @@ In the past that was hideously slow, these days it is just slow.&lt;/p&gt;
     <item>
       <title>A blast from the past</title>
       <link>https://blog.koehntopp.info/2019/11/18/a-blast-from-the-past.html</link>
-      <pubDate>Mon, 18 Nov 2019 14:53:14 +0000</pubDate>
-      
+      <pubDate>Mon, 18 Nov 2019 14:53:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/11/18/a-blast-from-the-past.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;TL:DR:&lt;/strong&gt; If you have long running transactions, MySQL does not
 deal well with this, and it will slow down the box. That&amp;rsquo;s
@@ -3077,8 +3076,8 @@ and that was 2012. Certainly a blast from the past.&lt;/p&gt;
     <item>
       <title>MySQL 5.6.7-RC: GTID vs. MyISAM</title>
       <link>https://blog.koehntopp.info/2012/10/02/mysql-5-6-7-rc-gtid-vs-myisam.html</link>
-      <pubDate>Tue, 02 Oct 2012 15:51:03 +0000</pubDate>
-      
+      <pubDate>Tue, 02 Oct 2012 15:51:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/10/02/mysql-5-6-7-rc-gtid-vs-myisam.html</guid>
       <description>&lt;p&gt;So we tested the 5.6.7-RC. And ran into a strange problem:&lt;/p&gt;
 &lt;p&gt;Because of a test, a preexisting configuration with GTID enabled existed,
@@ -3093,8 +3092,7 @@ friends, and that is even
 such as MyISAM are not supported.  This is because updates to such tables
 mixed with updates to tables that use a transactional storage engine such
 as InnoDB can result in multiple GTIDs being assigned to the same
-transaction.&lt;/p&gt;
-&lt;/blockquote&gt;
+transaction.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Also, this is supposed to work with GRANT and REVOKE, but not with INSERT
 and DELETE.  Now guess what mysql-install-db and friends are using?&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;less&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;share&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql_system_tables_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -3118,8 +3116,8 @@ problem here.&lt;/p&gt;
     <item>
       <title>Zu Besuch bei Redis</title>
       <link>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</link>
-      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate>
-      
+      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</guid>
       <description>&lt;p&gt;Hier ist eine wichtige Zahl: Ein Coredump von einem MySQL auf einer Maschine mit knapp unter 200 GB Speicher dauert 15 Minuten.
 Auf SSD.
@@ -3233,8 +3231,8 @@ InnoDB ist ziemlich genau eine Lehrbuchimplementierung des Gray.&lt;/p&gt;
     <item>
       <title>Checkpoint Blues</title>
       <link>https://blog.koehntopp.info/2011/09/19/checkpoint-blues.html</link>
-      <pubDate>Mon, 19 Sep 2011 20:00:00 +0000</pubDate>
-      
+      <pubDate>Mon, 19 Sep 2011 20:00:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/09/19/checkpoint-blues.html</guid>
       <description>&lt;p&gt;Wer
 &lt;a href=&#34;https://blog.koehntopp.info/2008/01/30/die-innodb-storage-engine.html&#34;&gt;dies&lt;/a&gt;
@@ -3500,8 +3498,8 @@ leicht vergleichbar.&lt;/p&gt;
     <item>
       <title>MySQL Undo Log</title>
       <link>https://blog.koehntopp.info/2011/04/28/mysql-undo-log.html</link>
-      <pubDate>Thu, 28 Apr 2011 12:40:01 +0000</pubDate>
-      
+      <pubDate>Thu, 28 Apr 2011 12:40:01 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/28/mysql-undo-log.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/undo_log_stats.png&#34; alt=&#34;&#34;  /&gt;
@@ -3509,24 +3507,22 @@ leicht vergleichbar.&lt;/p&gt;
 
 &lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Kris, kannst Du bitte mal gucken?&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;Seit heute morgen, 10:00 Uhr, wächst das Undo-Log immer weiter an.&lt;/p&gt;
-&lt;p&gt;Immer wenn InnoDB Daten schreibt wird die alte Version einer Zeile aus der
-Tabelle in das Undo-Log verschoben, also physikalisch von der ibd-Datei der
-Tabelle in die ibdata1 im Datadir von MySQL. In der Tabelle wird in der
-veränderten Zeile ein Zeiger von der neuen Version auf die alte Version der
-Zeile im Undo-Log installiert, der Roll(back)-Pointer. Die alte Version im
-Undo-Log zeigt mit ihrem eigenen Roll-Pointer auf eine noch ältere Version
-derselben Zeile und so weiter - es entsteht für jede Zeile in der Datenbank
+&lt;p&gt;Seit heute Morgen, 10:00 Uhr, wächst das Undo-Log immer weiter an.&lt;/p&gt;
+&lt;p&gt;Immer wenn InnoDB Daten schreibt wird die alte Version einer Zeile aus der Tabelle in das Undo-Log verschoben,
+also physikalisch von der ibd-Datei der Tabelle in die ibdata1 im Datadir von MySQL.
+In der Tabelle wird in der veränderten Zeile ein Zeiger von der neuen Version auf die alte Version der Zeile
+im Undo-Log installiert, der Roll(back)-Pointer.
+Die alte Version im Undo-Log zeigt mit ihrem eigenen Roll-Pointer auf eine noch ältere Version derselben Zeile
+und so weiter–es entsteht für jede Zeile in der Datenbank
 eine lineare Liste von Versionen in die Vergangenheit einer Row.&lt;/p&gt;
-&lt;p&gt;Der InnoDB Purge Thread hat die Aufgabe, das Undo-Log zu verkürzen. Wenn er
-das nicht tut, dann sieht das so aus wie oben im Graphen gezeigt. Dafür kann
-es zwei Gründe geben: Purge Lag - also mehr Writes als der Purge Thread
-wegschaffen kann. Oder lang laufende Transaktionen. Denn der Purge Thread
-kann nur dann eine Zeile aus dem Undo-Log streichen, wenn es keine aktive
-Transaktion mehr im ganzen System gibt, die älter ist als die zu streichende
-Zeile.&lt;/p&gt;
-&lt;p&gt;Das ist die weitaus wahrscheinlichere Fehlerquelle. Wie also finden wir den
-Schuldigen?&lt;/p&gt;
+&lt;p&gt;Der InnoDB Purge Thread hat die Aufgabe, das Undo-Log zu verkürzen.
+Wenn er das nicht tut, dann sieht das so aus wie oben im Graphen gezeigt.
+Dafür kann es zwei Gründe geben: Purge Lag–also mehr Writes als der Purge Thread wegschaffen kann.
+Oder lang laufende Transaktionen.
+Denn der Purge Thread kann nur dann eine Zeile aus dem Undo-Log streichen,
+wenn es keine aktive Transaktion mehr im ganzen System gibt, die älter ist als die zu streichende Zeile.&lt;/p&gt;
+&lt;p&gt;Das ist die weitaus wahrscheinlichere Fehlerquelle.
+Wie also finden wir den Schuldigen?&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pager&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grep&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ACTIVE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;engine&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;innodb&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;G&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -3544,22 +3540,20 @@ Schuldigen?&lt;/p&gt;
 Mehr Informationen bekommen wir aus der Prozeßliste:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;mysql&amp;gt; pager grep cron
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;mysql&amp;gt; show processlist;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;…
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;| 146473882 | cron_bp       | mc02cronapp-01:50154 | bp   | Sleep       |   16434 |
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ein Login auf der mc02cronapp-01 und ein &amp;ldquo;lsof -i -n -P | grep 50154&amp;rdquo; zeigt
-schnell: Mitnichten ein Cronjob. Ein User hat einen MySQL
-Kommandozeilenclient gestartet und eine manuelle Verbindung und Transaktion
-offen gelassen. Ein &amp;ldquo;KILL 146473882&amp;rdquo; auf den Thread in MySQL trennt die
-Verbindung und der Purge Thread kann seine Arbeit fortsetzen, ein Sysadmin
-mit einem Cluebat kann zu dem User dispatched werden.&lt;/p&gt;
-&lt;p&gt;Das Undo-Log ist Teil der ibdata1-Datei. Diese startet mit einer Größe von
-10M und wächst per Default in Schritten von 8M im autoextend-Modus. Lang
-laufende Transaktionen, die den Purge Thread anhalten, führen zu einem
-Wachstum der ibdata1. InnoDB schrumpft Dateien niemals, und es gibt auch
-keine Methode, das zu tun - zwar wird der Platz &lt;em&gt;in&lt;/em&gt; der Datei
-freigegeben und später wieder genutzt, aber für das Betriebssystem ist der
-Platz verloren.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;…
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ein Login auf der mc02cronapp-01 und ein &amp;ldquo;lsof -i -n -P | grep 50154&amp;rdquo; zeigt schnell:
+Mitnichten ein Cronjob.
+Ein User hat einen MySQL Kommandozeilenclient gestartet und eine manuelle Verbindung und Transaktion offen gelassen.
+Ein &lt;code&gt;KILL 146473882&lt;/code&gt; auf den Thread in MySQL trennt die Verbindung und der Purge Thread kann seine Arbeit fortsetzen,
+ein Sysadmin mit einem Cluebat kann zu dem User dispatched werden.&lt;/p&gt;
+&lt;p&gt;Das Undo-Log ist Teil der &lt;code&gt;ibdata1&lt;/code&gt;-Datei.
+Diese startet mit einer Größe von 10M und wächst per Default in Schritten von 8M im autoextend-Modus.
+Lang laufende Transaktionen, die den Purge Thread anhalten, führen zu einem Wachstum der &lt;code&gt;ibdata1&lt;/code&gt;.
+InnoDB schrumpft Dateien niemals, und es gibt auch keine Methode, das zu tun –
+zwar wird der Platz &lt;em&gt;in&lt;/em&gt; der Datei freigegeben und später wieder genutzt,
+aber für das Betriebssystem ist der Platz verloren.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;[root@mc01bpmdb-01 ~]#&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /mysql/bp/data
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;[root@mc01bpmdb-01 data]#&lt;/span&gt; ls -lh ibdata*
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;-rw-rw---- 1 mysql mysql 1.3G Apr 28 14:50 ibdata1
@@ -3569,8 +3563,8 @@ Platz verloren.&lt;/p&gt;
     <item>
       <title>Covering indexes und MVCC</title>
       <link>https://blog.koehntopp.info/2010/09/09/covering-indexes-und-mvcc.html</link>
-      <pubDate>Thu, 09 Sep 2010 09:36:00 +0000</pubDate>
-      
+      <pubDate>Thu, 09 Sep 2010 09:36:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/09/09/covering-indexes-und-mvcc.html</guid>
       <description>&lt;p&gt;Für viele MySQL-Anwendungen sind
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Database_index#Covering_index&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Covering Indexes&lt;/a&gt;
@@ -3667,8 +3661,7 @@ connections still have an old consistent read view on the previous state
 of things.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I understand that Postgres does not have covering indexes because of such
-index problems wrt to transactions. How does InnoDB work around this?&lt;/p&gt;
-&lt;/blockquote&gt;
+index problems wrt to transactions. How does InnoDB work around this?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Axel Schwenke von MySQL Support hat diese Frage beantwortet, und dabei Hilfe
 von Marko Mäkelä vom InnoDB Team bekommen:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -3682,8 +3675,7 @@ page. If this is newer than the required read snapshot, then InnoDB dives
 to the clustered index for each hit from that index page to check the row
 version and will also follow to UNDO if required.&lt;/p&gt;
 &lt;p&gt;That means covering index reads might degrade to full row reads on InnoDB,
-depending on write activity and isolation level.&lt;/p&gt;
-&lt;/blockquote&gt;
+depending on write activity and isolation level.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In Deutsch: Ein Index, der nicht der Primärschlüssel ist (und das ist bei
 InnoDB und Covering Indexes immer der Fall) hat Einträge für die neuste
 Version einer Zeile. Falls sich Felder einer Zeile verändern, die
@@ -3712,4 +3704,3 @@ einkaufen!&lt;/p&gt;
     
   </channel>
 </rss>
-

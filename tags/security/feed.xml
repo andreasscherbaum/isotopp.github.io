@@ -6,12 +6,247 @@
     <description>Recent content in Security on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/security/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/security/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crowdstroke</title>
+      <link>https://blog.koehntopp.info/2024/07/22/crowdstroke.html</link>
+      <pubDate>Mon, 22 Jul 2024 04:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/07/22/crowdstroke.html</guid>
+      <description>&lt;p&gt;This is the Monday after the Friday
+when Crowdstrike took out a good 1% of all Windows machines worldwide with a botched update.&lt;/p&gt;
+&lt;h1 id=&#34;some-takes&#34;&gt;
+    &lt;a href=&#34;#some-takes&#34;&gt;
+	Some Takes
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2024/07/crowdstroke-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/p&gt;
+&lt;h2 id=&#34;crowdstrike&#34;&gt;
+    &lt;a href=&#34;#crowdstrike&#34;&gt;
+	Crowdstrike
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The company did release a statement with
+&amp;ldquo;&lt;a href=&#34;https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Technical Details&lt;/a&gt;
+
+&amp;rdquo;.
+This is a big nothingburger.
+They are confirming what we already knew.
+Nothing is said about the server side, root causes and the chain of process failures that led to this incident.&lt;/p&gt;
+&lt;h2 id=&#34;martin-seeger&#34;&gt;
+    &lt;a href=&#34;#martin-seeger&#34;&gt;
+	Martin Seeger
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Martin Seeger compares this to the XZ Incident in Open Source in
+&lt;a href=&#34;https://infosec.exchange/@masek/112817758224618946&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;a post&lt;/a&gt;
+
+:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We are now at t+26h.
+Please compare
+how much we knew about the xz-attack after less than a day with what
+we know about the chain of events of giant outage yesterday.&lt;/p&gt;
+&lt;p&gt;If something similar had been caused by an OSS component,
+we would see congress discussing a ban on open software in critical infrastructure already.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;kevin-beaumont&#34;&gt;
+    &lt;a href=&#34;#kevin-beaumont&#34;&gt;
+	Kevin Beaumont
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Kevin Beaumont gives the kill count in
+&lt;a href=&#34;https://cyberplace.social/@GossiTheDog/112819549722486621&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;another post&lt;/a&gt;
+
+:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft estimate almost 9 million Windows devices are impacted by the CrowdStrike incident
+(likely from crash telemetry).
+&lt;a href=&#34;https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;link to microsoft&lt;/a&gt;
+
+&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;But the outage did not affect just any one percent of all Windows machines,
+but specifically, the one percent
+that due to use in commercial environments with special requirements had Crowdstrike installed.
+That is particularly funny, because the
+&lt;a href=&#34;https://www.crowdstrike.com/terms-and-conditions-de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ToS of Crowdstrike&lt;/a&gt;
+
+
+says &amp;ldquo;not liable, not highly available, not suitable for anything important, and by the way, you are on your own&amp;rdquo;.
+I am sure this will be contested in court,
+but in any case, the liability clauses of anything else in the market are very similar.&lt;/p&gt;
+&lt;h2 id=&#34;manuel-atug&#34;&gt;
+    &lt;a href=&#34;#manuel-atug&#34;&gt;
+	Manuel Atug
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/posts/manuel-honkhase-atug-820b27241_crowdstrike-kritis-activity-7220713390443241472-1EMl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Manual Atug posts on LinkedIn&lt;/a&gt;
+
+
+about this fact, and the comments section is largely in
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Five_stages_of_grief&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the denial stage of grief&lt;/a&gt;
+
+.
+Mostly people resign (&amp;ldquo;All EULA are like this.&amp;rdquo;),
+think product liability is never going to be a thing,
+and even ask how they are supposed to test this, or implement staggered rollouts for AV and endpoint security updates.&lt;/p&gt;
+&lt;p&gt;That is not how KRITIS works.
+If an outage on a desktop can affect flight operations or supermarket cash registers,
+the desktops are in scope.
+And the Crowdstrike outage, on the desktop, had an impact on travel, sales and other systems.
+That means it&amp;rsquo;s in scope, and the testing, rollout and EULA are not adequate.&lt;/p&gt;
+&lt;h2 id=&#34;lennart-poettering&#34;&gt;
+    &lt;a href=&#34;#lennart-poettering&#34;&gt;
+	Lennart Poettering
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Windows itself is badly prepared for such an outage.
+Lennart Poettering (somewhat smugly)
+&lt;a href=&#34;https://mastodon.social/@pid_eins/112818864687187963&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;in a post&lt;/a&gt;
+
+
+points out that&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So, if you ask me what my takeaway from the Crowdstrike issue is, I&amp;rsquo;d say:
+boot counting/boot assessment/automatic fallback should really be a MUST for today&amp;rsquo;s systems.
+Before* you invoke your first kernel you need
+have tracking of boot attempts and a logic for falling back to older versions automatically.
+It&amp;rsquo;s a major shortcoming that this is not default behaviour of today&amp;rsquo;s distros, in particular commercial ones.&lt;/p&gt;
+&lt;p&gt;Of course systemd has supported this for a long time:
+&lt;a href=&#34;https://systemd.io/AUTOMATIC_BOOT_ASSESSMENT/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Automatic Boot Assessment&lt;/a&gt;
+
+&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Windows does not do that, but Linux could.
+If commercial Linux distros were to use this feature.&lt;/p&gt;
+&lt;p&gt;MacOS also would not have been affected.
+Apple prohibits security software implemented as device drivers,
+because they &lt;a href=&#34;https://blog.koehntopp.info/2018/06/18/websense-dlp-gives-instant-root.html&#34;&gt;tend to be flawed&lt;/a&gt;
+
+.
+Instead, Apple provides a framework, System Extensions,
+in which a non-privileged process can run a security scanning process safely and in a way
+where a crash does not take down the system.
+Microsoft claims they can&amp;rsquo;t provide this
+because due to contracts with the EU they are bound to give security vendors the same API as they are using themselves.
+That is, of course, bullshit.
+Defender could use such an API, and then everybody else would have to, as well, because that &lt;em&gt;is&lt;/em&gt; the API.&lt;/p&gt;
+&lt;h2 id=&#34;stefan-eissing&#34;&gt;
+    &lt;a href=&#34;#stefan-eissing&#34;&gt;
+	Stefan Eissing
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Stefan Eissing describes what the &lt;a href=&#34;&#34;&gt;mod_md&lt;/a&gt;
+
+ certificate renewal process does.&lt;/p&gt;
+&lt;p&gt;Apache mod_md is a module for the Apache web server that implements the ACME protocol as spoken by Let&amp;rsquo;s Encrypt.
+Here is how he &lt;a href=&#34;https://chaos.social/@icing/112829370177074835&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;describes the update&lt;/a&gt;
+
+:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How Apache ACME (mod_md) gets you a new certificate:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;all ACME communication are done as unprivileged user&lt;/li&gt;
+&lt;li&gt;all certificates from the CA are parsed as unprivileged user before storing them&lt;/li&gt;
+&lt;li&gt;activation, as privileged user, parses again before replacing production as a last fail safe.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since 2017.&lt;/p&gt;
+&lt;p&gt;Typical over-engineering. What are the chances a CA sends you a borked file?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;This is what Crowdstrike did not do, in the client.&lt;/p&gt;
+&lt;p&gt;So, what can we learn, not having a proper Root Cause Analysis from the vendor, four days later?&lt;/p&gt;
+&lt;h1 id=&#34;learnings&#34;&gt;
+    &lt;a href=&#34;#learnings&#34;&gt;
+	Learnings
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;windows&#34;&gt;
+    &lt;a href=&#34;#windows&#34;&gt;
+	Windows
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows does not offer the equivalent of the macOS System Extension API,
+in which an iterator for files is provided by the OS
+and all security software is running with System Extension Capability,
+but as an otherwise unprivileged user.&lt;/li&gt;
+&lt;li&gt;Windows does not offer the equivalent of the Linux eBPF framework,
+which allows vendors to implement probes in a safer, less intrusive and more resilient way than using raw C.&lt;/li&gt;
+&lt;li&gt;Windows does not protect against recoverable device driver crashes such as Linux (Kernel Oops vs. Kernel Crash).&lt;/li&gt;
+&lt;li&gt;Windows does not do automatic Boot Assessment and Rollback,
+and manual rollback is complicated with disk encryption deployed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;crowdstrike-1&#34;&gt;
+    &lt;a href=&#34;#crowdstrike-1&#34;&gt;
+	Crowdstrike
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Crowdstrike implements a kernel process or driver,
+which parses config files in a privileged kernel context which can lead to crash on boot
+(which is remediated by deleting a config file)
+&lt;ul&gt;
+&lt;li&gt;This is a bad architecture from the 1990ies.&lt;/li&gt;
+&lt;li&gt;Crowdstrike could implement a &amp;ldquo;System Extension&amp;rdquo; like static driver themselves,
+and run the analysis in an unprivileged user account.
+They do not have to wait for Microsoft for such an API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Crowdstrike seems to use C or C++ instead of a memory safe language such as Rust.
+&lt;ul&gt;
+&lt;li&gt;Crashing a Rust-written driver in the way demonstrated would be much harder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;There is no public documentation on the functioning, configuration or the data processed by Crowdstrike in their cloud.
+It is weird that this can be even done in the EU, being GDPR-compliant and all.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;enterprises&#34;&gt;
+    &lt;a href=&#34;#enterprises&#34;&gt;
+	Enterprises
+    &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enterprises roll out such updates in an uncontrolled way.
+No local testing, no staggered rollouts.
+Complete absence of a proper Change Management process.&lt;/li&gt;
+&lt;li&gt;The fact
+that large Enterprises operating KRITIS have fired thousands of employees within the last 12 months also contributed,
+for example, by the inability to implement proper testing and staggered rollout.
+Non-functional decisions have functional consequences.
+Enterprises have lost critical institutional knowledge and functional execution capabilities.&lt;/li&gt;
+&lt;li&gt;Enterprises use such software in the critical path of KRITIS systems.
+While not directly in regulated OT, the outage did affect the proper functioning of KRITIS systems,
+and is therefore in scope.
+&lt;ul&gt;
+&lt;li&gt;This also suggests &lt;a href=&#34;https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html&#34;&gt;inadequate BCM testing&lt;/a&gt;
+
+.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In summary,
+we are observing a multilateral process breakdown leading to a KRITIS outage,
+indicating that we do have compliance driven architecture instead of an actual security process.&lt;/p&gt;
+&lt;p&gt;See also: &lt;a href=&#34;https://blog.koehntopp.info/2024/02/10/snake-oil.html&#34;&gt;Snake Oil&lt;/a&gt;
+
+,
+especially the guinea pig at the end.
+Some things can only be made bearable with cute guinea pig photos.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Snake Oil</title>
       <link>https://blog.koehntopp.info/2024/02/10/snake-oil.html</link>
-      <pubDate>Sat, 10 Feb 2024 01:02:03 +0000</pubDate>
-      
+      <pubDate>Sat, 10 Feb 2024 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2024/02/10/snake-oil.html</guid>
       <description>&lt;p&gt;Dieser Text ist auch in
 &lt;a href=&#34;https://blog.koehntopp.info/2024/02/09/schlangenoel.html&#34;&gt;deutscher Sprache&lt;/a&gt;
@@ -72,8 +307,7 @@ but most cases should be flagged by the scanner as a code smell.&lt;/p&gt;
 rather than an edit, this resulted in two new CVEs being created, duplicates of the original CVE-2023-34992,
 FortiNet told BleepingComputer.&lt;/p&gt;
 &lt;p&gt;However, it turns out that CVE-2024-23108 and CVE-2024-23109 are actually patch bypasses for the CVE-2023-34992
-flaw discovered by Horizon3 vulnerability expert Zach Hanley.&lt;/p&gt;
-&lt;/blockquote&gt;
+flaw discovered by Horizon3 vulnerability expert Zach Hanley.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;So, this was a patch for a patch because the mitigation didn&amp;rsquo;t work,
 and Fortinet got confused with the CVE numbers due to the sheer volume of them currently open.&lt;/p&gt;
 &lt;p&gt;Meanwhile, the US CISA (Cybersecurity and Infrastructure Security Agency)
@@ -116,8 +350,7 @@ could initially be interpreted as an update, re-installation, and reconfiguratio
 
 ) weakness in the gateways&amp;rsquo; SAML component
 that lets remote attackers gain access to restricted resources on unpatched appliances in low-complexity
-attacks without requiring user interaction or authentication.&lt;/p&gt;
-&lt;/blockquote&gt;
+attacks without requiring user interaction or authentication.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;SAML, Security Assertion Markup Language, is an XML notation for access rights in Single Sign-On systems.
 Because it&amp;rsquo;s an XML notation, it can have these &lt;code&gt;&amp;amp;blablub;&lt;/code&gt; things – Entities – that are replaced by other text.
 With External Entities, the replacement text is not locally fixed but is downloaded from the net.&lt;/p&gt;
@@ -288,8 +521,8 @@ Something to think about.&lt;/p&gt;
     <item>
       <title>Schlangenöl</title>
       <link>https://blog.koehntopp.info/2024/02/09/schlangenoel.html</link>
-      <pubDate>Fri, 09 Feb 2024 01:02:03 +0000</pubDate>
-      
+      <pubDate>Fri, 09 Feb 2024 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2024/02/09/schlangenoel.html</guid>
       <description>&lt;p&gt;This text also has a version in
 &lt;a href=&#34;https://blog.koehntopp.info/2024/02/10/snake-oil.html&#34;&gt;english language&lt;/a&gt;
@@ -350,8 +583,7 @@ aber meistens und alle Fälle, wo das nicht passiert, sollten von dem Ding eigen
 rather than an edit, this resulted in two new CVEs being created, duplicates of the original CVE-2023-34992,
 FortiNet told BleepingComputer.&lt;/p&gt;
 &lt;p&gt;However, it turns out that CVE-2024-23108 and CVE-2024-23109 are actually patch bypasses for the CVE-2023-34992
-flaw discovered by Horizon3 vulnerability expert Zach Hanley.&lt;/p&gt;
-&lt;/blockquote&gt;
+flaw discovered by Horizon3 vulnerability expert Zach Hanley.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das war also ein Patch für einen Patch, weil die Mitigation nicht funktioniert hat und
 Fortinet kam mit den CVE-Nummern durcheinander, weil gerade so viele davon offen sind.&lt;/p&gt;
 &lt;p&gt;Unterdessen fordert die US CISA (Cybersecurity and Infrastructure Security Agency) von allen US-Institutionen das
@@ -396,8 +628,7 @@ Einige Tage nach der von CISA vorgeschriebenen Patchorgie
 
 ) weakness in the gateways&amp;rsquo; SAML component
 that lets remote attackers gain access to restricted resources on unpatched appliances in low-complexity
-attacks without requiring user interaction or authentication.&lt;/p&gt;
-&lt;/blockquote&gt;
+attacks without requiring user interaction or authentication.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;SAML, Security Assertion Markup Language, ist eine XML-Notation für Zugriffsrechte in Single-Sign-On Systemen.
 Weil es eine XML-Notation ist, kann es dort diese &lt;code&gt;&amp;amp;blablub;&lt;/code&gt;-Dinger geben – Entities – die durch anderen Text ersetzt werden.
 Bei External Entities liegt der Ersetzungstext nicht lokal fest, sondern wird aus dem Netz nachgeladen.&lt;/p&gt;
@@ -574,8 +805,8 @@ Denkt mal darüber nach.&lt;/p&gt;
     <item>
       <title>sshpass</title>
       <link>https://blog.koehntopp.info/2023/09/15/sshpass.html</link>
-      <pubDate>Fri, 15 Sep 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Fri, 15 Sep 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/09/15/sshpass.html</guid>
       <description>&lt;p&gt;Heute lernte ich, daß das Utility &lt;code&gt;sshpass&lt;/code&gt; existiert.
 Ich habe das beim Lesen eines &lt;code&gt;.gitlab.ci.yml&lt;/code&gt; Files gelernt.
@@ -593,19 +824,21 @@ Und ihr wundert Euch, wieso Sysadmins alle Schwarz tragen und an Whisky interess
 erklärt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The sshpass utility is designed to run SSH using the keyboard-interactive password authentication mode,
-but in a non-interactive way.&lt;/p&gt;
-&lt;/blockquote&gt;
+but in a non-interactive way.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Warum der Artikel jetzt nach und vor diesem Satz dann erklärt,
 wie man das &lt;em&gt;benutzt&lt;/em&gt;, statt zu zeigen, warum man das &lt;em&gt;nie braucht&lt;/em&gt; und &lt;em&gt;wie man es ersetzt&lt;/em&gt; ist unklar.&lt;/p&gt;
-&lt;p&gt;Aber Homebrew ist hilfreich:&lt;/p&gt;
+&lt;p&gt;Aber Homebrew &lt;del&gt;ist&lt;/del&gt; war hilfreich:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; brew search sshpass
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;==&amp;gt; Formulae
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;sshs
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;If you meant &amp;#34;sshpass&amp;#34; specifically:
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;We won&amp;#39;t add sshpass because it makes it too easy for novice SSH users to ruin SSH&amp;#39;s security.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das fasst es in etwa zusammen.
-Okay, einmal das ganze gitlab, alle &lt;code&gt;.gitlab-ci.yml&lt;/code&gt;, alle Branches, nach &lt;code&gt;sshpass -p&lt;/code&gt; suchen.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das fasst es in etwa zusammen, was Homebrew nicht daran hinderte, sshpass wieder aus der Blacklist zu entfernen:
+&lt;a href=&#34;https://github.com/Homebrew/brew/pull/15979&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/Homebrew/brew/pull/15979&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Okay, einmal das ganze gitlab, alle &lt;code&gt;.gitlab-ci.yml&lt;/code&gt;, alle Branches, nach &lt;code&gt;sshpass -p&lt;/code&gt; suchen.&lt;/p&gt;
 &lt;h2 id=&#34;es-wird-schlimmer&#34;&gt;
     &lt;a href=&#34;#es-wird-schlimmer&#34;&gt;
 	Es wird schlimmer
@@ -629,8 +862,7 @@ rm sshpass.rb
     &lt;/a&gt;
 &lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Aber ich brauche das doch, weil mein BMC keine Keys &amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Aber ich brauche das doch, weil mein BMC keine Keys &amp;hellip;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Github: &lt;a href=&#34;https://github.com/seveas/python-hpilo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hpilo&lt;/a&gt;
 
@@ -651,8 +883,8 @@ Bei Bare Metal kann der Installserver die Bootstrap-Pubkeys als Teil der Customi
     <item>
       <title>Getting rid of phishing training mails</title>
       <link>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</link>
-      <pubDate>Tue, 23 May 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Tue, 23 May 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/05/23/getting-rid-of-phishing-training-mails.html</guid>
       <description>&lt;p&gt;Just like your work computer is being infested with corporate malware as to prevent it from being taken over from other people&amp;rsquo;s malware,
 your account is also being spammed with corporate malware spam as to prevent it from being taken over by other malware spam.
@@ -791,8 +1023,8 @@ Our mailer will automatically ignore subsequent runs of the phishing training, f
     <item>
       <title>Rotating Accounts or Passwords?</title>
       <link>https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html</link>
-      <pubDate>Mon, 20 Feb 2023 12:13:14 +0000</pubDate>
-      
+      <pubDate>Mon, 20 Feb 2023 12:13:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/20/rotating-accounts-or-passwords.html</guid>
       <description>&lt;p&gt;Some applications allow you to have multiple passwords.
 For example, in &lt;a href=&#34;https://dev.mysql.com/doc/refman/8.0/en/password-management.html#dual-passwords&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MySQL, since 8.0.14 you can dual passwords for an account&lt;/a&gt;
@@ -874,8 +1106,7 @@ Lack of multiple password support is stopping no-one from implementing rotation,
 Even in MySQL and Redis it was not immediately obvious to me how password rotation can be validated to function correctly.
 That is, I have been unable to find a way to isolate instances of logins using the &amp;ldquo;non-primary&amp;rdquo; (or old) password, and somehow make sure that all logins in the last hour or so have been using the newly updated password.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;As an engineer running the application, I would want to make sure that the old password is unused before I ask the service to deprovision it.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;As an engineer running the application, I would want to make sure that the old password is unused before I ask the service to deprovision it.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;But observability on this seems to be completely non-existent.
 Which is weird, because any security engineer will tell you that a control is only valid, if you can verify it is working as intended.&lt;/p&gt;
 &lt;p&gt;With account rotation, usage of old accounts is immediately visible.
@@ -932,8 +1163,8 @@ In neither case you will be done by simply turning on a feature.&lt;/li&gt;
     <item>
       <title>This is not a Drill, this is just Tuesday</title>
       <link>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</link>
-      <pubDate>Sat, 18 Feb 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Sat, 18 Feb 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/18/this-is-not-a-drill.html</guid>
       <description>&lt;h1 id=&#34;master-of-disaster&#34;&gt;
     &lt;a href=&#34;#master-of-disaster&#34;&gt;
@@ -1055,8 +1286,8 @@ This is just Tuesday.&lt;/p&gt;
     <item>
       <title>Service Directories, and what they are good for</title>
       <link>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</link>
-      <pubDate>Mon, 06 Feb 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Mon, 06 Feb 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/02/06/service-directories-and-what-they-are-good-for.html</guid>
       <description>&lt;p&gt;At a previous job we had a home-grown application &amp;ldquo;Service Directory&amp;rdquo;, which allowed a team to declare a service or deployed application.
 The record for a service not only declared the application with pointers to the source code repository, artifacts and documentation.&lt;/p&gt;
@@ -1108,8 +1339,8 @@ But this would at least bring the nag-level down to manageable sizes.&lt;/p&gt;
     <item>
       <title>I don&#39;t hate Let&#39;s Encrypt anymore</title>
       <link>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</link>
-      <pubDate>Wed, 04 Jan 2023 06:07:08 +0000</pubDate>
-      
+      <pubDate>Wed, 04 Jan 2023 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/01/04/i-dont-hate-letsencrypt-anymore.html</guid>
       <description>&lt;p&gt;So, Rachel is in a bad mood:
 &lt;a href=&#34;https://rachelbythebay.com/w/2023/01/03/ssl/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why I still have an old-school cert on my https site&lt;/a&gt;
@@ -1245,8 +1476,8 @@ You can use &lt;code&gt;mod_md&lt;/code&gt; to get certificates for your Tailsca
     <item>
       <title>Was mein Kind in der Schule so macht</title>
       <link>https://blog.koehntopp.info/2022/12/30/was-mein-kind-in-der-schule-so-macht.html</link>
-      <pubDate>Fri, 30 Dec 2022 01:02:03 +0000</pubDate>
-      
+      <pubDate>Fri, 30 Dec 2022 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/30/was-mein-kind-in-der-schule-so-macht.html</guid>
       <description>&lt;p&gt;Die Niederlande sind ja ein Land, das mit WhatsApp funktioniert.
 &amp;ldquo;Ik stuur je snel een appie&amp;rdquo; und wenn WhatsApp mal down ist, wird das Land vorübergehend geschlossen.&lt;/p&gt;
@@ -1405,8 +1636,8 @@ Dort wären viele &amp;ldquo;leichte&amp;rdquo; Gewinne und einfache Verbesserun
     <item>
       <title>Chromebooks in der Schule</title>
       <link>https://blog.koehntopp.info/2022/12/29/chromebooks-in-der-schule.html</link>
-      <pubDate>Thu, 29 Dec 2022 01:02:03 +0000</pubDate>
-      
+      <pubDate>Thu, 29 Dec 2022 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/29/chromebooks-in-der-schule.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;https://blog.koehntopp.info/2020/01/28/mein-sohn-sitzt-vor-dem-computer.html&#34;&gt;Mein Sohn sitzt vor dem Computer&lt;/a&gt;
@@ -1572,8 +1803,8 @@ Und dabei die Erkenntnisse und Entwicklungen der letzten zehn Jahre auf dem Gebi
     <item>
       <title>ChatGPT and Limits</title>
       <link>https://blog.koehntopp.info/2022/12/11/chatgpt-and-limits.html</link>
-      <pubDate>Sun, 11 Dec 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Sun, 11 Dec 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/11/chatgpt-and-limits.html</guid>
       <description>&lt;p&gt;Like everybody else, I have been playing with ChatGPT from &lt;a href=&#34;https://openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenAI&lt;/a&gt;
 
@@ -1596,16 +1827,14 @@ class for me.&lt;/p&gt;
 &lt;p&gt;I did so interactively.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Write an empty Python class named Labyrinth&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Write an empty Python class named Labyrinth&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Labyrinth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Add code to this class to represent a grid as a list of lists of integers, and store the width and the height of the grid in two appropriately name variables.
-Write a constructor that accepts the width and height as keyword variables defaulting to 10.&lt;/p&gt;
-&lt;/blockquote&gt;
+Write a constructor that accepts the width and height as keyword variables defaulting to 10.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Labyrinth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -1614,8 +1843,7 @@ Write a constructor that accepts the width and height as keyword variables defau
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Show the code with type markup that could be used by mypy.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Show the code with type markup that could be used by mypy.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -1626,8 +1854,7 @@ Write a constructor that accepts the width and height as keyword variables defau
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Add a method &lt;code&gt;__repr__&lt;/code&gt; to the class returns a representation of the grid for debugging.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Add a method &lt;code&gt;__repr__&lt;/code&gt; to the class returns a representation of the grid for debugging.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -1644,8 +1871,7 @@ Write a constructor that accepts the width and height as keyword variables defau
 &lt;p&gt;Given a type&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Pos&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NewType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Pos&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tuple&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;add a &lt;code&gt;__getitem__&lt;/code&gt; and &lt;code&gt;__setitem__&lt;/code&gt; method to the class.
-The methods should allow us to use an instance of &lt;code&gt;Labyrinth&lt;/code&gt; indexed by a &lt;code&gt;Pos&lt;/code&gt;, and that should end up reading or writing the grid element addressed by the &lt;code&gt;Pos&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+The methods should allow us to use an instance of &lt;code&gt;Labyrinth&lt;/code&gt; indexed by a &lt;code&gt;Pos&lt;/code&gt;, and that should end up reading or writing the grid element addressed by the &lt;code&gt;Pos&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tuple&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;types&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NewType&lt;/span&gt;
@@ -1671,8 +1897,7 @@ The methods should allow us to use an instance of &lt;code&gt;Labyrinth&lt;/code
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Add a predicate &lt;code&gt;position_valid&lt;/code&gt; to the class that takes a &lt;code&gt;Pos&lt;/code&gt; as a parameter.
-The predicate is &lt;code&gt;True&lt;/code&gt; if the &lt;code&gt;Pos&lt;/code&gt; is valid (each coordinate is positive, and smaller than height or width respectively).&lt;/p&gt;
-&lt;/blockquote&gt;
+The predicate is &lt;code&gt;True&lt;/code&gt; if the &lt;code&gt;Pos&lt;/code&gt; is valid (each coordinate is positive, and smaller than height or width respectively).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tuple&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;types&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NewType&lt;/span&gt;
@@ -1701,8 +1926,7 @@ The predicate is &lt;code&gt;True&lt;/code&gt; if the &lt;code&gt;Pos&lt;/code&g
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cell&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;row&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Make sure that all methods only accept valid &lt;code&gt;Pos&lt;/code&gt; values where appropriate.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Make sure that all methods only accept valid &lt;code&gt;Pos&lt;/code&gt; values where appropriate.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tuple&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;types&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NewType&lt;/span&gt;
@@ -1758,8 +1982,7 @@ Passages in the maze are represented by bit flags (i.e., binary numbers): N=1, E
 When a particular bit is set, it indicates that there is a passage from the current cell into the direction indicated by that bit.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;Labyrinth&lt;/code&gt; class provides several methods for working with the maze, such as &lt;code&gt;carve()&lt;/code&gt; for carving out passages in the maze, &lt;code&gt;position_valid()&lt;/code&gt; for checking if a given position is valid within the bounds of the maze, &lt;code&gt;direction_valid()&lt;/code&gt; for checking if a given direction is valid, and &lt;code&gt;random_directions()&lt;/code&gt; for generating a list of random directions.&lt;/p&gt;
 &lt;p&gt;Additionally, the &lt;code&gt;Labyrinth&lt;/code&gt; class uses the &lt;code&gt;typing&lt;/code&gt; module to specify the types of its attributes and parameters, which can make the code easier to read and understand.
-For example, the &lt;code&gt;width&lt;/code&gt; attribute is defined as having type &lt;code&gt;int&lt;/code&gt;, and the &lt;code&gt;carve()&lt;/code&gt; method has a parameter named show with type &lt;code&gt;Any&lt;/code&gt;, indicating that it can accept any type of value for that parameter.&lt;/p&gt;
-&lt;/blockquote&gt;
+For example, the &lt;code&gt;width&lt;/code&gt; attribute is defined as having type &lt;code&gt;int&lt;/code&gt;, and the &lt;code&gt;carve()&lt;/code&gt; method has a parameter named show with type &lt;code&gt;Any&lt;/code&gt;, indicating that it can accept any type of value for that parameter.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That is a fair analysis, and as good as it gets from glancing at the source of a single module.&lt;/p&gt;
 &lt;p&gt;Now, I am adding
 &lt;a href=&#34;https://github.com/isotopp/labyrinths/blob/master/src/backtracking.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;backtracking.py&lt;/a&gt;
@@ -1795,8 +2018,7 @@ to the mix, but sans comments, and ask it what happens.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The &lt;code&gt;Backtracking&lt;/code&gt; class defines a &lt;code&gt;carve()&lt;/code&gt; method that uses a backtracking algorithm to generate a maze in a given &lt;code&gt;Labyrinth&lt;/code&gt; object.
-The method takes a &lt;code&gt;lab&lt;/code&gt; parameter which is an instance of the &lt;code&gt;Labyrinth&lt;/code&gt; class, a &lt;code&gt;pos&lt;/code&gt; parameter which specifies the current position in the maze, and an optional &lt;code&gt;show&lt;/code&gt; parameter that can be used to display the maze as it is being generated.&lt;/p&gt;
-&lt;/blockquote&gt;
+The method takes a &lt;code&gt;lab&lt;/code&gt; parameter which is an instance of the &lt;code&gt;Labyrinth&lt;/code&gt; class, a &lt;code&gt;pos&lt;/code&gt; parameter which specifies the current position in the maze, and an optional &lt;code&gt;show&lt;/code&gt; parameter that can be used to display the maze as it is being generated.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And again, this is a correct analysis of the code, in the context of the larger &lt;code&gt;Labyrinth&lt;/code&gt; class above.&lt;/p&gt;
 &lt;h1 id=&#34;continuing-the-code-interview&#34;&gt;
     &lt;a href=&#34;#continuing-the-code-interview&#34;&gt;
@@ -1805,8 +2027,7 @@ The method takes a &lt;code&gt;lab&lt;/code&gt; parameter which is an instance o
 &lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Does Python have a recursion depth limit?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Does Python have a recursion depth limit?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Yes, Python has a default recursion depth limit.
@@ -1823,21 +2044,18 @@ For example, the following code sets the recursion depth limit to 2000:&lt;/p&gt
 &lt;p&gt;Let it apply this information to the example:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Kris:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Given this information, what is the longest path the &lt;code&gt;Backtracking&lt;/code&gt; class above can produce?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Given this information, what is the longest path the &lt;code&gt;Backtracking&lt;/code&gt; class above can produce?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ChatGPT:&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The length of the longest path that the &lt;code&gt;Backtracking&lt;/code&gt; class can produce is limited by the default recursion depth limit in Python.
 As mentioned previously, the default recursion depth limit is typically around 1000 calls, but it can vary depending on the specific implementation and platform.&lt;/p&gt;
 &lt;p&gt;In the case of the &lt;code&gt;Backtracking&lt;/code&gt; class, the &lt;code&gt;carve()&lt;/code&gt; method calls itself recursively to generate the maze.
-Therefore, the longest path that the &lt;code&gt;Backtracking&lt;/code&gt; class can produce is limited to the default recursion depth limit in Python.&lt;/p&gt;
-&lt;/blockquote&gt;
+Therefore, the longest path that the &lt;code&gt;Backtracking&lt;/code&gt; class can produce is limited to the default recursion depth limit in Python.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That is correct.
 The system correctly identified the fact the method calls itself, and how and why it does this.
 It then deduces that this is subject to the above limitation, and what the consequence is.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If the &lt;code&gt;carve()&lt;/code&gt; method is called with a starting position that is more than 1000 steps away from the end of the maze, it will exceed the recursion depth limit and raise a &lt;code&gt;RecursionError&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;If the &lt;code&gt;carve()&lt;/code&gt; method is called with a starting position that is more than 1000 steps away from the end of the maze, it will exceed the recursion depth limit and raise a &lt;code&gt;RecursionError&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That is arguably correct, and in a real coding interview would be an invitation to do some hairsplitting, but in general it is not wrong.&lt;/p&gt;
 &lt;h1 id=&#34;summary&#34;&gt;
     &lt;a href=&#34;#summary&#34;&gt;
@@ -1856,8 +2074,8 @@ On the constructive side, it is more complicated.&lt;/p&gt;
     <item>
       <title>2FA für Mastodon</title>
       <link>https://blog.koehntopp.info/2022/12/10/2fa-fuer-mastodon.html</link>
-      <pubDate>Sat, 10 Dec 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Sat, 10 Dec 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/10/2fa-fuer-mastodon.html</guid>
       <description>&lt;p&gt;Multi-Factor Authentication (Identifikation mit mehreren Faktoren) oder 2FA (Two-Factor-Authentication) sind ein Weg, einen Account vor der Übernahme durch Dritte zu schützen.&lt;/p&gt;
 &lt;p&gt;Statt sich mit Usernamen und Passwort anzumelden ist zusätzlich noch eine wechselnde Pseudozufallszahl notwendig.
@@ -2036,8 +2254,8 @@ Dies sichert das Login zusätzlich ab, und verhindert Weltuntergang bei Passwort
     <item>
       <title>Software Supply Chain Issues</title>
       <link>https://blog.koehntopp.info/2022/10/18/software-supply-chain-issues.html</link>
-      <pubDate>Tue, 18 Oct 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Tue, 18 Oct 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/10/18/software-supply-chain-issues.html</guid>
       <description>&lt;p&gt;The GitHub Security Lab has a long hard look at &amp;ldquo;Apache Commons Text&amp;rdquo; in March this year.
 That resulted in &lt;a href=&#34;https://securitylab.github.com/advisories/GHSL-2022-018_Apache_Commons_Text/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CVE-2022-42889&lt;/a&gt;
@@ -2177,8 +2395,8 @@ Some languages or projects seem to have problems even with creating an inventory
     <item>
       <title>Never check for an error condition you don&#39;t know how to handle</title>
       <link>https://blog.koehntopp.info/2022/01/10/never-check-for-an-error-condition.html</link>
-      <pubDate>Mon, 10 Jan 2022 07:11:35 +0000</pubDate>
-      
+      <pubDate>Mon, 10 Jan 2022 07:11:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/01/10/never-check-for-an-error-condition.html</guid>
       <description>&lt;p&gt;This is the english version of an &lt;a href=&#34;https://blog.koehntopp.info/2009/08/21/was-bedeutet-eigentlich-never-check-for-an-error-condition-you-don-t-know-how-to-handle.html&#34;&gt;older text in German&lt;/a&gt;
 
@@ -2338,8 +2556,8 @@ Why do we not have such a button in every browser already?&lt;/p&gt;
     <item>
       <title>Es funktioniert wie spezifiziert</title>
       <link>https://blog.koehntopp.info/2021/12/14/funktioniert-wie-spezifiziert.html</link>
-      <pubDate>Tue, 14 Dec 2021 20:32:00 +0100</pubDate>
-      
+      <pubDate>Tue, 14 Dec 2021 20:32:00 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/12/14/funktioniert-wie-spezifiziert.html</guid>
       <description>&lt;p&gt;Dieser Artikel basiert auf
 &lt;a href=&#34;https://twitter.com/isotopp/status/1470668771962638339&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;einem Twitter-Thread&lt;/a&gt;
@@ -2497,8 +2715,8 @@ Und auch den Code, der notwendig ist, um den eigenen Code zu betreiben.&lt;/p&gt
     <item>
       <title>Discord Nitro Spam and 2FA</title>
       <link>https://blog.koehntopp.info/2021/11/30/discord-nitro-spam-and-2fa.html</link>
-      <pubDate>Tue, 30 Nov 2021 08:29:00 +0100</pubDate>
-      
+      <pubDate>Tue, 30 Nov 2021 08:29:00 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/30/discord-nitro-spam-and-2fa.html</guid>
       <description>&lt;p&gt;This morning the Discord account of my son started to send &amp;ldquo;free nitro&amp;rdquo; spam to his friends on the friend list, and to some Discords he was a member of.
 He had 2FA (Google Authenticator) on the account.
@@ -2588,8 +2806,8 @@ Always login with username, password and 2FA.&lt;/p&gt;
     <item>
       <title>Arista Type 7 Passwords</title>
       <link>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</link>
-      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate>
-      
+      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</guid>
       <description>&lt;p&gt;A friend of mine wanted to provision BGP passwords for their Arista switch configuration.&lt;/p&gt;
 &lt;p&gt;So a config stanza such as&lt;/p&gt;
@@ -2868,8 +3086,8 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
     <item>
       <title>A01:2021 - Broken Access Control</title>
       <link>https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control.html</link>
-      <pubDate>Tue, 16 Nov 2021 11:28:27 +0100</pubDate>
-      
+      <pubDate>Tue, 16 Nov 2021 11:28:27 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control.html</guid>
       <description>&lt;p&gt;Dieser Artikel wurde von Lenz Grimmer auch &lt;a href=&#34;https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control-en.html&#34;&gt;ins Englische&lt;/a&gt;
 
@@ -2885,15 +3103,13 @@ ging es um die von
 Basl schreibt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die Betreiber von Learnu sagen, sie hätten keine Fachkenntnisse in IT-Sicherheit und hätten sich auf externe Berater verlassen.
-So kam Learnu unbekannterweise unsicher auf den Markt.&lt;/p&gt;
-&lt;/blockquote&gt;
+So kam Learnu unbekannterweise unsicher auf den Markt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In der sich entwickelnden Diskussion vertrat &lt;a href=&#34;https://twitter.com/ardewes/status/1460240730698493957&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Dewes&lt;/a&gt;
 
  den Standpunkt&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die meisten Start-ups die ich kenne gehen durch eine Phase, in der IT-Sicherheit und Compliance eher im Hintergrund stehen.
-Wenn sie größer werden fangen sie an sich darüber Gedanken zu machen u.a. weil Kunden oder Partner Zertifizierungen verlangen, z.B. SOC 2 oder ISO-27001.&lt;/p&gt;
-&lt;/blockquote&gt;
+Wenn sie größer werden fangen sie an sich darüber Gedanken zu machen u.a. weil Kunden oder Partner Zertifizierungen verlangen, z.B. SOC 2 oder ISO-27001.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist angesichts von &lt;a href=&#34;https://owasp.org/Top10/A01_2021-Broken_Access_Control/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OWASP A01:2021 - Broken Access Control&lt;/a&gt;
 
  eine lustige Aussage.
@@ -2920,8 +3136,7 @@ Also wurde in unserem Fall aus &lt;code&gt;/api/v3/Profile/{ProfileID}&lt;/code&
 Und tada: Noch viel mehr Daten!
 Aber unsere eigenen Daten sind langweilig – die kennen wir ja schon.
 Also haben wir auch probiert, eine fremde Profil-ID einzugeben.
-Und zu unserer geringen Verwunderung, aber großen Genervtheit, konnten wir natürlich auf diese detaillierten Daten der fremden ID zugreifen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Und zu unserer geringen Verwunderung, aber großen Genervtheit, konnten wir natürlich auf diese detaillierten Daten der fremden ID zugreifen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist ein klassisches &amp;ldquo;A01:2021 - Broken Access Control&amp;rdquo; Beispiel.
 Die Anwendung kennt die Identität des Benutzers, denn sie ist in der App eingetragen.
 Sie nutzt diese Information nicht, um die Verbindung zum Server zu authentisieren und autorisieren.
@@ -2973,8 +3188,7 @@ Artikel:&lt;/p&gt;
 Einen Versuch wagen wir noch und entfernen das / am Ende der URL. Und tada:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET https://corona-api.de/persons
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Uns fällt eine Liste mit den Personen, die auf der Plattform registriert sind, entgegen.
-Insgesamt fast 400.000 mit allen Daten, die bei einem Corona-Test eben so erfasst werden.&lt;/p&gt;
-&lt;/blockquote&gt;
+Insgesamt fast 400.000 mit allen Daten, die bei einem Corona-Test eben so erfasst werden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Zerforschung demonstriert dann auch noch, daß sie in beiden Fällen lustig ihre Identität oder ihre Verankerung (die Schulzugehörigkeit) ändern können (und vermutlich ohne daß das in einem Audit-Log landet), und daß sie nach Belieben Daten schreiben können, indem sie dem 177-jahre alten Robert Koch ein Corona-Testergebnis ausstellen.&lt;/p&gt;
 &lt;h1 id=&#34;autorisierung&#34;&gt;
     &lt;a href=&#34;#autorisierung&#34;&gt;
@@ -3061,8 +3275,8 @@ das sowohl Entwicklern als auch Business Analysts allgemeinverständlich zeigt, 
     <item>
       <title>A01:2021 - Broken Access Control (en)</title>
       <link>https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control-en.html</link>
-      <pubDate>Tue, 23 Nov 2021 23:34:33 +0100</pubDate>
-      
+      <pubDate>Tue, 23 Nov 2021 23:34:33 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control-en.html</guid>
       <description>&lt;p&gt;Translation by Lenz Grimmer, German version &lt;a href=&#34;https://blog.koehntopp.info/2021/11/16/a01-2021-broken-access-control.html&#34;&gt;here&lt;/a&gt;
 
@@ -3078,15 +3292,13 @@ discussed the
 Basl wrote:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Learnu operators say they have no expertise in IT security and have relied on outside consultants.
-As a result, Learnu came to market insecurely, unbeknownst to them.&lt;/p&gt;
-&lt;/blockquote&gt;
+As a result, Learnu came to market insecurely, unbeknownst to them.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In the discussion that developed, &lt;a href=&#34;https://twitter.com/ardewes/status/1460240730698493957&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Dewes&lt;/a&gt;
 
  took the view that&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Most startups I know go through a phase where IT security and compliance tend to take a back seat.
-As they get bigger, they start to think about it, partly because customers or partners demand certifications, e.g. SOC 2 or ISO-27001.&lt;/p&gt;
-&lt;/blockquote&gt;
+As they get bigger, they start to think about it, partly because customers or partners demand certifications, e.g. SOC 2 or ISO-27001.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That&amp;rsquo;s a funny statement in light of &lt;a href=&#34;https://owasp.org/Top10/A01_2021-Broken_Access_Control/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OWASP A01:2021 - Broken Access Control&lt;/a&gt;
 
 .
@@ -3113,8 +3325,7 @@ So in our case &lt;code&gt;/api/v3/Profile/{ProfileID}&lt;/code&gt; became &lt;c
 And tada: much more data!
 But our own data is boring - we already know it.
 So we also tried to enter a foreign ProfileID.
-And to our little amazement, but great annoyance, we were of course able to access the detailed data of that foreign ID.&lt;/p&gt;
-&lt;/blockquote&gt;
+And to our little amazement, but great annoyance, we were of course able to access the detailed data of that foreign ID.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This is a classic &amp;ldquo;A01:2021 - Broken Access Control&amp;rdquo; example.
 The application knows the identity of the user because it is registered in the app.
 It does not use this information to authenticate and authorize the connection to the server.
@@ -3166,8 +3377,7 @@ article:&lt;/p&gt;
 We dare to try one more time and remove the / at the end of the URL. And tada:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET https://corona-api.de/persons
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A list of people registered on the platform drops down to us.
-A total of almost 400,000 with all the data that is collected during a Corona test.&lt;/p&gt;
-&lt;/blockquote&gt;
+A total of almost 400,000 with all the data that is collected during a Corona test.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Zerforschung then goes on to demonstrate that they can merrily change their identity or anchoring (the school affiliation) in either case (and presumably without it ending up in an audit log), and that they can write data at will by issuing a Corona test result to 177-year-old Robert Koch.&lt;/p&gt;
 &lt;h1 id=&#34;authorization&#34;&gt;
     &lt;a href=&#34;#authorization&#34;&gt;
@@ -3251,206 +3461,5 @@ that shows both developers and business analysts in a generally understandable w
 </description>
     </item>
     
-    <item>
-      <title>99% secure</title>
-      <link>https://blog.koehntopp.info/2021/10/02/99-secure.html</link>
-      <pubDate>Sat, 02 Oct 2021 19:17:00 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2021/10/02/99-secure.html</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/Linuzifer/status/1443880403211857922&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Linus Neumann zitiert Prof. Norbert Pohlmann&lt;/a&gt;
-
-:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Ich glaube, das ist so.
-Diese 100%ige Sicherheit wird es nicht geben, und wenn der Chaos Computer Bild was findet, dann findet er das, und dann sagen wir, das ist gut.
-Und dann überlegen wir uns, wie wir das wieder schließen können und dann ist es wieder besser.
-Und dann können sie auch weiter suchen.&lt;/p&gt;
-&lt;p&gt;Also, ich glaube, wir brauchen auch eine andere Grundhaltung und es geht nicht immer um 100 %, sondern die 99 %, die reichen und wir müssen mit den Restrisiken umgehen.
-Neben ganz schnell reagieren auch natürlich auch Versicherungen oder wer übernimmt die Verantwortung, wenn was passiert.
-Das kennen wir ja alles.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das ist eine ganze Menge Stoff zum Entpacken und ich habe das &lt;a href=&#34;https://twitter.com/isotopp/status/1444182876677943299&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;auf Twitter&lt;/a&gt;
-
- mal getan. Dies ist die Volltextversion dieses Threads.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;99 % Sicherheit, was soll das bedeuten?&lt;/li&gt;
-&lt;li&gt;Der CCC ist mein Sicherheitscheck&lt;/li&gt;
-&lt;li&gt;Hackerterrorcybercyberversicherungen und der Umgang mit Restrisiken&lt;/li&gt;
-&lt;li&gt;Wir werden sowieso gehackt, Aufgeben ist eine Option.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Aber der Reihe nach:&lt;/p&gt;
-&lt;h1 id=&#34;99-sicherheit-was-soll-das-bedeuten&#34;&gt;
-    &lt;a href=&#34;#99-sicherheit-was-soll-das-bedeuten&#34;&gt;
-	99 % Sicherheit, was soll das bedeuten?
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://pluspora.com/posts/6bd0e460002a013a97e8002590c0bfb8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Auf Pluspora&lt;/a&gt;
-
- hat Rainer Sokoll einen Portscan von &lt;code&gt;www.digital-enabling.eu&lt;/code&gt; veröffentlicht, bevor der Server panisch vom Netz genommen worden ist:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;~$ nmap -sT www.digital-enabling.eu.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Starting Nmap 7.92 ( https://nmap.org ) at 2021-09-25 14:24 CEST
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Nmap scan report for www.digital-enabling.eu. (213.133.104.155)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Host is up (0.037s latency).
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;rDNS record for 213.133.104.155: www155.your-server.de
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;Not shown: 935 filtered tcp ports (no-response), 51 closed tcp ports (conn-refused)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;PORT     STATE SERVICE
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;21/tcp   open  ftp
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;22/tcp   open  ssh
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;25/tcp   open  smtp
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;80/tcp   open  http
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;110/tcp  open  pop3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;143/tcp  open  imap
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;222/tcp  open  rsh-spx
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;443/tcp  open  https
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;465/tcp  open  smtps
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;587/tcp  open  submission
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;993/tcp  open  imaps
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;995/tcp  open  pop3s
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;3306/tcp open  mysql
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;5432/tcp open  postgresql
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Nmap done: 1 IP address (1 host up) scanned in 55.71 seconds
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wir sehen einen Server, der mehr Dienste produktiv ins Internet raushängt als ein übertrieben konfigurierter Honeypot, darunter &lt;code&gt;ftp&lt;/code&gt;, &lt;code&gt;mysql&lt;/code&gt; und &lt;code&gt;postgresql&lt;/code&gt;.
-Das ist, wie man mir in der Kundenkommunikationsschulung beigebracht hat zu sagen, &amp;ldquo;keine empfohlene oder unterstützte Konfiguration&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Wenn wir also sagen, &amp;ldquo;Sicherheit ist relativ&amp;rdquo; und &amp;ldquo;perfekte Sicherheit gibt es nicht&amp;rdquo;, dann ist es doch so, daß man da differenzieren kann.
-Es gibt eben besser und schlechter konfigurierte Systeme.&lt;/p&gt;
-&lt;p&gt;Und es gibt sogar dokumentierte und allgemein anerkannte Best Practices, in englischer und deutscher Sprache.
-Von denen wird erwartet, daß man sie umsetzt.&lt;/p&gt;
-&lt;p&gt;Das nennt die deutsche Rechtsprechung nicht ohne Grund &amp;ldquo;Grundschutz&amp;rdquo; und &amp;ldquo;Stand der Technik&amp;rdquo;.
-Der Grundschutz, wie vom &amp;ldquo;Bundesamt für Sicherheit in der Informationstechnik&amp;rdquo; (BSI) veröffentlicht, hat viele Spezialhandbücher für besondere Anwendungszwecke.
-Der Grund-Grundschutz ist definiert in &amp;ldquo;SYS.1.1: Allgemeiner Server&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Wie grundlegend ist der?&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Der Baustein &amp;ldquo;SYS.1.1 Allgemeiner Server&amp;rdquo; ist für alle Server-IT-Systeme mit beliebigem Betriebssystem anzuwenden.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das ist Amtsdeutsch für &amp;ldquo;Wenn Du das nicht machst, dann brauchst Du gar nicht weiter zu spielen&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Im Grund-Grundschutz SYS.1.1 gibt es Grund-Grund-Grundschutzanforderungen, im Kapitel 3.1 &amp;ldquo;Basis-Anforderungen&amp;rdquo;.
-Dort wird in SYS.1.1.A2 &amp;ldquo;Benutzerauthentisierung an Servern&amp;rdquo;, gleich nach der geeigneten Aufstellung des Gerätes, gefordert:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Für die Anmeldung von Benutzern und Diensten am Server MÜSSEN Authentisierungsverfahren
-eingesetzt werden, die dem Schutzbedarf der Server angemessen sind.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das ist Amtsdeutsch für &amp;ldquo;Benutzeraccounts ohne Passworte darf es nicht geben&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Danach kommen ein paar Anforderungen aus früheren Versionen des Dokumentes und eine, die für Angriffe nicht relevant ist, und dann gleich als nächstes SYS.1.1.A6 &amp;ldquo;Deaktivierung nicht benötigter Dienste&amp;rdquo;:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Alle nicht benötigten Dienste und Anwendungen MÜSSEN deaktiviert oder deinstalliert werden, vor
-allem Netzdienste.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Wir müssen den Portscan da oben im Licht dieser grundlegenden Grundanforderungen vom allergrundlegensten ersten Kapitel des Grundschutzes lesen, von dem es einleitend heißt&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Die folgenden Anforderungen MÜSSEN für den Baustein SYS.1.1 Allgemeiner Server vorrangig erfüllt
-werden.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das war nicht der Fall.&lt;/p&gt;
-&lt;p&gt;Damit ist auch die 99 %-Latte gerissen. Es geht stattdessen darum, dass überhaupt die allerersten grundlegenden Basisanforderungen nicht erfüllt werden, die man braucht, um überhaupt ernsthaft Security angehen zu können.&lt;/p&gt;
-&lt;p&gt;Es ist üblicherweise nicht möglich eine Maschine in der von Rainer Sokoll dokumentierten Konfiguration produktiv zu betreiben, wenn irgendein Auditor einmal auch nur oberflächlich über eine Systemkonfiguration geguckt hat.
-Wir können damit ausschließen, daß für dieses System und seine Betreiberorganisation ein Security-Review stattgefunden hat, und es ist wahrscheinlich, daß ein Sicherheitsprozess überhaupt nicht existiert.&lt;/p&gt;
-&lt;p&gt;Wie dem auch sei: Prozente sind bei Security ein schwieriges Maß.
-Ein kompromittiertes System ist ja nicht 43 % gehackt, sondern 100 % im Eimer.&lt;/p&gt;
-&lt;p&gt;Ein besseres Bild: Raising the bar.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2021/10/this-tall.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;Raising the bar&amp;rdquo; im Security-Sinne bedeutet üblicherweise, daß man den Personenkreis möglicher Angreifer verkleinern will, indem man versucht die Anforderungen höher zu schrauben, die ein erfolgreicher Angreifer an Ausbildung, finanzieller Ausstattung und Zeitaufwand mitbringen muss.&lt;/p&gt;
-&lt;p&gt;Anders gesagt: &amp;ldquo;Unsere Systeme sind so konfiguriert, daß nicht jeder spaßorientierte Mensch auf Mate an einem langsamen Samstagabend in Quarantäne damit Karussell fahren kann.&amp;rdquo; wäre schon einmal ein guter Anfang.&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;99 % Sicherheit&amp;rdquo; würde in dieser Interpretation also bedeuten, daß 99 % der Population nicht in der Lage sind, die Installation im Vorübergehen mit dem Arsch einzureißen.
-Aber wenn einer vom 1 % das tut, liegt das System dennoch 100 % am Boden. Das ist eine wichtige Beobachtung, über die wir weiter unten noch einmal reden müssen.&lt;/p&gt;
-&lt;p&gt;So eine Konfiguration in der Produktion im öffentlichen Internet sagt aber auch etwas über die allgemeine Prozessreife in einer Organisation. Es ist statistisch eher ungewöhnlich, dass so konfigurierte Server mit sauberer und geplanter Software-Entwicklung von sicherheitskritischer Software korrelieren.&lt;/p&gt;
-&lt;p&gt;Bei Software, die sagen wir einmal Führerscheindaten verwaltet, wäre es aber schon wichtig zu wissen, daß ihr Entwicklungsprozess Anforderungen genügt, die es erlauben, Aussagen über die Software bezüglich Verhalten, Sicherheit und dergleichen zu machen. Man will mindestens erst einmal nachvollziehen können, was da an Komponenten drin ist, und wer da wann warum welche Änderungen mit welchem Ziel vorgenommen hat, um dann an Tests zu sehen, daß das funktioniert hat.&lt;/p&gt;
-&lt;h1 id=&#34;der-ccc-ist-mein-sicherheitscheck&#34;&gt;
-    &lt;a href=&#34;#der-ccc-ist-mein-sicherheitscheck&#34;&gt;
-	Der CCC ist mein Sicherheitscheck
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Der CCC ist kein Sicherheitsdienstleister.&lt;/p&gt;
-&lt;p&gt;Als ich zuletzt nachgesehen habe war der CCC eine Vereinigung von Leuten mit dem Ziel, Spaß am Gerät zu haben. Das kann auch Dein Gerät sein, aber das ist dann eher schlecht für Dich.&lt;/p&gt;
-&lt;p&gt;Auf keinen Fall ersetzt das ein Sicherheitskonzept. Ein Sicherheitskonzept würde&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ein organisatorisches und inhaltliches Konzept für die Anwendung haben,&lt;/li&gt;
-&lt;li&gt;und dann einen Prozess, der dies in der Entwicklung umsetzt und dokumentiert, daß die Anforderungen erfüllt werden.&lt;/li&gt;
-&lt;li&gt;Dann hätte man ein ebensolches Konzept für den Betrieb&lt;/li&gt;
-&lt;li&gt;und einen Prozess, der dies im Betrieb umsetzt und dokumentiert, daß die Anforderungen erfüllt werden.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Und ganz wichtig:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;einen Plan, der umgesetzt wird, wenn es dann doch schief geht.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Denn es wird doch schief gehen - das sind dann die von Prof. Pohlmann angesprochenen Restrisiken.
-&lt;a href=&#34;https://www.slideshare.net/isotopp/security-management-sys11-version-harald-wagener&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hier&lt;/a&gt;
-
- sind ein paar Slides von &lt;a href=&#34;https://twitter.com/mausdompteur&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Harald Wagener&lt;/a&gt;
-
-, basierend auf Ideen von Harald und ein paar noch älteren Slides von mir.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2021/10/this-tall2.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Ein Risiko Management Prozess ist wie jeder Prozess eine Schleife, bei denen man Angreifer und Angriffe identifiziert, Risiken bewertet, Maßnahmen gegen die Risiken definiert und umsetzt, und dann wiederholt.
-Die Maßnahmen können wir nicht beliebig weit treiben, denn betriebliche Notwendigkeiten setzen uns Grenzen: &amp;ldquo;Die Server abschalten und im Marianengraben versenken&amp;rdquo; ist keine Option.
-Damit bleiben uns Restrisiken, die eventuell versicherbar sind.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2021/10/this-tall3.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Der Risiko-Managementprozess ist ein Prozess.
-Er unterliegt einer Evaluierung in der Retrospektive, und dann Anpassungen.
-Ich habe das &lt;a href=&#34;https://blog.koehntopp.info/2020/06/15/pizza-people-projects-and-processes.html&#34;&gt;am Beispiel einer Pizzeria&lt;/a&gt;
-
- anderswo schon einmal ausführlicher diskutiert.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2021/10/this-tall4.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Und während es super schwer ist, Security zu messen, gibt es immerhin Maße für Prozessreife, etwa das Capability Maturity Modell, über das wir auch im obigen Pizzeria-Beispiel reden.&lt;/p&gt;
-&lt;p&gt;Und das bringt uns zu&lt;/p&gt;
-&lt;h1 id=&#34;hackerterrorcybercyberversicherungen-und-der-umgang-mit-restrisiken&#34;&gt;
-    &lt;a href=&#34;#hackerterrorcybercyberversicherungen-und-der-umgang-mit-restrisiken&#34;&gt;
-	Hackerterrorcybercyberversicherungen und der Umgang mit Restrisiken
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Ich sagte weiter oben&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Aber wenn einer vom 1 % das tut, liegt das System dennoch 100 % am Boden. Das ist eine wichtige Beobachtung, über die wir weiter unten noch einmal reden müssen.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Das ist hier.&lt;/p&gt;
-&lt;p&gt;Eine HTCCV ist eine Versicherung, die Du abschließen kannst, um Schäden abzudecken, die auftreten, wenn Du dann doch gehackt wirst.
-Der Versicherer übernimmt dann die Kosten aus Forderungen gegen Dich, die im Nachgang zu so einem Hack auftreten.&lt;/p&gt;
-&lt;p&gt;Wenn Du so eine HTCCV haben willst, dann wird der Versicherer in der Regel seinen Taschenrechner anwerfen und Dir einen Tarif machen, der auf der Einschätzung Deiner Sicherheit durch einen von ihm beauftragten Auditor basiert.&lt;/p&gt;
-&lt;p&gt;Das heißt, der Anbieter wird Dich nach den oben erwähnten Plänen für ein Risiko Management fragen, einen langen, strengen Blick auf die Pläne und ihre Umsetzung werfen, und danach die Prämie bemessen. Wenn er die Risiken für versicherbar hält.&lt;/p&gt;
-&lt;p&gt;Wenn man nach dem Anruf beim Versicherer ein paar Tastendrücke hört, ein irres Kichern und dann einen Klick in der Leitung, dann ist das eher nicht der Fall - siehe den Portscan ganz oben.&lt;/p&gt;
-&lt;p&gt;Als Inhaber einer HTCCV wird man also regelmäßig, meist jährlich oder im jährlichen Wechsel mit einer Datenschutz-Prüfung die Auditoren im Haus haben.
-Sie werden jedes Mal einen grundlegenden Überblick haben wollen und jedes Jahr ein anderes Thema zur besonderen Vertiefung auswählen.&lt;/p&gt;
-&lt;p&gt;Damit hat man auch den von mir oben geforderten Test mit Audit als Teil der Versicherungsauflagen.
-Meiner persönlichen Erfahrung mit solchen Auditoren nach finden sie solche verscharchten Setups wie das ganz oben in weniger als 15 Sekunden.
-Das deutet darauf hin, daß auch eine HTCCV für dieses Projekt eher nicht bestand.&lt;/p&gt;
-&lt;h1 id=&#34;wir-werden-sowieso-gehackt-aufgeben-ist-eine-option&#34;&gt;
-    &lt;a href=&#34;#wir-werden-sowieso-gehackt-aufgeben-ist-eine-option&#34;&gt;
-	Wir werden sowieso gehackt, Aufgeben ist eine Option.
-    &lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Der Satz &amp;ldquo;Hundertprozentige Sicherheit gibt es nicht&amp;rdquo; wird gerne als erster Halbsatz der Aussage verwendet, die mit &amp;ldquo;und darum brauchen wir uns gar nicht anzustrengen.&amp;rdquo; endet.
-Das ist auch der Tenor von Prof. Pohlmann oben.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2021/10/this-tall5.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://quotes.yourdictionary.com/articles/who-said-hope-is-not-strategy.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hope is not a strategy&lt;/a&gt;
-
-&amp;rdquo; ist nicht nur ein beliebtes Zitat, sondern auch ein gerne von Google SREs verwendetes Motto.&lt;/p&gt;
-&lt;p&gt;Auch dem Laien ist intuitiv klar, dass &amp;ldquo;Aufgeben&amp;rdquo; keine skalierbare Strategie ist.
-Ich habe hier versucht zu erklären, warum die Laien-Intuition genau auf den Punkt ist.&lt;/p&gt;
-&lt;p&gt;Darum reden wir von Schutzlevel, &amp;ldquo;raising the bar&amp;rdquo; und wenn wir von Prozenten reden, dann eher mit Hinblick auf &amp;ldquo;wie viel Prozent von &lt;Grundmenge&gt; wären denn in der Lage, einen ernstzunehmenden Angriff vorzutragen?&amp;rdquo;
-Also wieviel Zeit, Kapital und Ausbildung braucht ein Angreifer, um uns gefährlich werden zu können?&lt;/p&gt;
-&lt;p&gt;Wenn es also in der Gemeinschaft von technikaffinen Personen auf Mate Vorbehalte gegen dieses Führerschein ID-Wallet gibt, und Widerspruch gegen die Haltung von Prof. Pohlmann, dann deswegen.&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>
-

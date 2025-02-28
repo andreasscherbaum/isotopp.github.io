@@ -6,19 +6,24 @@
     <description>Recent content in Sql on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/sql/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/sql/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL: NULL is NULL</title>
       <link>https://blog.koehntopp.info/2020/08/25/null-is-null.html</link>
-      <pubDate>Tue, 25 Aug 2020 17:10:00 +0000</pubDate>
-      
+      <pubDate>Tue, 25 Aug 2020 17:10:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/25/null-is-null.html</guid>
       <description>&lt;p&gt;&lt;em&gt;Question:&lt;/em&gt; Hey, I got a UNIQUE INDEX, but I can store multiple rows with the same value, NULL. That is surprising. Is that a bug?&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This is a rewrite of &lt;a href=&#34;https://blog.koehntopp.info/2011/11/04/null-is-null.html&#34;&gt;the same in German from 9 years ago&lt;/a&gt;
 
-.&lt;/p&gt;
-&lt;/blockquote&gt;
+.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;kris&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;integer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;integer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;unique&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Query&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;rows&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;affected&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
@@ -287,8 +292,8 @@
     <item>
       <title>Zu Besuch bei Redis</title>
       <link>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</link>
-      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate>
-      
+      <pubDate>Sun, 23 Sep 2012 19:06:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/09/23/zu-besuch-bei-redis.html</guid>
       <description>&lt;p&gt;Hier ist eine wichtige Zahl: Ein Coredump von einem MySQL auf einer Maschine mit knapp unter 200 GB Speicher dauert 15 Minuten.
 Auf SSD.
@@ -402,8 +407,8 @@ InnoDB ist ziemlich genau eine Lehrbuchimplementierung des Gray.&lt;/p&gt;
     <item>
       <title>NULL is NULL</title>
       <link>https://blog.koehntopp.info/2011/11/04/null-is-null.html</link>
-      <pubDate>Fri, 04 Nov 2011 13:31:00 +0000</pubDate>
-      
+      <pubDate>Fri, 04 Nov 2011 13:31:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/04/null-is-null.html</guid>
       <description>&lt;p&gt;Q&amp;gt; Sag mal, NULL zählt nicht bei einem UNIQUE INDEX? Zum Beispiel ein UNIQUE INDEX auf (a,b) und dann&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -668,8 +673,8 @@ verbieten wir denen NULL Werte weitestgehend.&lt;/p&gt;
     <item>
       <title>&#39;a&#39; = &#39;b&#39; = &#39;c&#39;</title>
       <link>https://blog.koehntopp.info/2010/09/10/a-b-c.html</link>
-      <pubDate>Fri, 10 Sep 2010 08:22:24 +0000</pubDate>
-      
+      <pubDate>Fri, 10 Sep 2010 08:22:24 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/09/10/a-b-c.html</guid>
       <description>&lt;p&gt;Kurzer SQL WTF von heute:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mysql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
@@ -704,16 +709,15 @@ Vergleichheitszeichen-Operator) ein &lt;code&gt;%left&lt;/code&gt;.&lt;/p&gt;
 considers the literals &amp;lsquo;Z&amp;rsquo; and &amp;lsquo;z&amp;rsquo; to be different. Also, the character
 literals &amp;lsquo;0&amp;rsquo;..&amp;lsquo;9&amp;rsquo; are not equivalent to integer literals but can be used
 in arithmetic expressions because they are implicitly convertible to
-integers.&lt;/p&gt;
-&lt;/blockquote&gt;
+integers.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Covering indexes und MVCC</title>
       <link>https://blog.koehntopp.info/2010/09/09/covering-indexes-und-mvcc.html</link>
-      <pubDate>Thu, 09 Sep 2010 09:36:00 +0000</pubDate>
-      
+      <pubDate>Thu, 09 Sep 2010 09:36:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/09/09/covering-indexes-und-mvcc.html</guid>
       <description>&lt;p&gt;Für viele MySQL-Anwendungen sind
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Database_index#Covering_index&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Covering Indexes&lt;/a&gt;
@@ -810,8 +814,7 @@ connections still have an old consistent read view on the previous state
 of things.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I understand that Postgres does not have covering indexes because of such
-index problems wrt to transactions. How does InnoDB work around this?&lt;/p&gt;
-&lt;/blockquote&gt;
+index problems wrt to transactions. How does InnoDB work around this?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Axel Schwenke von MySQL Support hat diese Frage beantwortet, und dabei Hilfe
 von Marko Mäkelä vom InnoDB Team bekommen:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -825,8 +828,7 @@ page. If this is newer than the required read snapshot, then InnoDB dives
 to the clustered index for each hit from that index page to check the row
 version and will also follow to UNDO if required.&lt;/p&gt;
 &lt;p&gt;That means covering index reads might degrade to full row reads on InnoDB,
-depending on write activity and isolation level.&lt;/p&gt;
-&lt;/blockquote&gt;
+depending on write activity and isolation level.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In Deutsch: Ein Index, der nicht der Primärschlüssel ist (und das ist bei
 InnoDB und Covering Indexes immer der Fall) hat Einträge für die neuste
 Version einer Zeile. Falls sich Felder einer Zeile verändern, die
@@ -856,8 +858,8 @@ einkaufen!&lt;/p&gt;
     <item>
       <title>Die relationale Datenbank wird 40.</title>
       <link>https://blog.koehntopp.info/2010/06/08/die-relationale-datenbank-wird-40.html</link>
-      <pubDate>Tue, 08 Jun 2010 06:15:00 +0000</pubDate>
-      
+      <pubDate>Tue, 08 Jun 2010 06:15:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/06/08/die-relationale-datenbank-wird-40.html</guid>
       <description>&lt;p&gt;Nicht nur wird PHP im Juni 15 Jahre alt, sondern ein anderer, älterer
 Begleiter von PHP feiert ebenfalls ein Jubiläum:&lt;/p&gt;
@@ -998,8 +1000,8 @@ Eigenschaften hat), das die Vorteile von SQL nicht aufgibt.&lt;/p&gt;
     <item>
       <title>Was bedeutet eigentlich &#39;Relationale Algebra&#39;?</title>
       <link>https://blog.koehntopp.info/2010/04/28/was-bedeutet-eigentlich-relationale-algebra.html</link>
-      <pubDate>Wed, 28 Apr 2010 05:18:00 +0000</pubDate>
-      
+      <pubDate>Wed, 28 Apr 2010 05:18:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/04/28/was-bedeutet-eigentlich-relationale-algebra.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/vorsicht_mathe.png&#34; alt=&#34;&#34;  /&gt;
@@ -1524,8 +1526,8 @@ mehr Latenz) in der Hostsprache, in der sie eingebettet ist.&lt;/p&gt;
     <item>
       <title>Gruppenweises TOP N in MySQL: Der Tabellengrößenreport</title>
       <link>https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html</link>
-      <pubDate>Tue, 09 Mar 2010 15:47:19 +0000</pubDate>
-      
+      <pubDate>Tue, 09 Mar 2010 15:47:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html</guid>
       <description>&lt;p&gt;Jeder Datenbankserver bei uns hat ein Script laufen, daß den Inhalt von
 information_schema.tables jede Nacht einmal in eine Systemdatenbank in das
@@ -1596,8 +1598,8 @@ Upgrade des Servers plötzlich fehlschlagen, weil sich Serverinterna ändern.&lt
     <item>
       <title>Ein paar Gedanken zu Zeitreihendaten</title>
       <link>https://blog.koehntopp.info/2009/10/28/ein-paar-gedanken-zu-zeitreihendaten.html</link>
-      <pubDate>Wed, 28 Oct 2009 16:48:29 +0000</pubDate>
-      
+      <pubDate>Wed, 28 Oct 2009 16:48:29 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/10/28/ein-paar-gedanken-zu-zeitreihendaten.html</guid>
       <description>&lt;p&gt;Ich sitze hier auf der
 &lt;a href=&#34;http://www.netways.de/osmc/y2009/programm/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Open Source Monitoring Conference&lt;/a&gt;
@@ -1771,8 +1773,8 @@ schwärzen). Aber das ist eine Diskussion für ein anderes Mal.&lt;/p&gt;
     <item>
       <title>Ein paar Gedanken zu Foreign Key Constraints</title>
       <link>https://blog.koehntopp.info/2009/10/20/ein-paar-gedanken-zu-foreign-key-constraints.html</link>
-      <pubDate>Tue, 20 Oct 2009 08:25:10 +0000</pubDate>
-      
+      <pubDate>Tue, 20 Oct 2009 08:25:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/10/20/ein-paar-gedanken-zu-foreign-key-constraints.html</guid>
       <description>&lt;p&gt;Ich lese gerade &lt;a href=&#34;http://www.sqlite.org/draft/foreignkeys.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SQLite Foreign Key Support&lt;/a&gt;
 
@@ -1834,8 +1836,7 @@ schwärzen). Aber das ist eine Diskussion für ein anderes Mal.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dies scheitert nach dem ersten Insert, weil die &lt;code&gt;a.aid = 1&lt;/code&gt; noch nicht existiert, wenn ich die &lt;code&gt;b.aid = 1&lt;/code&gt; in die Tabelle einfüge. Technisch ist das eigentlich kein Problem, denn da dies alles in einer Transaktion geschieht tauchen beide Werte gleichzeitig erst zum COMMIT in der Datenbank auf, aber die Prüfung erfolgt leider per Statement und nicht per Transaktion. Ich muß also Entwickler als meinen Code passend strukturieren, egal ob das der Anwendungslogik gerecht wird oder nicht.&lt;/p&gt;
 &lt;p&gt;In SQLite darf man immerhin DEFERRABLE INITIALLY DEFERRED angeben, und das will man offenbar auch dringend. In diesem Fall wird die FK-Constraint nicht bei jedem Statement geprüft, sondern erst am Ende einer Transaktion beim COMMIT. Man kann sich also seine Strukturen nach Belieben zusammenbauen, und die Datenbank erzwingt dabei keine besondere Ordnung der Anweisungen im Code, sondern verlangt nur, daß in dem Moment, wenn man seine Änderungen für Dritte sichtbar publiziert, die FK-Constraints eingehalten werden.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Der Sinn von FK-Constraints ist es, gültige Datenstrukturen und insbesondere gültige Verknüpfungen zwischen Daten zu erzwingen, die auf verschiedene Tabellen desselben Schemas oder derselben Instanz verteilt sind. Die FK-Constraint macht diese Prüfung in der Datenbank, denn nur so ist sichergestellt, daß unterschiedliche Anwendungen, die unterschiedliche Bibliotheken und Programmiersprachen verwenden, denselben Bedingungen beim Schreiben hinsichtlich der Gültigkeit von Datenstrukturen unterliegen.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Der Sinn von FK-Constraints ist es, gültige Datenstrukturen und insbesondere gültige Verknüpfungen zwischen Daten zu erzwingen, die auf verschiedene Tabellen desselben Schemas oder derselben Instanz verteilt sind. Die FK-Constraint macht diese Prüfung in der Datenbank, denn nur so ist sichergestellt, daß unterschiedliche Anwendungen, die unterschiedliche Bibliotheken und Programmiersprachen verwenden, denselben Bedingungen beim Schreiben hinsichtlich der Gültigkeit von Datenstrukturen unterliegen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bitte mal Anhalten und den vorhergehenden Satz ein zweites Mal lesen.&lt;/p&gt;
 &lt;p&gt;Im Netz findet man mitunter Diskussionen über Datenmodellierung und dort gibt es in der Regel eine Gruppe von Personen, die vehement die Auffassung vertritt, daß ein Datenmodell, das FK- und andere Constraints nicht im Modell definiert schlicht falsch (ersatzweise &amp;ldquo;Schrott&amp;rdquo;, &amp;ldquo;Müll&amp;rdquo;, &amp;ldquo;Gefrickel&amp;rdquo; und anderes) ist.&lt;/p&gt;
 &lt;h2 id=&#34;grenzen-und-probleme-von-fk-constraints&#34;&gt;
@@ -1869,4 +1870,3 @@ schwärzen). Aber das ist eine Diskussion für ein anderes Mal.&lt;/p&gt;
     
   </channel>
 </rss>
-

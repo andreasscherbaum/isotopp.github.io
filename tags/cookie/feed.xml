@@ -6,12 +6,18 @@
     <description>Recent content in Cookie on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/cookie/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/cookie/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IVW jetzt &#34;datenschutzkonform&#34; (Updated)</title>
       <link>https://blog.koehntopp.info/2011/08/10/ivw-jetzt-datenschutzkonform-updated.html</link>
-      <pubDate>Wed, 10 Aug 2011 19:45:27 +0000</pubDate>
-      
+      <pubDate>Wed, 10 Aug 2011 19:45:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/08/10/ivw-jetzt-datenschutzkonform-updated.html</guid>
       <description>&lt;p&gt;Auf dem Heiseticker findet man die Mitteilung
 &lt;a href=&#34;http://www.heise.de/newsticker/meldung/Hamburger-Datenschutzbeauftragter-Reichweitenmessung-der-IVW-ist-datenschutzkonform-1320862.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hamburger Datenschutzbeauftragter: Reichweitenmessung der IVW ist datenschutzkonform&lt;/a&gt;
@@ -27,8 +33,7 @@ Nun heißt es:&lt;/p&gt;
 Einigung hinsichtlich einer datenschutzkonformen Nutzung des Meßsystems.
 Man habe dadurch &amp;ldquo;datenschutzrechtliche Verbesserungen mit bundesweiter
 Bedeutung&amp;rdquo; erreicht und die im Januar gemachten Zusagen umgesetzt, loben
-sich die Beteiligten in ihrer Meldung.&lt;/p&gt;
-&lt;/blockquote&gt;
+sich die Beteiligten in ihrer Meldung.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Konkret heißt das: Die IP-Adresse, die das IVW-Teil speichert, wird um das
 letzte Byte verkürzt. Es werden also Gruppen von 256 IP-Nummern zusammen
 abgerechnet. Außerdem gibt es jetzt eine
@@ -127,14 +132,12 @@ Opt-Out, also genau anders rum als auf jedem Kassenzettel?&lt;/p&gt;
 pro Rechner, den ich habe? Ich meine, sollte ich nicht einmal eine
 Willenserklärung auf das Opt-Out abgeben (Ich dachte, ich müßte gesondert
 unterschreiben?) und dann ist das deren Problem, mich wiederzuerkennen und
-sich an unsere Abmachungen zu halten?&lt;/p&gt;
-&lt;/blockquote&gt;
+sich an unsere Abmachungen zu halten?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Thomas Stadler antwortet mir:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die Frage ist äußerst berechtigt. Die erste Frage, die man hier stellen
 muss lautet aber, ob das IVW-Tool personenbezogene Daten erhebt. Wenn ja,
-dann geht es so nicht.&lt;/p&gt;
-&lt;/blockquote&gt;
+dann geht es so nicht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich erweiterte meine Ausführungen mit:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;@2: &amp;ldquo;Die erste Frage, die man hier stellen muss lautet aber, ob das
@@ -177,16 +180,15 @@ und inkonsequent in sich zusammen.&lt;/p&gt;
 &lt;p&gt;Jetzt Zusammenfassung von Ip-Adressen durch Löschung des letzten Bytes zu
 /24 zu feiern, aber weiter mit i00-Cookies zu arbeiten ist schlicht
 inkompetent, wenn es aus Versehen passiert ist. Oder verlogen, falls es
-Absicht war.&lt;/p&gt;
-&lt;/blockquote&gt;
+Absicht war.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>C is for Cookie</title>
       <link>https://blog.koehntopp.info/2011/02/05/c-is-for-cookie.html</link>
-      <pubDate>Sat, 05 Feb 2011 18:52:45 +0000</pubDate>
-      
+      <pubDate>Sat, 05 Feb 2011 18:52:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/05/c-is-for-cookie.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.youtube.com/watch?v=Ye8mB6VsUHw&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Krümelmonster: C is for Cookie&lt;/a&gt;
 
@@ -456,8 +458,7 @@ Wenn es in Deutschland passierte wäre alles gut:&lt;/p&gt;
 &lt;p&gt;Websites dürfen IP-Adressen nicht ohne Erlaubnis des Nutzers &lt;strong&gt;in die USA&lt;/strong&gt;
 &lt;strong&gt;übermitteln&lt;/strong&gt;. Daher sei der Einsatz von Google Analytics in der jetzigen
 Form in aller Regel nach deutschem Recht nicht erlaubt, argumentiert Dix
-beim Treffen der Google Technology User Group Berlin.&lt;/p&gt;
-&lt;/blockquote&gt;
+beim Treffen der Google Technology User Group Berlin.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(Hervorherbung von mir)&lt;/p&gt;
 &lt;h1 id=&#34;zusammenfassung&#34;&gt;
     &lt;a href=&#34;#zusammenfassung&#34;&gt;
@@ -482,4 +483,3 @@ Er ist auch &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/ubloc
     
   </channel>
 </rss>
-

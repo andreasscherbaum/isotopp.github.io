@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Ein paar Gedanken zu Foreign Key Constraints | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2009/10/20/ein-paar-gedanken-zu-foreign-key-constraints.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Ein paar Gedanken zu Foreign Key Constraints' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Ein paar Gedanken zu Foreign Key Constraints | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2009/10/20/ein-paar-gedanken-zu-foreign-key-constraints.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2009-10-20T08:25:10Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Ein paar Gedanken zu Foreign Key Constraints' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Ein paar Gedanken zu Foreign Key Constraints","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="ein-paar-gedanken-zu-foreign-key-constraints-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Ein paar Gedanken zu Foreign Key Constraints
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>October 20, 2009</div>
 						
-
 					</div>
 				</div>
 				
@@ -235,8 +221,7 @@
 </span></span></span></code></pre></div><p>Dies scheitert nach dem ersten Insert, weil die <code>a.aid = 1</code> noch nicht existiert, wenn ich die <code>b.aid = 1</code> in die Tabelle einfüge. Technisch ist das eigentlich kein Problem, denn da dies alles in einer Transaktion geschieht tauchen beide Werte gleichzeitig erst zum COMMIT in der Datenbank auf, aber die Prüfung erfolgt leider per Statement und nicht per Transaktion. Ich muß also Entwickler als meinen Code passend strukturieren, egal ob das der Anwendungslogik gerecht wird oder nicht.</p>
 <p>In SQLite darf man immerhin DEFERRABLE INITIALLY DEFERRED angeben, und das will man offenbar auch dringend. In diesem Fall wird die FK-Constraint nicht bei jedem Statement geprüft, sondern erst am Ende einer Transaktion beim COMMIT. Man kann sich also seine Strukturen nach Belieben zusammenbauen, und die Datenbank erzwingt dabei keine besondere Ordnung der Anweisungen im Code, sondern verlangt nur, daß in dem Moment, wenn man seine Änderungen für Dritte sichtbar publiziert, die FK-Constraints eingehalten werden.</p>
 <blockquote>
-<p>Der Sinn von FK-Constraints ist es, gültige Datenstrukturen und insbesondere gültige Verknüpfungen zwischen Daten zu erzwingen, die auf verschiedene Tabellen desselben Schemas oder derselben Instanz verteilt sind. Die FK-Constraint macht diese Prüfung in der Datenbank, denn nur so ist sichergestellt, daß unterschiedliche Anwendungen, die unterschiedliche Bibliotheken und Programmiersprachen verwenden, denselben Bedingungen beim Schreiben hinsichtlich der Gültigkeit von Datenstrukturen unterliegen.</p>
-</blockquote>
+<p>Der Sinn von FK-Constraints ist es, gültige Datenstrukturen und insbesondere gültige Verknüpfungen zwischen Daten zu erzwingen, die auf verschiedene Tabellen desselben Schemas oder derselben Instanz verteilt sind. Die FK-Constraint macht diese Prüfung in der Datenbank, denn nur so ist sichergestellt, daß unterschiedliche Anwendungen, die unterschiedliche Bibliotheken und Programmiersprachen verwenden, denselben Bedingungen beim Schreiben hinsichtlich der Gültigkeit von Datenstrukturen unterliegen.</p></blockquote>
 <p>Bitte mal Anhalten und den vorhergehenden Satz ein zweites Mal lesen.</p>
 <p>Im Netz findet man mitunter Diskussionen über Datenmodellierung und dort gibt es in der Regel eine Gruppe von Personen, die vehement die Auffassung vertritt, daß ein Datenmodell, das FK- und andere Constraints nicht im Modell definiert schlicht falsch (ersatzweise &ldquo;Schrott&rdquo;, &ldquo;Müll&rdquo;, &ldquo;Gefrickel&rdquo; und anderes) ist.</p>
 <h2 id="grenzen-und-probleme-von-fk-constraints">
@@ -391,7 +376,7 @@
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

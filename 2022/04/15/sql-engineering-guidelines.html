@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>SQL Engineering Guidelines | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2022/04/15/sql-engineering-guidelines.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='SQL Engineering Guidelines' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='SQL Engineering Guidelines | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="en_US" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2022/04/15/sql-engineering-guidelines.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2022-04-15T08:42:00Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='SQL Engineering Guidelines' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"SQL Engineering Guidelines","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="sql-engineering-guidelines-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						SQL Engineering Guidelines
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>April 15, 2022</div>
 						
-
 					</div>
 				</div>
 				
@@ -172,6 +158,79 @@
 
 		<div class='row justify-content-center mx-0 mt-3 mb-5'>
 			<div class="col-lg-8 mb-3">
+				
+				<header class="toc bg-light">
+					<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#general">General</a></li>
+        <li><a href="#absolute-limits">Absolute Limits</a>
+          <ul>
+            <li><a href="#size">Size</a></li>
+            <li><a href="#latency">Latency</a></li>
+            <li><a href="#statement-size">Statement size</a></li>
+            <li><a href="#many-tables-join">Many-tables <code>JOIN</code></a></li>
+            <li><a href="#bulk-updates-large-deletes-inserts-updates">Bulk updates (large deletes, inserts, updates)</a></li>
+          </ul>
+        </li>
+        <li><a href="#data-types-and-column-definitions">Data types and column definitions</a>
+          <ul>
+            <li><a href="#names">Names</a></li>
+            <li><a href="#normalization">Normalization</a></li>
+            <li><a href="#keys">Keys</a></li>
+            <li><a href="#null-values-and-nullable-columns">NULL values and nullable columns</a></li>
+            <li><a href="#default-values">Default values</a></li>
+            <li><a href="#boolean">Boolean</a></li>
+            <li><a href="#integers">Integers</a></li>
+            <li><a href="#fractional-numbers-and-monetary-values">Fractional numbers and monetary values</a></li>
+            <li><a href="#char-varchar-and-the-various-text-types">CHAR, VARCHAR and the various TEXT types</a></li>
+            <li><a href="#blobs-and-files-in-the-database">BLOBs and files in the database</a></li>
+            <li><a href="#date-and-time-values">DATE and TIME values</a></li>
+            <li><a href="#json-data-type">JSON data type</a></li>
+            <li><a href="#common-column-types-that-applications-use">Common column types that applications use</a></li>
+          </ul>
+        </li>
+        <li><a href="#foreign-key-constraints">Foreign Key Constraints</a></li>
+        <li><a href="#transactions">Transactions</a>
+          <ul>
+            <li><a href="#idempotent-queries">Idempotent Queries</a></li>
+            <li><a href="#read-modify-write-counters-and-select--for-update">Read-Modify-Write, Counters and <code>SELECT ... FOR UPDATE</code></a></li>
+            <li><a href="#optimistic-locking">Optimistic locking</a></li>
+            <li><a href="#job-queues-and-skip-locked">Job Queues (and SKIP LOCKED)</a></li>
+          </ul>
+        </li>
+        <li><a href="#sorting">Sorting</a></li>
+        <li><a href="#subqueries">Subqueries</a></li>
+        <li><a href="#tombstones-is_deleted-flags">Tombstones (<code>is_deleted</code> flags)</a></li>
+        <li><a href="#partitions">Partitions</a></li>
+        <li><a href="#using-mysql-in-a-replication-environment">Using MySQL in a replication environment</a></li>
+      </ul>
+    </li>
+    <li><a href="#debugging-performance-problems">Debugging performance problems</a>
+      <ul>
+        <li><a href="#high-cpu">High CPU?</a></li>
+        <li><a href="#finding-problematic-queries-using-vividcortex">Finding problematic queries using Vividcortex</a></li>
+        <li><a href="#finding-problematic-queries-using-sys">Finding problematic queries using <code>sys.*</code></a></li>
+        <li><a href="#missing-indexes">Missing indexes</a></li>
+        <li><a href="#mismatching-types">Mismatching types</a></li>
+        <li><a href="#bad-paging">Bad Paging</a></li>
+      </ul>
+    </li>
+    <li><a href="#specific-host-languages">Specific Host languages</a>
+      <ul>
+        <li><a href="#python">Python</a></li>
+      </ul>
+    </li>
+    <li><a href="#support">Support</a>
+      <ul>
+        <li><a href="#host-version-user">Host, Version, User</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+				</header>
 				
 			</div>
 			<div class='col-lg-8'>
@@ -757,7 +816,7 @@ They usually provide a lot of toil and little benefit.</li>
 <li>
 <p><a href="/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html">What are Foreign Keys, and Foreign Key Constraints</a>
 
-, <a href="/2020/08/03/mysql-foreign-keys-and-foreign-key-constraints.html">Foreign Key Constraints and Locking</a>
+, <a href="/2020/08/04/mysql-foreign-key-constraints-and-locking.html">Foreign Key Constraints and Locking</a>
 
 .</p>
 </li>
@@ -1217,7 +1276,7 @@ for the placeholder variable.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

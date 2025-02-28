@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Wie man aus Versehen WLAN-Daten mitschneidet | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2010/05/16/wie-man-aus-versehen-wlan-daten-mitschneidet.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Wie man aus Versehen WLAN-Daten mitschneidet' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Wie man aus Versehen WLAN-Daten mitschneidet | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2010/05/16/wie-man-aus-versehen-wlan-daten-mitschneidet.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2010-05-16T15:16:00Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/schloss.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Wie man aus Versehen WLAN-Daten mitschneidet' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/schloss.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Wie man aus Versehen WLAN-Daten mitschneidet","image":"/assets/img/background/schloss.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="wie-man-aus-versehen-wlan-daten-mitschneidet-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Wie man aus Versehen WLAN-Daten mitschneidet
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>May 16, 2010</div>
 						
-
 					</div>
 				</div>
 				
@@ -238,8 +224,7 @@ unique number given to a device like a Wi-Fi router) using Street View
 cars, we did not collect payload data (information sent over the network).
 But it’s now clear that we have been mistakenly collecting samples of
 payload data from open (i.e. non-password-protected) Wi-Fi networks, even
-though we never used that data in any Google products.</p>
-</blockquote>
+though we never used that data in any Google products.</p></blockquote>
 <p>und weiter</p>
 <blockquote>
 <p>So how did this happen? Quite simply, it was a mistake. In 2006 an
@@ -248,8 +233,7 @@ that sampled all categories of publicly broadcast Wi-Fi data. A year later,
 when our mobile team started a project to collect basic Wi-Fi network data
 like SSID information and MAC addresses using Google’s Street View cars,
 they included that code in their software—although the project leaders did
-not want, and had no intention of using, payload data.</p>
-</blockquote>
+not want, and had no intention of using, payload data.</p></blockquote>
 <p>Politik und Datenschützer sind in Aufregung:</p>
 <ul>
 <li>Spiegel:  <a href="http://www.spiegel.de/netzwelt/netzpolitik/0,1518,694958,00.html" target="_blank" rel="noopener">Googles Datenpanne: Fehler im perfekten System</a>
@@ -301,8 +285,7 @@ ja schon einmal:</p>
 <p>Mein Rechner hat also keine Internet-Karte. Aber er kann jede seiner
 Netzwerkschnittstellen als Internet-Transport verwenden. Das eigentliche
 &lsquo;Internet&rsquo; in meinem Rechner ist dann ein Stück Software, das neben
-einigen anderen Dingen Pakete einkapselt und auskapselt.</p>
-</blockquote>
+einigen anderen Dingen Pakete einkapselt und auskapselt.</p></blockquote>
 <p>Internet-Pakete werden im Netz also nirgendwo direkt verschickt, sondern je
 nach Medium in anderen, für das Medium spezifischen Frames eingekapselt. Auf
 einem Ethernet sind es Ethernet-Frames, auf einem WLAN-Netz sind es die IEEE
@@ -329,8 +312,7 @@ made that every STA can hear every other STA is invalid
 <li>Have time-varying and asymmetric propagation properties</li>
 <li>May experience interference from logically disjoint
 IEEE 802.11 networks operating in overlapping areas</li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <p>Was der Standard uns damit sagen will:</p>
 <p>Die Teilnehmer (Physical Layer Interfaces, PHYs) in einem WLAN arbeiten in
 einem Medium, das nicht wie ein Kabel absolut oder erkennbar begrenzt ist,
@@ -395,8 +377,7 @@ sich wirken lässt, dann erkennt man Muster: Alles in allem wirkt der Ansatz
 von Google auf mich wie eine Firma von Physikern oder anderen
 Experimental-Forschern mit akademischem Background, die beschlossen haben,
 einmal &lsquo;so richtig&rsquo; in die Wirtschaft zu gehen und ihre Methoden dort hin
-zu portieren.</p>
-</blockquote>
+zu portieren.</p></blockquote>
 <p>schrieb ich in
 <a href="/2009/11/07/das-google-missverstaendnis.html">Das Google-Missverständnis</a>
 
@@ -630,7 +611,7 @@ BGH-Urteil ist das sowieso&hellip; leichtsinnig.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

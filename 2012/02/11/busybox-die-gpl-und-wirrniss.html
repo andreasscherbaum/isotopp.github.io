@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Busybox, die GPL und Wirrniss | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2012/02/11/busybox-die-gpl-und-wirrniss.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Busybox, die GPL und Wirrniss' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Busybox, die GPL und Wirrniss | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2012/02/11/busybox-die-gpl-und-wirrniss.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2012-02-11T13:40:47Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Busybox, die GPL und Wirrniss' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Busybox, die GPL und Wirrniss","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="busybox-die-gpl-und-wirrniss-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Busybox, die GPL und Wirrniss
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>February 11, 2012</div>
 						
-
 					</div>
 				</div>
 				
@@ -185,8 +171,7 @@ einen Ersatz für Busybox zu schreiben, der nicht unter der GPL steht.</p>
 line utilities in a single, multi-tool binary.  It is provided under the
 GPL license.  Due to its utility and ubiquity, it has been used in a very
 large number of embedded devices.  This includes use by companies who are
-not as diligent about their GPL commitments as they should be.</p>
-</blockquote>
+not as diligent about their GPL commitments as they should be.</p></blockquote>
 <p>Will sagen: Busybox ist ein Programm, das die Basisfunktionen vieler
 Linux-Kommandozeilenwerkzeuge in einem Binary zusammenfaßt und sehr wenig
 Platz verbraucht.  Wegen dieser Eigenschaften wird es gerne in Embedded
@@ -258,8 +243,7 @@ can write a better project than busybox from an engineering perspective.
 I mothballed it because BusyBox had a 10 year headstart so I didn&rsquo;t think
 it mattered how much BETTER it was, nobody would use it.  Tim pointed out
 I was wrong about that, I <em>agreed</em> with him once I thought about it, so
-I&rsquo;ve started it up again.</p>
-</blockquote>
+I&rsquo;ve started it up again.</p></blockquote>
 <p>Die Stellungnahm von Harald Welte befindet sich
 <a href="http://laforge.gnumonks.org/weblog/2012/02/09/#20120209-linux_gpl_enforcement_conservancy_busybox" target="_blank" rel="noopener">in seinem Blog</a>
 
@@ -282,8 +266,7 @@ MIT-style licenses.</p>
 <p>Let me conclude with a clear statement to anyone who thinks that by
 replacing Busybox with a non-GPL licensed project they can evade GPL
 enforcement: It will not work.  There are others out there enforcing the
-GPL.  Last but not least gpl-violations.org.</p>
-</blockquote>
+GPL.  Last but not least gpl-violations.org.</p></blockquote>
 
 			</div>
 		</div>
@@ -382,7 +365,7 @@ GPL.  Last but not least gpl-violations.org.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

@@ -6,12 +6,18 @@
     <description>Recent content in Google on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/google/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/google/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ELI5: Epic vs Apple and Google</title>
       <link>https://blog.koehntopp.info/2020/08/14/eli5-epic-vs-apple-and-google.html</link>
-      <pubDate>Fri, 14 Aug 2020 10:21:56 +0000</pubDate>
-      
+      <pubDate>Fri, 14 Aug 2020 10:21:56 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/08/14/eli5-epic-vs-apple-and-google.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/jpmens/status/1294156181100007425&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@jpmens asked&lt;/a&gt;
 
@@ -77,8 +83,8 @@
     <item>
       <title>Mailbox.org, Google, OAuth und Less Secure Applications</title>
       <link>https://blog.koehntopp.info/2020/01/17/mailboxorg-google-oauth-und-less-secure-applications.html</link>
-      <pubDate>Fri, 17 Jan 2020 18:44:34 +0000</pubDate>
-      
+      <pubDate>Fri, 17 Jan 2020 18:44:34 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/01/17/mailboxorg-google-oauth-und-less-secure-applications.html</guid>
       <description>&lt;p&gt;Heise schreibt in
 &lt;a href=&#34;https://www.heise.de/ix/meldung/Mailbox-org-Google-sperrt-unsichere-Dritte-von-Kalender-aus-4640540.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mailbox.org: Google sperrt &amp;ldquo;unsichere&amp;rdquo; Dritte vom Kalender aus&lt;/a&gt;
@@ -180,8 +186,7 @@
  in der Entwicklerdokumentation klassifiziert Scopes auf verschiedene Weisen, Recommended, Sensitive und Restricted. Die meisten Scopes sind Restricted.&lt;/p&gt;
 &lt;p&gt;Die Doku sagt weiter:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Restricted—These scopes provide wide access to Google User Data and require you to go through a restricted scope verification process. For information on this requirement, see Google API Services: User Data Policy and Additional Requirements for Specific API Scopes. If you store restricted scope data on servers (or transmit), then you need to go through a security assessment.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Restricted—These scopes provide wide access to Google User Data and require you to go through a restricted scope verification process. For information on this requirement, see Google API Services: User Data Policy and Additional Requirements for Specific API Scopes. If you store restricted scope data on servers (or transmit), then you need to go through a security assessment.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wenn man also eine Serveranwendung (Mailbox.org, Exchange, Open Exchange oder ähnliches) schreibt, und diese Restricted Scope Data runterlädt und speichert, dann wird ein Security Assessment notwendig.&lt;/p&gt;
 &lt;h2 id=&#34;den-heise-artikel-noch-einmal-lesen&#34;&gt;
     &lt;a href=&#34;#den-heise-artikel-noch-einmal-lesen&#34;&gt;
@@ -193,8 +198,7 @@
  noch einmal.&lt;/p&gt;
 &lt;p&gt;Da heißt es:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Google forciert den Einsatz von Oauth für seine Mail-, Kalender- und Drive- Dienste, sperrt dabei aber viele Dienstleister und ältere Software aus. Wer bisher beispielsweise Googles Kalender in einer nicht von Google entwickelten Anwendung oder Webseite ohne Oauth integriert, muss sich demnächst entweder umstellen oder darauf hoffen, dass sich sein Anbieter von Google-Partnern in den USA in einem kostspieligen und wenig transparenten Verfahren zertifizieren lässt.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Google forciert den Einsatz von Oauth für seine Mail-, Kalender- und Drive- Dienste, sperrt dabei aber viele Dienstleister und ältere Software aus. Wer bisher beispielsweise Googles Kalender in einer nicht von Google entwickelten Anwendung oder Webseite ohne Oauth integriert, muss sich demnächst entweder umstellen oder darauf hoffen, dass sich sein Anbieter von Google-Partnern in den USA in einem kostspieligen und wenig transparenten Verfahren zertifizieren lässt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Was heißt das? Der Artikel erklärt das nicht.&lt;/p&gt;
 &lt;p&gt;Google hat bereits am 30. Oktober letzten Jahres &lt;a href=&#34;https://gsuiteupdates.googleblog.com/2019/07/limit-access-LSA.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LSA für Business Kunden&lt;/a&gt;
 
@@ -206,8 +210,7 @@
 &lt;p&gt;Aber: Ein Mailserver hat bisher via LSA Vollzugriff auf einen GMail Account und einen Kalender bekommen, ohne sich dem für Restricted Scopes notwendigem Review zu unterziehen.&lt;/p&gt;
 &lt;p&gt;Dadurch, daß OAuth2 jetzt verpflichtend wird, werden Firmen wie Open Exchange und Mailbox.org also OAuth2 Reviews aufgezwungen, weil das LSA Schlupfloch nicht mehr existiert. Und das ist genau der Punkt, der beklagt wird, nur daß der Artikel das nicht erklärt.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Mailbox.org-Betreiber Peer Heinlein kritisiert Googles Vorgehen, das ab 15. Januar die Zertifizierung von &amp;ldquo;Less Secure Apps&amp;rdquo; vorschreibt. Im Gespräch mit der iX erklärt Heinlein, es sei grundsätzlich nicht verkehrt, wenn unseriöse Anbieter vom Zugriff auf Google-Konten ausgeschlossen werden und Missbrauch minimiert wird.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Mailbox.org-Betreiber Peer Heinlein kritisiert Googles Vorgehen, das ab 15. Januar die Zertifizierung von &amp;ldquo;Less Secure Apps&amp;rdquo; vorschreibt. Im Gespräch mit der iX erklärt Heinlein, es sei grundsätzlich nicht verkehrt, wenn unseriöse Anbieter vom Zugriff auf Google-Konten ausgeschlossen werden und Missbrauch minimiert wird.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist irreführtend, weil es primär gar nicht um LSA geht, sondern um OAuth2, und spezifisch um die mit OAuth2 Restricted Scopes verknüpften Audit-Anforderungen. LSA abzuschalten ist eine gute Sache, und LSA zu verwenden, um den Anforderungen für OAuth2 Restricted Scope zu entgehen eine mittelfristig zum Scheitern verurteilte Strategie.&lt;/p&gt;
 &lt;p&gt;Die Frage, um die es eigentlich gehen muß ist:&lt;/p&gt;
 &lt;p&gt;Darf Google für den Zugriff auf ihre Plattform einen solchen Audit verlangen oder ist dies eine unzulässige Wettbewerbseinschränkung?&lt;/p&gt;
@@ -222,8 +225,8 @@
     <item>
       <title>Wieso wir uns veröffentlichen</title>
       <link>https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html</link>
-      <pubDate>Sat, 03 Mar 2012 16:05:06 +0000</pubDate>
-      
+      <pubDate>Sat, 03 Mar 2012 16:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/03/03/wieso-wir-uns-veroeffentlichen.html</guid>
       <description>&lt;p&gt;Der folgende Text entstand aus einigen Zeilen, die ich zwischen Tür und
 Angel in #spackeria abgeworfen habe, und die von Jürgen Geuter und Sven Türpe
@@ -329,8 +332,8 @@ nicht alles über uns, aber wir verstecken uns auch nicht vor der Welt.&lt;/p&gt
     <item>
       <title>Datenschutztheater: Google Analytics ist amtlich datenschutzkonform </title>
       <link>https://blog.koehntopp.info/2011/09/15/datenschutztheater-google-analytics-ist-amtlich-datenschutzkonform.html</link>
-      <pubDate>Thu, 15 Sep 2011 10:28:55 +0000</pubDate>
-      
+      <pubDate>Thu, 15 Sep 2011 10:28:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/09/15/datenschutztheater-google-analytics-ist-amtlich-datenschutzkonform.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.heise.de/newsticker/meldung/Google-Analytics-ist-amtlich-datenschutzkonform-1343698.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heise Newsticker&lt;/a&gt;
 
@@ -341,8 +344,7 @@ titelt &amp;ldquo;Google Analytics ist amtlich datenschutzkonform&amp;rdquo;:&lt
 Analytics scheint beendet zu sein. Nach Angaben des Hamburgischen
 Datenschutzbeauftragten Johannes Caspar, der für Google zuständig
 zeichnet, ist für deutsche Webseitenbetreiber ein &amp;ldquo;beanstandungsfreier
-Betrieb von Google Analytics ab sofort möglich&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
+Betrieb von Google Analytics ab sofort möglich&amp;rdquo;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In diesem Fall war es der hamburgische Datenschutzbeauftragte Johannes
 Caspar, der sich im September 2009 über Google Analytics echauffierte.&lt;/p&gt;
 &lt;p&gt;Google Analytics ist ein Trackingdienst, der in etwa genau dasselbe macht
@@ -421,8 +423,8 @@ Welt.&lt;/p&gt;
     <item>
       <title>Google verkauft Deine Daten an den Teufel!</title>
       <link>https://blog.koehntopp.info/2011/07/14/google-verkauft-deine-daten-an-den-teufel.html</link>
-      <pubDate>Thu, 14 Jul 2011 08:27:41 +0000</pubDate>
-      
+      <pubDate>Thu, 14 Jul 2011 08:27:41 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/07/14/google-verkauft-deine-daten-an-den-teufel.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.sueddeutsche.de/digital/gespeichterte-nutzerdaten-google-plant-die-super-datenbank-1.1119600&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google plant die Super-Datenbank&lt;/a&gt;
 
@@ -495,8 +497,8 @@ hier mal und hau das nach +, warum nicht mal was Kollaboratives versuchen.&lt;/p
     <item>
       <title>Kein Streetview für Deutschland</title>
       <link>https://blog.koehntopp.info/2011/04/10/kein-streetview-f-r-deutschland.html</link>
-      <pubDate>Sun, 10 Apr 2011 21:31:27 +0000</pubDate>
-      
+      <pubDate>Sun, 10 Apr 2011 21:31:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/10/kein-streetview-f-r-deutschland.html</guid>
       <description>&lt;p&gt;Laut
 &lt;a href=&#34;http://computer.t-online.de/google-street-view-keine-neuen-staedte-in-deutschland/id_45187128/index&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mehreren&lt;/a&gt;
@@ -552,8 +554,8 @@ ihm nicht abgewöhnt).&lt;/p&gt;
     <item>
       <title>Erst Dienste wie Street View machen den öffentlichen Raum wirklich öffentlich </title>
       <link>https://blog.koehntopp.info/2010/08/19/erst-dienste-wie-street-view-machen-den-ffentlichen-raum-wirklich-ffentlich.html</link>
-      <pubDate>Thu, 19 Aug 2010 13:36:19 +0000</pubDate>
-      
+      <pubDate>Thu, 19 Aug 2010 13:36:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/08/19/erst-dienste-wie-street-view-machen-den-ffentlichen-raum-wirklich-ffentlich.html</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;http://blog.zdf.de/zdfdasblog/2010/08/erst-dienste-wie-street-view-m.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kennzeichen Digital&lt;/a&gt;
 
@@ -576,8 +578,7 @@ Grundrecht auf Meinungsäußerung nun endlich auszuüben.&lt;/p&gt;
 &lt;p&gt;Mit dem öffentlichen Raum verhält es sich ähnlich. Sich frei durch Straßen
 und über Plätze zu bewegen ist unser aller gutes Recht und dazu gehört
 auch, die darumstehenden Gebäude anzuschauen. Wem das nicht passt, der
-kann sein Haus mit einem hohen Zaun oder einer Mauer umgeben.&lt;/p&gt;
-&lt;/blockquote&gt;
+kann sein Haus mit einem hohen Zaun oder einer Mauer umgeben.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Den ganzen Text gibt es
 &lt;a href=&#34;http://blog.zdf.de/zdfdasblog/2010/08/erst-dienste-wie-street-view-m.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hier&lt;/a&gt;
 
@@ -591,16 +592,15 @@ auf Streetview so heftig reagieren, und wieso das im Grunde egal ist.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Mir ist bewusst, dass der gesellschaftliche Diskurs hier erst am Anfang
 steht. Aber gestern standen wir noch davor. Der Kontrollverlust ist heute
-im Mainstream angekommen. Willkommen in unserer Welt.&lt;/p&gt;
-&lt;/blockquote&gt;
+im Mainstream angekommen. Willkommen in unserer Welt.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Branding gestoppt wegen Benutzerprotesten</title>
       <link>https://blog.koehntopp.info/2010/08/06/branding-gestoppt-wegen-benutzerprotesten.html</link>
-      <pubDate>Fri, 06 Aug 2010 07:49:29 +0000</pubDate>
-      
+      <pubDate>Fri, 06 Aug 2010 07:49:29 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/08/06/branding-gestoppt-wegen-benutzerprotesten.html</guid>
       <description>&lt;p&gt;Lustige Dinge passieren. Alle Welt rüstet ihre Android-Telefone zum Beispiel
 auf das aktuelle 2.2 &amp;ldquo;FroYo&amp;rdquo; auf, nur Vodafone nicht. Als strikte Anhänger
@@ -617,8 +617,7 @@ Online-Dienst 360 installiert – zudem änderte das Update die Startseite
 des Browsers, setzte verschiedene neue Bookmarks und installierte ein
 Vodafone-Startlogo. Einige Anwender berichten, dass sich die Akkulaufzeit
 des Gerätes verschlechtert habe, bei anderen seien alle Kurznachrichten
-plötzlich doppelt vorhanden.&lt;/p&gt;
-&lt;/blockquote&gt;
+plötzlich doppelt vorhanden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Reaktion der Benutzer kam für Vodafon unerwartet: Man rottet sich
 zusammen, organisiert sich und prügelt auf den Dienstleister (Wie nennt man
 einen Dienstleister, dessen Dienst eine Last ist? Dienstlaster?) ein, zum
@@ -649,16 +648,15 @@ Gerätekauf die Zusicherung erhalten hätten, dass das Gerät kein Branding
 aufweist. Daher soll das ab Montag bereitgestellte Update auf Android 2.2
 ohne Branding und ohne vorinstallierte Vodafone-360-Applikationen
 erscheinen. Anpassungen soll es lediglich bei den Netzwerkeinstellungen
-geben, versicherte der Konzern Golem.de.&lt;/p&gt;
-&lt;/blockquote&gt;
+geben, versicherte der Konzern Golem.de.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Netzwerk-Überlast vs. Netzwerkneutralität</title>
       <link>https://blog.koehntopp.info/2010/08/06/netzwerk-berlast-vs-netzwerkneutralit-t.html</link>
-      <pubDate>Fri, 06 Aug 2010 10:17:00 +0000</pubDate>
-      
+      <pubDate>Fri, 06 Aug 2010 10:17:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/08/06/netzwerk-berlast-vs-netzwerkneutralit-t.html</guid>
       <description>&lt;p&gt;(Grr, nicht genug Zeit, das so klar zu machen, wie ich es haben will… Egal - ich drück jetzt &amp;ldquo;Post Article&amp;rdquo;)&lt;/p&gt;
 &lt;p&gt;Dies ist der Folgeartikel zu
@@ -778,8 +776,8 @@ formulieren. Nur mal so nebenbei bemerkt.&lt;/p&gt;
     <item>
       <title>Vokabeln für Netzneutralität</title>
       <link>https://blog.koehntopp.info/2010/08/05/vokabeln-f-r-netzneutralit-t.html</link>
-      <pubDate>Thu, 05 Aug 2010 15:14:00 +0000</pubDate>
-      
+      <pubDate>Thu, 05 Aug 2010 15:14:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/08/05/vokabeln-f-r-netzneutralit-t.html</guid>
       <description>&lt;p&gt;Dies ist Teil 1,
 &lt;a href=&#34;https://blog.koehntopp.info/2010/08/06/netzwerk-berlast-vs-netzwerkneutralit-t.html&#34;&gt;Teil 2&lt;/a&gt;
@@ -1107,8 +1105,7 @@ arrangement between our companies is entirely incorrect.&amp;rdquo;  &amp;ndash;
 Guardian
 Artikel&lt;/a&gt;
 
-&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Weiter in  &lt;a href=&#34;https://blog.koehntopp.info/2010/08/06/netzwerk-berlast-vs-netzwerkneutralit-t.html&#34;&gt;Teil 2&lt;/a&gt;
 
 .&lt;/p&gt;
@@ -1118,8 +1115,8 @@ Artikel&lt;/a&gt;
     <item>
       <title>Google opensourced VP8 Video-Codec: WebM Project</title>
       <link>https://blog.koehntopp.info/2010/05/19/google-opensourced-vp8-video-codec-webm-project.html</link>
-      <pubDate>Wed, 19 May 2010 19:20:58 +0000</pubDate>
-      
+      <pubDate>Wed, 19 May 2010 19:20:58 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/05/19/google-opensourced-vp8-video-codec-webm-project.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/VP8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VP8&lt;/a&gt;
 
@@ -1141,8 +1138,7 @@ gekauft. Unter dem Namen The WebM Project
 dabei als netten Twist eine Selbstzerstörung bei Patentangriffen eingebaut:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;These licenses are revocable only if the licensee files a patent
-infringement lawsuit against the VP8 code that Google released.&lt;/p&gt;
-&lt;/blockquote&gt;
+infringement lawsuit against the VP8 code that Google released.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;WebM ist sehr eng definiert: Es ist ein Matroska-Container mit einem
 VP8-Video und Ogg Vorbis Sound - dadurch wird der Bau von WebM-Abspielern
 sehr einfach. Die Lizenz erlaubt jedoch die Verwendung von VP8 auch in
@@ -1200,8 +1196,8 @@ bleibt der Fantasie der Anleger überlassen.&lt;/p&gt;
     <item>
       <title>Wie man aus Versehen WLAN-Daten mitschneidet</title>
       <link>https://blog.koehntopp.info/2010/05/16/wie-man-aus-versehen-wlan-daten-mitschneidet.html</link>
-      <pubDate>Sun, 16 May 2010 15:16:00 +0000</pubDate>
-      
+      <pubDate>Sun, 16 May 2010 15:16:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/05/16/wie-man-aus-versehen-wlan-daten-mitschneidet.html</guid>
       <description>&lt;h3 id=&#34;spiegel-online-service&#34;&gt;
     &lt;a href=&#34;#spiegel-online-service&#34;&gt;
@@ -1266,8 +1262,7 @@ unique number given to a device like a Wi-Fi router) using Street View
 cars, we did not collect payload data (information sent over the network).
 But it’s now clear that we have been mistakenly collecting samples of
 payload data from open (i.e. non-password-protected) Wi-Fi networks, even
-though we never used that data in any Google products.&lt;/p&gt;
-&lt;/blockquote&gt;
+though we never used that data in any Google products.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und weiter&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;So how did this happen? Quite simply, it was a mistake. In 2006 an
@@ -1276,8 +1271,7 @@ that sampled all categories of publicly broadcast Wi-Fi data. A year later,
 when our mobile team started a project to collect basic Wi-Fi network data
 like SSID information and MAC addresses using Google’s Street View cars,
 they included that code in their software—although the project leaders did
-not want, and had no intention of using, payload data.&lt;/p&gt;
-&lt;/blockquote&gt;
+not want, and had no intention of using, payload data.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Politik und Datenschützer sind in Aufregung:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Spiegel:  &lt;a href=&#34;http://www.spiegel.de/netzwelt/netzpolitik/0,1518,694958,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Googles Datenpanne: Fehler im perfekten System&lt;/a&gt;
@@ -1329,8 +1323,7 @@ ja schon einmal:&lt;/p&gt;
 &lt;p&gt;Mein Rechner hat also keine Internet-Karte. Aber er kann jede seiner
 Netzwerkschnittstellen als Internet-Transport verwenden. Das eigentliche
 &amp;lsquo;Internet&amp;rsquo; in meinem Rechner ist dann ein Stück Software, das neben
-einigen anderen Dingen Pakete einkapselt und auskapselt.&lt;/p&gt;
-&lt;/blockquote&gt;
+einigen anderen Dingen Pakete einkapselt und auskapselt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Internet-Pakete werden im Netz also nirgendwo direkt verschickt, sondern je
 nach Medium in anderen, für das Medium spezifischen Frames eingekapselt. Auf
 einem Ethernet sind es Ethernet-Frames, auf einem WLAN-Netz sind es die IEEE
@@ -1357,8 +1350,7 @@ made that every STA can hear every other STA is invalid
 &lt;li&gt;Have time-varying and asymmetric propagation properties&lt;/li&gt;
 &lt;li&gt;May experience interference from logically disjoint
 IEEE 802.11 networks operating in overlapping areas&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;p&gt;Was der Standard uns damit sagen will:&lt;/p&gt;
 &lt;p&gt;Die Teilnehmer (Physical Layer Interfaces, PHYs) in einem WLAN arbeiten in
 einem Medium, das nicht wie ein Kabel absolut oder erkennbar begrenzt ist,
@@ -1423,8 +1415,7 @@ sich wirken lässt, dann erkennt man Muster: Alles in allem wirkt der Ansatz
 von Google auf mich wie eine Firma von Physikern oder anderen
 Experimental-Forschern mit akademischem Background, die beschlossen haben,
 einmal &amp;lsquo;so richtig&amp;rsquo; in die Wirtschaft zu gehen und ihre Methoden dort hin
-zu portieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+zu portieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;schrieb ich in
 &lt;a href=&#34;https://blog.koehntopp.info/2009/11/07/das-google-missverstaendnis.html&#34;&gt;Das Google-Missverständnis&lt;/a&gt;
 
@@ -1545,8 +1536,8 @@ BGH-Urteil ist das sowieso&amp;hellip; leichtsinnig.&lt;/p&gt;
     <item>
       <title>Philipp Schindler über alte Männer mit Kugelschreibern</title>
       <link>https://blog.koehntopp.info/2010/02/22/philipp-schindler-ber-alte-m-nner-mit-kugelschreibern.html</link>
-      <pubDate>Mon, 22 Feb 2010 17:23:00 +0000</pubDate>
-      
+      <pubDate>Mon, 22 Feb 2010 17:23:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/02/22/philipp-schindler-ber-alte-m-nner-mit-kugelschreibern.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=KPnDiWV7zG8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google-Chef im Zeit Online Dialog über Kulturwandel&lt;/a&gt;
 
@@ -1559,8 +1550,8 @@ bald aussterben wird, die ich je erlebt habe.&lt;/p&gt;
     <item>
       <title>Google im Fadenkreuz der Politik</title>
       <link>https://blog.koehntopp.info/2010/01/18/google-im-fadenkreuz-der-politik.html</link>
-      <pubDate>Mon, 18 Jan 2010 17:05:04 +0000</pubDate>
-      
+      <pubDate>Mon, 18 Jan 2010 17:05:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/01/18/google-im-fadenkreuz-der-politik.html</guid>
       <description>&lt;p&gt;Einmal schreibt Susanne Gaschke in der Zeit
 &lt;a href=&#34;http://www.zeit.de/2010/03/01-Google&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;einen weiteren Hetzartikel gegen Google&lt;/a&gt;
@@ -1583,8 +1574,7 @@ was von dem Geld, sonst müssen wir uns womöglich anpassen&amp;rsquo; liest.&lt
 klingt dabei fast niedlich:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Mich stört dieses Vorpreschen, diese Gigantomanie, die auch bei der
-Google-Buchsuche durchscheint&amp;quot;, sagte sie.&lt;/p&gt;
-&lt;/blockquote&gt;
+Google-Buchsuche durchscheint&amp;quot;, sagte sie.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ja, die Dame stört sich tatsächlich an Innovation und an groß angelegtem
 interdisziplinärem Denken.&lt;/p&gt;
 &lt;p&gt;Der
@@ -1606,8 +1596,7 @@ spielt oder ein böser Konzern, der es wagt, politisch aktiv zu werden:&lt;/p&gt
 einerseits auf den chinesischen Markt, immerhin einen der größten der Welt
 – verzichten kann. Und andererseits auch als stark genug, sich mit der
 chinesischen Regierung anzulegen. Etwas, das nicht einmal große
-Industrienationen wie Deutschland oder die USA ernsthaft wagen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Industrienationen wie Deutschland oder die USA ernsthaft wagen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das sollte aber vielleicht eher an die Adresse der Bundesregierung gehen.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://carta.info/21664/wie-die-fdp-eine-lex-google-durchboxen-soll/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carta analysiert korrekt&lt;/a&gt;
 
@@ -1618,8 +1607,7 @@ werfen sich die Bälle zu. Gesetze, die (außer von einigen Verlegern) von
 niemandem gefordert werden, sollen durch’s Parlament gejagt werden.
 Volksvertreter sollen zur Ausschaltung einer lästigen Konkurrenz
 missbraucht werden. Um diesen skandalösen Vorgang zu verstehen, muss man
-ein paar Monate zurückgehen.&lt;/p&gt;
-&lt;/blockquote&gt;
+ein paar Monate zurückgehen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ein lohnender Artikel, der die o.a. Medienschau sauber erklärt und die
 Zeit-Kampagne gut ausleuchtet.&lt;/p&gt;
 </description>
@@ -1628,8 +1616,8 @@ Zeit-Kampagne gut ausleuchtet.&lt;/p&gt;
     <item>
       <title>Google baut ein Telefon</title>
       <link>https://blog.koehntopp.info/2009/12/15/google-baut-ein-telefon.html</link>
-      <pubDate>Tue, 15 Dec 2009 12:35:13 +0000</pubDate>
-      
+      <pubDate>Tue, 15 Dec 2009 12:35:13 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/12/15/google-baut-ein-telefon.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/before-google.png&#34; alt=&#34;&#34;  /&gt;
@@ -1669,16 +1657,15 @@ Money Quote dazu:&lt;/p&gt;
 &lt;p&gt;Google will push full VOIP usage on these, meaning no voice/sms plans
 needed at any carrier. Voice calls will go through Google Voice on Data
 SIM cards and will provide unlimited free voice calling. And SMS is
-replaced by unlimited free Gtalk.&lt;/p&gt;
-&lt;/blockquote&gt;
+replaced by unlimited free Gtalk.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Google DNS</title>
       <link>https://blog.koehntopp.info/2009/12/04/google-dns.html</link>
-      <pubDate>Fri, 04 Dec 2009 09:21:15 +0000</pubDate>
-      
+      <pubDate>Fri, 04 Dec 2009 09:21:15 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/12/04/google-dns.html</guid>
       <description>&lt;p&gt;Google teilt mit, daß sie nun
 &lt;a href=&#34;http://code.google.com/intl/de/speed/public-dns/docs/using.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eigene öffentliche DNS-Server&lt;/a&gt;
@@ -1709,8 +1696,8 @@ replaced by unlimited free Gtalk.&lt;/p&gt;
     <item>
       <title>Das Google-Mißverständnis</title>
       <link>https://blog.koehntopp.info/2009/11/07/das-google-missverstaendnis.html</link>
-      <pubDate>Sat, 07 Nov 2009 16:30:16 +0000</pubDate>
-      
+      <pubDate>Sat, 07 Nov 2009 16:30:16 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/11/07/das-google-missverstaendnis.html</guid>
       <description>&lt;p&gt;Ich glaube ja, daß Google eine der am meisten mißverstandenen Firmen auf
 diesem Planeten ist. Die meisten Leute halten Google für eine globale
@@ -1915,20 +1902,18 @@ gleich in der Produktion.&lt;/p&gt;
     <item>
       <title>Google kauft YouTube</title>
       <link>https://blog.koehntopp.info/2006/10/10/google-kauft-youtube.html</link>
-      <pubDate>Tue, 10 Oct 2006 06:06:30 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Oct 2006 06:06:30 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/10/10/google-kauft-youtube.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.google.com/press/pressrel/google_youtube.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google Pressemeldung&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Google Inc. announced today that it has agreed to acquire YouTube, the consumer media company for people to watch and share original videos through a Web experience, for $1.65 billion in a stock-for-stock transaction.
-Following the acquisition, YouTube will operate independently to preserve its successful brand and passionate community.&lt;/p&gt;
-&lt;/blockquote&gt;
+Following the acquisition, YouTube will operate independently to preserve its successful brand and passionate community.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bezahlt wurden 1.65 Milliarden US-Dollar in Aktien.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
-

@@ -6,12 +6,18 @@
     <description>Recent content in Networking on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/networking/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/networking/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arista Type 7 Passwords</title>
       <link>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</link>
-      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate>
-      
+      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</guid>
       <description>&lt;p&gt;A friend of mine wanted to provision BGP passwords for their Arista switch configuration.&lt;/p&gt;
 &lt;p&gt;So a config stanza such as&lt;/p&gt;
@@ -290,8 +296,8 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
     <item>
       <title>NVME is not a hard disk</title>
       <link>https://blog.koehntopp.info/2021/05/25/nvme-is-not-a-hard-disk.html</link>
-      <pubDate>Tue, 25 May 2021 14:41:50 +0000</pubDate>
-      
+      <pubDate>Tue, 25 May 2021 14:41:50 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/05/25/nvme-is-not-a-hard-disk.html</guid>
       <description>&lt;p&gt;So &lt;a href=&#34;https://twitter.com/leclercfl/status/1396909628949155845&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;somebody tweeted&lt;/a&gt;
 
@@ -322,8 +328,7 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
 &lt;p&gt;Customers of the data track have stateless applications, because they have outsourced all their state management to the various products and services of the data track. They are deploying their applications, and they largely do not care about the content of hard disks, or even entire machines. Usually their instances are nuked on rollout, or after 30 days, whichever comes first, and replaced with fresh instances.&lt;/p&gt;
 &lt;p&gt;Customers of the data track care about placement:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Place my instances as distributed as possible, no two instances on the same host, if possible, not in the same rack or even the same stack&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Place my instances as distributed as possible, no two instances on the same host, if possible, not in the same rack or even the same stack&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(A stack is a network unit of 32-48 racks) This property is called &amp;ldquo;anti-affinity&amp;rdquo;, the spread-out placement of instances.&lt;/p&gt;
 &lt;h2 id=&#34;database-like-systems&#34;&gt;
     &lt;a href=&#34;#database-like-systems&#34;&gt;
@@ -333,8 +338,7 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
 &lt;p&gt;The data track has things such as Kafka, Elastic, Cassandra or MySQL, and a few snowflakes.&lt;/p&gt;
 &lt;p&gt;All of these services are doing their own redundancy: individual drives, or even instances, are not a thing they care a lot about. Loss of hosts or racks is factored in.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;They care a lot about anti-affine placement, because they care a lot about fault isolation through &amp;ldquo;not sharing common infrastructure&amp;rdquo; between instances.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;They care a lot about anti-affine placement, because they care a lot about fault isolation through &amp;ldquo;not sharing common infrastructure&amp;rdquo; between instances.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Often these services do create instances for read capacity, and getting fault tolerance by having the instances not sharing infrastructure is a welcome secondary effect.&lt;/p&gt;
 &lt;h2 id=&#34;adding-distributed-storage-forces-n3&#34;&gt;
     &lt;a href=&#34;#adding-distributed-storage-forces-n3&#34;&gt;
@@ -460,8 +464,8 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
     <item>
       <title>Fixing &#34;ip netns&#34; for docker</title>
       <link>https://blog.koehntopp.info/2020/06/07/fixing-ip-netns-for-docker.html</link>
-      <pubDate>Sun, 07 Jun 2020 14:18:36 +0000</pubDate>
-      
+      <pubDate>Sun, 07 Jun 2020 14:18:36 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/06/07/fixing-ip-netns-for-docker.html</guid>
       <description>&lt;p&gt;So I want to monitor my Jitsi Videobridge to get some useful statistics. The instructions say to &lt;a href=&#34;https://github.com/jitsi/jitsi-videobridge/blob/master/doc/statistics.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;enable Videobridge statistics&lt;/a&gt;
 
@@ -519,8 +523,8 @@ It still is more flexible: works with non-network namespaces and does not need t
     <item>
       <title>RTT-based vs. drop based congestion management</title>
       <link>https://blog.koehntopp.info/2017/05/09/rtt-based-vs-drop-based-congestion-management.html</link>
-      <pubDate>Tue, 09 May 2017 15:52:02 +0000</pubDate>
-      
+      <pubDate>Tue, 09 May 2017 15:52:02 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/05/09/rtt-based-vs-drop-based-congestion-management.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;APNIC discusses different TCP congestion control algorithms&lt;/a&gt;
 
@@ -575,8 +579,7 @@ the ProbeBW gain cycle results in continuous moderate losses. To minimize
 the upstream bandwidth waste and application latency increase from these
 losses, we added policer detection and an explicit policer model to BBR.
 We are also actively researching better ways to mitigate the policer
-damage.”&lt;/p&gt;
-&lt;/blockquote&gt;
+damage.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This is a very nice way to say &amp;ldquo;We are seeing your shitty traffic shapers
 and are working around them.&amp;rdquo;&lt;/p&gt;
 </description>
@@ -585,8 +588,8 @@ and are working around them.&amp;rdquo;&lt;/p&gt;
     <item>
       <title>Europol discovers CGN</title>
       <link>https://blog.koehntopp.info/2017/02/01/europol-discovers-cgn.html</link>
-      <pubDate>Wed, 01 Feb 2017 05:18:00 +0000</pubDate>
-      
+      <pubDate>Wed, 01 Feb 2017 05:18:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/02/01/europol-discovers-cgn.html</guid>
       <description>&lt;p&gt;The Council of the European Union discusses the &amp;ldquo;problem&amp;rdquo; of Carrier Grader
 NAT, and would like to see all Ip address logging and storage extended to
@@ -618,8 +621,7 @@ Exploitation Material (CSEM) distributed and hosted via a cloud-based
 service, the investigators had to investigate each one of the 50 clients
 using that public IP at this time in order to identify who was ultimately
 uploading the CSEM, because the cloud-based service provider did not log
-the relevant information to define which customer was using the public IP.&lt;/p&gt;
-&lt;/blockquote&gt;
+the relevant information to define which customer was using the public IP.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Today, on 31. January, a &amp;ldquo;European Network of law enforcement specialists in
 CGN&amp;rdquo; will be established at Europol. The aim of the network is to document
 cases of non-attribution due to CGN in the EU, and pressure for a change in
@@ -630,8 +632,8 @@ data retention practice.&lt;/p&gt;
     <item>
       <title>MySQL vs. Gigabit Network</title>
       <link>https://blog.koehntopp.info/2012/08/22/mysql-vs-gigabit-network.html</link>
-      <pubDate>Wed, 22 Aug 2012 10:01:00 +0000</pubDate>
-      
+      <pubDate>Wed, 22 Aug 2012 10:01:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/08/22/mysql-vs-gigabit-network.html</guid>
       <description>&lt;p&gt;Wir generieren eine neue Art von
 &lt;a href=&#34;https://blog.koehntopp.info/2012/08/15/materialized-view.html&#34;&gt;Materialized View&lt;/a&gt;
@@ -731,8 +733,7 @@ wird das Feld &amp;rsquo;last_check&amp;rsquo; aktualisiert.&lt;/p&gt;
 a “before” image whose columns are matched against when searching for the
 row to be updated, and an “after” image containing the changes.  Normally,
 MySQL logs full rows (that is, all columns) for both the before and after
-images.&lt;/p&gt;
-&lt;/blockquote&gt;
+images.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wir haben also eine Average Row Length von 77539 Bytes, und wir loggen für
 jede Änderung die komplette Row zweimal: einmal in der alten und einmal in
 der neuen Version.  Wir schreiben also im Schnitt 140 KB, wenn ein
@@ -772,8 +773,8 @@ dem File System Buffer Cache bedient.&lt;/p&gt;
     <item>
       <title>Internet mit Kugelschreibern (und Bussen)</title>
       <link>https://blog.koehntopp.info/2009/06/24/internet-mit-kugelschreibern-und-bussen.html</link>
-      <pubDate>Wed, 24 Jun 2009 07:21:35 +0000</pubDate>
-      
+      <pubDate>Wed, 24 Jun 2009 07:21:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/06/24/internet-mit-kugelschreibern-und-bussen.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/kris-symbol.png&#34; alt=&#34;&#34;  /&gt;
@@ -929,8 +930,8 @@ das Javascript enthalten ist.&lt;/p&gt;
     <item>
       <title>Yellow Cable</title>
       <link>https://blog.koehntopp.info/2006/03/27/yellow-cable.html</link>
-      <pubDate>Mon, 27 Mar 2006 19:02:21 +0000</pubDate>
-      
+      <pubDate>Mon, 27 Mar 2006 19:02:21 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/03/27/yellow-cable.html</guid>
       <description>&lt;pre&gt;&lt;code&gt;20:43 huzzel&amp;gt; ich brauch aber dieses dumme wlan
 20:43 huzzel&amp;gt; ^^
@@ -952,4 +953,3 @@ das Javascript enthalten ist.&lt;/p&gt;
     
   </channel>
 </rss>
-

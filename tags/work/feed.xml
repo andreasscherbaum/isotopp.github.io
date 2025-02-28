@@ -6,12 +6,394 @@
     <description>Recent content in Work on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/work/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/work/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Practice</title>
+      <link>https://blog.koehntopp.info/2024/07/01/practice.html</link>
+      <pubDate>Mon, 01 Jul 2024 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/07/01/practice.html</guid>
+      <description>&lt;p&gt;Some things come to me very slowly and painfully.
+In this particular case, it’s because I’ve been immersed in an environment where a certain type of activity,
+&lt;em&gt;Practice Building&lt;/em&gt;, was done implicitly by everyone around me.
+The environment itself facilitated this implicitly as well.&lt;/p&gt;
+&lt;p&gt;When I entered a new environment where this practice was not performed and the means to facilitate it were not present,
+it became really hard to communicate what was missing.&lt;/p&gt;
+&lt;h1 id=&#34;the-technology-radar&#34;&gt;
+    &lt;a href=&#34;#the-technology-radar&#34;&gt;
+	The Technology Radar
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;In an old work environment, a manager was tasked with or had the idea to implement a &amp;ldquo;Technology Radar.&amp;rdquo;
+A
+&amp;ldquo;&lt;a href=&#34;https://www.thoughtworks.com/insights/blog/technology-strategy/how-to-create-your-enterprise-technology-radar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Technology Radar&lt;/a&gt;
+
+&amp;rdquo;
+is a process where companies organize the &amp;ldquo;things they use&amp;rdquo; into arbitrary quadrants that make sense to them.
+For IT, &amp;ldquo;techniques,&amp;rdquo; &amp;ldquo;tools,&amp;rdquo; &amp;ldquo;platforms,&amp;rdquo; and &amp;ldquo;languages and frameworks&amp;rdquo;
+seem to be popular but somewhat useless for hierarchical searching.
+On the other hand, it produces nicer graphics than a &amp;ldquo;Dewey Decimal System for Tech&amp;rdquo; graphed out,
+even if the latter would be systematically more useful to build structure and visualize relationships and alternatives.&lt;/p&gt;
+&lt;p&gt;To create a &amp;ldquo;radar-like&amp;rdquo; appearance, the &amp;ldquo;things we use&amp;rdquo; are then assigned one of four statuses,
+from the inside out: &amp;ldquo;adopt,&amp;rdquo; &amp;ldquo;trial,&amp;rdquo; &amp;ldquo;assess,&amp;rdquo; and &amp;ldquo;hold.&amp;rdquo;
+What these mean is usually not well understood and often contested.
+Actually,
+75% of the time in the panel discussions for a Tech Radar is wasted
+because people don&amp;rsquo;t understand what these statuses are supposed
+to mean or the consequence of assigning a status to a tech.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.thoughtworks.com/insights/blog/technology-strategy/how-to-create-your-enterprise-technology-radar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2024/07/practice-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;What a Tech Radar looks like.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The statuses could be &amp;ldquo;test this and tell us,&amp;rdquo; &amp;ldquo;immature but shiny,&amp;rdquo;
+&amp;ldquo;tried and tested,&amp;rdquo; &amp;ldquo;actually no, but some of us need it,&amp;rdquo; and &amp;ldquo;hell no.&amp;rdquo;
+But that is not what we got, hence the discussions.&lt;/p&gt;
+&lt;p&gt;It matters not.
+You could repair the Tech Radar,
+but it would still not be the thing that is needed, but a weak simulation of what is actually required.&lt;/p&gt;
+&lt;p&gt;Because the other thing that comes to light as part of the technology radar is that people want more:
+To understand how a certain technology fits into the company, they do not only need a recommendation,
+they also need context, recommendations, and best practices, and ultimately
+&lt;a href=&#34;https://blog.koehntopp.info/2022/04/15/sql-engineering-guidelines.html&#34;&gt;an engineering guide&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;The question is,
+what process builds such context, recommendations, and practices,
+and what is needed as a precondition for such a process.&lt;/p&gt;
+&lt;h1 id=&#34;a-catalog-of-skills-and-expertise&#34;&gt;
+    &lt;a href=&#34;#a-catalog-of-skills-and-expertise&#34;&gt;
+	A catalog of skills and expertise
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Another thing that happens in almost any company is
+that somebody comes up with the brilliant idea
+of asking people about the things they are good at and to assess themselves in these areas.
+You know, like a LinkedIn résumé or skill catalog.&lt;/p&gt;
+&lt;p&gt;And then you end up with a database of expertise that is not only incomplete for each individual
+but also never updated and ultimately useless because people do not use it.
+They do not trust it.
+And they are right.&lt;/p&gt;
+&lt;p&gt;Expertise is not cataloged and not stored in a database.
+It is demonstrated.
+Because that is what builds trust.
+Someone demonstrating to all who care that they are actually right more often than others.
+Or even better, when they are wrong, it is less painful than when others are wrong.
+These are not the same thing, and in reality, the latter is more important than the former in most cases.&lt;/p&gt;
+&lt;p&gt;So how do you demonstrate expertise publicly?
+And what does this have to do with a process that builds practices and documents them?&lt;/p&gt;
+&lt;h1 id=&#34;practice&#34;&gt;
+    &lt;a href=&#34;#practice&#34;&gt;
+	Practice
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Good companies have places.&lt;/p&gt;
+&lt;p&gt;A place is a communications platform where people can talk to each other with two important properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is findable with keywords or through an ontology.&lt;/li&gt;
+&lt;li&gt;People can join it without being invited.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If it is private, unfindable, and you need to be invited, you have groups.
+Groups suck; they isolate.
+You want places.&lt;/p&gt;
+&lt;p&gt;I have written about
+&lt;a href=&#34;https://blog.koehntopp.info/2022/10/12/groups-and-places.html&#34;&gt;important properties of chats&lt;/a&gt;
+
+
+elsewhere at length.&lt;/p&gt;
+&lt;p&gt;If you have places,
+people will make the places they need
+and then self-organize there to talk about the things they do and how they are doing this.
+At least if you give them the time to do this and if you ensure
+&lt;a href=&#34;https://hbr.org/2023/02/what-is-psychological-safety&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pychological safety&lt;/a&gt;
+
+.
+That is,
+if you allow them to talk in this place in a way that allows face-saving and comfortable learning experiences,
+compromise finding, and civilized disagreement.&lt;/p&gt;
+&lt;p&gt;Places then also become locations where people give (tech) support as a public performance.
+This is important for many reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;People realize that things they take as a given are actually a valid bug.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s down for everyone, not just for me.&lt;/li&gt;
+&lt;li&gt;These people have the problem I have solved, and I can tell them how.&lt;/li&gt;
+&lt;li&gt;Other people see our discussion, and while our solution is valid, it is not actually the supported best practice.&lt;/li&gt;
+&lt;li&gt;These guys are using our tool, but for a purpose we haven&amp;rsquo;t anticipated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of these things are visible only with support as a public performance.
+If you pull these things into Jira tickets, none of this would happen, and the company would be left poorer.
+I have written about
+&lt;a href=&#34;https://blog.koehntopp.info/2024/04/17/support-as-a-public-performance.html&#34;&gt;support as a public performance&lt;/a&gt;
+
+
+elsewhere at length.&lt;/p&gt;
+&lt;p&gt;Of course, chat is not a good medium for support.&lt;/p&gt;
+&lt;p&gt;If you do support in a chat, you would want a chat with good threads and encourage people to open a thread per problem.&lt;/p&gt;
+&lt;p&gt;You would also need a bot that can turn a thread into a Jira ticket,
+either after the fact in order to get tracing data out of the threads,
+or if it turns out that the support case results in a work item that cannot be resolved immediately.&lt;/p&gt;
+&lt;p&gt;You also want somebody whose job is technical
+and whose job grade enables them to lift their gaze from the path to the horizon to go over the chat.
+They would start interventions when they see questions that are unanswered or answered &amp;ldquo;wrongly.&amp;rdquo;
+And by &amp;ldquo;wrong,&amp;rdquo;
+I mostly mean cases where it is obvious to them
+that the answer is either not efficient or not applicable to the problem.&lt;/p&gt;
+&lt;p&gt;That person would also choose support cases of the week and by Friday morning produce a write-up.
+It may be a blog article or a &amp;ldquo;medium.com&amp;rdquo; style write-up about anything that happened and is interesting.
+If by Friday noon it is online,
+all the people who spend Friday afternoon on their self-education will read it and possibly comment.
+Using the articles and the comments,
+that person can then take the output of all that discussion and update the engineering guide.&lt;/p&gt;
+&lt;p&gt;And the Engineering Guide is the deliverable that picks up where the Technology Radar drops off,
+telling people not only what a product is good for,
+but also how to use it efficiently and what specific local practices our tribe has developed
+in order to make it a supportable use case.&lt;/p&gt;
+&lt;p&gt;So look at your company:
+How does your organization build practice?
+How do practitioners meet?&lt;/p&gt;
+&lt;h1 id=&#34;see-also&#34;&gt;
+    &lt;a href=&#34;#see-also&#34;&gt;
+	See also
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2020/06/15/pizza-people-projects-and-processes.html&#34;&gt;Pizza, People, Projects and Processes (2018)&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2022/04/15/sql-engineering-guidelines.html&#34;&gt;Example: SQL Engineering Guidelines&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2022/10/12/groups-and-places.html&#34;&gt;Properties of Chat Systems: Groups and Places&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.koehntopp.info/2024/04/17/support-as-a-public-performance.html&#34;&gt;Support as a public performance&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Operations Review Meeting (deutsch)</title>
+      <link>https://blog.koehntopp.info/2024/04/18/operations-review-meeting-deutsch.html</link>
+      <pubDate>Thu, 18 Apr 2024 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/04/18/operations-review-meeting-deutsch.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/2024/04/18/operations-review-meeting.html&#34;&gt;In English&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Montagnachmittag, &amp;ldquo;Operations Review Meeting&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Der perfekte Zeitpunkt, um sich während des Zoom Meetings ein Nickerchen zu gönnen,
+während eine Gruppe von Management-Personen ohne technischen Hintergrund
+sich für 90 Minuten einschläfernde PowerPoint-Folien vorführen wird.&lt;/p&gt;
+&lt;p&gt;Fred Irgendwas, zuständig für den Wasauchimmer-Service,
+berichtet stolz, dass die Anzahl der Prio 1-Vorfälle in diesem Quartal zwar um 17 Prozent gestiegen ist,
+aber die TTR deutlich gesunken ist.
+Das ist doch was Gutes, oder?&lt;/p&gt;
+&lt;p&gt;Wie bitte?
+Ein Blick ins Unternehmens-Jargon-Lexikon: TTR (Time To Resolution) ist die Zeit bis zur Lösungn des Incidents.&lt;/p&gt;
+&lt;p&gt;Okay, Fred.
+Zeit für eine Intervention.&lt;/p&gt;
+&lt;p&gt;Siebzehn Prozent ist eine vertraute Zahl. Also hattet ihr im Q4 sechs P1s und jetzt habt ihr sieben?&lt;/p&gt;
+&lt;p&gt;Fred bestätigt das.&lt;/p&gt;
+&lt;p&gt;Gut. Wenn es 100 im Q4 und 117 im Q1 gewesen wären, dann würdest du jetzt Burger braten.&lt;/p&gt;
+&lt;p&gt;Also Fred, das ist eine kleine, ganze Zahl.
+Warum schaltest du nicht mal das Screen-Sharing aus,
+und erzählst uns, was diese sieben Mal im Detail passiert ist,
+als wir einen Produktionsausfall wegen des Wasauchimmer-Dienstes hatten?&lt;/p&gt;
+&lt;p&gt;Fred weiß es nicht.
+Er ist nicht technisch.
+Er holt Jane in die Konferenz.&lt;/p&gt;
+&lt;p&gt;Jane weiß Bescheid.
+Jane ist ebenfalls nicht technisch, sie hat denselben MBA wie Fred,
+aber der entscheidende Unterschied ist, dass Jane einen Pager trägt, weil Jane sich kümmert.&lt;/p&gt;
+&lt;p&gt;Wenn ihr Team aufwacht, wacht sie auch auf, und so weiß sie wie es ist.
+Sie &lt;strong&gt;versteht&lt;/strong&gt; es auf eine sehr greifbare und persönlich schmerzhafte Weise.
+(Ich habe Joe zu Jane geändert, weil es zu 80 % eine Jane ist, die sich kümmert.)&lt;/p&gt;
+&lt;p&gt;Jane berichtet,
+dass drei der Q4-Vorfälle und vier der Q1-Vorfälle auf ein Problem mit der Passwortbereitstellung
+zwischen Vault und den Datenbanken zurückzuführen sind.
+Es kommt regelmäßig vor, dass einige Authentifizierungstoken nach einem Redeploy ablaufen,
+obwohl der Redeploy diese mit aktualisieren sollte.&lt;/p&gt;
+&lt;p&gt;Das ist interessant, viel interessanter als das Zahlen-Hokuspokus von Fred.&lt;/p&gt;
+&lt;p&gt;Jane berichtet weiter,
+dass die TTR gesunken ist, weil sie das Problem jetzt kennen
+und es Teil der Deployment-Checkliste und der Incident-Resolution-Dokumentation ist.&lt;/p&gt;
+&lt;p&gt;Auf die Frage, warum das Problem nicht an der Wurzel behoben wird,
+erklärt Jane, dass dies ein Operations-Problem ist und nicht Teil des Feature-Entwicklungs-Backlogs,
+und daher eine niedrige Priorität hat.
+Backlog-Items mit niedriger Priorität schaffen es nie in den eigentlichen Sprint.&lt;/p&gt;
+&lt;p&gt;Also, Jane,
+was du uns damit sagen willst, ist,
+dass wir Ausfallzeiten haben, die uns Geld durch verlorene Umsätze kosten,
+weil wir Operations unterpriorisieren und nicht ernst nehmen.
+Und weil wir das Feedback von Operations nicht in den Backlog-Priorisierungsprozess einfließen lassen?&lt;/p&gt;
+&lt;p&gt;Jane stimmt dem zu, in diesem nervigen, unverbindlichen Unternehmenssprech, das wir alle hassen.
+Sie erwähnt auch, dass die Operations unterbesetzt sind,
+weil drei von den zusätzlichen benötigten Stellen abgelehnt wurden,
+und die anderen beiden von Senior auf einen Regular und einen Junior herabgestuft wurden.
+Operations wird das Problem also auch nicht selbst lösen können,
+sondern ist auf eine Lösung aus dem Sprint des Feature-Teams angewiesen.&lt;/p&gt;
+&lt;p&gt;Das Unternehmen zieht es vor, Geld für Entwickler auszugeben, denn Operations sind nur ein Kostenfaktor.&lt;/p&gt;
+&lt;p&gt;Das Unternehmen erwägt den Umzug zu AWS, weil Operations ein schwieriges Thema ist,
+und sie sich auf das Geschäft konzentrieren wollen.&lt;/p&gt;
+&lt;p&gt;Die Wahrheit ist, dass sie keine Ahnung haben, wie ihre Geschäftsprozesse tatsächlich vor Ort ablaufen.
+Und es ihnen im Grunde egal ist.
+Und bald werden sie noch weniger davon verstehen, weil es von hier aus genau so weitergeht.
+Die ganze Zeit.&lt;/p&gt;
+&lt;p&gt;Das passiert in Unternehmen auf der ganzen Welt, und so häuft sich der Schlamassel an.
+So, oder auf eine von einer Milliarde andere Arten, die tatsächlich isomorph zu dieser sind.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Operations Review Meeting (english)</title>
+      <link>https://blog.koehntopp.info/2024/04/18/operations-review-meeting.html</link>
+      <pubDate>Thu, 18 Apr 2024 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/04/18/operations-review-meeting.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://blog.koehntopp.info/2024/04/18/operations-review-meeting-deutsch.html&#34;&gt;In Deutsch&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Monday Afternoon, &amp;ldquo;Operations Review Meeting&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Time to nap in front of the Zoom,
+because a bunch of management persons with a non-technical background
+will show each other snore-inducing powerpoint slides over a vidconf for 90 minutes.&lt;/p&gt;
+&lt;p&gt;Fred Whatshisname, in charge of Dunnowhatchatmacallit,
+relates that the number of P1 incidents for this quarter is up by 17 percent, but the TTR is down a lot,
+so this is good, right?&lt;/p&gt;
+&lt;p&gt;The what? Bringing up the corporatese abbreviation lexicon: TTR is the the Time To Resolution.&lt;/p&gt;
+&lt;p&gt;Okay, Fred.
+Time to stage an intervention.&lt;/p&gt;
+&lt;p&gt;Seventeen percent is a familiar number. So in Q4 you had six P1&amp;rsquo;s and now you have seven?&lt;/p&gt;
+&lt;p&gt;Fred acknowledges that.&lt;/p&gt;
+&lt;p&gt;Good. If it was 100 in Q4 and 117 in Q1, you&amp;rsquo;d be flipping burgers now.&lt;/p&gt;
+&lt;p&gt;So Fred, this is a tiny integer.
+Why don&amp;rsquo;t you turn off the screen sharing,
+and tell us what actually happened these seven times
+that we had a loss of prod because of the Dunnowhatchatmacallit service being down?&lt;/p&gt;
+&lt;p&gt;Fred does not know.
+He is not technical.
+He joins Jane into the conf.&lt;/p&gt;
+&lt;p&gt;Jane knows.
+Jane is also not technical, she has the same type of MBA that Fred has,
+but the critical difference is that Jane carries a pager, because Jane cares.&lt;/p&gt;
+&lt;p&gt;When her team wakes up, she wakes up and that is how she knows.
+She actually &lt;strong&gt;understands&lt;/strong&gt; in a very visceral and personally painful way.
+(I edited Joe to Jane, because 80% of the time it&amp;rsquo;s a Jane that cares.)&lt;/p&gt;
+&lt;p&gt;Jane relates
+that three of the Q4 incidents and four of the Q1&amp;rsquo;s are related to a problem with password provisioning
+between vault and the databases.
+It happens that some authentication token expires after a re-deploy,
+and is not refreshed as part of the re-deploy.&lt;/p&gt;
+&lt;p&gt;Now, this is interesting, way more interesting than the number hocus-pocus by Fred.&lt;/p&gt;
+&lt;p&gt;Jane further relates
+that the TTR is down because they now know about the problem
+and have it as part of the deploy checklist, and the incident resolution documentation.&lt;/p&gt;
+&lt;p&gt;When asked why the problem it not fixed at the source,
+Jane relates that this is an operations problem and not part of the feature development backlog,
+and hence has a low priority.
+Low priority feature requests never make it into the actual sprint, ever, though.&lt;/p&gt;
+&lt;p&gt;So, Jane,
+what you are telling us is
+that we have downtime that costs us money in lost business,
+because we underprioritise operations by not taking them seriously.
+And by not putting operations feedback into the backlog prioritization process?&lt;/p&gt;
+&lt;p&gt;Jane agrees in this annoying noncommittal corpspeak lingo we all hate.
+She also mentions that operations is understaffed,
+because the three more people needed have been denied
+and the other two have been downgraded from Senior to one Regular and one Junior.&lt;/p&gt;
+&lt;p&gt;The company prefers to spend money on developers, operations is just a cost center.&lt;/p&gt;
+&lt;p&gt;The company considers moving to AWS, because operations is hard,
+and they want to focus on the business.&lt;/p&gt;
+&lt;p&gt;The truth is that they have no idea how their business processes actually work on the ground,
+and do not care, and soon they will understand even less of that,
+because that is how things go from here.
+All the time.&lt;/p&gt;
+&lt;p&gt;This happens in enterprises all around the world, and that is how the suck accumulates.
+This way or one of a gazillion ways that are actually isomorphic to this experience.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Support as a public performance</title>
+      <link>https://blog.koehntopp.info/2024/04/17/support-as-a-public-performance.html</link>
+      <pubDate>Wed, 17 Apr 2024 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/04/17/support-as-a-public-performance.html</guid>
+      <description>&lt;p&gt;Support has been working in Slack for years.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a &lt;code&gt;#java&lt;/code&gt; channel where people can join and ask, a &lt;code&gt;#dba&lt;/code&gt; channel and a &lt;code&gt;#k8s&lt;/code&gt; channel, and there is of course &lt;code&gt;#live&lt;/code&gt;.
+Each has a small four digit number of people attending, with &lt;code&gt;#live&lt;/code&gt; not quite reaching five digits.&lt;/p&gt;
+&lt;p&gt;Some pretty old and clueful people sit in these channels.
+Often they just watch the questions scroll by.
+But sometimes one of the Great Old Ones stirs in their slumber and raises to the surface,
+stretching tentacles and grabbing a question or a support case that looks interesting or weird.&lt;/p&gt;
+&lt;p&gt;The Great Old Ones love their shinies.&lt;/p&gt;
+&lt;p&gt;Management is annoyed by this arrangement.
+They love their Jira, because Jira actually quantifies support, you know.
+It makes tracking KPIs so much easier,
+and then we can see if we managed to fulfill our critical TTR OKR for Q423 or not, instantly.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the company does not earn money with bringing down the TTR OKR for support in any quarter at all.&lt;/p&gt;
+&lt;p&gt;Moving the support from Slack to Jira
+has turned a public interactive performance and discussion of operations and operational problems
+into a set of highly permissioned 1:1 interactions and carefully tracked escalations.
+They have carefully assigned priorities and have tracked resolution times.&lt;/p&gt;
+&lt;p&gt;The Great Old Ones are blindsided now, because no one,
+not even they with their unnatural ancient power beyond what is allowed for mere mortals,
+can read Jira horizontally across all tickets.
+And if they did, and rose and grabbed a ticket, maybe that ticket is resolved.
+But all the others would not have seen this spectacle of noneuclidic debugging
+and knowledge about systems from before the dawn of time,
+nor would they have been able to learn from this.&lt;/p&gt;
+&lt;p&gt;Probably for good,
+because people have been known to go insane from just reading the deploy scripts that drive these systems.
+And let&amp;rsquo;s not even speak about the abominations that these C++ JNI methods actually hold.
+As a mere Java coder you will never know,
+and you should be thankful for that and every second of your life that you do not know about this.&lt;/p&gt;
+&lt;p&gt;Anyway.&lt;/p&gt;
+&lt;p&gt;In Slack questions often triggered +1&amp;rsquo;s. Somebody asks about a problem,
+and others would chime in &amp;ldquo;That was me!&amp;rdquo;, &amp;ldquo;I am having the same problem,
+it&amp;rsquo;s company wide&amp;rdquo; or &amp;ldquo;We know this, and for us this workaround is helpful&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Moving support from Slack to Jira cut that off.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
+  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2024/04/support-01.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+
+&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Is that bad?
+No, this was not a mature process, it was individual heroics, a 0 or 1 on the
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;process maturity scale&lt;/a&gt;
+
+.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;These days, the ticket correlation process corp set up would find the same correlations,
+reliably and with a maturity of 5
+(quantifiably tracked and continuously improved).
+Often, it takes only 4-8 weeks to get the same information as before with the immature process.
+And on top,
+it is now orderly documented and traceable as a KPI instead of happening coincidentally when the problem was current.&lt;/p&gt;
+&lt;p&gt;Also, the company now has architecture review boards,
+and a tech radar that manages these kinds of things pretty successfully.&lt;/p&gt;
+&lt;p&gt;A bunch of MBAs has been promoted on this.&lt;/p&gt;
+&lt;p&gt;This is how process and civilization work.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>The Matrix Trashfire</title>
       <link>https://blog.koehntopp.info/2024/02/13/the-matrix-trashfire.html</link>
-      <pubDate>Tue, 05 Dec 2023 05:06:07 +0000</pubDate>
-      
+      <pubDate>Tue, 05 Dec 2023 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2024/02/13/the-matrix-trashfire.html</guid>
       <description>&lt;p&gt;For reasons, I tried to evaluate the distributed Matrix chat and their clients.
 That did not work out very well.&lt;/p&gt;
@@ -272,8 +654,7 @@ You&amp;rsquo;ve caught Element in the middle of their migration to Element X, a
 -It&amp;rsquo;s a mistake that matrix.org hurls people to servers.joinmatrix.org (which is not run by us);
 until recently it defaulted to matrix.org for convenience.&lt;/li&gt;
 &lt;li&gt;Keeping the &amp;ldquo;create account&amp;rdquo; window open is a pure bug.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://mastodon.matrix.org/@matrix/111924227099676114&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The continue&lt;/a&gt;
 
 &lt;/p&gt;
@@ -296,8 +677,7 @@ specifying the server URL) are also very familiar.&lt;/p&gt;
 &lt;a href=&#34;https://github.com/matrix-org/matrix-spec-proposals/blob/hs/hash-identity/proposals/2134-identity-hash-lookup.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github link&lt;/a&gt;
 
 
-explains how it works (and is strictly opt-in).&lt;/p&gt;
-&lt;/blockquote&gt;
+explains how it works (and is strictly opt-in).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Matrix Director of Program Development &lt;a href=&#34;https://mamot.fr/@thibaultamartin/111924256997285624&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Thibault A. Martin responds&lt;/a&gt;
 
 &lt;/p&gt;
@@ -314,8 +694,7 @@ I gathered the following gripes that we can address on the website itself in thi
 
 &lt;/p&gt;
 &lt;p&gt;If you have the time to let me know if I got things right,
-that would be very useful!&lt;/p&gt;
-&lt;/blockquote&gt;
+that would be very useful!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Thanks for picking this up, people!
 I very much hope that Matrix and Element eventually turn into something useful.&lt;/p&gt;
 </description>
@@ -324,8 +703,8 @@ I very much hope that Matrix and Element eventually turn into something useful.&
     <item>
       <title>Sitzende Tätigkeit</title>
       <link>https://blog.koehntopp.info/2023/10/10/sitzende-taetigkeit.html</link>
-      <pubDate>Tue, 10 Oct 2023 02:03:04 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Oct 2023 02:03:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/10/10/sitzende-taetigkeit.html</guid>
       <description>&lt;p&gt;Ich arbeite im Sitzen, 8h am Tag beruflich, und dann noch ein wenig mehr aus Spaß:
 &lt;a href=&#34;https://blog.koehntopp.info/2022/02/21/spaces.html&#34;&gt;Spaces&lt;/a&gt;
@@ -424,8 +803,8 @@ Der Rest ist dann drumherum zu arrangieren.&lt;/p&gt;
     <item>
       <title>The Gospel of Efficiency vs. Actual Growth</title>
       <link>https://blog.koehntopp.info/2023/09/19/the-gospel-of-efficiency-vs-actual-growth.html</link>
-      <pubDate>Tue, 19 Sep 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Tue, 19 Sep 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/09/19/the-gospel-of-efficiency-vs-actual-growth.html</guid>
       <description>&lt;p&gt;A decade ago, I came as a performance specialist into a rapidly growing environment.
 With rapid growth, I mean anything that is larger than what Moore&amp;rsquo;s Law once delivered.
@@ -491,8 +870,8 @@ You need to have then accept a reality that is very different from what they hav
     <item>
       <title>Kein Homeoffice, keine Kekse</title>
       <link>https://blog.koehntopp.info/2023/09/12/kein-homeoffice-keine-kekse.html</link>
-      <pubDate>Tue, 12 Sep 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Tue, 12 Sep 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/09/12/kein-homeoffice-keine-kekse.html</guid>
       <description>&lt;p&gt;Heise schreibt:
 &lt;a href=&#34;https://www.heise.de/meinung/Kommentar-Massenexodus-bei-Grindr-von-den-Un-Schoenheiten-des-Homeoffice-9301244.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kommentar: Massenexodus bei Grindr – von den (Un-)Schönheiten des Homeoffice &lt;/a&gt;
@@ -618,16 +997,15 @@ Viele Organisationen sind mit dieser, der kapitalistischer Ideologie widersprech
 &lt;p&gt;Companies forcing their employees back into the office will lose talent and keep wage serfs.
 &amp;ndash; Volker Weber (&lt;a href=&#34;https://social.heise.de/@vowe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@vowe@social.heise.de&lt;/a&gt;
 
-)&lt;/p&gt;
-&lt;/blockquote&gt;
+)&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>A Great Resignation, Management Edition</title>
       <link>https://blog.koehntopp.info/2023/06/22/a-great-resignation-management-edition.html</link>
-      <pubDate>Thu, 22 Jun 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Thu, 22 Jun 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/06/22/a-great-resignation-management-edition.html</guid>
       <description>&lt;p&gt;This is not much of a blog post, but just a &lt;a href=&#34;https://chaos.social/@isotopp/110586700595558261&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;thread dump from Mastodon&lt;/a&gt;
 
@@ -797,8 +1175,8 @@ That is basically a move to the left-hand side of Cynefin.&lt;/p&gt;
     <item>
       <title>Meditations on Quitting</title>
       <link>https://blog.koehntopp.info/2022/12/27/meditations-on-quitting.html</link>
-      <pubDate>Fri, 23 Dec 2022 01:02:03 +0000</pubDate>
-      
+      <pubDate>Fri, 23 Dec 2022 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/12/27/meditations-on-quitting.html</guid>
       <description>&lt;p&gt;I quit often.
 At least once a year, but there have been years when I have been quitting four times.&lt;/p&gt;
@@ -873,8 +1251,8 @@ I have to move.&lt;/p&gt;
     <item>
       <title>Groups and Places</title>
       <link>https://blog.koehntopp.info/2022/10/12/groups-and-places.html</link>
-      <pubDate>Wed, 12 Oct 2022 06:07:08 +0000</pubDate>
-      
+      <pubDate>Wed, 12 Oct 2022 06:07:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/10/12/groups-and-places.html</guid>
       <description>&lt;p&gt;In a distributed, asynchronous environment, there is a need for distributed, asynchronous interaction.
 This interaction is often written, but &amp;ldquo;writing&amp;rdquo; these days is actually a media-rich process that includes much more than letters.
@@ -1093,8 +1471,8 @@ During Covid, Zoom became popular, and offered a richer and much better set of c
     <item>
       <title>Pan Narrans and Better Meetings</title>
       <link>https://blog.koehntopp.info/2022/10/10/pan-narrans-and-better-meetings.html</link>
-      <pubDate>Mon, 10 Oct 2022 12:13:14 +0000</pubDate>
-      
+      <pubDate>Mon, 10 Oct 2022 12:13:14 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/10/10/pan-narrans-and-better-meetings.html</guid>
       <description>&lt;p&gt;When you are looking for a better &lt;em&gt;Remote First&lt;/em&gt; culture, you are looking for better meetings.
 If you go for better meetings, you will also have fewer of them.&lt;/p&gt;
@@ -1257,22 +1635,20 @@ There have been reactions.&lt;/p&gt;
     <item>
       <title>Spaces</title>
       <link>https://blog.koehntopp.info/2022/02/21/spaces.html</link>
-      <pubDate>Fri, 11 Feb 2022 11:35:00 +0000</pubDate>
-      
+      <pubDate>Fri, 11 Feb 2022 11:35:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/02/21/spaces.html</guid>
       <description>&lt;p&gt;On the morning of Saturday, 22nd February 2020, two years ago, my colleagues and I woke up to the a message from the company that said:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;&amp;ldquo;Spaces&amp;rdquo; Closed for Operations 23 Feb - 28 Feb&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;During the morning hours of Saturday, 22 February, a fire occurred on the first floor of the &amp;ldquo;Spaces&amp;rdquo; building.
 The fire was extinguished promptly but due to smoke and residue particles that spread throughout the building, we will not be able to open &amp;ldquo;Spaces&amp;rdquo; for at least one weeks time.
-The closure of the building is required to ensure we fully inspect the building, our equipment, clean the office of all smoke damage and residue and more importantly, ensure we have a safe working environment to return to.&lt;/p&gt;
-&lt;/blockquote&gt;
+The closure of the building is required to ensure we fully inspect the building, our equipment, clean the office of all smoke damage and residue and more importantly, ensure we have a safe working environment to return to.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It then took exactly one month instead of one week to fix that, and the planned reopening of the building fell on the exact day of the beginning of the COVID-19 lockdown.
 So it has been today two years ago that I worked in an office the last time.&lt;/p&gt;
 &lt;p&gt;I wrote into a company forum one year ago:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;We will be keeping this up until at least October, and I would be surprised if we are not going to be doing this for much longer the way this country handles Covid.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We will be keeping this up until at least October, and I would be surprised if we are not going to be doing this for much longer the way this country handles Covid.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Anyway, this is the cluttered mess of my Desk at home:&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-1.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1301,7 +1677,7 @@ I have cabled Internet at my desk, Wifi by Unifi in the house, and we have a 500
 &lt;p&gt;&lt;em&gt;Geek wife doing geek wifey things on her Berlin desk.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In Karlsruhe, my GF and I had work desks in an office room, and actually almost never did use our living room.
 We sat back to back, because that makes it easy to roll over and look at the other screen to check things out and help.&lt;/p&gt;
-&lt;p&gt;In Kiel we had an office/living room double room, but the living room really saw use only on Tuesdays ever other week for the Tuesday meeting, when a bunch of Geeks were coming around for cooking and talks.&lt;/p&gt;
+&lt;p&gt;In Kiel we had an office/living room double room, but the living room really saw use only on Tuesdays every other week for the Tuesday meeting, when a bunch of Geeks were coming around for cooking and talks.&lt;/p&gt;
 &lt;p&gt;And even as a student, having a working desk was more important than a proper living room, actually.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2022/02/spaces-4.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1340,8 +1716,8 @@ The loss accumulates to around 1 MB per week.&lt;/li&gt;
     <item>
       <title>Die kommende Kündigungswelle</title>
       <link>https://blog.koehntopp.info/2021/11/12/die-kommende-kuendigungswelle.html</link>
-      <pubDate>Sun, 07 Nov 2021 11:28:27 +0100</pubDate>
-      
+      <pubDate>Sun, 07 Nov 2021 11:28:27 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/12/die-kommende-kuendigungswelle.html</guid>
       <description>&lt;p&gt;Ein guter Freund sinnierte gestern mit anderen Freunden von mir über die Situation auf der Arbeit und schrieb mir heute:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1363,8 +1739,7 @@ Wer nur geimpfte Menschen notlos ins Büro ruft, schafft dadurch indirekt sogar 
 &lt;p&gt;Beides wäre unerträglich.
 Und Menschen in diesen Firmen sollten ihren AG durchaus wissen lassen, dass das unerträglich ist.
 Falls alle Stricke reißen:
-Kündigen und Namen der Manager notieren, damit man in deren Fängen sicher nie mehr landet.&lt;/p&gt;
-&lt;/blockquote&gt;
+Kündigen und Namen der Manager notieren, damit man in deren Fängen sicher nie mehr landet.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bei den Amis heißt das &lt;a href=&#34;https://en.wikipedia.org/wiki/Great_Resignation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Great Resignation&lt;/a&gt;
 
 :&lt;/p&gt;
@@ -1372,8 +1747,7 @@ Kündigen und Namen der Manager notieren, damit man in deren Fängen sicher nie 
 &lt;p&gt;The COVID-19 pandemic has allowed workers to rethink their careers, work conditions, and long-term goals.
 As many workplaces attempted to bring their employees in-person, workers desired the freedom to work from home given during the pandemic.
 With telecommuting also came schedule flexibility, which was the primary reason to look for a new job of the majority of those studied by Bankrate in August 2021.
-Additionally, many workers, particularly in younger cohorts, are seeking to gain a better work–life balance.&lt;/p&gt;
-&lt;/blockquote&gt;
+Additionally, many workers, particularly in younger cohorts, are seeking to gain a better work–life balance.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das ist die mildeste Formulierung, die ich gefunden habe.&lt;/p&gt;
 &lt;p&gt;Tatsächlich arbeiten &amp;ldquo;wir&amp;rdquo; im März 2022 seit 2 Jahren von zu Hause und/oder unter Pandemie-Bedingungen, und außerhalb der traditionellen Bürostrukturen und -hierarchien.
 Einige Firmen haben sich anpassen können.
@@ -1389,8 +1763,7 @@ Und Mitarbeiter, die seit 2 Jahren bewiesen haben, daß sie sehr gut und erfolgr
 &lt;p&gt;solche Leute brechen jetzt auf - in Firmen, die anders arbeiten, in Berufe, die das nicht notwendig machen oder in ein Umfeld, das weniger dem späten 19. Jahrhundert verhaftet ist. Die Zukunft der Arbeit ist gerade angekommen, und die Leute ziehen um.&lt;/p&gt;
 &lt;p&gt;Gerade bei den Wissensarbeitern ist das so:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Ich habe 5 Jahre studiert und danach 3 Jahre Projekte gemacht und Dir jetzt gerade 2 Jahre lang bewiesen, daß ich mich selbst organisieren kann, und jetzt willst Du mich im Büro haben, damit Du Dich nicht so alleine fühlst?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Ich habe 5 Jahre studiert und danach 3 Jahre Projekte gemacht und Dir jetzt gerade 2 Jahre lang bewiesen, daß ich mich selbst organisieren kann, und jetzt willst Du mich im Büro haben, damit Du Dich nicht so alleine fühlst?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Kann man machen. Nicht schlau. So gar nicht.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; Nachtrag.&lt;/p&gt;
 &lt;p&gt;Jemand schickt mir diesen &lt;a href=&#34;https://www.sueddeutsche.de/wirtschaft/overemployed-home-office-usa-1.5461910&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paywalled link zur SZ&lt;/a&gt;
@@ -1404,12 +1777,10 @@ Und Mitarbeiter, die seit 2 Jahren bewiesen haben, daß sie sehr gut und erfolgr
 &lt;p&gt;Ich kann nur den Teaser lesen, aber das ist das, was wir im Informatik-Studium Semester 2 (und 4) gemacht haben.
 Also 3 Leute in die Inf 2 Vorlesung schicken, parallel 3 Leute in Inf 4.
 Mit dem Rest (gut 20 Leute, Rotationssystem) die Vorlesungen von 2x 90 Minuten in 45 Minuten durchziehen, und dann in 45 Minuten die Aufgaben machen.
-Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;
-&lt;/blockquote&gt;
+Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Antwort war:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Dafür hatten wir [bei uns] die Mitschriften AG. Etwas anderer Studienablauf bei Nicht-Informatikern.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Dafür hatten wir [bei uns] die Mitschriften AG. Etwas anderer Studienablauf bei Nicht-Informatikern.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; Nachtrag.&lt;/p&gt;
 &lt;p&gt;Einige Arbeitgeber insistieren dringend, daß &amp;ldquo;Mitarbeiter wenigstens einen Tag in der Woche im Büro sind&amp;rdquo;, ohne das näher zu begründen.&lt;/p&gt;
 &lt;p&gt;Bohrt man unauffällig und inoffiziell nach, heißt es &amp;ldquo;Wir haben sehr viele Expats, und wenn die statt von hier von ihrem Heimatland aus arbeiten, dann kommen wir von der Unternehmenssteuer her in Teufels Küche.&amp;rdquo;&lt;/p&gt;
@@ -1420,8 +1791,8 @@ Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;
     <item>
       <title>Vijzelbuurt is changing</title>
       <link>https://blog.koehntopp.info/2020/10/08/vijzelbuurt-is-changing.html</link>
-      <pubDate>Thu, 08 Oct 2020 18:11:50 +0000</pubDate>
-      
+      <pubDate>Thu, 08 Oct 2020 18:11:50 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/10/08/vijzelbuurt-is-changing.html</guid>
       <description>&lt;p&gt;Back when I was still commuting to work in an office, in the far past, I used to be in the Spaces building in Vijzelgracht in Amsterdam, every day. Mark Wagenbuur of &lt;a href=&#34;https://twitter.com/bicycledutch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BicycleDutch&lt;/a&gt;
 
@@ -1488,8 +1859,8 @@ Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;
     <item>
       <title>Rolling back a rollout</title>
       <link>https://blog.koehntopp.info/2020/01/17/rolling-back-a-rollout.html</link>
-      <pubDate>Fri, 17 Jan 2020 19:53:49 +0000</pubDate>
-      
+      <pubDate>Fri, 17 Jan 2020 19:53:49 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/01/17/rolling-back-a-rollout.html</guid>
       <description>&lt;p&gt;Florian Haas &lt;a href=&#34;https://twitter.com/xahteiwi/status/1217903825824120834&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;asks on Twitter&lt;/a&gt;
 
@@ -1649,15 +2020,14 @@ Das hat sehr, sehr böses Blut gegeben&lt;/p&gt;
     <item>
       <title>Du weisst nichts von Homeoffice</title>
       <link>https://blog.koehntopp.info/2019/01/07/du-weisst-nichts-von-homeoffice.html</link>
-      <pubDate>Mon, 07 Jan 2019 09:14:19 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Jan 2019 09:14:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2019/01/07/du-weisst-nichts-von-homeoffice.html</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;https://www.golem.de/news/spd-arbeitsministerium-will-recht-auf-homeoffice-per-gesetz-1901-138520.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Recht auf Homeoffice&lt;/a&gt;
 
  schreibt Golem:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Das SPD-geführte Bundesarbeitsministerium plant ein gesetzlich verankertes Recht auf Home Office.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Das SPD-geführte Bundesarbeitsministerium plant ein gesetzlich verankertes Recht auf Home Office.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und alle brüllen &amp;ldquo;Jaaaa!&amp;rdquo;.
 Ich glaube, den meisten ist gar nicht klar, auf was sie sich da einlassen und wie sich eine Remote First-Firma anfühlt.
 Wie dem auch sei:
@@ -1694,8 +2064,8 @@ Alles in allem nicht wirklich eine Verbesserung der finanziellen und der CO2-Bil
     <item>
       <title>Where do you see yourself in five years?</title>
       <link>https://blog.koehntopp.info/2017/09/11/where-do-you-see-yourself-in-five-years.html</link>
-      <pubDate>Mon, 11 Sep 2017 19:49:05 +0000</pubDate>
-      
+      <pubDate>Mon, 11 Sep 2017 19:49:05 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/09/11/where-do-you-see-yourself-in-five-years.html</guid>
       <description>&lt;h3 id=&#34;seriously-hr-people-ask-the-weirdest-questions&#34;&gt;
     &lt;a href=&#34;#seriously-hr-people-ask-the-weirdest-questions&#34;&gt;
@@ -1703,8 +2073,7 @@ Alles in allem nicht wirklich eine Verbesserung der finanziellen und der CO2-Bil
     &lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Where do you see yourself in five years?&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;Where do you see yourself in five years?&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;For a Twentysomething with no owned property and no family the
 truthful answer is of course &amp;ldquo;In a different company, twice
 removed. Not because you suck more than anywhere else, but,
@@ -1795,8 +2164,8 @@ many ways not even effectively assisted.&lt;/p&gt;
     <item>
       <title>The company as a social engine</title>
       <link>https://blog.koehntopp.info/2017/08/07/the-company-as-a-social-engine.html</link>
-      <pubDate>Mon, 07 Aug 2017 19:34:37 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Aug 2017 19:34:37 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/08/07/the-company-as-a-social-engine.html</guid>
       <description>&lt;p&gt;So why is everything so complicated? At work, I mean.&lt;/p&gt;
 &lt;p&gt;Think of a small company. A single person, a founder, is building her
@@ -1885,8 +2254,8 @@ around here is more compatible with your own flaws than elsewhere.&lt;/p&gt;
     <item>
       <title>Twitter so: Testing in Production</title>
       <link>https://blog.koehntopp.info/2017/08/01/twitter-so-testing-in-production.html</link>
-      <pubDate>Tue, 01 Aug 2017 09:25:02 +0000</pubDate>
-      
+      <pubDate>Tue, 01 Aug 2017 09:25:02 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/08/01/twitter-so-testing-in-production.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/matthewrdutton/status/892007581639737344&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Matthew Dutton:&lt;/a&gt;
 
@@ -1942,366 +2311,5 @@ written. That&amp;rsquo;s actually the most valuable part of it.&lt;/p&gt;
 </description>
     </item>
     
-    <item>
-      <title>Rolling out patches and changes, often and fast</title>
-      <link>https://blog.koehntopp.info/2017/05/18/rolling-out-patches-and-changes-often-and-fast.html</link>
-      <pubDate>Thu, 18 May 2017 10:44:13 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2017/05/18/rolling-out-patches-and-changes-often-and-fast.html</guid>
-      <description>&lt;p&gt;Fefe had a &lt;a href=&#34;https://blog.fefe.de/?ts=a7e82d0e&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;short pointer&lt;/a&gt;
-
- to an article
-&lt;a href=&#34;https://www.cs.columbia.edu/~smb/blog/2017-05/2017-05-12.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Patching is Hard&lt;/a&gt;
-
-.
-It is, but you can make it a lot easier by doing a few things right. I did s small
-writeup (&lt;a href=&#34;https://blog.fefe.de/?ts=a7e262f4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;in German&lt;/a&gt;
-
-) to explain this,
-which Fefe posted.&lt;/p&gt;
-&lt;p&gt;I do have an older talk on this, titled &amp;ldquo;8 rollouts a day&amp;rdquo; (more like
-30 these days). There are
-&lt;a href=&#34;https://www.slideshare.net/isotopp/8-rollouts-a-day&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;slides&lt;/a&gt;
-
- and a
-&lt;a href=&#34;https://www.youtube.com/watch?v=rzU1UtUpyTI&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recording&lt;/a&gt;
-
-. The Devops talk
-&amp;ldquo;Go away or I will replace you with a little shell script&amp;rdquo; addresses it,
-too, but from a different angle
-(&lt;a href=&#34;https://www.slideshare.net/isotopp/go-away-of-i-will-replace-you-with-a-little-shell-script-english&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;slides&lt;/a&gt;
-
-,
-&lt;a href=&#34;https://www.youtube.com/watch?v=e0CCv7pSK4s&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recording&lt;/a&gt;
-
-).&lt;/p&gt;
-&lt;p&gt;Here is the english version of my writeup.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&#34;https://www.cs.columbia.edu/~smb/blog/2017-05/2017-05-12.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Patching is Hard&lt;/a&gt;
-
- article
-says:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Patching is hard? Yes—and every major tech player, no matter
-how sophisticated they are, has had catastrophic failures when
-they tried to change something. Google once bricked
-Chromebooks with an update. A Facebook configuration change
-took the site offline for 2.5 hours. Microsoft ruined network
-configuration and partially bricked some computers; even their
-newest patch isn&amp;rsquo;t trouble-free. An iOS update from Apple
-bricked some iPad Pros. Even Amazon knocked AWS off the air.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Where I am working we made the same observation. 100% uptime is
-impossible, but management needs metrics and controls to
-understand if we are still on the right track. We do have an
-outage budget. That means we are measuring the actual current
-business and compare with the predicted business. If a failed
-rollout creates a loss of (potential) income, we can tell how
-much that is and deduct that from the outage budget. We are
-trying to make the budget as precisely as possible. That does
-not mean we are trying to create outages on purpose, but having
-fewer outages than the budget allows may mean that we are not
-moving fast enough and have become complacent in what we are
-doing.&lt;/p&gt;
-&lt;p&gt;Rolling out often is useful, because then change sets are small
-and easy to check, much easier than large and hard to understand
-changes. So we do need to roll out often in order to maintain
-speed. Rollout problems tend to manifest in subsystems where we
-do not roll out often enough. Usually secondary changes, changes
-in dependencies and libraries, accumulate and then the rollout
-fails. The solution is to roll out even if the code did not
-change (that is, we roll out for the sake of keeping
-dependencies current).&lt;/p&gt;
-&lt;p&gt;This is a very tangible form of representing technical debt:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;the larger the diff between production and trunk is, the more
-likely moving trunk to production is going to result in a
-failure.&lt;/li&gt;
-&lt;li&gt;To make patching safe you have to do it often.&lt;/li&gt;
-&lt;li&gt;To be able to patch often, you need to make patching and
-rolling out an operative process and not an upgrade/migration
-project.&lt;/li&gt;
-&lt;li&gt;To make rollouts and operative thing it is useful to
-make testing in production safe and survivable.&lt;/li&gt;
-&lt;li&gt;To be able to test in production, the following things are
-useful:
-&lt;ul&gt;
-&lt;li&gt;have at most two versions of a change to a certain system.
-Do not do three phase or multiphase rollouts. Finish one
-change before you do the next one.&lt;/li&gt;
-&lt;li&gt;have overcapacity. A change might make it necessary to
-provide more machinery or more computer power or more memory
-for a short time. You need to have that or be able to
-provision this on short notice. Being efficient means having
-no reserves, no elasticity.&lt;/li&gt;
-&lt;li&gt;separation of code distribution and code activation. That means feature
-flags and experiments in your code. The same rollout must be
-able to switch at runtime between old and new behavior.&lt;/li&gt;
-&lt;li&gt;changes to persistent data structures require that you update both
-versions of the structure concurrently in order for old and
-new code to be able to co-exist.&lt;/li&gt;
-&lt;li&gt;you need to know what is going on. Have a good monitoring, central log
-collection, good search on all of that. There is a thing
-called monitoring lag, the distance in time between a thing
-happening and the time you will see this in your monitoring.
-Measure that lag and have it shown on each screen. Alert on
-monitoring lag.&lt;/li&gt;
-&lt;li&gt;have a culture of failure that focuses on improvement and
-learnings. Check out the search term &amp;ldquo;blameless postmortem&amp;rdquo;
-and read up on this.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;It&amp;rsquo;s not actually rocket science, but it will make things a lot better
-around you.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Stört euch bitte nicht an dem Denglisch, das ist in der Ops-Abteilung von
-internationalen Firmen durchaus normal :-)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Indeed. The office is in Amsterdam, and the language at work is English.
-When I am thinking about work, I am doing it in English. Writing about work
-in German means that I will use a lot of english terms for the things I am
-trying to describe, because I&amp;rsquo;d have to search for appropriate German terms
-and concepts first and that would interrupt the flow. Sorry about that.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Canary Skill Endorsements</title>
-      <link>https://blog.koehntopp.info/2017/05/09/canary-skill-endorsements.html</link>
-      <pubDate>Tue, 09 May 2017 09:11:18 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2017/05/09/canary-skill-endorsements.html</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/iantien/status/861248220428738560/photo/1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/05/canary-skill-endorsements-1024x768.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/a&gt;
-
-&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://twitter.com/iantien/status/861248220428738560/photo/1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Canary Skill Endorsements&lt;/a&gt;
-
-&amp;rdquo;:
-If you see them being used in a letter sent to you by a recruiter, you go
-all &lt;a href=&#34;http://www.snopes.com/music/artists/vanhalen.asp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Van Halen when they spot a brown M&amp;amp;M&lt;/a&gt;
-
-.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Interview in the Enterprise</title>
-      <link>https://blog.koehntopp.info/2017/03/27/the-interview-in-the-enterprise.html</link>
-      <pubDate>Mon, 27 Mar 2017 13:43:47 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2017/03/27/the-interview-in-the-enterprise.html</guid>
-      <description>&lt;p&gt;See also
-&lt;a href=&#34;http://www.yegor256.com/2017/02/21/say-no-to-google-recruiters.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Why I Don&amp;rsquo;t Talk to Google Recruiters&lt;/a&gt;
-
-.&lt;/p&gt;
-&lt;p&gt;Where I work we have regular round tables, in
-which you can talk and ask questions to middle management from other
-departments than your own. I had the opportunity to talk to a person who
-manages development priorities and staffs teams, and who of course has some
-insight into hiring and the interview process. That was very enlightening.&lt;/p&gt;
-&lt;p&gt;For example, finding people to hire in a large organisation is a hard job.
-Hiring rates are quite fixed, so in order to find people to hire you need to
-go through a relatively fixed, larger number of resume reviews, phone
-screens and face to face interviews. Assume that for each three people you
-would want to hire you need to sift through 100 resumes - that&amp;rsquo;s 10.000
-resumes to look at for 300 people to hire. And it can not be automated.&lt;/p&gt;
-&lt;p&gt;An interview process for hiring, then moving people and their families, and
-finally on-boarding has latency - several months, often half a year, until
-the move and first day at work, and then another three months of on-boarding
-and three more months of team formation (the four *ormings).&lt;/p&gt;
-&lt;p&gt;I agree with whiteboard programming being a useless exercise in hiring
-interviews, and prefer other methods to validate credentials and capability -
-I like to ask people &amp;ldquo;Choose a previous project from your resume and tell
-me about it. What was that about, what was hard, and how did you handle
-this? What did you like about your solution, and what would you be doing
-differently in retrospective?&amp;rdquo; I like to hear about things they are proud
-of, and things they have learned, and I like to hear about possible choices
-and reasons for preferring one over the other. But this&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Thanks for your email. I&amp;rsquo;m very interested indeed. I have nothing against
-an interview. However, there is one condition: I have to be interviewed by
-the person I will be working for. By my future direct manager.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;is not going to work in any larger organisation, and for sure not in the
-place I work in.&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;We don&amp;rsquo;t hire for a specific position, except for very few and distinct job
-profiles. Certainly not for developer positions.&amp;rdquo; has been explained to me.
-&amp;ldquo;We would for example hire for specific positions in deep infra, Network
-Engineers or Database Administrators, but that&amp;rsquo;s rare and an exception.&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;When I asked for the why, we ended speaking about one core work of that
-manager, and how an agile organisation at scale can work. In our case, the
-organisation has a very specific culture and way of working, and of course a
-huge established codebase. The purpose of on-boarding is to explain our way
-of working and our past choices to beginners, and to familiarise them with
-our vocabulary, toolset and environment in a safe way.&lt;/p&gt;
-&lt;p&gt;After completing this, beginners like everyone else, can enter the &amp;ldquo;Pick
-your next team&amp;rdquo; process, in which wishes and requests, skills and interests
-are being matched, and in which people can move laterally through the
-organisation. It may very well be that the job and team you are applying for
-after completing on-boarding did not exist yet when you were interviewed -
-and in fact that&amp;rsquo;s not entirely unlikely, considering growth and the speed
-of change in the business environment.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Automatisierung und Skalierung - Teil 2</title>
-      <link>https://blog.koehntopp.info/2011/02/18/automatisierung-und-skalierung-teil-2.html</link>
-      <pubDate>Fri, 18 Feb 2011 20:47:49 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2011/02/18/automatisierung-und-skalierung-teil-2.html</guid>
-      <description>&lt;p&gt;Dies ist der 2. Teil zum Thema Automatisierung von Systemverwaltungsaufgaben.
-&lt;a href=&#34;https://blog.koehntopp.info/2011/02/17/automatisierung-und-skalierung.html&#34;&gt;Den ersten Teil gibt es hier&lt;/a&gt;
-
-.&lt;/p&gt;
-&lt;p&gt;In jenem Text habe ich mit dem Beispiel eines Installationsservers gearbeitet und ich schrieb darüber:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Was also wie ein wenig Gescripte aussieht, ist in Wirklichkeit die
-Definition und Realisierung eines Prozesses - genau genommen die
-Formalisierung eines Prozesses &amp;ldquo;Server aufsetzen&amp;rdquo; in der Firma. Das Ziel
-des Prozesses ist die Produktion einer neuen Maschine, die einer gewissen
-Spezifikation möglichst gut entsprechen soll. Dabei sind die Prozeßziele
-die möglichst genaue Einhaltung der Spezifikation, und die möglichst
-schnelle Abwicklung des Auftrages. Dabei ist das Wissen eines Experten in
-Programmcode auskristallisiert worden - den Hilfs-Scripten und Anpassungen
-des Installationsservers.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Ich muß die wichtigen Punkte hier noch einmal herausstellen: Wenn wir in
-einem Umfeld solche Aufgaben automatisieren, dann wollen wir damit
-verschiedene Dinge erreichen.&lt;/p&gt;
-&lt;p&gt;Zum einen soll die gewünschte Operation, etwa die Installation einer Kiste,
-reproduzierbar gemacht werden. Das kann nur dann gelingen, wenn die
-Automatisierung dieses Prozesses vollständig ist, &lt;em&gt;die Anzahl der manuellen
-Arbeitsschritte zur Nachbearbeitung also Null ist&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Denn wenn während einer solchen Änderung an einer Maschine auch nur ein
-Arbeitsschritt von Hand durch einen Sysadmin ausgeführt wird, dann besteht
-die Gefahr, daß diese Änderung nicht korrekt oder uneinheitlich gemacht
-wird, und das gefährdet die nachfolgenden automatischen
-Bearbeitungssschritte.&lt;/p&gt;
-&lt;p&gt;Außerdem geht die Parallelisierbarkeit der Operation verloren, wenn noch
-manuelle Arbeitsschritte notwendig sind: Egal wie viele Kisten wir
-zeitgleich durch den Prozeß ziehen können, am Ende müssen die manuellen
-Schritte nacheinander Kiste für Kiste durch einen menschlichen Admin
-abgearbeitet werden, sind also wieder serialisiert. Das heißt, es gibt einen
-Punkt, der vermutlich gar nicht so weit draußen liegt, an dem der ganze
-Prozeß wieder bottlenecked.&lt;/p&gt;
-&lt;p&gt;Und schließlich ist es so, daß wir durch die Automatisierung einer Operation -
-hier der Installationsprozeß  - das notwendige Expertenwissen zur
-Durchführung in ein Script verpacken. Das Wissen um das &amp;ldquo;Wie&amp;rdquo; wird
-externalisiert, damit reproduzierbar und einem Diskurs (durch Patches)
-zugänglich gemacht.&lt;/p&gt;
-&lt;p&gt;Baut man da noch eine schöne Bedienoberfläche drüber, hat man die Operation
-sogar produktisiert: Sie kann nun durch Personal ausgelöst werden, das von
-den Details nichts mehr weiß und wissen muß und daher niedriger qualifiziert
-sein kann als das Personal, das den Prozeß entwickelt hat.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/automatisierter_prozess.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Der automatisierte Prozeß und seine Ziele/Effekte.&lt;/p&gt;
-&lt;p&gt;Zieht man das konsequent durch, bekommt man innerhalb des Systembetriebes
-eine Trennung zwischen Personen, die Systeme bedienen (&amp;ldquo;Operator&amp;rdquo;) und
-Personen, die Prozesse automatisieren, indem sie die Interfaces für
-Operatoren und die Funktionalität dahinter bauen.&lt;/p&gt;
-&lt;p&gt;Letztere Gruppe entwickelt Programme, genau wie die Entwickler in der
-Entwicklungsabteilung - es sind Entwickler
-(&lt;a href=&#34;http://teddziuba.com/2010/10/taco-bell-programming.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;auch wenn es Leute gibt, die das bestreiten&lt;/a&gt;
-
-
-und die meinen, das Gescripte da sei keine richtige Programmierung).&lt;/p&gt;
-&lt;p&gt;Solche Entwickler bauen Code zur automatisierten Systemverwaltung, also
-Infrastruktur, im Gegensatz zu den regulären Entwicklern, die an neuen
-Features bauen. Daher nenne ich die einen Infrastrukturentwickler und die
-anderen Featureentwickler.&lt;/p&gt;
-&lt;p&gt;Andere Leute nennen das
-&lt;a href=&#34;http://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DevOps&lt;/a&gt;
-
-,
-und integrieren die Infrastrukturentwickler tiefer in die
-Featureentwicklung, die dann die Belange von Operations gleich bei der
-Entwicklung der Software von Anfang an mit berücksichtigen soll. Ich halte
-das nicht unbedingt für glücklich, weil die geforderten Qualifikationen
-andere sind, und weil die Denkweise des Infrastrukturentwicklers eine andere
-ist als die eines Featureentwicklers.&lt;/p&gt;
-&lt;p&gt;Featureentwickler, insbesondere im Bereich der agilen Methoden, sind ein
-wenig wie Teletubbies - sie sind timeboxed, und wenn bestimmte Dinge beim
-Ablaufen der Timebox nicht fertig werden, dann werden diese Features eben
-gekippt und auf ein späteres Release verschoben. Das macht aber nix, denn
-man kann die Features, die fertig geworden sind, schon mal releasen und die
-Leute, die das gebaut haben, trotzdem loben: Ui, das habt ihr aber fein
-gemacht und so schön bunt! Oder anders gesagt: Auch schon für Teil-Lösungen
-gibt es oft einen inkrementellen Payoff.&lt;/p&gt;
-&lt;p&gt;Im Bereich der Infrastrukturentwicklung gibt es das eher nicht, eben genau
-wegen der Anforderung &amp;ldquo;genau Null manuelle Eingriffe&amp;rdquo;. Für viele Aufgaben
-funktioniert timeboxing hier nicht, sondern man muß die Aufgabe ganz,
-komplett und vollständig erledigen, erst dann kann man das erste Mal
-wirklich Gewinne durch die Erledigung der Aufgabe einstreichen - dann aber
-auch gleich in voller Höhe. Die Führung eines Teams von
-Infrastrukturentwicklern muß daher eher militärisch erfolgen: Klar
-definierte und abgegrenzte Ziele, dann rein, die Mission erledigen und
-wieder raus, keine halben Sachen.&lt;/p&gt;
-&lt;p&gt;Daher ist in der Infrastrukturentwicklung
-&lt;a href=&#34;http://de.wikipedia.org/wiki/Scrum&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scrum&lt;/a&gt;
-
- eine Methode, die eventuell nicht
-passend ist - schon gar nicht, wenn auf der Prioritätenliste Featureentwicklung mit
-Infrastrukturentwicklung um Prioritäten kämpft. Denn Scrum limitiert die
-Arbeit pro Iteration durch das  &lt;a href=&#34;http://de.wikipedia.org/wiki/Scrum#Selected_Backlog&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Selected Backlog&lt;/a&gt;
-
-,
-und da Featureentwicklung dem Betrieb direkt Einnahmen bringt, während
-Infrastrukturentwicklung in vielen eher als Geldsenke gesehen wird, führt
-das schnell dazu, daß jede Menge
-&lt;a href=&#34;http://en.wikipedia.org/wiki/Technical_debt&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Technical Debt&lt;/a&gt;
-
- aufgebaut wird,
-d.h. wichtige Infrastrukturarbeit liegen bleibt.&lt;/p&gt;
-&lt;p&gt;Man kann versuchen, da mit
-&lt;a href=&#34;http://en.wikipedia.org/wiki/Priority_inversion&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Priority Inversion&lt;/a&gt;
-
-
-drum herum zu arbeiten, d.h. daß Infrastrukturprojekte die Priorität der
-Featureprojekte erben, für die sie Vorbedingung zur Realisierung sind, aber
-meiner persönlichen Erfahrung nach wird das nicht strikt genug gehandhabt.
-Außerdem verhindert es proaktive Infrastrukturarbeiten, und rein reaktive
-Systemadministration ist ein sehr steiler Weg ins Chaos.&lt;/p&gt;
-&lt;p&gt;Aber auch wenn Infrastrukturentwicklung von der Featureentwicklung getrennt
-ist, etwa weil eine Trennung von Operations und Development existiert, ist
-Scrum oft nicht die geeignete Methode, da Timeboxing bei einer
-Aufgabenstellung nicht so gut funktioniert, die erst dann Gewinne bringt,
-wenn die Aufgabe 100% erledigt ist. Besser verwendet man eine
-&lt;a href=&#34;http://de.wikipedia.org/wiki/Kanban_in_der_IT#Unterschiede_zwischen_Kanban_und_Scrum&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kanban&lt;/a&gt;
-
--Variante
-und paßt diese dann auf die lokalen Erfordernisse der Organisation und die
-Mentalität des Teams an.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
-  &lt;img src=&#34;https://blog.koehntopp.info/uploads/greenhopper.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-
-&lt;/p&gt;
-&lt;p&gt;Jira Greenhopper Extension mit der Darstellung eines Migrationsprojektes.&lt;/p&gt;
-&lt;p&gt;Setzt man das um, stellt man binnen 6 bis 12 Monaten fest, daß sich die Art
-der Aufgaben und der geforderten Qualifikationen innerhalb des ehemaligen
-Sysadmin-Teams sehr verschieben. Zwar sind immer noch Kenntnisse von
-bestimmten Subsystemen und ihrer Arbeitsweise notwendig, aber die neu
-geschaffenen Infrastrukturentwickler brauchen tatsächlich Kenntnisse einer
-(interpretierten) Programmiersprache (PHP, Perl, Python, Ruby) im Gegensatz
-zu einer Scriptsprache (Shell) - genau genommen wird man sich im Team auf
-eine gemeinsame Plattformsprache einigen müssen, ein gemeinsames Repository
-haben, und auch sonst eine ganze Menge Dinge vereinheitlichen müssen.&lt;/p&gt;
-&lt;p&gt;Die Arbeitsweise des Teams ändert sich ebenfalls - wenn die Umstellung
-gelingt, wird sich nach Ablauf des ersten Jahres kein Sysadmin mehr auf
-einer Kiste einloggen müssen, weil ssh von func, puppet, LDAP und einer
-Datenbank zum Konfigurationsmanagement abgelöst worden ist.&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>
-

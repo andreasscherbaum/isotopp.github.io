@@ -6,12 +6,18 @@
     <description>Recent content in Hack on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/hack/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/hack/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>sshpass</title>
       <link>https://blog.koehntopp.info/2023/09/15/sshpass.html</link>
-      <pubDate>Fri, 15 Sep 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Fri, 15 Sep 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/09/15/sshpass.html</guid>
       <description>&lt;p&gt;Heute lernte ich, daß das Utility &lt;code&gt;sshpass&lt;/code&gt; existiert.
 Ich habe das beim Lesen eines &lt;code&gt;.gitlab.ci.yml&lt;/code&gt; Files gelernt.
@@ -29,19 +35,21 @@ Und ihr wundert Euch, wieso Sysadmins alle Schwarz tragen und an Whisky interess
 erklärt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The sshpass utility is designed to run SSH using the keyboard-interactive password authentication mode,
-but in a non-interactive way.&lt;/p&gt;
-&lt;/blockquote&gt;
+but in a non-interactive way.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Warum der Artikel jetzt nach und vor diesem Satz dann erklärt,
 wie man das &lt;em&gt;benutzt&lt;/em&gt;, statt zu zeigen, warum man das &lt;em&gt;nie braucht&lt;/em&gt; und &lt;em&gt;wie man es ersetzt&lt;/em&gt; ist unklar.&lt;/p&gt;
-&lt;p&gt;Aber Homebrew ist hilfreich:&lt;/p&gt;
+&lt;p&gt;Aber Homebrew &lt;del&gt;ist&lt;/del&gt; war hilfreich:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gp&#34;&gt;$&lt;/span&gt; brew search sshpass
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;==&amp;gt; Formulae
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;sshs
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;If you meant &amp;#34;sshpass&amp;#34; specifically:
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;go&#34;&gt;We won&amp;#39;t add sshpass because it makes it too easy for novice SSH users to ruin SSH&amp;#39;s security.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das fasst es in etwa zusammen.
-Okay, einmal das ganze gitlab, alle &lt;code&gt;.gitlab-ci.yml&lt;/code&gt;, alle Branches, nach &lt;code&gt;sshpass -p&lt;/code&gt; suchen.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Das fasst es in etwa zusammen, was Homebrew nicht daran hinderte, sshpass wieder aus der Blacklist zu entfernen:
+&lt;a href=&#34;https://github.com/Homebrew/brew/pull/15979&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/Homebrew/brew/pull/15979&lt;/a&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Okay, einmal das ganze gitlab, alle &lt;code&gt;.gitlab-ci.yml&lt;/code&gt;, alle Branches, nach &lt;code&gt;sshpass -p&lt;/code&gt; suchen.&lt;/p&gt;
 &lt;h2 id=&#34;es-wird-schlimmer&#34;&gt;
     &lt;a href=&#34;#es-wird-schlimmer&#34;&gt;
 	Es wird schlimmer
@@ -65,8 +73,7 @@ rm sshpass.rb
     &lt;/a&gt;
 &lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Aber ich brauche das doch, weil mein BMC keine Keys &amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Aber ich brauche das doch, weil mein BMC keine Keys &amp;hellip;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Github: &lt;a href=&#34;https://github.com/seveas/python-hpilo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hpilo&lt;/a&gt;
 
@@ -87,8 +94,8 @@ Bei Bare Metal kann der Installserver die Bootstrap-Pubkeys als Teil der Customi
     <item>
       <title>Arista Type 7 Passwords</title>
       <link>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</link>
-      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate>
-      
+      <pubDate>Sun, 21 Nov 2021 17:29:00 +0100</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/11/22/arista-type-7-passwords.html</guid>
       <description>&lt;p&gt;A friend of mine wanted to provision BGP passwords for their Arista switch configuration.&lt;/p&gt;
 &lt;p&gt;So a config stanza such as&lt;/p&gt;
@@ -367,8 +374,8 @@ important for IPv6 addresses which have multiple forms of representation.&lt;/p&
     <item>
       <title>Whatabotism</title>
       <link>https://blog.koehntopp.info/2018/12/19/whatabotism.html</link>
-      <pubDate>Wed, 19 Dec 2018 17:06:42 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Dec 2018 17:06:42 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2018/12/19/whatabotism.html</guid>
       <description>&lt;p&gt;Basierend auf einem &lt;a href=&#34;https://twitter.com/isotopp/status/1075020503079886848&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Thread in Twitter&lt;/a&gt;
 
@@ -489,8 +496,8 @@ Nur so kommen wir weiter!&lt;/p&gt;
     <item>
       <title>Websense DLP gives instant root</title>
       <link>https://blog.koehntopp.info/2018/06/18/websense-dlp-gives-instant-root.html</link>
-      <pubDate>Mon, 18 Jun 2018 20:33:10 +0000</pubDate>
-      
+      <pubDate>Mon, 18 Jun 2018 20:33:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2018/06/18/websense-dlp-gives-instant-root.html</guid>
       <description>&lt;p&gt;Enterprise security software is interesting, because in order to do what it does it often uses privilege, but it is also very often written extremely badly.&lt;/p&gt;
 &lt;p&gt;In &lt;a href=&#34;https://blog.koehntopp.info/2017/10/20/aslr.html&#34;&gt;ASLR&lt;/a&gt;
@@ -709,8 +716,8 @@ Nur so kommen wir weiter!&lt;/p&gt;
     <item>
       <title>Sending letters the CIA way</title>
       <link>https://blog.koehntopp.info/2017/01/25/sending-letters-the-cia-way.html</link>
-      <pubDate>Wed, 25 Jan 2017 08:16:22 +0000</pubDate>
-      
+      <pubDate>Wed, 25 Jan 2017 08:16:22 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/01/25/sending-letters-the-cia-way.html</guid>
       <description>&lt;p&gt;Palaeofuture has an
 &lt;a href=&#34;http://paleofuture.gizmodo.com/how-to-securely-send-snail-mail-the-cia-way-1791501535&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interesting article&lt;/a&gt;
@@ -735,16 +742,15 @@ inquiry not being a formal FOIA request got an answer.&lt;/p&gt;
 the indications from the response to my FOIA request suggest that the
 agency buys it in 450-foot rolls.&lt;/p&gt;
 &lt;p&gt;The article does have a part and an order number for the tape, in case you
-have need for it.&lt;/p&gt;
-&lt;/blockquote&gt;
+have need for it.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Backdoor</title>
       <link>https://blog.koehntopp.info/2012/05/28/backdoor.html</link>
-      <pubDate>Mon, 28 May 2012 10:37:16 +0000</pubDate>
-      
+      <pubDate>Mon, 28 May 2012 10:37:16 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/05/28/backdoor.html</guid>
       <description>&lt;p&gt;Sergei Skorobogatov von der Uni Cambridge kündigt sein neues Paper an, das
 jedoch erst im September veröffentlicht werden wird (&lt;a href=&#34;https://www.cl.cam.ac.uk/~sps32/ches2012-backdoor.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF&lt;/a&gt;
@@ -753,8 +759,7 @@ jedoch erst im September veröffentlicht werden wird (&lt;a href=&#34;https://ww
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;Breakthrough silicon scanning discovers backdoor in military chip&amp;rdquo; will
 appear at CHES2012 in September.  It will expose some serious security
-issues in the devices which are supposed to be unbreakable.&lt;/p&gt;
-&lt;/blockquote&gt;
+issues in the devices which are supposed to be unbreakable.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Es geht um Krypto, die in Hardware implementiert ist, und man hat Chips
 untersucht, die in aktueller militärischer Hardware eingesetzt werden, indem
 man Reverse Engineering-Techniken auf diese Hardware angewendet hat und das
@@ -828,8 +833,8 @@ weil sie nun jede Menge dritte Spieler aktiviert.&lt;/p&gt;
     <item>
       <title>Was ist eigentlich Firewire DMA?</title>
       <link>https://blog.koehntopp.info/2011/07/27/was-ist-eigentlich-firewire-dma.html</link>
-      <pubDate>Wed, 27 Jul 2011 15:32:03 +0000</pubDate>
-      
+      <pubDate>Wed, 27 Jul 2011 15:32:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/07/27/was-ist-eigentlich-firewire-dma.html</guid>
       <description>&lt;p&gt;Der Spiegel entdeckt:
 &lt;a href=&#34;http://www.spiegel.de/netzwelt/gadgets/0,1518,776971,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Verräterische Firewire-Verbindung: Kauf-Software knackt Mac-Passwörter&lt;/a&gt;
@@ -897,8 +902,7 @@ simplen Maßnahmen einen Riegel vorschieben. Zum einen sollte man die
 Funktion &amp;ldquo;Automatische Anmeldung&amp;rdquo; im &amp;ldquo;Kontrollfeld Benutzer &amp;amp; Gruppen&amp;rdquo;
 deaktivieren. Zum anderen sollte man den Computer in Pausen komplett
 abschalten, statt ihn nur in den Ruhezustand zu versetzen. Dann haben auch
-gut ausgerüstete Passwortdiebe keine Chance mehr.&lt;/p&gt;
-&lt;/blockquote&gt;
+gut ausgerüstete Passwortdiebe keine Chance mehr.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Geht so. Zwar ist es sinnvoll, die automatische Anmeldung zu deaktivieren,
 um die Systemsicherheit zu erhöhen (alternativ den Bildschirmschoner mit
 einem Paßwort zu versehen) und auch den Rechner abzuschalten statt suspend
@@ -917,8 +921,8 @@ ganze System ersetzen oder verändern kann.&lt;/p&gt;
     <item>
       <title>Wenn man Sony ist, hat man es nicht leicht</title>
       <link>https://blog.koehntopp.info/2011/04/27/wenn-man-sony-ist-hat-man-es-nicht-leicht.html</link>
-      <pubDate>Wed, 27 Apr 2011 12:06:55 +0000</pubDate>
-      
+      <pubDate>Wed, 27 Apr 2011 12:06:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/27/wenn-man-sony-ist-hat-man-es-nicht-leicht.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/sonyelectronics.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -968,8 +972,8 @@ aufzubauen oder ihr Image in den relevanten Kreisen aufzupolieren.&lt;/p&gt;
     <item>
       <title>Vertrauenswürdigkeit öffentlicher Hardware</title>
       <link>https://blog.koehntopp.info/2011/02/16/vertrauensw-rdigkeit-ffentlicher-hardware.html</link>
-      <pubDate>Wed, 16 Feb 2011 14:53:04 +0000</pubDate>
-      
+      <pubDate>Wed, 16 Feb 2011 14:53:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/02/16/vertrauensw-rdigkeit-ffentlicher-hardware.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.theregister.co.uk/2011/02/15/hardware_keyloggers_manchester_libraries/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hardware keyloggers found in Manchester library PCs&lt;/a&gt;
 
@@ -981,8 +985,7 @@ computers in Wilmslow and Handforth libraries, would have enabled baddies
 to record every keystroke made on compromised PCs. It&amp;rsquo;s unclear who placed
 the snooping devices on the machines but the likely purpose was to capture
 banking login credentials on the devices prior to their retrieval and use
-in banking fraud.&lt;/p&gt;
-&lt;/blockquote&gt;
+in banking fraud.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Vor vielen Jahren stand in der Hauptpost in Kiel wie in vielen anderen
 Postfilialen ein öffentliches BTX Terminal. Solche Geräte wurden zu dieser
 Zeit dadurch realisiert, daß man ein Standard CEPT-Terminal mit einem
@@ -1040,8 +1043,8 @@ immer sehr leichtsinnig. Wer weiß schon, wer da am anderen Ende zuhört!&lt;/p&
     <item>
       <title>Gruppenweises TOP N in MySQL: Der Tabellengrößenreport</title>
       <link>https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html</link>
-      <pubDate>Tue, 09 Mar 2010 15:47:19 +0000</pubDate>
-      
+      <pubDate>Tue, 09 Mar 2010 15:47:19 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/03/09/gruppenweises-top-n-in-mysql-der-tabellengr-enreport.html</guid>
       <description>&lt;p&gt;Jeder Datenbankserver bei uns hat ein Script laufen, daß den Inhalt von
 information_schema.tables jede Nacht einmal in eine Systemdatenbank in das
@@ -1112,8 +1115,8 @@ Upgrade des Servers plötzlich fehlschlagen, weil sich Serverinterna ändern.&lt
     <item>
       <title>SCO Xenix 386 und mesg n</title>
       <link>https://blog.koehntopp.info/2009/01/06/sco-xenix-386-und-mesg-n.html</link>
-      <pubDate>Tue, 06 Jan 2009 13:06:47 +0000</pubDate>
-      
+      <pubDate>Tue, 06 Jan 2009 13:06:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/01/06/sco-xenix-386-und-mesg-n.html</guid>
       <description>&lt;p&gt;Früher in SCO Xenix gab es in deren Terminalemulation eine Escape-Sequenz, die eine Hardcopy des Screens auslöste.
 Ein Programm konnte eine bestimmte Esc-Sequenz an ein Terminal senden und das Terminal hat dann seinen Bildschirminhalt Zeichen für Zeichen an die Anwendung zurückgesendet.&lt;/p&gt;
@@ -1138,8 +1141,8 @@ Oder, um es mit Henry Spencer zu sagen, &amp;ldquo;Those who do not understand U
     <item>
       <title>Cyborg</title>
       <link>https://blog.koehntopp.info/2008/08/29/cyborg.html</link>
-      <pubDate>Fri, 29 Aug 2008 03:01:00 +0000</pubDate>
-      
+      <pubDate>Fri, 29 Aug 2008 03:01:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/08/29/cyborg.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/cyborg.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1184,8 +1187,8 @@ runter laden und in Ruhe ansehen.&lt;/p&gt;
     <item>
       <title>Warum Hacker sich als Bürgerrechtler verstehen</title>
       <link>https://blog.koehntopp.info/2008/01/07/warum-hacker-sich-als-b-rgerrechtler-verstehen.html</link>
-      <pubDate>Mon, 07 Jan 2008 14:57:36 +0000</pubDate>
-      
+      <pubDate>Mon, 07 Jan 2008 14:57:36 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/01/07/warum-hacker-sich-als-b-rgerrechtler-verstehen.html</guid>
       <description>&lt;p&gt;Die  &lt;a href=&#34;http://www.welt.de/webwelt/article1526108/Warum_Hacker_sich_als_Buergerrechtler_verstehen.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Welt&lt;/a&gt;
 
@@ -1201,8 +1204,7 @@ Gesicht von Innenminister Schäuble und der Aufschrift „Stasi
 2.0“. Ein lebensgroßes Holzpferd in Schwarz-Rot-Gold soll den
 „Bundestrojaner“ symbolisieren – jenen Virus, den die
 Behörden bald auf private PCs schicken wollen, um sie online zu
-durchsuchen.&lt;/p&gt;
-&lt;/blockquote&gt;
+durchsuchen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Hacker, so resümiert die Welt, sind heute nicht mehr Techniker, die nachts
 in fremde Computer einbrechen, sondern Bürgerrechtler. Und vermutet dann:
 &amp;ldquo;Vielleicht ist das der Grund, weshalb sie seit zwei Jahren so viel Zulauf
@@ -1210,16 +1212,15 @@ haben.&amp;rdquo; und schließt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Heute übernehmen Hacker ganz bewusst zivilgesellschaftliche Verantwortung.
 Der CCC zeigte öffentlich, dass Handys nicht sicher sind, dass Kredit- und
-EC-Karten ausgespäht werden können, dass Wahlcomputer manipulierbar sind.&lt;/p&gt;
-&lt;/blockquote&gt;
+EC-Karten ausgespäht werden können, dass Wahlcomputer manipulierbar sind.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Rechte und Inhaber - wen juckt&#39;s?</title>
       <link>https://blog.koehntopp.info/2006/01/24/rechte-und-inhaber-wen-juckt-s.html</link>
-      <pubDate>Tue, 24 Jan 2006 18:01:08 +0000</pubDate>
-      
+      <pubDate>Tue, 24 Jan 2006 18:01:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/01/24/rechte-und-inhaber-wen-juckt-s.html</guid>
       <description>&lt;p&gt;Wer die
 &lt;a href=&#34;https://blog.koehntopp.info/2006/01/24/rechte-und-inhaber-wen-juckt-s.html&#34;&gt;Ereignisse rund um das Sony Rootkit&lt;/a&gt;
@@ -1235,8 +1236,7 @@ Heise schreibt dazu:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Die Staatsanwaltschaft Ellwangen verdächtigt die private Fahndungsorganisation der Film- und Softwareindustrie, die Verbreitung sogenannter Warez aktiv unterstützt zu haben.
 Ermittlungsbeamte des Landeskriminalamts Baden-Württemberg durchsuchten am heutigen Dienstag die Hamburger Geschäftsräume der Gesellschaft und die Wohnung eines hochrangigen Mitarbeiters. &amp;hellip;
-Sollte es zutreffen, dass die GVU die Infrastruktur der Raubkopierer mitfinanziert hat, würde dies einen Verdacht auf eine strafrechtlich relevante Beihilfe zur Verbreitung von Warez-Material begründen.&lt;/p&gt;
-&lt;/blockquote&gt;
+Sollte es zutreffen, dass die GVU die Infrastruktur der Raubkopierer mitfinanziert hat, würde dies einen Verdacht auf eine strafrechtlich relevante Beihilfe zur Verbreitung von Warez-Material begründen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Vor diesem Hintergrund ebenfalls lesenswert:
 &lt;a href=&#34;http://www.spiegel.de/spiegel/0,1518,396497,00.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Der Fluch der Silberlinge&lt;/a&gt;
 
@@ -1244,8 +1244,7 @@ Sollte es zutreffen, dass die GVU die Infrastruktur der Raubkopierer mitfinanzie
 Spiegel Online zum 2. Korb der Urheberrechtsnovelle und zur GVU:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Allein die GVU beschäftigt zehn Rechercheure, fast alles ehemalige Polizisten.
-Stolz bezeichnet Geschäftsführer und Ex-Kommissar Jochen Tielke seine Gesellschaft auch schon einmal als &amp;ldquo;kleines BKA für Urheberrechtsverletzungen&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
+Stolz bezeichnet Geschäftsführer und Ex-Kommissar Jochen Tielke seine Gesellschaft auch schon einmal als &amp;ldquo;kleines BKA für Urheberrechtsverletzungen&amp;rdquo;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wer ist die GVU?
 &lt;a href=&#34;http://www.netzpolitik.org/2006/die-gvu-wurde-von-der-polizei-durchsucht/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mitgliederliste der GVU&lt;/a&gt;
 
@@ -1257,8 +1256,8 @@ bei netzpolitik.org.&lt;/p&gt;
     <item>
       <title>Künstler vs. Sony</title>
       <link>https://blog.koehntopp.info/2005/11/24/k-nstler-vs-sony.html</link>
-      <pubDate>Thu, 24 Nov 2005 15:20:59 +0000</pubDate>
-      
+      <pubDate>Thu, 24 Nov 2005 15:20:59 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/11/24/k-nstler-vs-sony.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/sonyelectronics.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1283,8 +1282,7 @@ further from Amazon&amp;rsquo;s Top 40, plummeting to No. 25,802.The wrath of fa
 killed Sony&amp;rsquo;s CD copy controls, with the company pulling 52 titles off
 retail shelves, beginning the week of Nov. 14. But the wrath of bands
 could be far worse for the company &amp;ndash; and for efforts to protect content
-in general.&lt;/p&gt;
-&lt;/blockquote&gt;
+in general.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(via &lt;a href=&#34;http://www.julian-finn.de/blog/index.php?/archives/491-Mal-wieder-Rootkit.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Julian Finn&lt;/a&gt;
 
 )&lt;/p&gt;
@@ -1294,8 +1292,8 @@ in general.&lt;/p&gt;
     <item>
       <title>EFF vs. Sony</title>
       <link>https://blog.koehntopp.info/2005/11/22/eff-vs-sony.html</link>
-      <pubDate>Tue, 22 Nov 2005 08:13:30 +0000</pubDate>
-      
+      <pubDate>Tue, 22 Nov 2005 08:13:30 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/11/22/eff-vs-sony.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/sonyelectronics.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1318,8 +1316,7 @@ on their computers or portable music players. The same is true if a
 customer&amp;rsquo;s house gets burglarized and his CDs stolen, since the EULA
 allows purchasers to keep copies only so long as they retain physical
 possession of the original CD. EFF is demanding that Sony BMG remove these
-unconscionable terms from its EULAs.&lt;/p&gt;
-&lt;/blockquote&gt;
+unconscionable terms from its EULAs.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wohl denen, die ihre Musik sicherheitshalber lieber eseln. Da sind die
 Risiken leichter einzuschätzen.&lt;/p&gt;
 </description>
@@ -1328,8 +1325,8 @@ Risiken leichter einzuschätzen.&lt;/p&gt;
     <item>
       <title>CSO vs. Sony</title>
       <link>https://blog.koehntopp.info/2005/11/06/cso-vs-sony.html</link>
-      <pubDate>Sun, 06 Nov 2005 13:11:35 +0000</pubDate>
-      
+      <pubDate>Sun, 06 Nov 2005 13:11:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/11/06/cso-vs-sony.html</guid>
       <description>&lt;p&gt;Update zu
 &lt;a href=&#34;https://blog.koehntopp.info/2005/11/04/nuetzliche-kombinationen.html&#34;&gt;Nützliche Kombinationen&lt;/a&gt;
@@ -1344,8 +1341,7 @@ Hören in der Firma zu verbieten, weil sie sonst Firmenrechner verseuchen?&lt;/p
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Every Sony BMG release starting April 1, 2004 has been suject to content
-protection technology.&lt;/p&gt;
-&lt;/blockquote&gt;
+protection technology.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Für die Kosten für das Entfernen bereits installierter Rootkits
 wahrscheinlich der Arbeitnehmer aufzukommen, der die CD ins Laufwerk
 geschoben hat, und der kann dann versuchen, diese an Sony weiter zu reichen -
@@ -1359,8 +1355,7 @@ nehmen?&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Wohlgemerkt: Alle die unerwünschten Nebenwirkungen und Gefahren treten nur
 bei den Nutzern auf, die die CD legal erworben haben. Wer die Musikstücke
-als Raubkopien runtergeladen hat, hat derlei Ungemach nicht zu befürchten.&lt;/p&gt;
-&lt;/blockquote&gt;
+als Raubkopien runtergeladen hat, hat derlei Ungemach nicht zu befürchten.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Dem ist wohl nix mehr hinzuzufügen.&lt;/p&gt;
 </description>
     </item>
@@ -1368,8 +1363,8 @@ als Raubkopien runtergeladen hat, hat derlei Ungemach nicht zu befürchten.&lt;/
     <item>
       <title>Nützliche Kombinationen</title>
       <link>https://blog.koehntopp.info/2005/11/04/nuetzliche-kombinationen.html</link>
-      <pubDate>Fri, 04 Nov 2005 07:52:53 +0000</pubDate>
-      
+      <pubDate>Fri, 04 Nov 2005 07:52:53 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/11/04/nuetzliche-kombinationen.html</guid>
       <description>&lt;p&gt;Das Sony BMG Rootkit aus
 &lt;a href=&#34;https://blog.koehntopp.info/2005/11/01/legal-illegal-scheissegal.html&#34;&gt;Legal, Illegal, Scheißegal&lt;/a&gt;
@@ -1398,16 +1393,15 @@ Ansprüche von Blizzard und World of Warcraft verletzt.&lt;/p&gt;
 technology, have both disputed claims that their system could harm the
 security of a Windows system. Yet, other software makers that rely on the
 integrity of the operating system are finding that hidden code makes
-security impossible.&lt;/p&gt;
-&lt;/blockquote&gt;
+security impossible.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Legal, Illegal, Scheißegal...</title>
       <link>https://blog.koehntopp.info/2005/11/01/legal-illegal-scheissegal.html</link>
-      <pubDate>Tue, 01 Nov 2005 12:35:56 +0000</pubDate>
-      
+      <pubDate>Tue, 01 Nov 2005 12:35:56 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/11/01/legal-illegal-scheissegal.html</guid>
       <description>&lt;p&gt;Sony BMG baut ein Rootkit, um damit das ihrer Meinung nach illegale Kopieren
 von Dateien auf den Rechnern ihrer Kunden zu verhindern. Die Software
@@ -1425,8 +1419,7 @@ gar tief im System verankert. In der Diskussion zur Sysinternals-Meldung
 werfen Teilnehmer ein, dass dieses Vorgehen des Kopierschutzes wohl in
 Kalifornien nach dem California Business &amp;amp; Protections Code Section
 22947.3 illegal sei und mit bis zu 1.000 US-Dollar Strafe pro betroffenem
-Computer geahndet werden könne.&lt;/p&gt;
-&lt;/blockquote&gt;
+Computer geahndet werden könne.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Da sind zivile Forderungen wegen entstandener Schäden und Inkompatibilitäten
 wohl noch nicht drin eingerechnet.&lt;/p&gt;
 </description>
@@ -1434,4 +1427,3 @@ wohl noch nicht drin eingerechnet.&lt;/p&gt;
     
   </channel>
 </rss>
-

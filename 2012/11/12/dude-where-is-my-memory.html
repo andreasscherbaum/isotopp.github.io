@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Dude, where is my memory? | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2012/11/12/dude-where-is-my-memory.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Dude, where is my memory?' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Dude, where is my memory? | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2012/11/12/dude-where-is-my-memory.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2012-11-12T14:06:40Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Dude, where is my memory?' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Dude, where is my memory?","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="dude-where-is-my-memory-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Dude, where is my memory?
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>November 12, 2012</div>
 						
-
 					</div>
 				</div>
 				
@@ -328,20 +314,17 @@ braucht eine dreistellige Anzahl von Queries, ein Zugriff auf die
 vorgerechneten Daten generiert dieselbe Seite mit weniger als 7 Queries.</p>
 <p>Wir schließen unser Debugging ab:</p>
 <blockquote>
-<p>Kristian&gt; Diese Blobs, werden die oft neu berechnet?</p>
-</blockquote>
+<p>Kristian&gt; Diese Blobs, werden die oft neu berechnet?</p></blockquote>
 <blockquote>
 <p>SimonB&gt; Im Moment ja, weil ich sie immer aktualisiere.  Normalerweise
-würde ich das nur tun, wenn sich der Digest ändert.</p>
-</blockquote>
+würde ich das nur tun, wenn sich der Digest ändert.</p></blockquote>
 <blockquote>
 <p>Kristian&gt; Resident Set Size ist jetzt bei 15 GB und stabil.  Das heißt,
 wenn ich den Buffer Pool klein genug halte wird die Maschine nicht
 swappen.  Wir verbrauchen eine Menge Network Buffer zusätzlich, wegen der
 ganzen Blobs, und das ist weswegen wir so einen großen Speicher-Overhead
 pro Connection haben&hellip;  Jedenfalls ist das grad meine operative Theorie.
-MySQL &amp; BLOBs = ganz übler Mist.</p>
-</blockquote>
+MySQL &amp; BLOBs = ganz übler Mist.</p></blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">min</span><span class="p">(</span><span class="k">length</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-&gt;</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="k">length</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-&gt;</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="k">length</span><span class="p">(</span><span class="n">body</span><span class="p">))</span><span class="w"> 
@@ -464,7 +447,7 @@ sollten wir die SQL-Schicht mit HandlerSocket oder etwas anderem umgehen.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

@@ -6,12 +6,105 @@
     <description>Recent content in Copyright on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/copyright/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/copyright/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Werk und AI</title>
+      <link>https://blog.koehntopp.info/2024/09/29/werk-und-ai.html</link>
+      <pubDate>Sun, 29 Sep 2024 04:05:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
+      <guid>https://blog.koehntopp.info/2024/09/29/werk-und-ai.html</guid>
+      <description>&lt;p&gt;Jemand fragt im Kontext
+&lt;a href=&#34;https://www.creativebloq.com/ai/ai-art/controversial-competition-winner-still-hopes-to-copyright-his-ai-art&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;People are &amp;ldquo;blatantly stealing my work,&amp;rdquo; AI artist complains&lt;/a&gt;
+
+:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What the hell is an &amp;ldquo;AI artist&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;und das ist ziemlich kompliziert.&lt;/p&gt;
+&lt;h1 id=&#34;werke-und-werkzeuge&#34;&gt;
+    &lt;a href=&#34;#werke-und-werkzeuge&#34;&gt;
+	Werke und Werkzeuge
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Du kannst ein Bild auf Leinwand malen und dann ist es ein Werk und durch das Urheberrecht geschützt.&lt;/p&gt;
+&lt;p&gt;Du kannst Midjourney oder DALL-E bitten, Dir ein Bild nach folgendem Prompt zu malen,
+und dann ist es kein Werk und auch nicht durch das Urheberrecht geschützt, denn das Gesetz verlangt &amp;ldquo;human authorship&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Der Prompt, den der Künstler geschaffen hat, wäre geschützt,
+denn das Urheberrecht schützt ausdrücklich auch &lt;a href=&#34;https://medien-wiki.de/kleine-muenze&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kleine Münze&lt;/a&gt;
+
+.&lt;/p&gt;
+&lt;p&gt;Du kannst ein Bild in Photoshop malen oder ein Foto von Dir in Photoshop bearbeiten,
+und das wäre durch das Urheberrecht geschützt.&lt;/p&gt;
+&lt;p&gt;Du kannst dann Teile des Bildes manuell in Photoshop retuschieren,
+und auch das wäre durch das Urheberrecht geschützt.&lt;/p&gt;
+&lt;p&gt;Du kannst Teile des Bildes durch Photoshop mit AI Inpainting retuschieren lassen und das… ist unklar.&lt;/p&gt;
+&lt;p&gt;Ab irgendeinem Punkt ist es kein Werk von einem Menschen mehr,
+oder nur noch Ausschnitte des Werkes sind von einem Menschen gemacht.&lt;/p&gt;
+&lt;p&gt;Es ist offen, und darum geht es in diesem Prozeß, ab wieviel menschlichem Anteil etwas ein Werk ist.
+Und ob dann das Gesamtbild ein Werk ist, oder nur die Teile, die von einem Menschen gemacht sind.&lt;/p&gt;
+&lt;h1 id=&#34;bildgebende-werkzeuge&#34;&gt;
+    &lt;a href=&#34;#bildgebende-werkzeuge&#34;&gt;
+	Bildgebende Werkzeuge
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Es ist damit im Grunde auch offen, welche bildgebenden Werkzeuge, die durch einen Menschen benutzt werden,
+ein menschliches Werk erzeugen und welche nicht.&lt;/p&gt;
+&lt;p&gt;Fotos, also Bilder, die durch einen physikalischen Prozeß erzeugt werden, sind urheberrechtlich geschützt.&lt;/p&gt;
+&lt;p&gt;Aber nur dann, wenn das Werkzeug durch einen Menschen bedient wird.
+Ein
+&lt;a href=&#34;https://www.stern.de/panorama/weltgeschehen/wie-das-beruehmte-affen-selfie-einen-fotografen-ruinierte--7561910.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;nichtmenschliches Foto&lt;/a&gt;
+
+
+ist nicht geschützt.&lt;/p&gt;
+&lt;p&gt;Also, es ist bisher unstrittig,
+dass ein digitaler Pinsel oder ein digitaler Mustergenerator den Werkscharacter nicht in Frage stellen.&lt;/p&gt;
+&lt;p&gt;Es ist zur Zeit aber auch unstrittig, dass DALL-E keine Werke produzieren kann.&lt;/p&gt;
+&lt;p&gt;Es ist unstrittig,
+dass ein Blur-Filter oder ein Solarisations-Filter auf einem Bild oder Teilen eines Bildes den Werkscharacter nicht in Frage stellt.&lt;/p&gt;
+&lt;p&gt;Es ist vollkommen unklar, was ein Photoshop Inpainting,
+das man prompted &amp;ldquo;Entferne den Menschen im markierten Gebiet&amp;rdquo; mit dem Werkscharacter eines Bildes macht.
+Oder &amp;ldquo;Ersetze den Himmel in diesem Bild durch dramatische Sturmwolken&amp;rdquo; auf das ganze Bild
+mit dem Werkscharacter eines Bildes macht.&lt;/p&gt;
+&lt;p&gt;Offenbar ist das Recht derzeit der Ansicht, dass es irgendwo eine Grenze zwischen Werk und Nichtwerk gibt,
+aber es ist absolut unklar, in Gesetz und Anwendung, wo diese liegt.&lt;/p&gt;
+&lt;h1 id=&#34;auch-für-texte&#34;&gt;
+    &lt;a href=&#34;#auch-f%c3%bcr-texte&#34;&gt;
+	Auch für Texte
+    &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Dasselbe gilt auch für Texte:&lt;/p&gt;
+&lt;p&gt;Du kannst ChatGPT bitten, &amp;ldquo;erzeuge mir eine Kurzgeschichte mit &amp;hellip;&amp;rdquo; und ChatGPT macht eine solche Kurzgeschichte.
+Abgesehen davon, dass die langweilig ist, ist es auch nach aktuellem Recht kein Werk.&lt;/p&gt;
+&lt;p&gt;Du kannst aber auch eine Reihe von Prompts schreiben, in denen Du mit ChatGPT eine Geschichte entwickelst,
+indem Du interaktiv Szenario, Figuren, Konflikte und Arc generierst.
+Du kannst nach diesen automatisch generierten Ideen eine Story schreiben – ein menschliches Werk?&lt;/p&gt;
+&lt;p&gt;Du kannst aber auch in einer neuen Session mit ChatGPT eine Reihe von Prompts entlang des Arc einwerfen,
+und den resultierenden Text in eine zusammenhängende Geschichte umbauen.
+Kein menschliches Werk.&lt;/p&gt;
+&lt;p&gt;Dann nimmst Du sowohl diesen Text als auch den ersten, selbst geschriebenen, kapitelweise,
+bearbeitest jeden von denen ein wenig und pastest ihn wieder nach ChatGPT.
+Der Prompt ist dabei die Bitte, die Rechtschreibung und Grammatik zu korrigieren,
+sprachlich die folgenden Redewendungen zu vermeiden und den Text aggressiv im Stil von &amp;hellip; umzuformulieren.
+Was davon ist ein Werk?&lt;/p&gt;
+&lt;p&gt;Das Resultat ist etwas, das ChatGPT alleine nicht hätte erzeugen können,
+es hat definitiv eine menschliche Komponente und eine große Menge menschliche Führung.
+Selbst dann, wenn jedes Wort im sichtbaren Text von ChatGPT generiert ist.&lt;/p&gt;
+&lt;p&gt;Die genaue Formulierung und der Stil der Sprache sind aber autogeneriert.
+Ist das ein Werk?&lt;/p&gt;
+&lt;p&gt;Wir wissen es nicht.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>So what is the state of the Ads mess?</title>
       <link>https://blog.koehntopp.info/2017/10/13/so-what-is-the-state-of-the-ads-mess.html</link>
-      <pubDate>Fri, 13 Oct 2017 12:36:42 +0000</pubDate>
-      
+      <pubDate>Fri, 13 Oct 2017 12:36:42 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/10/13/so-what-is-the-state-of-the-ads-mess.html</guid>
       <description>&lt;p&gt;Ads on the web have many problems:&lt;/p&gt;
 &lt;ul&gt;
@@ -85,8 +178,8 @@ in it still has to get worse before it can become better.&lt;/p&gt;
     <item>
       <title>Why you can&#39;t have nice things…</title>
       <link>https://blog.koehntopp.info/2017/08/13/why-you-cant-have-nice-things.html</link>
-      <pubDate>Sun, 13 Aug 2017 10:07:10 +0000</pubDate>
-      
+      <pubDate>Sun, 13 Aug 2017 10:07:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/08/13/why-you-cant-have-nice-things.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/08/eating-from-the-trashcan.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -235,8 +328,7 @@ discount, because life told us for multiple decades that this how it works:&lt;/
 &lt;p&gt;Don&amp;rsquo;t judge media by the amount of work or love that has been poured into
 it. Judge it by what other media you can get instead for that money,
 because there is plenty of other stuff that&amp;rsquo;s not bad at all. And nobody
-can even begin to make a dent into the pile in a single lifetime.&lt;/p&gt;
-&lt;/blockquote&gt;
+can even begin to make a dent into the pile in a single lifetime.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And that is why you can&amp;rsquo;t have nice things. Don&amp;rsquo;t look for a career in art
 or media.&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -262,8 +354,8 @@ fairy&lt;/a&gt;
     <item>
       <title>Google Chrome integrates Adblocker</title>
       <link>https://blog.koehntopp.info/2017/06/02/google-chrome-integrates-adblocker.html</link>
-      <pubDate>Fri, 02 Jun 2017 08:37:56 +0000</pubDate>
-      
+      <pubDate>Fri, 02 Jun 2017 08:37:56 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/06/02/google-chrome-integrates-adblocker.html</guid>
       <description>&lt;p&gt;The Ad and Adblock situations both are now so bad that even
 &lt;a href=&#34;https://www.blog.google/topics/journalism-news/building-better-web-everyone/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google considers integrating an Adblocker&lt;/a&gt;
@@ -289,8 +381,8 @@ People are truly beyond caring.&lt;/p&gt;
     <item>
       <title>Malvertising - we have only seen the beginning</title>
       <link>https://blog.koehntopp.info/2017/03/21/malvertising-we-have-only-seen-the-beginning.html</link>
-      <pubDate>Tue, 21 Mar 2017 10:50:16 +0000</pubDate>
-      
+      <pubDate>Tue, 21 Mar 2017 10:50:16 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/03/21/malvertising-we-have-only-seen-the-beginning.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://netzpolitik.org/2017/interview-ueber-adblocker-und-das-wohlergehen-der-schadsoftware-branche-das-problem-malvertising-nicht-aussitzen/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netzpolitik.org has an article&lt;/a&gt;
 
@@ -306,8 +398,7 @@ haben wir im Grunde schon mal eine ganze Reihe an Gründen abgehakt. Nutzer
 müssen die Möglichkeit haben, selbstbestimmt das Schutzniveau ihres
 Computers bestimmen zu dürfen. Hat die Bundesregierung vielleicht mal das
 Bundesamt für Sicherheit in der Informationstechnik (BSI) gefragt? Es wäre
-eine gute Gelegenheit für das BSI, zu zeigen, was es drauf hat.&lt;/p&gt;
-&lt;/blockquote&gt;
+eine gute Gelegenheit für das BSI, zu zeigen, was es drauf hat.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;»netzpolitik.org: Besides the protection against malware, what other reasons
 for using Adblockers are important to you?&lt;/p&gt;
 &lt;p&gt;Thorsten Schröder: If we classify things as malware which spy on users,
@@ -343,8 +434,8 @@ against private Wi-Fi offerings.&lt;/p&gt;
     <item>
       <title>github updates its TOS, and they are not trying to cheat</title>
       <link>https://blog.koehntopp.info/2017/03/09/github-updates-its-tos-and-they-are-not-trying-to-cheat.html</link>
-      <pubDate>Thu, 09 Mar 2017 14:59:32 +0000</pubDate>
-      
+      <pubDate>Thu, 09 Mar 2017 14:59:32 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/03/09/github-updates-its-tos-and-they-are-not-trying-to-cheat.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/03/github-300x300.png&#34; alt=&#34;&#34;  /&gt;
@@ -379,8 +470,7 @@ things like show it to you and other users); modify it (so our
 server can do things like parse it into a search index);
 distribute it (so we can do things like share it with other
 users); and perform it (in case your content is something like
-music or video).&lt;/p&gt;
-&lt;/blockquote&gt;
+music or video).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;So they ask for the necessary license to operate, and that
 license is non-exclusive (good), time-unlimited (necessary) and
 limited (for the purposes as stated (&amp;ldquo;as necessary to render the
@@ -414,14 +504,13 @@ contractual language. Thanks.&lt;/p&gt;
     <item>
       <title>Wieso wir gegen das Leistungsschutzrecht sind</title>
       <link>https://blog.koehntopp.info/2012/06/25/wieso-wir-gegen-das-leistungsschutzrecht-sind.html</link>
-      <pubDate>Mon, 25 Jun 2012 11:42:45 +0000</pubDate>
-      
+      <pubDate>Mon, 25 Jun 2012 11:42:45 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/06/25/wieso-wir-gegen-das-leistungsschutzrecht-sind.html</guid>
       <description>&lt;p&gt;Auf Google Plus schreibt Christoph Kappes:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;Haben alle verstanden, dass Rivva tot ist, wenn das #LSR kommt?  Redet
-keiner drüber, hm.&amp;rdquo; Drüben bei Twitter. Hier kann diskutiert werden.&lt;/p&gt;
-&lt;/blockquote&gt;
+keiner drüber, hm.&amp;rdquo; Drüben bei Twitter. Hier kann diskutiert werden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das greift viel zu kurz.&lt;/p&gt;
 &lt;p&gt;Ich schrieb:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -440,8 +529,7 @@ handeln könnte, der dem LSR unterliegt.&lt;/p&gt;
 &lt;p&gt;Daher stellt sich die Frage, wie man nach dem Inkrafttreten des bisher
 bekannten Entwurfes überhaupt irgendwas in Deutschland verlinken soll ohne
 Gefahr zu laufen, abmahnbar zu werden oder sich passende Lizenzen zu
-besorgen.?&lt;/p&gt;
-&lt;/blockquote&gt;
+besorgen.?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und weiter&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Der Default ist komplett falsch.&lt;/p&gt;
@@ -466,8 +554,7 @@ können.&lt;/p&gt;
 etwas enden, das entweder ein NOOP ist oder das Netz in Deutschland tötet.&lt;/p&gt;
 &lt;p&gt;Ich sehe nicht, wie es einen Mittelweg geben kann, und am Ende hängt es von
 diesen beiden Eigenschaften ab: Maschinenlesbarkeit und Opt-In ins
-LSR?&lt;/p&gt;
-&lt;/blockquote&gt;
+LSR?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Siehe auch die Gedanken in
 &lt;a href=&#34;https://blog.koehntopp.info/2010/06/30/kostenloskultur.html&#34;&gt;Kostenloskultur&lt;/a&gt;
 
@@ -490,8 +577,8 @@ Das LSR ist nur ein weiterer Versuch, kostenlos teurer zu machen.&lt;/p&gt;
     <item>
       <title>Sam spielt es noch einmal: Das Lied vom Urheberrecht</title>
       <link>https://blog.koehntopp.info/2012/03/09/sam-spielt-es-noch-einmal-das-lied-vom-urheberrecht.html</link>
-      <pubDate>Fri, 09 Mar 2012 20:40:00 +0000</pubDate>
-      
+      <pubDate>Fri, 09 Mar 2012 20:40:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/03/09/sam-spielt-es-noch-einmal-das-lied-vom-urheberrecht.html</guid>
       <description>&lt;p&gt;Wolfgang Michal schreibt auf carta.info:
 &lt;a href=&#34;http://carta.info/41917/kleine-anfrage-an-die-kritiker-des-geistigen-eigentums/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kleine Anfrage an die Kritiker des geistigen Eigentums&lt;/a&gt;
@@ -541,8 +628,7 @@ Spannend ist doch viel mehr die Frage, wie man mit der neuen Technik
 umgeht, wie man mit der Kopierbarkeit (auch juristisch) umgeht und wie man
 dann noch mit Denken, Schreiben, Malen und Musizieren noch Geld verdienen
 kann, wenn diese Technik vollständig da ist.  Und da versagt der Artikel.
-Er bleibt (langweilige und nicht besonders gut geschriebene) Polemik.&lt;/p&gt;
-&lt;/blockquote&gt;
+Er bleibt (langweilige und nicht besonders gut geschriebene) Polemik.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und Christian Buggedei hat schon auf carta.info nachgesetzt gehabt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Es gibt viele Dinge, bei denen man die “Das ist Technik, das geht halt so
@@ -553,15 +639,13 @@ dieses wirksam kontrollieren und einschränken wollen, müssen wir das
 Internet so wie es ist abschaffen.  Komplett.  Eigene, spontan erstellte
 Seiten und Dienste wird es nicht mehr geben, jeglicher
 Kommunikationsvorgang muss überwacht und kontrolliert werden.  Alles
-andere wird fast sofort umgangen werden.&lt;/p&gt;
-&lt;/blockquote&gt;
+andere wird fast sofort umgangen werden.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Er holt dann noch weiter aus und zeichnet auch einen sinnvollen Ausblick auf -
 aber lest seinen Kommentar halt selbst, ich warte hier so lange.&lt;/p&gt;
 &lt;p&gt;Aber Andreas Eschbach hat noch Fragen:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich weiß nicht, wieso sich alle immer so an dieser &amp;ldquo;beliebigen
-Reproduzierbarkeit&amp;rdquo; aufhängen.  Wieso denn?  Was ändert denn das?&lt;/p&gt;
-&lt;/blockquote&gt;
+Reproduzierbarkeit&amp;rdquo; aufhängen.  Wieso denn?  Was ändert denn das?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und wir erklären es ihm - es geht nicht wirklich um das Kopieren, und seinen
 Blick darauf zu fixieren verstellt einem die Sicht auf das Ganze.  Es geht
 um die Kommunikation von Leuten miteinander, und wie das die Strukturen im
@@ -606,8 +690,7 @@ Falkenhagen und Andreas Eschbach ja zu illustrieren - es würde mich
 wundern, wenn eine sinnvolle Antwort käme, denn IMHO gibt es keine - auch in
 [Von einem Absturz, Tutus und einem neuen Urheberrecht]({&amp;amp; link _posts/2011-11-24-von-einem-absturz-tutus-und-einem-neuen-urheberrecht.md %})
 habe ich keine Antwort bekommen.&lt;/p&gt;
-&lt;p&gt;Die Frage ist ja schon falsch.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Die Frage ist ja schon falsch.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und Karsten geht noch einmal auf die Eigentumsgleichsetzung ein, um die
 Erklärung zu komplettieren:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -631,8 +714,7 @@ scheint keine praktikable Lösung zu sein.  Das Gesetz kann nicht erfolgreich
 durchgesetzt werden, wenn die Mehrheit der Unterworfenen es für ungerecht
 befindet - das geht einfach nicht, ist 1000mal probiert worden und
 scheitert.  Und die technischen Ansätze scheinen auch zu
-scheitern.&lt;/p&gt;
-&lt;/blockquote&gt;
+scheitern.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;An dem Konzept der Rechtsdurchsetzung knabbert man im weiteren Verlauf der
 Diskussion noch weiter herum.  Es werden Vergleiche mit roten Ampeln und mit
 Mördern gezogen, aber man kommt nicht so richtig weiter.  Oder doch?  Lena:&lt;/p&gt;
@@ -650,8 +732,7 @@ Wanken, da stimme ich zu.&lt;/p&gt;
 &lt;p&gt;Daher müssen neue Wege gefunden werden, Urheber (jeglicher schöpferischer
 Werke) zu gratifizieren.  Sonst sind (geraten) 90% der weltweit
 beliebtesten Unterhaltungsprodukte, an denen momentan einfach so
-partizipiert wird, &amp;ldquo;weil man es kann&amp;rdquo;, nicht mehr möglich.&lt;/p&gt;
-&lt;/blockquote&gt;
+partizipiert wird, &amp;ldquo;weil man es kann&amp;rdquo;, nicht mehr möglich.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Doch, man kommt weiter.  Denn Christian läßt sich von der fruchtlosen
 Diskussion nicht blenden, und geht auf den entscheidenden Punkt ein:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -672,8 +753,7 @@ Kickstarter und Co., und und und.  Wie Kristian Köhntopp sagte, ist dabei
 das Urheberrecht allerdings das kleinste Problem.&lt;/p&gt;
 &lt;p&gt;Ich habe persönlich nur die Befürchtung, dass wir das Urherberrecht
 dennoch erst schleifen müssen, bevor der Druck, diese neuen Modelle
-ernsthaft auszuprobieren, in der Breite ankommt.&lt;/p&gt;
-&lt;/blockquote&gt;
+ernsthaft auszuprobieren, in der Breite ankommt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Andreas Eschbach ist weiter skeptisch:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;»Jetzt schaue ich mir mal meine Umgebung an.  Gefühlte 97% davon ist der
@@ -691,13 +771,11 @@ nicht okay&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Das ist allerdings &lt;em&gt;viel Arbeit&lt;/em&gt;, wenn ich dran denke, wie viele Mails ich
 schon gekriegt habe von Leuten, die mir Sachen schreiben wie &amp;ldquo;ich hab mir
 alle Ihre Romane besorgt (bei ebay), weil ich finde, man muss einen Autor
-unterstützen&amp;rdquo; &amp;hellip;  :-(&lt;/p&gt;
-&lt;/blockquote&gt;
+unterstützen&amp;rdquo; &amp;hellip;  :-(&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und schließt mit der Betrachtung&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;Wenn man hier nicht aufpasst, wird ganz schnell eine andere Art von
-Knappheit entstehen, nämlich eine an wirklich neuen Schöpfungen.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+Knappheit entstehen, nämlich eine an wirklich neuen Schöpfungen.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Aber da unterschätzt Andreas Eschbach wahrscheinlich seine Leser und Kunden.
 Denn es existieren jede Menge Gegenbeispiele, die zeigen, daß genau diese
 Aufklärungsarbeit bei den Lesern offene Türen einrennen würde.  Christian
@@ -706,8 +784,7 @@ Buggedei ist jedenfalls, wie ich, genau dieser Auffassung:&lt;/p&gt;
 &lt;p&gt;Ich weiss ehrlich gesagt gar nicht, ob diese Arbeit nötig ist.  Denn die
 prinzipielle Bereitschaft, den Autoren, Musikern, Filmemachern etc.  die
 man gut findet, Geld zu geben ist ja da.  Es &amp;ldquo;fehlt&amp;rdquo; wohl nur der Wille,
-das über die althergebrachten Kanäle zu tun.&lt;/p&gt;
-&lt;/blockquote&gt;
+das über die althergebrachten Kanäle zu tun.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und ich führe länger aus:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich könnte an dieser Stelle den Brockhaus und den Britannica-Verlag
@@ -732,8 +809,7 @@ denen diese Personen Werke schaffen.&lt;/p&gt;
 sondern um einen Strukturwandel im Schaffensprozeß, der durch eine neue
 Art der Werkverbreitung und durch eine neue Art der Kommunikation
 ausgelöst wird.  Daher ist das Ganze auch nicht im Urheberrecht zu
-reparieren, sondern nur durch eine Anpassung an diese neuen Strukturen.&lt;/p&gt;
-&lt;/blockquote&gt;
+reparieren, sondern nur durch eine Anpassung an diese neuen Strukturen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Christian Buggedei ist begeistert und will nun Nägel mit Köpfen machen.  Er
 fordert Andreas Eschbach und Lena Falkenhagen heraus:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -749,8 +825,7 @@ werdet bezahlt und wir veröffentlichen das unter CC by-nc-sa sowohl
 gedruckt als auch kaufbar und kostenlos in den gängigen eBook-Formaten.
 Ich würde mich nicht wundern, wenn das Geld nicht innerhalb eines Monats
 zusammenkommen würde und dennoch danach regelmäßig die
-Kurzgeschichtensammlung gekauft wird.&lt;/p&gt;
-&lt;/blockquote&gt;
+Kurzgeschichtensammlung gekauft wird.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Leider kneift Andreas Eschbach:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Grundsätzliches zu der Wette: Man muss bei solchen Sachen unterscheiden
@@ -763,8 +838,7 @@ Doctorow stellt seine Bücher frei ins Netz und verkauft sie trotzdem&amp;rdquo;
 bei 1 funktioniert, muss noch lange nicht bei allen funktionieren und
 funktioniert auch nicht bei allen.)&lt;/p&gt;
 &lt;p&gt;Persönliches zu der Wette: Würde meinen Verleger unnötig nervös machen,
-wenn ich bei so etwas mitmachte, und das will ich ihm nicht antun.  :-D&lt;/p&gt;
-&lt;/blockquote&gt;
+wenn ich bei so etwas mitmachte, und das will ich ihm nicht antun.  :-D&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das mit dem einmaligen Eventcharacter stimmt so übrigens nicht, merkt
 Christian Buggedei an:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -772,8 +846,7 @@ Christian Buggedei an:&lt;/p&gt;
 Fred Gallagher, Scott Kurtz, Jeffrey T.  Darlington, die Jungs von Penny
 Arcade, Rich Burlew, Ryan Sohmer&amp;hellip;  um nur ein paar zu nennen.  Cory ist
 sicherlich derjenige, der das am meisten weitererzählt und propagiert,
-aber er ist nicht der einzige.&lt;/p&gt;
-&lt;/blockquote&gt;
+aber er ist nicht der einzige.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und Heiko Harthun hat noch mehr Beispiele:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Durch meine erste Berührung mit einem Kindle und jetzt mit der App für mein
@@ -813,8 +886,7 @@ stabiler als ihre Konkurrenz.  Warum sind sie das?  Weil sie keine
 Annahmen mehr über die Welt und wie sie funktioniert machen, weil sie
 nicht mehr auf ihre Intuition vertrauen, sondern weil sie eine Idee sofort
 einem validen Test unterziehen.&lt;/p&gt;
-&lt;p&gt;Kristian Köhntopp wird euch sicher gerne näheres dazu vermitteln können.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Kristian Köhntopp wird euch sicher gerne näheres dazu vermitteln können.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Kann ich.  :-) Und Christian Buggedei macht noch auf
 eine weitere Sache aufmerksam: Niedrige Preise machen
 experimentierfreudiger.&lt;/p&gt;
@@ -829,8 +901,7 @@ dann den ebookshop oder den legalen Downloadbereich unseres Vertrauens an.
 Dass die Investition von nicht mal eine Handvoll Dollar in ein eBook weniger
 schmerzhaft als die 30 Euro für ein schön gebundenes Hardcover ist, tut sein
 übriges: Man wird wesentlich experimentierfreudiger, selbst wenn es sich um
-augenscheinlich eher unbekannte Autoren handelt.&lt;/p&gt;
-&lt;/blockquote&gt;
+augenscheinlich eher unbekannte Autoren handelt.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und langsam scheint auch Andreas Eschbach das Ausmaß der Veränderung zu
 begreifen:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -844,8 +915,7 @@ Internet-Manager, der die Fan-Basis pflegt, die beide alimentiert.
 Verlage gibt&amp;rsquo;s keine mehr, Buchhandlungen sind alle verschwunden,
 entlassene Buchhändler schreiben stattdessen Rezis in eigenen Blogs und in
 Social Networks (und leben von &amp;hellip;  hmm, muss man noch klären), und das
-Feuilleton gibt&amp;rsquo;s auch nicht mehr, da die Zeitungen auch zugemacht haben.&lt;/p&gt;
-&lt;/blockquote&gt;
+Feuilleton gibt&amp;rsquo;s auch nicht mehr, da die Zeitungen auch zugemacht haben.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Schon ein wichtiger Schritt in die richtige Richtung.  Christian Buggedei
 schiebt noch ein bischen:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -867,8 +937,7 @@ das Nischenpublikum wenden, dass einen für genau das liebt, was man macht -
 ohne Kompromisse eingehen zu müssen.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://bit.ly/shut-up-and-take-my-money&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://bit.ly/shut-up-and-take-my-money&lt;/a&gt;
 
-&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und Andreas Eschbach dreht seinen Hut und fragt weiter:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Mal abgesehen von den Künstlern: Die Prognose für den Buchhandel im
@@ -876,8 +945,7 @@ speziellen und den Einzelhandel im allgemeinen sind schlecht, oder?
 Gibt&amp;rsquo;s irgendwelche Ideen, wie Leute, die bislang in diesen Branchen
 gearbeitet haben, künftig das Geld verdienen werden, mit dem sie
 (abgesehen von Miete, Heizung, Lebensmitteln usw.) per Crowdsourcing Kunst
-unterstützen können?&lt;/p&gt;
-&lt;/blockquote&gt;
+unterstützen können?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich zücke mein Blog, denn ich habe da schon mal was vorbereitet.  Es zitiert
 übrigens Eschbach:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -897,8 +965,7 @@ Unternehmensgewinnen aus Maschinenarbeit, die einer Lohnsteuer
 vergleichbar (und genau so wenig entkommbar) ist, wären ein brauchbarer
 Mechanismus, um den GINI Index in sinnvolle Bereiche zurück zu drücken und
 so unsere Gesellschaft als Solidargemeinschaft zu stabilisieren - und das
-wäre auch und gerade für die Besitzenden von großem Wert.&lt;/p&gt;
-&lt;/blockquote&gt;
+wäre auch und gerade für die Besitzenden von großem Wert.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Heiko Harthun greift den Gedanken mit der weiter reichenden Transformation
 auf - die Veränderung ergreift ja nicht nur Buch- und Einzelhändler, sondern
 jede Form von kommerziellem Austausch.  Er schreibt:&lt;/p&gt;
@@ -938,8 +1005,7 @@ Angebote als bei Amazon.&lt;/p&gt;
 &lt;p&gt;Ich höre jetzt besser auf, sonst wird das hier noch seitenlang.  Der Punkt
 ist jedenfalls, dass es eine Unmenge an Ideen und Geschäftsmodellen gibt,
 die den herkömmlichen Einzelhandel aufbrechen und eben mit der Veränderung
-gehen und daran partizipieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+gehen und daran partizipieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bemerkenswert.  Autoren und Kunden in einem Thread um eines der
 emotionalsten Themen in dieser Konstellation, und alle bleiben über mehr als
 100 Beiträge bei der Sache, und es wird Fortschritt in der Diskussion
@@ -951,8 +1017,8 @@ erzielt.  Am Ende sind sogar sich annähernde Positionen erkennbar.&lt;/p&gt;
     <item>
       <title>Sony: &#34;Das Internet ist für uns ein Segen&#34;</title>
       <link>https://blog.koehntopp.info/2012/02/23/sony-das-internet-ist-f-r-uns-ein-segen.html</link>
-      <pubDate>Thu, 23 Feb 2012 14:14:06 +0000</pubDate>
-      
+      <pubDate>Thu, 23 Feb 2012 14:14:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/02/23/sony-das-internet-ist-f-r-uns-ein-segen.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/sonyelectronics.jpg&#34; alt=&#34;Sory&#34;  /&gt;
@@ -973,8 +1039,7 @@ Musikindustrie ein großer Glücksfall, oder besser gesagt: Das Internet ist
 für uns ein Segen.
 &amp;hellip;
 Man kann das Internet nicht für schädliche Auswüchse verantwortlich
-machen.  Im Gegenteil.  Es hat uns enorme neue Möglichkeiten gebracht.&lt;/p&gt;
-&lt;/blockquote&gt;
+machen.  Im Gegenteil.  Es hat uns enorme neue Möglichkeiten gebracht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und zum Thema Youtube und Gema:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Es liegt nicht an uns.  Wir haben den Marktteilnehmern unsere Inhalte
@@ -984,8 +1049,7 @@ lizenziert.  Uns gehen dadurch Millionenumsätze verloren.  Diese Praxis
 ist übrigens mit einer der Hauptgründe, warum der digitale Musikhandel in
 Deutschland weniger stark ausgeprägt ist.  Ich bin mir aber auch relativ
 sicher, dass es bei der Gema irgendwann Einsicht zwecks ökonomischer
-Notwendigkeit geben wird.&lt;/p&gt;
-&lt;/blockquote&gt;
+Notwendigkeit geben wird.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(via &lt;a href=&#34;http://www.golem.de/news/sony-music-millionenverlust-wegen-gema-sperren-auf-youtube-1202-89982.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Golem&lt;/a&gt;
 
 )&lt;/p&gt;
@@ -995,8 +1059,8 @@ Notwendigkeit geben wird.&lt;/p&gt;
     <item>
       <title>Von einem Absturz, Tutus und einem neuen Urheberrecht</title>
       <link>https://blog.koehntopp.info/2011/11/24/von-einem-absturz-tutus-und-einem-neuen-urheberrecht.html</link>
-      <pubDate>Thu, 24 Nov 2011 08:01:22 +0000</pubDate>
-      
+      <pubDate>Thu, 24 Nov 2011 08:01:22 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/24/von-einem-absturz-tutus-und-einem-neuen-urheberrecht.html</guid>
       <description>&lt;p&gt;Argh! Ein mal, ein einziges Mal tut man etwas Gutes und dann das!&lt;/p&gt;
 &lt;p&gt;In den Kommentaren zu
@@ -1008,8 +1072,7 @@ schrieb ich also:&lt;/p&gt;
 &lt;p&gt;Du kannst Lena Falkenhagen ein neues Urheberrecht schreiben lassen, nach
 ihrem Wunsch, und das zum Gesetz werden lassen. Es würde ihre Situation
 nicht verbessern. Denn die Probleme, die sie da sieht oder hat - sie
-liegen nicht im Urheberrecht.&lt;/p&gt;
-&lt;/blockquote&gt;
+liegen nicht im Urheberrecht.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und machte meinen Standpunkt also in einem
 &lt;a href=&#34;https://blog.koehntopp.info/2011/11/10/nachtrag-nicht-das-urheberrecht-ist-das-kernthema.html&#34;&gt;Nachtrag&lt;/a&gt;
 
@@ -1031,8 +1094,7 @@ Fadenkreuz Gebraucht macht:&lt;/p&gt;
 
 letzthin so schön verbloggt hatte: Das Urheberrecht und der
 Schutz von Urheberrechten ist nicht Dein Problem. Es wird Dir auch nicht
-helfen jeden Filesharer standrechtlich zu erschiessen.&lt;/p&gt;
-&lt;/blockquote&gt;
+helfen jeden Filesharer standrechtlich zu erschiessen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Jetzt haben wir also einen kalten Novembermorgen, dichter Nebel liegt über
 Berlin. Ich, zwei Meter zwei groß, 135 kg schwer, unrasiert, habe einen rosa
 Tutu an und einen fetten massivgoldenen Zauberstab in der Hand. Meine
@@ -1071,8 +1133,8 @@ ich in meinem Aufzug kaum auf.&lt;/p&gt;
     <item>
       <title>Nachtrag: Nicht das Urheberrecht ist das Kernthema</title>
       <link>https://blog.koehntopp.info/2011/11/10/nachtrag-nicht-das-urheberrecht-ist-das-kernthema.html</link>
-      <pubDate>Thu, 10 Nov 2011 18:15:32 +0000</pubDate>
-      
+      <pubDate>Thu, 10 Nov 2011 18:15:32 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/10/nachtrag-nicht-das-urheberrecht-ist-das-kernthema.html</guid>
       <description>&lt;p&gt;Der Beitrag
 &lt;a href=&#34;https://blog.koehntopp.info/2011/11/08/nicht-urheberrecht-ist-das-kernthema.html&#34;&gt;Nicht das Urheberrecht ist das Kernthema&lt;/a&gt;
@@ -1185,8 +1247,8 @@ Produzenten) und die Konsumenten zueinander finden können.&lt;/p&gt;
     <item>
       <title>Nicht Urheberrecht ist das Kernthema</title>
       <link>https://blog.koehntopp.info/2011/11/08/nicht-urheberrecht-ist-das-kernthema.html</link>
-      <pubDate>Tue, 08 Nov 2011 12:01:06 +0000</pubDate>
-      
+      <pubDate>Tue, 08 Nov 2011 12:01:06 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/08/nicht-urheberrecht-ist-das-kernthema.html</guid>
       <description>&lt;p&gt;Die Süddeutsche hat einen
 &lt;a href=&#34;http://www.sueddeutsche.de/digital/piratenpartei-vergisst-ihr-gruendungsprinzipien-raubkopierer-in-die-parlamente-1.1183236&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;määndernden Artikel&lt;/a&gt;
@@ -1203,8 +1265,7 @@ genau das vergessen zu haben. Sie sprechen über fahrscheinlosen
 Nahverkehr, aber nicht über das Urheberrecht. Das ist erstaunlich, weil
 eine Pauschalabgabe fürs S-Bahnfahren genau auf dem urheberrechtlichen
 Modell basiert, das Juristen unter dem Begriff &amp;ldquo;Kulturflatrate&amp;rdquo; für die
-Netznutzung beschreiben.&lt;/p&gt;
-&lt;/blockquote&gt;
+Netznutzung beschreiben.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nun ist zum Einen ein Stadt- oder Landesparlament nicht der richtige Ort, um
 über Änderungen am Urheberrecht zu diskutieren - selbst auf Bundesebene sind
 Änderungen hier nur begrenzt möglich, und insofern läuft die SZ hier
@@ -1217,8 +1278,7 @@ nicht von der Piratenpartei alleine.&lt;/p&gt;
 Plus gestellt hat:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Wäre gespannt, wie die Piraten beim Wegfall des Urheberrechtes das kreative
-Schaffen entlohnen wollen. Ansonsten bin ich mittellos.&lt;/p&gt;
-&lt;/blockquote&gt;
+Schaffen entlohnen wollen. Ansonsten bin ich mittellos.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Christian Buggedei hatte mich auf diese Diskussion aufmerksam gemacht und
 ich habe den Artikel auf Google Plus weiter geshared, um noch ein paar
 relevante Personen mehr darauf aufmerksam zu machen, und so hat sich mit 81
@@ -1238,8 +1298,7 @@ Medium, das die Wahl erzwingt:&lt;/p&gt;
 Legalität hin untersuchen und filtern.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Wenn Fall 2 nicht stattfindet, bildet sich sofort ein Overlay-Netzwerk und
-Fall 1 tritt ein.&lt;/p&gt;
-&lt;/blockquote&gt;
+Fall 1 tritt ein.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Er äußert sich weiter und schreibt:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Ich kenne keinen in der Piratenpartei der Inhaltsschaffenden - seien es
@@ -1251,8 +1310,7 @@ jedweder Art ausgeben. Aber wir von der Piratenpartei sehen eben auch,
 dass zur Durchsetzung der Verwertungsrechte wie sie derzeit aussehen, man
 den von Kristian geschilderten Fall 2 zwingend implementieren muss - und
 das ist etwas, was wir aus bürgerrechtlicher Sicht schlicht nicht
-hinnehmen können.&lt;/p&gt;
-&lt;/blockquote&gt;
+hinnehmen können.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich führe das in meinem eigenen Kommentar dort in  eine andere Richtung noch
 etwas weiter aus (redaktionell überarbeitet):&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1340,14 +1398,12 @@ ist nicht weniger, deucht mich:
 zeigt das recht deutlich.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Um das Urheber-&lt;strong&gt;Recht&lt;/strong&gt; würde ich mich dabei an Deiner Stelle wenig
 Sorgen. Es ist das Kleinste Deiner Probleme, wenn Du mit dem Schreiben
-Geld verdienen willst.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+Geld verdienen willst.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Noch einmal, weil es wichtig ist:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;Um das Urheber-&lt;b&gt;Recht&lt;/b&gt; würde ich mich dabei an Deiner Stelle
 wenig Sorgen. Es ist das Kleinste Deiner Probleme, wenn Du mit dem
-Schreiben Geld verdienen willst.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+Schreiben Geld verdienen willst.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ich will damit sagen, daß wir es hier mit einem strukturellen Wandel in der
 Kommunikation und dem Verhältnis zwischen Werkschaffenden und Konsumenten zu
 tun haben, bei dem die Analyse &amp;ldquo;Urheberrecht - ansonsten bin ich mittellos&amp;rdquo;
@@ -1442,8 +1498,7 @@ superfreundlich, umgänglich und technisch kompetent, hat inzwischen Total
 Buyout Verträge und es war ein Riesenproblem, meine Sechs-Monats-Regel in
 eine iX-Autorenvereinbarung rein zu bekommen. Am Ende ist es für mich als
 Nebenerwerbs-Schreiber von technischen Artikeln den Nerv schlicht nicht
-wert - da gebe ich das Zeugs eben so weg.&lt;/p&gt;
-&lt;/blockquote&gt;
+wert - da gebe ich das Zeugs eben so weg.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&amp;ldquo;Mittellos&amp;rdquo; ist auch eine Lektorin und Redakteurin, weil sich die Publishing
 Pipeline für die meisten Publizierenden so stark verkürzt hat, daß für diese
 Rollen darin kein Platz und somit auch kein Einkommen mehr vorhanden ist.&lt;/p&gt;
@@ -1483,8 +1538,7 @@ rapide verändernden Umständen, die ich oben aufgezählt habe.&lt;/p&gt;
 ,
 &lt;a href=&#34;http://www.mela.de/archives/1310-Piratenschwarz.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Piratenschwarz&lt;/a&gt;
 
-.&lt;/p&gt;
-&lt;/blockquote&gt;
+.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wobei insbesondere der Artikel &lt;a href=&#34;http://www.mela.de/archives/1292-Wie-Kulturschaffende-Geld-verdienen.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wie Kulturschaffende Geld verdienen&lt;/a&gt;
 
 
@@ -1498,8 +1552,7 @@ anschließt.&lt;/p&gt;
 &lt;p&gt;#spackeria@Ircnet, 25-Oct-2011, 13:18&lt;br&gt;
 Isotopp&amp;gt; acid_: Ich mag den Bogen von &amp;lsquo;Neue Kommunikations- und Überwachungsmedien
 -&amp;gt; Transparente Gesellschaft
--&amp;gt; essentiell anarchie-fähige Gesellschaft, Grundeinkommen, Star Trek&amp;rsquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+-&amp;gt; essentiell anarchie-fähige Gesellschaft, Grundeinkommen, Star Trek&amp;rsquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Womit wir dann spätestens bei Star Trek wieder bei Mela sind. :-)&lt;/p&gt;
 &lt;p&gt;Lena Falkenhagen nimmt in der Diskussion selbst Stellung. Sie bezeichnet
 sich selbst &amp;lsquo;kein Kopierschutz-Nazi&amp;rsquo; und sagt, daß sie kein Problem damit
@@ -1587,8 +1640,7 @@ schon heute Bücher weitgehend durch Wikipedia-Artikel (zum Lesen) und
 podcasts bzw. TED und Stanford-Videos (zum Hören und dabei Einschlafen)
 ersetzt, und ich kann mich noch erinnern, als eine Bibliothek meine
 Erziehungsberechtigte war.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;ve come a long way.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We&amp;rsquo;ve come a long way.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Ende des unfair Draufhauens.&lt;/p&gt;
 &lt;p&gt;Ab dieser Stelle bricht die ganze Diskussion in dem Googe Plus Text ein
 wenig zusammen, unter anderem weil angefangen wird, Kopieren von Texten oder
@@ -1619,16 +1671,15 @@ diktieren unter welchen Bedingungen sie bereit sind weiter kreativ zu
 sein. Die Konsumenten haben aber genauso ein (moralisches) Recht zu
 diktieren unter welchen Bedingungen sie noch bereit sind die Finanzierung
 zu leisten.&lt;/p&gt;
-&lt;p&gt;Am Ende muss man sich einigen, weil der Eine nicht ohne den Anderen kann.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Am Ende muss man sich einigen, weil der Eine nicht ohne den Anderen kann.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Acht Jahre SCO-Prozeß</title>
       <link>https://blog.koehntopp.info/2011/08/31/acht-jahre-sco-proze.html</link>
-      <pubDate>Wed, 31 Aug 2011 18:46:23 +0000</pubDate>
-      
+      <pubDate>Wed, 31 Aug 2011 18:46:23 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/08/31/acht-jahre-sco-proze.html</guid>
       <description>&lt;p&gt;Im März 2003 begann die Firma, die mal Caldera hieß und sich in SCO Group
 umbenannte, IBM auf eine Fantasiesumme von Schadenersatz zu verklagen, weil
@@ -1663,8 +1714,8 @@ Themen. An Prozessen herrscht ja seit zehn Jahren im IT-Umfeld kein Mangel.&lt;/
     <item>
       <title>Auf der Suche nach einem funktionierenden Urheberrecht</title>
       <link>https://blog.koehntopp.info/2010/05/13/auf-der-suche-nach-einem-funktionierenden-urheberrecht.html</link>
-      <pubDate>Thu, 13 May 2010 14:08:00 +0000</pubDate>
-      
+      <pubDate>Thu, 13 May 2010 14:08:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/05/13/auf-der-suche-nach-einem-funktionierenden-urheberrecht.html</guid>
       <description>&lt;p&gt;Letztes Jahr um diese Zeit schrieb ich in
 &lt;a href=&#34;https://blog.koehntopp.info/2009/04/27/politik-polemik-und-eine-agenda.html&#34;&gt;Politik, Polemik und eine Agenda&lt;/a&gt;
@@ -1695,8 +1746,7 @@ Communities. Das Netz und entsprechende Software („der Code“) ermöglichen
 es, die kreative Schaffenskraft Tausender zu bündeln werden, um
 Open-Content-Projekte wie Wikipedia oder Open Source Software (wie Linux)
 zu großem Erfolg zu führen oder riesige Plattformen wie Flickr oder
-YouTube mit Leben zu füllen.&lt;/p&gt;
-&lt;/blockquote&gt;
+YouTube mit Leben zu füllen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Kreuzer führt aus, wie das Urheberrecht in allen seinen Novellen und Körben
 genau dieser Veränderung &lt;em&gt;nicht&lt;/em&gt; Rechnung trägt, sondern noch immer beseelt
 ist vom Modell des auf Pergament kritzelnden Autors, der alleine in seinem
@@ -1714,8 +1764,7 @@ Regulierung einzigartig sein. Das Versagen des Systems wird zudem
 angesichts der Massenbewegungen der Open-Content- und
 Open-Source-Communities deutlich, die sich bewusst von den überbordenden
 Auswirkungen des Urheberrechts abwenden und sich eine eigene Rechtsordnung
-setzen.&lt;/p&gt;
-&lt;/blockquote&gt;
+setzen.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Wie aber das Konzept &amp;lsquo;Urheberrecht&amp;rsquo; reparieren? Ist es überhaupt noch
 reparierbar?&lt;/p&gt;
 &lt;p&gt;Kreuzer setzt beim rechtstheoretischen Begründungsansatz für das
@@ -1772,8 +1821,7 @@ Meinungen“ haben das „Web 2.0“, die Foren, social communities und
 Blogosphäre gebracht. All diese Formen kreativer Entfaltung und Äußerung
 funktionieren von Seiten der Akteure weitest gehend ohne Berufung auf ihre
 Urheberrechte, ohne Klagen, Abmahnungen und Strafverfolgung. Und sie
-können meist nur so funktionieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+können meist nur so funktionieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nach der Analyse wendet sich Kreuzer konstruktiver Arbeit zu.&lt;/p&gt;
 &lt;p&gt;Die erste Idee: Er will den Schutzzweck und damit die rechtliche Basis des
 Urheberrechts neu formulieren, damit das Urheberrecht multipolar wird und es
@@ -1783,8 +1831,7 @@ Kreativen möglich wird, &amp;ldquo;auf den Schultern von Riesen zu stehen&amp;r
 Erzeugung, Veröffentlichung und Nutzung von kreativen Schöpfungen fördern
 und keine höherrangigen widerstreitenden Interessen beeinträchtigen.
 Regelungen des geschriebenen Rechts, die diesem Ziel zuwiderlaufen, sind
-unzulässig.“&lt;/p&gt;
-&lt;/blockquote&gt;
+unzulässig.“&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Dies stellt Schutzinteressen der Urheber den Nutzungsinteressen und
 Gemeinwohlbelangen gleich und gibt der Politik und der Jurisdiktion den
 Spielraum, den sie brauchen, die jetzigen Probleme angehen zu können.&lt;/p&gt;
@@ -1816,8 +1863,8 @@ der ist wichtig)&lt;/p&gt;
     <item>
       <title>Die Leute sind nicht dumm genug für DRM...</title>
       <link>https://blog.koehntopp.info/2010/03/07/die-leute-sind-nicht-dumm-genug-f-r-drm.html</link>
-      <pubDate>Sun, 07 Mar 2010 10:26:10 +0000</pubDate>
-      
+      <pubDate>Sun, 07 Mar 2010 10:26:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/03/07/die-leute-sind-nicht-dumm-genug-f-r-drm.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/dvd_vs_torrent.jpeg&#34; alt=&#34;&#34;  /&gt;
@@ -1862,8 +1909,7 @@ Downloads.&amp;quot; Schuld seien die vielfältigen Restriktionen durch Digital
 Rights Management auf den unterschiedlichen Plattformen. &amp;ldquo;Der Markt ist
 durch seine Beschränkungen gekennzeichnet&amp;rdquo;, so Amel. Alles drehe sich
 darum, was die Zuschauer nicht tun können, statt darum, welche
-Möglichkeiten die Anbieter ihnen geben.&lt;/p&gt;
-&lt;/blockquote&gt;
+Möglichkeiten die Anbieter ihnen geben.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und so hat die Film-, die Musik- und nun auch die Buchindustrie in den
 letzten 10 Jahren hart daran gearbeitet, ihre jeweiligen Kunden auszubilden,
 ihnen nicht zu trauen und sich stattdessen selbst zu versorgen. Selbst
@@ -1882,8 +1928,8 @@ hartnäckige Kunden haben inzwischen verstanden.&lt;/p&gt;
     <item>
       <title>Downloading communism...</title>
       <link>https://blog.koehntopp.info/2010/02/25/downloading-communism.html</link>
-      <pubDate>Thu, 25 Feb 2010 11:47:02 +0000</pubDate>
-      
+      <pubDate>Thu, 25 Feb 2010 11:47:02 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/02/25/downloading-communism.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/Download_communism.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1904,8 +1950,7 @@ aber die Mediendinosaurier nehmen so etwas schon mal ernst.&lt;/p&gt;
 which is an umbrella group for the entertainment cartels such as the MPAA
 and RIAA, has demanded that Indonesia, Brazil and India should be placed
 on a special trade watchlist merely because they recommend the use of open
-source software.&lt;/p&gt;
-&lt;/blockquote&gt;
+source software.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und der&lt;a href=&#34;http://www.guardian.co.uk/technology/blog/2010/feb/23/opensource-intellectual-property&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Guardian&lt;/a&gt;
 
 :&lt;/p&gt;
@@ -1917,8 +1962,7 @@ Indonesia, Brazil and India for its &amp;ldquo;Special 301 watchlist&amp;rdquo; 
 use open source software…. But the IIPA suggested that Indonesia deserves
 Special 301 status because encouraging (not forcing) such takeup &amp;ldquo;weakens
 the software industry&amp;rdquo; and &amp;ldquo;fails to build respect for intellectual
-property rights&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
+property rights&amp;rdquo;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Right.&lt;/p&gt;
 </description>
     </item>
@@ -1926,8 +1970,8 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Die Nachrichtenverlage bringen sich um</title>
       <link>https://blog.koehntopp.info/2009/11/17/die-nachrichtenverlage-bringen-sich-um.html</link>
-      <pubDate>Tue, 17 Nov 2009 10:58:03 +0000</pubDate>
-      
+      <pubDate>Tue, 17 Nov 2009 10:58:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/11/17/die-nachrichtenverlage-bringen-sich-um.html</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;http://www.niemanlab.org/2009/08/can-newspaper-publishers-survive-this-revenue-freefall-perhaps-if-they-embrace-a-digital-future/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Can Newspaper publishers survive this revenue freefall?&lt;/a&gt;
 
@@ -1948,16 +1992,15 @@ property rights&amp;rdquo;.&lt;/p&gt;
 
 . Die Erklärung dort zeigt, wie spezialisierte Dienste den Mix Zeitung entbündeln und durch Einzeldienste ersetzen.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Craigslists entzieht dem Kleinanzeigen-Markt Milliarden. Wikipedia zerstört das Geschäftsmodell von Verlagen in aller Welt. Interpreten mit Web- und Marketing-Kompetenz geben ihren Plattenfirmen den Laufpass.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Craigslists entzieht dem Kleinanzeigen-Markt Milliarden. Wikipedia zerstört das Geschäftsmodell von Verlagen in aller Welt. Interpreten mit Web- und Marketing-Kompetenz geben ihren Plattenfirmen den Laufpass.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Einthemenpartei</title>
       <link>https://blog.koehntopp.info/2009/08/19/einthemenpartei.html</link>
-      <pubDate>Wed, 19 Aug 2009 19:28:00 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Aug 2009 19:28:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/08/19/einthemenpartei.html</guid>
       <description>&lt;p&gt;Eine Einthemenpartei wie die Piraten macht es sich sehr einfach - sie beackert nur dieses eine Poltikfeld und sammelt das Stimmvieh ein. Schauen wir mal genauer hin.&lt;/p&gt;
 &lt;p&gt;Das hier ist ein Poltikfeld. Die weißen Punkte sind Stimmvieh.&lt;/p&gt;
@@ -2043,15 +2086,14 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Meister der Enteignung</title>
       <link>https://blog.koehntopp.info/2009/08/19/meister-der-enteignung.html</link>
-      <pubDate>Wed, 19 Aug 2009 15:55:34 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Aug 2009 15:55:34 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/08/19/meister-der-enteignung.html</guid>
       <description>&lt;p&gt;In der Digitaz erschien vor zwei Tagen ein Gastbeitrag von Kai Schächtle, dem Vorsitzenden des Berufsverbandes freier Journalisten und Journalistinnen, &amp;ldquo;Freischreiber&amp;rdquo;. Unter dem Titel &lt;a href=&#34;http://www.taz.de/1/archiv/print-archiv/printressorts/digi-artikel/?ressort=fl&amp;amp;dig=2009%2F08%2F17%2Fa0119&amp;amp;cHash=1419c6d3f5&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Meister der Enteignung&lt;/a&gt;
 
  stellt er die gängige Vertragspraxis der nach ihrem Bekunden &amp;ldquo;Qualitätsjournalismusverlage&amp;rdquo; der Kampagne von Hubert Burda und anderen zur Einführung eines Verlinkungsgebühr gegenüber:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Was Burda in seinem Hilferuf verschweigt: Die Rechtsabteilungen der Verlage haben in den vergangenen Jahren eine erstaunliche Kreativität an den Tag gelegt, um selbst zu Meistern der Enteignung zu werden - im Umgang mit ihren freien Journalisten. Man kann es nicht anders als bigott nennen, wie Verlagsverantwortliche derzeit Politik in eigener Sache machen: Sie beschweren sich über die vermeintliche Enteignung durch Google, zwingen ihren Autoren aber gleichzeitig Total-Buy-out-Verträge auf, mit denen sie sich sämtliche Rechte an deren Stücken sichern. Diese Knebelverträge machen es möglich, eingekaufte Texte beliebig oft zu benutzen und weiterzuverkaufen, ohne dass die Autoren davon profitieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Was Burda in seinem Hilferuf verschweigt: Die Rechtsabteilungen der Verlage haben in den vergangenen Jahren eine erstaunliche Kreativität an den Tag gelegt, um selbst zu Meistern der Enteignung zu werden - im Umgang mit ihren freien Journalisten. Man kann es nicht anders als bigott nennen, wie Verlagsverantwortliche derzeit Politik in eigener Sache machen: Sie beschweren sich über die vermeintliche Enteignung durch Google, zwingen ihren Autoren aber gleichzeitig Total-Buy-out-Verträge auf, mit denen sie sich sämtliche Rechte an deren Stücken sichern. Diese Knebelverträge machen es möglich, eingekaufte Texte beliebig oft zu benutzen und weiterzuverkaufen, ohne dass die Autoren davon profitieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Schächtle zeichnet ein drastisches Bild des aktuellen Journalismus - Zeilenhonorare sind nach seiner Aussage so niedrig, daß 500 Euro für einen Artikel, in dem eine Woche Recherchearbeit steckt, eher die Norm als die Ausnahme sind.&lt;/p&gt;
 &lt;p&gt;Für mich, der Schreiben als angenehmen Nebenverdienst ansieht, aber seine Texte lieber frei ins Netz stellt als einen Total Buyout zu unterschreiben bloß damit es gedruckt wird, ist das etwas, das ich vom Spielfeldrand aus betrachte.&lt;/p&gt;
 &lt;p&gt;Die Begegnung mit der geänderten Verlagseinstellung hatte ich aber auch: Alle meine Artikel bis auf den letzten bei Heise sind ohne Vertrag &amp;lsquo;Text gegen Überweisung&amp;rsquo; entstanden, es gelten dann die Default-Regelungen, und die sind vom Anfang des 20. Jahrhunderts - 1908 oder so. Der Verlag wollte dann für meinen letzten iX-Artikel einen extra Autorenvertrag und dieser hätte mir verboten, den an Heise verkauften Artikel auf meiner eigenen Website neben seine Geschwistertexte zu stellen.&lt;/p&gt;
@@ -2084,14 +2126,13 @@ meiner Leistungsschau entlang der Dimension &amp;ldquo;von Kris geschrieben&amp;
     <item>
       <title>&#34;Dir fehlen die Worte&#34; oder &#34;Die Position der Piratenpartei zum Urheberrecht in einer Flatrategesellschaft&#34;</title>
       <link>https://blog.koehntopp.info/2009/07/01/dir-fehlen-die-worte-oder-die-position-der-piratenpartei-zum-urheberrecht-in-einer-flatrategesellschaft.html</link>
-      <pubDate>Wed, 01 Jul 2009 22:05:08 +0000</pubDate>
-      
+      <pubDate>Wed, 01 Jul 2009 22:05:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/07/01/dir-fehlen-die-worte-oder-die-position-der-piratenpartei-zum-urheberrecht-in-einer-flatrategesellschaft.html</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Ich bin Mitglied in der Piratenpartei, aber dieser Text hier ist meine
 Sicht auf das Thema und nicht eine abgestimmte Position der Piratenpartei.
-&amp;ndash; Kris&lt;/p&gt;
-&lt;/blockquote&gt;
+&amp;ndash; Kris&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Es geht um
 &lt;a href=&#34;https://blog.koehntopp.info/2009/07/01/urheberrecht-360-grad-ansicht.html&#34;&gt;Urheberrecht&lt;/a&gt;
 
@@ -2246,8 +2287,7 @@ Dualismus im Kulturschaffen des 21. Jahrhunders anerkennt. Wir fordern,
 daß das kooperative Universum mit seinen characteristischen Eigenschaften
 der subjektiven Kostenlosigkeit und der Fairness geschützt wird, damit die
 digitale Allmende weiter gedeihen kann. Wir wollen ein Urheberrecht, daß
-diese Ideen anerkennt und ihnen Raum bietet.&lt;/p&gt;
-&lt;/blockquote&gt;
+diese Ideen anerkennt und ihnen Raum bietet.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Das bringt die Piratenpartei so derzeit nicht klar rüber. Weil ihr die
 Worte fehlen - die Gesellschaft außerhalb des Netzes kennt die Konzepte
 nicht und hat keine Worte dafür, und den Piraten ist es wie den meisten
@@ -2255,53 +2295,5 @@ Netzbewohnern so selbstverständlich, daß sie keine Worte dafür brauchen.&lt;/
 </description>
     </item>
     
-    <item>
-      <title>Urheberrecht - 360-Grad-Ansicht</title>
-      <link>https://blog.koehntopp.info/2009/07/01/urheberrecht-360-grad-ansicht.html</link>
-      <pubDate>Wed, 01 Jul 2009 20:09:19 +0000</pubDate>
-      
-      <guid>https://blog.koehntopp.info/2009/07/01/urheberrecht-360-grad-ansicht.html</guid>
-      <description>&lt;p&gt;Durch die Gründung und Medienpräsenz der Piratenpartei, den Heidelberger Appell und die verschiedenen Schreie von Verlagen nach staatlicher Subventionierung und Schutz ihres Geschäftsmodelles als UNESCO Weltkulturerbe ist das Thema Copyright in den vergangenen Wochen aktueller denn je.&lt;/p&gt;
-&lt;p&gt;Anfang dieses Monats gab es dazu zwei brilliante Artikel bei Netzwertig, einem Blog, das ich sowieso zum Abo empfehlen kann. In &lt;a href=&#39;http://netzwertig.com/2009/06/05/nachrichtengeschaeft-im-internet-warum-bezahlinhalte-nicht-funktionieren/&#39;&gt;Warum Bezahlinhalte im Netz nicht funktionieren&lt;/a&gt; baut Marcel Weiss einmal auseinander, warum Verlage und Agenturen ihre Meldungen gratis ins Netz stellen - stellen müssen! -, obwohl sie wissen, daß das langfristig kein solides Geschäftsmodell ist. Die tragende Säule seiner Argumentation ist der Paywall, der den Content der Zeitung gegen Benutzer und Suchmaschinen abschirmt: Dadurch wird die Site in Suchmaschinen schlecht gefunden, die Inhalte können sich nicht durch Mundpropaganda - das böse Sharing! - weiter verbreiten und sie können in der globalen Diskussion nicht referenziert werden, weil sie keine öffentliche URL haben. Dadurch fehlt der Site hinter dem Paywall jedes Wachstumspotential, und wenn nicht besondere Bedingungen vorliegen verkümmert die Site.&lt;/p&gt;
-&lt;p&gt;Ein zentrales Argument: &lt;em&gt;Je interessanter, je wichtiger, je welterschütternder eine Nachricht ist, desto mehr drängt diese auf maximale Verbreitung.&lt;/em&gt; Exklusivität und Bedeutung stehen hier in direkter Konkurrenz in der Aufmerksamkeitsmaschine des Nachrichtengeschäfts.&lt;/p&gt;
-&lt;p&gt;Netzwertig setzt mit einem zweiten Artikel zum Thema nach: Andreas Göldi erklärt in &lt;a href=&#39;http://netzwertig.com/2009/06/10/medienrevolution-was-werden-die-newsmedien-der-zukunft-kosten/&#39;&gt;Was werden die Newsmedien der Zukunft kosten?&lt;/a&gt; das ökonomische Modell, das hinter der aktuellen, durchaus instabilen Situation im Zeitungs- und Onlinezeitungsmarkt steht. Er macht auch klar, daß dieses Modell langfristig nicht tragfähig ist und daher absehbar zusammenbrechen muß: &lt;blockquote&gt;Das von Internet-Radikalisten oft gehörte Argument, dass Verlage niemals Geld für ihre Internet-Ausgaben verlangen sollten, ist also letzlich recht naiv: Die Rechnung geht nur auf, so lange es ein gesundes traditionelles (Print-)Geschäft gibt. Und ganz offensichtlich bröckelt das immer mehr.&lt;/blockquote&gt; Abschließend resümiert er, daß die Welt nach dem Abschluß des durch das Internet bewirkten Strukturwandels wahrscheinlich stark bipolar sein wird: Auf der einen Seite gigantische Großanbieter, die Nachrichten und Artikel direkt an Endverbraucher verkaufen, auf der anderen Seite eine große Menge von &lt;a href=&#39;http://de.wikipedia.org/wiki/Dilettant&#39;&gt;Dilettanten&lt;/a&gt;, die ihr Zeugs wahrscheinlich meistenteils kostenfrei raushauen werden. Dazwischen wird es sehr eng werden.&lt;/p&gt;
-&lt;p&gt;Einer dieser Dilettanten bin sicherlich ich selbst: Ich schrieb schon vor langer Zeit eine Erklärung zum Thema
-&lt;a href=&#34;https://blog.koehntopp.info/2007/03/18/warum-alle-meine-texte-frei-im-netz-zu-lesen-sind.html&#34;&gt;Warum alle meine Texte frei im Netz zu lesen sind&lt;/a&gt;
-
-.
-Es ist ziemlich klar, daß es für mich als Dilettanten von größerem Wert ist, meine Texte im Netz frei verfügbar zu machen als sie gewinnmaximiert zu verkaufen.&lt;/p&gt;
-&lt;p&gt;Die Idee dahinter war immer, daß Spieler im
-&lt;a href=&#34;https://blog.koehntopp.info/2005/01/05/ein-paar-ideologische-steine-ins-rollen-bringen.html&#34;&gt;kooperativen Universum&lt;/a&gt;
-
-
-mein Zeugs möglichst umstandsfrei Nutzen können und sich dadurch mein Karma vergrößert, während ich Spielern im kompetitiven Universum einen angemessenen Preis mache, jedoch nie exklusive oder sich selbst erweiternde Rechte vergebe. Als Dilettant, also jemand, der nicht von seinem Schreiben leben muß, kann ich mir das erlauben. Es ist ja nur ein optionales, wenn auch mitunter ansehnliches Zubrot.&lt;/p&gt;
-&lt;p&gt;Die bipolare Welt dort oben wird sicher auch eine solche Trennlinie zwischen kompetitivem und kooperativem Universum enthalten, wobei unklar ist, wie stark sie erkennbar ist bzw. wie undurchlässig sie ist. Das hängt sicher auch davon ab, wie stark die kompetitive Welt ihre zahlenden Kunden zu kriminalisieren versucht bzw. wie aggressiv sie versucht, die kooperative Welt - zugleich zahlende Kunden - auszubeuten.&lt;/p&gt;
-&lt;p&gt;Die Logik von &amp;lsquo;kostenlos&amp;rsquo; erkläre dabei der Artikel &lt;a href=&#39;http://www.newyorker.com/arts/critics/books/2009/07/06/090706crbo_books_gladwell?currentPage=all&#39;&gt;Priced To Sell&lt;/a&gt; von Malcolm Gladwell im New Yorker. Er geht von einem einfachen Experiment aus: &lt;blockquote&gt;Anderson’s second point is that when prices hit zero extraordinary things happen. Anderson describes an experiment conducted by the M.I.T. behavioral economist Dan Ariely, the author of “Predictably Irrational.”&lt;/p&gt;
-&lt;p&gt;Ariely offered a group of subjects a choice between two kinds of chocolate—Hershey’s Kisses, for one cent, and Lindt truffles, for fifteen cents. Three-quarters of the subjects chose the truffles.&lt;/p&gt;
-&lt;p&gt;Then he redid the experiment, reducing the price of both chocolates by one cent. The Kisses were now free. What happened? The order of preference was reversed. Sixty-nine per cent of the subjects chose the Kisses. The price difference between the two chocolates was exactly the same, but that magic word “free” has the power to create a consumer stampede.&lt;/blockquote&gt; Es ist diese Logik des kostenlosen, die die kompetitiven Anbieter im Netz fürchten, solange es noch kooperativ arbeitende Leute auf der Welt und im Netz gibt - und sie ist auch der Grund, warum sich die &amp;lsquo;Diskussion&amp;rsquo; um das Urheberrecht mehr wie ein Krieg anfühlt.&lt;/p&gt;
-&lt;p&gt;Die Professionellen meinen - vielleicht zu Recht - daß sie den Dilettanten den Krieg erklären müssen, damit sie überhaupt in der Lage sind, ein differenzierbares und bepreisbares Produkt anzubieten. In dem Moment, in dem die Dilettanten Geld für ihren Output nehmen - und sei es nur ein einziger Cent - stirbt die Logik von Kostenlos und alle Parteien arbeiten in der Sphäre der kompetitiven Welt, die Professionellen haben dann Traktion.&lt;/p&gt;
-&lt;p&gt;Da man das kostenlose Bereitstellen von Dingen kaum direkt bestrafen kann, muß man also versuchen das Problem anders anzugehen. Zum Beispiel, indem man die Transaktionskosten für die Dilettanten erhöht - durch Erzeugung von Bürokratie kann man vielleicht das kostenlose Anbieten von Zeugs im Web so unattraktiv machen, daß es kein Massenspaß mehr ist. Wir werden davon in Zukunft sicher mehr sehen.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#39;http://www.faz.net/s/Rub475F682E3FC24868A8A5276D4FB916D7/Doc~E5A9CAF508685453EB782013BE79E9C91~ATpl~Ecommon~Scontent.html&#39;&gt;Zur Forderung von Herrn Burda zum Weltkulturerbe erklärt zu werden&lt;/a&gt; hat Ulrike Langer in &lt;a href=&#39;http://medialdigital.de/2009/06/30/dann-boykottiert-doch-google/&#39;&gt;Dann boykottiert doch Google!&lt;/a&gt; eine scharfe und sehr deutliche Replik geschrieben. Der Perlentaucher erklärt und entlarvt Herrn Burda dabei in  Anja Seeligers Artikel &lt;a href=&#39;http://www.perlentaucher.de/blog/46_die_vierte_gewalt_ist_jetzt_im_netz&#39;&gt;Die vierte Gewalt ist jetzt im Netz&lt;/a&gt;. Sie erklärt dabei auch erst einmal die Begriffe - was für ein Unding meint Herr Burda, wenn er von einem Leistungsschutzrecht redet? &lt;blockquote&gt;Ein Leistungsschutzrecht für Verlage bedeutet, dass Verlage künftig auch ohne Einverständnis ihrer Autoren - ja sogar gegen den Willen ihrer Autoren - Zitate aus Artikeln in ihren Zeitungen schützen und damit kostenpflichtig machen können. Die Financial Times Deutschland hat das kürzlich in einem zustimmenden Artikel genauer beschrieben: Gegründet werden soll eine &amp;ldquo;Verwertungsgesellschaft der Verlage. Eine Gema für Onlinetexte, die im Netz nach illegaler Nutzung fahndet - und fällige Gebühren eintreibt&amp;rdquo;. Nicht für die Verbreitung ganzer Texte, das ist heute schon illegal, sondern für Zitate!&lt;/blockquote&gt; Und da haben wir auch schon die oben erwähnte Erhöhung von Transaktionskosten: Selbst wenn das einen Verlag wie den von Herrn Burda nicht ernährt, so killt es immerhin die Logik von Kostenlos und es zersplittert das Netz.&lt;/p&gt;
-&lt;p&gt;Diesen Gedanken führt Ulrike Langer in &lt;a href=&#39;http://carta.info/10534/das-netz-besteht-aus-verbindungen-nicht-aus-abgeschotteten-inseln/&#39;&gt;Das Netz besteht aus Verbindungen, nicht aus abgeschotteten Inseln&lt;/a&gt; näher aus. Sie macht zugleich deutlich wie krankhaft Print die Site einer typischen Zeitung heutzutage ist - eine solche Zeitung ist die Welt eines Internet-Ausdruckers, eine Print-Zeitung, 1:1 ins Web geholt: &lt;blockquote&gt;Agenturberichte, Kinokritiken oder Kochrezepte gehören nach Verlagsauffassung zu einem vollwertigen Portal dazu. Schließlich sind solche Bausteine, auch wenn sie jeder hat, ja auch Bestandteile der gedruckten Zeitung. Doch das ist Printdenken im Web. Anders als am Frühstückstisch, wo die meisten Menschen nur ein einziges Blatt lesen, sind im Netz die identischen Allerweltsinformationen immer nur einen Mausklick entfernt. So führt das Portaldenken dazu, dass einzigartige Inhalte gegenüber Versatzstücken, die jeder hat, nicht genügend im Vordergrund stehen. Das kleinteilige Design der meisten Zeitungswebsites verstärkt die falsche Prioritätensetzung noch obendrein.&lt;/blockquote&gt; Verlage ziehen ihre Zeitung in das Netz hinein, komplett, anstatt für das Web zu produzieren. Die Kieler Nachrichten brauchen im Netz keine DPA-Meldungen - die bekommt man bei DPA oder bei Google. Sie brauchen keine Kino-Reviews, die bekommt man bei der IMDB und bei vielen anderen Sites in der Sprache seiner Wahl und mit vielen tausend Stimmen statt einer. Sie brauchen keine Kochrezepte, keine Reisetipps, keine Rechtsberatung. Die Kieler Nachrichten brauchen im Web Kieler Content. Denn den bekommt man in dieser Form nirgendwo anders.&lt;/p&gt;
-&lt;p&gt;Oder was im Web zählt ist originaler, einzigartiger Content und die Vernetzung desselben im Kontext des globalen Netzes. Und keine Print-Insel, die ins Web portiert wurde. Der Punkt, auf den Ulrike Langer dabei abhebt ist bei ihr noch einmal explizit gemacht: Es geht um die Ethik des Verlinkens - siehe das von ihr eingebundene Vier-Minuten-Video.&lt;/p&gt;
-&lt;p&gt;Das wiederum ist aber das genaue Gegenteil eines Leistungsschutzrechts, wie Herr Burda es als Internetausdrucker fordert.&lt;/p&gt;
-&lt;p&gt;Wo also stehen die politichen Parteien? Bei Wissenschaftsurheberrecht hat Eric Steinhauer unter dem Titel &lt;a href=&#39;http://www.wissenschaftsurheberrecht.de/2009/06/29/urheberrecht-bundestagswahl-6418035/&#39;&gt;Urheberrecht und Bundestagswahl&lt;/a&gt; eine Übersicht erstellt. Bei Golem findet sich auch noch ein Artikel zum nächsten Korb der Urheberrechtsnovelle: &lt;a href=&#39;http://www.golem.de/print.php?a=68061&#39;&gt;Streit über Privatkopien und Open Access&lt;/a&gt; formuliert es so: &lt;blockquote&gt;Vor lauter Körben kann man das Urheberrecht kaum noch erkennen. 2003 gab es den sogenannten ersten Korb der Urheberrechtsnovelle, 2008 trat der zweite Korb in Kraft. Mit den beiden Körben wurden im Urheberrecht internationale und europäische Vorschriften umgesetzt. Es wurden neue Schutzrechte zugunsten von Verwertern eingeführt und bestehende verschärft. Wo es um Verbraucherrechte ging, verwies der Gesetzgeber immer wieder auf den nächsten Korb, der die offenen Fragen regeln würde.&lt;/p&gt;
-&lt;p&gt;Nach zwei Körben sind immer noch viele Fragen offen. Das Bundesjustizministerium arbeitet am dritten Korb und startete dazu im Februar eine Konsultation. Unter anderem wollte das Ministerium wissen, ob die Privatkopiebestimmungen weiter zulasten der Verbraucher eingeschränkt werden sollten; ob intelligente Aufnahmesoftware verboten werden sollte; ob Open Access durch ein &amp;ldquo;Zweitverwertungsrecht für Urheber von wissenschaftlichen Beiträgen geschaffen werden sollte, die überwiegend im Rahmen einer mit öffentlichen Mitteln finanzierten Lehr- und Forschungstätigkeit entstanden sind; und ob der Handel mit gebrauchter Software auf eine klare gesetzliche Grundlage gestellt werden sollte.&lt;/blockquote&gt;&lt;/p&gt;
-&lt;p&gt;Eine Idee, mit der man die etwas verfahrene Situation abmildern will und die den Strukturwandel dämpfen möchte ist dabei die Kulturflatrate. Marcel Weiss bei Netzwertig wieder: &lt;a href=&#39;http://netzwertig.com/2009/06/29/kulturflatrate-pro-und-contra/&#39;&gt;Kulturflatrate - Pro und Contra&lt;/a&gt;. Eine Kulturflatrate wäre als Super-GEMA sicher ein bürokratisches Monster und extrem ungerecht. Und die Gema ist schon nicht sehr populär - die Petition &lt;a href=&#39;https://epetitionen.bundestag.de/index.php?action=petition;sa=details;petition=4517&#39;&gt;für eine Gema-Reform&lt;/a&gt; hat anders als die Zensursula-Petition viel weniger exponiert für Unterschriften geworben. Dennoch ist sie schon bei ca. 85.000 Mitzeichnern und es sind noch über zwei Wochen bis zum Ende der Mitzeichungsfrist.&lt;/p&gt;
-&lt;p&gt;Es ist klar, daß das aktuelle Urheberrecht etwas fördert, das bei Harvard Business von Umair Haque als &lt;a href=&#39;http://blogs.harvardbusiness.org/haque/2009/06/jackson.html&#39;&gt;Zombie Economy&lt;/a&gt; bezeichnet wird. Zentrales Zitat: &lt;blockquote&gt;That&amp;rsquo;s the big problem behind the zombieconomy. We don&amp;rsquo;t reward people for creating, growing, nurturing, or even remixing assets. We just reward them for allocating the same old assets. &lt;/blockquote&gt; In dieselbe Kerbe schlägt der Artikel &lt;a href=&#39;http://www.tagesspiegel.de/kultur/Urheberrecht;art772,2835794&#39;&gt;Die Ideen der anderen&lt;/a&gt; von Jens Mühling im Tagesspiegel: Mühling nennt als Beispiel das Grey Album von DJ Danger Mouse, das das White Album der Beatles mit dem Black Album von Jay-Z vermashupte, und der daraufhin von EMI bekriegt wurde.&lt;/p&gt;
-&lt;p&gt;Hätten wir ein Urheberrecht, das Urheber belohnte, wäre das Grey Album legal, denn es schafft etwas neues und produziert. Aber in unserer Zombie Economy haben wir ein Urheberrecht, das Distributoren und Rechteverwalter belohnt und das Statizität fördert. Hätten wir ein Urheberrecht, daß die Existenz der kooperativen Sphäre wahrnähme und ihr Raum einräumte, dann wäre ein Grey Album als kostenfreier Download gar kein Thema, sondern schlicht legal und guter Ton.&lt;/p&gt;
-&lt;p&gt;Oder, wie
-&lt;a href=&#34;https://blog.koehntopp.info/2009/06/23/falscher-planet-falsches-jahrtausend.html&#34;&gt;Gwenn&lt;/a&gt;
-
-)
-es in einem Kommentar zu &amp;lsquo;Falscher Planet, falsches Jahrtausend&lt;/a&gt; notiert: &lt;blockquote&gt;Wenn das &amp;ldquo;Wesen&amp;rdquo; des Internets die Kopie ist, dann ist ein &amp;ldquo;Copyright&amp;rdquo;, also das Recht auf die Kopie und die damit verbundene Einschränkung, immer zugleich ein Angriff auf das Wesen, und damit auf die gesamte Kultur.&lt;/p&gt;
-&lt;p&gt;Man muss dann zwischen Kopie als Kulturbestandteil und Nutzung zur wirtschaftlichen Ausbeute (wirtschaftliche Nutzung) unterscheiden. Das heißt im Folgeschluss, dass der Besitz der Kopie sowie der Vorgang des Kopierens nicht Ausgangspunkt der Regulierung sein kann.&lt;/p&gt;
-&lt;p&gt;Genauso muss ein Wandel stattfinden weg vom &amp;ldquo;Statuserhalt&amp;rdquo;, also nach hinten gerichtete Ausbeute der nie sterbenden Information (Gewinnabschöpfung aus dem Besitz), hin zur Honorierung der Schaffenshöhe und dem Fortschritt, also dem dynamischen Erarbeiten der Zukunft (Gewinnerzeugung aus dem Schöpfungsprozess). Letztere muss honoriert werden. Dafür muss die Politik die Weichen stellen, nicht umgekehrt.&lt;/p&gt;
-&lt;p&gt;Das Erzeugen strafrechtlich relevanter Inhalte ist davon völlig unabhängig, und dessen Bestrafung ebenfalls. Dort muss rigoroser vorgegangen werden, denn dort sind wir gerade dabei, die Zeit zu verlieren. Wenn ich die Inhalte &amp;ldquo;zudecke&amp;rdquo;, dann erzeuge ich nur weitere Trägheit, und die schon längst vorhandene Kluft zwischen Täter und Strafverfolger wird nur noch größer.&lt;/blockquote&gt;&lt;/p&gt;
-&lt;p&gt;Man kann den Kampf zwischen der kooperativen und der kompetitiven Sphäre auch als Klassenkampf interpretieren, wie Jörg Kantel das in &lt;a href=&#39;http://www.schockwellenreiter.de/blog/2009/06/29/urheberrecht-und-klassenkampf/&#39;&gt;Urheberrecht und Klassenkampf&lt;/a&gt; einmal tut. Aber das führt nirgendwohin - nicht für ihn und auch nicht für uns alle, denn es ist rückwärtsgewandt und überkommenen Denkmustern verhaftet. Er schließt: &lt;blockquote&gt;Im Grunde meines Herzens bin ich jedoch Anarchist. Nicht ein Anarchist im Sinne des Stirnerschen Brutal-Individualismus, sondern ein Anhänger kropotkinscher Kooperation und (gegenseitiger) Hilfe. Und in diesem Sinne gilt es, die kropotkinschen Gesellschaftsentwürfe mit der marxistischen Gesellschaftsanalyse zu versöhnen. Wer, wenn nicht ein Pirat, könnte diese Aufgabe übernehmen? Bei all meiner Sympathie für die Linken sind diese mehrheitlich zu sehr im Gestern verhaftet, als daß von Ihnen ein moderner Entwurf zu erwarten wäre.&lt;/blockquote&gt; Das ist einer der Gründe, warum sich die Piratenpartei so gerne dem üblichen Links-Rechts-Muster in der Poltik verschließen will und warum sie sich auf ihre Kernthemen fokussiert.&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>
-

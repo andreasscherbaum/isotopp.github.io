@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Was bedeutet eigentlich &ldquo;Never check for an error condition you don&rsquo;t know how to handle&rdquo; | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2009/08/21/was-bedeutet-eigentlich-never-check-for-an-error-condition-you-don-t-know-how-to-handle.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Was bedeutet eigentlich &#34;Never check for an error condition you don&#39;t know how to handle&#34;' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Was bedeutet eigentlich &ldquo;Never check for an error condition you don&rsquo;t know how to handle&rdquo; | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2009/08/21/was-bedeutet-eigentlich-never-check-for-an-error-condition-you-don-t-know-how-to-handle.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2009-08-21T17:11:35Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/schloss.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Was bedeutet eigentlich &#34;Never check for an error condition you don&#39;t know how to handle&#34;' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/schloss.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Was bedeutet eigentlich \"Never check for an error condition you don't know how to handle\"","image":"/assets/img/background/schloss.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="was-bedeutet-eigentlich-never-check-for-an-error-condition-you-dont-know-how-to-handle-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Was bedeutet eigentlich &ldquo;Never check for an error condition you don&rsquo;t know how to handle&rdquo;
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>August 21, 2009</div>
 						
-
 					</div>
 				</div>
 				
@@ -208,8 +194,7 @@
 <p>Der Punkt ist, daß das Fehlen einer Policy im Code meistens eine Policy in der Anwendung bedingt, oder jedenfalls Mindeststandards in der Anwendung. Einige Programmiersprachen haben einen Namen für so ein informales Konstrukt: Sie nennen es eine Konvention, also einen Vertrag zwischen Bibliotheksentwickler und Anwendungsentwickler, der informal ist und nicht durch die Mechanismen der Programmiersprache erzwungen wird. Diese Konvention ist typischerweise unausgesprochen und nicht Bestandteil der Bibliotheksdokumentation - und das ist der Grund, warum die Konvention unzureichend gelehrt und entsprechend unzureichend umgesetzt wird.</p>
 <p>Aber man kann den Satz</p>
 <blockquote>
-<p>Never check for an error condition you don&rsquo;t know how to handle.</p>
-</blockquote>
+<p>Never check for an error condition you don&rsquo;t know how to handle.</p></blockquote>
 <p>auch anders herum lesen. Was genau bedeutet es denn, diese Error Conditions nun zu handlen? Also genauer: Wenn dieser Fehler eintritt, was sind die verbleibenden Handlungsoptionen und was ist der gewünschte Failure Mode, d.h. was soll passieren?</p>
 <p>Nehmen wir wieder den o.a. <code>malloc()</code>-Code. Wenn der Fehler eintritt, dann kann oder will uns das Betriebssystem keinen Speicher mehr reservieren. Wir wissen nicht warum, müssen also die schlimmste Annahme treffen und die ist: der Speicher ist voll, niemand bekommt mehr Speicher. Genau genommen könnte ein Programm anderswo laufen, daß allen freien Speicher sofort verbraucht, wir können also auch keinen Speicher ans System zurück geben und dann wieder reservieren lassen.</p>
 <p>Dieses Szenario setzt voraus, daß wir bereits weit vor dem Eintreten des Fehlers allen Speicher reserviert haben, der zur Handhabung des Fehlers notwendig ist. Das ist eine recht komplizierte Situation, und den meisten Anwendungsentwicklern in dem Moment zu kompliziert, in dem sie gezwungen sind darüber nachzudenken. Schließlich wollen sie erst mal den <em>nicht</em> failenden, den funktionalen Path in ihrem Code fertig stellen, bevor sie sich mit failure modes und den Codepaths dort beschäftigen.</p>
@@ -236,8 +221,7 @@
 </span></span></code></pre></div><p>Das heißt detaillierte interne Fehlercodes werden unter Informationsverlust plattgeklopft und ein Handler auf einer höheren Abtraktionsebene mit mehr Kontext hat gar keine Chance mehr festzustellen, was genau denn da unten nun schief gelaufen ist.</p>
 <p>Die Regel</p>
 <blockquote>
-<p>Never check for an error condition you don&rsquo;t know how to handle.</p>
-</blockquote>
+<p>Never check for an error condition you don&rsquo;t know how to handle.</p></blockquote>
 <p>macht es also notwendig, bei jeder Fehlerprüfung drei Dinge zu klären:</p>
 <ul>
 <li><strong>Diagnose:</strong> Den Fehler feststellen. Formuliere einen Test, der an einer geeigneten Stelle prüft, ob ein Fehler vorliegt und der unterscheidbar signalisiert, welcher Fehler genau vorliegt.</li>
@@ -369,7 +353,7 @@
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

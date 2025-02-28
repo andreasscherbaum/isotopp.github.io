@@ -6,12 +6,18 @@
     <description>Recent content in Netherlands on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/netherlands/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/netherlands/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>City of Amsterdam and Combustion Engines</title>
       <link>https://blog.koehntopp.info/2023/05/11/city-of-amsterdam-and-combustion-engines.html</link>
-      <pubDate>Thu, 11 May 2023 01:02:03 +0000</pubDate>
-      
+      <pubDate>Thu, 11 May 2023 01:02:03 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/05/11/city-of-amsterdam-and-combustion-engines.html</guid>
       <description>&lt;p&gt;Electrive.net had an article about Copenhagen banning combustion engines in the city, starting 2030:
 (&lt;a href=&#34;https://www.electrive.net/2023/05/08/kopenhagen-will-verbrenner-autos-ab-2030-aussperren/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Article in German&lt;/a&gt;
@@ -39,8 +45,7 @@ And so can any license plate scanner.&lt;/p&gt;
  for the milieuzone,
 the city helpfully explains:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Let op:&lt;/strong&gt; dat u de Milieuzone mag inrijden betekent niet dat u ook in aanmerking komt voor een parkeervergunning.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Let op:&lt;/strong&gt; dat u de Milieuzone mag inrijden betekent niet dat u ook in aanmerking komt voor een parkeervergunning.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Attention:&lt;/strong&gt; Note that being allowed to enter the Environmental Zone does not mean you are also eligible for a parking permit.&lt;/p&gt;
 &lt;h1 id=&#34;after-2030&#34;&gt;
     &lt;a href=&#34;#after-2030&#34;&gt;
@@ -154,14 +159,13 @@ That is already fully electric, and except for the buses always has been.&lt;/p&
     <item>
       <title>Good Energy News</title>
       <link>https://blog.koehntopp.info/2022/08/15/good-energy-news.html</link>
-      <pubDate>Mon, 15 Aug 2022 05:06:07 +0000</pubDate>
-      
+      <pubDate>Mon, 15 Aug 2022 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/08/15/good-energy-news.html</guid>
       <description>&lt;p&gt;Two good news in one day. First, my energy provider tells me:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Levert u meer terug dan u van het net afneemt, dan betalen we u vanaf die datum 16.8 eurocent per kWh.
-De oude vergoeding was 7 eurocent per kWh.&lt;/p&gt;
-&lt;/blockquote&gt;
+De oude vergoeding was 7 eurocent per kWh.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&amp;ldquo;If you push energy into the grid, we now pay you 16.8 Eurocent per kWh. The old payment was 7.0 Eurocent per kWh.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;The other good news is that it is very likely that the existing &amp;ldquo;Salderingsregeling&amp;rdquo; may be continued until 2025.
 At least that seems to be the plan, says &lt;a href=&#34;https://www.milieucentraal.nl/energie-besparen/zonnepanelen/salderingsregeling-voor-zonnepanelen/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;milieu centraal&lt;/a&gt;
@@ -187,54 +191,54 @@ We will see how this will actually play out, but right now the change has been e
 The original plan was to gradually switch it from 100% Saldering to 9% less each year.
 That still seems to be the case, so we expect to see this table to be implemented:&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Year&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;%Saldering&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2022&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;100%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2023&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;100%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2024&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;100%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2025&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;64%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2026&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;64%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2027&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;55%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2028&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;46%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2029&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;37%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2030&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;28%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2031+&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;0%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Year&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;%Saldering&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2022&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;100%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2023&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;100%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2024&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;100%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2025&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;64%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2026&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;64%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2027&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;55%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2028&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;46%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2029&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;37%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2030&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;28%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2031+&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;0%&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Instead of a gradual decline we see a big initial jump from 100% to 64%.
 That&amp;rsquo;s because the original plan was to decrease by 9% starting 2022, and while the end deadline was kept, the initial full Saldering was kept alive for several years.&lt;/p&gt;
@@ -248,8 +252,8 @@ Will there be two kinds of tariff for power pushed to the grid that is part of t
     <item>
       <title>The new energy bill</title>
       <link>https://blog.koehntopp.info/2022/06/28/the-new-energy-bill.html</link>
-      <pubDate>Tue, 28 Jun 2022 08:09:10 +0000</pubDate>
-      
+      <pubDate>Tue, 28 Jun 2022 08:09:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/06/28/the-new-energy-bill.html</guid>
       <description>&lt;p&gt;We got our solar roof around 1st of April.
 I am describing our setup &lt;a href=&#34;https://blog.koehntopp.info/2022/05/02/a-solar-roof.html&#34;&gt;here&lt;/a&gt;
@@ -328,40 +332,40 @@ The array has been built with future use-cases in mind.&lt;/p&gt;
 &lt;p&gt;Gas costs around 108 ct per m^3, which is an energy equivalent of 10-12 kWh warmth depending on the type of gas.
 Fixed cost here is substantial, and we end up at 132 ct per m^3 overall cost (1349.88 Euro for 1251 m^3, and 274.58 Euro of fixed cost).&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;&lt;em&gt;Heating&lt;/em&gt;&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Electricity&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Heat Pump&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Gas&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Heat generated&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;10 kWh&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;10 kWh&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;10 kWh&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Energy used&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;10 kWh&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2-3 kWh&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1^3&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Cost per unit&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;0.225 Euro&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;0.225 Euro&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1.32 Euro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Total cost&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;2.25 Euro&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;0.5-0.75 Euro&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;1.32 Euro&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;em&gt;Heating&lt;/em&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Electricity&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Heat Pump&lt;/th&gt;
+          &lt;th style=&#34;text-align: right&#34;&gt;Gas&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Heat generated&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;10 kWh&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;10 kWh&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;10 kWh&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Energy used&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;10 kWh&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2-3 kWh&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1^3&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cost per unit&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;0.225 Euro&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;0.225 Euro&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1.32 Euro&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Total cost&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;2.25 Euro&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;0.5-0.75 Euro&lt;/td&gt;
+          &lt;td style=&#34;text-align: right&#34;&gt;1.32 Euro&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;So to create 10 kWh of warmth from a heat pump, you have to expend 2-3 kWh of electricity, coming in at 50 ct to 75 ct per m^3 gas-equivalent of heating.
 That would be around 1.75 to 2.5 times cheaper than heating with gas.&lt;/p&gt;
@@ -382,8 +386,8 @@ Here the work factor is comparable to normal heat exchangers.&lt;/p&gt;
     <item>
       <title>A solar roof</title>
       <link>https://blog.koehntopp.info/2022/05/02/a-solar-roof.html</link>
-      <pubDate>Mon, 02 May 2022 08:42:10 +0000</pubDate>
-      
+      <pubDate>Mon, 02 May 2022 08:42:10 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/05/02/a-solar-roof.html</guid>
       <description>&lt;p&gt;I live in a house in a rural village somewhere in &lt;a href=&#34;https://en.wikipedia.org/wiki/Randstad&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Randstad&lt;/a&gt;
 
@@ -544,15 +548,13 @@ This is called &amp;ldquo;&lt;a href=&#34;https://www.rijksoverheid.nl/onderwerp
 
 &amp;rdquo;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;Households and small businesses are allowed to feed self-generated electricity back into the grid until January 1, 2023. And offset it against their consumption at another time. This is called offsetting.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;Households and small businesses are allowed to feed self-generated electricity back into the grid until January 1, 2023. And offset it against their consumption at another time. This is called offsetting.&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This rule was supposed to end at 1. January 2023, but will be prolonged at least one year more, says &lt;a href=&#34;https://solarmagazine.nl/nieuws-zonne-energie/i26235/startdatum-afbouw-salderingsregeling-zonnepanelen-niet-haalbaar-ambtenaren-adviseren-1-jaar-uitstel&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Solar Mag&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Startdatum afbouw salderingsregeling zonnepanelen niet haalbaar, ambtenaren adviseren 1 jaar uitstel&lt;/p&gt;
-&lt;p&gt;Start date for phasing out solar panel feed-in scheme not feasible, officials advise 1 year postponement&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Start date for phasing out solar panel feed-in scheme not feasible, officials advise 1 year postponement&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Phasing out the salderingsregeling to Zero is supposed to be done in 9% steps, not all at once.
 So in the first year, 91% of the power would be part of the salderingsregeling, the rest the electricity provider would pay for, and so on.&lt;/p&gt;
 &lt;p&gt;The law says that the provider must pay &amp;ldquo;redelijke vergoeding&amp;rdquo; (a reasonable compensation).
@@ -580,8 +582,8 @@ Similar math can be applied to dishwashers and washing machines (&amp;ldquo;uses
     <item>
       <title>A solar roof 2</title>
       <link>https://blog.koehntopp.info/2022/05/02/a-solar-roof-2.html</link>
-      <pubDate>Mon, 02 May 2022 09:42:00 +0000</pubDate>
-      
+      <pubDate>Mon, 02 May 2022 09:42:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2022/05/02/a-solar-roof-2.html</guid>
       <description>&lt;p&gt;Zum vorhergehenden Artikel bekam ich einen Leserbrief als Github Issue, das ist hier inhaltlich unverändert veröffentliche,
 weil ich glaube, daß es wichtige Informationen und Überlegungen enthält.&lt;/p&gt;
@@ -880,16 +882,15 @@ dann kann ich vielleicht mit Antworten helfen oder sagen, wo Du die Antworten fi
 weil eben 91 % oder 82 % jeder eingespeisten kWh gratis zurückkommen,
 wann immer Du die im Jahr brauchen könntest.
 Aber mit jedem Jahr weiter kommst Du deutschen Verhältnissen näher, wo eben die kWh vom Netz das 4,x fache dessen kostet,
-was Deine eben eingespeiste kWh bringt, von daher endet das in derselben Richtung früher oder später.&lt;/p&gt;
-&lt;/blockquote&gt;
+was Deine eben eingespeiste kWh bringt, von daher endet das in derselben Richtung früher oder später.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Safe Biking: It&#39;s not the right of way that&#39;s wrong</title>
       <link>https://blog.koehntopp.info/2020/10/22/safe-biking-its-not-the-right-of-way-thats-wrong.html</link>
-      <pubDate>Thu, 22 Oct 2020 17:06:17 +0000</pubDate>
-      
+      <pubDate>Thu, 22 Oct 2020 17:06:17 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/10/22/safe-biking-its-not-the-right-of-way-thats-wrong.html</guid>
       <description>&lt;p&gt;Sven Geggus &lt;a href=&#34;https://twitter.com/realgiggls/status/1319205107318378498&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trolled me&lt;/a&gt;
 
@@ -1155,8 +1156,7 @@ was Deine eben eingespeiste kWh bringt, von daher endet das in derselben Richtun
 
  is likely to be available - there are more than 300 stations all across the country where you can have this. This is a public transport bike that can be rented &lt;em&gt;using the same train ticket&lt;/em&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It costs € 3.85 per 24-hour period to use an OV-fiets. If you keep the OV-fiets for more than 24 hours, you will be charged for an extra rental period (up to 72 hours). After 72 hours, you will incur an additional charge of € 5.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;It costs € 3.85 per 24-hour period to use an OV-fiets. If you keep the OV-fiets for more than 24 hours, you will be charged for an extra rental period (up to 72 hours). After 72 hours, you will incur an additional charge of € 5.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It is not expensive at all.&lt;/p&gt;
 &lt;p&gt;Getting to an OV station by bike means the catchment area of these stations is around 10x larger than on foot. That means the stations can be further apart. That means the Bus or Train has to stop less often. Than means it goes faster, a lot faster actually - especially true for trains. That makes public transport way more attractive. That makes more people use the bike/public transport combo.&lt;/p&gt;
 &lt;p&gt;The public transport in the Netherlands is purposefully designed to enable this.&lt;/p&gt;
@@ -1209,8 +1209,8 @@ was Deine eben eingespeiste kWh bringt, von daher endet das in derselben Richtun
     <item>
       <title>Vijzelbuurt is changing</title>
       <link>https://blog.koehntopp.info/2020/10/08/vijzelbuurt-is-changing.html</link>
-      <pubDate>Thu, 08 Oct 2020 18:11:50 +0000</pubDate>
-      
+      <pubDate>Thu, 08 Oct 2020 18:11:50 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/10/08/vijzelbuurt-is-changing.html</guid>
       <description>&lt;p&gt;Back when I was still commuting to work in an office, in the far past, I used to be in the Spaces building in Vijzelgracht in Amsterdam, every day. Mark Wagenbuur of &lt;a href=&#34;https://twitter.com/bicycledutch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BicycleDutch&lt;/a&gt;
 
@@ -1277,8 +1277,8 @@ was Deine eben eingespeiste kWh bringt, von daher endet das in derselben Richtun
     <item>
       <title>In which we cycle shopping...</title>
       <link>https://blog.koehntopp.info/2020/02/22/in-which-we-cycle-shopping.html</link>
-      <pubDate>Sat, 22 Feb 2020 08:14:33 +0000</pubDate>
-      
+      <pubDate>Sat, 22 Feb 2020 08:14:33 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/22/in-which-we-cycle-shopping.html</guid>
       <description>&lt;p&gt;Welcome to the Netherlands. Please excuse me, I need to fetch a few things before I have time for you. I need a few things from Lidl in Hoofddorp, do you want to come with me?&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -1557,8 +1557,8 @@ from OSHA? We can Isolate (#3), so we don&amp;rsquo;t have to Engineer Controls 
     <item>
       <title>Under the sea...</title>
       <link>https://blog.koehntopp.info/2020/02/21/under-the-sea.html</link>
-      <pubDate>Fri, 21 Feb 2020 13:22:04 +0000</pubDate>
-      
+      <pubDate>Fri, 21 Feb 2020 13:22:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/21/under-the-sea.html</guid>
       <description>&lt;p&gt;Welcome to the Netherlands.
 I am living at the bottom of a lake, 3.50 meters below the sea level, and there are sea shells in my garden.&lt;/p&gt;
@@ -1661,8 +1661,8 @@ The North Sea is an equal opportinity drowner, the Waterwolf does not care if th
     <item>
       <title>How to build a cycling environment</title>
       <link>https://blog.koehntopp.info/2020/02/19/how-to-build-a-cycling-environment.html</link>
-      <pubDate>Wed, 19 Feb 2020 11:38:27 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Feb 2020 11:38:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/19/how-to-build-a-cycling-environment.html</guid>
       <description>&lt;p&gt;Welcome to the Netherlands. We&amp;rsquo;re building roads differently. They are better, safer and less stressful for cyclists, and that also makes them better, safer and less stressful for motorists. Here is how it works:&lt;/p&gt;
 &lt;p&gt;(based on a &lt;a href=&#34;https://twitter.com/isotopp/status/1229819834239770624&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twitter Thread&lt;/a&gt;
@@ -1910,8 +1910,8 @@ The North Sea is an equal opportinity drowner, the Waterwolf does not care if th
     <item>
       <title>Shared Space Experiment at Alexanderplein</title>
       <link>https://blog.koehntopp.info/2017/09/27/shared-space-experiment-at-alexanderplein.html</link>
-      <pubDate>Wed, 27 Sep 2017 16:44:46 +0000</pubDate>
-      
+      <pubDate>Wed, 27 Sep 2017 16:44:46 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/09/27/shared-space-experiment-at-alexanderplein.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.theguardian.com/environment/bike-blog/2017/sep/22/what-happens-if-you-turn-off-the-traffic-lights&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/09/alexanderplein-640x397.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1955,8 +1955,7 @@ to &lt;strong&gt;empower&lt;/strong&gt; them - usually works out very favorably.
 &lt;p&gt;The new setup forced people to engage with their surroundings. They had to
 change the behavioural rituals they had fallen into in order to adapt.
 Instead of relying on traffic lights, they now relied on their own
-abilities and the cues of others.&lt;/p&gt;
-&lt;/blockquote&gt;
+abilities and the cues of others.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;A paper referenced in the article &lt;a href=&#34;http://journals.sagepub.com/doi/abs/10.1177/1206331210374149&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Negotiation in Motion&lt;/a&gt;
 
 
@@ -1969,8 +1968,8 @@ the approach is being copied across the city.&lt;/p&gt;
     <item>
       <title>Separate Infrastructure</title>
       <link>https://blog.koehntopp.info/2017/09/08/separate-infrastructure.html</link>
-      <pubDate>Fri, 08 Sep 2017 20:31:47 +0000</pubDate>
-      
+      <pubDate>Fri, 08 Sep 2017 20:31:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/09/08/separate-infrastructure.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/09/separate-infrastructure-640x423.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -2100,8 +2099,8 @@ friendly environments in the Netherlands.&lt;/p&gt;
     <item>
       <title>How many chargers are necessary to convert the Netherlands to electric cars?</title>
       <link>https://blog.koehntopp.info/2017/09/04/how-many-chargers-are-necessary-to-convert-the-netherlands-to-electric-cars.html</link>
-      <pubDate>Mon, 04 Sep 2017 21:51:30 +0000</pubDate>
-      
+      <pubDate>Mon, 04 Sep 2017 21:51:30 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/09/04/how-many-chargers-are-necessary-to-convert-the-netherlands-to-electric-cars.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://pepijnvloemans.wordpress.com/2017/07/08/charging-infrastructure/amp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Here&lt;/a&gt;
 
@@ -2112,8 +2111,7 @@ friendly environments in the Netherlands.&lt;/p&gt;
 answer will surprise you: we could get to 100% electric
 transportation in the Netherlands, just by converting the 4000
 existing gast stations to fast charging stations which have an
-average of 14 fast chargers.&lt;/p&gt;
-&lt;/blockquote&gt;
+average of 14 fast chargers.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;article then plays with numbers a bit: Kilometers driven,
 electricity used, number of chargepoints, charging rates.&lt;/p&gt;
 &lt;p&gt;(for germans: The Netherlands compare in area and population
@@ -2124,8 +2122,8 @@ pretty well to Nordrhein-Westfalen)&lt;/p&gt;
     <item>
       <title>The bike as a feeder system to the train system</title>
       <link>https://blog.koehntopp.info/2017/04/29/the-bike-as-a-feeder-system-to-the-train-system.html</link>
-      <pubDate>Sat, 29 Apr 2017 10:36:12 +0000</pubDate>
-      
+      <pubDate>Sat, 29 Apr 2017 10:36:12 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/04/29/the-bike-as-a-feeder-system-to-the-train-system.html</guid>
       <description>&lt;p&gt;A talk by Marco te Brömmelstroet and others about how neither the Bike nor
 the train themselves are a viable transport alternative, but how they
@@ -2168,8 +2166,8 @@ attractive as well.&lt;/p&gt;
     <item>
       <title>Strong weak ties</title>
       <link>https://blog.koehntopp.info/2017/04/05/strong-weak-ties.html</link>
-      <pubDate>Wed, 05 Apr 2017 11:42:32 +0000</pubDate>
-      
+      <pubDate>Wed, 05 Apr 2017 11:42:32 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/04/05/strong-weak-ties.html</guid>
       <description>&lt;p&gt;A long time ago, I wrote a text on the German Blog and on Carta:
 &lt;a href=&#34;http://www.carta.info/41830/wieso-wir-uns-veroffentlichen/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wieso wir uns veröffentlichen&lt;/a&gt;
@@ -2237,4 +2235,3 @@ and enables &amp;ldquo;random&amp;rdquo; cooperation.&lt;/p&gt;
     
   </channel>
 </rss>
-

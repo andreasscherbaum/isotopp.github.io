@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Where do the JOINs go? | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2020/06/10/where-do-the-joins-go.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Where do the JOINs go?' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Where do the JOINs go? | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="en_US" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2020/06/10/where-do-the-joins-go.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2020-06-10T21:38:32Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Where do the JOINs go?' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Where do the JOINs go?","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="where-do-the-joins-go-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Where do the JOINs go?
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>June 10, 2020</div>
 						
-
 					</div>
 				</div>
 				
@@ -219,8 +205,7 @@
 <blockquote>
 <p>Usually they go into application code. You have to design the services to minimize the joins. Also, microservices often keep read-only copies of other data to minimize joins.</p>
 <p>For reporting, you could have a big analytics DB that does the joins.</p>
-<p>In your example, the order service might copy some details from the product service to know what&rsquo;s shipped, and the customer name + address. These copies are read-only, and stay with the order even if the shipping addresses changes in the main customer service.</p>
-</blockquote>
+<p>In your example, the order service might copy some details from the product service to know what&rsquo;s shipped, and the customer name + address. These copies are read-only, and stay with the order even if the shipping addresses changes in the main customer service.</p></blockquote>
 <p>This is actually what a proper order application in a traditional database would do as well:</p>
 <p>The <code>order</code> table most likely would be an <code>orderlog</code> table, and we would record not only the aid (keep the link to the source article) and cid, but would make copies of the price at the time of sale, the time of sale timestamp, and the address at the time of sale or the actual shipping address. Entries in the orderlog would stay there until fulfillment and maybe payment, and then can go from the OLTP system. We would also immediately emit a copy of the data that goes to our data warehouse as part of some kind of ETL setup.</p>
 <p>There are multiple good things about this, which is why we are doing it like this in relational systems as well:</p>
@@ -235,8 +220,7 @@
 ) where it is consumed by other services.</p>
 <p>These event stream consumers work as materialization engines: They do have state, and modify it whenever they consume a relevant event. For example, we could have a continous query running in some engine that builds the aggregation I asked about from a stream:</p>
 <blockquote>
-<p>Show me all top 10 articles by country, zipcode digit 1 by week over the last 52 weeks</p>
-</blockquote>
+<p>Show me all top 10 articles by country, zipcode digit 1 by week over the last 52 weeks</p></blockquote>
 <p>This reads almost directly like an Influx query. So this is a thing that you can answer from a stream.</p>
 <p>If you have questions that arise at a later point in time, things become complicated without an image, though, because you are missing the start value. So the only option would be to start back in time at the big bang, and replay the event log for that new query, or to cut off at some other point in time and not have older data where possible.</p>
 <p>For aggregations over intervals like in the example query above that is entirely possible: We work over individual weeks, going back a year and we either have data for older weeks or not. If not, we can still accurately determine weekly aggregates for newer weeks, because they are independent of each other.</p>
@@ -248,8 +232,7 @@
  is the problem that I still see (or not quite understand wrt to CQRS):</p>
 <blockquote>
 <p>So if a service does not reign over a set of data, but it&rsquo;s supposedly the authoritative data source for a thing where multiple copies can exist - how do you validate?</p>
-<p>The authoritative source of the data is the event stream.</p>
-</blockquote>
+<p>The authoritative source of the data is the event stream.</p></blockquote>
 <p>I will have to check out the linked talk. I think I get hung up because this is what databases do:</p>
 <p>A database is a giant global persistent variable with a network interface. Datadir is full of schemas is full of tables is full of rows has multiple fields. We can stop all traffic to the database and make an image. That&rsquo;s a backup.</p>
 <p>We make changes to the database using grouped data modification language: transactions. Transactions are recorded in the binlog. We record and keep the binlog, and also the backups (and the binlog position we took the backups at).</p>
@@ -267,8 +250,7 @@
 
 To the JoinDataService, obviously.
 Aka &ldquo;Data Lake&rdquo;.
-aka The Data Monolith that secretly underpins all the service shit.</p>
-</blockquote>
+aka The Data Monolith that secretly underpins all the service shit.</p></blockquote>
 <p>He&rsquo;s not wrong. The Hadoop in the end is the global state where all the events get joined together again and it produces a giant global image of the current and all past states. That is why the big data is big (and you can go back to the big bang, it just eats Megawatthours to do so.)</p>
 <p>At some point I was like:</p>
 <blockquote>
@@ -293,8 +275,7 @@ Unless every change contains the entire previous state, or changes are distribut
 <p>K&gt; In blockchains this is a voting problem. In git and the Linux kernel, this is literally Linus day job.
 …
 L&gt; Right. Snapshot and replay from there. Like I said.</p>
-<p>K&gt; Yes. I do believe it does not get more complicated than mysql binlogs and binlog positions, but with JSON as a REST service.</p>
-</blockquote>
+<p>K&gt; Yes. I do believe it does not get more complicated than mysql binlogs and binlog positions, but with JSON as a REST service.</p></blockquote>
 
 			</div>
 		</div>
@@ -400,7 +381,7 @@ L&gt; Right. Snapshot and replay from there. Like I said.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

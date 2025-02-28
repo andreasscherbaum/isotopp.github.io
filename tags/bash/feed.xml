@@ -6,20 +6,25 @@
     <description>Recent content in Bash on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/bash/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/bash/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Python to bash</title>
       <link>https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html</link>
-      <pubDate>Tue, 05 Jan 2021 17:11:57 +0000</pubDate>
-      
+      <pubDate>Tue, 05 Jan 2021 17:11:57 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2021/01/05/using-python-to-bash.html</guid>
       <description>&lt;p&gt;Heise writes &lt;a href=&#34;https://www.heise.de/hintergrund/Einfuehrung-in-die-Bash-Programmierung-Minesweeper-in-der-Linux-Shell-entwickeln-5002358.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;an introduction to bash programming (in german)&lt;/a&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Bash ist eine vollwertige Programmiersprache, mit der Sie alltägliche Aufgaben leicht automatisieren.&lt;/p&gt;
-&lt;p&gt;Bash is a fully featured programming language that you can use to automate everyday tasks.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Bash is a fully featured programming language that you can use to automate everyday tasks.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Bash is not a fully featured programming language at all, and nothing in bash is ever easy. You are advised to use a proper programming language early on in development, and if possible never put bash commands into a file.&lt;/p&gt;
 &lt;p&gt;A few early warning signs to look out for:&lt;/p&gt;
 &lt;ul&gt;
@@ -81,13 +86,11 @@
 &lt;blockquote&gt;
 &lt;p&gt;I do not think that&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;subprocesss.run([&amp;quot;ls&amp;quot;, &amp;quot;-l&amp;quot;, &amp;quot;/dev/null&amp;quot;], capture_output=True)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;is more intuitive or less error prone, but different people have different opinions.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;is more intuitive or less error prone, but different people have different opinions.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;That is correct.&lt;/p&gt;
 &lt;p&gt;The point here is that this is not useful at all, in a Python program. That line will then produce output such as&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;crw-rw-rw- 1 root root 1, 3 Dec  7 12:15 /dev/null&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;crw-rw-rw- 1 root root 1, 3 Dec  7 12:15 /dev/null&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and that needs parsing to be useful for anything. You&amp;rsquo;d not do that at all in Python, ever.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pathlib&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Path&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/dev/null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -341,8 +344,8 @@
     <item>
       <title>#!/bin/bash -- Brace Expansion</title>
       <link>https://blog.koehntopp.info/2005/10/08/bin-bash-brace-expansion.html</link>
-      <pubDate>Sat, 08 Oct 2005 08:43:57 +0000</pubDate>
-      
+      <pubDate>Sat, 08 Oct 2005 08:43:57 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2005/10/08/bin-bash-brace-expansion.html</guid>
       <description>&lt;p&gt;Eine Unix-Kommandoshell nimmt die Benutzereingabe und unterteilt sie in Worte.
 Das erste Wort einer Zeile ist ein Kommando, der Rest sind die Parameter des Kommandos.
@@ -396,4 +399,3 @@ Hier wird ein Ausdruck, der in &lt;code&gt;$(( ... ))&lt;/code&gt; steht, ausger
     
   </channel>
 </rss>
-

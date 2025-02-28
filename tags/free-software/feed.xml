@@ -6,12 +6,18 @@
     <description>Recent content in Free Software on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/free-software/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/free-software/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Revolution Devours Its Children</title>
       <link>https://blog.koehntopp.info/2023/11/11/a-revolution-devours-its-children.html</link>
-      <pubDate>Sat, 11 Nov 2023 05:06:07 +0000</pubDate>
-      
+      <pubDate>Sat, 11 Nov 2023 05:06:07 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/11/11/a-revolution-devours-its-children.html</guid>
       <description>&lt;p&gt;Initially published in c&amp;rsquo;t 26/23, page 70.
 All my texts are made available in this blog after some time.
@@ -258,8 +264,8 @@ the kind they used to get from companies like Microsoft and Oracle.&lt;/p&gt;
     <item>
       <title>Eine Revolution frißt ihre Kinder</title>
       <link>https://blog.koehntopp.info/2023/11/11/eine-revolution-frisst-ihre-kinder.html</link>
-      <pubDate>Sat, 11 Nov 2023 02:03:04 +0000</pubDate>
-      
+      <pubDate>Sat, 11 Nov 2023 02:03:04 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2023/11/11/eine-revolution-frisst-ihre-kinder.html</guid>
       <description>&lt;p&gt;Dieser Text erschien in c&amp;rsquo;t 26/23 auf Seite 70.
 Wie alle meine Texte ist er nach einiger Zeit auch in meinem Blog frei verfügbar.
@@ -525,8 +531,8 @@ wie man es früher von Microsoft und Oracle gewohnt war.&lt;/p&gt;
     <item>
       <title>When you commit to git, how long does it matter?</title>
       <link>https://blog.koehntopp.info/2017/03/20/when-you-commit-to-git-how-long-does-it-matter.html</link>
-      <pubDate>Mon, 20 Mar 2017 09:41:57 +0000</pubDate>
-      
+      <pubDate>Mon, 20 Mar 2017 09:41:57 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2017/03/20/when-you-commit-to-git-how-long-does-it-matter.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://erikbern.com/2016/12/05/the-half-life-of-code.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/2017/03/git-git-768x473.png&#34; alt=&#34;&#34;  /&gt;
@@ -549,16 +555,15 @@ And why is it different in different projects?&lt;/p&gt;
 Or does it replace the old code slowly over time? In order to understand
 this, I built a little thing to analyze Git projects, with help from the
 formidable GitPython project. The idea is to go back in history historical
-and run a git blame […]&lt;/p&gt;
-&lt;/blockquote&gt;
+and run a git blame […]&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>MySQL Testcases</title>
       <link>https://blog.koehntopp.info/2012/08/20/mysql-testcases.html</link>
-      <pubDate>Mon, 20 Aug 2012 13:41:55 +0000</pubDate>
-      
+      <pubDate>Mon, 20 Aug 2012 13:41:55 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/08/20/mysql-testcases.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;http://www.heise.de/ix/meldung/Entwickler-kritisieren-Oracles-Umgang-mit-MySQL-1670240.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Entwickler kritisieren Oracles Umgang mit MySQL&lt;/a&gt;
@@ -706,8 +711,8 @@ nicht ein).&lt;/p&gt;
     <item>
       <title>Busybox, die GPL und Wirrniss</title>
       <link>https://blog.koehntopp.info/2012/02/11/busybox-die-gpl-und-wirrniss.html</link>
-      <pubDate>Sat, 11 Feb 2012 13:40:47 +0000</pubDate>
-      
+      <pubDate>Sat, 11 Feb 2012 13:40:47 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2012/02/11/busybox-die-gpl-und-wirrniss.html</guid>
       <description>&lt;p&gt;Was bisher geschah: Jemand bei Sony schreibt
 &lt;a href=&#34;http://www.elinux.org/Busybox_replacement_project&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;einen Aufruf&lt;/a&gt;
@@ -719,8 +724,7 @@ einen Ersatz für Busybox zu schreiben, der nicht unter der GPL steht.&lt;/p&gt;
 line utilities in a single, multi-tool binary.  It is provided under the
 GPL license.  Due to its utility and ubiquity, it has been used in a very
 large number of embedded devices.  This includes use by companies who are
-not as diligent about their GPL commitments as they should be.&lt;/p&gt;
-&lt;/blockquote&gt;
+not as diligent about their GPL commitments as they should be.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Will sagen: Busybox ist ein Programm, das die Basisfunktionen vieler
 Linux-Kommandozeilenwerkzeuge in einem Binary zusammenfaßt und sehr wenig
 Platz verbraucht.  Wegen dieser Eigenschaften wird es gerne in Embedded
@@ -792,8 +796,7 @@ can write a better project than busybox from an engineering perspective.
 I mothballed it because BusyBox had a 10 year headstart so I didn&amp;rsquo;t think
 it mattered how much BETTER it was, nobody would use it.  Tim pointed out
 I was wrong about that, I &lt;em&gt;agreed&lt;/em&gt; with him once I thought about it, so
-I&amp;rsquo;ve started it up again.&lt;/p&gt;
-&lt;/blockquote&gt;
+I&amp;rsquo;ve started it up again.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Stellungnahm von Harald Welte befindet sich
 &lt;a href=&#34;http://laforge.gnumonks.org/weblog/2012/02/09/#20120209-linux_gpl_enforcement_conservancy_busybox&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;in seinem Blog&lt;/a&gt;
 
@@ -816,16 +819,15 @@ MIT-style licenses.&lt;/p&gt;
 &lt;p&gt;Let me conclude with a clear statement to anyone who thinks that by
 replacing Busybox with a non-GPL licensed project they can evade GPL
 enforcement: It will not work.  There are others out there enforcing the
-GPL.  Last but not least gpl-violations.org.&lt;/p&gt;
-&lt;/blockquote&gt;
+GPL.  Last but not least gpl-violations.org.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Acht Jahre SCO-Prozeß</title>
       <link>https://blog.koehntopp.info/2011/08/31/acht-jahre-sco-proze.html</link>
-      <pubDate>Wed, 31 Aug 2011 18:46:23 +0000</pubDate>
-      
+      <pubDate>Wed, 31 Aug 2011 18:46:23 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/08/31/acht-jahre-sco-proze.html</guid>
       <description>&lt;p&gt;Im März 2003 begann die Firma, die mal Caldera hieß und sich in SCO Group
 umbenannte, IBM auf eine Fantasiesumme von Schadenersatz zu verklagen, weil
@@ -860,8 +862,8 @@ Themen. An Prozessen herrscht ja seit zehn Jahren im IT-Umfeld kein Mangel.&lt;/
     <item>
       <title>Wieso wir Helden sein wollen</title>
       <link>https://blog.koehntopp.info/2010/07/21/wieso-wir-helden-sein-wollen.html</link>
-      <pubDate>Wed, 21 Jul 2010 08:03:28 +0000</pubDate>
-      
+      <pubDate>Wed, 21 Jul 2010 08:03:28 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/07/21/wieso-wir-helden-sein-wollen.html</guid>
       <description>&lt;p&gt;Vor drei Jahren schrieb ich etwas zu
 &lt;a href=&#34;https://blog.koehntopp.info/2007/09/07/echte-helden.html&#34;&gt;Echten Helden&lt;/a&gt;
@@ -896,8 +898,8 @@ tun wollen, sobald die direkten Existenzsorgen vom Tisch sind.&lt;/p&gt;
     <item>
       <title>Downloading communism...</title>
       <link>https://blog.koehntopp.info/2010/02/25/downloading-communism.html</link>
-      <pubDate>Thu, 25 Feb 2010 11:47:02 +0000</pubDate>
-      
+      <pubDate>Thu, 25 Feb 2010 11:47:02 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2010/02/25/downloading-communism.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/Download_communism.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -918,8 +920,7 @@ aber die Mediendinosaurier nehmen so etwas schon mal ernst.&lt;/p&gt;
 which is an umbrella group for the entertainment cartels such as the MPAA
 and RIAA, has demanded that Indonesia, Brazil and India should be placed
 on a special trade watchlist merely because they recommend the use of open
-source software.&lt;/p&gt;
-&lt;/blockquote&gt;
+source software.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;und der&lt;a href=&#34;http://www.guardian.co.uk/technology/blog/2010/feb/23/opensource-intellectual-property&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Guardian&lt;/a&gt;
 
 :&lt;/p&gt;
@@ -931,8 +932,7 @@ Indonesia, Brazil and India for its &amp;ldquo;Special 301 watchlist&amp;rdquo; 
 use open source software…. But the IIPA suggested that Indonesia deserves
 Special 301 status because encouraging (not forcing) such takeup &amp;ldquo;weakens
 the software industry&amp;rdquo; and &amp;ldquo;fails to build respect for intellectual
-property rights&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
+property rights&amp;rdquo;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Right.&lt;/p&gt;
 </description>
     </item>
@@ -940,8 +940,8 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Einthemenpartei</title>
       <link>https://blog.koehntopp.info/2009/08/19/einthemenpartei.html</link>
-      <pubDate>Wed, 19 Aug 2009 19:28:00 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Aug 2009 19:28:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/08/19/einthemenpartei.html</guid>
       <description>&lt;p&gt;Eine Einthemenpartei wie die Piraten macht es sich sehr einfach - sie beackert nur dieses eine Poltikfeld und sammelt das Stimmvieh ein. Schauen wir mal genauer hin.&lt;/p&gt;
 &lt;p&gt;Das hier ist ein Poltikfeld. Die weißen Punkte sind Stimmvieh.&lt;/p&gt;
@@ -1027,12 +1027,11 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Neue Ideen in Dateisystemen (oder: BTRFS in Fedora 11)</title>
       <link>https://blog.koehntopp.info/2009/02/06/neue-ideen-in-dateisystemen-oder-btrfs-in-fedora-11.html</link>
-      <pubDate>Fri, 06 Feb 2009 16:34:20 +0000</pubDate>
-      
+      <pubDate>Fri, 06 Feb 2009 16:34:20 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/02/06/neue-ideen-in-dateisystemen-oder-btrfs-in-fedora-11.html</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;There are two kinds of fool. One says, “This is old, and therefore good..” And one says “This is new, and therefore better..”	—John Brunner, in The Shockwave Rider&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;There are two kinds of fool. One says, “This is old, and therefore good..” And one says “This is new, and therefore better..”	—John Brunner, in The Shockwave Rider&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Neue Ideen in Dateisystemen sind so eine Sache. Es handelt sich bei einem Dateisystem ja um Infrastrukturcode par excellence, und so reden die meisten Leute gerne von ihrem letzten Datenverlust, wenn man sie nach Dateisystemen befragt. Das ist nicht neu, ich habe in &lt;a href=&#34;https://blog.koehntopp.info/2008/05/30/the-importance-of-fail.html&#34;&gt;The Importance Of FAIL&lt;/a&gt;
 
  das Thema ja schon mal angeschnitten.&lt;/p&gt;
@@ -1144,8 +1143,8 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Was bringt ext4?</title>
       <link>https://blog.koehntopp.info/2009/01/23/was-bringt-ext4.html</link>
-      <pubDate>Fri, 23 Jan 2009 19:14:35 +0000</pubDate>
-      
+      <pubDate>Fri, 23 Jan 2009 19:14:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/01/23/was-bringt-ext4.html</guid>
       <description>&lt;p&gt;Der Linux-Kernel 2.6.28 enthält das ext4-Dateisystem standardmäßig und sowohl Fedora als auch Ubuntu werden es unterstützen. Was bringt ext4 an Änderungen?&lt;/p&gt;
 &lt;p&gt;Ein Dateisystem ist für die meisten Benutzer eine quasi unsichtbare Sache. Es sind halt Dateien da und wenn man auf diese zugreift hat man halt Daten. So sind Dateisystem-Features für die meisten Leute also eine sehr unspektakuläre Sache. Die folgende Übersicht ist also etwas geekzentrisch.&lt;/p&gt;
@@ -1221,8 +1220,8 @@ property rights&amp;rdquo;.&lt;/p&gt;
     <item>
       <title>Git &#34;gewinnt&#34;</title>
       <link>https://blog.koehntopp.info/2009/01/05/git-gewinnt.html</link>
-      <pubDate>Mon, 05 Jan 2009 08:52:56 +0000</pubDate>
-      
+      <pubDate>Mon, 05 Jan 2009 08:52:56 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/01/05/git-gewinnt.html</guid>
       <description>&lt;p&gt;Irgendwann war allen klar, daß CVS es nicht mehr bringt und was Besseres her muss.
 Das hat dazu geführt, daß ich statt einem Versionskontrollsystem in 2000 jetzt in 2009 etwa vier davon parallel verwenden muss.
@@ -1246,8 +1245,8 @@ Auch der X-Server von X.org wird mit Git versioniert.&lt;/p&gt;
     <item>
       <title>Skalierung in die Breite</title>
       <link>https://blog.koehntopp.info/2008/11/20/skalierung-in-die-breite.html</link>
-      <pubDate>Thu, 20 Nov 2008 10:59:41 +0000</pubDate>
-      
+      <pubDate>Thu, 20 Nov 2008 10:59:41 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/11/20/skalierung-in-die-breite.html</guid>
       <description>&lt;p&gt;Dies ist quasi der 2. Teil zum
 &lt;a href=&#34;https://blog.koehntopp.info/2008/11/17/das-mysql-sun-dilemma.html&#34;&gt;MySQL-Sun-Dilemma&lt;/a&gt;
@@ -1315,8 +1314,8 @@ Und der Laden, der diese Breite in der Entwicklung 0wned, dem gehört die Ideenw
     <item>
       <title>Markteintrittsschranke</title>
       <link>https://blog.koehntopp.info/2008/06/15/markteintrittsschranke.html</link>
-      <pubDate>Sun, 15 Jun 2008 10:42:08 +0000</pubDate>
-      
+      <pubDate>Sun, 15 Jun 2008 10:42:08 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/06/15/markteintrittsschranke.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;http://www.heise.de/tp/r4/artikel/28/28010/1.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Die Wikipediatisierung des Wissens&lt;/a&gt;
@@ -1327,8 +1326,7 @@ Der Artikel verwendet das übliche Angstvokabular, das sich auch in vergleichbar
 &lt;blockquote&gt;
 &lt;p&gt;Die entscheidende Frage ist:
 Ist die beeindruckende statistische Progression von Wikipedia auch eine kulturelle Revolution oder zumindest ihr Vorbote?
-Oder ist sie ein Teil der Informations-Versklavung und Wissens-Nivellierung im Zeitalter der allgemeinen Datenexplosion?&lt;/p&gt;
-&lt;/blockquote&gt;
+Oder ist sie ein Teil der Informations-Versklavung und Wissens-Nivellierung im Zeitalter der allgemeinen Datenexplosion?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Man beachte die Wortwahl: &amp;ldquo;Revolution&amp;rdquo;, &amp;ldquo;Versklavung&amp;rdquo;, &amp;ldquo;Nivellierung&amp;rdquo;, &amp;ldquo;Explosion&amp;rdquo;.
 Dem kann ich nur einen
 &lt;a href=&#34;http://de.wikipedia.org/wiki/Erikativ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Erikativ&lt;/a&gt;
@@ -1356,8 +1354,8 @@ Aus verschiedenen Gründen gibt es eine ganze Menge Leute, die unter Solaris mit
     <item>
       <title>CS101: From NAND to Tetris in 14 simple steps</title>
       <link>https://blog.koehntopp.info/2008/06/01/cs101-from-nand-to-tetris-in-14-simple-steps.html</link>
-      <pubDate>Sun, 01 Jun 2008 04:30:35 +0000</pubDate>
-      
+      <pubDate>Sun, 01 Jun 2008 04:30:35 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/06/01/cs101-from-nand-to-tetris-in-14-simple-steps.html</guid>
       <description>&lt;p&gt;Shimon Schocken preist seinen Kurs &amp;ldquo;From NAND to Tetris in 14 steps&amp;rdquo; an:&lt;/p&gt;
 &lt;p&gt;&lt;object width=&#34;425&#34; height=&#34;355&#34;&gt;&lt;param name=&#34;movie&#34; value=&#34;http://www.youtube.com/v/JtXvUoPx4Qs&amp;hl=en&#34;&gt;&lt;/param&gt;&lt;param name=&#34;wmode&#34; value=&#34;transparent&#34;&gt;&lt;/param&gt;&lt;embed src=&#34;http://www.youtube.com/v/JtXvUoPx4Qs&amp;hl=en&#34; type=&#34;application/x-shockwave-flash&#34; wmode=&#34;transparent&#34; width=&#34;425&#34; height=&#34;355&#34;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
@@ -1386,8 +1384,8 @@ ist auch als Buch zu haben. Ich bin begeistert.&lt;/p&gt;
     <item>
       <title>Historische Kernelsourcen</title>
       <link>https://blog.koehntopp.info/2008/05/27/historische-kernelsourcen.html</link>
-      <pubDate>Tue, 27 May 2008 08:08:46 +0000</pubDate>
-      
+      <pubDate>Tue, 27 May 2008 08:08:46 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2008/05/27/historische-kernelsourcen.html</guid>
       <description>&lt;p&gt;In anderen Artikeln habe ich ja schon an Hand von &lt;a href=&#34;http://lxr.linux.no/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://lxr.linux.no/&lt;/a&gt;
 
@@ -1401,8 +1399,7 @@ ist auch als Buch zu haben. Ich bin begeistert.&lt;/p&gt;
 
 .&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The nsys files are timestamped August 31, 1973. This is consistent with other known dates. The files use structs, but in December 1972 the C compiler didn&amp;rsquo;t support structs. In September 1973, the C version of the kernel finally supplanted the assembly version, and the kernel here certainly works fine.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The nsys files are timestamped August 31, 1973. This is consistent with other known dates. The files use structs, but in December 1972 the C compiler didn&amp;rsquo;t support structs. In September 1973, the C version of the kernel finally supplanted the assembly version, and the kernel here certainly works fine.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Mit anderen Worten, wir schauen hier der gleichzeitigen Entstehung der Sprache C und des Unix-Kernels zu. So kennt der V3 Kernel &lt;a href=&#34;http://minnie.tuhs.org/UnixTree/V3/usr/man/man2/stat.2.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;noch keine GID&lt;/a&gt;
 
  im stat(2) Systemaufruf, und der Compiler kann noch keine &amp;ldquo;struct&amp;rdquo; - im nsys-Kernel 6 Monate später existieren beide - und andere wichtige Erfindungen werden gemacht.&lt;/p&gt;
@@ -1410,16 +1407,15 @@ ist auch als Buch zu haben. Ich bin begeistert.&lt;/p&gt;
 
 :&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The number of UNIX installations is now above 20&amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The number of UNIX installations is now above 20&amp;hellip;&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
     <item>
       <title>Echte Helden</title>
       <link>https://blog.koehntopp.info/2007/09/07/echte-helden.html</link>
-      <pubDate>Fri, 07 Sep 2007 18:00:00 +0000</pubDate>
-      
+      <pubDate>Fri, 07 Sep 2007 18:00:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2007/09/07/echte-helden.html</guid>
       <description>&lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
   &lt;img src=&#34;https://blog.koehntopp.info/uploads/yodaorigami.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -1702,8 +1698,8 @@ nur Du kannst es ihm beweisen.&lt;/p&gt;
     <item>
       <title>GPL V3 RC3 - Was steht drin?</title>
       <link>https://blog.koehntopp.info/2007/04/02/gpl-v3-rc3-was-steht-drin.html</link>
-      <pubDate>Mon, 02 Apr 2007 09:36:00 +0000</pubDate>
-      
+      <pubDate>Mon, 02 Apr 2007 09:36:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2007/04/02/gpl-v3-rc3-was-steht-drin.html</guid>
       <description>&lt;p&gt;Die GPL V3 ist sehr einfach zu lesen - wenn man wissen will, was drin steht, muss man lediglich die Präambel lesen, die in sehr klaren Worten und ohne juristisches Blafasel genau erklärt, was die Ziele und Methoden der GPL V3 sind und wieso sie Lizenz so aussieht wie sie aussieht.
 Der
@@ -1745,8 +1741,7 @@ Es kann keine Koexistenz mit Closed Source geben, sondern nur eine strikte Trenn
 Diese Erkenntnis ist nicht neu:
 Am 27. September 1983, also vor nunmehr 23 Jahren wurde das GNU Projekt gegründet.
 Es entstand unter anderem, weil jemand Code aus der Allmende genommen und unter seine Käseglocke gestellt hat.
-Die Funktion der GPL ist es, eine Wiederholung eines solchen Szenarios zu verhindern.&lt;/p&gt;
-&lt;/blockquote&gt;
+Die Funktion der GPL ist es, eine Wiederholung eines solchen Szenarios zu verhindern.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die GPL ist eine wehrhafte Lizenz und die Version 3 paßt sie an die Erfordernisse einer neuen Zeit an, um die
 &lt;a href=&#34;https://blog.koehntopp.info/2006/11/12/gpl-microsoft-novell-samba-org-und-die-freiheiten-der-gpl.html&#34;&gt;Freiheiten der GPL&lt;/a&gt;
 
@@ -1778,8 +1773,7 @@ Therefore, we have designed this version of the GPL to prohibit the practice for
 If such problems arise substantially in other domains, we stand ready to extend this provision to those domains in future versions of the GPL, as needed to protect the freedom of users.&lt;/p&gt;
 &lt;p&gt;Finally, every program is threatened constantly by software patents.
 States should not allow patents to restrict development and use of software on general-purpose computers, but in places where they do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary.
-To prevent this, the GPL assures that patents cannot be used to render the program non-free.&lt;/p&gt;
-&lt;/blockquote&gt;
+To prevent this, the GPL assures that patents cannot be used to render the program non-free.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Neu in der GPL V3: Der Absatz 3 &amp;ldquo;No Denying Users&amp;rsquo; Rights through Technical Measures&amp;rdquo;. sagt, daß ein GPL V3 Programm nicht Teil eines
 &lt;a href=&#34;http://de.wikipedia.org/wiki/Digitale_Rechteverwaltung&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DRM-Mechanismus&lt;/a&gt;
 
@@ -1792,15 +1786,13 @@ und die daraus entstandenen nationalen Gesetze zur Umsetzung dieses Vertrages.
 Ein Gerät wie der Tivo, bei dem man die Quellen erhält, modifizieren, die daraus resultierende geänderte Software dann so aber nicht mehr auf dem Gerät installieren kann wäre mit der GPL V2 möglich, mit der GPL V3 aber nicht mehr.&lt;/p&gt;
 &lt;p&gt;In dieselbe Richtung zielen nun Abschnitte von Absatz 6, die ebenfalls klarstellen, was denn nun genau zum Lieferumfang gehört:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Oder in anderen Worten: Die Schlüssel, die man braucht um sein selbstgemachtes Binary so zu signieren, daß es auf ein einem Tivo tut gehören auch dazu.&lt;/p&gt;
 &lt;p&gt;Ebenfalls neu in der GPL V3:
 Die Klarstellung in Absatz 10 &amp;ldquo;Automatic Licensing of Downstream Recipients&amp;rdquo; und der gesamte Absatz 11 &amp;ldquo;Patents&amp;rdquo;.
 Der Kern der Sache ist jetzt der erste Absatz von Absatz 11:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor&amp;rsquo;s essential patent claims in its contribution, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contribution.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor&amp;rsquo;s essential patent claims in its contribution, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contribution.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Oder in anderen Worten: Wenn ich Code in ein Stück GPL einbaue, das durch eines meiner Softwarepatente geschützt ist, dann gebe ich damit auch gleich eine kostenfreie, unbefristete und unbeschränkte Lizenz für die Nutzung dieser Patente an jedem Nutzer dieser Software mit.
 Dies ist übrigens nichts neues -
 &lt;a href=&#34;http://www.groklaw.net/article.php?story=20070328071651351&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;schon die GPL V2 hat einen ähnlichen Effekt&lt;/a&gt;
@@ -1819,8 +1811,8 @@ beschrieben.&lt;/p&gt;
     <item>
       <title>GPL: Microsoft, Novell, Samba.org und die Freiheiten der GPL</title>
       <link>https://blog.koehntopp.info/2006/11/12/gpl-microsoft-novell-samba-org-und-die-freiheiten-der-gpl.html</link>
-      <pubDate>Sun, 12 Nov 2006 23:51:00 +0000</pubDate>
-      
+      <pubDate>Sun, 12 Nov 2006 23:51:00 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/11/12/gpl-microsoft-novell-samba-org-und-die-freiheiten-der-gpl.html</guid>
       <description>&lt;p&gt;In
 &lt;a href=&#34;http://www.c0t0d0s0.org/archives/2233-Business-und-OSS.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Business und OSS&lt;/a&gt;
@@ -1833,8 +1825,7 @@ verweist Jörg Möllenkamp auf
 und spielt ein Gedankenexperiment durch:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;So im gedanklichen Hintergrund stellt sich mir jetzt die Frage, was wohl passieren würde, wenn das Entwicklungsteam eines wesentlichen Bestandteils der Umgebung einer der Großdistributionen plötzlich die Lizenz entziehen würde.
-Als Gedankenspiel: Das Samba-Team zieht die Lizenz von Novell für Samba zurück.&lt;/p&gt;
-&lt;/blockquote&gt;
+Als Gedankenspiel: Das Samba-Team zieht die Lizenz von Novell für Samba zurück.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.samba.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Samba&lt;/a&gt;
 
  beschreibt sich selbst wie folgt:&lt;/p&gt;
@@ -1848,8 +1839,7 @@ Als Gedankenspiel: Das Samba-Team zieht die Lizenz von Novell für Samba zurück
 , provided file and print services to all manner of SMB/CIFS clients, including the numerous versions of Microsoft Windows operating systems.
 Samba is freely available under the &lt;a href=&#34;http://us5.samba.org/samba/docs/GPL.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GNU General Public License&lt;/a&gt;
 
-.&lt;/p&gt;
-&lt;/blockquote&gt;
+.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;In Sektion 6 der
 &lt;a href=&#34;http://us5.samba.org/samba/docs/GPL.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GPL&lt;/a&gt;
 
@@ -1860,8 +1850,7 @@ Samba is freely available under the &lt;a href=&#34;http://us5.samba.org/samba/d
 &lt;strong&gt;You may not impose any further restrictions on the recipients&amp;rsquo; exercise of the rights granted herein.&lt;/strong&gt;
 You are not responsible for enforcing compliance by third parties to
 this License.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;p&gt;Die Grundlage für dieses Gedankenexperiment ist also in der realen Welt nicht gegeben.
 Es ist nicht möglich, bestimmte Firmen von der Nutzung GPL lizenzierter Software in irgendeiner Weise auszuschließen.
 Das ist Absicht und wird von den Entwicklern der GPL als Feature gesehen.&lt;/p&gt;
@@ -1939,8 +1928,8 @@ Weil die GPL es nach Konstruktion nicht zuläßt.&lt;/p&gt;
     <item>
       <title>Urteilsbegründung zu GPL in Deutschland vor Gericht durchgesetzt</title>
       <link>https://blog.koehntopp.info/2006/09/22/urteilsbegr-ndung-zu-gpl-in-deutschland-vor-gericht-durchgesetzt.html</link>
-      <pubDate>Fri, 22 Sep 2006 12:57:39 +0000</pubDate>
-      
+      <pubDate>Fri, 22 Sep 2006 12:57:39 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2006/09/22/urteilsbegr-ndung-zu-gpl-in-deutschland-vor-gericht-durchgesetzt.html</guid>
       <description>&lt;p&gt;Nachtrag zu
 &lt;a href=&#34;https://blog.koehntopp.info/2004/04/15/gnu-gpl-in-deutschland.html&#34;&gt;GPL in Deutschland vor Gericht durchgesetzt&lt;/a&gt;
@@ -1994,11 +1983,9 @@ der Nutzer gegen die in Ziff. 2 der GPL niedergelegten Verhaltenspflichten
 verstößt. Die dortigen Verhaltenspflichten sehen insbesondere vor, daß der
 Nutzer mit jeder Kopie einen Haftungsausschluß veröffentlicht, auf die GPL
 hinweist und einen Lizenztext beifügt sowie den Sourcecode des Programmes
-offen legt.&lt;/p&gt;
-&lt;/blockquote&gt;
+offen legt.&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     
   </channel>
 </rss>
-

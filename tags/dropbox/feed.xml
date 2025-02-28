@@ -6,12 +6,18 @@
     <description>Recent content in Dropbox on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/dropbox/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/dropbox/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Verschlüsselt Dropbox überhaupt?</title>
       <link>https://blog.koehntopp.info/2011/04/26/verschluesselt-dropbox-ueberhaupt.html</link>
-      <pubDate>Tue, 26 Apr 2011 17:32:36 +0000</pubDate>
-      
+      <pubDate>Tue, 26 Apr 2011 17:32:36 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/04/26/verschluesselt-dropbox-ueberhaupt.html</guid>
       <description>&lt;p&gt;Dropbox ist in den letzten Tagen und Wochen ein wenig seltsam in die
 Schlagzeilen geraten.&lt;/p&gt;
@@ -27,8 +33,7 @@ portable and is &lt;em&gt;not&lt;/em&gt; tied to the system in any way. This mea
 you gain access to a person’s config.db file (or just the host_id), you
 gain complete access to the person’s Dropbox until such time that the
 person removes the host from the list of linked devices via the Dropbox
-web interface.&lt;/p&gt;
-&lt;/blockquote&gt;
+web interface.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Dann ist da die Änderung der TOS, die vorher ein wenig irreführend
 formuliert waren: Vorher konnte man die TOS so lesen, daß die
 Dropbox-Dateien auf den Dropbox-Servern verschlüsselt gespeichert werden und
@@ -47,8 +52,7 @@ Dropbox or its users; or (d) to protect Dropbox’s property rights. If we
 provide your Dropbox files to a law enforcement agency as set forth above,
 we will remove Dropbox’s encryption from the files before providing them
 to law enforcement. However, Dropbox will not be able to decrypt any files
-that you encrypted prior to storing them on Dropbox.&lt;/p&gt;
-&lt;/blockquote&gt;
+that you encrypted prior to storing them on Dropbox.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Und schließlich nun:
 &lt;a href=&#34;http://www.techdirt.com/articles/20110425/15541514030/dropbox-tries-to-kill-off-open-source-project-with-dmca-takedown.shtml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dropbox Tries To Kill Off Open Source Project With DMCA Takedown&lt;/a&gt;
 
@@ -136,4 +140,3 @@ der anderen Seite. Klar, wo businessmodelltechnisch die Präferenzen liegen.&lt;
     
   </channel>
 </rss>
-

@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>MySQL: Our MySQL in 2010, a hiring interview question | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2021/09/27/mysql-booking-2010-a-hiring-interview-question.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='MySQL: Our MySQL in 2010, a hiring interview question' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='MySQL: Our MySQL in 2010, a hiring interview question | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="en_US" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2021/09/27/mysql-booking-2010-a-hiring-interview-question.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2021-09-27T18:52:55Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='MySQL: Our MySQL in 2010, a hiring interview question' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/rijksmuseum.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"MySQL: Our MySQL in 2010, a hiring interview question","image":"/assets/img/background/rijksmuseum.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="mysql-our-mysql-in-2010-a-hiring-interview-question-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						MySQL: Our MySQL in 2010, a hiring interview question
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>September 27, 2021</div>
 						
-
 					</div>
 				</div>
 				
@@ -184,8 +170,7 @@ One of the interviews we do is a systems design interview, where we want to see 
 <p>It is 2010, and the company has a database structure where a fixed number front end machines form a cell.
 Reads and writes are already split:
 Writes go to the primary of a replication tree, and are being replicated to the read instance of the database in each cell.
-Reads go to the database instance that is a fixed part of the cell.</p>
-</blockquote>
+Reads go to the database instance that is a fixed part of the cell.</p></blockquote>
 <p><p class="md__image">
   <img src="/uploads/2021/09/mysql-2010-1.jpg" alt=""  />
 </p>
@@ -255,8 +240,7 @@ When there are remarks such as &ldquo;Our environment is smaller, but for us &he
 
 </p>
 <blockquote>
-<p>The concept of H-shaped people is a metaphor used in job recruitment to describe the abilities of individuals in (or outside) the workforce. The vertical bars on the letter H represent the depth of related skills and expertise in a single field or discipline, whereas the horizontal bar is the ability to combine those two disciplines to create value in a way that was hitherto unknown.</p>
-</blockquote>
+<p>The concept of H-shaped people is a metaphor used in job recruitment to describe the abilities of individuals in (or outside) the workforce. The vertical bars on the letter H represent the depth of related skills and expertise in a single field or discipline, whereas the horizontal bar is the ability to combine those two disciplines to create value in a way that was hitherto unknown.</p></blockquote>
 <p>The objective is to find a person that &ldquo;Understands MySQL&rdquo; and &ldquo;Understands Python or Go&rdquo; (&ldquo;Understands any database&rdquo; and &ldquo;Understands a useful programming language&rdquo;), so that I can throw them at our existing codebase and have them useful within 3-6 months - ugh.</p>
 <p>If I can find one person per year, I am very lucky.</p>
 
@@ -364,7 +348,7 @@ When there are remarks such as &ldquo;Our environment is smaller, but for us &he
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

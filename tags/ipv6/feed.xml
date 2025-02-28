@@ -6,12 +6,18 @@
     <description>Recent content in Ipv6 on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/ipv6/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/ipv6/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Datenschutztheater: dynamische IPv6 Adressen</title>
       <link>https://blog.koehntopp.info/2011/11/09/datenschutztheater-dynamische-ipv6-adressen.html</link>
-      <pubDate>Wed, 09 Nov 2011 13:18:38 +0000</pubDate>
-      
+      <pubDate>Wed, 09 Nov 2011 13:18:38 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/11/09/datenschutztheater-dynamische-ipv6-adressen.html</guid>
       <description>&lt;p&gt;Wir hatten das Thema schon einmal in
 &lt;a href=&#34;https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html&#34;&gt;IP V6 verkehrt&lt;/a&gt;
@@ -28,8 +34,7 @@ heißt es in der am Freitag von Schaar
 &lt;a href=&#34;http://www.bfdi.bund.de/SharedDocs/Publikationen/Entschliessungssammlung/IntDSK/2011InternetIPv6.pdf?__blob=publicationFile&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;veröffentlichten Entschließung&lt;/a&gt;
 
 
-(PDF-Datei).&lt;/p&gt;
-&lt;/blockquote&gt;
+(PDF-Datei).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Lutz Donnerhacke hat das zum Anlaß genommen, IP V6 einmal unter
 Datenschutzgesichtspunkten zu analysieren.&lt;/p&gt;
 &lt;p&gt;Sein &lt;a href=&#34;http://www.iks-jena.de/ger/Blog/IPv6-und-der-Datenschutz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artikel&lt;/a&gt;
@@ -52,8 +57,7 @@ lassen. Sie glauben mit dynamischen IP-Adressen das Grundübel des Internet
 aus ihrer Sicht entschärfen zu können. Schließlich invalidiert ja ein
 ständiger Wechsel der IP-Nutzer Zuordnung die von verschiedenen
 Webdiensten ausgeführten Idenitifizerierungen – bis zum nächsten Login,
-Cookie, soziale Netze-Button, E-Mail-Abruf, Tweet oder Werbebanner.&lt;/p&gt;
-&lt;/blockquote&gt;
+Cookie, soziale Netze-Button, E-Mail-Abruf, Tweet oder Werbebanner.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Eines der Hauptprobleme beim Umgang mit IP V6 ist, es als IP V4 mit langen
 Adressen anzusehen. Das ist nicht der Fall, wie Lutz an mehreren Beispielen
 mit Datenschutzbezug illustriert: Mit IP V6 haben wir so viele Adressen zur
@@ -80,8 +84,7 @@ leisten: Er hat den Bildungsauftrag, eigenverantwortlichen Umgang mit
 persönlichen Daten sicherzustellen und den Regulierungsauftrag, die
 betreffenden Hersteller und ISPs zur Entwicklung datensparsamer Konzepte
 anzuhalten. Er bekommt dafür die Chance, aktiv das techno-soziale Gefüge
-des Internets wieder zu demokratisieren.&lt;/p&gt;
-&lt;/blockquote&gt;
+des Internets wieder zu demokratisieren.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;(Den &lt;a href=&#34;http://www.iks-jena.de/ger/Blog/IPv6-und-der-Datenschutz&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vollständigen Artikel lesen&lt;/a&gt;
 
 )&lt;/p&gt;
@@ -91,8 +94,8 @@ des Internets wieder zu demokratisieren.&lt;/p&gt;
     <item>
       <title>IP V6 verkehrt</title>
       <link>https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html</link>
-      <pubDate>Sun, 05 Jun 2011 12:41:40 +0000</pubDate>
-      
+      <pubDate>Sun, 05 Jun 2011 12:41:40 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2011/06/05/ip-v6-verkehrt.html</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Johannes Caspar, Hamburgischer Beauftragter für Datenschutz und
@@ -102,8 +105,7 @@ dazu auf, die Provider dazu zu verpflichten, dass sie IP-Adressen
 weiterhin dynamisch vergeben.
 &amp;ndash; &lt;a href=&#34;http://www.heise.de/netze/meldung/Datenschuetzer-sorgt-sich-wegen-IPv6-1235312.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heise Netze&lt;/a&gt;
 
-&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Schon seit &lt;a href=&#34;https://blog.koehntopp.info/2005/05/23/identifizierung-durch-ip.html&#34;&gt;vielen Jahren&lt;/a&gt;
 
 
@@ -179,8 +181,8 @@ Thema&lt;/a&gt;
     <item>
       <title>Mein natives IP V6</title>
       <link>https://blog.koehntopp.info/2009/02/10/mein-natives-ip-v6.html</link>
-      <pubDate>Tue, 10 Feb 2009 11:49:23 +0000</pubDate>
-      
+      <pubDate>Tue, 10 Feb 2009 11:49:23 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2009/02/10/mein-natives-ip-v6.html</guid>
       <description>&lt;p&gt;Mein dedizierter Server in Berlin hat seit Ende Januar IP V6 nativ. Als
 Testkunde habe ich die Connectivity vor dem Rollout bekommen - eine IP V6
@@ -390,4 +392,3 @@ freischalten lassen. Dann kann man definieren:&lt;/p&gt;
     
   </channel>
 </rss>
-

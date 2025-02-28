@@ -4,58 +4,41 @@
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Namensregeln für Schemadesign | Die wunderbare Welt von Isotopp</title>
-<meta name="description" content="">
+<meta name="description" content="Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="favicon.ico" rel="icon" type="image/ico">
+<link rel="icon" href="favicon.ico" type="image/ico">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="canonical" href="https://blog.koehntopp.info/2011/05/20/namensregeln-f-r-schemadesign.html">
-
 
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/feed.xml' title="Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/mysql/feed.xml' title="Feed: mysql Articles for Die wunderbare Welt von Isotopp">
 <link rel="alternate" type="application/rss+xml" href='https://blog.koehntopp.info/tags/review/feed.xml' title="Feed: review Articles for Die wunderbare Welt von Isotopp">
 
 
-
-
-<meta name="generator" content="Hugo 0.124.1">
-<meta property="og:title" content='Namensregeln für Schemadesign' />
+<meta name="generator" content="Hugo 0.145.0">
+<meta property="og:title" content='Namensregeln für Schemadesign | Die wunderbare Welt von Isotopp' />
 <meta property="og:site_name" content='Die wunderbare Welt von Isotopp' />
-
-
 <meta property="og:locale" content="de_DE" />
-
-
-<meta name="description" content='' />
-<meta property="og:description" content='' />
-
-<meta property="og:url" content="https://blog.koehntopp.info/" />
-
-
+<meta name="description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
+<meta property="og:url" content="https://blog.koehntopp.info/2011/05/20/namensregeln-f-r-schemadesign.html" />
 <meta property="og:type" content="article" />
 <meta name="article:published_time" content='2011-05-20T14:24:26Z' />
-
-
-
+<meta name="fediverse:creator" content="@isotopp@infosec.exchange">
 <meta property="og:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content='@isotopp' />
-<meta name="twitter:creator" content='@isotopp' />
+<meta name="twitter:creator" content='@isotopp@infosec.exchange' />
 <meta property="twitter:title" content='Namensregeln für Schemadesign' />
-<meta property="twitter:description" content='' />
+<meta property="twitter:description" content='Kris Köhntopp&#39;s blog (Fedi: @isotoppinfosec.exchange)' />
 <meta property="twitter:image" content='https://blog.koehntopp.info/assets/img/background/mysql.jpg' />
 
-<script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","description":null,"headline":"Namensregeln für Schemadesign","image":"/assets/img/background/mysql.jpg","name":"Die wunderbare Welt von Isotopp","url":"https://blog.koehntopp.info/"}
-</script>
 
     
 
 
 
-<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.b622898f01a68bb72cac74da98891ba28421becfc0fce10fbf8fd52a32d4da79.css">
+<link rel="stylesheet" href="https://blog.koehntopp.info/style.min.dd9d518fe6cac55191b6af874e18327dff051055754ffc7e106131baf826e6d3.css">
 
 
     </head>
@@ -118,6 +101,11 @@
 
 
 
+
+
+
+
+
 <div class="page">
 	<article class="namensregeln-f%C3%BCr-schemadesign-page">
 		<div class='row  justify-content-center text-center my-4 mx-0'>
@@ -127,17 +115,15 @@
 						Namensregeln für Schemadesign
 					</h1>
 					<div class='text-uppercase text-light' style='letter-spacing: 0.1rem;'>
-						<img alt='isotopp image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
+						<img alt='@isotopp@infosec.exchange image' src='/assets/img/avatars/isotopp.jpg' class='me-1 p-0'
 						     style='width: 1.9rem; border-radius: 1rem;'>
-						<a href="https://chaos.social/@isotopp" class='text-light text-decoration-none'>
+						<a href="https://infosec.exchange/@isotopp" class='text-light text-decoration-none'>
 							Kristian Köhntopp
 						</a>
-
 						
 						<span class='d-none d-lg-inline'>-</span>
 						<div class='d-block d-lg-inline'>May 20, 2011</div>
 						
-
 					</div>
 				</div>
 				
@@ -189,8 +175,7 @@ ist ein beschreibendes Wort im Singular. Auf diese Weise hat man weniger
 Schmerzen, wenn man über eine Query an einem Beispiel diskutiert. Zusätzlich
 wird für jede Tabelle ein eindeutiges Kürzel definiert.</p>
 <blockquote>
-<p>Beispiel: Die Tabelle <code>kunde</code> bekommt das eindeutige Kürzel <code>k</code>.</p>
-</blockquote>
+<p>Beispiel: Die Tabelle <code>kunde</code> bekommt das eindeutige Kürzel <code>k</code>.</p></blockquote>
 <p>Wir definieren alle Spalten in einer Tabelle mit Namen, die mit dem Kürzel
 und einem Unterstrich beginnen. Ausnahmen sind Fremdschlüssel, die literal
 aus der originalen Tabelle übernommen werden. Sie sind dadurch sehr leicht
@@ -203,8 +188,7 @@ Namen &ldquo;<code>id</code>&rdquo; (mit dem Tabellenprefix, natürlich).</p>
 <code>firma</code> (<code>f</code>), da wir hier ausschließlich Geschäftskunden modellieren. Es gibt
 also <code>k.f_id</code>, einen Fremdschlüssel von <code>firma</code> in <code>kunde</code>. Es ist klar, daß aus
 Effizienzgründen ein <code>INDEX(f_id)</code> in <code>k</code> definiert sein muß, wenn nicht sogar
-eine Foreign Key Constraint (sofern man diese überhaupt verwenden will).</p>
-</blockquote>
+eine Foreign Key Constraint (sofern man diese überhaupt verwenden will).</p></blockquote>
 <p>Relationen sind entweder nackte Relationen, die nur die Fremdschlüssel der
 beiden zu verbindenden Tabellen enthalten. In diesem Fall heißt die Tabelle
 <code>kürzel-kürzel_rel</code> und hat als Primärschlüssel die zusammengesetzten
@@ -213,8 +197,7 @@ Fremdschlüssel.</p>
 <p>Beispiel: Eine Beziehung zwischen <code>kunde</code> und <code>seminar</code> ist m:n: Ein Kunde
 kann in mehreren Seminaren sein, und in einem Seminar sind mehrere Kunden.
 Die Tabelle <code>k_s_rel</code> hat nur die Spalten <code>k_id</code> und <code>s_id</code>, und den
-Primärschlüsel <code>(k_id, s_id)</code>.</p>
-</blockquote>
+Primärschlüsel <code>(k_id, s_id)</code>.</p></blockquote>
 <p>Oder Relationen haben eigene Attribute. In diesem Fall bekommt die Relation
 einen beschreibenden Namen und ein Kürzel, einen eigenen Primärschlüssel und
 die Fremdschlüsselpaare als unique constraint.</p>
@@ -225,8 +208,7 @@ bekommt den Namen <code>buchung</code>, ein Kürzel <code>bu</code> und eine eig
 Beziehung <code>(k_id, s_id)</code> wird als UNIQUE KEY definiert und modelliert das
 Fakt, daß jeder Kunde in jedem Seminar nur einmal sitzen kann. Die Flags
 werden <code>bu_anreise_am_vortag</code> und <code>bu_abreise_am_folgetag</code> sowie
-<code>bu_datum</code>.</p>
-</blockquote>
+<code>bu_datum</code>.</p></blockquote>
 <p>Jede Tabelle bekommt immer eine Spalte &ldquo;changed timestamp&rdquo; (die sich laut
 MySQL timestamp Magie selbst aktualisiert) und dies ist immer die rechteste
 Spalte jeder Tabelle. Das erlaubt zwar immer noch kein Change-Tracking
@@ -330,7 +312,7 @@ aber es ist sehr nützlich zum Debuggen.</p>
           </svg>
         </a>
 
-        <a rel="me" href="https://chaos.social/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
+        <a rel="me" href="https://infosec.exchange/@isotopp" title='Follow on Mastodon' class='me-3 text-decoration-none'>
           <svg class='bi' height='2.5rem' width='2.5rem' fill='currentColor'>
             <use xlink:href='/bootstrap-icons.svg#mastodon'/>
           </svg>

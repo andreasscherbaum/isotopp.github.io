@@ -6,12 +6,18 @@
     <description>Recent content in Cycling on Die wunderbare Welt von Isotopp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 10:15:44 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/cycling/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>kris-blog@koehntopp.de (Kristian Köhntopp)</managingEditor>
+
+    
+    <webMaster>kris-blog@koehntopp.de (Kristian Köhntopp)</webMaster>
+
+    
+    <lastBuildDate>Fri, 28 Feb 2025 17:08:52 +0000</lastBuildDate><atom:link href="https://blog.koehntopp.info/tags/cycling/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Safe Biking: It&#39;s not the right of way that&#39;s wrong</title>
       <link>https://blog.koehntopp.info/2020/10/22/safe-biking-its-not-the-right-of-way-thats-wrong.html</link>
-      <pubDate>Thu, 22 Oct 2020 17:06:17 +0000</pubDate>
-      
+      <pubDate>Thu, 22 Oct 2020 17:06:17 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/10/22/safe-biking-its-not-the-right-of-way-thats-wrong.html</guid>
       <description>&lt;p&gt;Sven Geggus &lt;a href=&#34;https://twitter.com/realgiggls/status/1319205107318378498&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trolled me&lt;/a&gt;
 
@@ -277,8 +283,7 @@
 
  is likely to be available - there are more than 300 stations all across the country where you can have this. This is a public transport bike that can be rented &lt;em&gt;using the same train ticket&lt;/em&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It costs € 3.85 per 24-hour period to use an OV-fiets. If you keep the OV-fiets for more than 24 hours, you will be charged for an extra rental period (up to 72 hours). After 72 hours, you will incur an additional charge of € 5.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;It costs € 3.85 per 24-hour period to use an OV-fiets. If you keep the OV-fiets for more than 24 hours, you will be charged for an extra rental period (up to 72 hours). After 72 hours, you will incur an additional charge of € 5.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;It is not expensive at all.&lt;/p&gt;
 &lt;p&gt;Getting to an OV station by bike means the catchment area of these stations is around 10x larger than on foot. That means the stations can be further apart. That means the Bus or Train has to stop less often. Than means it goes faster, a lot faster actually - especially true for trains. That makes public transport way more attractive. That makes more people use the bike/public transport combo.&lt;/p&gt;
 &lt;p&gt;The public transport in the Netherlands is purposefully designed to enable this.&lt;/p&gt;
@@ -331,8 +336,8 @@
     <item>
       <title>In which we cycle shopping...</title>
       <link>https://blog.koehntopp.info/2020/02/22/in-which-we-cycle-shopping.html</link>
-      <pubDate>Sat, 22 Feb 2020 08:14:33 +0000</pubDate>
-      
+      <pubDate>Sat, 22 Feb 2020 08:14:33 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/22/in-which-we-cycle-shopping.html</guid>
       <description>&lt;p&gt;Welcome to the Netherlands. Please excuse me, I need to fetch a few things before I have time for you. I need a few things from Lidl in Hoofddorp, do you want to come with me?&lt;/p&gt;
 &lt;p&gt;&lt;p class=&#34;md__image&#34;&gt;
@@ -611,8 +616,8 @@ from OSHA? We can Isolate (#3), so we don&amp;rsquo;t have to Engineer Controls 
     <item>
       <title>How to build a cycling environment</title>
       <link>https://blog.koehntopp.info/2020/02/19/how-to-build-a-cycling-environment.html</link>
-      <pubDate>Wed, 19 Feb 2020 11:38:27 +0000</pubDate>
-      
+      <pubDate>Wed, 19 Feb 2020 11:38:27 +0000</pubDate><author>kris-blog@koehntopp.de (Kristian Köhntopp)</author>
+
       <guid>https://blog.koehntopp.info/2020/02/19/how-to-build-a-cycling-environment.html</guid>
       <description>&lt;p&gt;Welcome to the Netherlands. We&amp;rsquo;re building roads differently. They are better, safer and less stressful for cyclists, and that also makes them better, safer and less stressful for motorists. Here is how it works:&lt;/p&gt;
 &lt;p&gt;(based on a &lt;a href=&#34;https://twitter.com/isotopp/status/1229819834239770624&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Twitter Thread&lt;/a&gt;
@@ -859,4 +864,3 @@ from OSHA? We can Isolate (#3), so we don&amp;rsquo;t have to Engineer Controls 
     
   </channel>
 </rss>
-
